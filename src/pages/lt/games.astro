@@ -1,0 +1,60 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { t } from '../../i18n/translations';
+
+const lang = 'lt' as const;
+---
+
+<Layout title="Žaidimai | POLICE-COM" lang={lang}>
+  <section class="page-hero">
+    <div class="container">
+      <span class="section-label">{t(lang, 'nav.games')}</span>
+      <h1 class="section-title animate-in">Mokomieji žaidimai</h1>
+      <p class="section-subtitle animate-in delay-1">Interaktyvūs žaidimai, skirti ugdyti teisėsaugos specialistų komunikacijos ir deeskalacijos įgūdžius.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="games-grid">
+        <a href="/de-escalation-game/" class="game-card animate-in delay-1">
+          <div class="game-icon">🎮</div>
+          <h2 class="game-title">Deeskalacijos mokymo žaidimas</h2>
+          <p class="game-desc">Interaktyvi simuliacija, kurioje naršote šakotus dialogų scenarijus ir priimate sprendimus, turinčius įtakos rezultatams. Praktikuokite deeskalacijos technikas realistiškose situacijose su greitu grįžtamuoju ryšiu.</p>
+          <div class="game-meta">
+            <span>14 scenarijų</span>
+            <span>4 kalbos</span>
+            <span>Interaktyvus</span>
+          </div>
+          <span class="game-cta">Žaisti &rarr;</span>
+        </a>
+
+        <a href="/hot-call/" class="game-card animate-in delay-2">
+          <div class="game-icon">🃏</div>
+          <h2 class="game-title">Hot Call — Kortų žaidimas</h2>
+          <p class="game-desc">Scenarijais pagrįstas kortų žaidimas, skirtas treniruoti komunikaciją veiksmų metu. Traukite situacijos, eskalacijos ir deeskalacijos kortas ir praktikuokite sprendimų priėmimą esant spaudimui. Galima žaisti internetu arba su spausdintomis kortomis.</p>
+          <div class="game-meta">
+            <span>90 kortų kiekvienai kalbai</span>
+            <span>4 kalbos</span>
+            <span>Kortų žaidimas</span>
+          </div>
+          <span class="game-cta">Žaisti &rarr;</span>
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .page-hero { padding: calc(72px + 4rem) 0 3rem; background: var(--color-bg-elevated); border-bottom: 1px solid var(--color-border); }
+  .games-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 2rem; }
+  .game-card { display: flex; flex-direction: column; padding: 2.5rem; background: var(--color-bg-card); border: 1px solid var(--color-border); border-radius: var(--radius-md); transition: border-color 0.2s, box-shadow 0.2s; text-decoration: none; color: inherit; }
+  .game-card:hover { border-color: var(--color-accent); box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08); }
+  .game-icon { font-size: 2.5rem; margin-bottom: 1.25rem; }
+  .game-title { font-family: var(--font-display); font-size: 1.4rem; font-weight: 500; color: var(--color-text); margin-bottom: 0.75rem; }
+  .game-desc { font-size: 0.95rem; color: var(--color-text-muted); line-height: 1.7; flex: 1; }
+  .game-meta { display: flex; gap: 1rem; margin-top: 1.5rem; padding-top: 1.25rem; border-top: 1px solid var(--color-border); flex-wrap: wrap; }
+  .game-meta span { font-size: 0.8rem; color: var(--color-accent); font-weight: 500; }
+  .game-cta { margin-top: 1.25rem; font-size: 0.9rem; font-weight: 500; color: var(--color-accent-light); }
+  @media (max-width: 560px) { .games-grid { grid-template-columns: 1fr; } }
+</style>

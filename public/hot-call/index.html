@@ -1,0 +1,1511 @@
+<!DOCTYPE html>
+<html lang="en" style="--scale: 1;">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HOT CALL - Card Simulation</title>
+  <style>
+    :root{--maxW:1300px;--gap:.8rem;--scale:1}
+    html,body{margin:0;padding:0;background:#f4f4f4;overflow-x:auto;font-family: Arial, sans-serif;}
+    header{background:#0d47a1;color:#fff;width:100%;padding:.8rem 0;text-align:center;font-size:1.6rem;position:relative;}
+
+    /* Language selector in header (for game view) */
+    .lang-selector{position:absolute;right:1rem;top:50%;transform:translateY(-50%);display:flex;gap:0.5rem;align-items:center;}
+    .lang-selector select{padding:0.3rem 0.6rem;border-radius:4px;border:1px solid #fff;background:#fff;color:#0d47a1;font-size:1rem;}
+
+    /* ========== STARTUP SCREEN ========== */
+    #startupScreen {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      background: linear-gradient(135deg, #0d47a1 0%, #1976d2 50%, #42a5f5 100%);
+      padding: 2rem;
+      box-sizing: border-box;
+      position: relative;
+      z-index: 1;
+    }
+    
+    .startup-title {
+      color: #fff;
+      font-size: 3rem;
+      font-weight: bold;
+      margin-bottom: 0.5rem;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    }
+    
+    .startup-subtitle {
+      color: rgba(255,255,255,0.9);
+      font-size: 1.3rem;
+      margin-bottom: 3rem;
+    }
+    
+    /* Language selection */
+    .lang-selection {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 2rem;
+    }
+    
+    .lang-selection-label {
+      color: #fff;
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+    }
+    
+    .lang-buttons {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    
+    .lang-btn {
+      padding: 1rem 2rem;
+      font-size: 1.1rem;
+      border: 3px solid #fff;
+      border-radius: 10px;
+      background: rgba(255,255,255,0.15);
+      color: #fff;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      min-width: 140px;
+    }
+    
+    .lang-btn:hover {
+      background: rgba(255,255,255,0.3);
+      transform: translateY(-2px);
+    }
+    
+    .lang-btn.selected {
+      background: #fff;
+      color: #0d47a1;
+      font-weight: bold;
+    }
+    
+    /* Main choice buttons */
+    .main-choices {
+      display: none;
+      flex-direction: column;
+      gap: 1.5rem;
+      margin-top: 2rem;
+      width: 100%;
+      max-width: 500px;
+    }
+    
+    .main-choices.visible {
+      display: flex;
+    }
+    
+    .main-choice-btn {
+      padding: 2rem 3rem;
+      font-size: 1.5rem;
+      font-weight: bold;
+      border: none;
+      border-radius: 15px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+    }
+    
+    .main-choice-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    }
+    
+    .btn-rules {
+      background: linear-gradient(135deg, #ff9800, #f57c00);
+      color: #fff;
+    }
+    
+    .btn-rules:hover {
+      background: linear-gradient(135deg, #ffb74d, #ff9800);
+    }
+    
+    .btn-start-game {
+      background: linear-gradient(135deg, #4caf50, #388e3c);
+      color: #fff;
+    }
+    
+    .btn-start-game:hover {
+      background: linear-gradient(135deg, #81c784, #4caf50);
+    }
+    
+    .choice-icon {
+      font-size: 2rem;
+    }
+
+    /* ========== GAME SCREEN ========== */
+    #gameScreen {
+      display: none;
+    }
+    
+    #gameScreen.visible {
+      display: block;
+    }
+
+    /* make everything below header scalable */
+    .scalable{transform:scale(var(--scale));transform-origin:top center;}
+
+    .wrap{width:100vw;margin-left:calc(-50vw + 50%);display:flex;flex-direction:column;align-items:center;background:#f4f4f4;}
+
+    /* scenario images */
+    #sceneRow{margin-top:var(--gap);width:min(95vw,var(--maxW));display:flex;gap:var(--gap);}
+    .sceneBox{flex:1;border:none;border-radius:14px;display:flex;justify-content:center;align-items:center;overflow:hidden;height:clamp(160px,28vw,360px);background:#e0e0e0;color:#666;font-size:1.1rem;}
+    .sceneBox img{width:100%;height:100%;object-fit:contain;border-radius:12px;}
+
+    /* controls */
+    .controls{margin:var(--gap) 0;display:flex;flex-wrap:wrap;gap:.4rem;justify-content:center;}
+    button{padding:.5rem 1rem;border:none;border-radius:6px;background:#1976d2;color:#fff;font-size:.9rem;cursor:pointer;transition:background 0.2s;}
+    button:hover:not(:disabled){background:#1565c0;}
+    button:disabled{background:#9e9e9e;opacity:.85;cursor:not-allowed;}
+
+    /* cards grid */
+    #cardsGrid{width:min(95vw,var(--maxW));display:grid;gap:var(--gap);grid-template-columns:repeat(3,minmax(clamp(220px,28vw,320px),1fr));padding:0 1rem 1rem;box-sizing:border-box;}
+    .card{background:#e0e0e0;border:none;border-radius:10px;aspect-ratio:3/4;display:flex;justify-content:center;align-items:center;overflow:hidden;color:#666;position:relative;}
+    .card img{width:100%;height:100%;object-fit:contain;border-radius:8px;}
+
+    /* Remove button on cards */
+    .card.dynamic{cursor:pointer;}
+    .remove-btn{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:rgba(220,53,69,0.95);color:#fff;padding:0.5rem 1rem;border-radius:6px;font-size:1rem;font-weight:bold;display:none;pointer-events:none;z-index:10;}
+    .card.dynamic:hover .remove-btn{display:block;}
+    .card.dynamic:hover img{opacity:0.3;}
+
+    /* Button states for when all cards are drawn */
+    button.all-drawn{background:#4caf50!important;}
+    button.all-drawn:hover:not(:disabled){background:#45a049!important;}
+
+    /* Rules modal */
+    .modal{display:none;position:fixed;z-index:1000;left:0;top:0;width:100%;height:100%;background:rgba(0,0,0,0.5);overflow:auto;}
+    .modal-content{background:#fff;margin:5% auto;padding:2rem;width:min(90%,800px);border-radius:10px;position:relative;max-height:80vh;overflow-y:auto;}
+    .close-modal{position:absolute;right:1rem;top:1rem;font-size:2rem;font-weight:bold;cursor:pointer;color:#666;line-height:1;}
+    .close-modal:hover{color:#000;}
+    .modal h2{margin-top:0;color:#0d47a1;}
+    .modal p{line-height:1.6;margin:1rem 0;}
+    
+    /* Back to menu button in modal */
+    .back-to-menu-btn {
+      display: block;
+      margin: 2rem auto 0;
+      padding: 1rem 2rem;
+      font-size: 1.1rem;
+      background: #0d47a1;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    
+    .back-to-menu-btn:hover {
+      background: #1565c0;
+    }
+
+    /* Card type indicators */
+    .card-type-indicator{position:absolute;top:0.5rem;right:0.5rem;background:rgba(0,0,0,0.7);color:#fff;padding:0.2rem 0.5rem;border-radius:4px;font-size:0.8rem;}
+
+    /* Back to menu button in game */
+    #btnBackToMenu {
+      background: #ff5722;
+    }
+    
+    #btnBackToMenu:hover {
+      background: #e64a19;
+    }
+
+    /* ---------- Responsive tweaks for narrow screens ---------- */
+    @media (max-width:600px){
+      :root{--maxW:100vw}
+      #sceneRow{flex-direction:column;}
+      .sceneBox{height:220px;}
+      #cardsGrid{grid-template-columns:repeat(2,minmax(0,1fr));}
+      .lang-selector{position:static;transform:none;margin-top:0.5rem;}
+      header{flex-direction:column;padding:0.5rem;}
+      
+      .startup-title { font-size: 2rem; }
+      .startup-subtitle { font-size: 1rem; }
+      .main-choice-btn { padding: 1.5rem 2rem; font-size: 1.2rem; }
+      .lang-btn { padding: 0.8rem 1.5rem; min-width: 100px; }
+    }
+    /* scrolling wrapper for zoom overflow */
+    .scroller{width:100%;overflow:auto;-webkit-overflow-scrolling:touch;}
+  </style>
+</head>
+<body>
+
+  <!-- ========== STARTUP SCREEN ========== -->
+  <div id="startupScreen">
+    <h1 class="startup-title">HOT CALL</h1>
+    <p class="startup-subtitle" id="startupSubtitle">Training Simulation for Emergency Services</p>
+    
+    <div class="lang-selection">
+      <p class="lang-selection-label" id="langSelectionLabel">Select Language / Vyberte jazyk / Pasirinkite kalbą / Selectați limba</p>
+      <div class="lang-buttons">
+        <button class="lang-btn" data-lang="ENG">🇬🇧 English</button>
+        <button class="lang-btn" data-lang="CZ">🇨🇿 Čeština</button>
+        <button class="lang-btn" data-lang="LT">🇱🇹 Lietuvių</button>
+        <button class="lang-btn" data-lang="RO">🇷🇴 Română</button>
+      </div>
+    </div>
+    
+    <div class="main-choices" id="mainChoices">
+      <button class="main-choice-btn btn-rules" id="btnReadRules">
+        <span class="choice-icon">📖</span>
+        <span id="btnReadRulesText">Read the Rules</span>
+      </button>
+      <button class="main-choice-btn btn-start-game" id="btnStartGame">
+        <span class="choice-icon">🎮</span>
+        <span id="btnStartGameText">Start the Game</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- ========== GAME SCREEN ========== -->
+  <div id="gameScreen">
+    <header>
+      <span id="headerTitle">HOT CALL - Training Simulation</span>
+      <div class="lang-selector">
+        <label id="langLabel" for="langSelect">Language:</label>
+        <select id="langSelect">
+          <option value="ENG">English</option>
+          <option value="CZ">Čeština</option>
+          <option value="LT">Lietuvių</option>
+          <option value="RO">Română</option>
+        </select>
+      </div>
+    </header>
+    <div class="scroller"><div class="scalable">
+      <div class="wrap">
+        <div id="sceneRow">
+          <div class="sceneBox" id="leftScene">Click on Draw Situation</div>
+          <div class="sceneBox" id="rightScene">Click on Draw Situation</div>
+        </div>
+
+        <div class="controls">
+          <button id="btnSituation">Draw Situation</button>
+          <button id="btnEsc" disabled>Draw Escalation</button>
+          <button id="btnDee" disabled>Draw De-Escalation</button>
+          <button id="btnReset">Reset</button>
+          <button id="btnRules">Rules</button>
+          <button id="btnDownload" title="Download PDF cards">⬇ Download Cards</button>
+          <!-- zoom controls -->
+          <button id="zoomIn" title="Zoom in (bigger)">+</button>
+          <button id="zoomOut" title="Zoom out (smaller)">-</button>
+          <button id="btnBackToMenu">☰ Menu</button>
+        </div>
+
+        <div id="cardsGrid">
+          <div class="card" id="situationCard"><span>Situation Card</span></div>
+        </div>
+      </div>
+    </div></div>
+  </div>
+
+  <!-- Rules Modal (outside of gameScreen so it can show from startup too) -->
+  <div id="rulesModal" class="modal">
+    <div class="modal-content">
+      <span class="close-modal" id="closeModal">&times;</span>
+      <h2 id="rulesTitle">Game Rules</h2>
+      <div id="rulesContent">
+        <p>Manual content will be loaded here.</p>
+        <p>This is a training simulation for emergency response scenarios.</p>
+        <p>Players draw situation cards and respond with escalation or de-escalation cards.</p>
+      </div>
+      <button class="back-to-menu-btn" id="btnBackFromRules">← Back to Menu</button>
+    </div>
+  </div>
+
+<script>
+  /* ---------- CONFIGURATION ---------- */
+  // Define which card numbers belong to which deck type
+  const CARD_TYPES = {
+    situation: [1, 2, 3, 4, 5, 16, 17, 18, 19, 20, 31, 32, 33, 34, 35, 46, 47, 48, 49, 50, 61, 62, 63, 64, 65, 76, 77, 78, 79, 80],
+    escalation: [6, 7, 8, 9, 10, 21, 22, 23, 24, 25, 36, 37, 38, 39, 40, 51, 52, 53, 54, 55, 66, 67, 68, 69, 70, 81, 82, 83, 84, 85],
+    deescalation: [11, 12, 13, 14, 15, 26, 27, 28, 29, 30, 41, 42, 43, 44, 45, 56, 57, 58, 59, 60, 71, 72, 73, 74, 75, 86, 87, 88, 89, 90]
+  };
+
+  // Map card numbers to scene numbers (only 30 scenes available)
+  function getSceneNumber(cardNumber) {
+    const situationOrder = [1, 2, 3, 4, 5, 16, 17, 18, 19, 20, 31, 32, 33, 34, 35, 46, 47, 48, 49, 50, 61, 62, 63, 64, 65, 76, 77, 78, 79, 80];
+    const index = situationOrder.indexOf(cardNumber);
+    return index !== -1 ? index + 1 : 1;
+  }
+
+  // PDF download URLs for each language
+  const PDF_URLS = {
+    ENG: BASE_URL + 'ENGLISH - Hot call game cards.pdf',
+    CZ: BASE_URL + 'CZECH REPUBLIC - Hot call game cards.pdf',
+    LT: BASE_URL + 'LITHUANIA - Hot call game cards.pdf',
+    RO: BASE_URL + 'ROMANIA - Hot call game cards.pdf'
+  };
+
+  // Base URL for card images
+  const BASE_URL = 'https://pub-b33a41e64ab14f4d92f341fa4bf701bd.r2.dev/hot-call/';
+  
+  // Current language
+  let currentLang = 'ENG';
+  
+  // Card decks
+  let situationDeck = [];
+  let escalationDeck = [];
+  let deEscalationDeck = [];
+  
+  // Game state
+  const reactions = [];
+  const maxReactions = 60;
+  let currentSituationNumber = null;
+  
+  // Screen state
+  let currentScreen = 'startup'; // 'startup', 'game', 'rules'
+  
+  // Helper functions
+  const $ = id => document.getElementById(id);
+  const shuffle = a => {
+    for (let i = a.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [a[i], a[j]] = [a[j], a[i]];
+    }
+  };
+  
+  // Startup screen translations
+  const startupTranslations = {
+    ENG: {
+      subtitle: "Training Simulation for Emergency Services",
+      selectLang: "Select Language",
+      readRules: "Read the Rules",
+      startGame: "Start the Game",
+      backToMenu: "← Back to Menu"
+    },
+    CZ: {
+      subtitle: "Výcviková simulace pro záchranné složky",
+      selectLang: "Vyberte jazyk",
+      readRules: "Přečíst pravidla",
+      startGame: "Spustit hru",
+      backToMenu: "← Zpět do menu"
+    },
+    LT: {
+      subtitle: "Mokymo simuliacija skubios pagalbos tarnyboms",
+      selectLang: "Pasirinkite kalbą",
+      readRules: "Skaityti taisykles",
+      startGame: "Pradėti žaidimą",
+      backToMenu: "← Grįžti į meniu"
+    },
+    RO: {
+      subtitle: "Simulare de antrenament pentru serviciile de urgență",
+      selectLang: "Selectați limba",
+      readRules: "Citiți regulile",
+      startGame: "Începeți jocul",
+      backToMenu: "← Înapoi la meniu"
+    }
+  };
+  
+  // Build card URL
+  function getCardUrl(cardNumber, lang = currentLang) {
+    const paddedNumber = String(cardNumber).padStart(2, '0');
+    return `${BASE_URL}hotcall_${lang}_${paddedNumber}.png`;
+  }
+  
+  // Build scene URL
+  function getSceneUrl(side, cardNumber) {
+    const sceneNumber = getSceneNumber(cardNumber);
+    return `${BASE_URL}${side}scene${sceneNumber}.png`;
+  }
+  
+  // Initialize decks based on language
+  function initializeDecks() {
+    situationDeck = CARD_TYPES.situation.map(num => ({
+      number: num,
+      url: getCardUrl(num)
+    }));
+    
+    escalationDeck = CARD_TYPES.escalation.map(num => ({
+      number: num,
+      url: getCardUrl(num)
+    }));
+    
+    deEscalationDeck = CARD_TYPES.deescalation.map(num => ({
+      number: num,
+      url: getCardUrl(num)
+    }));
+    
+    shuffle(situationDeck);
+    shuffle(escalationDeck);
+    shuffle(deEscalationDeck);
+  }
+  
+  // Update startup screen language
+  function updateStartupLanguage() {
+    const t = startupTranslations[currentLang];
+    $('startupSubtitle').textContent = t.subtitle;
+    $('langSelectionLabel').textContent = t.selectLang;
+    $('btnReadRulesText').textContent = t.readRules;
+    $('btnStartGameText').textContent = t.startGame;
+    $('btnBackFromRules').textContent = t.backToMenu;
+  }
+  
+  // Update button text based on language
+  function updateButtonText() {
+    const langMap = { ENG: 'en', CZ: 'cz', LT: 'lt', RO: 'ro' };
+    const langCode = langMap[currentLang];
+
+    const translations = {
+      ENG: {
+        title: "HOT CALL - Training Simulation",
+        situation: "Draw Situation",
+        escalation: "Draw Escalation",
+        deescalation: "Draw De-Escalation",
+        reset: "Reset",
+        rules: "Rules",
+        downloadCards: "⬇ Download Cards",
+        rulesTitle: "Game Rules",
+        rulesContent: `
+          <h3>HOT CALL: CARD SIMULATION OF COMMUNICATION AND ACTIVE LISTENING</h3>
+          <p><strong>Educational card game for emergency services.</strong></p>
+          
+          <div style="background:#f0f4f8;padding:1rem;border-radius:8px;margin:1rem 0;">
+            <p><strong>Duration:</strong> 1 teaching hour or as needed</p>
+            <p><strong>Number of players:</strong> 3–6 + instructor (Head Honcho), assistants (Deputy Honcho), and emergency service members (Actionables)</p>
+            <p><strong>Target group:</strong> Police officers, firefighters, paramedics, students in security and healthcare fields.</p>
+          </div>
+
+          <div style="text-align:center;margin:1.5rem 0;">
+            <img src="https://pub-b33a41e64ab14f4d92f341fa4bf701bd.r2.dev/hot-call/hotcall-manual-en-1.png" alt="Game overview showing cards and scenes layout" style="max-width:100%;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,0.1);">
+          </div>
+
+          <h4>Objective of the Game:</h4>
+          <ul>
+            <li>Analyze simulated crisis situations and identify key moments where communication techniques from the modules were used.</li>
+            <li>Support participants in recognizing proper and improper use of techniques.</li>
+            <li>Enable training in decision-making, communication, and self-reflection in model scenarios.</li>
+          </ul>
+
+          <h4>Game Content:</h4>
+          <ul>
+            <li><strong>SITUATION Cards</strong> (description of the initial situation – police, fire, or medical)</li>
+            <li><strong>ESCALATION Cards</strong> (deterioration of the situation)</li>
+            <li><strong>DE-ESCALATION Cards</strong> (tension relief, cooperation opportunity)</li>
+            <li><strong>City map</strong> (a fictional space for localizing the situation – park, square, hospital, apartment building...)</li>
+          </ul>
+
+          <div style="text-align:center;margin:1.5rem 0;">
+            <img src="https://pub-b33a41e64ab14f4d92f341fa4bf701bd.r2.dev/hot-call/hotcall-manual-en-2.png" alt="Example of a SITUATION card with scene images" style="max-width:100%;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,0.1);">
+          </div>
+
+          <h4>Game Rules:</h4>
+          
+          <h5>Game Start</h5>
+          <ul>
+            <li>The instructor – <strong>Head Honcho</strong> – explains the rules and assigns roles.</li>
+            <li>The instructor's assistants – <strong>Deputy Honchos</strong> – will react according to the drawn cards (de-escalation or escalation).</li>
+            <li>Participants – <strong>Actionables</strong> – play for emergency units (police, fire, paramedics).</li>
+            <li>The instructor decides whether the team (or individual) will solve the Situation card with one of the following scenario (De-escalation or Escalation), or more.</li>
+            <li>The game can be modified; Head Honcho can add their own cards, decide on situations, change the weather, time of day, etc.</li>
+          </ul>
+
+          <h5>Simulation Start – SITUATION card (SIT)</h5>
+          <ul>
+            <li>The team draws or is given a SITUATION card (e.g., "You arrive at a park where an aggressive man is attacking a woman.")</li>
+            <li>Participants respond – they describe what they would do, say, how they would communicate, gesture, etc.</li>
+          </ul>
+
+          <div style="text-align:center;margin:1.5rem 0;">
+            <img src="https://pub-b33a41e64ab14f4d92f341fa4bf701bd.r2.dev/hot-call/hotcall-manual-en-3.png" alt="Drawing a SITUATION card - showing the Draw Situation button" style="max-width:100%;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,0.1);">
+          </div>
+
+          <h5>Development – ESCALATION (ESC) or DE-ESCALATION card (DEE)</h5>
+          <ul>
+            <li>The Head Honcho evaluates the players' communication and decides whether the situation escalates or de-escalates.</li>
+            <li>The team draws the relevant card (e.g., "The man pulls out a knife" or "His wife arrives and tries to calm him down.")</li>
+            <li>Here, Deputy Honchos play the roles indicated on the cards.</li>
+            <li>Actionables again react, communicate, and try to resolve the situation.</li>
+          </ul>
+
+          <div style="text-align:center;margin:1.5rem 0;">
+            <img src="https://pub-b33a41e64ab14f4d92f341fa4bf701bd.r2.dev/hot-call/hotcall-manual-en-4.png" alt="Multiple ESCALATION/DE-ESCALATION cards drawn" style="max-width:100%;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,0.1);">
+          </div>
+
+          <h5>Reflection – Group Discussion</h5>
+          <p>After resolving (or ending) the situation, reflection follows:</p>
+          <ul>
+            <li>What worked? What didn't?</li>
+            <li>Was a communication technique used?</li>
+            <li>What words, tone, and non-verbal communication helped or hurt?</li>
+            <li>What was the outcome? What could have been done differently?</li>
+          </ul>
+
+          <h4>Role Descriptions:</h4>
+          
+          <h5>Instructor Role – Head Honcho:</h5>
+          <ul>
+            <li>Runs the game – shuffles cards, reacts to actions, modifies the game as needed.</li>
+            <li>May play side characters (aggressors, witnesses, civilians).</li>
+            <li>Assesses situation development and decides on escalation/de-escalation.</li>
+            <li>Notes players' progress and observations.</li>
+            <li>Encourages players to reflect – doesn't say what is "right," but what makes sense.</li>
+          </ul>
+
+          <h5>Assistant Role – Deputy Honcho:</h5>
+          <ul>
+            <li>Helps the instructor with organization, time, and monitoring.</li>
+            <li>Plays minor roles as needed (e.g., civilians, witnesses).</li>
+            <li>Observes player reactions and records key moments for reflection.</li>
+            <li>Participates in reflection – highlights interesting observations and situations.</li>
+            <li>Can assist groups with rule clarification and support.</li>
+          </ul>
+
+          <h5>Player Role – Actionables:</h5>
+          <ul>
+            <li>Play as emergency responders – police, firefighters, paramedics.</li>
+            <li>Respond to crisis situations described on the cards and decide on action.</li>
+            <li>Collaborate as a team – discuss, plan, assign roles and tasks.</li>
+            <li>Actively use communication and active listening techniques.</li>
+            <li>During reflection, describe their approach, consider alternatives, and discuss what worked/didn't.</li>
+          </ul>
+
+          <div style="text-align:center;margin:1.5rem 0;">
+            <img src="https://pub-b33a41e64ab14f4d92f341fa4bf701bd.r2.dev/hot-call/hotcall-manual-en-5.png" alt="Card removal feature - hovering over a card showing Remove button" style="max-width:100%;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,0.1);">
+          </div>
+
+          <h4>Recommended Reflection Structure:</h4>
+          <ol>
+            <li><strong>Situation summary:</strong> What happened? How did it develop?</li>
+            <li><strong>Technique identification:</strong> What elements of active listening were used?</li>
+            <li><strong>Effectiveness evaluation:</strong> What contributed to calming or escalation?</li>
+            <li><strong>Alternative approaches:</strong> What could have been done differently and why?</li>
+            <li><strong>Personal transfer:</strong> How would you apply this in real life?</li>
+          </ol>
+
+          <h4>Tips for Reflection When the Game Isn't Going Well:</h4>
+          
+          <h5>Players are silent / don't know what to say</h5>
+          <ul>
+            <li>Ask a simple question: "What would you do first?"</li>
+            <li>Offer options (A, B, C)</li>
+            <li>Give them time to think and allow a minute of silence</li>
+            <li>Involve the Deputy Honcho to gently guide the players</li>
+          </ul>
+
+          <h5>Players seem confused</h5>
+          <ul>
+            <li>Repeat the situation simply</li>
+            <li>Draw the situation on the map, show the space</li>
+            <li>Remind them that the goal is to try to respond, not to be perfect</li>
+          </ul>
+
+          <h5>The group is passive / unengaged</h5>
+          <ul>
+            <li>Assign specific roles</li>
+            <li>Set time challenges</li>
+            <li>Switch dynamics between different emergency services</li>
+            <li>Remind them that everyone is learning</li>
+          </ul>
+
+          <div style="text-align:center;margin:1.5rem 0;">
+            <img src="https://pub-b33a41e64ab14f4d92f341fa4bf701bd.r2.dev/hot-call/hotcall-manual-en-6.png" alt="Language selector showing multiple language options" style="max-width:100%;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,0.1);">
+          </div>
+
+          <h4>Card Creation Guidelines:</h4>
+          
+          <h5>SITUATION Card (SIT)</h5>
+          <ul>
+            <li>Description of the initial crisis situation</li>
+            <li>Location specification (school, residential building, etc.)</li>
+            <li>Realistic, understandable, may be detailed</li>
+            <li>Should not contain judgment or solutions</li>
+            <li>Must include one main problem that can escalate or be resolved</li>
+          </ul>
+
+          <h5>ESCALATION Card (ESC)</h5>
+          <ul>
+            <li>Situation worsens – increased stress, tension, threats</li>
+            <li>Should directly relate to the type of situation, not specific details</li>
+            <li>The action should be logical and realistic</li>
+            <li>Should not feel like the end of the game</li>
+          </ul>
+
+          <h5>DE-ESCALATION Card (DEE)</h5>
+          <ul>
+            <li>Calming the situation, improving conditions</li>
+            <li>Follows SIT but should not act as a "game over"</li>
+            <li>May involve intervention from others, emotional shift, support from witnesses</li>
+          </ul>
+
+          <div style="text-align:center;margin:1.5rem 0;">
+            <img src="https://pub-b33a41e64ab14f4d92f341fa4bf701bd.r2.dev/hot-call/hotcall-manual-en-7.png" alt="Reset and zoom controls demonstration" style="max-width:100%;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,0.1);">
+          </div>
+
+          <h4>Remember:</h4>
+          <p style="background:#e8f4f8;padding:1rem;border-left:4px solid #1976d2;margin:1rem 0;">
+            <strong>HOT CALL is not about "correct answers," but about practicing awareness, empathy, and decision-making under pressure. It teaches reflection on one's reactions and communication – all in a safe yet realistic environment.</strong>
+          </p>
+
+          <p style="text-align:center;margin-top:2rem;color:#666;">
+            <em>Every silence, confusion or mistake is part of learning. The HOT CALL game isn't about performance – it's about building courage to respond, even when we don't know exactly how.</em>
+          </p>
+        `,
+        language: "Language:",
+        clickDrawSituation: "Click on Draw Situation",
+        situationCard: "Situation Card",
+        inDevelopment: "In development",
+        scene: "Scene",
+        remove: "Remove",
+        allDrawn: "(All drawn)",
+        backToMenu: "☰ Menu"
+      },
+      CZ: {
+        title: "TÍSŇOVÉ VOLÁNÍ - Výcviková simulace",
+        situation: "Vylosovat situaci",
+        escalation: "Vylosovat eskalaci",
+        deescalation: "Vylosovat deeskalaci",
+        reset: "Resetovat",
+        rules: "Pravidla",
+        downloadCards: "⬇ Stáhnout karty",
+        rulesTitle: "Pravidla hry",
+        rulesContent: `
+          <h3>HOT CALL: KARETNÍ SIMULACE KOMUNIKACE A NASLOUCHÁNÍ</h3>
+          <p><strong>Výuková karetní hra pro záchranné složky</strong></p>
+          
+          <div style="background:#f0f4f8;padding:1rem;border-radius:8px;margin:1rem 0;">
+            <p><strong>Délka:</strong> 1 vyučovací hodina nebo dle potřeby</p>
+            <p><strong>Počet hráčů:</strong> 3–6 + lektor (Nejhlavnější hlavoun - Head Honcho), pomocníci (Sekundární šéfoun - Deputy Honcho), a členové IZS (Zásahouni - Actionables)</p>
+            <p><strong>Cílová skupina:</strong> Policisté, hasiči, zdravotníci, studenti bezpečnostních a zdravotnických oborů</p>
+          </div>
+
+          <div style="background:#e8f4f8;padding:1rem;border-radius:8px;margin:1rem 0;border-left:4px solid #1976d2;">
+            <h5 style="margin-top:0;color:#0d47a1;">📱 Online verze simulátoru</h5>
+            <p>Tato webová aplikace slouží jako <strong>digitální simulátor</strong> pro hru HOT CALL. Umožňuje:</p>
+            <ul style="margin:0.5rem 0;">
+              <li><strong>Náhodné losování karet</strong> - tlačítkem "Vylosovat situaci" získáte náhodnou situační kartu</li>
+              <li><strong>Zobrazení scén</strong> - každá situace má své levé a pravé vizuální scény</li>
+              <li><strong>Přidávání reakcí</strong> - pomocí tlačítek "Vylosovat eskalaci" nebo "Vylosovat deeskalaci"</li>
+              <li><strong>Správu karet</strong> - možnost odstranit karty najetím myši a kliknutím</li>
+              <li><strong>Stažení PDF</strong> - tlačítko "⬇ Stáhnout karty" umožňuje stáhnout všechny karty pro tisk</li>
+            </ul>
+            <p style="margin-bottom:0;"><strong>Tip:</strong> Online simulátor lze použít na projektoru při skupinovém výcviku, nebo jako pomůcku lektora pro řízení hry.</p>
+          </div>
+
+          <div style="text-align:center;margin:1.5rem 0;">
+            <img src="https://pub-b33a41e64ab14f4d92f341fa4bf701bd.r2.dev/hot-call/hotcall-manual-cz-1.png" alt="Přehled hry zobrazující karty a scény" style="max-width:100%;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,0.1);">
+          </div>
+
+          <h4>Cíl hry:</h4>
+          <ul>
+            <li>Analyzovat simulované krizové situace a identifikovat klíčové momenty, kde byly použity komunikační techniky z modulů.</li>
+            <li>Podpořit účastníky v rozpoznání správného a nesprávného použití technik.</li>
+            <li>Umožnit nácvik rozhodování, komunikace a sebereflexe v modelových scénářích.</li>
+          </ul>
+
+          <h4>Obsah hry:</h4>
+          <ul>
+            <li><strong>Karty SITUACE</strong> (popis výchozí situace – policejní, hasičská nebo zdravotnická)</li>
+            <li><strong>Karty ESKALACE</strong> (zhoršení situace)</li>
+            <li><strong>Karty DEESKALACE</strong> (zmírnění napětí, možnost spolupráce)</li>
+            <li><strong>Mapa města</strong> (fiktivní prostor pro lokalizaci situace – park, náměstí, nemocnice, bytovka…)</li>
+          </ul>
+
+          <div style="text-align:center;margin:1.5rem 0;">
+            <img src="https://pub-b33a41e64ab14f4d92f341fa4bf701bd.r2.dev/hot-call/hotcall-manual-cz-2.png" alt="Příklad karty SITUACE se scénami" style="max-width:100%;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,0.1);">
+          </div>
+
+          <h4>Pravidla hry:</h4>
+          
+          <h5>1. Zahájení hry</h5>
+          <ul>
+            <li>Lektor – <strong>Nejhlavnější hlavoun</strong> – vysvětlí pravidla a rozdělí role.</li>
+            <li>Pomocníci lektora - <strong>Sekundární šéfoun</strong> - budou reagovat podle tažených karet (deeskalace nebo eskalace).</li>
+            <li>Účastníci - <strong>Zásahouni</strong> - hrají za zásahové jednotky (policie, hasiči, zdravotníci).</li>
+            <li>Lektor se sám rozhodne zda tým (může být i jednotlivec) bude řešit kartu Situace s jedním následujícím scénářem (Deeskalace nebo eskalace) nebo jich bude řešit více.</li>
+            <li>Hra může být upravována, lektoři mohou přidávat vlastní karty, rozhodovat o situacích vstupy do hry, měnit počasí, denní dobu apod.</li>
+          </ul>
+
+          <div style="background:#fff3cd;padding:0.8rem;border-radius:6px;margin:1rem 0;border-left:3px solid #ffc107;">
+            <strong>💻 V online verzi:</strong> Klikněte na tlačítko "Vylosovat situaci" pro začátek hry. Systém automaticky vybere náhodnou kartu a zobrazí odpovídající scény.
+          </div>
+
+          <h5>2. Zahájení simulace – karta SITUACE</h5>
+          <ul>
+            <li>Tým si lízne nebo mu je předložena karta SITUACE (např. „Přijíždíte k agresivnímu muži, který napadá ženu v parku.").</li>
+            <li>Účastníci reagují – popisují, co by dělali, co říkají, jak komunikují jak gestikulují apod.</li>
+          </ul>
+
+          <div style="text-align:center;margin:1.5rem 0;">
+            <img src="https://pub-b33a41e64ab14f4d92f341fa4bf701bd.r2.dev/hot-call/hotcall-manual-cz-3.png" alt="Losování karty SITUACE - zobrazení tlačítka Vylosovat situaci" style="max-width:100%;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,0.1);">
+          </div>
+
+          <h5>3. Vývoj – karta ESKALACE nebo DEESKALACE</h5>
+          <ul>
+            <li>Nejhlavnější hlavoun vyhodnotí komunikaci hráčů a rozhodne, zda situace eskaluje nebo deeskaluje.</li>
+            <li>Tým si lízne příslušnou kartu (např. „Muž vytahuje nůž" nebo „Přichází jeho manželka a snaží se ho uklidnit.").</li>
+            <li>Zde pomocníci hrají role, které jsou na kartičkách.</li>
+            <li>Zásahouni opět reagují, vedou komunikaci a snaží se situaci vyřešit.</li>
+          </ul>
+
+          <div style="background:#fff3cd;padding:0.8rem;border-radius:6px;margin:1rem 0;border-left:3px solid #ffc107;">
+            <strong>💻 V online verzi:</strong> Lektor klikne na "Vylosovat eskalaci" nebo "Vylosovat deeskalaci" podle vývoje situace. Lze přidat až 60 karet reakcí. Nevhodné karty lze odstranit najetím myši a kliknutím.
+          </div>
+
+          <div style="text-align:center;margin:1.5rem 0;">
+            <img src="https://pub-b33a41e64ab14f4d92f341fa4bf701bd.r2.dev/hot-call/hotcall-manual-cz-4.png" alt="Více karet ESKALACE/DEESKALACE vylosovaných" style="max-width:100%;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,0.1);">
+          </div>
+
+          <h5>4. Reflexe – skupinová diskuse</h5>
+          <p>Po vyřešení (nebo ukončení) situace následuje reflexe:</p>
+          <ul>
+            <li>Co fungovalo? Co ne?</li>
+            <li>Byla použita komunikační technika?</li>
+            <li>Jaká slova, tón hlasu a neverbální komunikace pomohly nebo uškodily?</li>
+            <li>Jaký byl výsledek? Co by šlo udělat jinak?</li>
+          </ul>
+
+          <div style="background:#fff3cd;padding:0.8rem;border-radius:6px;margin:1rem 0;border-left:3px solid #ffc107;">
+            <strong>💻 V online verzi:</strong> Tlačítko "Resetovat" vyčistí všechny karty pro novou hru. Tlačítka + a - umožňují přiblížení/oddálení pro lepší viditelnost na projektoru.
+          </div>
+
+          <h4>Popis rolí:</h4>
+          
+          <h5>Role lektora - Nejhlavnější hlavoun (Head Honcho):</h5>
+          <ul>
+            <li>Řídí hru – míchá karty, reaguje na zásahy a upravuje hru podle potřeb.</li>
+            <li>Může hrát vedlejší postavy (agresoři, svědci, civilisté).</li>
+            <li>Posuzuje vývoj situace a rozhoduje o eskalaci / deeskalaci.</li>
+            <li>Zapisuje si postup hráčů a své postřehy</li>
+            <li>Podněcuje hráče k zamyšlení – neříká, co je „dobře", ale co má smysl.</li>
+            <li style="color:#0d47a1;"><strong>V online verzi ovládá simulátor a promítá karty všem účastníkům.</strong></li>
+          </ul>
+
+          <h5>Role asistenta – Sekundární šéfoun (Deputy Honcho):</h5>
+          <ul>
+            <li>Pomáhá lektorovi s organizací, časem a sledováním průběhu.</li>
+            <li>Hraje menší vedlejší role podle potřeby (např. civilisté, svědci).</li>
+            <li>Sleduje reakce hráčů a zapisuje klíčové momenty pro reflexi.</li>
+            <li>Podílí se na reflexi – připomíná zajímavé postřehy a situace.</li>
+            <li>Může být k dispozici skupinám pro pomoc a vysvětlení pravidel.</li>
+          </ul>
+
+          <h5>Role hráčů – Zásahouni (Actionables):</h5>
+          <ul>
+            <li>Hrají za členy zásahových složek – policisty, hasiče, zdravotníky.</li>
+            <li>Reagují na krizové situace popsané na kartách a rozhodují o postupu.</li>
+            <li>Spolupracují v týmu – diskutují, plánují, rozdělují si role a úkoly.</li>
+            <li>Aktivně používají techniky komunikace a aktivního naslouchání.</li>
+            <li>V reflexi popisují svůj postup, přemýšlí o alternativách a o tom, co fungovalo / nefungovalo.</li>
+          </ul>
+
+          <div style="text-align:center;margin:1.5rem 0;">
+            <img src="https://pub-b33a41e64ab14f4d92f341fa4bf701bd.r2.dev/hot-call/hotcall-manual-cz-5.png" alt="Funkce odebrání karty - při najetí myší se zobrazí tlačítko Odebrat" style="max-width:100%;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,0.1);">
+          </div>
+
+          <h4>Doporučená struktura reflexe:</h4>
+          <ol>
+            <li><strong>Shrnutí situace:</strong> Co se stalo? Jak probíhal vývoj?</li>
+            <li><strong>Identifikace technik:</strong> Jaké prvky aktivního naslouchání byly použity?</li>
+            <li><strong>Hodnocení efektivity:</strong> Co přispělo ke zklidnění nebo eskalaci?</li>
+            <li><strong>Alternativní postupy:</strong> Co by šlo udělat jinak a proč?</li>
+            <li><strong>Osobní přenos:</strong> Jak bys to využil/a v reálné situaci?</li>
+          </ol>
+
+          <h4>Tipy pro reflexi, když hra nefunguje ideálně:</h4>
+          
+          <h5>Hráči mlčí / neví, co říct</h5>
+          <ul>
+            <li>Položit jednoduchou otázku: „Co bys udělal jako první?"</li>
+            <li>Nabídnout možnosti (A, B, C)</li>
+            <li>Nechat je chvíli promyslet a povolit minutu ticha</li>
+            <li>Zapojit Sekundárního šéfouna, aby hráče jemně navedl</li>
+          </ul>
+
+          <h5>Hráči působí zmateně</h5>
+          <ul>
+            <li>Zopakovat situaci jednoduše</li>
+            <li>Nakreslit situaci na mapu, ukázat prostor</li>
+            <li>Připomenout, že cílem je zkusit reagovat, ne být dokonalý</li>
+          </ul>
+
+          <h5>Skupina je pasivní / nezapojená</h5>
+          <ul>
+            <li>Rozdělit konkrétní role</li>
+            <li>Zadat časové výzvy</li>
+            <li>Přehodit dynamiku mezi různými záchrannými složkami</li>
+            <li>Připomenout, že všichni se učíme</li>
+          </ul>
+
+          <div style="text-align:center;margin:1.5rem 0;">
+            <img src="https://pub-b33a41e64ab14f4d92f341fa4bf701bd.r2.dev/hot-call/hotcall-manual-cz-6.png" alt="Výběr jazyka zobrazující více jazykových možností" style="max-width:100%;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,0.1);">
+          </div>
+
+          <h4>Pokyny pro tvorbu karet:</h4>
+          
+          <h5>Karta SITUACE (SIT)</h5>
+          <ul>
+            <li>Popis vstupní krizové situace</li>
+            <li>Určení místa (škola, obytný dům atd.)</li>
+            <li>Reálná, srozumitelná, může být detailní</li>
+            <li>Neobsahuje žádné hodnocení nebo řešení</li>
+            <li>Měla by obsahovat jeden hlavní problém, který může eskalovat nebo být vyřešen</li>
+          </ul>
+
+          <h5>Karta ESKALACE (ESK)</h5>
+          <ul>
+            <li>Zhoršení situace – přibývá stres, napětí, hrozby</li>
+            <li>Měla by přímo navazovat na typ situací, ne na konkrétní detail</li>
+            <li>Akce má být logická, realistická</li>
+            <li>Nesmí působit jako konec hry</li>
+          </ul>
+
+          <h5>Karta DEESKALACE (DEE)</h5>
+          <ul>
+            <li>Zklidnění situace, zlepšení podmínek</li>
+            <li>Navazuje na SIT, ale nepůsobí jako "konec hry"</li>
+            <li>Může jít o zásah jiných osob, emoční změnu, podporu od svědků</li>
+          </ul>
+
+          <div style="text-align:center;margin:1.5rem 0;">
+            <img src="https://pub-b33a41e64ab14f4d92f341fa4bf701bd.r2.dev/hot-call/hotcall-manual-cz-7.png" alt="Ukázka ovládacích prvků Reset a zoom" style="max-width:100%;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,0.1);">
+          </div>
+
+          <div style="background:#d4edda;padding:1rem;border-radius:8px;margin:1.5rem 0;border-left:4px solid #28a745;">
+            <h5 style="margin-top:0;color:#155724;">🎯 Výhody online simulátoru:</h5>
+            <ul style="margin:0.5rem 0;">
+              <li><strong>Automatické míchání</strong> - karty jsou vždy náhodně zamíchané</li>
+              <li><strong>Vizuální podpora</strong> - scény pomáhají lépe pochopit situaci</li>
+              <li><strong>Žádné ztracené karty</strong> - vše je digitální a vždy k dispozici</li>
+              <li><strong>Rychlé resetování</strong> - nová hra začíná jedním kliknutím</li>
+              <li><strong>Podpora více jazyků</strong> - přepínání mezi češtinou, angličtinou, litevštinou a rumunštinou</li>
+            </ul>
+            <p style="margin-bottom:0;"><strong>Tip:</strong> Pro fyzickou verzi hry použijte tlačítko "⬇ Stáhnout karty" a vytiskněte si kompletní sadu.</p>
+          </div>
+
+          <h4>Pamatujte:</h4>
+          <p style="background:#e8f4f8;padding:1rem;border-left:4px solid #1976d2;margin:1rem 0;">
+            <strong>Hra HOT CALL není o „správných odpovědích", ale o procvičení vnímavosti, empatie a rozhodování pod tlakem. Učí reflektovat vlastní reakce a komunikaci – a to vše v bezpečném, ale realistickém prostředí.</strong>
+          </p>
+
+          <p style="text-align:center;margin-top:2rem;color:#666;">
+            <em>Každé ticho, zmatek nebo chyba je součást učení. Hra HOT CALL není o výkonu – je o získání odvahy reagovat, i když nevíme přesně jak.</em>
+          </p>
+        `,
+        language: "Jazyk:",
+        clickDrawSituation: "Klikněte na Vylosovat situaci",
+        situationCard: "Karta situace",
+        inDevelopment: "Ve vývoji",
+        scene: "Scéna",
+        remove: "Odebrat",
+        allDrawn: "(Vše vylosováno)",
+        backToMenu: "☰ Menu"
+      },
+      LT: {
+        title: "SKUBUS KVIETIMAS - Mokymo simuliacija",
+        situation: "Traukti situaciją",
+        escalation: "Traukti eskalaciją",
+        deescalation: "Traukti deeskalaciją",
+        reset: "Atstatyti",
+        rules: "Taisyklės",
+        downloadCards: "⬇ Atsisiųsti kortas",
+        rulesTitle: "Žaidimo taisyklės",
+        rulesContent: `<p>Vadovo turinys bus įkeltas čia.</p>
+          <p>Tai mokymo simuliacija ekstremalioms situacijoms.</p>
+          <p>Žaidėjai traukia situacijų kortas ir reaguoja eskalacijos arba deeskalacijos kortomis.</p>
+          <div style="text-align:center;margin:1.5rem 0;">
+            <img src="https://pub-b33a41e64ab14f4d92f341fa4bf701bd.r2.dev/hot-call/hotcall-manual-lt-1.png" alt="Žaidimo apžvalga" style="max-width:100%;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,0.1);">
+          </div>
+          <p><em>Pilnas lietuviškas vadovas bus greitai prieinamas.</em></p>
+          <div style="text-align:center;margin:1.5rem 0;">
+            <img src="https://pub-b33a41e64ab14f4d92f341fa4bf701bd.r2.dev/hot-call/hotcall-manual-lt-2.png" alt="Kortų pavyzdys" style="max-width:100%;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,0.1);">
+          </div>
+          <div style="text-align:center;margin:1.5rem 0;">
+            <img src="https://pub-b33a41e64ab14f4d92f341fa4bf701bd.r2.dev/hot-call/hotcall-manual-lt-3.png" alt="Situacijos traukimas" style="max-width:100%;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,0.1);">
+          </div>
+          <div style="text-align:center;margin:1.5rem 0;">
+            <img src="https://pub-b33a41e64ab14f4d92f341fa4bf701bd.r2.dev/hot-call/hotcall-manual-lt-4.png" alt="Kelios kortos" style="max-width:100%;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,0.1);">
+          </div>
+          <div style="text-align:center;margin:1.5rem 0;">
+            <img src="https://pub-b33a41e64ab14f4d92f341fa4bf701bd.r2.dev/hot-call/hotcall-manual-lt-5.png" alt="Kortos pašalinimas" style="max-width:100%;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,0.1);">
+          </div>
+          <div style="text-align:center;margin:1.5rem 0;">
+            <img src="https://pub-b33a41e64ab14f4d92f341fa4bf701bd.r2.dev/hot-call/hotcall-manual-lt-6.png" alt="Kalbos pasirinkimas" style="max-width:100%;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,0.1);">
+          </div>
+          <div style="text-align:center;margin:1.5rem 0;">
+            <img src="https://pub-b33a41e64ab14f4d92f341fa4bf701bd.r2.dev/hot-call/hotcall-manual-lt-7.png" alt="Valdymo mygtukai" style="max-width:100%;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,0.1);">
+          </div>`,
+        language: "Kalba:",
+        clickDrawSituation: "Spustelėkite Traukti situaciją",
+        situationCard: "Situacijos korta",
+        inDevelopment: "Kuriama",
+        scene: "Scena",
+        remove: "Pašalinti",
+        allDrawn: "(Visos ištrauktos)",
+        backToMenu: "☰ Meniu"
+      },
+      RO: {
+        title: "HOT CALL - Simulare de antrenament",
+        situation: "Trageți o situație",
+        escalation: "Trageți o escaladare",
+        deescalation: "Trageți o dezescaladare",
+        reset: "Resetați",
+        rules: "Reguli",
+        downloadCards: "⬇ Descărcați cărțile",
+        rulesTitle: "Reguli de joc",
+        rulesContent: `
+          <h3>HOT CALL: JOC DE CARDURI PENTRU A STIMULA COMUNICAREA ȘI ASCULTAREA ACTIVĂ</h3>
+          <p><strong>Joc de cărți educativ pentru serviciile de urgență.</strong></p>
+          
+          <div style="background:#f0f4f8;padding:1rem;border-radius:8px;margin:1rem 0;">
+            <p><strong>Durată:</strong> 1 oră de predare sau după necesități</p>
+            <p><strong>Număr de jucători:</strong> 3–6 + instructor (Șef Popescu), asistenți (Adjunct Ionescu) și membri ai serviciilor de urgență (Intervenienți)</p>
+            <p><strong>Grup țintă:</strong> Polițiști, pompieri, paramedici, studenți din domeniul securității și sănătății.</p>
+          </div>
+
+          <div style="text-align:center;margin:1.5rem 0;">
+            <img src="https://pub-b33a41e64ab14f4d92f341fa4bf701bd.r2.dev/hot-call/hotcall-manual-ro-1.png" alt="Prezentare generală a jocului" style="max-width:100%;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,0.1);">
+          </div>
+
+          <h4>Obiectivele jocului:</h4>
+          <ul>
+            <li>Analizarea situațiilor de criză simulate și identificarea momentelor cheie în care au fost utilizate tehnicile de comunicare din module.</li>
+            <li>Sprijinirea participanților în recunoașterea utilizării corecte și incorecte a tehnicilor.</li>
+            <li>Facilitarea formării în luarea deciziilor, comunicare și auto-reflecție în diferite tipuri de scenarii.</li>
+          </ul>
+
+          <h4>Conținutul jocului:</h4>
+          <ul>
+            <li><strong>Cărți de SITUAȚIE</strong> (descrierea situației inițiale – poliție, pompieri sau asistență medicală)</li>
+            <li><strong>Cărți de ESCALADARE</strong> (deteriorarea situației)</li>
+            <li><strong>Cărți de DEZESCALADARE</strong> (diminuarea tensiunii, oportunitate de cooperare)</li>
+            <li><strong>Harta orașului</strong> (un spațiu fictiv pentru localizarea situației – parc, piață, spital, bloc de apartamente...)</li>
+          </ul>
+
+          <div style="text-align:center;margin:1.5rem 0;">
+            <img src="https://pub-b33a41e64ab14f4d92f341fa4bf701bd.r2.dev/hot-call/hotcall-manual-ro-2.png" alt="Exemplu de carte SITUAȚIE cu imagini de scenă" style="max-width:100%;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,0.1);">
+          </div>
+
+          <h4>Regulile jocului:</h4>
+          
+          <h5>Începutul jocului</h5>
+          <ul>
+            <li>Instructorul – <strong>Șef Popescu</strong> – explică regulile și atribuie rolurile.</li>
+            <li>Asistenții instructorului – <strong>Adjunct Ionescu</strong> – vor reacționa în funcție de cărțile extrase (dezescaladare sau escaladare).</li>
+            <li>Participanții – <strong>Intervenienți</strong> – joacă pentru unitățile de urgență (poliție, pompieri, paramedici).</li>
+            <li>Instructorul decide dacă echipa (sau individul) va rezolva cartea cu Situația cu unul dintre următoarele scenarii (Dezescaladare sau Escaladare) sau mai multe.</li>
+            <li>Jocul poate fi modificat; Șeful Popescu poate adăuga propriile cărți, decide situațiile, schimba vremea, ora din zi etc.</li>
+          </ul>
+
+          <h5>Începerea simulării – cartea de SITUAȚIE (SIT)</h5>
+          <ul>
+            <li>Echipa trage sau primește o carte de SITUAȚIE (de exemplu, „Ajungi într-un parc unde un bărbat agresiv atacă o femeie").</li>
+            <li>Participanții răspund – descriu ce ar face, ce ar spune, cum ar comunica, ce gesturi ar face etc.</li>
+          </ul>
+
+          <div style="text-align:center;margin:1.5rem 0;">
+            <img src="https://pub-b33a41e64ab14f4d92f341fa4bf701bd.r2.dev/hot-call/hotcall-manual-ro-3.png" alt="Tragerea unei cărți de SITUAȚIE" style="max-width:100%;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,0.1);">
+          </div>
+
+          <h5>Dezvoltare – carte de ESCALADARE (ESC) sau DEZESCALADARE (DEZ)</h5>
+          <ul>
+            <li>Șeful Popescu evaluează comunicarea jucătorilor și decide dacă situația se agravează sau se calmează.</li>
+            <li>Echipa trage cartea relevantă (de exemplu, „Bărbatul scoate un cuțit" sau „Soția lui sosește și încearcă să-l calmeze").</li>
+            <li>Aici, Adjunctul Ionescu joacă rolurile indicate pe cărți.</li>
+            <li>Intervenienții reacționează din nou, comunică și încearcă să rezolve situația.</li>
+          </ul>
+
+          <div style="text-align:center;margin:1.5rem 0;">
+            <img src="https://pub-b33a41e64ab14f4d92f341fa4bf701bd.r2.dev/hot-call/hotcall-manual-ro-4.png" alt="Mai multe cărți ESCALADARE/DEZESCALADARE trase" style="max-width:100%;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,0.1);">
+          </div>
+
+          <h5>Reflecție – Discuție în grup</h5>
+          <p>După rezolvarea (sau încheierea) situației, urmează reflecția:</p>
+          <ul>
+            <li>Ce a funcționat? Ce nu a funcționat?</li>
+            <li>A fost utilizată o tehnică de comunicare?</li>
+            <li>Ce cuvinte, ton și comunicare nonverbală au ajutat sau au dăunat?</li>
+            <li>Care a fost rezultatul? Ce s-ar fi putut face altfel?</li>
+          </ul>
+
+          <h4>Descrierea rolurilor:</h4>
+          
+          <h5>Rolul instructorului – Șef Popescu:</h5>
+          <ul>
+            <li>Conduce jocul – amestecă cărțile, reacționează la acțiuni, modifică jocul după cum este necesar.</li>
+            <li>Poate juca personaje secundare (agresori, martori, civili).</li>
+            <li>Evaluează evoluția situației și decide asupra escaladării/dezescaladării.</li>
+            <li>Notează progresul și observațiile jucătorilor.</li>
+            <li>Îi încurajează pe jucători să reflecteze – nu spune ce este „corect", ci ce are sens.</li>
+          </ul>
+
+          <h5>Rolul asistentului – Adjunct Ionescu:</h5>
+          <ul>
+            <li>Ajută instructorul cu organizarea, gestionarea timpului și monitorizarea.</li>
+            <li>Joacă roluri minore, după cum este necesar (de exemplu, civili, martori).</li>
+            <li>Observă reacțiile jucătorilor și înregistrează momentele cheie pentru reflecție.</li>
+            <li>Participă la reflecție – evidențiază observații și situații interesante.</li>
+            <li>Poate ajuta grupurile cu clarificarea regulilor și sprijin.</li>
+          </ul>
+
+          <h5>Rolul jucătorului – Intervenienți:</h5>
+          <ul>
+            <li>Jucați rolul personalului de intervenție în situații de urgență – polițiști, pompieri, paramedici.</li>
+            <li>Răspundeți la situațiile de criză descrise pe carduri și decideți ce măsuri să luați.</li>
+            <li>Colaborați ca o echipă – discutați, planificați, atribuiți roluri și sarcini.</li>
+            <li>Folosiți în mod activ tehnici de comunicare și ascultare activă.</li>
+            <li>În timpul reflecției, descrieți abordarea, luați în considerare alternative și discutați ce a funcționat și ce nu.</li>
+          </ul>
+
+          <div style="text-align:center;margin:1.5rem 0;">
+            <img src="https://pub-b33a41e64ab14f4d92f341fa4bf701bd.r2.dev/hot-call/hotcall-manual-ro-5.png" alt="Funcția de eliminare a cărții" style="max-width:100%;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,0.1);">
+          </div>
+
+          <h4>Structura recomandată pentru reflecție:</h4>
+          <ol>
+            <li><strong>Rezumatul situației:</strong> Ce s-a întâmplat? Cum s-a dezvoltat situația?</li>
+            <li><strong>Identificarea tehnicii:</strong> Ce elemente ale ascultării active au fost utilizate?</li>
+            <li><strong>Evaluarea eficacității:</strong> Ce a contribuit la calmarea sau escaladarea situației?</li>
+            <li><strong>Abordări alternative:</strong> Ce s-ar fi putut face diferit și de ce?</li>
+            <li><strong>Transfer personal:</strong> Cum ați aplica acest lucru în viața reală?</li>
+          </ol>
+
+          <h4>Sfaturi pentru reflecție atunci când jocul nu merge bine:</h4>
+          
+          <h5>Jucătorii sunt tăcuți / nu știu ce să spună</h5>
+          <ul>
+            <li>Puneți o întrebare simplă: „Ce ați face mai întâi?"</li>
+            <li>Oferiți opțiuni (A, B, C)</li>
+            <li>Acordați-le timp să se gândească și lăsați un minut de tăcere</li>
+            <li>Implicați-l pe Adjunctul Ionescu pentru a ghida cu blândețe jucătorii</li>
+          </ul>
+
+          <h5>Jucătorii par confuzi</h5>
+          <ul>
+            <li>Repetați situația în mod simplu</li>
+            <li>Desenați situația pe hartă, arătați spațiul</li>
+            <li>Reamintiți-le că scopul este să încerce să răspundă, nu să fie perfecți</li>
+          </ul>
+
+          <h5>Grupul este pasiv / neimplicat</h5>
+          <ul>
+            <li>Atribuiți roluri specifice</li>
+            <li>Stabiliți provocări temporale</li>
+            <li>Schimbați dinamica între diferite servicii de urgență</li>
+            <li>Reamintiți-le că toată lumea este în proces de învățare</li>
+          </ul>
+
+          <div style="text-align:center;margin:1.5rem 0;">
+            <img src="https://pub-b33a41e64ab14f4d92f341fa4bf701bd.r2.dev/hot-call/hotcall-manual-ro-6.png" alt="Selectorul de limbă" style="max-width:100%;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,0.1);">
+          </div>
+
+          <h4>Ghid pentru crearea cardurilor:</h4>
+          
+          <h5>Card de SITUAȚIE (SIT)</h5>
+          <ul>
+            <li>Descrierea situației inițiale de criză</li>
+            <li>Specificarea locației (școală, clădire rezidențială etc.)</li>
+            <li>Realistă, ușor de înțeles, poate fi detaliată</li>
+            <li>Nu trebuie să conțină judecăți sau soluții</li>
+            <li>Trebuie să includă o problemă principală care poate escalada sau poate fi rezolvată</li>
+          </ul>
+
+          <h5>Card de ESCALADARE (ESC)</h5>
+          <ul>
+            <li>Situația se agravează – stres crescut, tensiune, amenințări</li>
+            <li>Ar trebui să se refere direct la tipul de situație, nu la detalii specifice</li>
+            <li>Acțiunea ar trebui să fie logică și realistă</li>
+            <li>Nu ar trebui să pară că este sfârșitul jocului</li>
+          </ul>
+
+          <h5>Card de DEZESCALADARE (DEZ)</h5>
+          <ul>
+            <li>Calmează situația, îmbunătățește condițiile</li>
+            <li>Urmează SIT, dar nu trebuie să acționeze ca un „sfârșit al jocului"</li>
+            <li>Poate implica intervenția altor persoane, schimbări emoționale, sprijin din partea martorilor</li>
+          </ul>
+
+          <div style="text-align:center;margin:1.5rem 0;">
+            <img src="https://pub-b33a41e64ab14f4d92f341fa4bf701bd.r2.dev/hot-call/hotcall-manual-ro-7.png" alt="Comenzile Reset și zoom" style="max-width:100%;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,0.1);">
+          </div>
+
+          <h4>Amintiți-vă:</h4>
+          <p style="background:#e8f4f8;padding:1rem;border-left:4px solid #1976d2;margin:1rem 0;">
+            <strong>HOT CALL nu se referă la „răspunsuri corecte", ci la exersarea conștientizării, empatiei și luării deciziilor sub presiune. Te învață să reflectezi asupra reacțiilor și comunicării tale – totul într-un mediu sigur, dar realist.</strong>
+          </p>
+
+          <p style="text-align:center;margin-top:2rem;color:#666;">
+            <em>Fiecare tăcere, confuzie sau greșeală face parte din procesul de învățare. Jocul HOT CALL nu are legătură cu performanța, ci cu dezvoltarea curajului de a răspunde, chiar și atunci când nu știm exact cum.</em>
+          </p>
+        `,
+        language: "Limba:",
+        clickDrawSituation: "Faceți clic pe Trageți o situație",
+        situationCard: "Carte de situație",
+        inDevelopment: "În dezvoltare",
+        scene: "Scena",
+        remove: "Eliminați",
+        allDrawn: "(Toate trase)",
+        backToMenu: "☰ Meniu"
+      }
+    };
+    
+    const t = translations[currentLang];
+    $('headerTitle').textContent = t.title;
+    $('btnSituation').textContent = t.situation;
+    $('btnEsc').textContent = t.escalation;
+    $('btnDee').textContent = t.deescalation;
+    $('btnReset').textContent = t.reset;
+    $('btnRules').textContent = t.rules;
+    $('btnDownload').textContent = t.downloadCards;
+    $('rulesTitle').textContent = t.rulesTitle;
+    $('btnBackToMenu').textContent = t.backToMenu;
+    
+    // Update rules content with correct language screenshots
+    if ($('rulesContent')) {
+      const langMap = { ENG: 'en', CZ: 'cz', LT: 'lt', RO: 'ro' };
+      const langCode = langMap[currentLang];
+      let content = t.rulesContent;
+      
+      // Replace all screenshot URLs with the correct language version
+      for (let i = 1; i <= 7; i++) {
+        const regex = new RegExp(`hotcall-manual-[a-z]{2}-${i}\\.png`, 'g');
+        content = content.replace(regex, `${BASE_URL}hotcall-manual-${langCode}-${i}.png`);
+      }
+      
+      $('rulesContent').innerHTML = content;
+    }
+    
+    // Update language label if it exists
+    const langLabel = $('langLabel');
+    if (langLabel) {
+      langLabel.textContent = t.language;
+    }
+    
+    // Update scene placeholder texts
+    if (!currentSituationNumber) {
+      $('leftScene').textContent = t.clickDrawSituation;
+      $('rightScene').textContent = t.clickDrawSituation;
+    }
+    
+    // Update situation card placeholder
+    const situationCard = $('situationCard');
+    if (situationCard && !situationCard.querySelector('img')) {
+      situationCard.innerHTML = `<span>${t.situationCard}</span>`;
+    }
+    
+    // Store current translations globally for use in other functions
+    window.currentTranslations = t;
+  }
+  
+  /* ---------- Screen Navigation ---------- */
+  function showStartupScreen() {
+    currentScreen = 'startup';
+    $('startupScreen').style.display = 'flex';
+    $('gameScreen').classList.remove('visible');
+    $('rulesModal').style.display = 'none';
+  }
+  
+  function showGameScreen() {
+    currentScreen = 'game';
+    $('startupScreen').style.display = 'none';
+    $('gameScreen').classList.add('visible');
+    $('rulesModal').style.display = 'none';
+    
+    // Initialize/reset game when entering
+    initializeDecks();
+    resetGame();
+    updateButtonText();
+  }
+  
+  function showRulesFromStartup() {
+    currentScreen = 'rules';
+    updateButtonText(); // Make sure rules content is updated
+    $('rulesModal').style.display = 'block';
+  }
+  
+  function resetGame() {
+    reactions.length = 0;
+    currentSituationNumber = null;
+    
+    $('btnSituation').disabled = false;
+    $('btnEsc').disabled = true;
+    $('btnDee').disabled = true;
+    
+    $('btnEsc').classList.remove('all-drawn');
+    $('btnDee').classList.remove('all-drawn');
+    
+    const t = window.currentTranslations || { situationCard: "Situation Card", clickDrawSituation: "Click on Draw Situation" };
+    $('situationCard').innerHTML = `<span>${t.situationCard}</span>`;
+    $('leftScene').innerHTML = t.clickDrawSituation;
+    $('rightScene').innerHTML = t.clickDrawSituation;
+    
+    renderReactions();
+  }
+  
+  /* ---------- Rendering ---------- */
+  function renderReactions() {
+    document.querySelectorAll('.dynamic').forEach(el => el.remove());
+    const grid = $('cardsGrid');
+    
+    reactions.forEach((reaction, index) => {
+      const div = document.createElement('div');
+      div.className = 'card dynamic';
+      const t = window.currentTranslations || { remove: "Remove" };
+      div.innerHTML = `
+        <img src="${reaction.url}" alt="reaction">
+        <div class="remove-btn">${t.remove}</div>
+      `;
+      
+      // Add click handler to remove card
+      div.onclick = () => {
+        reactions.splice(index, 1);
+        renderReactions();
+        
+        // Re-enable buttons if they were disabled due to max reactions
+        if ($('btnEsc').disabled && escalationDeck.length > 0) {
+          $('btnEsc').disabled = false;
+        }
+        if ($('btnDee').disabled && deEscalationDeck.length > 0) {
+          $('btnDee').disabled = false;
+        }
+      };
+      
+      grid.appendChild(div);
+    });
+  }
+  
+  function updateScenes(cardNumber) {
+    const t = window.currentTranslations || { inDevelopment: "In development", scene: "Scene" };
+    const sceneNumber = getSceneNumber(cardNumber);
+    
+    const leftImg = new Image();
+    leftImg.src = getSceneUrl('left', cardNumber);
+    leftImg.alt = `left scene ${sceneNumber}`;
+    leftImg.onload = function() {
+      $('leftScene').innerHTML = '';
+      $('leftScene').appendChild(this);
+    };
+    leftImg.onerror = function() {
+      $('leftScene').innerHTML = `<div style="padding:20px; text-align:center;">${t.inDevelopment}<br><small>${t.scene} ${sceneNumber}</small></div>`;
+    };
+    
+    const rightImg = new Image();
+    rightImg.src = getSceneUrl('right', cardNumber);
+    rightImg.alt = `right scene ${sceneNumber}`;
+    rightImg.onload = function() {
+      $('rightScene').innerHTML = '';
+      $('rightScene').appendChild(this);
+    };
+    rightImg.onerror = function() {
+      $('rightScene').innerHTML = `<div style="padding:20px; text-align:center;">${t.inDevelopment}<br><small>${t.scene} ${sceneNumber}</small></div>`;
+    };
+  }
+  
+  function draw(deck, label, callback) {
+    if (!deck.length) {
+      alert(`No more ${label} cards.`);
+      return null;
+    }
+    
+    const card = deck.pop();
+    if (callback) callback(card);
+    return card;
+  }
+  
+  /* ---------- Startup Screen Event Handlers ---------- */
+  // Language button clicks
+  document.querySelectorAll('.lang-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      // Remove selected from all
+      document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('selected'));
+      // Add selected to clicked
+      btn.classList.add('selected');
+      // Update language
+      currentLang = btn.dataset.lang;
+      // Update dropdown to match
+      $('langSelect').value = currentLang;
+      // Update startup screen text
+      updateStartupLanguage();
+      // Update button text/rules content
+      updateButtonText();
+      // Show main choices
+      $('mainChoices').classList.add('visible');
+    });
+  });
+  
+  // Read Rules button
+  $('btnReadRules').addEventListener('click', function(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    currentScreen = 'rules';
+    updateButtonText();
+    $('rulesModal').style.display = 'block';
+  });
+  
+  // Start Game button
+  $('btnStartGame').addEventListener('click', function(e) {
+    e.preventDefault();
+    showGameScreen();
+  });
+  
+  // Back to menu from rules
+  $('btnBackFromRules').onclick = () => {
+    $('rulesModal').style.display = 'none';
+    if (currentScreen === 'rules') {
+      showStartupScreen();
+    }
+  };
+  
+  /* ---------- Game buttons ---------- */
+  $('btnSituation').onclick = () => {
+    const card = draw(situationDeck, 'Situation', (card) => {
+      currentSituationNumber = card.number;
+      updateScenes(card.number);
+    });
+    
+    if (!card) return;
+    
+    $('situationCard').innerHTML = `<img src="${card.url}" alt="situation">`;
+    $('btnSituation').disabled = true;
+    $('btnEsc').disabled = false;
+    $('btnDee').disabled = false;
+    
+    reactions.length = 0;
+    renderReactions();
+  };
+  
+  function addReaction(card) {
+    reactions.unshift(card);
+    renderReactions();
+    
+    if (reactions.length === maxReactions) {
+      $('btnEsc').disabled = true;
+      $('btnDee').disabled = true;
+    }
+  }
+  
+  $('btnEsc').onclick = () => {
+    const card = draw(escalationDeck, 'Escalation');
+    if (card) addReaction(card);
+    
+    if (!escalationDeck.length) {
+      $('btnEsc').disabled = true;
+      $('btnEsc').classList.add('all-drawn');
+      const t = window.currentTranslations || { escalation: "Draw Escalation", allDrawn: "(All drawn)" };
+      $('btnEsc').textContent = t.escalation + ' ' + t.allDrawn;
+    }
+  };
+  
+  $('btnDee').onclick = () => {
+    const card = draw(deEscalationDeck, 'De-Escalation');
+    if (card) addReaction(card);
+    
+    if (!deEscalationDeck.length) {
+      $('btnDee').disabled = true;
+      $('btnDee').classList.add('all-drawn');
+      const t = window.currentTranslations || { deescalation: "Draw De-Escalation", allDrawn: "(All drawn)" };
+      $('btnDee').textContent = t.deescalation + ' ' + t.allDrawn;
+    }
+  };
+  
+  $('btnReset').onclick = () => {
+    initializeDecks();
+    resetGame();
+    updateButtonText();
+  };
+  
+  // Back to menu from game
+  $('btnBackToMenu').onclick = () => {
+    showStartupScreen();
+  };
+  
+  /* ---------- Language selector (in game) ---------- */
+  $('langSelect').onchange = (e) => {
+    currentLang = e.target.value;
+    updateButtonText();
+    updateStartupLanguage();
+    
+    // Update language buttons selection
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+      btn.classList.toggle('selected', btn.dataset.lang === currentLang);
+    });
+    
+    // Update all visible cards with new language
+    if (currentSituationNumber) {
+      $('situationCard').innerHTML = `<img src="${getCardUrl(currentSituationNumber)}" alt="situation">`;
+      updateScenes(currentSituationNumber);
+    } else {
+      const t = window.currentTranslations;
+      $('situationCard').innerHTML = `<span>${t.situationCard}</span>`;
+      $('leftScene').innerHTML = t.clickDrawSituation;
+      $('rightScene').innerHTML = t.clickDrawSituation;
+    }
+    
+    // Update reaction cards
+    const grid = $('cardsGrid');
+    const dynamicCards = grid.querySelectorAll('.dynamic');
+    
+    reactions.forEach((reaction, index) => {
+      if (dynamicCards[index]) {
+        dynamicCards[index].innerHTML = `<img src="${getCardUrl(reaction.number)}" alt="reaction">`;
+      }
+    });
+    
+    // Re-initialize decks with new language
+    initializeDecks();
+  };
+  
+  /* ---------- Zoom controls ---------- */
+  let scale = 1;
+  const applyScale = () => {
+    document.documentElement.style.setProperty('--scale', scale);
+  };
+  
+  $('zoomIn').onclick = () => {
+    if (scale < 1.4) {
+      scale += 0.1;
+      applyScale();
+    }
+  };
+  
+  $('zoomOut').onclick = () => {
+    if (scale > 0.6) {
+      scale -= 0.1;
+      applyScale();
+    }
+  };
+  
+  /* ---------- Download Cards ---------- */
+  $('btnDownload').onclick = () => {
+    const pdfUrl = PDF_URLS[currentLang];
+    if (pdfUrl) {
+      window.open(pdfUrl, '_blank');
+    }
+  };
+
+  /* ---------- Rules Modal ---------- */
+  $('btnRules').onclick = () => {
+    $('rulesModal').style.display = 'block';
+  };
+  
+  $('closeModal').onclick = () => {
+    $('rulesModal').style.display = 'none';
+    if (currentScreen === 'rules') {
+      showStartupScreen();
+    }
+  };
+  
+  // Close modal when clicking outside of it
+  window.onclick = (event) => {
+    if (event.target === $('rulesModal')) {
+      $('rulesModal').style.display = 'none';
+      if (currentScreen === 'rules') {
+        showStartupScreen();
+      }
+    }
+  };
+  
+  /* ---------- Initialize ---------- */
+  initializeDecks();
+  applyScale();
+  // Start on startup screen (already visible by default)
+</script>
+
+</body>
+</html>
