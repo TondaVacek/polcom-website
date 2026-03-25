@@ -1,0 +1,81 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import ModuleCard from '../../components/ModuleCard.astro';
+import { t } from '../../i18n/translations';
+
+const lang = 'cs' as const;
+---
+
+<Layout title="Výsledky | POLICE-COM" lang={lang}>
+  <section class="page-hero">
+    <div class="container">
+      <span class="section-label">Výstupy projektu</span>
+      <h1 class="section-title animate-in">VÝSLEDKY PROJEKTU</h1>
+      <p class="section-subtitle animate-in delay-1">{t(lang, 'results.description')}</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2 class="section-title">{t(lang, 'modules.title')}</h2>
+      <p class="section-subtitle" style="margin-bottom: 3rem;">{t(lang, 'results.explore')}</p>
+      <div class="modules-grid">
+        {[1, 2, 3, 4, 5, 6].map((n) => (
+          <ModuleCard number={n} title={t(lang, `module.${n}.title`)} description={t(lang, `module.${n}.desc`)} delay={n * 0.1} />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section outputs-section">
+    <div class="container">
+      <span class="section-label">Hlavní výstupy</span>
+      <h2 class="section-title">Výsledky projektu</h2>
+      <div class="outputs-grid">
+        <div class="output-card">
+          <h3>Kurikulum založené na kompetencích</h3>
+          <p>Šest praktických modulů - Mistrovství aktivního naslouchání, Spravedlivá a inkluzivní komunikace, Komunikace pod vysokým tlakem, Odstraňování konfliktů a jejich řešení, Vyjednávání a přesvědčovací taktiky a Emoční inteligence.</p>
+        </div>
+        <div class="output-card">
+          <h3>Interaktivní školicí nástroje</h3>
+          <p>Karty scénářů pro hraní rolí, aktivity pro zátěžové testy, infografiky s rychlým odkazem pro rizikové hovory a krátké video simulace. Používejte je samostatně nebo společně s učebními osnovami.</p>
+        </div>
+        <div class="output-card">
+          <h3>Online platforma POLICE-COM</h3>
+          <p>Vícejazyčné centrum (EN, CZ, LT, RO), které obsahuje všechny moduly a nástroje, kvízy, odznaky a diskusní fóra.</p>
+          <a href="https://polcom-training.eu/" class="output-link" target="_blank" rel="noopener">Navštívit platformu</a>
+        </div>
+        <div class="output-card">
+          <h3>Zpráva o pilotním projektu a osvědčených postupech</h3>
+          <p>Zdroje jsou zkoušeny s pedagogy a policisty ve třech zemích; zjištění jsou podkladem pro veřejnou zprávu o tom, co funguje ve skutečném prostředí školení.</p>
+        </div>
+        <div class="output-card">
+          <h3>Sada pro udržitelnost a šíření</h3>
+          <p>Dlouhodobý hostingový plán, smlouva o údržbě a připravená mediální sada (sada loga, vysvětlující video, šablony pro sociální média).</p>
+        </div>
+      </div>
+      <a href="https://polcom-training.eu/" class="btn btn-primary" style="margin-top: 2.5rem;" target="_blank" rel="noopener">
+        Přístup k platformě      </a>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .page-hero { padding: calc(72px + 4rem) 0 3rem; background: var(--color-bg-elevated); border-bottom: 1px solid var(--color-border); }
+  .modules-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
+  .btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.75rem 1.5rem; font-family: var(--font-body); font-size: 0.9rem; font-weight: 600; border-radius: var(--radius-sm); transition: all 0.25s; text-decoration: none; }
+  .btn-primary { background: var(--color-accent); color: #ffffff; }
+  .btn-primary:hover { background: var(--color-accent-light); color: #ffffff; transform: translateY(-1px); box-shadow: 0 4px 16px rgba(27,58,107,0.25); }
+  @media (max-width: 900px) { .modules-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 560px) { .modules-grid { grid-template-columns: 1fr; } }
+
+  .outputs-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; margin-top: 2rem; }
+  .output-card { background: var(--color-bg-card); border: 1px solid var(--color-border); border-radius: var(--radius); padding: 1.75rem; transition: transform 0.3s, border-color 0.3s; }
+  .output-card:hover { transform: translateY(-3px); border-color: var(--color-accent); }
+  .output-card h3 { font-family: var(--font-body); font-size: 1rem; font-weight: 600; color: var(--color-text); margin-bottom: 0.5rem; }
+  .output-card p { font-size: 0.875rem; color: var(--color-text-muted); line-height: 1.6; }
+  .output-link { display: inline-block; margin-top: 0.75rem; font-size: 0.875rem; font-weight: 600; color: var(--color-accent); text-decoration: none; transition: color 0.2s; }
+  .output-link:hover { color: var(--color-accent-light); }
+  @media (max-width: 900px) { .outputs-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 560px) { .outputs-grid { grid-template-columns: 1fr; } }
+</style>

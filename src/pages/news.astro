@@ -1,0 +1,447 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { t, defaultLang } from '../i18n/translations';
+
+const lang = defaultLang;
+
+const posts = [
+  {
+    title: 'Hostile Witness — Communication with resistant witnesses',
+    date: 'March 24, 2026',
+    author: 'admin',
+    excerpt: 'How do you communicate with someone who has already decided not to trust you? One of the scenarios presented within the POLCOM project highlights this kind of high-pressure communication challenge — a police officer engaging with a witness who is openly resistant and unwilling to cooperate. Through scenarios like this, POLCOM emphasises that communication is a core professional competence that directly affects safety and the outcome of police interactions.',
+    image: '/images/news-hostile-witness.jpg',
+  },
+  {
+    title: 'Chris Voss Negotiation Techniques — Tactical empathy and de-escalation',
+    date: 'March 21, 2026',
+    author: 'admin',
+    excerpt: 'POLCOM is not just about learning communication theory — it is about practicing methods that can truly help in real-life high-pressure situations. Participants can explore techniques such as tactical empathy, mirroring, labeling, and calibrated questions. Inside the POLCOM educational portal, learners can discover these methods through videos, online games, and interactive activities.',
+    image: '/images/news-chris-voss.jpg',
+  },
+  {
+    title: 'Hot Call — Communication training card game',
+    date: 'March 11, 2026',
+    author: 'admin',
+    excerpt: 'We are happy to introduce one of the interactive outcomes of the project: Hot Call — a scenario-based card game designed to train communication in action, especially escalation and de-escalation of conflict situations. The game can be used online for digital training or as a printed card version for in-person sessions. Available in 4 languages.',
+    image: '/images/news-hot-call-1.jpg',
+    image2: '/images/news-hot-call-2.jpg',
+  },
+  {
+    title: 'POLCOM Project — 3-Day Pilot Testing in Romania',
+    date: 'March 5, 2026',
+    author: 'admin',
+    excerpt: 'The POLCOM online learning portal is currently being tested during a three-day pilot phase in Romania. During the pilot, 104 students are participating in testing the platform, exploring its content and providing valuable feedback on usability and learning impact.',
+    image: '/images/news-pilot-romania-1.jpg',
+    image2: '/images/news-pilot-romania-2.jpg',
+  },
+  {
+    title: 'De-escalation Training Game — Advanced interactive training for law enforcement',
+    date: 'February 24, 2026',
+    author: 'admin',
+    excerpt: 'Within the framework of the POLCOM project, we are developing an advanced interactive de-escalation training game designed specifically for law enforcement professionals. This innovative digital tool brings scenario-based training to a new level with realistic situations, decision-making under pressure, and immediate feedback.',
+    image: '/images/news-deescalation-game.jpg',
+  },
+  {
+    title: 'POLCOM Conference in Prague — Police communication that works in the field',
+    date: 'February 18, 2026',
+    author: 'admin',
+    excerpt: 'We are honoured to announce that the POLCOM Project is hosting an international conference in Prague on 23 April 2026, focused on practical police communication, conflict management, and de-escalation strategies. Venue: Architects\' Hall, Old Town Hall, Prague.',
+    image: '/images/news-prague-conference.jpg',
+  },
+  {
+    title: 'Lithuania Piloting — Positive feedback from police trainers and trainees',
+    date: 'February 17, 2026',
+    author: 'admin',
+    excerpt: 'During the end of 2025 and in winter of 2026 the piloting phase involved almost 60 police trainers and trainees at MRU and Lithuanian Police School. Participants shared positive experience about the tasks, tests and games.',
+    image: '/images/news-lithuania-pilot.jpg',
+  },
+  {
+    title: 'Happy New Year 2026',
+    date: 'January 5, 2026',
+    author: 'admin',
+    excerpt: 'Dear Pol-Com team and our colleagues in law enforcement, Happy New Year. Let us have creative, healthy and rewarding 2026! MRU Team',
+    image: '/images/news-new-year-2026.jpg',
+  },
+  {
+    title: 'MRU Published Paper — Emotional Intelligence in Law Enforcement',
+    date: 'December 21, 2025',
+    author: 'admin',
+    excerpt: 'MRU (Lithuania) Team published a paper "Educators on Emotional Intelligence in Law Enforcement and Education" based on POL-COM findings in Lithuania right before New Year.',
+    image: '/images/news-mru-paper.jpg',
+  },
+  {
+    title: 'E-Methodology Paper — Enhancing Emotional Intelligence via ICT and Gamification',
+    date: 'November 27, 2025',
+    author: 'admin',
+    excerpt: 'The MRU team developed, presented at the conference the data and findings from the Lithuanian context regarding the POLCOM project activities. The paper "Enhancing Emotional Intelligence in Students via ICT and Gamification: Insights from the Pol-Com Project" was published.',
+    image: '',
+  },
+  {
+    title: "MRU Team's presentation at International Conference",
+    date: 'September 30, 2025',
+    author: 'Pavel Lesko',
+    excerpt: 'MRU Team presented key findings from the POLICE-COM project at an international conference, sharing insights on communication training methodologies for law enforcement.',
+    image: '',
+  },
+  {
+    title: 'Module 6: Emotional Intelligence in Communication',
+    date: 'June 30, 2025',
+    author: 'Egle Zalubaite',
+    excerpt: 'In public safety and helping professions, effective communication relies on understanding both ourselves and those we serve. This module supports police, firefighters, medical staff, and front-line responders in building the emotional intelligence skills essential for their daily work.',
+    image: '/images/news-module6-screenshot1.png',
+    image2: '/images/news-module6-screenshot2.png',
+  },
+  {
+    title: 'Module 4. Conflict de-escalation and resolution',
+    date: 'June 25, 2025',
+    author: 'Pavel Lesko',
+    excerpt: 'We have professions that are called upon when things are going well in our life. Not the law enforcement. Law enforcement professionals are called when something is wrong, when people are in distress, or when there is a conflict. This module is designed to help first responders manage these situations.',
+    image: '/images/news-module4-photo.jpg',
+  },
+  {
+    title: 'Module 2: Respectful and non-discriminatory communication',
+    date: 'June 23, 2025',
+    author: 'Zuzana Krejčová',
+    excerpt: 'We care about equality in human society and respect as a key value. This module helps police and other public safety professionals apply a more gentle approach to professional work.',
+    image: '',
+  },
+  {
+    title: 'MRU Conference Presentation — Law Enforcement Students on Emotional Intelligence',
+    date: 'May 29, 2025',
+    author: 'admin',
+    excerpt: 'On 28th of May 2025 MRU team gave a presentation "Law Enforcement Students On Learning Emotional Intelligence Techniques Via ICT Based Course" at an International Conference, sharing key findings from the POL-COM project.',
+    image: '',
+  },
+  {
+    title: 'MRU Conflict Resolution Data — Lithuanian students\' perspectives',
+    date: 'May 28, 2025',
+    author: 'admin',
+    excerpt: 'MRU Team after collecting data on what Lithuanian students think about the module on Conflict Resolution gave a presentation at an International Conference in spring 2025.',
+    image: '',
+  },
+  {
+    title: 'Exciting news from SustainSecure 2025 in Vilnius!',
+    date: 'May 26, 2025',
+    author: 'admin',
+    excerpt: 'Our colleague took the stage as a speaker at this international conference focused on sustainability and security innovation, showcasing the POLCOM gamified training platform.',
+    image: '',
+  },
+  {
+    title: 'POLCOM Project Partners Meeting April 2025, Vilnius, Lithuania',
+    date: 'May 26, 2025',
+    author: 'admin',
+    excerpt: 'Consortium partners convened for a project meeting in Vilnius. The first day featured a training session on leveraging AI for idea generation and sharing project outcomes.',
+    image: '/images/news-partner-meeting.png',
+  },
+  {
+    title: 'Annual International Forum — Competencies of Contemporary Police Officers',
+    date: 'April 10, 2025',
+    author: 'admin',
+    excerpt: 'A presentation was given by Mr. Antonin Vacek (MISEHERO) and Assoc. Prof. Dileta Jatautaite (MRU) on "Competencies of Contemporary Police Officers: Expectations and the Support for Them" during the Annual International Forum in Vilnius.',
+    image: '',
+  },
+  {
+    title: 'Project Meeting in Vilnius — Productive discussions on project direction',
+    date: 'April 8, 2025',
+    author: 'admin',
+    excerpt: 'On 8-9th April 2025, the Project Team met in Vilnius, Lithuania (Mykolas Romeris University). A productive meeting with fruitful discussions led to agreements regarding best courses of action for the remaining project period.',
+    image: '',
+  },
+  {
+    title: 'MRU Findings Presentation — Healthy lifestyle and burnout prevention',
+    date: 'March 21, 2025',
+    author: 'admin',
+    excerpt: 'The MRU team presented POL-COM findings for students and the wider community. Prof. Rūta Adamonienė emphasised the need for a holistic, healthy lifestyle as an antidote to professional burn-out, which is prevalent among law-enforcement professionals.',
+    image: '',
+  },
+  {
+    title: 'Conference Proceedings Published — Emotional Intelligence and Gamification',
+    date: 'March 10, 2025',
+    author: 'admin',
+    excerpt: 'Paper "Students on Learning Emotional Intelligence Techniques via ICT and Gamification" developed by the Lithuanian team was published in Conference Proceedings (ISBN: 978-989-8704-65-8).',
+    image: '/images/news-proceedings-2025.jpg',
+  },
+  {
+    title: 'IADIS Conference Madeira — Presentation on emotional intelligence and gamification',
+    date: 'March 3, 2025',
+    author: 'admin',
+    excerpt: 'A presentation by the Lithuanian team was given at the 18th IADIS International Conference Information Systems 2025 / 23rd International Conference e-Society 2025 in Madeira, Portugal, sharing findings from the first piloting/testing phase.',
+    image: '/images/news-iadis-conference.jpg',
+  },
+  {
+    title: 'ICERI2024 Proceedings Published',
+    date: 'December 30, 2024',
+    author: 'admin',
+    excerpt: 'After the international conference ICERI2024, the book of Proceedings was published, including the paper by members of the Project team on teaching emotional intelligence techniques via ICT and gamification (Seville, Spain, 11-13 November 2024).',
+    image: '/images/news-iceri2024.jpg',
+  },
+  {
+    title: 'Happy New Year 2025',
+    date: 'December 30, 2024',
+    author: 'admin',
+    excerpt: 'The members of the Project team wish you — and us all — the best 2025. Let us have peaceful, rewarding 2025. Kind regards to all law-enforcement officers and the citizens!',
+    image: '/images/news-new-year-2025.jpg',
+  },
+  {
+    title: 'Conference on Inclusion — POL-COM presented to educators and students',
+    date: 'December 9, 2024',
+    author: 'admin',
+    excerpt: 'During the Conference on Inclusion at universities in Kaunas, Lithuania, Prof. Rūta Adamonienė presented the POL-COM project, its main goals and results for teachers and students from Kaunas gymnasiums and universities.',
+    image: '',
+  },
+  {
+    title: 'ALTA\'24 Conference — Gamification and IT in law enforcement education',
+    date: 'December 5, 2024',
+    author: 'admin',
+    excerpt: 'The presentation "Gamification, IT and the Education of Law Enforcement Officers" was included in the Agenda of the ALTA\'24 International Conference on Sustainability and Partnerships in Education in Lithuania.',
+    image: '/images/news-alta24.jpg',
+  },
+  {
+    title: 'POL-COM Training Module Testing — Conflict de-escalation at MRU',
+    date: 'November 26, 2024',
+    author: 'admin',
+    excerpt: 'The POL-COM team at MRU, Lithuania started the training/testing of the POL-COM Module. 12 educators of future law enforcement officers started analysing the "Conflict De-escalation and Resolution" module materials on the POL-COM Moodle platform.',
+    image: '/images/news-lithuania-training.jpg',
+  },
+  {
+    title: 'SIF Lithuania shared POL-COM survey post',
+    date: 'November 26, 2024',
+    author: 'admin',
+    excerpt: 'Social Innovation Fund (SIF), Lithuania, shared on its organisational Facebook about the survey conducted in January 2024 about the communication skills that contemporary law enforcement officers need today.',
+    image: '',
+  },
+  {
+    title: 'First Testing Experiences — Positive feedback from 35 students',
+    date: 'November 15, 2024',
+    author: 'admin',
+    excerpt: 'In November 2024 the MRU team started testing some of the interactive activities. Students (35) shared quite positive responses (new, interesting, motivating), and some critical comments will be taken into consideration.',
+    image: '',
+  },
+  {
+    title: 'ICERI2024 Presentation — Teaching emotional intelligence via ICT',
+    date: 'November 12, 2024',
+    author: 'admin',
+    excerpt: 'A presentation based on experts\' opinions on teaching emotional intelligence for law-enforcement officers using IT was given at the 17th annual ICERI2024 Conference "Transforming Education, Transforming Life" in Seville, Spain.',
+    image: '',
+  },
+  {
+    title: 'DANTE Event — Development and Networking for Training Evolution',
+    date: 'November 1, 2024',
+    author: 'admin',
+    excerpt: 'CPIP attended the third Adult Education Institution DANTE event titled "Development and Networking for a Training Evolution" in Opatija. The POL-COM project initiative was introduced amongst key stakeholders in the field.',
+    image: '',
+  },
+  {
+    title: 'Czech National Police Meeting — Collaboration on video content and piloting',
+    date: 'October 29, 2024',
+    author: 'admin',
+    excerpt: 'We had another productive meeting with the Czech National Police to strengthen our collaboration on the POL-COM project — discussing feedback on methodology, police involvement in creating video content, and engaging police trainers in piloting.',
+    image: '/images/news-czech-police.jpg',
+  },
+  {
+    title: 'CPIP Stuttgart Event — Best practices exchange',
+    date: 'October 24, 2024',
+    author: 'admin',
+    excerpt: 'The CPIP team participated in a best practices exchange event hosted in Stuttgart, Germany, by Prison Fellowship Germany. This experience provided valuable insights into innovative rehabilitation approaches and was an opportunity to introduce the POL-COM project.',
+    image: '/images/news-cpip-stuttgart.jpg',
+  },
+  {
+    title: 'OEB Global Conference Berlin — Digital education in correctional justice',
+    date: 'October 23, 2024',
+    author: 'admin',
+    excerpt: 'A representative of CPIP shared experiences during the "Hard-to-reach and Hard-to-serve: Digital Education in the Context of Criminal Correctional Justice" session at the OEB Global Conference in Berlin, including the POL-COM project.',
+    image: '/images/news-berlin-conference.jpg',
+  },
+  {
+    title: 'LERA Conference Lithuania — Education, uncertainty and communication challenges',
+    date: 'October 18, 2024',
+    author: 'admin',
+    excerpt: 'Assoc. Prof. Dileta Jatautaitė gave a presentation at the international conference "Education Uncertainty and Communication Challenges: the Intersection of Past and Future" in Vilnius on POL-COM findings.',
+    image: '',
+  },
+  {
+    title: 'UNESCO Prison Education Conference — European projects in correctional justice',
+    date: 'October 17, 2024',
+    author: 'admin',
+    excerpt: 'CPIP Romania was invited by the UNESCO Chair in Applied Research for Prison Education to participate in the first International Conference on Education in Prison, hosted by Quebec University of Montreal.',
+    image: '',
+  },
+  {
+    title: 'European Digital Education Hub — Expert insights on prison education',
+    date: 'October 13, 2024',
+    author: 'admin',
+    excerpt: 'On the International Day of Education in Prisons, Daiana Huber from the CPIP team was invited as expert-stakeholder to an Ask Me Anything session on the European Digital Education Hub, where the CPIP projects portfolio including POL-COM was introduced.',
+    image: '',
+  },
+  {
+    title: 'LETA Announcement — Lithuanian National Association for Education Research',
+    date: 'October 8, 2024',
+    author: 'admin',
+    excerpt: 'Lithuanian National Association for Education Research (LETA) has announced information about the POL-COM project. Results on the Modules and their efficacy are planned to be shared at an international conference organised by LETA.',
+    image: '/images/news-leta-announcement.jpg',
+  },
+  {
+    title: 'MRU April Conference — Survey findings on police communication education',
+    date: 'August 1, 2024',
+    author: 'admin',
+    excerpt: 'On 18 April 2024, a presentation on the first survey results regarding POL-COM was given at the Annual International Conference on Security at Mykolas Romeris University, sharing insights from law enforcement practitioners on using IT for communication education.',
+    image: '/images/news-mru-april-1.jpg',
+    image2: '/images/news-mru-april-2.jpg',
+  },
+  {
+    title: 'Brussels Skills Event — European Year of Skills: what comes next?',
+    date: 'July 1, 2024',
+    author: 'admin',
+    excerpt: 'CPIP participated in the "European Year of Skills – what comes next?" event in Brussels. Hundreds of participants united to share successful skills stories, and the POL-COM project was introduced during relevant discussions.',
+    image: '/images/news-brussels-event.jpg',
+  },
+  {
+    title: 'Greece Conference — Emotional intelligence in law enforcement',
+    date: 'June 7, 2024',
+    author: 'admin',
+    excerpt: 'The Lithuanian MRU team presented "The Emotional Intelligence in the Context of the Law-Enforcement Officers\' Perspective: Some of the Findings from the POL-COM Project" at the II International Conference at Peloponnese University, Greece.',
+    image: '',
+  },
+  {
+    title: 'Lithuanian Fire Fighting School Visit — MISE HERo hosts Ugniagesių gelbėtojų mokykla',
+    date: 'June 1, 2024',
+    author: 'admin',
+    excerpt: 'MISE HERo was happy to host representatives of the Lithuanian Fire Fighting School, who visited to discover more about the POLICE-COM project. They expressed deep interest in the project results, showing awareness beyond police to fire and rescue services.',
+    image: '/images/news-fire-school-1.jpg',
+    image2: '/images/news-fire-school-2.jpg',
+  },
+  {
+    title: 'Project Meeting in Romania — Training content development',
+    date: 'March 1, 2024',
+    author: 'admin',
+    excerpt: 'Representatives from the consortium partners convened in Romania for a pivotal project meeting. The initial day was dedicated to a training session on leveraging AI for idea generation. Partners decided to pool their expertise in crafting multimedia training materials for six communication modules.',
+    image: '/images/news-romania-meeting-1.jpg',
+    image2: '/images/news-romania-meeting-2.jpg',
+  },
+  {
+    title: 'POLICE COM project enters operational phase!',
+    date: 'January 1, 2024',
+    author: 'admin',
+    excerpt: 'The POLICE-COM project has officially commenced, bringing together a consortium of six partners from three EU nations. The project focuses on crafting training materials for educators shaping the next generation of law enforcement officers, with key areas including communication, conflict resolution, de-escalation, and emotional intelligence.',
+    image: '/images/news-launch.jpg',
+  },
+];
+---
+
+<Layout title="News | POLICE-COM" lang={lang}>
+  <section class="page-hero">
+    <div class="container">
+      <span class="section-label">{t(lang, 'news.title')}</span>
+      <h1 class="section-title animate-in">News & Updates</h1>
+      <p class="section-subtitle animate-in delay-1">Follow the latest developments from the POLICE-COM project.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="news-list">
+        {posts.map((post, i) => (
+          <article class={`news-item animate-in delay-${Math.min(i + 1, 6)}`}>
+            <div class="news-meta">
+              <time>{post.date}</time>
+              <span class="news-author">{post.author}</span>
+            </div>
+            <h2 class="news-title">{post.title}</h2>
+            <p class="news-excerpt">{post.excerpt}</p>
+            {post.image && (
+              <div class="news-images">
+                <img src={post.image} alt={post.title} class="news-image" />
+                {post.image2 && <img src={post.image2} alt={post.title} class="news-image" />}
+              </div>
+            )}
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .page-hero {
+    padding: calc(72px + 4rem) 0 3rem;
+    background: var(--color-bg-elevated);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .news-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+  }
+
+  .news-item {
+    padding: 2rem 0;
+    border-bottom: 1px solid var(--color-border);
+    transition: background 0.2s;
+  }
+
+  .news-item:first-child {
+    padding-top: 0;
+  }
+
+  .news-meta {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .news-meta time {
+    font-size: 0.8rem;
+    color: var(--color-accent);
+    font-weight: 500;
+  }
+
+  .news-author {
+    font-size: 0.8rem;
+    color: var(--color-text-muted);
+  }
+
+  .news-author::before {
+    content: '·';
+    margin-right: 1rem;
+  }
+
+  .news-title {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    font-weight: 400;
+    color: var(--color-text);
+    margin-bottom: 0.5rem;
+    line-height: 1.3;
+  }
+
+  .news-excerpt {
+    font-size: 0.95rem;
+    color: var(--color-text-muted);
+    line-height: 1.7;
+    max-width: 700px;
+  }
+
+  .news-images {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .news-image {
+    max-width: 400px;
+    max-height: 280px;
+    object-fit: cover;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--color-border);
+  }
+
+  @media (max-width: 560px) {
+    .news-image {
+      max-width: 100%;
+    }
+  }
+</style>

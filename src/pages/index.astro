@@ -1,0 +1,356 @@
+---
+import Layout from '../layouts/Layout.astro';
+import ModuleCard from '../components/ModuleCard.astro';
+import { t, defaultLang } from '../i18n/translations';
+
+const lang = defaultLang;
+---
+
+<Layout title="POLICE-COM | Training Portal" lang={lang}>
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-bg">
+      <div class="hero-gradient"></div>
+      <div class="hero-grid"></div>
+    </div>
+    <div class="container hero-inner">
+      <div class="hero-content">
+        <div class="hero-badge animate-in">EU Co-funded Project</div>
+        <h1 class="hero-title animate-in delay-1">
+          <span class="hero-title-line">{t(lang, 'hero.title')}</span>
+        </h1>
+        <p class="hero-subtitle animate-in delay-2">{t(lang, 'hero.subtitle')}</p>
+        <p class="hero-desc animate-in delay-3">{t(lang, 'hero.description')}</p>
+        <div class="hero-actions animate-in delay-4">
+          <a href="https://polcom-training.eu/" class="btn btn-primary" target="_blank" rel="noopener">
+            {t(lang, 'hero.cta')}          </a>
+          <a href="/results/" class="btn btn-ghost">
+            {t(lang, 'hero.explore')}
+          </a>
+        </div>
+      </div>
+      <div class="hero-image animate-in delay-3">
+        <img src="/images/hero-meeting.jpg" alt="POLICE-COM project meeting" />
+      </div>
+    </div>
+  </section>
+
+  <!-- Modules -->
+  <section class="section modules-section" id="modules">
+    <div class="container">
+      <span class="section-label">{t(lang, 'modules.title')}</span>
+      <h2 class="section-title">Six pathways to<br/><em>better communication</em></h2>
+      <p class="section-subtitle">Practical, research-based training modules designed for police educators and first responders.</p>
+
+      <div class="modules-grid">
+        {[1, 2, 3, 4, 5, 6].map((n) => (
+          <ModuleCard
+            number={n}
+            title={t(lang, `module.${n}.title`)}
+            description={t(lang, `module.${n}.desc`)}
+            delay={n * 0.1}
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Current Events -->
+  <section class="section events-section" id="events">
+    <div class="container">
+      <span class="section-label">Current Events</span>
+      <h2 class="section-title">What's happening</h2>
+      <div class="events-grid">
+        <div class="event-card">
+          <h3>Project implementation date</h3>
+          <p>All the planned project results will be availabe by the end of November 2025 the latest. We will keep you updated if there is more to explore in POLICE-COM.</p>
+        </div>
+        <div class="event-card">
+          <h3>Trainings of trainers</h3>
+          <p>Once our training materials are finalized, we will organize a specialized training session to introduce the resources, the training platform, and the innovative methods to educators and trainers in law enforcement institutions. If you're interested in participating, please send us a message.</p>
+        </div>
+        <div class="event-card">
+          <h3>Training portal pilot testing</h3>
+          <p>Your gateway to all POLICE-COM training modules, activities, and support—free for every trainer who wants to make a difference. Log in, explore, and bring real change to your training sessions.</p>
+          <a href="https://polcom-training.eu/" class="event-link" target="_blank" rel="noopener">Visit the Training Portal</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Results CTA -->
+  <section class="section results-cta">
+    <div class="container">
+      <div class="cta-card">
+        <div class="cta-content">
+          <span class="section-label">{t(lang, 'results.title')}</span>
+          <h2 class="section-title">{t(lang, 'results.description').slice(0, 80)}...</h2>
+          <p class="section-subtitle">{t(lang, 'results.explore')}</p>
+          <a href="/results/" class="btn btn-primary" style="margin-top: 1.5rem;">
+            {t(lang, 'results.learnMore')}          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  /* Hero */
+  .hero {
+    position: relative;
+    padding-top: 72px;
+    overflow: hidden;
+    background: var(--color-bg-elevated);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+  }
+
+  .hero-gradient {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 80% 60% at 20% 40%, rgba(27, 58, 107, 0.05) 0%, transparent 60%),
+      radial-gradient(ellipse 60% 50% at 80% 60%, rgba(27, 58, 107, 0.03) 0%, transparent 60%);
+  }
+
+  .hero-grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(27, 58, 107, 0.06) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(27, 58, 107, 0.06) 1px, transparent 1px);
+    background-size: 64px 64px;
+    mask-image: radial-gradient(ellipse 70% 70% at 50% 50%, black 20%, transparent 70%);
+  }
+
+  .hero-inner {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+    padding: clamp(3rem, 5vw, 4.5rem) 0;
+  }
+
+  .hero-content {
+    position: relative;
+  }
+
+  .hero-image {
+    position: relative;
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: 0 8px 32px rgba(27, 58, 107, 0.12);
+  }
+
+  .hero-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.35rem 1rem;
+    background: var(--color-accent-glow);
+    border: 1px solid rgba(27, 58, 107, 0.2);
+    border-radius: 100px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    color: var(--color-accent-light);
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-title {
+    font-family: var(--font-display);
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 400;
+    line-height: 1;
+    margin-bottom: 1.25rem;
+    color: var(--color-text);
+  }
+
+  .hero-subtitle {
+    font-size: clamp(1rem, 2vw, 1.15rem);
+    color: var(--color-text);
+    font-weight: 500;
+    margin-bottom: 0.75rem;
+    max-width: 500px;
+  }
+
+  .hero-desc {
+    font-size: 0.95rem;
+    color: var(--color-text-muted);
+    max-width: 480px;
+    line-height: 1.7;
+    margin-bottom: 2rem;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  @media (max-width: 768px) {
+    .hero-inner {
+      grid-template-columns: 1fr;
+    }
+
+    .hero-image {
+      max-height: 280px;
+    }
+  }
+
+  /* Buttons */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    font-weight: 600;
+    border-radius: var(--radius-sm);
+    transition: all 0.25s;
+    text-decoration: none;
+  }
+
+  .btn-primary {
+    background: var(--color-accent);
+    color: #ffffff;
+  }
+
+  .btn-primary:hover {
+    background: var(--color-accent-light);
+    color: #ffffff;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 16px rgba(27, 58, 107, 0.25);
+  }
+
+  .btn-ghost {
+    background: transparent;
+    color: var(--color-text-muted);
+    border: 1px solid var(--color-border);
+  }
+
+  .btn-ghost:hover {
+    color: var(--color-text);
+    border-color: var(--color-text-muted);
+  }
+
+  /* Modules */
+  .modules-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+    margin-top: 3rem;
+  }
+
+  @media (max-width: 900px) {
+    .modules-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 560px) {
+    .modules-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  /* Current Events */
+  .events-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+    margin-top: 3rem;
+  }
+
+  .event-card {
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    padding: 2rem;
+    transition: transform 0.3s, border-color 0.3s;
+  }
+
+  .event-card:hover {
+    transform: translateY(-3px);
+    border-color: var(--color-accent);
+  }
+
+  .event-card h3 {
+    font-family: var(--font-body);
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--color-text);
+    margin-bottom: 0.75rem;
+  }
+
+  .event-card p {
+    font-size: 0.9rem;
+    color: var(--color-text-muted);
+    line-height: 1.7;
+  }
+
+  .event-link {
+    display: inline-block;
+    margin-top: 1rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--color-accent);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .event-link:hover {
+    color: var(--color-accent-light);
+  }
+
+  @media (max-width: 900px) {
+    .events-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 560px) {
+    .events-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  /* Results CTA */
+  .cta-card {
+    display: flex;
+    align-items: center;
+    gap: 4rem;
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-radius: 20px;
+    padding: clamp(2rem, 5vw, 3.5rem);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cta-content {
+    flex: 1;
+    z-index: 1;
+  }
+
+  @media (max-width: 768px) {
+    .cta-card {
+      flex-direction: column;
+      text-align: center;
+    }
+  }
+</style>

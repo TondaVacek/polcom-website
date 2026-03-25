@@ -1,0 +1,262 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { defaultLang } from '../i18n/translations';
+
+const lang = defaultLang;
+---
+
+<Layout title="Contact | POLICE-COM" lang={lang}>
+  <section class="page-hero">
+    <div class="container">
+      <span class="section-label">Get in touch</span>
+      <h1 class="section-title animate-in">Contact Us</h1>
+      <p class="section-subtitle animate-in delay-1">Have questions about the POLICE-COM project or want to use our training materials? We'd love to hear from you.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container contact-grid">
+      <div class="contact-info">
+        <div class="contact-card">
+          <h3>Project Coordinator</h3>
+          <p class="contact-org">Mise HERo</p>
+          <p class="contact-detail">Czech Republic</p>
+          <p class="contact-email"><a class="obf-email" data-u="antonin.vacek" data-d="misehero" data-t="cz"></a></p>
+        </div>
+
+        <div class="contact-card">
+          <h3>National Contacts</h3>
+          <div class="contact-partner">
+            <p class="contact-org"><a href="https://www.mindsetmentors.eu" target="_blank" rel="noopener">Mindset Mentors</a></p>
+            <p class="contact-detail">Czech Republic</p>
+          </div>
+          <div class="contact-partner">
+            <p class="contact-org"><a href="https://www.mruni.eu" target="_blank" rel="noopener">Mykolas Romeris University</a></p>
+            <p class="contact-detail">Vilnius, Lithuania</p>
+          </div>
+          <div class="contact-partner">
+            <p class="contact-org"><a href="https://lpf.lt" target="_blank" rel="noopener">Social Innovation Fund</a></p>
+            <p class="contact-detail">Lithuania</p>
+          </div>
+          <div class="contact-partner">
+            <p class="contact-org"><a href="https://cpip.ro" target="_blank" rel="noopener">CPIP</a></p>
+            <p class="contact-detail">Romania</p>
+          </div>
+          <div class="contact-partner">
+            <p class="contact-org"><a href="https://sindicateuropol.ro" target="_blank" rel="noopener">Sindicatul Polițiștilor Europeni EUROPOL</a></p>
+            <p class="contact-detail">Romania</p>
+          </div>
+        </div>
+
+        <div class="contact-card">
+          <h3>Follow Us</h3>
+          <a href="https://www.facebook.com/people/Police-COM/61560171684268/" target="_blank" rel="noopener" class="social-link">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+            </svg>
+            Facebook
+          </a>
+        </div>
+      </div>
+
+      <form class="contact-form" action="#" method="POST">
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" required />
+        </div>
+        <div class="form-group">
+          <label for="email">Email Address</label>
+          <input type="email" id="email" name="email" required />
+        </div>
+        <div class="form-group">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" rows="6" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">
+          Send Message        </button>
+      </form>
+    </div>
+  </section>
+</Layout>
+
+<script>
+  document.querySelectorAll('.obf-email').forEach(el => {
+    const u = el.dataset.u;
+    const d = el.dataset.d;
+    const t = el.dataset.t;
+    const addr = u + '@' + d + '.' + t;
+    el.href = 'mai' + 'lto:' + addr;
+    el.textContent = addr;
+  });
+</script>
+
+<style>
+  .page-hero {
+    padding: calc(72px + 4rem) 0 3rem;
+    background: var(--color-bg-elevated);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: start;
+  }
+
+  .contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .contact-card {
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    padding: 1.75rem;
+  }
+
+  .contact-card h3 {
+    font-size: 0.78rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--color-accent);
+    margin-bottom: 1rem;
+  }
+
+  .contact-org {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--color-text);
+    margin-bottom: 0.25rem;
+  }
+
+  .contact-detail {
+    font-size: 0.9rem;
+    color: var(--color-text-muted);
+  }
+
+  .contact-email {
+    font-size: 0.9rem;
+    color: var(--color-accent-light);
+    margin-top: 0.35rem;
+  }
+
+  .contact-partner {
+    padding: 0.75rem 0;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .contact-partner:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+
+  .contact-partner:first-child {
+    padding-top: 0;
+  }
+
+  .contact-partner .contact-org {
+    margin-bottom: 0.1rem;
+  }
+
+  .contact-partner .contact-org a {
+    color: var(--color-text);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .contact-partner .contact-org a:hover {
+    color: var(--color-accent-light);
+  }
+
+  .social-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--color-text-muted);
+    font-size: 0.9rem;
+    transition: color 0.2s;
+  }
+
+  .social-link:hover {
+    color: var(--color-accent-light);
+  }
+
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  .form-group label {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--color-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .form-group input,
+  .form-group textarea {
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    padding: 0.75rem 1rem;
+    color: var(--color-text);
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    transition: border-color 0.2s;
+    outline: none;
+  }
+
+  .form-group input:focus,
+  .form-group textarea:focus {
+    border-color: var(--color-accent);
+  }
+
+  .form-group textarea {
+    resize: vertical;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    font-weight: 600;
+    border-radius: var(--radius-sm);
+    border: none;
+    cursor: pointer;
+    transition: all 0.25s;
+  }
+
+  .btn-primary {
+    background: var(--color-accent);
+    color: #ffffff;
+    align-self: flex-start;
+  }
+
+  .btn-primary:hover {
+    background: var(--color-accent-light);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 16px rgba(27, 58, 107, 0.25);
+  }
+
+  @media (max-width: 768px) {
+    .contact-grid {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+  }
+</style>

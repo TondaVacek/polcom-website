@@ -1,0 +1,563 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { t, defaultLang } from '../i18n/translations';
+import catalogData from '../data/training-materials.json';
+
+const lang = defaultLang;
+const langCode = 'en';
+
+const materials = catalogData.materials.filter(m => m.language === langCode);
+const modules = [...new Set(materials.map(m => m.module))].sort();
+const phases = [...new Set(materials.map(m => m.phase))].sort();
+const resourceTypes = [...new Set(materials.map(m => m.resourceType))].sort();
+const allTopics = [...new Set(materials.flatMap(m => m.topics))].sort();
+const allEquipment = [...new Set(materials.flatMap(m => m.equipment || []))].sort();
+const allFormats = [...new Set(materials.flatMap(m => m.interactionFormats || []))].sort();
+
+const moduleNames: Record<number, string> = {
+  1: 'Active Listening',
+  2: 'Respectful & Non-Discriminatory Communication',
+  3: 'Communication in High-Pressure Situations',
+  4: 'Conflict De-escalation & Resolution',
+  5: 'Negotiation & Persuasion Techniques',
+  6: 'Emotional Intelligence in Communication',
+};
+
+const phaseNames: Record<string, string> = {
+  '0': 'Pre-assessment', '1': 'Foundation', '2': 'Deep Dive',
+  '3': 'Advanced Application', '4': 'Reflection & Self-Study',
+  '5': 'Conclusion & Action Planning', 'T': 'Teacher Resources', 'W': 'References',
+};
+
+const resourceTypeLabels: Record<string, string> = {
+  activity: 'Activity', 'action-plan': 'Action Plan', assessment: 'Assessment', cards: 'Cards',
+  'case-study': 'Case Study', discussion: 'Discussion', game: 'Game', handout: 'Handout',
+  icebreaker: 'Icebreaker', image: 'Image', presentation: 'Presentation', reference: 'Reference',
+  reflection: 'Reflection', roleplay: 'Role Play', scenario: 'Scenario', 'self-study': 'Self Study',
+  'teacher-guide': 'Teacher Guide', theory: 'Theory', video: 'Video', 'video-script': 'Video Script',
+};
+
+const fileTypeIcons: Record<string, string> = { pdf: '📄', docx: '📝', pptx: '📊', mp4: '🎬', png: '🖼️' };
+
+const uiLabels = {
+  heroLabel: 'Training Materials', heroTitle: 'Find Learning Resources',
+  heroSub: `Browse and filter ${materials.length} training materials across all six modules.`,
+  filters: 'Filters', clearAll: 'Clear all', search: 'Search by title...',
+  module: 'Module', phase: 'Phase', resourceType: 'Type', topic: 'Topic',
+  materials: 'materials', noResults: 'No materials match your filters. Try adjusting your selection.',
+  downloadAll: 'Download all', download: 'Download', close: 'Close', preview: 'Preview',
+  summary: 'Summary', details: 'Details', moduleLabel: 'Module', phaseLabel: 'Phase',
+  typeLabel: 'Type', fileLabel: 'File', topicsLabel: 'Topics',
+  downloadFiltered: 'Download filtered',
+  previewNA: 'Preview not available for this file type. Click download to view the file.',
+  duration: 'Duration', equipment: 'Equipment', interactionFormat: 'Format',
+  groupSize: 'Group Size', objectives: 'Objectives',
+  includeUnspecified: 'Include unspecified',
+  durationRanges: { short: '0–15 min', medium: '15–30 min', long: '30–60 min', extended: '60+ min' },
+  groupSizeRanges: { pairs: 'Pairs (2)', small: 'Small (3–5)', medium: 'Medium (6–15)', large: 'Large (16+)' },
+  estimated: 'est.',
+};
+---
+
+<Layout title="Training Materials | POLICE-COM" lang={lang}>
+  <section class="page-hero">
+    <div class="container">
+      <span class="section-label">{uiLabels.heroLabel}</span>
+      <h1 class="section-title animate-in">{uiLabels.heroTitle}</h1>
+      <p class="section-subtitle animate-in delay-1">{uiLabels.heroSub}</p>
+    </div>
+  </section>
+
+  <section class="section materials-section">
+    <div class="container">
+      <!-- Filter Bar -->
+      <div class="filter-bar" id="filter-bar">
+        <div class="filter-bar-row">
+          <input type="text" id="search-input" placeholder={uiLabels.search} class="search-input" />
+          <div class="filter-dropdown" data-filter="module">
+            <button class="filter-btn" type="button">{uiLabels.module} <span class="filter-arrow">▾</span></button>
+            <div class="filter-panel">
+              {modules.map(m => (
+                <label class="filter-option">
+                  <input type="checkbox" name="module" value={String(m)} />
+                  <span class="filter-check"></span>
+                  <span class="filter-label">{m}. {moduleNames[m]}</span>
+                </label>
+              ))}
+            </div>
+          </div>
+          <div class="filter-dropdown" data-filter="phase">
+            <button class="filter-btn" type="button">{uiLabels.phase} <span class="filter-arrow">▾</span></button>
+            <div class="filter-panel">
+              {phases.map(p => (
+                <label class="filter-option">
+                  <input type="checkbox" name="phase" value={p} />
+                  <span class="filter-check"></span>
+                  <span class="filter-label">{phaseNames[p] || p}</span>
+                </label>
+              ))}
+            </div>
+          </div>
+          <div class="filter-dropdown" data-filter="type">
+            <button class="filter-btn" type="button">{uiLabels.resourceType} <span class="filter-arrow">▾</span></button>
+            <div class="filter-panel">
+              {resourceTypes.map(rt => (
+                <label class="filter-option">
+                  <input type="checkbox" name="resourceType" value={rt} />
+                  <span class="filter-check"></span>
+                  <span class="filter-label">{resourceTypeLabels[rt] || rt}</span>
+                </label>
+              ))}
+            </div>
+          </div>
+          <div class="filter-dropdown" data-filter="topic">
+            <button class="filter-btn" type="button">{uiLabels.topic} <span class="filter-arrow">▾</span></button>
+            <div class="filter-panel filter-panel-scroll">
+              {allTopics.map(topic => (
+                <label class="filter-option">
+                  <input type="checkbox" name="topic" value={topic} />
+                  <span class="filter-check"></span>
+                  <span class="filter-label">{topic.replace(/-/g, ' ')}</span>
+                </label>
+              ))}
+            </div>
+          </div>
+          <div class="filter-dropdown" data-filter="duration">
+            <button class="filter-btn" type="button">{uiLabels.duration} <span class="filter-arrow">▾</span></button>
+            <div class="filter-panel">
+              <label class="filter-option"><input type="checkbox" name="duration" value="short" /><span class="filter-check"></span><span class="filter-label">{uiLabels.durationRanges.short}</span></label>
+              <label class="filter-option"><input type="checkbox" name="duration" value="medium" /><span class="filter-check"></span><span class="filter-label">{uiLabels.durationRanges.medium}</span></label>
+              <label class="filter-option"><input type="checkbox" name="duration" value="long" /><span class="filter-check"></span><span class="filter-label">{uiLabels.durationRanges.long}</span></label>
+              <label class="filter-option"><input type="checkbox" name="duration" value="extended" /><span class="filter-check"></span><span class="filter-label">{uiLabels.durationRanges.extended}</span></label>
+              <label class="filter-option filter-option-muted"><input type="checkbox" name="duration-unspec" id="duration-unspecified" /><span class="filter-check"></span><span class="filter-label">{uiLabels.includeUnspecified}</span></label>
+            </div>
+          </div>
+          <div class="filter-dropdown" data-filter="equipment">
+            <button class="filter-btn" type="button">{uiLabels.equipment} <span class="filter-arrow">▾</span></button>
+            <div class="filter-panel filter-panel-scroll">
+              {allEquipment.map(eq => (
+                <label class="filter-option">
+                  <input type="checkbox" name="equipment" value={eq} />
+                  <span class="filter-check"></span>
+                  <span class="filter-label">{eq.replace(/-/g, ' ')}</span>
+                </label>
+              ))}
+              <label class="filter-option filter-option-muted"><input type="checkbox" name="equip-unspec" id="equipment-unspecified" /><span class="filter-check"></span><span class="filter-label">{uiLabels.includeUnspecified}</span></label>
+            </div>
+          </div>
+          <div class="filter-dropdown" data-filter="format">
+            <button class="filter-btn" type="button">{uiLabels.interactionFormat} <span class="filter-arrow">▾</span></button>
+            <div class="filter-panel">
+              {allFormats.map(fmt => (
+                <label class="filter-option">
+                  <input type="checkbox" name="format" value={fmt} />
+                  <span class="filter-check"></span>
+                  <span class="filter-label">{fmt.replace(/-/g, ' ')}</span>
+                </label>
+              ))}
+              <label class="filter-option filter-option-muted"><input type="checkbox" name="format-unspec" id="format-unspecified" /><span class="filter-check"></span><span class="filter-label">{uiLabels.includeUnspecified}</span></label>
+            </div>
+          </div>
+          <div class="filter-dropdown" data-filter="groupsize">
+            <button class="filter-btn" type="button">{uiLabels.groupSize} <span class="filter-arrow">▾</span></button>
+            <div class="filter-panel">
+              <label class="filter-option"><input type="checkbox" name="groupsize" value="pairs" /><span class="filter-check"></span><span class="filter-label">{uiLabels.groupSizeRanges.pairs}</span></label>
+              <label class="filter-option"><input type="checkbox" name="groupsize" value="small" /><span class="filter-check"></span><span class="filter-label">{uiLabels.groupSizeRanges.small}</span></label>
+              <label class="filter-option"><input type="checkbox" name="groupsize" value="medium" /><span class="filter-check"></span><span class="filter-label">{uiLabels.groupSizeRanges.medium}</span></label>
+              <label class="filter-option"><input type="checkbox" name="groupsize" value="large" /><span class="filter-check"></span><span class="filter-label">{uiLabels.groupSizeRanges.large}</span></label>
+              <label class="filter-option filter-option-muted"><input type="checkbox" name="gs-unspec" id="groupsize-unspecified" checked /><span class="filter-check"></span><span class="filter-label">{uiLabels.includeUnspecified}</span></label>
+            </div>
+          </div>
+          <button class="filter-reset" id="reset-filters">{uiLabels.clearAll}</button>
+        </div>
+      </div>
+
+      <!-- Results -->
+      <div class="results-area">
+        <div class="results-header">
+          <span class="results-count" id="results-count">{materials.length} {uiLabels.materials}</span>
+          <div class="results-actions">
+            <button class="btn-bulk-download" id="download-filtered" title={uiLabels.downloadFiltered}>
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 2v8m0 0l-3-3m3 3l3-3M3 12h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              {uiLabels.downloadAll}
+            </button>
+          </div>
+        </div>
+        <div class="results-grid" id="results-grid"></div>
+        <div class="no-results" id="no-results" style="display:none;">
+          <p>{uiLabels.noResults}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Detail Modal -->
+  <div class="modal-overlay" id="modal-overlay">
+    <div class="modal" id="modal">
+      <button class="modal-close" id="modal-close" aria-label="Close">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 5l10 10M15 5L5 15" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </button>
+      <div class="modal-body" id="modal-body"></div>
+    </div>
+  </div>
+</Layout>
+
+<script define:vars={{ materials, moduleNames, phaseNames, resourceTypeLabels, fileTypeIcons, uiLabels }}>
+  const grid = document.getElementById('results-grid');
+  const countEl = document.getElementById('results-count');
+  const noResults = document.getElementById('no-results');
+  const searchInput = document.getElementById('search-input');
+  const modalOverlay = document.getElementById('modal-overlay');
+  const modalBody = document.getElementById('modal-body');
+
+  let currentFiltered = materials;
+
+  function getCheckedValues(name) {
+    return [...document.querySelectorAll(`input[name="${name}"]:checked`)].map(el => el.value);
+  }
+
+  // Dropdown toggle logic
+  document.querySelectorAll('.filter-dropdown .filter-btn').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const dropdown = btn.parentElement;
+      const wasOpen = dropdown.classList.contains('open');
+      document.querySelectorAll('.filter-dropdown.open').forEach(d => d.classList.remove('open'));
+      if (!wasOpen) dropdown.classList.add('open');
+    });
+  });
+  // Close dropdowns on outside click
+  document.addEventListener('click', (e) => {
+    if (!e.target.closest('.filter-dropdown')) {
+      document.querySelectorAll('.filter-dropdown.open').forEach(d => d.classList.remove('open'));
+    }
+  });
+  // Prevent panel clicks from closing dropdown
+  document.querySelectorAll('.filter-panel').forEach(panel => {
+    panel.addEventListener('click', (e) => e.stopPropagation());
+  });
+
+  function renderCard(m, index) {
+    const icon = fileTypeIcons[m.fileType] || '📄';
+    const topicBadges = m.topics.slice(0, 3).map(t => `<span class="tag">${t.replace(/-/g, ' ')}</span>`).join('');
+    const desc = m.contentDescription || m.description || '';
+    const descHtml = desc ? `<p class="card-desc">${desc}</p>` : '';
+    const objSnippet = m.objectives ? `<p class="card-objectives"><strong>${uiLabels.objectives}:</strong> ${m.objectives.split('\\n').filter(l => l.trim()).join('; ').substring(0, 150)}</p>` : '';
+    return `<div class="material-card" data-index="${index}" role="button" tabindex="0">
+      <div class="card-top"><span class="card-module">${uiLabels.moduleLabel} ${m.module}</span><span class="card-phase">${phaseNames[m.phase] || m.phase}</span></div>
+      <h3 class="card-title">${icon} ${m.title}</h3>
+      ${descHtml}
+      ${objSnippet}
+      <div class="card-meta"><span class="card-type">${resourceTypeLabels[m.resourceType] || m.resourceType}</span>${m.duration ? `<span class="card-duration">${m.duration}${m.durationEstimated ? ' <span class="est-badge">' + uiLabels.estimated + '</span>' : ''}</span>` : ''}<span class="card-ext">${m.fileType.toUpperCase()}</span></div>
+      <div class="card-tags">${topicBadges}</div>
+    </div>`;
+  }
+
+  function renderPreview(m) {
+    const previewUrl = `/materials/${encodeURI(m.previewPath || m.path)}`;
+    const ext = m.fileType;
+    if (ext === 'pdf' || ext === 'docx' || ext === 'pptx') {
+      return `<iframe class="preview-frame" src="${previewUrl}" title="${m.title}"></iframe>`;
+    } else if (ext === 'png' || ext === 'jpg' || ext === 'jpeg') {
+      return `<img class="preview-image" src="/materials/${encodeURI(m.path)}" alt="${m.title}" />`;
+    } else if (ext === 'mp4') {
+      return `<video class="preview-video" controls src="/materials/${encodeURI(m.path)}"></video>`;
+    }
+    return `<div class="preview-na"><p>${uiLabels.previewNA}</p></div>`;
+  }
+
+  function openModal(m) {
+    const url = `/materials/${encodeURI(m.path)}`;
+    const pdfUrl = `/materials/${encodeURI(m.previewPath || m.path)}`;
+    const icon = fileTypeIcons[m.fileType] || '📄';
+    const topicBadges = m.topics.map(t => `<span class="tag">${t.replace(/-/g, ' ')}</span>`).join('');
+
+    const hasPdfVersion = m.previewPath && m.previewPath !== m.path;
+    let downloadButtons = '';
+    if (hasPdfVersion) {
+      downloadButtons = `
+        <a href="${url}" download class="btn-download btn-download-alt">${uiLabels.download} ${m.fileType.toUpperCase()}</a>
+        <a href="${pdfUrl}" download class="btn-download">${uiLabels.download} PDF</a>`;
+    } else {
+      downloadButtons = `<a href="${url}" download class="btn-download">${uiLabels.download} ${m.fileType.toUpperCase()}</a>`;
+    }
+
+    modalBody.innerHTML = `
+      <div class="modal-header-info">
+        <span class="card-module">${uiLabels.moduleLabel} ${m.module}: ${moduleNames[m.module] || ''}</span>
+        <span class="card-phase">${phaseNames[m.phase] || m.phase}</span>
+      </div>
+      <h2 class="modal-title">${icon} ${m.title}</h2>
+      <div class="modal-section">
+        <h4>${uiLabels.summary}</h4>
+        <p>${m.contentDescription || m.description || ''}</p>
+        ${m.objectives ? `<h4 style="margin-top:0.75rem">${uiLabels.objectives}</h4><ul class="modal-objectives">${m.objectives.split('\\n').filter(o => o.trim().length > 0).map(o => '<li>' + o.trim() + '</li>').join('')}</ul>` : ''}
+      </div>
+      <div class="modal-section">
+        <h4>${uiLabels.details}</h4>
+        <div class="modal-details-grid">
+          <span class="detail-label">${uiLabels.typeLabel}</span><span class="detail-value"><span class="card-type">${resourceTypeLabels[m.resourceType] || m.resourceType}</span></span>
+          ${m.duration ? `<span class="detail-label">${uiLabels.duration}</span><span class="detail-value">${m.duration}${m.durationEstimated ? ' <span class="est-badge">' + uiLabels.estimated + '</span>' : ''}</span>` : ''}
+          ${(m.equipment && m.equipment.length) ? `<span class="detail-label">${uiLabels.equipment}</span><span class="detail-value">${m.equipment.map(e => e.replace(/-/g, ' ')).join(', ')}${m.equipmentEstimated ? ' <span class="est-badge">' + uiLabels.estimated + '</span>' : ''}</span>` : ''}
+          ${(m.interactionFormats && m.interactionFormats.length) ? `<span class="detail-label">${uiLabels.interactionFormat}</span><span class="detail-value">${m.interactionFormats.map(f => f.replace(/-/g, ' ')).join(', ')}</span>` : ''}
+          ${m.groupSize ? `<span class="detail-label">${uiLabels.groupSize}</span><span class="detail-value">${m.groupSize}</span>` : ''}
+          <span class="detail-label">${uiLabels.fileLabel}</span><span class="detail-value">${m.fileType.toUpperCase()} (${m.filename})</span>
+          <span class="detail-label">${uiLabels.topicsLabel}</span><span class="detail-value">${topicBadges}</span>
+        </div>
+      </div>
+      <div class="modal-section">
+        <h4>${uiLabels.preview}</h4>
+        ${renderPreview(m)}
+      </div>
+      <div class="modal-actions">
+        ${downloadButtons}
+      </div>
+    `;
+    modalOverlay.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeModal() {
+    modalOverlay.classList.remove('open');
+    document.body.style.overflow = '';
+    modalBody.innerHTML = '';
+  }
+
+  function getDurationBucket(m) {
+    if (!m.duration) return null;
+    const d = parseInt(m.duration);
+    if (isNaN(d)) return null;
+    if (d <= 15) return 'short';
+    if (d <= 30) return 'medium';
+    if (d <= 60) return 'long';
+    return 'extended';
+  }
+
+  function getGroupSizeBucket(m) {
+    if (!m.groupSize) return null;
+    const s = m.groupSize.toString();
+    if (/pair/i.test(s)) return 'pairs';
+    const match = s.match(/(\d+)/);
+    if (!match) return null;
+    const n = parseInt(match[1]);
+    if (n <= 2) return 'pairs';
+    if (n <= 5) return 'small';
+    if (n <= 15) return 'medium';
+    return 'large';
+  }
+
+  function updateDropdownBadges() {
+    document.querySelectorAll('.filter-dropdown').forEach(dd => {
+      const checks = dd.querySelectorAll('.filter-panel input[type="checkbox"]:checked');
+      const btn = dd.querySelector('.filter-btn');
+      const count = [...checks].filter(c => !c.name.includes('unspec')).length;
+      const badge = btn.querySelector('.filter-badge');
+      if (count > 0) {
+        if (badge) { badge.textContent = count; }
+        else { btn.insertAdjacentHTML('afterbegin', `<span class="filter-badge">${count}</span>`); }
+        dd.classList.add('has-selection');
+      } else {
+        if (badge) badge.remove();
+        dd.classList.remove('has-selection');
+      }
+    });
+  }
+
+  function applyFilters() {
+    const query = searchInput.value.toLowerCase().trim();
+    const selectedModules = getCheckedValues('module');
+    const selectedPhases = getCheckedValues('phase');
+    const selectedTypes = getCheckedValues('resourceType');
+    const selectedTopics = getCheckedValues('topic');
+    const selectedDurations = getCheckedValues('duration');
+    const selectedEquipment = getCheckedValues('equipment');
+    const selectedFormats = getCheckedValues('format');
+    const selectedGroupSizes = getCheckedValues('groupsize');
+    const durationUnspecified = document.getElementById('duration-unspecified').checked;
+    const equipmentUnspecified = document.getElementById('equipment-unspecified').checked;
+    const formatUnspecified = document.getElementById('format-unspecified').checked;
+    const groupsizeUnspecified = document.getElementById('groupsize-unspecified').checked;
+    currentFiltered = materials.filter(m => {
+      if (query && !m.title.toLowerCase().includes(query) && !m.filename.toLowerCase().includes(query)) return false;
+      if (selectedModules.length && !selectedModules.includes(String(m.module))) return false;
+      if (selectedPhases.length && !selectedPhases.includes(m.phase)) return false;
+      if (selectedTypes.length && !selectedTypes.includes(m.resourceType)) return false;
+      if (selectedTopics.length && !selectedTopics.some(t => m.topics.includes(t))) return false;
+
+      if (selectedDurations.length) {
+        const bucket = getDurationBucket(m);
+        if (!bucket) { if (!durationUnspecified) return false; }
+        else if (!selectedDurations.includes(bucket)) return false;
+      }
+
+      if (selectedEquipment.length) {
+        const eq = m.equipment || [];
+        if (eq.length === 0) { if (!equipmentUnspecified) return false; }
+        else if (!selectedEquipment.some(e => eq.includes(e))) return false;
+      }
+
+      if (selectedFormats.length) {
+        const fmts = m.interactionFormats || [];
+        if (fmts.length === 0) { if (!formatUnspecified) return false; }
+        else if (!selectedFormats.some(f => fmts.includes(f))) return false;
+      }
+
+      if (selectedGroupSizes.length) {
+        const bucket = getGroupSizeBucket(m);
+        if (!bucket) { if (!groupsizeUnspecified) return false; }
+        else if (!selectedGroupSizes.includes(bucket)) return false;
+      }
+
+      return true;
+    });
+
+    grid.innerHTML = currentFiltered.map((m, i) => renderCard(m, i)).join('');
+    countEl.textContent = `${currentFiltered.length} ${uiLabels.materials}`;
+    noResults.style.display = currentFiltered.length === 0 ? 'block' : 'none';
+    grid.style.display = currentFiltered.length === 0 ? 'none' : '';
+
+    grid.querySelectorAll('.material-card').forEach(card => {
+      card.addEventListener('click', () => {
+        const idx = parseInt(card.dataset.index);
+        openModal(currentFiltered[idx]);
+      });
+      card.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); card.click(); }
+      });
+    });
+
+    updateDropdownBadges();
+  }
+
+  applyFilters();
+  searchInput.addEventListener('input', applyFilters);
+  document.querySelectorAll('.filter-panel input[type="checkbox"]').forEach(cb => cb.addEventListener('change', applyFilters));
+  document.getElementById('reset-filters').addEventListener('click', () => {
+    searchInput.value = '';
+    document.querySelectorAll('.filter-panel input[type="checkbox"]').forEach(cb => cb.checked = false);
+    document.getElementById('groupsize-unspecified').checked = true;
+    applyFilters();
+  });
+
+  // Modal close
+  document.getElementById('modal-close').addEventListener('click', closeModal);
+  modalOverlay.addEventListener('click', (e) => { if (e.target === modalOverlay) closeModal(); });
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModal(); });
+
+  // Bulk download
+  document.getElementById('download-filtered').addEventListener('click', () => {
+    if (currentFiltered.length === 0) return;
+    if (currentFiltered.length > 50) {
+      if (!confirm(`This will start downloading ${currentFiltered.length} files. Continue?`)) return;
+    }
+    currentFiltered.forEach((m, i) => {
+      setTimeout(() => {
+        const a = document.createElement('a');
+        a.href = `/materials/${encodeURI(m.path)}`;
+        a.download = m.filename;
+        a.style.display = 'none';
+        document.body.appendChild(a);
+        a.click();
+        a.remove();
+      }, i * 200);
+    });
+  });
+</script>
+
+<style>
+  .page-hero { padding: calc(72px + 4rem) 0 3rem; background: var(--color-bg-elevated); border-bottom: 1px solid var(--color-border); }
+
+  /* Filter Bar */
+  .filter-bar { background: var(--color-bg-card); border: 1px solid var(--color-border); border-radius: var(--radius); padding: 0.75rem; margin-bottom: 1.5rem; }
+  .filter-bar-row { display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center; }
+  .search-input { padding: 0.5rem 0.75rem; border: 1px solid var(--color-border); border-radius: var(--radius-sm); font-family: var(--font-body); font-size: 0.82rem; background: var(--color-bg); color: var(--color-text); outline: none; min-width: 180px; flex: 1; max-width: 260px; }
+  .search-input:focus { border-color: var(--color-accent); }
+
+  .filter-dropdown { position: relative; }
+  .filter-btn { display: flex; align-items: center; gap: 0.35rem; padding: 0.45rem 0.75rem; background: var(--color-bg); border: 1px solid var(--color-border); border-radius: var(--radius-sm); font-family: var(--font-body); font-size: 0.78rem; color: var(--color-text-muted); cursor: pointer; white-space: nowrap; transition: all 0.15s; }
+  .filter-btn:hover { border-color: var(--color-accent); color: var(--color-text); }
+  .filter-dropdown.has-selection .filter-btn { border-color: var(--color-accent); color: var(--color-accent); background: var(--color-accent-glow); }
+  .filter-dropdown.open .filter-btn { border-color: var(--color-accent); color: var(--color-text); }
+  .filter-arrow { font-size: 0.65rem; opacity: 0.6; }
+  .filter-badge { background: var(--color-accent); color: #fff; font-size: 0.65rem; font-weight: 700; min-width: 16px; height: 16px; border-radius: 100px; display: inline-flex; align-items: center; justify-content: center; padding: 0 4px; margin-right: 2px; }
+
+  .filter-panel { display: none; position: absolute; top: calc(100% + 4px); left: 0; z-index: 40; background: var(--color-bg-card); border: 1px solid var(--color-border); border-radius: var(--radius); padding: 0.5rem; min-width: 200px; box-shadow: 0 8px 24px rgba(0,0,0,0.1); }
+  .filter-dropdown.open .filter-panel { display: flex; flex-direction: column; gap: 0.15rem; }
+  .filter-panel-scroll { max-height: 240px; overflow-y: auto; }
+
+  .filter-option { display: flex; align-items: center; gap: 0.45rem; padding: 0.3rem 0.5rem; border-radius: 4px; cursor: pointer; font-size: 0.8rem; color: var(--color-text-muted); white-space: nowrap; }
+  .filter-option:hover { background: var(--color-bg-elevated); }
+  .filter-option input[type="checkbox"] { display: none; }
+  .filter-check { width: 15px; height: 15px; border: 1.5px solid var(--color-border); border-radius: 3px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; transition: all 0.15s; }
+  .filter-option input:checked + .filter-check { background: var(--color-accent); border-color: var(--color-accent); }
+  .filter-option input:checked + .filter-check::after { content: ''; width: 7px; height: 4px; border-left: 1.5px solid #fff; border-bottom: 1.5px solid #fff; transform: rotate(-45deg) translateY(-1px); }
+  .filter-option input:checked ~ .filter-label { color: var(--color-text); font-weight: 500; }
+  .filter-option-muted { border-top: 1px solid var(--color-border); margin-top: 0.25rem; padding-top: 0.4rem; font-size: 0.75rem; opacity: 0.8; }
+
+  .filter-reset { font-size: 0.75rem; color: var(--color-accent); background: none; border: none; cursor: pointer; font-family: var(--font-body); font-weight: 500; padding: 0.45rem 0.5rem; white-space: nowrap; }
+  .filter-reset:hover { text-decoration: underline; }
+
+  /* Results */
+  .results-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.25rem; flex-wrap: wrap; gap: 0.5rem; }
+  .results-count { font-size: 0.85rem; color: var(--color-text-muted); font-weight: 500; }
+  .results-actions { display: flex; gap: 0.5rem; align-items: center; }
+  .btn-bulk-download { display: flex; align-items: center; gap: 0.4rem; padding: 0.5rem 1rem; background: var(--color-accent); color: #fff; border: none; border-radius: var(--radius-sm); font-family: var(--font-body); font-size: 0.8rem; font-weight: 500; cursor: pointer; transition: opacity 0.2s; }
+  .btn-bulk-download:hover { opacity: 0.85; }
+  .results-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1rem; }
+  .no-results { text-align: center; padding: 3rem 1rem; color: var(--color-text-muted); }
+
+  /* Material cards */
+  :global(.material-card) { background: var(--color-bg-card); border: 1px solid var(--color-border); border-radius: var(--radius); padding: 1.25rem; transition: transform 0.2s, border-color 0.2s; cursor: pointer; }
+  :global(.material-card:hover) { transform: translateY(-2px); border-color: var(--color-accent); }
+  :global(.card-top) { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem; }
+  :global(.card-module) { font-size: 0.72rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; color: var(--color-accent); }
+  :global(.card-phase) { font-size: 0.7rem; color: var(--color-text-muted); background: var(--color-bg-elevated); padding: 0.15rem 0.5rem; border-radius: 100px; }
+  :global(.card-title) { font-family: var(--font-body); font-size: 0.95rem; font-weight: 600; color: var(--color-text); line-height: 1.4; margin-bottom: 0.4rem; }
+  :global(.card-desc) { font-size: 0.78rem; color: var(--color-text-muted); line-height: 1.5; margin-bottom: 0.6rem; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+  :global(.card-objectives) { font-size: 0.75rem; color: var(--color-text-muted); line-height: 1.4; margin-bottom: 0.5rem; font-style: italic; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+  :global(.card-meta) { display: flex; gap: 0.75rem; align-items: center; margin-bottom: 0.6rem; }
+  :global(.card-type) { font-size: 0.75rem; font-weight: 500; color: var(--color-accent-light); background: var(--color-accent-glow); padding: 0.15rem 0.5rem; border-radius: 4px; }
+  :global(.card-duration) { font-size: 0.72rem; color: var(--color-text-muted); }
+  :global(.est-badge) { font-size: 0.62rem; color: var(--color-text-muted); opacity: 0.7; font-style: italic; }
+  :global(.card-ext) { font-size: 0.7rem; font-weight: 600; color: var(--color-text-muted); letter-spacing: 0.04em; }
+  :global(.modal-objectives) { font-size: 0.85rem; color: var(--color-text); line-height: 1.6; padding-left: 1.2rem; margin: 0.3rem 0 0; }
+  :global(.modal-objectives li) { margin-bottom: 0.25rem; }
+  :global(.card-tags) { display: flex; flex-wrap: wrap; gap: 0.3rem; }
+  :global(.tag) { font-size: 0.68rem; color: var(--color-text-muted); background: var(--color-bg-elevated); padding: 0.1rem 0.45rem; border-radius: 3px; text-transform: capitalize; }
+
+  /* Modal */
+  .modal-overlay { position: fixed; inset: 0; z-index: 100; background: rgba(0,0,0,0.5); display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: opacity 0.25s; padding: 1rem; }
+  .modal-overlay.open { opacity: 1; pointer-events: auto; }
+  .modal { background: var(--color-bg); border-radius: var(--radius); max-width: 800px; width: 100%; max-height: 90vh; overflow-y: auto; position: relative; box-shadow: 0 20px 60px rgba(0,0,0,0.15); }
+  .modal-close { position: absolute; top: 1rem; right: 1rem; background: none; border: none; cursor: pointer; color: var(--color-text-muted); z-index: 2; padding: 0.25rem; border-radius: 4px; }
+  .modal-close:hover { background: var(--color-bg-elevated); color: var(--color-text); }
+  :global(.modal-body) { padding: 2rem; }
+  :global(.modal-header-info) { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem; }
+  :global(.modal-title) { font-family: var(--font-body); font-size: 1.3rem; font-weight: 700; color: var(--color-text); line-height: 1.3; margin-bottom: 1.25rem; }
+  :global(.modal-section) { margin-bottom: 1.5rem; }
+  :global(.modal-section h4) { font-family: var(--font-body); font-size: 0.78rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; color: var(--color-text-muted); margin-bottom: 0.5rem; }
+  :global(.modal-section p) { font-size: 0.9rem; color: var(--color-text); line-height: 1.6; }
+  :global(.modal-details-grid) { display: grid; grid-template-columns: auto 1fr; gap: 0.4rem 1rem; align-items: center; font-size: 0.85rem; }
+  :global(.detail-label) { font-weight: 600; color: var(--color-text-muted); font-size: 0.8rem; }
+  :global(.detail-value) { color: var(--color-text); word-break: break-word; }
+  :global(.preview-frame) { width: 100%; height: 500px; border: 1px solid var(--color-border); border-radius: var(--radius-sm); }
+  :global(.preview-image) { max-width: 100%; border-radius: var(--radius-sm); border: 1px solid var(--color-border); }
+  :global(.preview-video) { width: 100%; border-radius: var(--radius-sm); }
+  :global(.preview-na) { padding: 2rem; text-align: center; background: var(--color-bg-elevated); border-radius: var(--radius-sm); color: var(--color-text-muted); font-size: 0.85rem; }
+  :global(.modal-actions) { display: flex; gap: 0.75rem; padding-top: 0.5rem; border-top: 1px solid var(--color-border); margin-top: 1rem; }
+  :global(.btn-download) { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.7rem 1.5rem; background: var(--color-accent); color: #fff; border-radius: var(--radius-sm); font-family: var(--font-body); font-size: 0.9rem; font-weight: 600; text-decoration: none; transition: opacity 0.2s; }
+  :global(.btn-download:hover) { opacity: 0.85; }
+  :global(.btn-download-alt) { background: var(--color-bg-elevated); color: var(--color-text); border: 1px solid var(--color-border); }
+  :global(.btn-download-alt:hover) { background: var(--color-bg-card); opacity: 1; }
+
+  @media (max-width: 700px) {
+    .filter-bar-row { flex-direction: column; align-items: stretch; }
+    .search-input { max-width: none; }
+    .filter-dropdown { width: 100%; }
+    .filter-btn { width: 100%; justify-content: space-between; }
+    .filter-panel { left: 0; right: 0; min-width: auto; }
+    .results-grid { grid-template-columns: 1fr; }
+    .modal { max-width: 95vw; }
+    :global(.preview-frame) { height: 350px; }
+  }
+</style>

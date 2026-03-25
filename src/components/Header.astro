@@ -1,0 +1,299 @@
+---
+import { t, languages, getLocalePath, type Lang } from '../i18n/translations';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const currentPath = Astro.url.pathname.replace(/^\/(en|cs|lt|ro)/, '') || '/';
+
+const navItems = [
+  { key: 'nav.home', path: '/' },
+  { key: 'nav.about', path: '/about/' },
+  { key: 'nav.results', path: '/results/' },
+  { key: 'nav.materials', path: '/materials/' },
+  { key: 'nav.partners', path: '/partners/' },
+  { key: 'nav.news', path: '/news/' },
+  { key: 'nav.contact', path: '/contact/' },
+];
+---
+
+<header class="header">
+  <div class="header-inner container">
+    <a href={getLocalePath(lang, '/')} class="logo">
+      <img src="/images/polcom-logo.png" alt="POLICE-COM" class="logo-img" />
+      <span class="logo-text">POLICE-COM</span>
+    </a>
+
+    <nav class="nav" id="main-nav">
+      {navItems.map((item) => (
+        <a
+          href={getLocalePath(lang, item.path)}
+          class:list={['nav-link', { active: currentPath === item.path }]}
+        >
+          {t(lang, item.key)}
+        </a>
+      ))}
+    </nav>
+
+    <div class="header-actions">
+      <div class="lang-switcher">
+        <button class="lang-current" id="lang-toggle" aria-expanded="false">
+          {languages[lang]}
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+            <path d="M3 5L6 8L9 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        </button>
+        <div class="lang-dropdown" id="lang-dropdown">
+          {Object.entries(languages).map(([code, name]) => (
+            <a
+              href={getLocalePath(code as Lang, currentPath)}
+              class:list={['lang-option', { active: code === lang }]}
+            >
+              {name}
+            </a>
+          ))}
+        </div>
+      </div>
+
+      <button class="mobile-toggle" id="mobile-toggle" aria-label="Toggle menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<script>
+  const langToggle = document.getElementById('lang-toggle');
+  const langDropdown = document.getElementById('lang-dropdown');
+  const mobileToggle = document.getElementById('mobile-toggle');
+  const mainNav = document.getElementById('main-nav');
+
+  langToggle?.addEventListener('click', () => {
+    const expanded = langToggle.getAttribute('aria-expanded') === 'true';
+    langToggle.setAttribute('aria-expanded', String(!expanded));
+    langDropdown?.classList.toggle('open');
+  });
+
+  mobileToggle?.addEventListener('click', () => {
+    mobileToggle.classList.toggle('active');
+    mainNav?.classList.toggle('open');
+  });
+
+  document.addEventListener('click', (e) => {
+    if (!langToggle?.contains(e.target as Node) && !langDropdown?.contains(e.target as Node)) {
+      langToggle?.setAttribute('aria-expanded', 'false');
+      langDropdown?.classList.remove('open');
+    }
+  });
+</script>
+
+<style>
+  .header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    background: rgba(255, 255, 255, 0.92);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 72px;
+    gap: 2rem;
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    color: var(--color-text);
+    text-decoration: none;
+    flex-shrink: 0;
+  }
+
+  .logo:hover {
+    color: var(--color-text);
+  }
+
+  .logo-img {
+    height: 40px;
+    width: auto;
+    flex-shrink: 0;
+  }
+
+  .logo-text {
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+  }
+
+  .nav {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+  }
+
+  .nav-link {
+    padding: 0.5rem 0.85rem;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--color-text-muted);
+    border-radius: var(--radius-sm);
+    transition: color 0.2s, background 0.2s;
+  }
+
+  .nav-link:hover,
+  .nav-link.active {
+    color: var(--color-text);
+    background: var(--color-bg-elevated);
+  }
+
+  .nav-link.active {
+    color: var(--color-accent-light);
+  }
+
+  .header-actions {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .lang-switcher {
+    position: relative;
+  }
+
+  .lang-current {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.4rem 0.75rem;
+    background: var(--color-bg-elevated);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    color: var(--color-text-muted);
+    font-size: 0.8rem;
+    font-family: var(--font-body);
+    cursor: pointer;
+    transition: border-color 0.2s;
+  }
+
+  .lang-current:hover {
+    border-color: var(--color-accent);
+    color: var(--color-text);
+  }
+
+  .lang-dropdown {
+    position: absolute;
+    top: calc(100% + 8px);
+    right: 0;
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    padding: 0.35rem;
+    min-width: 140px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-4px);
+    transition: all 0.2s;
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.1);
+  }
+
+  .lang-dropdown.open {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  .lang-option {
+    display: block;
+    padding: 0.45rem 0.75rem;
+    font-size: 0.8rem;
+    color: var(--color-text-muted);
+    border-radius: 6px;
+    transition: background 0.15s, color 0.15s;
+  }
+
+  .lang-option:hover {
+    background: var(--color-surface);
+    color: var(--color-text);
+  }
+
+  .lang-option.active {
+    color: var(--color-accent-light);
+  }
+
+  .mobile-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    padding: 8px;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+
+  .mobile-toggle span {
+    display: block;
+    width: 22px;
+    height: 2px;
+    background: var(--color-text);
+    border-radius: 2px;
+    transition: transform 0.3s, opacity 0.3s;
+  }
+
+  .mobile-toggle.active span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+  }
+
+  .mobile-toggle.active span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .mobile-toggle.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
+  }
+
+  @media (max-width: 768px) {
+    .nav {
+      position: fixed;
+      top: 72px;
+      left: 0;
+      right: 0;
+      background: rgba(255, 255, 255, 0.97);
+      backdrop-filter: blur(20px);
+      flex-direction: column;
+      padding: 1.5rem;
+      border-bottom: 1px solid var(--color-border);
+      transform: translateY(-100%);
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s;
+    }
+
+    .nav.open {
+      transform: translateY(0);
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .nav-link {
+      font-size: 1rem;
+      padding: 0.75rem 1rem;
+      width: 100%;
+    }
+
+    .mobile-toggle {
+      display: flex;
+    }
+  }
+</style>

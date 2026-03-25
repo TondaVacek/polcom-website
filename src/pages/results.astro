@@ -1,0 +1,221 @@
+---
+import Layout from '../layouts/Layout.astro';
+import ModuleCard from '../components/ModuleCard.astro';
+import { t, defaultLang } from '../i18n/translations';
+
+const lang = defaultLang;
+---
+
+<Layout title="Results | POLICE-COM" lang={lang}>
+  <section class="page-hero">
+    <div class="container">
+      <span class="section-label">Project outcomes</span>
+      <h1 class="section-title animate-in">Project Results</h1>
+      <p class="section-subtitle animate-in delay-1">{t(lang, 'results.description')}</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2 class="section-title">Training Modules</h2>
+      <p class="section-subtitle" style="margin-bottom: 3rem;">{t(lang, 'results.explore')}</p>
+
+      <div class="modules-grid">
+        {[1, 2, 3, 4, 5, 6].map((n) => (
+          <ModuleCard
+            number={n}
+            title={t(lang, `module.${n}.title`)}
+            description={t(lang, `module.${n}.desc`)}
+            delay={n * 0.1}
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section outputs-section">
+    <div class="container">
+      <span class="section-label">Main Outputs</span>
+      <h2 class="section-title">Project Deliverables</h2>
+      <div class="outputs-grid">
+        <div class="output-card">
+          <h3>Competency-Based Curriculum</h3>
+          <p>Six hands-on modules—Active Listening Mastery, Fair & Inclusive Communication, High-Pressure Messaging, Conflict De-escalation & Resolution, Negotiation & Persuasion Tactics, and Emotional Intelligence.</p>
+        </div>
+        <div class="output-card">
+          <h3>Interactive Training Tools</h3>
+          <p>Role-play scenario cards, stress-test activities, quick-reference infographics for high-risk calls and short video simulations. Use them standalone or alongside the curriculum.</p>
+        </div>
+        <div class="output-card">
+          <h3>POLICE-COM Online Platform</h3>
+          <p>A multilingual hub (EN, CZ, LT, RO) that hosts every module and tool, plus quizzes, badges and discussion boards.</p>
+          <a href="https://polcom-training.eu/" class="output-link" target="_blank" rel="noopener">Visit the Platform</a>
+        </div>
+        <div class="output-card">
+          <h3>Pilot & Best-Practice Report</h3>
+          <p>Resources are trialled with educators and officers in three countries; findings feed into a public report on what works in real training settings.</p>
+        </div>
+        <div class="output-card">
+          <h3>Sustainability & Dissemination Kit</h3>
+          <p>Long-term hosting plan, maintenance agreement and a ready-made media kit (logo set, explainer video, social-media templates).</p>
+        </div>
+      </div>
+      <div class="outputs-list" style="margin-top: 3rem;">
+        <h3>Main Outputs</h3>
+        <ul>
+          <li>Curriculum with educator resources</li>
+          <li>Interactive tools: cards, activities, infographics, videos</li>
+          <li>Multilingual online learning platform</li>
+          <li>Active Listening Mastery</li>
+          <li>Fair & Inclusive Communication</li>
+          <li>High-Pressure Messaging</li>
+          <li>Conflict De-escalation & Resolution</li>
+          <li>Negotiation & Persuasion Tactics</li>
+          <li>Emotional Intelligence for Policing</li>
+          <li>Pilot evaluation & best-practice report</li>
+          <li>Sustainability & dissemination kit</li>
+        </ul>
+      </div>
+
+      <a href="https://polcom-training.eu/" class="btn btn-primary" style="margin-top: 2.5rem;" target="_blank" rel="noopener">
+        Access the Training Platform      </a>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .page-hero {
+    padding: calc(72px + 4rem) 0 3rem;
+    background: var(--color-bg-elevated);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .modules-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    font-weight: 600;
+    border-radius: var(--radius-sm);
+    transition: all 0.25s;
+    text-decoration: none;
+  }
+
+  .btn-primary {
+    background: var(--color-accent);
+    color: #ffffff;
+  }
+
+  .btn-primary:hover {
+    background: var(--color-accent-light);
+    color: #ffffff;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 16px rgba(27, 58, 107, 0.25);
+  }
+
+  @media (max-width: 900px) {
+    .modules-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  @media (max-width: 560px) {
+    .modules-grid { grid-template-columns: 1fr; }
+  }
+
+  .outputs-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+    margin-top: 2rem;
+  }
+
+  .output-card {
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    padding: 1.75rem;
+    transition: transform 0.3s, border-color 0.3s;
+  }
+
+  .output-card:hover {
+    transform: translateY(-3px);
+    border-color: var(--color-accent);
+  }
+
+  .output-card h3 {
+    font-family: var(--font-body);
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--color-text);
+    margin-bottom: 0.5rem;
+  }
+
+  .output-card p {
+    font-size: 0.875rem;
+    color: var(--color-text-muted);
+    line-height: 1.6;
+  }
+
+  @media (max-width: 900px) {
+    .outputs-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  @media (max-width: 560px) {
+    .outputs-grid { grid-template-columns: 1fr; }
+  }
+
+  .output-link {
+    display: inline-block;
+    margin-top: 0.75rem;
+    font-size: 0.825rem;
+    font-weight: 600;
+    color: var(--color-accent);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .output-link:hover {
+    color: var(--color-accent-light);
+  }
+
+  .outputs-list h3 {
+    font-family: var(--font-body);
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--color-text);
+    margin-bottom: 1rem;
+  }
+
+  .outputs-list ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+
+  .outputs-list li {
+    font-size: 0.925rem;
+    color: var(--color-text-muted);
+    padding-left: 1.5rem;
+    position: relative;
+    line-height: 1.6;
+  }
+
+  .outputs-list li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.55em;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--color-accent);
+  }
+</style>

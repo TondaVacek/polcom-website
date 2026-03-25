@@ -1,0 +1,142 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { t } from '../../i18n/translations';
+
+const lang = 'ro' as const;
+
+const partners = [
+  {
+    name: 'Mise HERo',
+    country: 'Republica Ceha',
+    logo: '/images/misehero-logo.png',
+    role: 'este o companie ceha formata cu viziunea de a folosi jocurile și mecanica jocurilor in educație – prezentand programe de formare imersive și placute pentru adulți in Uniunea Europeana',
+  },
+  {
+    name: 'CPIP',
+    country: 'Romania',
+    logo: '/images/cpip-logo.png',
+    role: 'Centrul pentru Promovarea Invatarii Permanente (CPIP) este o instituție neguvernamentala, non-profit, activa in domeniul educațional și social.',
+  },
+  {
+    name: 'Mindset Mentors',
+    country: 'Republica Ceha',
+    logo: '/images/mindset-mentors-logo.png',
+    role: 'Misiunea Mindset Mentors este de a co-crea echipe și companii increzatoare. Companii in care oamenii comunica deschis, lucreaza impreuna și ating succesul. Mindset Mentors ii invața pe alții cum sa transforme comunicarea intr-un motor al succesului. Ei cred ca o buna comunicare și o mentalitate corecta sunt fundamentul echipelor și companiilor care funcționeaza bine. Serviciile lor sunt concepute pentru a imbunatați nu numai relațiile de lucru, ci și modul in care echipele gandesc și rezolva problemele.',
+  },
+  {
+    name: 'Universitatea Mikolas Romeris',
+    country: 'Lituania',
+    logo: '/images/mru-logo.png',
+    role: 'MRU colaboreaza strans cu peste 350 de universitați, instituții publice și private, participa la rețele academice, profesionale și intersectoriale.',
+  },
+  {
+    name: 'Fondul de inovare sociala',
+    country: 'Lituania',
+    logo: '/images/sif-logo.png',
+    role: 'este o organizație neguvernamentala inființata in 1994 in Lituania ca fond de caritate și de sprijin. Pentru a asigura egalitatea de șanse pentru persoanele excluse social prin inovare sociala și educație.',
+  },
+  {
+    name: 'Sindicatul Polițiștilor Europeni EUROPOL',
+    country: 'Romania',
+    logo: '/images/europol-union-logo.jpg',
+    role: 'este o organizație sindicala a polițiștilor inființata in subordinea Ministerului Afacerilor Interne al Guvernului Romaniei. Acest sindicat apara drepturile fundamentale și profesionale ale polițiștilor și incearca sa gaseasca o alternativa eficienta, versatila și independenta pentru a crește nivelul de reprezentare onesta a polițiștilor romani.',
+  },
+];
+---
+
+<Layout title="Parteneri | POLICE-COM" lang={lang}>
+  <section class="page-hero">
+    <div class="container">
+      <span class="section-label">Consorțiu</span>
+      <h1 class="section-title animate-in">PARTENERI</h1>
+      <p class="section-subtitle animate-in delay-1">Consorțiul POLICE-COM reunește instituții din intreaga Uniune Europeana, combinand expertiza academica cu experiența practica in formarea forțelor de ordine.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="partners-grid">
+        {partners.map((partner, i) => (
+          <div class={`partner-card animate-in delay-${i + 1}`}>
+            <div class="partner-logo">
+              <img src={partner.logo} alt={`${partner.name} logo`} />
+            </div>
+            <h3 class="partner-name">{partner.name}</h3>
+            <span class="partner-country">{partner.country}</span>
+            <p class="partner-role">{partner.role}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .page-hero {
+    padding: calc(72px + 4rem) 0 3rem;
+    background: var(--color-bg-elevated);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .partners-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+
+  .partner-card {
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    padding: 2rem;
+    transition: transform 0.3s, border-color 0.3s;
+  }
+
+  .partner-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--color-accent);
+  }
+
+  .partner-logo {
+    height: 60px;
+    margin-bottom: 1.25rem;
+    display: flex;
+    align-items: center;
+  }
+
+  .partner-logo img {
+    max-height: 60px;
+    max-width: 160px;
+    object-fit: contain;
+  }
+
+  .partner-name {
+    font-family: var(--font-body);
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--color-text);
+    margin-bottom: 0.35rem;
+    line-height: 1.3;
+  }
+
+  .partner-country {
+    display: inline-block;
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    color: var(--color-accent);
+    margin-bottom: 1rem;
+  }
+
+  .partner-role {
+    font-size: 0.9rem;
+    color: var(--color-text-muted);
+    line-height: 1.6;
+  }
+
+  @media (max-width: 768px) {
+    .partners-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

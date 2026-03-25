@@ -1,0 +1,221 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import ModuleCard from '../../components/ModuleCard.astro';
+import { t } from '../../i18n/translations';
+
+const lang = 'ro' as const;
+---
+
+<Layout title="Rezultate | POLICE-COM" lang={lang}>
+  <section class="page-hero">
+    <div class="container">
+      <span class="section-label">Rezultate</span>
+      <h1 class="section-title animate-in">REZULTATELE PROIECTULUI</h1>
+      <p class="section-subtitle animate-in delay-1">{t(lang, 'results.description')}</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2 class="section-title">Module de formare</h2>
+      <p class="section-subtitle" style="margin-bottom: 3rem;">{t(lang, 'results.explore')}</p>
+
+      <div class="modules-grid">
+        {[1, 2, 3, 4, 5, 6].map((n) => (
+          <ModuleCard
+            number={n}
+            title={t(lang, `module.${n}.title`)}
+            description={t(lang, `module.${n}.desc`)}
+            delay={n * 0.1}
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section outputs-section">
+    <div class="container">
+      <span class="section-label">Rezultate principale</span>
+      <h2 class="section-title">Livrabilele proiectului</h2>
+      <div class="outputs-grid">
+        <div class="output-card">
+          <h3>Curriculum bazat pe competențe</h3>
+          <p>Șase module practice - Maiestria ascultarii active, Comunicarea echitabila și incluziva, Mesajele la presiune ridicata, De-escaladarea și rezolvarea conflictelor, Tactici de negociere și persuasiune și Inteligența emoționala.</p>
+        </div>
+        <div class="output-card">
+          <h3>Instrumente interactive de formare</h3>
+          <p>Cartonașe cu scenarii de joc de rol, activitați de testare a stresului, infografice de referința rapida pentru apelurile cu risc ridicat și simulari video scurte. Utilizați-le independent sau alaturi de programa școlara.</p>
+        </div>
+        <div class="output-card">
+          <h3>Platforma online POLICE-COM</h3>
+          <p>Un hub multilingv (EN, CZ, LT, RO) care gazduiește fiecare modul și instrument, plus teste, insigne și forumuri de discuții.</p>
+          <a href="https://polcom-training.eu/" class="output-link" target="_blank" rel="noopener">Vizitați platforma</a>
+        </div>
+        <div class="output-card">
+          <h3>Raport pilot și de bune practici</h3>
+          <p>Resursele sunt testate cu educatori și ofițeri din trei țari; constatarile sunt incluse intr-un raport public privind ceea ce funcționeaza in situații reale de formare.</p>
+        </div>
+        <div class="output-card">
+          <h3>Kit de durabilitate și diseminare</h3>
+          <p>Plan de gazduire pe termen lung, contract de intreținere și un kit media gata pregatit (set de logo-uri, video explicativ, șabloane pentru social-media).</p>
+        </div>
+      </div>
+      <div class="outputs-list" style="margin-top: 3rem;">
+        <h3>Rezultate principale</h3>
+        <ul>
+          <li>Curriculum cu resurse pentru educatori</li>
+          <li>Instrumente interactive: cartonașe, activitați, infografice, videoclipuri</li>
+          <li>Platforma de invațare online multilingva</li>
+          <li>Maiestria ascultarii active</li>
+          <li>Comunicarea echitabila și incluziva</li>
+          <li>Mesajele la presiune ridicata</li>
+          <li>De-escaladarea și rezolvarea conflictelor</li>
+          <li>Tactici de negociere și persuasiune</li>
+          <li>Inteligența emoționala in poliție</li>
+          <li>Evaluare pilot și raport de bune practici</li>
+          <li>Kit de durabilitate și diseminare</li>
+        </ul>
+      </div>
+
+      <a href="https://polcom-training.eu/" class="btn btn-primary" style="margin-top: 2.5rem;" target="_blank" rel="noopener">
+        Accesați platforma de formare      </a>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .page-hero {
+    padding: calc(72px + 4rem) 0 3rem;
+    background: var(--color-bg-elevated);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .modules-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    font-weight: 600;
+    border-radius: var(--radius-sm);
+    transition: all 0.25s;
+    text-decoration: none;
+  }
+
+  .btn-primary {
+    background: var(--color-accent);
+    color: #ffffff;
+  }
+
+  .btn-primary:hover {
+    background: var(--color-accent-light);
+    color: #ffffff;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 16px rgba(27, 58, 107, 0.25);
+  }
+
+  @media (max-width: 900px) {
+    .modules-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  @media (max-width: 560px) {
+    .modules-grid { grid-template-columns: 1fr; }
+  }
+
+  .outputs-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+    margin-top: 2rem;
+  }
+
+  .output-card {
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    padding: 1.75rem;
+    transition: transform 0.3s, border-color 0.3s;
+  }
+
+  .output-card:hover {
+    transform: translateY(-3px);
+    border-color: var(--color-accent);
+  }
+
+  .output-card h3 {
+    font-family: var(--font-body);
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--color-text);
+    margin-bottom: 0.5rem;
+  }
+
+  .output-card p {
+    font-size: 0.875rem;
+    color: var(--color-text-muted);
+    line-height: 1.6;
+  }
+
+  @media (max-width: 900px) {
+    .outputs-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  @media (max-width: 560px) {
+    .outputs-grid { grid-template-columns: 1fr; }
+  }
+
+  .output-link {
+    display: inline-block;
+    margin-top: 0.75rem;
+    font-size: 0.825rem;
+    font-weight: 600;
+    color: var(--color-accent);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .output-link:hover {
+    color: var(--color-accent-light);
+  }
+
+  .outputs-list h3 {
+    font-family: var(--font-body);
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--color-text);
+    margin-bottom: 1rem;
+  }
+
+  .outputs-list ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+
+  .outputs-list li {
+    font-size: 0.925rem;
+    color: var(--color-text-muted);
+    padding-left: 1.5rem;
+    position: relative;
+    line-height: 1.6;
+  }
+
+  .outputs-list li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.55em;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--color-accent);
+  }
+</style>

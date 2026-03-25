@@ -1,0 +1,179 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { t } from '../../i18n/translations';
+
+const lang = 'lt' as const;
+---
+
+<Layout title="Apie | POLICE-COM" lang={lang}>
+  <section class="page-hero">
+    <div class="container">
+      <span class="section-label">Apie projektą</span>
+      <h1 class="section-title animate-in">MŪSŲ MISIJA</h1>
+      <p class="section-subtitle animate-in delay-1">Tobuliname būsimųjų policijos pareigūnų mokymą ir remiame teisėsaugos profesinį tobulėjimą naudodami pažangiausias komunikacijos priemones.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container content-grid">
+      <div class="content-main">
+        <h2>Mūsų misija</h2>
+        <p>Sveiki atvykę į projektą „POLICE-COM", kuriame tobuliname būsimųjų policijos pareigūnų mokymą ir remiame teisėsaugos profesinį tobulėjimą. Mūsų projekto esmė – suteikti dėstytojams galimybę naudotis pažangiausiomis, įtraukiančiomis priemonėmis, kuriose daugiausia dėmesio skiriama vienam iš svarbiausių policijos veiklos aspektų: Bendravimas.</p>
+        <p>Šiuolaikiniame pasaulyje veiksmingas bendravimas yra sėkmingos policijos veiklos pagrindas. Policijos pareigūnams tenka sudėtingai bendrauti su kolegomis, viršininkais, aukomis, nusikaltėliais ar visuomene. Pripažįstant šį svarbų poreikį, gimė projektas POLICE-COM, subūręs išskirtinį konsorciumą partnerių, įskaitant universitetus, mažąsias ir vidutines įmones, nevyriausybines organizacijas ir policijos profesinę sąjungą iš Čekijos, Lietuvos ir Rumunijos. Šie partneriai yra švietimo, mokymo programų kūrimo ir naujoviškų mokymo metodų lyderiai, todėl mūsų projektas grindžiamas patirtimi ir pažangiais sprendimais.</p>
+        <p>Mūsų vizija – sukurti dinamišką mokymo platformą, kuri pakeistų bendravimo įgūdžių mokymą policijos akademijose ir teisėsaugos institucijose. Ši platforma bus išsamus šaltinis, kuriame bus daugybė žaidybinių priemonių – užduočių, žaidimų, mokomųjų kortelių, vaizdo įrašų ir infografikų, sukurtų taip, kad mokymasis būtų patrauklus ir veiksmingas. Plečiame tradicinio mokymo ribas, taikydami tokius metodus, kaip žaidybinimas, mokymasis per patirtį ir palengvinimas, kurių tikslas – pagilinti mokymų dalyvių žinių išsaugojimą.</p>
+        <p>Vienas iš išskirtinių mūsų platformos bruožų – naujoviškos mokymo priemonės, pavyzdžiui, trumpi mokomieji vaizdo įrašai, garso ir vaizdo patarimai, skirti bendravimui pagerinti, ir žaidimo elementai, pavyzdžiui, žaidimo kortelės, skirtos realaus gyvenimo scenarijams išbandyti. Nesvarbu, ar tai būtų konfliktų sprendimo įvaldymas, mokymasis bendrauti empatiškai, ar streso valdymas didelio spaudimo situacijose, mūsų platforma siūlo praktinius, interaktyvius sprendimus.</p>
+        <p>Apsilankykite mūsų <a href="https://polcom-training.eu/" target="_blank" rel="noopener">„PoliceCOM" mokymo platformoje</a>.</p>
+        <p>Susipažinkite su mūsų interneto svetaine ir sužinokite daugiau apie mūsų partnerius ir apie tai, kaip projektas POLICE-COM nustato naujus teisėsaugos institucijų bendravimo mokymo standartus. Drauge kuriame ateitį, kurioje policijos pareigūnai bus ne tik įgudę atlikti savo pareigas, bet ir išskirtiniai komunikacijos specialistai, pasirengę užtikrintai ir pagarbiai spręsti šiuolaikinės policijos veiklos iššūkius.</p>
+      </div>
+
+      <aside class="content-sidebar">
+        <div class="info-card">
+          <h3>Projekto informacija</h3>
+          <dl>
+            <dt>Programa</dt>
+            <dd>Erasmus+</dd>
+            <dt>Projekto numeris</dt>
+            <dd>2023-1-CZ01-KA220-VET-000167148</dd>
+            <dt>Trukmė</dt>
+            <dd>2023–2026</dd>
+            <dt>Šalys</dt>
+            <dd>Čekija, Lietuva, Rumunija</dd>
+            <dt>Partneriai</dt>
+            <dd>6 organizacijos</dd>
+            <dt>Kontaktas</dt>
+            <dd><a class="obf-email" data-u="antonin.vacek" data-d="misehero" data-t="cz"></a></dd>
+          </dl>
+        </div>
+
+        <div class="info-card" style="margin-top: 1.5rem;">
+          <h3>Platformos funkcijos</h3>
+          <ul class="feature-list">
+            <li>Žaidybinės mokymo priemonės</li>
+            <li>Vaidmenų scenarijų kortelės</li>
+            <li>Trumpos vaizdo simuliacijos</li>
+            <li>Greitos nuorodos infografikos</li>
+            <li>Viktorinos ir ženkliukai</li>
+            <li>4 kalbos (EN, CZ, LT, RO)</li>
+          </ul>
+        </div>
+      </aside>
+    </div>
+  </section>
+</Layout>
+
+<script>
+  document.querySelectorAll('.obf-email').forEach(el => {
+    const u = el.dataset.u;
+    const d = el.dataset.d;
+    const t = el.dataset.t;
+    const addr = u + '@' + d + '.' + t;
+    el.href = 'mai' + 'lto:' + addr;
+    el.textContent = addr;
+  });
+</script>
+
+<style>
+  .page-hero {
+    padding: calc(72px + 4rem) 0 3rem;
+    background: var(--color-bg-elevated);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .content-grid {
+    display: grid;
+    grid-template-columns: 1fr 320px;
+    gap: 4rem;
+    align-items: start;
+  }
+
+  .content-main h2 {
+    font-family: var(--font-display);
+    font-size: 1.75rem;
+    font-weight: 400;
+    margin: 2.5rem 0 1rem;
+    color: var(--color-text);
+  }
+
+  .content-main h2:first-child {
+    margin-top: 0;
+  }
+
+  .content-main p {
+    color: var(--color-text-muted);
+    line-height: 1.8;
+    margin-bottom: 1rem;
+  }
+
+  .info-card {
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    padding: 1.75rem;
+    position: static;
+  }
+
+  .info-card h3 {
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--color-accent);
+    margin-bottom: 1.25rem;
+  }
+
+  .info-card dl {
+    display: grid;
+    gap: 1rem;
+  }
+
+  .info-card dt {
+    font-size: 0.78rem;
+    color: var(--color-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.15rem;
+  }
+
+  .info-card dd {
+    font-size: 0.95rem;
+    color: var(--color-text);
+    font-weight: 500;
+  }
+
+  .feature-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+
+  .feature-list li {
+    font-size: 0.875rem;
+    color: var(--color-text-muted);
+    padding-left: 1.25rem;
+    position: relative;
+  }
+
+  .feature-list li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.5em;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--color-accent);
+  }
+
+  @media (max-width: 768px) {
+    .content-grid {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+
+    .info-card {
+      position: static;
+    }
+  }
+</style>

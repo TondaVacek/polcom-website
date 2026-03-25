@@ -1,0 +1,179 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { t, defaultLang } from '../i18n/translations';
+
+const lang = defaultLang;
+---
+
+<Layout title="About | POLICE-COM" lang={lang}>
+  <section class="page-hero">
+    <div class="container">
+      <span class="section-label">About the project</span>
+      <h1 class="section-title animate-in">POLICE-COM</h1>
+      <p class="section-subtitle animate-in delay-1">Enhancing the training of future police officers and supporting the professional development of law enforcement through cutting-edge communication tools.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container content-grid">
+      <div class="content-main">
+        <h2>Our Mission</h2>
+        <p>Welcome to the POLICE-COM project, where we're enhancing the training of future police officers and supporting the professional development of law enforcement. Our project is all about empowering educators with cutting-edge, immersive tools that focus on one of the most crucial aspects of policing: Communication.</p>
+        <p>In today's world, effective communication is the cornerstone of successful policing. Police officers must navigate complex interactions, whether they're engaging with colleagues, superiors, victims, perpetrators, or the public. Recognizing this critical need, the POLICE-COM project was born—bringing together an exceptional consortium of partners, including universities, SMEs, NGOs, and a police trade union, all hailing from the Czech Republic, Lithuania, and Romania. These partners are leaders in education, curriculum design, and innovative training methods, ensuring that our project is grounded in expertise and forward-thinking solutions.</p>
+        <p>Our vision is to create a dynamic training platform that transforms the way communication skills are taught in police academies and law enforcement agencies. This platform will serve as a comprehensive resource, featuring a rich array of gamified tools—activities, games, training cards, videos, and infographics—designed to make learning both engaging and effective. We're pushing the boundaries of traditional training with methods like gamification, experiential learning, and facilitation, all aimed at deepening the retention of knowledge among trainees.</p>
+        <p>One of the standout features of our platform is the inclusion of innovative training tools, such as short educational videos, audio and video tips for instant communication enhancement, and gamified elements like game cards for practicing real-life scenarios. Whether it's mastering conflict resolution, learning to communicate empathetically, or managing stress in high-pressure situations, our platform offers practical, interactive solutions.</p>
+        <p>Visit our <a href="https://polcom-training.eu/" target="_blank" rel="noopener">PoliceCOM training platform</a>.</p>
+        <p>Explore our website to learn more about our partners and how the POLICE-COM project is setting a new standard for communication training in law enforcement. Together, we're building a future where police officers are not only skilled in their duties but also exceptional communicators, equipped to handle the challenges of modern policing with confidence and respect.</p>
+      </div>
+
+      <aside class="content-sidebar">
+        <div class="info-card">
+          <h3>Project Details</h3>
+          <dl>
+            <dt>Programme</dt>
+            <dd>Erasmus+</dd>
+            <dt>Project Number</dt>
+            <dd>2023-1-CZ01-KA220-VET-000167148</dd>
+            <dt>Duration</dt>
+            <dd>2023–2026</dd>
+            <dt>Countries</dt>
+            <dd>Czech Republic, Lithuania, Romania</dd>
+            <dt>Partners</dt>
+            <dd>6 organizations (universities, NGOs, SMEs, police union)</dd>
+            <dt>Contact</dt>
+            <dd><a class="obf-email" data-u="antonin.vacek" data-d="misehero" data-t="cz"></a></dd>
+          </dl>
+        </div>
+
+        <div class="info-card" style="margin-top: 1.5rem;">
+          <h3>Platform Features</h3>
+          <ul class="feature-list">
+            <li>Gamified training tools</li>
+            <li>Role-play scenario cards</li>
+            <li>Short video simulations</li>
+            <li>Quick-reference infographics</li>
+            <li>Quizzes and badges</li>
+            <li>4 languages (EN, CZ, LT, RO)</li>
+          </ul>
+        </div>
+      </aside>
+    </div>
+  </section>
+</Layout>
+
+<script>
+  document.querySelectorAll('.obf-email').forEach(el => {
+    const u = el.dataset.u;
+    const d = el.dataset.d;
+    const t = el.dataset.t;
+    const addr = u + '@' + d + '.' + t;
+    el.href = 'mai' + 'lto:' + addr;
+    el.textContent = addr;
+  });
+</script>
+
+<style>
+  .page-hero {
+    padding: calc(72px + 4rem) 0 3rem;
+    background: var(--color-bg-elevated);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .content-grid {
+    display: grid;
+    grid-template-columns: 1fr 320px;
+    gap: 4rem;
+    align-items: start;
+  }
+
+  .content-main h2 {
+    font-family: var(--font-display);
+    font-size: 1.75rem;
+    font-weight: 400;
+    margin: 2.5rem 0 1rem;
+    color: var(--color-text);
+  }
+
+  .content-main h2:first-child {
+    margin-top: 0;
+  }
+
+  .content-main p {
+    color: var(--color-text-muted);
+    line-height: 1.8;
+    margin-bottom: 1rem;
+  }
+
+  .info-card {
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    padding: 1.75rem;
+    position: static;
+  }
+
+  .info-card h3 {
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--color-accent);
+    margin-bottom: 1.25rem;
+  }
+
+  .info-card dl {
+    display: grid;
+    gap: 1rem;
+  }
+
+  .info-card dt {
+    font-size: 0.78rem;
+    color: var(--color-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.15rem;
+  }
+
+  .info-card dd {
+    font-size: 0.95rem;
+    color: var(--color-text);
+    font-weight: 500;
+  }
+
+  .feature-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+
+  .feature-list li {
+    font-size: 0.875rem;
+    color: var(--color-text-muted);
+    padding-left: 1.25rem;
+    position: relative;
+  }
+
+  .feature-list li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.5em;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--color-accent);
+  }
+
+  @media (max-width: 768px) {
+    .content-grid {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+
+    .info-card {
+      position: static;
+    }
+  }
+</style>

@@ -1,0 +1,221 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import ModuleCard from '../../components/ModuleCard.astro';
+import { t } from '../../i18n/translations';
+
+const lang = 'lt' as const;
+---
+
+<Layout title="Rezultatai | POLICE-COM" lang={lang}>
+  <section class="page-hero">
+    <div class="container">
+      <span class="section-label">Rezultatai</span>
+      <h1 class="section-title animate-in">PROJEKTO REZULTATAI</h1>
+      <p class="section-subtitle animate-in delay-1">{t(lang, 'results.description')}</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2 class="section-title">Mokymo moduliai</h2>
+      <p class="section-subtitle" style="margin-bottom: 3rem;">{t(lang, 'results.explore')}</p>
+
+      <div class="modules-grid">
+        {[1, 2, 3, 4, 5, 6].map((n) => (
+          <ModuleCard
+            number={n}
+            title={t(lang, `module.${n}.title`)}
+            description={t(lang, `module.${n}.desc`)}
+            delay={n * 0.1}
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section outputs-section">
+    <div class="container">
+      <span class="section-label">Pagrindiniai rezultatai</span>
+      <h2 class="section-title">Projekto rezultatai</h2>
+      <div class="outputs-grid">
+        <div class="output-card">
+          <h3>Kompetencijomis pagrįsta mokymo programa</h3>
+          <p>Šeši praktiniai moduliai - aktyvaus klausymosi meistriškumas, sąžiningas ir įtraukus bendravimas, didelio spaudimo pranešimų siuntimas, konfliktų eskalavimas ir sprendimas, derybų ir įtikinėjimo taktika ir emocinis intelektas.</p>
+        </div>
+        <div class="output-card">
+          <h3>Interaktyvios mokymo priemonės</h3>
+          <p>Vaidmenų scenarijų kortelės, streso testų užduotys, greitos nuorodos infografikos, skirtos didelės rizikos skambučiams, ir trumpos vaizdo simuliacijos. Naudokite juos atskirai arba kartu su mokymo programa.</p>
+        </div>
+        <div class="output-card">
+          <h3>POLICE-COM internetinė platforma</h3>
+          <p>Daugiakalbis centras (EN, CZ, LT, RO), kuriame galima rasti visus modulius ir priemones, taip pat viktorinas, ženkliukus ir diskusijų lentas.</p>
+          <a href="https://polcom-training.eu/" class="output-link" target="_blank" rel="noopener">Apsilankykite platformoje</a>
+        </div>
+        <div class="output-card">
+          <h3>Bandomoji ir geriausios praktikos ataskaita</h3>
+          <p>Priemonės išbandomos su mokytojais ir pareigūnais trijose šalyse; išvados pateikiamos viešoje ataskaitoje apie tai, kas veikia realioje mokymo aplinkoje.</p>
+        </div>
+        <div class="output-card">
+          <h3>Tvarumo ir sklaidos rinkinys</h3>
+          <p>Ilgalaikis prieglobos planas, techninės priežiūros sutartis ir paruoštas žiniasklaidos priemonių rinkinys (logotipo rinkinys, aiškinamasis vaizdo įrašas, socialinių tinklų šablonai).</p>
+        </div>
+      </div>
+      <div class="outputs-list" style="margin-top: 3rem;">
+        <h3>Pagrindiniai rezultatai</h3>
+        <ul>
+          <li>Mokymo programa su dėstytojų ištekliais</li>
+          <li>Interaktyvios priemonės: kortelės, užduotys, infografikos, vaizdo įrašai</li>
+          <li>Daugiakalbė internetinė mokymosi platforma</li>
+          <li>Aktyvaus klausymosi meistriškumas</li>
+          <li>Sąžiningas ir įtraukus bendravimas</li>
+          <li>Didelio spaudimo pranešimų siuntimas</li>
+          <li>Konfliktų deeskalavimas ir sprendimas</li>
+          <li>Derybų ir įtikinėjimo taktika</li>
+          <li>Emocinis intelektas policijos veikloje</li>
+          <li>Bandomasis vertinimas ir geriausios praktikos ataskaita</li>
+          <li>Tvarumo ir sklaidos rinkinys</li>
+        </ul>
+      </div>
+
+      <a href="https://polcom-training.eu/" class="btn btn-primary" style="margin-top: 2.5rem;" target="_blank" rel="noopener">
+        Prisijungti prie mokymo platformos      </a>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .page-hero {
+    padding: calc(72px + 4rem) 0 3rem;
+    background: var(--color-bg-elevated);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .modules-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    font-weight: 600;
+    border-radius: var(--radius-sm);
+    transition: all 0.25s;
+    text-decoration: none;
+  }
+
+  .btn-primary {
+    background: var(--color-accent);
+    color: #ffffff;
+  }
+
+  .btn-primary:hover {
+    background: var(--color-accent-light);
+    color: #ffffff;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 16px rgba(27, 58, 107, 0.25);
+  }
+
+  @media (max-width: 900px) {
+    .modules-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  @media (max-width: 560px) {
+    .modules-grid { grid-template-columns: 1fr; }
+  }
+
+  .outputs-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+    margin-top: 2rem;
+  }
+
+  .output-card {
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    padding: 1.75rem;
+    transition: transform 0.3s, border-color 0.3s;
+  }
+
+  .output-card:hover {
+    transform: translateY(-3px);
+    border-color: var(--color-accent);
+  }
+
+  .output-card h3 {
+    font-family: var(--font-body);
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--color-text);
+    margin-bottom: 0.5rem;
+  }
+
+  .output-card p {
+    font-size: 0.875rem;
+    color: var(--color-text-muted);
+    line-height: 1.6;
+  }
+
+  @media (max-width: 900px) {
+    .outputs-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  @media (max-width: 560px) {
+    .outputs-grid { grid-template-columns: 1fr; }
+  }
+
+  .output-link {
+    display: inline-block;
+    margin-top: 0.75rem;
+    font-size: 0.825rem;
+    font-weight: 600;
+    color: var(--color-accent);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .output-link:hover {
+    color: var(--color-accent-light);
+  }
+
+  .outputs-list h3 {
+    font-family: var(--font-body);
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--color-text);
+    margin-bottom: 1rem;
+  }
+
+  .outputs-list ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+
+  .outputs-list li {
+    font-size: 0.925rem;
+    color: var(--color-text-muted);
+    padding-left: 1.5rem;
+    position: relative;
+    line-height: 1.6;
+  }
+
+  .outputs-list li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.55em;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--color-accent);
+  }
+</style>

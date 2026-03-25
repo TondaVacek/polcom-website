@@ -1,0 +1,75 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { t } from '../../i18n/translations';
+
+const lang = 'cs' as const;
+---
+
+<Layout title="O projektu | POLICE-COM" lang={lang}>
+  <section class="page-hero">
+    <div class="container">
+      <span class="section-label">O projektu</span>
+      <h1 class="section-title animate-in">POLICE-COM</h1>
+      <p class="section-subtitle animate-in delay-1">Projekt spolufinancovaný EU, který má změnit způsob výuky komunikačních dovedností na policejních akademiích v Evropě.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container content-grid">
+      <div class="content-main">
+        <h2>NAŠE POSLÁNÍ</h2>
+        <p>Vítejte v projektu POLICE-COM, v jehož rámci zlepšujeme výcvik budoucích policistů a podporujeme profesní rozvoj policejních složek. V rámci našeho projektu jde o to, abychom pedagogům poskytli nejmodernější, pohlcující nástroje, které se zaměřují na jeden z nejdůležitějších aspektů policejní práce: Komunikace.</p>
+        <p>V dnešním světě je efektivní komunikace základem úspěšné policejní práce. Policisté se musí orientovat ve složitých interakcích, ať už jde o jednání s kolegy, nadřízenými, oběťmi, pachateli nebo veřejností. S vědomím této zásadní potřeby se zrodil projekt POLICE-COM, který sdružuje výjimečné konsorcium partnerů, včetně univerzit, malých a středních podniků, nevládních organizací a policejních odborů, které pocházejí z České republiky, Litvy a Rumunska. Tito partneři jsou lídry v oblasti vzdělávání, tvorby učebních osnov a inovativních metod odborné přípravy, což zajišťuje, že náš projekt je založen na odborných znalostech a pokrokových řešeních.</p>
+        <p>Naší vizí je vytvořit dynamickou vzdělávací platformu, která změní způsob výuky komunikačních dovedností na policejních akademiích a v donucovacích orgánech. Tato platforma bude sloužit jako komplexní zdroj, který bude obsahovat bohatou škálu herních nástrojů – aktivit, her, školicích karet, videí a infografik – navržených tak, aby učení bylo poutavé a efektivní. Posouváme hranice tradičního školení pomocí metod, jako je gamifikace, zážitkové učení a facilitace, jejichž cílem je prohloubit uchování znalostí u účastníků školení.</p>
+        <p>Jedním z výrazných prvků naší platformy je začlenění inovativních školicích nástrojů, jako jsou krátká výuková videa, audio a video tipy pro okamžité zlepšení komunikace a herní prvky, jako jsou herní karty pro nácvik reálných scénářů. Ať už jde o zvládnutí řešení konfliktů, učení se empatické komunikaci nebo zvládání stresu v situacích pod vysokým tlakem, naše platforma nabízí praktická interaktivní řešení.</p>
+        <p>Navštivte naši <a href="https://polcom-training.eu/" target="_blank" rel="noopener">školicí platformu PoliceCOM</a>.</p>
+        <p>Projděte si naše webové stránky a dozvíte se více o našich partnerech a o tom, jak projekt POLICE-COM nastavuje nový standard komunikačního vzdělávání v oblasti prosazování práva. Společně budujeme budoucnost, v níž budou policisté nejen kvalifikovaní ve svých povinnostech, ale také výjimeční komunikátoři, kteří budou vybaveni tak, aby zvládali výzvy moderní policejní práce s důvěrou a respektem.</p>
+      </div>
+
+      <aside class="content-sidebar">
+        <div class="info-card">
+          <h3>Detaily projektu</h3>
+          <dl>
+            <dt>Program</dt>
+            <dd>Erasmus+</dd>
+            <dt>Číslo projektu</dt>
+            <dd>2023-1-CZ01-KA220-VET-000167148</dd>
+            <dt>Doba trvání</dt>
+            <dd>2023–2026</dd>
+            <dt>Země</dt>
+            <dd>Česká republika, Litva, Rumunsko</dd>
+            <dt>Partneři</dt>
+            <dd>6 organizací (univerzity, NGO, SME, policejní odbory)</dd>
+            <dt>Kontakt</dt>
+            <dd><a class="obf-email" data-u="antonin.vacek" data-d="misehero" data-t="cz"></a></dd>
+          </dl>
+        </div>
+      </aside>
+    </div>
+  </section>
+</Layout>
+
+<script>
+  document.querySelectorAll('.obf-email').forEach(el => {
+    const u = el.dataset.u;
+    const d = el.dataset.d;
+    const t = el.dataset.t;
+    const addr = u + '@' + d + '.' + t;
+    el.href = 'mai' + 'lto:' + addr;
+    el.textContent = addr;
+  });
+</script>
+
+<style>
+  .page-hero { padding: calc(72px + 4rem) 0 3rem; background: var(--color-bg-elevated); border-bottom: 1px solid var(--color-border); }
+  .content-grid { display: grid; grid-template-columns: 1fr 320px; gap: 4rem; align-items: start; }
+  .content-main h2 { font-family: var(--font-display); font-size: 1.75rem; font-weight: 400; margin: 2.5rem 0 1rem; color: var(--color-text); }
+  .content-main h2:first-child { margin-top: 0; }
+  .content-main p { color: var(--color-text-muted); line-height: 1.8; margin-bottom: 1rem; }
+  .info-card { background: var(--color-bg-card); border: 1px solid var(--color-border); border-radius: var(--radius); padding: 1.75rem; position: static; }
+  .info-card h3 { font-size: 0.85rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--color-accent); margin-bottom: 1.25rem; }
+  .info-card dl { display: grid; gap: 1rem; }
+  .info-card dt { font-size: 0.78rem; color: var(--color-text-muted); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.15rem; }
+  .info-card dd { font-size: 0.95rem; color: var(--color-text); font-weight: 500; }
+  @media (max-width: 768px) { .content-grid { grid-template-columns: 1fr; gap: 2rem; } .info-card { position: static; } }
+</style>

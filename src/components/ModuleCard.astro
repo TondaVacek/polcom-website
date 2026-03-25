@@ -1,0 +1,54 @@
+---
+interface Props {
+  number: number;
+  title: string;
+  description: string;
+  delay?: number;
+}
+
+const { number, title, description, delay = 0 } = Astro.props;
+---
+
+<div class="module-card animate-in" style={`animation-delay: ${delay}s`}>
+  <span class="module-number">0{number}</span>
+  <h3 class="module-title">{title}</h3>
+  <p class="module-desc">{description}</p>
+</div>
+
+<style>
+  .module-card {
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    padding: 1.75rem;
+    transition: border-color 0.2s;
+  }
+
+  .module-card:hover {
+    border-color: var(--color-accent);
+  }
+
+  .module-number {
+    display: block;
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    color: var(--color-accent);
+    font-style: italic;
+    margin-bottom: 0.75rem;
+  }
+
+  .module-title {
+    font-family: var(--font-body);
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--color-text);
+    margin-bottom: 0.65rem;
+    line-height: 1.4;
+  }
+
+  .module-desc {
+    font-size: 0.875rem;
+    color: var(--color-text-muted);
+    line-height: 1.6;
+  }
+</style>

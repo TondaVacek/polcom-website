@@ -1,0 +1,448 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { t } from '../../i18n/translations';
+
+const lang = 'ro' as const;
+
+const posts = [
+  {
+    title: 'Martor ostil — Comunicarea cu martori reticenți',
+    date: 'mar. 24, 2026',
+    author: 'admin',
+    excerpt: 'Cum comunici cu cineva care a decis deja sa nu aiba incredere in tine? Unul dintre scenariile prezentate in cadrul proiectului POLCOM evidențiaza acest tip de provocare comunicaționala sub presiune — un ofițer de poliție interacționeaza cu un martor deschis ostil și care refuza sa coopereze. Prin astfel de scenarii, POLCOM subliniaza ca comunicarea este o competența profesionala esențiala care afecteaza direct siguranța și rezultatul interacțiunilor polițienești.',
+    image: '/images/news-hostile-witness.jpg',
+  },
+  {
+    title: 'Tehnici de negociere Chris Voss — Empatie tactica și dezescaladare',
+    date: 'mar. 21, 2026',
+    author: 'admin',
+    excerpt: 'POLCOM nu inseamna doar invatarea teoriei comunicarii — inseamna exersarea unor metode care pot ajuta cu adevarat in situații reale de mare presiune. Participanții pot explora tehnici precum empatia tactica, oglindirea, etichetarea și intrebarile calibrate. In cadrul portalului educațional POLCOM, cursanții pot descoperi aceste metode prin videoclipuri, jocuri online și activitați interactive.',
+    image: '/images/news-chris-voss.jpg',
+  },
+  {
+    title: 'Hot Call — Joc de carti pentru antrenamentul comunicarii',
+    date: 'mar. 11, 2026',
+    author: 'admin',
+    excerpt: 'Suntem bucuroși sa prezentam unul dintre rezultatele interactive ale proiectului: Hot Call — un joc de carti bazat pe scenarii, conceput pentru a antrena comunicarea in acțiune, in special escaladarea și dezescaladarea situațiilor de conflict. Jocul poate fi utilizat online pentru formare digitala sau ca versiune tiparita pentru sesiuni față in față. Disponibil in 4 limbi.',
+    image: '/images/news-hot-call-1.jpg',
+    image2: '/images/news-hot-call-2.jpg',
+  },
+  {
+    title: 'Proiectul POLCOM — Testare pilot de 3 zile in Romania',
+    date: 'mar. 5, 2026',
+    author: 'admin',
+    excerpt: 'Portalul de invatare online POLCOM este in prezent testat in cadrul unei faze pilot de trei zile in Romania. In timpul pilotarii, 104 studenți participa la testarea platformei, explorand conținutul acesteia și oferind feedback valoros privind utilizabilitatea și impactul educațional.',
+    image: '/images/news-pilot-romania-1.jpg',
+    image2: '/images/news-pilot-romania-2.jpg',
+  },
+  {
+    title: 'Jocul de formare in dezescaladare — Formare interactiva avansata pentru forțele de ordine',
+    date: 'feb. 24, 2026',
+    author: 'admin',
+    excerpt: 'In cadrul proiectului POLCOM, dezvoltam un joc interactiv avansat de formare in dezescaladare, conceput special pentru profesioniștii din forțele de ordine. Acest instrument digital inovator aduce formarea bazata pe scenarii la un nivel nou, cu situații realiste, luarea deciziilor sub presiune și feedback imediat.',
+    image: '/images/news-deescalation-game.jpg',
+  },
+  {
+    title: 'Conferința POLCOM la Praga — Comunicarea poliției care funcționeaza pe teren',
+    date: 'feb. 18, 2026',
+    author: 'admin',
+    excerpt: 'Avem onoarea de a anunța ca proiectul POLCOM gazduiește o conferința internaționala la Praga pe 23 aprilie 2026, axata pe comunicarea practica in poliție, gestionarea conflictelor și strategii de dezescaladare. Locație: Sala Arhitecților, Primaria Veche, Praga.',
+    image: '/images/news-prague-conference.jpg',
+  },
+  {
+    title: 'Pilotarea in Lituania — Feedback pozitiv de la formatorii și cursanții din poliție',
+    date: 'feb. 17, 2026',
+    author: 'admin',
+    excerpt: 'La sfarsitul anului 2025 și in iarna anului 2026, faza de pilotare a implicat aproape 60 de formatori și cursanți din poliție la MRU și Școala de Poliție din Lituania. Participanții au impartașit experiențe pozitive despre sarcini, teste și jocuri.',
+    image: '/images/news-lithuania-pilot.jpg',
+  },
+  {
+    title: 'La mulți ani 2026',
+    date: 'ian. 5, 2026',
+    author: 'admin',
+    excerpt: 'Draga echipa Pol-Com și stimați colegi din forțele de ordine, La mulți ani! Sa avem un 2026 creativ, sanatos și plin de satisfacții! Echipa MRU',
+    image: '/images/news-new-year-2026.jpg',
+  },
+  {
+    title: 'Articol publicat de MRU — Inteligența emoționala in forțele de ordine',
+    date: 'dec. 21, 2025',
+    author: 'admin',
+    excerpt: 'Echipa MRU (Lituania) a publicat un articol intitulat „Educatorii despre inteligența emoționala in forțele de ordine și educație", bazat pe descoperirile POL-COM din Lituania, chiar inainte de Anul Nou.',
+    image: '/images/news-mru-paper.jpg',
+  },
+  {
+    title: 'Articol E-Methodology — Imbunatatirea inteligenței emoționale prin TIC și gamificare',
+    date: 'nov. 27, 2025',
+    author: 'admin',
+    excerpt: 'Echipa MRU a dezvoltat, prezentat la conferința datele și descoperirile din contextul lituanian privind activitațile proiectului POLCOM. Articolul „Imbunatatirea inteligenței emoționale la studenți prin TIC și gamificare: Perspective din proiectul Pol-Com" a fost publicat.',
+    image: '',
+  },
+  {
+    title: 'Prezentarea echipei MRU la o conferința internaționala',
+    date: 'sept. 30, 2025',
+    author: 'Pavel Lesko',
+    excerpt: 'Echipa MRU a prezentat descoperirile cheie ale proiectului POLICE-COM la o conferința internaționala, impartașind perspective asupra metodologiilor de formare in comunicare pentru forțele de ordine.',
+    image: '',
+  },
+  {
+    title: 'Modulul 6: Inteligența emoționala in comunicare',
+    date: 'iun. 30, 2025',
+    author: 'Egle Zalubaite',
+    excerpt: 'In domeniul siguranței publice și al profesiilor de ajutor, comunicarea eficienta se bazeaza pe ințelegerea atat a noastra, cat și a celor pe care ii servim. Acest modul sprijina polițiștii, pompierii, personalul medical și respondenții de prima linie in dezvoltarea competențelor de inteligența emoționala esențiale pentru munca lor zilnica.',
+    image: '/images/news-module6-screenshot1.png',
+    image2: '/images/news-module6-screenshot2.png',
+  },
+  {
+    title: 'Modulul 4. Dezescaladarea și rezolvarea conflictelor',
+    date: 'iun. 25, 2025',
+    author: 'Pavel Lesko',
+    excerpt: 'Exista profesii care sunt chemate cand lucrurile merg bine in viața noastra. Nu și forțele de ordine. Profesioniștii din forțele de ordine sunt chemați cand ceva nu este in regula, cand oamenii sunt in suferința sau cand exista un conflict. Acest modul este conceput pentru a ajuta respondenții de prima linie sa gestioneze aceste situații.',
+    image: '/images/news-module4-photo.jpg',
+  },
+  {
+    title: 'Modulul 2: Comunicare respectuoasa și nediscriminatorie',
+    date: 'iun. 23, 2025',
+    author: 'Zuzana Krejčová',
+    excerpt: 'Ne pasa de egalitate in societatea umana și de respect ca valoare fundamentala. Acest modul ajuta polițiștii și alți profesioniști din domeniul siguranței publice sa aplice o abordare mai delicata in munca profesionala.',
+    image: '',
+  },
+  {
+    title: 'Prezentare la conferința MRU — Studenții din forțele de ordine despre inteligența emoționala',
+    date: 'mai 29, 2025',
+    author: 'admin',
+    excerpt: 'Pe 28 mai 2025, echipa MRU a susținut o prezentare intitulata „Studenții din forțele de ordine despre invatarea tehnicilor de inteligența emoționala prin curs bazat pe TIC" la o conferința internaționala, impartașind descoperirile cheie ale proiectului POL-COM.',
+    image: '',
+  },
+  {
+    title: 'Date MRU privind rezolvarea conflictelor — Perspectivele studenților lituanieni',
+    date: 'mai 28, 2025',
+    author: 'admin',
+    excerpt: 'Echipa MRU, dupa colectarea datelor privind opiniile studenților lituanieni despre modulul de rezolvare a conflictelor, a susținut o prezentare la o conferința internaționala in primavara anului 2025.',
+    image: '',
+  },
+  {
+    title: 'Vești interesante de la SustainSecure 2025 in Vilnius!',
+    date: 'mai 26, 2025',
+    author: 'admin',
+    excerpt: 'Colegul nostru a urcat pe scena ca vorbitor la aceasta conferința internaționala axata pe sustenabilitate și inovare in domeniul securitații, prezentand platforma de formare gamificata POLCOM.',
+    image: '',
+  },
+  {
+    title: 'Intalnirea partenerilor POLCOM aprilie 2025, Vilnius, Lituania',
+    date: 'mai 26, 2025',
+    author: 'admin',
+    excerpt: 'Partenerii consorțiului s-au reunit pentru o intalnire de proiect la Vilnius. Prima zi a inclus o sesiune de formare privind valorificarea inteligenței artificiale pentru generarea de idei și impartașirea rezultatelor proiectului.',
+    image: '/images/news-partner-meeting.png',
+  },
+  {
+    title: 'Forum internațional anual — Competențele ofițerilor de poliție contemporani',
+    date: 'apr. 10, 2025',
+    author: 'admin',
+    excerpt: 'O prezentare a fost susținuta de dl. Antonin Vacek (MISEHERO) și conf. univ. dr. Dileta Jatautaite (MRU) pe tema „Competențele ofițerilor de poliție contemporani: Așteptari și sprijinul pentru acestea" in cadrul Forumului internațional anual de la Vilnius.',
+    image: '',
+  },
+  {
+    title: 'Intalnirea de proiect la Vilnius — Discuții productive privind direcția proiectului',
+    date: 'apr. 8, 2025',
+    author: 'admin',
+    excerpt: 'In perioada 8-9 aprilie 2025, echipa de proiect s-a intalnit la Vilnius, Lituania (Universitatea Mykolas Romeris). O intalnire productiva cu discuții fructuoase a condus la acorduri privind cele mai bune cursuri de acțiune pentru perioada ramasa a proiectului.',
+    image: '',
+  },
+  {
+    title: 'Prezentarea descoperirilor MRU — Stilul de viața sanatos și prevenirea epuizarii profesionale',
+    date: 'mar. 21, 2025',
+    author: 'admin',
+    excerpt: 'Echipa MRU a prezentat descoperirile POL-COM pentru studenți și comunitatea larga. Prof. Rūta Adamoniene a subliniat nevoia unui stil de viața holistic și sanatos ca antidot la epuizarea profesionala, care este prevalenta in randul profesioniștilor din forțele de ordine.',
+    image: '',
+  },
+  {
+    title: 'Lucrari de conferința publicate — Inteligența emoționala și gamificarea',
+    date: 'mar. 10, 2025',
+    author: 'admin',
+    excerpt: 'Articolul „Studenții despre invatarea tehnicilor de inteligența emoționala prin TIC și gamificare", dezvoltat de echipa lituaniana, a fost publicat in lucrarile conferinței (ISBN: 978-989-8704-65-8).',
+    image: '/images/news-proceedings-2025.jpg',
+  },
+  {
+    title: 'Conferința IADIS Madeira — Prezentare privind inteligența emoționala și gamificarea',
+    date: 'mar. 3, 2025',
+    author: 'admin',
+    excerpt: 'O prezentare a echipei lituaniene a fost susținuta la cea de-a 18-a Conferința Internaționala IADIS Information Systems 2025 / a 23-a Conferința Internaționala e-Society 2025 din Madeira, Portugalia, impartașind descoperirile din prima faza de pilotare/testare.',
+    image: '/images/news-iadis-conference.jpg',
+  },
+  {
+    title: 'Lucrari ICERI2024 publicate',
+    date: 'dec. 30, 2024',
+    author: 'admin',
+    excerpt: 'Dupa conferința internaționala ICERI2024, volumul de lucrari a fost publicat, incluzand articolul membrilor echipei de proiect privind predarea tehnicilor de inteligența emoționala prin TIC și gamificare (Sevilla, Spania, 11-13 noiembrie 2024).',
+    image: '/images/news-iceri2024.jpg',
+  },
+  {
+    title: 'La mulți ani 2025',
+    date: 'dec. 30, 2024',
+    author: 'admin',
+    excerpt: 'Membrii echipei de proiect va ureaza — și noua tuturor — cel mai bun 2025. Sa avem un 2025 pașnic și plin de satisfacții. Toate cele bune tuturor ofițerilor din forțele de ordine și cetațenilor!',
+    image: '/images/news-new-year-2025.jpg',
+  },
+  {
+    title: 'Conferința despre incluziune — POL-COM prezentat educatorilor și studenților',
+    date: 'dec. 9, 2024',
+    author: 'admin',
+    excerpt: 'In cadrul Conferinței despre incluziune la universitați din Kaunas, Lituania, prof. Rūta Adamoniene a prezentat proiectul POL-COM, obiectivele și rezultatele sale principale pentru profesori și studenți din liceele și universitațile din Kaunas.',
+    image: '',
+  },
+  {
+    title: 'Conferința ALTA\'24 — Gamificarea și IT-ul in educația forțelor de ordine',
+    date: 'dec. 5, 2024',
+    author: 'admin',
+    excerpt: 'Prezentarea „Gamificarea, IT-ul și educația ofițerilor de ordine" a fost inclusa in agenda Conferinței Internaționale ALTA\'24 privind sustenabilitatea și parteneriatele in educație din Lituania.',
+    image: '/images/news-alta24.jpg',
+  },
+  {
+    title: 'Testarea modulului de formare POL-COM — Dezescaladarea conflictelor la MRU',
+    date: 'nov. 26, 2024',
+    author: 'admin',
+    excerpt: 'Echipa POL-COM de la MRU, Lituania, a inceput formarea/testarea modulului POL-COM. 12 educatori ai viitorilor ofițeri de ordine au inceput sa analizeze materialele modulului „Dezescaladarea și rezolvarea conflictelor" pe platforma POL-COM Moodle.',
+    image: '/images/news-lithuania-training.jpg',
+  },
+  {
+    title: 'SIF Lituania a distribuit postarea sondajului POL-COM',
+    date: 'nov. 26, 2024',
+    author: 'admin',
+    excerpt: 'Fondul de Inovare Sociala (SIF), Lituania, a distribuit pe pagina sa de Facebook organizaționala informații despre sondajul realizat in ianuarie 2024 privind competențele de comunicare de care au nevoie ofițerii de ordine contemporani.',
+    image: '',
+  },
+  {
+    title: 'Primele experiențe de testare — Feedback pozitiv de la 35 de studenți',
+    date: 'nov. 15, 2024',
+    author: 'admin',
+    excerpt: 'In noiembrie 2024, echipa MRU a inceput testarea unor activitați interactive. Studenții (35) au impartașit raspunsuri destul de pozitive (nou, interesant, motivant), iar unele comentarii critice vor fi luate in considerare.',
+    image: '',
+  },
+  {
+    title: 'Prezentare ICERI2024 — Predarea inteligenței emoționale prin TIC',
+    date: 'nov. 12, 2024',
+    author: 'admin',
+    excerpt: 'O prezentare bazata pe opiniile experților privind predarea inteligenței emoționale pentru ofițerii de ordine folosind IT a fost susținuta la cea de-a 17-a conferința anuala ICERI2024 „Transformand educația, transformand viața" de la Sevilla, Spania.',
+    image: '',
+  },
+  {
+    title: 'Evenimentul DANTE — Dezvoltare și Conectare pentru Evoluția Formarii',
+    date: 'nov. 1, 2024',
+    author: 'admin',
+    excerpt: 'CPIP a participat la al treilea eveniment al instituției de educație pentru adulți DANTE, intitulat „Dezvoltare și conectare pentru o evoluție a formarii" de la Opatija. Inițiativa proiectului POL-COM a fost prezentata principalilor actori din domeniu.',
+    image: '',
+  },
+  {
+    title: 'Intalnirea cu Poliția Naționala Ceha — Colaborare privind conținutul video și pilotarea',
+    date: 'oct. 29, 2024',
+    author: 'admin',
+    excerpt: 'Am avut o alta intalnire productiva cu Poliția Naționala Ceha pentru a ne consolida colaborarea in cadrul proiectului POL-COM — discutand feedback-ul privind metodologia, implicarea poliției in crearea conținutului video și angajarea formatorilor de poliție in pilotare.',
+    image: '/images/news-czech-police.jpg',
+  },
+  {
+    title: 'Evenimentul CPIP Stuttgart — Schimb de bune practici',
+    date: 'oct. 24, 2024',
+    author: 'admin',
+    excerpt: 'Echipa CPIP a participat la un eveniment de schimb de bune practici gazduit la Stuttgart, Germania, de Prison Fellowship Germany. Aceasta experiența a oferit perspective valoroase asupra abordaarilor inovatoare de reabilitare și a fost o oportunitate de a prezenta proiectul POL-COM.',
+    image: '/images/news-cpip-stuttgart.jpg',
+  },
+  {
+    title: 'Conferința OEB Global Berlin — Educația digitala in justiția corecționala',
+    date: 'oct. 23, 2024',
+    author: 'admin',
+    excerpt: 'Un reprezentant al CPIP a impartașit experiențe in cadrul sesiunii „Greu de atins și greu de servit: Educația digitala in contextul justiției penale corecționale" la Conferința Globala OEB din Berlin, incluzand proiectul POL-COM.',
+    image: '/images/news-berlin-conference.jpg',
+  },
+  {
+    title: 'Conferința LERA Lituania — Educație, incertitudine și provocari de comunicare',
+    date: 'oct. 18, 2024',
+    author: 'admin',
+    excerpt: 'Conf. univ. dr. Dileta Jatautaite a susținut o prezentare la conferința internaționala „Educație, incertitudine și provocari de comunicare: Intersecția dintre trecut și viitor" de la Vilnius, privind descoperirile POL-COM.',
+    image: '',
+  },
+  {
+    title: 'Conferința UNESCO privind educația in penitenciare — Proiecte europene in justiția corecționala',
+    date: 'oct. 17, 2024',
+    author: 'admin',
+    excerpt: 'CPIP Romania a fost invitat de Catedra UNESCO in Cercetare Aplicata pentru Educația in Penitenciare sa participe la prima Conferința Internaționala privind Educația in Penitenciare, gazduita de Universitatea din Quebec, Montreal.',
+    image: '',
+  },
+  {
+    title: 'Hub-ul European de Educație Digitala — Perspective ale experților privind educația in penitenciare',
+    date: 'oct. 13, 2024',
+    author: 'admin',
+    excerpt: 'De Ziua Internaționala a Educației in Penitenciare, Daiana Huber din echipa CPIP a fost invitata ca expert-stakeholder la o sesiune „Intreaba-ma orice" pe Hub-ul European de Educație Digitala, unde portofoliul de proiecte CPIP, inclusiv POL-COM, a fost prezentat.',
+    image: '',
+  },
+  {
+    title: 'Anunțul LETA — Asociația Naționala Lituaniana pentru Cercetare in Educație',
+    date: 'oct. 8, 2024',
+    author: 'admin',
+    excerpt: 'Asociația Naționala Lituaniana pentru Cercetare in Educație (LETA) a anunțat informații despre proiectul POL-COM. Rezultatele privind modulele și eficacitatea lor sunt planificate a fi prezentate la o conferința internaționala organizata de LETA.',
+    image: '/images/news-leta-announcement.jpg',
+  },
+  {
+    title: 'Conferința MRU din aprilie — Descoperiri din sondaje privind educația in comunicare a poliției',
+    date: 'aug. 1, 2024',
+    author: 'admin',
+    excerpt: 'Pe 18 aprilie 2024, o prezentare a primelor rezultate ale sondajului privind POL-COM a fost susținuta la Conferința Internaționala Anuala de Securitate de la Universitatea Mykolas Romeris, impartașind perspective ale practicienilor din forțele de ordine privind utilizarea IT-ului pentru educația in comunicare.',
+    image: '/images/news-mru-april-1.jpg',
+    image2: '/images/news-mru-april-2.jpg',
+  },
+  {
+    title: 'Evenimentul de la Bruxelles privind competențele — Anul European al Competențelor: ce urmeaza?',
+    date: 'iul. 1, 2024',
+    author: 'admin',
+    excerpt: 'CPIP a participat la evenimentul „Anul European al Competențelor – ce urmeaza?" de la Bruxelles. Sute de participanți s-au unit pentru a impartași povești de succes privind competențele, iar proiectul POL-COM a fost prezentat in cadrul discuțiilor relevante.',
+    image: '/images/news-brussels-event.jpg',
+  },
+  {
+    title: 'Conferința din Grecia — Inteligența emoționala in forțele de ordine',
+    date: 'iun. 7, 2024',
+    author: 'admin',
+    excerpt: 'Echipa lituaniana MRU a prezentat „Inteligența emoționala in contextul perspectivei ofițerilor de ordine: Unele descoperiri din proiectul POL-COM" la cea de-a II-a Conferința Internaționala de la Universitatea Peloponez, Grecia.',
+    image: '',
+  },
+  {
+    title: 'Vizita Școlii de Pompieri din Lituania — MISE HERo gazduiește Ugniagesių gelbetoju mokykla',
+    date: 'iun. 1, 2024',
+    author: 'admin',
+    excerpt: 'MISE HERo a fost bucuroasa sa gazduiasca reprezentanți ai Școlii de Pompieri din Lituania, care au vizitat pentru a afla mai multe despre proiectul POLICE-COM. Aceștia și-au exprimat un interes profund pentru rezultatele proiectului, demonstrand conștientizare dincolo de poliție, spre serviciile de pompieri și salvare.',
+    image: '/images/news-fire-school-1.jpg',
+    image2: '/images/news-fire-school-2.jpg',
+  },
+  {
+    title: 'Intalnirea de proiect in Romania — Dezvoltarea conținutului de formare',
+    date: 'mar. 1, 2024',
+    author: 'admin',
+    excerpt: 'Reprezentanții partenerilor consorțiului s-au reunit in Romania pentru o intalnire esențiala de proiect. Prima zi a fost dedicata unei sesiuni de formare privind valorificarea inteligenței artificiale pentru generarea de idei. Partenerii au decis sa iși puna in comun expertiza in elaborarea materialelor multimedia de formare pentru șase module de comunicare.',
+    image: '/images/news-romania-meeting-1.jpg',
+    image2: '/images/news-romania-meeting-2.jpg',
+  },
+  {
+    title: 'Proiectul POLICE COM intra in faza operaționala!',
+    date: 'ian. 1, 2024',
+    author: 'admin',
+    excerpt: 'Proiectul POLICE-COM a demarat oficial, reunind un consorțiu de șase parteneri din trei țari ale UE. Proiectul se concentreaza pe crearea materialelor de formare pentru educatorii care pregatesc noua generație de ofițeri de ordine, cu domenii cheie precum comunicarea, rezolvarea conflictelor, dezescaladarea și inteligența emoționala.',
+    image: '/images/news-launch.jpg',
+  },
+];
+---
+
+<Layout title="Noutați | POLICE-COM" lang={lang}>
+  <section class="page-hero">
+    <div class="container">
+      <span class="section-label">{t(lang, 'news.title')}</span>
+      <h1 class="section-title animate-in">Noutați și actualizari</h1>
+      <p class="section-subtitle animate-in delay-1">Urmariți cele mai recente evoluții ale proiectului POLICE-COM.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="news-list">
+        {posts.map((post, i) => (
+          <article class={`news-item animate-in delay-${Math.min(i + 1, 6)}`}>
+            <div class="news-meta">
+              <time>{post.date}</time>
+              <span class="news-author">{post.author}</span>
+            </div>
+            <h2 class="news-title">{post.title}</h2>
+            <p class="news-excerpt">{post.excerpt}</p>
+            {post.image && (
+              <div class="news-images">
+                <img src={post.image} alt={post.title} class="news-image" />
+                {post.image2 && <img src={post.image2} alt={post.title} class="news-image" />}
+                {post.image3 && <img src={post.image3} alt={post.title} class="news-image" />}
+              </div>
+            )}
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .page-hero {
+    padding: calc(72px + 4rem) 0 3rem;
+    background: var(--color-bg-elevated);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .news-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+  }
+
+  .news-item {
+    padding: 2rem 0;
+    border-bottom: 1px solid var(--color-border);
+    transition: background 0.2s;
+  }
+
+  .news-item:first-child {
+    padding-top: 0;
+  }
+
+  .news-meta {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .news-meta time {
+    font-size: 0.8rem;
+    color: var(--color-accent);
+    font-weight: 500;
+  }
+
+  .news-author {
+    font-size: 0.8rem;
+    color: var(--color-text-muted);
+  }
+
+  .news-author::before {
+    content: '\00B7';
+    margin-right: 1rem;
+  }
+
+  .news-title {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    font-weight: 400;
+    color: var(--color-text);
+    margin-bottom: 0.5rem;
+    line-height: 1.3;
+  }
+
+  .news-excerpt {
+    font-size: 0.95rem;
+    color: var(--color-text-muted);
+    line-height: 1.7;
+    max-width: 700px;
+  }
+
+  .news-images {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .news-image {
+    max-width: 400px;
+    max-height: 280px;
+    object-fit: cover;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--color-border);
+  }
+
+  @media (max-width: 560px) {
+    .news-image {
+      max-width: 100%;
+    }
+  }
+</style>

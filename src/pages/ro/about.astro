@@ -1,0 +1,179 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { t } from '../../i18n/translations';
+
+const lang = 'ro' as const;
+---
+
+<Layout title="Despre | POLICE-COM" lang={lang}>
+  <section class="page-hero">
+    <div class="container">
+      <span class="section-label">Despre proiect</span>
+      <h1 class="section-title animate-in">MISIUNEA NOASTRA</h1>
+      <p class="section-subtitle animate-in delay-1">Imbunatatim formarea viitorilor ofițeri de poliție și sprijinim dezvoltarea profesionala a forțelor de ordine prin instrumente de comunicare de ultima generație.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container content-grid">
+      <div class="content-main">
+        <h2>Misiunea noastra</h2>
+        <p>Bine ați venit la proiectul POLICE-COM, unde imbunatatim formarea viitorilor ofițeri de poliție și sprijinim dezvoltarea profesionala a forțelor de ordine. Proiectul nostru se concentreaza pe sprijinirea educatorilor cu instrumente inovatoare care se concentreaza pe unul dintre cele mai importante aspecte ale poliției: comunicarea.</p>
+        <p>In lumea de astazi, comunicarea eficienta este piatra de temelie a unei activitați in poliție de succes. Ofițerii de poliție trebuie sa se descurce in interacțiuni complexe, fie ca sunt in contact cu colegii, superiorii, victimele, autorii sau publicul. Recunoscand aceasta nevoie critica, a luat naștere proiectul POLICE-COM – reunind un consorțiu excepțional de parteneri, inclusiv universitați, IMM-uri, ONG-uri și un sindicat al polițiștilor, din Republica Ceha, Lituania și Romania. Acești parteneri sunt lideri in domeniul educației, al conceperii de programe școlare și al metodelor inovatoare de formare, asigurand ca proiectul nostru se bazeaza pe expertiza și pe soluții adaptate nu doar la nivel național, cat și internațional.</p>
+        <p>Viziunea noastra este de a crea o platforma de formare dinamica care sa transforme modul in care competențele de comunicare sunt predate in academiile de poliție și in agențiile de aplicare a legii. Aceasta platforma include instrumente de gamificare – activitați, jocuri, fișe de formare, videoclipuri și infografice – concepute pentru a face invațarea atat atractivă, cat și eficienta. Depășim limitele formarii tradiționale cu metode precum gamificarea, invațarea experiențiala și facilitarea, toate avand ca scop aprofundarea retenției de cunoștințe in randul cursanților.</p>
+        <p>Una dintre caracteristicile deosebite ale platformei noastre este includerea unor instrumente de formare inovatoare, cum ar fi scurte videoclipuri educaționale, sfaturi audio și video pentru imbunatatirea comunicarii și elemente de joc, cum ar fi carduri de joc pentru exersarea scenariilor din viața reala. Fie ca este vorba de a stapani rezolvarea conflictelor, de a invața sa comunici empatic sau de a gestiona stresul in situații de presiune ridicata, platforma noastra ofera soluții practice și interactive.</p>
+        <p>Vizitați <a href="https://polcom-training.eu/" target="_blank" rel="noopener">platforma noastra de formare PoliceCOM</a>.</p>
+        <p>Explorați site-ul nostru pentru a afla mai multe despre partenerii proiectului și despre modul in care POLICE-COM este important pentru formarea in domeniul comunicarii in cadrul forțelor de ordine. Impreuna, construim un viitor in care ofițerii de poliție nu sunt doar calificați in indeplinirea sarcinilor lor, ci și comunicatori excepționali, echipați pentru a face fața provocarilor poliției moderne cu incredere și respect.</p>
+      </div>
+
+      <aside class="content-sidebar">
+        <div class="info-card">
+          <h3>Detalii proiect</h3>
+          <dl>
+            <dt>Program</dt>
+            <dd>Erasmus+</dd>
+            <dt>Numarul proiectului</dt>
+            <dd>2023-1-CZ01-KA220-VET-000167148</dd>
+            <dt>Durata</dt>
+            <dd>2023–2026</dd>
+            <dt>Țari</dt>
+            <dd>Republica Ceha, Lituania, Romania</dd>
+            <dt>Parteneri</dt>
+            <dd>6 organizații</dd>
+            <dt>Contact</dt>
+            <dd><a class="obf-email" data-u="antonin.vacek" data-d="misehero" data-t="cz"></a></dd>
+          </dl>
+        </div>
+
+        <div class="info-card" style="margin-top: 1.5rem;">
+          <h3>Caracteristici platforma</h3>
+          <ul class="feature-list">
+            <li>Instrumente de formare gamificate</li>
+            <li>Cartonașe cu scenarii de joc de rol</li>
+            <li>Simulari video scurte</li>
+            <li>Infografice de referința rapida</li>
+            <li>Teste și insigne</li>
+            <li>4 limbi (EN, CZ, LT, RO)</li>
+          </ul>
+        </div>
+      </aside>
+    </div>
+  </section>
+</Layout>
+
+<script>
+  document.querySelectorAll('.obf-email').forEach(el => {
+    const u = el.dataset.u;
+    const d = el.dataset.d;
+    const t = el.dataset.t;
+    const addr = u + '@' + d + '.' + t;
+    el.href = 'mai' + 'lto:' + addr;
+    el.textContent = addr;
+  });
+</script>
+
+<style>
+  .page-hero {
+    padding: calc(72px + 4rem) 0 3rem;
+    background: var(--color-bg-elevated);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .content-grid {
+    display: grid;
+    grid-template-columns: 1fr 320px;
+    gap: 4rem;
+    align-items: start;
+  }
+
+  .content-main h2 {
+    font-family: var(--font-display);
+    font-size: 1.75rem;
+    font-weight: 400;
+    margin: 2.5rem 0 1rem;
+    color: var(--color-text);
+  }
+
+  .content-main h2:first-child {
+    margin-top: 0;
+  }
+
+  .content-main p {
+    color: var(--color-text-muted);
+    line-height: 1.8;
+    margin-bottom: 1rem;
+  }
+
+  .info-card {
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    padding: 1.75rem;
+    position: static;
+  }
+
+  .info-card h3 {
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--color-accent);
+    margin-bottom: 1.25rem;
+  }
+
+  .info-card dl {
+    display: grid;
+    gap: 1rem;
+  }
+
+  .info-card dt {
+    font-size: 0.78rem;
+    color: var(--color-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.15rem;
+  }
+
+  .info-card dd {
+    font-size: 0.95rem;
+    color: var(--color-text);
+    font-weight: 500;
+  }
+
+  .feature-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+
+  .feature-list li {
+    font-size: 0.875rem;
+    color: var(--color-text-muted);
+    padding-left: 1.25rem;
+    position: relative;
+  }
+
+  .feature-list li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.5em;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--color-accent);
+  }
+
+  @media (max-width: 768px) {
+    .content-grid {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+
+    .info-card {
+      position: static;
+    }
+  }
+</style>

@@ -1,0 +1,418 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { t } from '../../i18n/translations';
+
+const lang = 'lt' as const;
+
+const posts = [
+  {
+    title: 'Priešiškas liudytojas — Bendravimas su pasipriešinusiais liudytojais',
+    date: 'Kov 24, 2026',
+    author: 'admin',
+    excerpt: 'Kaip bendrauti su žmogumi, kuris jau nusprendė jumis nepasitikėti? Vienas iš POLCOM projekte pristatytų scenarijų atspindi tokį didelio spaudimo komunikacijos iššūkį — policijos pareigūnas bendrauja su liudytoju, kuris atvirai priešinasi ir nenori bendradarbiauti. Per tokius scenarijus POLCOM pabrėžia, kad komunikacija yra pagrindinė profesinė kompetencija, tiesiogiai veikianti saugumą ir policijos sąveikos rezultatą.',
+    images: ['/images/news-hostile-witness.jpg'],
+  },
+  {
+    title: 'Chriso Vosso derybų technikos — Taktinė empatija ir deeskalacija',
+    date: 'Kov 21, 2026',
+    author: 'admin',
+    excerpt: 'POLCOM — tai ne tik komunikacijos teorijos mokymasis, bet ir metodų, galinčių realiai padėti didelio spaudimo situacijose, praktikavimas. Dalyviai gali tyrinėti tokias technikas kaip taktinė empatija, atspindėjimas, įvardijimas ir kalibruoti klausimai. POLCOM edukacinėje portale besimokantieji gali atrasti šiuos metodus per vaizdo įrašus, internetinius žaidimus ir interaktyvias veiklas.',
+    images: ['/images/news-chris-voss.jpg'],
+  },
+  {
+    title: 'Karštas skambutis — Komunikacijos mokymo kortų žaidimas',
+    date: 'Kov 11, 2026',
+    author: 'admin',
+    excerpt: 'Džiaugiamės pristatydami vieną iš interaktyvių projekto rezultatų: „Karštas skambutis" — scenarijais pagrįstas kortų žaidimas, skirtas komunikacijos mokymui veiksmų metu, ypač konfliktinių situacijų eskalacijai ir deeskalacijai. Žaidimą galima naudoti internetu skaitmeniniam mokymui arba kaip spausdintą kortų versiją gyvoms sesijoms. Prieinamas 4 kalbomis.',
+    images: ['/images/news-hot-call-1.jpg', '/images/news-hot-call-2.jpg'],
+  },
+  {
+    title: 'POLCOM projektas — 3 dienų bandomasis testavimas Rumunijoje',
+    date: 'Kov 5, 2026',
+    author: 'admin',
+    excerpt: 'POLCOM internetinė mokymosi platforma šiuo metu testuojama trijų dienų bandomajame etape Rumunijoje. Bandomojo testavimo metu 104 studentai dalyvauja platformos testavime, tyrinėja jos turinį ir teikia vertingus atsiliepimus apie naudojamumą ir mokymosi poveikį.',
+    images: ['/images/news-pilot-romania-1.jpg', '/images/news-pilot-romania-2.jpg'],
+  },
+  {
+    title: 'Deeskalacijos mokymo žaidimas — Pažangus interaktyvus mokymas teisėsaugai',
+    date: 'Vas 24, 2026',
+    author: 'admin',
+    excerpt: 'POLCOM projekto rėmuose kuriame pažangų interaktyvų deeskalacijos mokymo žaidimą, specialiai skirtą teisėsaugos profesionalams. Šis novatoriškas skaitmeninis įrankis iškelia scenarijais pagrįstą mokymą į naują lygį su realistinėmis situacijomis, sprendimų priėmimu esant spaudimui ir tiesioginiu grįžtamuoju ryšiu.',
+    images: ['/images/news-deescalation-game.jpg'],
+  },
+  {
+    title: 'POLCOM konferencija Prahoje — Policijos komunikacija, kuri veikia lauko sąlygomis',
+    date: 'Vas 18, 2026',
+    author: 'admin',
+    excerpt: 'Džiaugiamės galėdami pranešti, kad POLCOM projektas rengia tarptautinę konferenciją Prahoje 2026 m. balandžio 23 d., skirtą praktinei policijos komunikacijai, konfliktų valdymui ir deeskalacijos strategijoms. Vieta: Architektų salė, Senamiesčio rotušė, Praha.',
+    images: ['/images/news-prague-conference.jpg'],
+  },
+  {
+    title: 'Bandomasis testavimas Lietuvoje — Teigiami atsiliepimai iš policijos dėstytojų ir kursantų',
+    date: 'Vas 17, 2026',
+    author: 'admin',
+    excerpt: '2025 m. pabaigoje ir 2026 m. žiemą bandomajame testavime dalyvavo beveik 60 policijos dėstytojų ir kursantų MRU bei Lietuvos policijos mokykloje. Dalyviai dalijosi teigiama patirtimi apie užduotis, testus ir žaidimus.',
+    images: ['/images/news-lithuania-pilot.jpg'],
+  },
+  {
+    title: 'Laimingų Naujųjų 2026 metų',
+    date: 'Sau 5, 2026',
+    author: 'admin',
+    excerpt: 'Mieli Pol-Com komandos nariai ir mūsų kolegos teisėsaugoje, laimingų Naujųjų metų. Palinkėkime sau kūrybingų, sveikų ir naudingų 2026 metų! MRU komanda',
+    images: ['/images/news-new-year-2026.jpg'],
+  },
+  {
+    title: 'MRU publikacija — Emocinis intelektas teisėsaugoje',
+    date: 'Grd 21, 2025',
+    author: 'admin',
+    excerpt: 'MRU (Lietuvos) komanda prieš pat Naujuosius metus paskelbė straipsnį „Dėstytojai apie emocinį intelektą teisėsaugoje ir švietime", paremtą POL-COM projekto radiniais Lietuvoje.',
+    images: ['/images/news-mru-paper.jpg'],
+  },
+  {
+    title: 'E-metodologijos straipsnis — Emocinio intelekto stiprinimas per IKT ir žaidybinimą',
+    date: 'Lap 27, 2025',
+    author: 'admin',
+    excerpt: 'MRU komanda parengė, pristatė konferencijoje duomenis ir radinius iš Lietuvos konteksto, susijusius su POLCOM projekto veiklomis. Buvo paskelbtas straipsnis „Emocinio intelekto stiprinimas studentuose per IKT ir žaidybinimą: Pol-Com projekto įžvalgos".',
+  },
+  {
+    title: 'MRU komandos pristatymas tarptautinėje konferencijoje',
+    date: 'Rgs 30, 2025',
+    author: 'Pavel Lesko',
+    excerpt: 'MRU komanda pristatė pagrindinius POLICE-COM projekto radinius tarptautinėje konferencijoje, dalindamasi įžvalgomis apie komunikacijos mokymo metodikas teisėsaugai.',
+  },
+  {
+    title: '6 modulis: Emocinis intelektas komunikacijoje',
+    date: 'Bir 30, 2025',
+    author: 'Egle Zalubaite',
+    excerpt: 'Viešojo saugumo ir pagalbos profesijose efektyvi komunikacija remiasi tiek savęs, tiek tų, kuriems tarnaujame, supratimu. Šis modulis padeda policijos pareigūnams, ugniagesiams, medicinos darbuotojams ir pirmos linijos reagavimo specialistams ugdyti emocinio intelekto įgūdžius, būtinus jų kasdieniam darbui.',
+    images: ['/images/news-module6-screenshot1.png', '/images/news-module6-screenshot2.png'],
+  },
+  {
+    title: '4 modulis. Konfliktų deeskalacija ir sprendimas',
+    date: 'Bir 25, 2025',
+    author: 'Pavel Lesko',
+    excerpt: 'Yra profesijų, kurios kviečiamos, kai gyvenime viskas gerai. Teisėsauga — ne tokia. Teisėsaugos profesionalai kviečiami, kai kažkas negerai, kai žmonės kenčia arba kai kyla konfliktas. Šis modulis skirtas padėti pirmiesiems reagavimo specialistams valdyti tokias situacijas.',
+    images: ['/images/news-module4-photo.jpg'],
+  },
+  {
+    title: '2 modulis: Pagarbi ir nediskriminuojanti komunikacija',
+    date: 'Bir 23, 2025',
+    author: 'Zuzana Krejčová',
+    excerpt: 'Mums svarbi lygybė žmonių visuomenėje ir pagarba kaip pagrindinė vertybė. Šis modulis padeda policijos pareigūnams ir kitiems viešojo saugumo specialistams taikyti švelnesni požiūrį profesiniame darbe.',
+  },
+  {
+    title: 'MRU konferencijos pristatymas — Teisėsaugos studentai apie emocinį intelektą',
+    date: 'Geg 29, 2025',
+    author: 'admin',
+    excerpt: '2025 m. gegužės 28 d. MRU komanda skaitė pranešimą „Teisėsaugos studentai mokosi emocinio intelekto technikos IKT Moodle kurse" tarptautinėje konferencijoje, dalindamasi pagrindiniais POL-COM projekto radiniais.',
+  },
+  {
+    title: 'MRU konfliktų sprendimo duomenys — Lietuvos studentų perspektyvos',
+    date: 'Geg 28, 2025',
+    author: 'admin',
+    excerpt: 'MRU komanda, surinkusi duomenis apie tai, ką Lietuvos studentai mano apie konfliktų sprendimo modulį, 2025 m. pavasarį skaitė pranešimą tarptautinėje konferencijoje.',
+  },
+  {
+    title: 'Įspūdingos naujienos iš „SustainSecure 2025" Vilniuje!',
+    date: 'Geg 26, 2025',
+    author: 'admin',
+    excerpt: 'Mūsų kolega pasirodė kaip pranešėjas šioje tarptautinėje konferencijoje, skirtoje tvarumui ir saugumo inovacijoms, pristatydamas POLCOM žaidybinę mokymo platformą.',
+  },
+  {
+    title: 'POLCOM projekto partnerių susitikimas 2025 m. balandis, Vilnius, Lietuva',
+    date: 'Geg 26, 2025',
+    author: 'admin',
+    excerpt: 'Konsorciumo partneriai susitiko projekto susitikime Vilniuje. Pirmąją dieną vyko mokymo sesija apie dirbtinio intelekto panaudojimą idėjų generavimui ir projekto rezultatų dalijimąsi.',
+    images: ['/images/news-partner-meeting.png'],
+  },
+  {
+    title: 'Metinis tarptautinis forumas — Šiuolaikinių policijos pareigūnų kompetencijos',
+    date: 'Bal 10, 2025',
+    author: 'admin',
+    excerpt: 'Pranešimą „Šiuolaikinių policijos pareigūnų kompetencijos: lūkesčiai ir parama joms" metiniame tarptautiniame forume Vilniuje skaitė p. Antonín Vačekas (MISEHERO) ir doc. Dileta Jatautaitė (MRU).',
+  },
+  {
+    title: 'Projekto susitikimas Vilniuje — Produktyvios diskusijos dėl projekto krypties',
+    date: 'Bal 8, 2025',
+    author: 'admin',
+    excerpt: '2025 m. balandžio 8–9 d. projekto komanda susitiko Vilniuje, Lietuvoje (Mykolo Romerio universitetas). Produktyvus susitikimas su vaisingomis diskusijomis paskatino susitarimus dėl geriausių veiksmų likusiam projekto laikotarpiui.',
+  },
+  {
+    title: 'MRU radinių pristatymas — Sveikas gyvenimo būdas ir perdegimo prevencija',
+    date: 'Kov 21, 2025',
+    author: 'admin',
+    excerpt: 'MRU komanda pristatė POL-COM radinius studentams ir platesnei bendruomenei. Prof. Rūta Adamonienė pabrėžė holistinio, sveiko gyvenimo būdo poreikį kaip priešnuodį profesiniam perdegimui, kuris paplitęs tarp teisėsaugos pareigūnų.',
+  },
+  {
+    title: 'Konferencijos leidinys — Emocinis intelektas ir žaidybinimas',
+    date: 'Kov 10, 2025',
+    author: 'admin',
+    excerpt: 'Straipsnis „Studentai mokosi emocinio intelekto technikos per IKT ir žaidybinimą", parengtas Lietuvos komandos, buvo paskelbtas konferencijos leidinyje (ISBN: 978-989-8704-65-8).',
+    images: ['/images/news-proceedings-2025.jpg'],
+  },
+  {
+    title: 'IADIS konferencija Madeiroje — Pristatymas apie emocinį intelektą ir žaidybinimą',
+    date: 'Kov 3, 2025',
+    author: 'admin',
+    excerpt: 'Lietuvos komanda skaitė pranešimą 18-ojoje IADIS tarptautinėje informacinių sistemų konferencijoje 2025 / 23-ojoje tarptautinėje e-visuomenės konferencijoje 2025 Madeiroje, Portugalijoje, dalindamasi pirmojo bandomojo testavimo radiniais.',
+    images: ['/images/news-iadis-conference.jpg'],
+  },
+  {
+    title: 'ICERI2024 leidinys paskelbtas',
+    date: 'Grd 30, 2024',
+    author: 'admin',
+    excerpt: 'Po tarptautinės konferencijos ICERI2024 buvo paskelbtas pranešimų rinkinys, kuriame yra projekto komandos narių straipsnis apie emocinio intelekto technikos mokymą per IKT ir žaidybinimą (Sevilija, Ispanija, 2024 m. lapkričio 11–13 d.).',
+    images: ['/images/news-iceri2024.jpg'],
+  },
+  {
+    title: 'Laimingų Naujųjų 2025 metų',
+    date: 'Grd 30, 2024',
+    author: 'admin',
+    excerpt: 'Projekto komandos nariai linki jums — ir mums visiems — geriausių 2025 metų. Palinkėkime sau taikių, naudingų 2025 metų. Nuoširdūs sveikinimai visiems teisėsaugos pareigūnams ir piliečiams!',
+    images: ['/images/news-new-year-2025.jpg'],
+  },
+  {
+    title: 'Konferencija apie įtrauktį — POL-COM pristatytas pedagogams ir studentams',
+    date: 'Grd 9, 2024',
+    author: 'admin',
+    excerpt: 'Konferencijoje apie įtrauktį universitetuose Kaune, Lietuvoje, prof. Rūta Adamonienė pristatė POL-COM projektą, jo pagrindinius tikslus ir rezultatus Kauno gimnazijų ir universitetų mokytojams bei studentams.',
+  },
+  {
+    title: 'ALTA\'24 konferencija — Žaidybinimas ir IT teisėsaugos švietime',
+    date: 'Grd 5, 2024',
+    author: 'admin',
+    excerpt: 'Pristatymas „Žaidybinimas, IT ir teisėsaugos pareigūnų švietimas" buvo įtrauktas į ALTA\'24 tarptautinės konferencijos apie tvarumą ir partnerystę švietime Lietuvoje darbotvarkę.',
+    images: ['/images/news-alta24.jpg'],
+  },
+  {
+    title: 'POL-COM mokymo modulio testavimas — Konfliktų deeskalacija MRU',
+    date: 'Lap 26, 2024',
+    author: 'admin',
+    excerpt: 'POL-COM komanda MRU, Lietuvoje, pradėjo POL-COM modulio mokymą ir testavimą. 12 būsimų teisėsaugos pareigūnų dėstytojų pradėjo analizuoti modulio „Konfliktų deeskalacija ir sprendimas" medžiagą POL-COM Moodle platformoje.',
+    images: ['/images/news-lithuania-training.jpg'],
+  },
+  {
+    title: 'SIF Lietuva pasidalijo POL-COM apklausos įrašu',
+    date: 'Lap 26, 2024',
+    author: 'admin',
+    excerpt: 'Socialinių inovacijų fondas (SIF), Lietuva, savo organizaciniame „Facebook" pasidalijo apie 2024 m. sausį atliktą apklausą dėl komunikacijos įgūdžių, kurių šiandien reikia šiuolaikiniams teisėsaugos pareigūnams.',
+  },
+  {
+    title: 'Pirmoji testavimo patirtis — Teigiami 35 studentų atsiliepimai',
+    date: 'Lap 15, 2024',
+    author: 'admin',
+    excerpt: '2024 m. lapkritį MRU komanda pradėjo testuoti kai kurias interaktyvias veiklas. Studentai (35) pasidalijo gana teigiamomis reakcijomis (nauja, įdomu, motyvuojanti), o kai kurios kritinės pastabos bus atsižvelgtos.',
+  },
+  {
+    title: 'ICERI2024 pristatymas — Emocinio intelekto mokymas per IKT',
+    date: 'Lap 12, 2024',
+    author: 'admin',
+    excerpt: 'Pranešimas, paremtas ekspertų nuomonėmis apie emocinio intelekto mokymą teisėsaugos pareigūnams naudojant IT, buvo skaitytas 17-ojoje metinėje ICERI2024 konferencijoje „Keičiame švietimą, keičiame gyvenimą" Sevilijoje, Ispanijoje.',
+  },
+  {
+    title: 'DANTE renginys — Tobulinimas ir tinklaveika mokymo evoliucijai',
+    date: 'Lap 1, 2024',
+    author: 'admin',
+    excerpt: 'CPIP dalyvavo trečiajame suaugusiųjų švietimo institucijos DANTE renginyje „Tobulinimas ir tinklaveika mokymo evoliucijai" Opatijoje. POL-COM projekto iniciatyva buvo pristatyta pagrindiniams srities suinteresuotiesiems.',
+  },
+  {
+    title: 'Susitikimas su Čekijos nacionaline policija — Bendradarbiavimas kuriant vaizdo turinį ir bandomąjį testavimą',
+    date: 'Spa 29, 2024',
+    author: 'admin',
+    excerpt: 'Turėjome dar vieną produktyvų susitikimą su Čekijos nacionaline policija, siekdami stiprinti bendradarbiavimą POL-COM projekte — aptarėme metodologijos atsiliepimus, policijos dalyvavimą kuriant vaizdo turinį ir policijos dėstytojų įtraukimą į bandomąjį testavimą.',
+    images: ['/images/news-czech-police.jpg'],
+  },
+  {
+    title: 'CPIP Štutgarto renginys — Geriausios praktikos mainai',
+    date: 'Spa 24, 2024',
+    author: 'admin',
+    excerpt: 'CPIP komanda dalyvavo geriausios praktikos mainų renginyje Štutgarte, Vokietijoje, organizuotame „Prison Fellowship Germany". Ši patirtis suteikė vertingų įžvalgų apie novatoriškas reabilitacijos prieigas ir buvo proga pristatyti POL-COM projektą.',
+    images: ['/images/news-cpip-stuttgart.jpg'],
+  },
+  {
+    title: 'OEB globalinė konferencija Berlyne — Skaitmeninis švietimas baudžiamajame teisingume',
+    date: 'Spa 23, 2024',
+    author: 'admin',
+    excerpt: 'CPIP atstovas dalijosi patirtimi sesijoje „Sunkiai pasiekiami ir sunkiai aptarnaujami: skaitmeninis švietimas baudžiamojo pataisos teisingumo kontekste" OEB globalinėje konferencijoje Berlyne, įskaitant POL-COM projektą.',
+    images: ['/images/news-berlin-conference.jpg'],
+  },
+  {
+    title: 'LERA konferencija Lietuvoje — Švietimas, neapibrėžtumas ir komunikacijos iššūkiai',
+    date: 'Spa 18, 2024',
+    author: 'admin',
+    excerpt: 'Doc. Dileta Jatautaitė skaitė pranešimą tarptautinėje konferencijoje „Švietimas, neapibrėžtumas ir komunikacijos iššūkiai: praeities ir ateities sankirta" Vilniuje apie POL-COM radinius.',
+  },
+  {
+    title: 'UNESCO kalėjimų švietimo konferencija — Europos projektai baudžiamajame teisingume',
+    date: 'Spa 17, 2024',
+    author: 'admin',
+    excerpt: 'CPIP Rumunija buvo pakviesta UNESCO taikomųjų tyrimų kalėjimų švietimo katedros dalyvauti pirmojoje tarptautinėje konferencijoje apie švietimą kalėjimuose, kurią surengė Kvebeko universitetas Monrealyje.',
+  },
+  {
+    title: 'Europos skaitmeninio švietimo centras — Ekspertų įžvalgos apie kalėjimų švietimą',
+    date: 'Spa 13, 2024',
+    author: 'admin',
+    excerpt: 'Tarptautinę švietimo kalėjimuose dieną Daiana Huber iš CPIP komandos buvo pakviesta kaip ekspertė-suinteresuotoji į „Klauskite manęs bet ko" sesiją Europos skaitmeninio švietimo centre, kur buvo pristatytas CPIP projektų portfelis, įskaitant POL-COM.',
+  },
+  {
+    title: 'LETA pranešimas — Lietuvos nacionalinė švietimo tyrimų asociacija',
+    date: 'Spa 8, 2024',
+    author: 'admin',
+    excerpt: 'Lietuvos nacionalinė švietimo tyrimų asociacija (LETA) paskelbė informaciją apie POL-COM projektą. Modulių rezultatus ir jų efektyvumą planuojama pristatyti LETA organizuojamoje tarptautinėje konferencijoje.',
+    images: ['/images/news-leta-announcement.jpg'],
+  },
+  {
+    title: 'MRU balandžio konferencija — Apklausos radiniai apie policijos komunikacijos švietimą',
+    date: 'Rgp 1, 2024',
+    author: 'admin',
+    excerpt: '2024 m. balandžio 18 d. Mykolo Romerio universiteto metinėje tarptautinėje saugumo konferencijoje buvo pristatyti pirmieji apklausos rezultatai apie POL-COM, dalijantis teisėsaugos praktikų įžvalgomis apie IT naudojimą komunikacijos švietime.',
+    images: ['/images/news-mru-april-1.jpg', '/images/news-mru-april-2.jpg'],
+  },
+  {
+    title: 'Briuselio įgūdžių renginys — Europos įgūdžių metai: kas toliau?',
+    date: 'Lie 1, 2024',
+    author: 'admin',
+    excerpt: 'CPIP dalyvavo renginyje „Europos įgūdžių metai — kas toliau?" Briuselyje. Šimtai dalyvių susirinko dalintis sėkmingomis įgūdžių istorijomis, o POL-COM projektas buvo pristatytas susijusių diskusijų metu.',
+    images: ['/images/news-brussels-event.jpg'],
+  },
+  {
+    title: 'Konferencija Graikijoje — Emocinis intelektas teisėsaugoje',
+    date: 'Bir 7, 2024',
+    author: 'admin',
+    excerpt: 'Lietuvos MRU komanda pristatė „Emocinis intelektas teisėsaugos pareigūnų perspektyvos kontekste: kai kurie POL-COM projekto radiniai" II tarptautinėje konferencijoje Peloponeso universitete, Graikijoje.',
+  },
+  {
+    title: 'Lietuvos priešgaisrinės gelbėjimo mokyklos vizitas — MISE HERo priima Ugniagesių gelbėtojų mokyklą',
+    date: 'Bir 1, 2024',
+    author: 'admin',
+    excerpt: 'MISE HERo džiaugėsi priėmusi Lietuvos ugniagesių gelbėtojų mokyklos atstovus, kurie atvyko sužinoti daugiau apie POLICE-COM projektą. Jie išreiškė didelį susidomėjimą projekto rezultatais, rodydami susidomėjimą ne tik policijos, bet ir priešgaisrinių bei gelbėjimo tarnybų srityje.',
+    images: ['/images/news-fire-school-1.jpg', '/images/news-fire-school-2.jpg'],
+  },
+  {
+    title: 'Projekto susitikimas Rumunijoje — Mokymo turinio kūrimas',
+    date: 'Kov 1, 2024',
+    author: 'admin',
+    excerpt: 'Konsorciumo partnerių atstovai susirinko Rumunijoje svarbiam projekto susitikimui. Pirmoji diena buvo skirta mokymo sesijai apie dirbtinio intelekto panaudojimą idėjų generavimui. Partneriai nusprendė sujungti savo kompetenciją kuriant multimedijos mokymo medžiagą šešiems komunikacijos moduliams.',
+    images: ['/images/news-romania-meeting-1.jpg', '/images/news-romania-meeting-2.jpg'],
+  },
+  {
+    title: 'Projektas „POLICE COM" pereina į veiklos etapą!',
+    date: 'Sau 1, 2024',
+    author: 'admin',
+    excerpt: 'Projektas POLICE-COM oficialiai pradėjo veiklą, subūręs šešių partnerių iš trijų ES šalių konsorciumą. Projektas orientuotas į mokymo medžiagos kūrimą dėstytojams, ugdantiems naujos kartos teisėsaugos pareigūnus, su pagrindinėmis sritimis: komunikacija, konfliktų sprendimas, deeskalacija ir emocinis intelektas.',
+    images: ['/images/news-launch.jpg'],
+  },
+];
+---
+
+<Layout title="Naujienos | POLICE-COM" lang={lang}>
+  <section class="page-hero">
+    <div class="container">
+      <span class="section-label">{t(lang, 'news.title')}</span>
+      <h1 class="section-title animate-in">Naujienos ir atnaujinimai</h1>
+      <p class="section-subtitle animate-in delay-1">Sekite naujausias POLICE-COM projekto naujienas.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="news-list">
+        {posts.map((post, i) => (
+          <article class={`news-item animate-in delay-${Math.min(i + 1, 6)}`}>
+            <div class="news-meta">
+              <time>{post.date}</time>
+              <span class="news-author">{post.author}</span>
+            </div>
+            <h2 class="news-title">{post.title}</h2>
+            <p class="news-excerpt">{post.excerpt}</p>
+            {post.images && (
+              <div class="news-images">
+                {post.images.map((img: string) => (
+                  <img src={img} alt={post.title} class="news-image" />
+                ))}
+              </div>
+            )}
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .page-hero {
+    padding: calc(72px + 4rem) 0 3rem;
+    background: var(--color-bg-elevated);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .news-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+  }
+
+  .news-item {
+    padding: 2rem 0;
+    border-bottom: 1px solid var(--color-border);
+    transition: background 0.2s;
+  }
+
+  .news-item:first-child {
+    padding-top: 0;
+  }
+
+  .news-meta {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .news-meta time {
+    font-size: 0.8rem;
+    color: var(--color-accent);
+    font-weight: 500;
+  }
+
+  .news-author {
+    font-size: 0.8rem;
+    color: var(--color-text-muted);
+  }
+
+  .news-author::before {
+    content: '\00B7';
+    margin-right: 1rem;
+  }
+
+  .news-title {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    font-weight: 400;
+    color: var(--color-text);
+    margin-bottom: 0.5rem;
+    line-height: 1.3;
+  }
+
+  .news-excerpt {
+    font-size: 0.95rem;
+    color: var(--color-text-muted);
+    line-height: 1.7;
+    max-width: 700px;
+  }
+
+  .news-images {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .news-image {
+    max-width: 200px;
+    max-height: 150px;
+    object-fit: cover;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--color-border);
+  }
+</style>
