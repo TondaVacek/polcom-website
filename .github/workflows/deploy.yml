@@ -16,7 +16,7 @@ jobs:
 
       - run: npm ci
       - run: npm run build
-      - run: rm -rf dist/materials
+      - run: rm -rf dist/materials/CZ dist/materials/EN dist/materials/LT dist/materials/RO
 
       - uses: cloudflare/wrangler-action@v3
         with:
