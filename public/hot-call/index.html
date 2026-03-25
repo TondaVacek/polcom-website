@@ -1164,7 +1164,7 @@
       
       // Replace all screenshot URLs with the correct language version
       for (let i = 1; i <= 7; i++) {
-        const regex = new RegExp(`hotcall-manual-[a-z]{2}-${i}\\.png`, 'g');
+        const regex = new RegExp(`(${BASE_URL.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})?hotcall-manual-[a-z]{2}-${i}\\.png`, 'g');
         content = content.replace(regex, `${BASE_URL}hotcall-manual-${langCode}-${i}.png`);
       }
       
