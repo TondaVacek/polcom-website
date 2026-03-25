@@ -2,11 +2,14 @@
   "scenarioId": "domestic-crisis",
   "reviewVersion": "1.0",
   "title": "Domácí spor s krizí duševního zdraví — Analýza výkonu",
-
   "stageAnalysis": {
     "1": {
       "stageName": "Výjezd a příjezd",
-      "criticalSkills": ["Počáteční vyhodnocení", "První dojem", "Bezpečnostní povědomí"],
+      "criticalSkills": [
+        "Počáteční vyhodnocení",
+        "První dojem",
+        "Bezpečnostní povědomí"
+      ],
       "choiceAnalysis": {
         "positive": {
           "choiceText": "Krátce nasloucháte u dveří, pak tiše zaklepete: 'Policie. Jsme tu, abychom pomohli. Mohu vstoupit a promluvit si s vámi?'",
@@ -63,10 +66,13 @@
         "Klidná přítomnost snižuje defenzivní reakce"
       ]
     },
-
     "2": {
       "stageName": "První kontakt uvnitř",
-      "criticalSkills": ["Kontrola místa", "Budování důvěry", "Vyhodnocení bezpečnosti"],
+      "criticalSkills": [
+        "Kontrola místa",
+        "Budování důvěry",
+        "Vyhodnocení bezpečnosti"
+      ],
       "choiceAnalysis": {
         "positive": {
           "choiceText": "Klidně: 'Chápu, že je to osobní, ale jsme tady, protože někdo může být v ohrožení. Ujistěme se, že jsou všichni v bezpečí. Co se dnes večer stalo?'",
@@ -123,10 +129,13 @@
         "Neutralita zabraňuje defenzivním reakcím"
       ]
     },
-
     "3": {
       "stageName": "Shromažďování informací",
-      "criticalSkills": ["Aktivní naslouchání", "Nestrannost", "Vyhodnocení informací"],
+      "criticalSkills": [
+        "Aktivní naslouchání",
+        "Nestrannost",
+        "Vyhodnocení informací"
+      ],
       "choiceAnalysis": {
         "positive": {
           "choiceText": "K manželovi: 'Pane, vyslechnu i vaši stranu. Nechte ji prosím domluvit.' K manželce: 'Zmínila jste, že jste se bála. Poslouchám. Můžete mi říct víc?'",
@@ -190,10 +199,13 @@
         ]
       }
     },
-
     "4": {
       "stageName": "Přítomnost dítěte",
-      "criticalSkills": ["Dětská psychologie", "Rodinná dynamika", "Emoční regulace"],
+      "criticalSkills": [
+        "Dětská psychologie",
+        "Rodinná dynamika",
+        "Emoční regulace"
+      ],
       "choiceAnalysis": {
         "positive": {
           "choiceText": "Dřepnete si k dítěti do úrovně očí: 'Ahoj, ty nemáš žádné potíže. Jsme tady, aby byli všichni v bezpečí.' K otci: 'Vím, že vám na ní záleží. Pojďme se všichni pro ni nadechnout.'",
@@ -251,10 +263,13 @@
         "Krátká, laskavá slova k dětem mají trvalý pozitivní dopad"
       ]
     },
-
     "5": {
       "stageName": "Krize duševního zdraví se vynořuje",
-      "criticalSkills": ["Rozpoznání krize", "Prevence sebevražd", "Terapeutická komunikace"],
+      "criticalSkills": [
+        "Rozpoznání krize",
+        "Prevence sebevražd",
+        "Terapeutická komunikace"
+      ],
       "choiceAnalysis": {
         "positive": {
           "choiceText": "Jemně: 'Je mi líto, čím procházíte. Zní to zdrcující, ale vaše rodina vás potřebuje — bezpečným způsobem. Pojďme vám sehnat pomoc. Můžeme zavolat poradce.'",
@@ -299,7 +314,7 @@
             "Zaměření na bezpečnost pro všechny přítomné"
           ],
           "missed": [
-            "Chybějící přímá reakce na suicidální výrok ('bez mě by vám bylo líp') — nejnebezpečnější myšlenka zůstala nevyvrácena",
+            "Chybějící přímá reakce na suicidální výrok ('beze mě by vám bylo líp') — nejnebezpečnější myšlenka zůstala nevyvrácena",
             "Obcházení suicidálních myšlenek může v člověku zanechat pocit, že jeho nejtemnější myšlenka byla ignorována nebo příliš děsivá k vyslovení",
             "Jádro krize — beznaděj a kolaps sebehodnoty — zůstalo neřešeno pod soucitnou obecností"
           ],
@@ -307,9 +322,21 @@
         }
       },
       "mentalHealthIndicators": {
-        "verbal": ["'Bez mě by vám bylo líp'", "Výrazy beznaděje", "Výroky o zátěži pro okolí"],
-        "behavioral": ["Třes", "Zrychlené dýchání", "Proměna emoční volatility"],
-        "situational": ["Nedávná ztráta zaměstnání", "Finanční stres", "Rodinný konflikt"]
+        "verbal": [
+          "'Bez mě by vám bylo líp'",
+          "Výrazy beznaděje",
+          "Výroky o zátěži pro okolí"
+        ],
+        "behavioral": [
+          "Třes",
+          "Zrychlené dýchání",
+          "Proměna emoční volatility"
+        ],
+        "situational": [
+          "Nedávná ztráta zaměstnání",
+          "Finanční stres",
+          "Rodinný konflikt"
+        ]
       },
       "crisisInterventionPrinciples": [
         "Brát všechny suicidální výroky vážně",
@@ -318,10 +345,13 @@
         "Nikdy nenechávat suicidální osobu samotnou bez plánu"
       ]
     },
-
     "6": {
       "stageName": "Právní řešení",
-      "criticalSkills": ["Znalost práva", "Vyvážené vymáhání", "Koordinace zdrojů"],
+      "criticalSkills": [
+        "Znalost práva",
+        "Vyvážené vymáhání",
+        "Koordinace zdrojů"
+      ],
       "choiceAnalysis": {
         "positive": {
           "choiceText": "Nařídit desetidenní vykázání pro bezpečnost, zajistit podporu intervenčního centra, upozornit orgán sociálně-právní ochrany dětí za účelem pomoci — ne odebrání — a zajistit, aby manžel dostal odbornou pomoc.",
@@ -329,7 +359,7 @@
             "Dokonalá aplikace českého zákona o domácím násilí",
             "Vyvážení bezpečnosti se zachováním rodiny",
             "Koordinace více podpůrných služeb",
-            "Vymáhání se soucitem"
+            "Prokázal soucit při vymáhání práva"
           ],
           "professionalImpact": "Toto řešení maximalizuje bezpečnost a zároveň otevírá cestu k zotavení. Příkladná rovnováha vymáhání práva a sociální práce."
         },
@@ -380,10 +410,13 @@
         "Aktivace služeb pro podporu obětí"
       ]
     },
-
     "7": {
       "stageName": "Následná podpora",
-      "criticalSkills": ["Podpora oběti", "Poskytování informací", "Dovednosti uzavření"],
+      "criticalSkills": [
+        "Podpora oběti",
+        "Poskytování informací",
+        "Dovednosti uzavření"
+      ],
       "choiceAnalysis": {
         "positive": {
           "choiceText": "Ujistit s podrobnými informacemi o procesu vykázání, intervenčních službách, podpoře pro dítě (ne odebrání) a dalším postupu. Validovat její pocity.",
@@ -443,7 +476,6 @@
       ]
     }
   },
-
   "comprehensiveMetrics": {
     "rapport": {
       "description": "Budování důvěry prostřednictvím aktivního naslouchání a empatie",
@@ -462,7 +494,6 @@
         ]
       }
     },
-
     "procedure": {
       "description": "Dodržování zákonných požadavků a bezpečnostních protokolů",
       "indicators": {
@@ -480,7 +511,6 @@
         ]
       }
     },
-
     "emotional": {
       "description": "Zvládání stresu a konstruktivní reakce na emoce",
       "indicators": {
@@ -498,7 +528,6 @@
         ]
       }
     },
-
     "safety": {
       "description": "Udržování fyzické i emoční bezpečnosti pro všechny",
       "indicators": {
@@ -517,51 +546,57 @@
       }
     }
   },
-
   "mistakePatterns": {
     "escalation": {
       "pattern": "Vnášení naléhavosti nebo taktického rámování do krize vyžadující emoční zapojení",
-      "examples": ["Promítání časového tlaku u dveří před vyhodnocením", "Vydávání taktických příkazů k zajištění místa v domácím prostředí", "Forenzní dotazování v přítomnosti údajného agresora"],
+      "examples": [
+        "Promítání časového tlaku u dveří před vyhodnocením",
+        "Vydávání taktických příkazů k zajištění místa v domácím prostředí",
+        "Forenzní dotazování v přítomnosti údajného agresora"
+      ],
       "impact": "Každá procedurální eskalace zavírá emoční rolety a brání dobrovolnému sdílení, které potřebujete pro přesné vyhodnocení situace",
       "correction": "Přizpůsobte své tempo a rámování emočním potřebám situace, ne standardním taktickým protokolům"
     },
-
     "missingCues": {
       "pattern": "Obcházení kritických signálů místo jejich přímého řešení",
-      "examples": ["Přechod k praktickým krokům po suicidálních myšlenkách", "Nabídka služeb zaměstnanosti, když někdo vyjadřuje existenciální beznaděj", "Interpretace emočního stažení jako úspěšné deeskalace"],
+      "examples": [
+        "Přechod k praktickým krokům po suicidálních myšlenkách",
+        "Nabídka služeb zaměstnanosti, když někdo vyjadřuje existenciální beznaděj",
+        "Interpretace emočního stažení jako úspěšné deeskalace"
+      ],
       "impact": "Povrch vypadá klidně, ale podkladová krize zůstává nedotčena — vyhovění není zotavení",
       "correction": "Když někdo vyjádří svou nejtemnější myšlenku, reagujte na ni výslovně, než přejdete k logistice"
     },
-
     "judgmental": {
       "pattern": "Dobře míněné jednání, které nechtěně bere strany nebo zbavuje aktérství",
-      "examples": ["Stavění verzí proti sobě v přítomnosti obou stran", "Pokus o odvedení dítěte od vazebné osoby", "Předčasné ujištění zlehčující závažnost krize"],
+      "examples": [
+        "Stavění verzí proti sobě v přítomnosti obou stran",
+        "Pokus o odvedení dítěte od vazebné osoby",
+        "Předčasné ujištění zlehčující závažnost krize"
+      ],
       "impact": "Strážník věří, že pomáhá, ale ve skutečnosti umlčuje oběť, děsí dítě nebo zavírá dveře před upřímným sdílením",
       "correction": "Než budete jednat na základě ochranitelského instinktu, zeptejte se, čí bezpečnosti a čí pohodlí vlastně sloužíte"
     },
-
     "procedural": {
       "pattern": "Dodržení každého postupu bez propojení kohokoliv se skutečnou pomocí",
-      "examples": ["Sepisování zpráv a nařizování vykázání bez vysvětlení, co znamenají", "Zmínka OSPOD jako 'standardní postup' bez kontextu", "Vyplnění byrokratického seznamu, zatímco suicidální muž je převážen bez podpory duševního zdraví"],
+      "examples": [
+        "Sepisování zpráv a nařizování vykázání bez vysvětlení, co znamenají",
+        "Zmínka OSPOD jako 'standardní postup' bez kontextu",
+        "Vyplnění byrokratického seznamu, zatímco suicidální muž je převážen bez podpory duševního zdraví"
+      ],
       "impact": "Administrativa je bezchybná, ale rodina zažívá systém jako něco, co je zpracovává, místo aby jim pomáhal",
       "correction": "Každý procedurální krok musí být doprovázen lidským vysvětlením, emočním kontextem a přímým propojením s podpůrnými službami"
     }
   },
-
   "personalizedFeedback": {
     "templates": {
       "allPositive": "Vynikající výkon! Prokázali jste výjimečné komunikační dovednosti v celém tomto složitém scénáři. Vaše schopnost vyvážit empatii s vymáháním, rozpoznat krizi duševního zdraví a poskytnout komplexní podporu při zachování bezpečnosti ukazuje zvládnutí principů moderní policejní práce. Váš přístup pravděpodobně zachránil tuto rodinu před tragédií.",
-
       "mostlyPositive": "Silný celkový výkon s vynikajícími dovednostmi zvládání krize. Prokázali jste dobrou emoční inteligenci a většinu rozhodnutí jste učinili správně. Klíčová silná stránka: [KONKRÉTNÍ_SILNÁ_STRÁNKA]. Oblast k rozvoji: [KONKRÉTNÍ_ZLEPŠENÍ]. Váš soucitný přístup skutečně změnil situaci pro tuto rodinu.",
-
       "mixed": "Některé aspekty jste zvládli dobře, ale propásli jste klíčové příležitosti. Mezi silné stránky patřilo [KONKRÉTNÍ_SILNÉ_STRÁNKY]. Avšak [KONKRÉTNÍ_SLABINY] vyžadují pozornost. Pamatujte, že domácí situace vyžadují vyvažování více priorit — bezpečnosti, vymáhání práva a zachování rodiny. Projděte si [OBLASTI_VÝCVIKU] pro zlepšení vaší reakce.",
-
       "mostlyNegative": "Tento scénář odhalil významné mezery v dovednostech krizové komunikace. Přestože jste [DROBNÉ_POZITIVUM], většina vašich rozhodnutí eskalovala napětí nebo přehlédla zásadní bezpečnostní problémy. Konkrétně [HLAVNÍ_SELHÁNÍ]. Doporučen okamžitý výcvik v: [KRITICKÝ_VÝCVIK]. Tyto situace mohou bez správných dovedností skončit tragicky.",
-
       "allNegative": "Váš přístup v celém tomto scénáři byl znepokojivý a potenciálně nebezpečný. Konzistentní eskalace, přehlédnutí krize duševního zdraví a nedostatek empatie mohly vést k tragédii. Vyžadován povinný nápravný výcvik v: krizové intervenci, deeskalačních technikách a emoční inteligenci. Pamatujte: vaše komunikace může zachránit nebo stát životy."
     }
   },
-
   "dialogueEffectivenessReview": {
     "excellentPhrases": [
       "'Chápu, že je to osobní, ale jsme tady, protože někdo může být v ohrožení'",
@@ -569,7 +604,6 @@
       "'Ahoj, ty nemáš žádné potíže. Jsme tady, aby byli všichni v bezpečí'",
       "'Zmínila jste, že jste se bála. Poslouchám. Můžete mi říct víc?'"
     ],
-
     "poorPhrases": [
       "'Čas hraje roli' — vnášení naléhavosti před vyhodnocením situace",
       "'Nejdříve musím zajistit místo. Ruce na viditelné místo.' — taktické rámování v domácí krizi",
@@ -578,7 +612,6 @@
       "'Musíme se zaměřit na další praktické kroky' — obcházení suicidálních myšlenek směrem k logistice",
       "'Důvěřujte procesu. Budete v pořádku.' — předčasné ujištění zavírající dveře před upřímným sdílením"
     ],
-
     "analysisCriteria": {
       "tone": "Byl přiměřený emočnímu kontextu?",
       "clarity": "Bylo sdělení jasné a jednoznačné?",
@@ -587,7 +620,6 @@
       "safety": "Upřednostnilo bezpečnost všech?"
     }
   },
-
   "scenarioSpecificLessons": {
     "1": "Situace domácího násilí nejsou nikdy 'jen hádky' — důkladné vyhodnocení je zásadní",
     "2": "Děti v domácích sporech utrpí trauma i bez přímého zneužívání — prioritizujte jejich emoční bezpečí",
@@ -598,7 +630,6 @@
     "7": "Vaše vystupování a komunikační styl přímo ovlivňují, zda rodina přijme pomoc",
     "8": "Následná kontrola a koordinace služeb jsou stejně důležité jako samotná intervence"
   },
-
   "recommendedTraining": {
     "based_on_performance": {
       "perfect": [
@@ -624,36 +655,65 @@
       ]
     }
   },
-
   "finalReportStructure": {
     "sections": [
       {
         "title": "Celkové shrnutí výkonu",
-        "content": ["Skóre", "Úroveň výkonu", "Klíčové silné stránky", "Zásadní slabiny"]
+        "content": [
+          "Skóre",
+          "Úroveň výkonu",
+          "Klíčové silné stránky",
+          "Zásadní slabiny"
+        ]
       },
       {
         "title": "Analýza podle fází",
-        "content": ["Zvolená možnost", "Dopad", "Alternativní přístupy", "Poučení"]
+        "content": [
+          "Zvolená možnost",
+          "Dopad",
+          "Alternativní přístupy",
+          "Poučení"
+        ]
       },
       {
         "title": "Efektivita komunikace",
-        "content": ["Nejlepší momenty", "Promeškané příležitosti", "Analýza dialogu"]
+        "content": [
+          "Nejlepší momenty",
+          "Promeškané příležitosti",
+          "Analýza dialogu"
+        ]
       },
       {
         "title": "Klíčové body rozhodování",
-        "content": ["Rozpoznání duševní krize", "Bezpečnost dítěte", "Právní řešení"]
+        "content": [
+          "Rozpoznání duševní krize",
+          "Bezpečnost dítěte",
+          "Právní řešení"
+        ]
       },
       {
         "title": "Analýza vzorců",
-        "content": ["Konzistentní silné stránky", "Opakující se chyby", "Rozhodovací trendy"]
+        "content": [
+          "Konzistentní silné stránky",
+          "Opakující se chyby",
+          "Rozhodovací trendy"
+        ]
       },
       {
         "title": "Profesní rozvoj",
-        "content": ["Okamžité výcvikové potřeby", "Dlouhodobý rozvoj dovedností", "Doporučené zdroje"]
+        "content": [
+          "Okamžité výcvikové potřeby",
+          "Dlouhodobý rozvoj dovedností",
+          "Doporučené zdroje"
+        ]
       },
       {
         "title": "Aplikace v praxi",
-        "content": ["Jak se to převádí do terénní práce", "Běžné scénáře", "Osvědčené postupy"]
+        "content": [
+          "Jak se to převádí do terénní práce",
+          "Běžné scénáře",
+          "Osvědčené postupy"
+        ]
       }
     ]
   }

@@ -127,7 +127,7 @@
         },
         {
           "character": "wife",
-          "text": "Já... my... Šlo o peníze a tvou práci... Vystrašil jsem se, když jsi začal házet věcmi... ale jsem v pořádku."
+          "text": "Já... my... Šlo o peníze a tvou práci...Vyděsilo mě, když jsi začal házet věcmi... ale jsem v pořádku."
         }
       ],
       "prompt": "Manžel po ní ostře střelí pohledem, když zmíní házení věcí. Jak budete pokračovat?",
@@ -219,7 +219,7 @@
       "npcDialogue": [
         {
           "character": "husband",
-          "text": "Já... přišel jsem o práci před měsícem. Nikomu jsem to neřekl... Účty... dluhy... Zklamávám svou rodinu... Možná by vám bez mě bylo líp..."
+          "text": "Já... přišel jsem o práci před měsícem. Nikomu jsem to neřekl... Účty... dluhy... Zklamávám svou rodinu... Možná by vám beze mě bylo líp..."
         },
         {
           "character": "wife",
@@ -229,7 +229,7 @@
       "prompt": "Manžel vykazuje známky suicidálních myšlenek. Toto je nyní krize duševního zdraví. Jak zareagujete?",
       "options": [
         {
-          "text": "Uděláte pomalý krok blíž a ztišíte hlas, pohledem mu hledíte přímo do očí. Mluvíte jemně, ale s přesvědčením: 'Je mi líto, čím procházíte. Přijít o práci a nést to sám celý měsíc — to zní opravdu zdrcující a chápu tu tíhu. Ale potřebuji, abyste mě slyšel: vaše rodina vás potřebuje. Ne takhle, ne v krizi — bezpečným způsobem. Pojďme vám dnes v noci sehnat pomoc. Můžu hned zavolat krizového poradce, někoho, kdo přesně tyhle situace zná a umí s nimi pracovat.'",
+          "text": "Uděláte pomalý krok blíž a ztišíte hlas, pohledem mu hledíte přímo do očí. Mluvíte jemně, ale s přesvědčením: 'Je mi líto, čím procházíte. Přijít o práci a nést to sám celý měsíc — to zní opravdu zdrcující a chápu tu tíhu. Ale potřebuji, abyste mě vyslechl: vaše rodina vás potřebuje. Ne takhle, ne v krizi — bezpečným způsobem. Pojďme vám dnes v noci sehnat pomoc. Můžu hned zavolat krizového poradce, někoho, kdo přesně tyhle situace zná a umí s nimi pracovat.'",
           "feedback": "Proč: Validace jeho pocitů při jemném vyvrácení suicidálních myšlenek konkrétním důvodem k životu prokazuje vysokou emoční inteligenci a správnou krizovou intervenci — normalizujete jeho bolest, aniž byste přijali jeho závěr, že by rodině bylo bez něj lépe. | DŮSLEDKY: Přikývne, vyčerpaný, ale vnímavý. Nabídka poradce mu dává cestu vpřed. Bezprostřední krize se začíná řešit, protože se cítí opravdu vyslyšen a podpořen. | Reflexe: Jak jednoduchý akt pojmenování něčí bolesti a nabídky konkrétního dalšího kroku mění trajektorii krize?",
           "type": "positive",
           "points": 12
@@ -242,13 +242,13 @@
         },
         {
           "text": "Pomalu přikývnete a udržujete vyrovnaný hlas zaměřený na řešení: 'Slyším vás a vidím, že to bylo neuvěřitelně těžké — nést to tajemství celý měsíc by drtilo kohokoli. Ale teď se musíme zaměřit na dnešní večer, na to, aby byli všichni v tomhle bytě v bezpečí, a promyslet další praktické kroky vpřed. Existují lidé, kteří pomohou se zaměstnáním — úřad práce, finanční poradenství, dluhová pomoc. Jeden problém po druhém. Nemusíme dnes v noci vyřešit všechno.' Držíte s ním oční kontakt a snažíte se vyzařovat klidnou kompetenci.",
-          "feedback": "Proč: Tato odpověď zní produktivně a dokonce soucitně — uznáváte jeho bolest, nabízíte praktickou pomoc a snažíte se rozložit zdrcující situaci na zvládnutelné části. Mnoho dobře vyškolených strážníků se automaticky uchyluje k tomuto řešení zaměřenému na výsledek. Avšak když někdo říká 'bez mě by vám bylo líp,' nežádá o služby zaměstnanosti. Tím, že okamžitě přepnete na logistiku, sdělujete, že jeho suicidální zoufalství je problém k řízení, ne bolest k vyslyšení. Výrok, který vyděsil jeho ženu, zůstává bez odezvy, a on se dozvídá, že ani profesionál v místnosti nedokáže zůstat u toho, co cítí. | DŮSLEDKY: Mechanicky přikývne a zmlkne — což vypadá jako spolupráce, ale ve skutečnosti je to stažení se. Akutní emoční krize byla přelepena seznamem úkolů. Dnes v noci může vyhovět, ale zoufalství, které vyprodukovalo suicidální výrok, zůstává zcela nedotčeno. Jeho žena sleduje, jak se uzavírá, a ví, že se ve skutečnosti nic nezměnilo. | Reflexe: Když někdo vyjádří, že by jeho rodině bylo bez něj lépe, co to sděluje, když vaší odpovědí jsou služby zaměstnanosti?",
+          "feedback": "Proč: Tato odpověď zní produktivně a dokonce soucitně — uznáváte jeho bolest, nabízíte praktickou pomoc a snažíte se rozložit zdrcující situaci na zvládnutelné části. Mnoho dobře vyškolených strážníků se automaticky uchyluje k tomuto řešení zaměřenému na výsledek. Avšak když někdo říká 'beze mě by vám bylo líp,' nežádá o služby zaměstnanosti. Tím, že okamžitě přepnete na logistiku, sdělujete, že jeho suicidální zoufalství je problém k řízení, ne bolest k vyslyšení. Výrok, který vyděsil jeho ženu, zůstává bez odezvy, a on se dozvídá, že ani profesionál v místnosti nedokáže zůstat u toho, co cítí. | DŮSLEDKY: Mechanicky přikývne a zmlkne — což vypadá jako spolupráce, ale ve skutečnosti je to stažení se. Akutní emoční krize byla přelepena seznamem úkolů. Dnes v noci může vyhovět, ale zoufalství, které vyprodukovalo suicidální výrok, zůstává zcela nedotčeno. Jeho žena sleduje, jak se uzavírá, a ví, že se ve skutečnosti nic nezměnilo. | Reflexe: Když někdo vyjádří, že by jeho rodině bylo bez e se ve skutečnosti nic nezměnilo. | Reflexe: Když někdo vyjádří, že by jeho rodině bylo bez něj lépe, co to sděluje, když vaší odpovědí jsou služby zaměstnanosti?",
           "type": "negative",
           "points": -10
         },
         {
           "text": "Udržujete klidný, nespěchající hlas a necháváte tíhu jeho přiznání viset v místnosti, místo abyste přes ni spěchali: 'Vidím, že procházíte velmi těžkým obdobím, a chci, abyste věděl, že to, co cítíte, dává smysl. Ztráta zaměstnání vytváří obrovský tlak na člověka, zvlášť když se snažíte držet pohromadě všechno pro rodinu. Pojďme se ujistit, že dnes v noci jsou tady všichni v bezpečí — to je první krok — a pak vás můžu propojit s lidmi, kteří jsou přímo vyškolení na pomoc v přesně takhle náročných situacích.'",
-          "feedback": "Proč: Uznáváte jeho bolest a normalizujete stres ze ztráty zaměstnání, což je soucitné. Nabídka pomoci je správný instinkt. Avšak přímo jste se nevyjádřili k jeho suicidálnímu výroku — 'možná by vám bez mě bylo líp' — který je třeba jemně, ale výslovně vyvrátit. Obcházení suicidálních myšlenek, i při nabízení pomoci, může v člověku zanechat pocit, že jeho nejtemnější myšlenka byla ignorována. | DŮSLEDKY: Poněkud se uklidňuje, cítí se částečně vyslyšen. Krize se stabilizuje, ale jádro suicidálních myšlenek zůstává bez odezvy. Dnes v noci může spolupracovat, ale skryté zoufalství přetrvává. | Reflexe: Proč je důležité výslovně reagovat na suicidální výroky, místo abyste je obcházeli?",
+          "feedback": "Proč: Uznáváte jeho bolest a normalizujete stres ze ztráty zaměstnání, což je soucitné. Nabídka pomoci je správný instinkt. Avšak přímo jste se nevyjádřili k jeho suicidálnímu výroku — 'možná by vám beze mě bylo líp' — který je třeba jemně, ale výslovně vyvrátit. Obcházení suicidálních myšlenek, i při nabízení pomoci, může v člověku zanechat pocit, že jeho nejtemnější myšlenka byla ignorována. | DŮSLEDKY: Poněkud se uklidňuje, cítí se částečně vyslyšen. Krize se stabilizuje, ale jádro suicidálních myšlenek zůstává bez odezvy. Dnes v noci může spolupracovat, ale skryté zoufalství přetrvává. | Reflexe: Proč je důležité výslovně reagovat na suicidální výroky, místo abyste je obcházeli?",
           "type": "partially_positive",
           "points": 5
         }
@@ -326,7 +326,7 @@
         },
         {
           "text": "Opřete se o rám dveří a nabídnete jí svůj nejpovzbudivější úsměv, hlas vřelý a optimistický: 'Podívejte, vím, že dnešek byl neskutečně těžký, ale upřímně — tohle je to nejlepší, co se mohlo stát. Věřte mi, spousta rodin si přesně tímhle projde a vyjdou z toho silnější. On dostane pomoc, kterou potřebuje, vy dostanete prostor k nadechnutí a věci se uklidní, až bude mít každý čas to vstřebat. Důvěřujte procesu — systém funguje, když se do něj lidé zapojí. Budete v pořádku.' Povzbudivě přikývnete a vykročíte na chodbu.",
-          "feedback": "Proč: Tato reakce je vřelá, optimistická a zjevně dobře míněná — strážník skutečně věří, že poskytuje útěchu. Avšak říkat ženě, jejíž manžel právě vyjádřil suicidální myšlenky a byl z domova odveden, že je to 'to nejlepší, co se mohlo stát', zlehčuje závažnost toho, co právě prožila. 'Důvěřujte procesu' předpokládá, že systém, v němž se nikdy nepohybovala, bude bezchybně fungovat. 'Budete v pořádku' zavírá dveře před tím, aby vyjádřila, že v pořádku není — je to ujištění, které slouží potřebě strážníka odejít s dobrým pocitem, spíše než potřebě oběti být vyslyšena. | DŮSLEDKY: Přikývne a řekne 'děkuji', protože společenský scénář to vyžaduje, ale nezavolá na žádné z čísel, která jste jí dali. Nerozumí harmonogramu vykázání. Sedí vzhůru a přemýšlí, zda je její manžel v bezpečí, bez koho se zeptat. Váš optimismus v tu chvíli působil laskavě, ale nechal ji samotnou s každou nezodpovězenou otázkou. | Reflexe: Kdy se ujištění stává způsobem, jak si strážník usnadní odchod, místo toho, aby oběť připravil na to, co přijde?",
+          "feedback": "Proč: Tato reakce je vřelá, optimistická a zjevně dobře míněná — strážník skutečně věří, že poskytuje útěchu. Avšak říkat ženě, jejíž manžel právě vyjádřil suicidální myšlenky a byl z domova odveden, že je to 'to nejlepší, co se mohlo stát', zlehčuje závažnost toho, co právě prožila. 'Důvěřujte procesu' předpokládá, že systém, v němž se nikdy nepohybovala, bude bezchybně fungovat. 'Budete v pořádku' zavírá dveře před tím, aby vyjádřila, že v pořádku není — je to ujištění, které slouží potřebě strážníka odejít s dobrým pocitem, spíše než potřebě oběti být vyslyšena. | DŮSLEDKY: Přikývne a řekne 'děkuji', protože společenský scénář to vyžaduje, ale nezavolá na žádné z čísel, která jste jí dali. Nerozumí harmonogramu vykázání. Sedí vzhůru a přemýšlí, jestli je její manžel v bezpečí, a nemá se koho zeptat. Váš optimismus v tu chvíli působil laskavě, ale nechal ji samotnou s každou nezodpovězenou otázkou. | Reflexe: Kdy se ujištění stává způsobem, jak si strážník usnadní odchod, místo toho, aby oběť připravil na to, co přijde?",
           "type": "negative",
           "points": -8
         },
@@ -351,7 +351,7 @@
       "dialogueSequence": [
         {
           "character": "trainer",
-          "text": "Proveďte mě okamžikem, který vám z dnešního večera utkvěl nejvíc."
+          "text": "Proveďte mě okamžikem, který vám z dnešního večera utkvěl nejvíce v paměti."
         },
         {
           "character": "officer",
