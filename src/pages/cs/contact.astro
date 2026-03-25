@@ -40,7 +40,7 @@ const lang = 'cs' as const;
         </div>
       </div>
 
-      <form class="contact-form" action="#" method="POST">
+      <form class="contact-form" id="contactForm">
         <div class="form-group">
           <label for="name">Název</label>
           <input type="text" id="name" name="name" required />
@@ -53,8 +53,9 @@ const lang = 'cs' as const;
           <label for="message">Zpráva</label>
           <textarea id="message" name="message" rows="6" required></textarea>
         </div>
-        <button type="submit" class="btn btn-primary">
-          Odeslat        </button>
+        <button type="submit" class="btn btn-primary" id="submitBtn">
+          Odeslat zprávu        </button>
+        <p class="form-status" id="formStatus"></p>
       </form>
     </div>
   </section>
@@ -68,6 +69,42 @@ const lang = 'cs' as const;
     const addr = u + '@' + d + '.' + t;
     el.href = 'mai' + 'lto:' + addr;
     el.textContent = addr;
+  });
+</script>
+
+<script>
+  document.getElementById('contactForm')?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const btn = document.getElementById('submitBtn');
+    const status = document.getElementById('formStatus');
+    const form = e.target;
+    btn.disabled = true;
+    btn.textContent = 'Odesílání...';
+    status.textContent = '';
+    status.className = 'form-status';
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: form.name.value,
+          email: form.email.value,
+          message: form.message.value,
+        }),
+      });
+      if (res.ok) {
+        status.textContent = 'Zpráva úspěšně odeslána!';
+        status.classList.add('success');
+        form.reset();
+      } else {
+        throw new Error('Failed');
+      }
+    } catch {
+      status.textContent = 'Odeslání se nezdařilo. Zkuste nám napsat přímo emailem.';
+      status.classList.add('error');
+    }
+    btn.disabled = false;
+    btn.textContent = 'Odeslat zprávu';
   });
 </script>
 
@@ -97,5 +134,9 @@ const lang = 'cs' as const;
   .btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.75rem 1.5rem; font-family: var(--font-body); font-size: 0.9rem; font-weight: 600; border-radius: var(--radius-sm); border: none; cursor: pointer; transition: all 0.25s; }
   .btn-primary { background: var(--color-accent); color: #ffffff; align-self: flex-start; }
   .btn-primary:hover { background: var(--color-accent-light); transform: translateY(-1px); box-shadow: 0 4px 16px rgba(27,58,107,0.25); }
+  .form-status { margin-top: 1rem; font-size: 0.9rem; font-weight: 500; }
+  .form-status.success { color: #16a34a; }
+  .form-status.error { color: #dc2626; }
+  .btn:disabled { opacity: 0.6; cursor: not-allowed; }
   @media (max-width: 768px) { .contact-grid { grid-template-columns: 1fr; gap: 2rem; } }
 </style>

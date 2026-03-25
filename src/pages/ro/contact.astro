@@ -47,7 +47,7 @@ const lang = 'ro' as const;
         </div>
       </div>
 
-      <form class="contact-form" action="#" method="POST">
+      <form class="contact-form" id="contactForm">
         <div class="form-group">
           <label for="name">Nume și prenume</label>
           <input type="text" id="name" name="name" required />
@@ -60,8 +60,9 @@ const lang = 'ro' as const;
           <label for="message">Mesaj</label>
           <textarea id="message" name="message" rows="6" required></textarea>
         </div>
-        <button type="submit" class="btn btn-primary">
-          Trimite        </button>
+        <button type="submit" class="btn btn-primary" id="submitBtn">
+          Trimiteți mesajul        </button>
+        <p class="form-status" id="formStatus"></p>
       </form>
     </div>
   </section>
@@ -75,6 +76,42 @@ const lang = 'ro' as const;
     const addr = u + '@' + d + '.' + t;
     el.href = 'mai' + 'lto:' + addr;
     el.textContent = addr;
+  });
+</script>
+
+<script>
+  document.getElementById('contactForm')?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const btn = document.getElementById('submitBtn');
+    const status = document.getElementById('formStatus');
+    const form = e.target;
+    btn.disabled = true;
+    btn.textContent = 'Se trimite...';
+    status.textContent = '';
+    status.className = 'form-status';
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: form.name.value,
+          email: form.email.value,
+          message: form.message.value,
+        }),
+      });
+      if (res.ok) {
+        status.textContent = 'Mesajul a fost trimis cu succes!';
+        status.classList.add('success');
+        form.reset();
+      } else {
+        throw new Error('Failed');
+      }
+    } catch {
+      status.textContent = 'Trimiterea a eșuat. Încercați să ne contactați direct prin email.';
+      status.classList.add('error');
+    }
+    btn.disabled = false;
+    btn.textContent = 'Trimiteți mesajul';
   });
 </script>
 
@@ -240,6 +277,11 @@ const lang = 'ro' as const;
     transform: translateY(-1px);
     box-shadow: 0 4px 16px rgba(27, 58, 107, 0.25);
   }
+
+  .form-status { margin-top: 1rem; font-size: 0.9rem; font-weight: 500; }
+  .form-status.success { color: #16a34a; }
+  .form-status.error { color: #dc2626; }
+  .btn:disabled { opacity: 0.6; cursor: not-allowed; }
 
   @media (max-width: 768px) {
     .contact-grid {
