@@ -254,21 +254,21 @@ const uiLabels = {
   }
 
   function renderPreview(m) {
-    const previewUrl = `/materials/${encodeURI(m.previewPath || m.path)}`;
+    const previewUrl = `https://pub-b33a41e64ab14f4d92f341fa4bf701bd.r2.dev/materials/${encodeURI(m.previewPath || m.path)}`;
     const ext = m.fileType;
     if (ext === 'pdf' || ext === 'docx' || ext === 'pptx') {
       return `<iframe class="preview-frame" src="${previewUrl}" title="${m.title}"></iframe>`;
     } else if (ext === 'png' || ext === 'jpg' || ext === 'jpeg') {
-      return `<img class="preview-image" src="/materials/${encodeURI(m.path)}" alt="${m.title}" />`;
+      return `<img class="preview-image" src="https://pub-b33a41e64ab14f4d92f341fa4bf701bd.r2.dev/materials/${encodeURI(m.path)}" alt="${m.title}" />`;
     } else if (ext === 'mp4') {
-      return `<video class="preview-video" controls src="/materials/${encodeURI(m.path)}"></video>`;
+      return `<video class="preview-video" controls src="https://pub-b33a41e64ab14f4d92f341fa4bf701bd.r2.dev/materials/${encodeURI(m.path)}"></video>`;
     }
     return `<div class="preview-na"><p>${uiLabels.previewNA}</p></div>`;
   }
 
   function openModal(m) {
-    const url = `/materials/${encodeURI(m.path)}`;
-    const pdfUrl = `/materials/${encodeURI(m.previewPath || m.path)}`;
+    const url = `https://pub-b33a41e64ab14f4d92f341fa4bf701bd.r2.dev/materials/${encodeURI(m.path)}`;
+    const pdfUrl = `https://pub-b33a41e64ab14f4d92f341fa4bf701bd.r2.dev/materials/${encodeURI(m.previewPath || m.path)}`;
     const icon = fileTypeIcons[m.fileType] || '📄';
     const topicBadges = m.topics.map(t => `<span class="tag">${t.replace(/-/g, ' ')}</span>`).join('');
 
@@ -454,7 +454,7 @@ const uiLabels = {
     currentFiltered.forEach((m, i) => {
       setTimeout(() => {
         const a = document.createElement('a');
-        a.href = `/materials/${encodeURI(m.path)}`;
+        a.href = `https://pub-b33a41e64ab14f4d92f341fa4bf701bd.r2.dev/materials/${encodeURI(m.path)}`;
         a.download = m.filename;
         a.style.display = 'none';
         document.body.appendChild(a);
