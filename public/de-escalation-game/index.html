@@ -1,0 +1,4582 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Police De-escalation Training - Multilingual</title>
+    
+    <!-- Embedded CSS -->
+    <style>
+        /* ============================================
+           DESIGN SYSTEM - Centralized Variables
+           ============================================ */
+        :root {
+            /* Color Palette */
+            --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --secondary-gradient: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+            --success-gradient: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            --warning-gradient: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+            --danger-gradient: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+            --neutral-gradient: linear-gradient(135deg, #64748b 0%, #475569 100%);
+            
+            /* Base Colors */
+            --color-primary: #667eea;
+            --color-secondary: #3b82f6;
+            --color-success: #10b981;
+            --color-warning: #f59e0b;
+            --color-danger: #ef4444;
+            --color-dark: #1e293b;
+            --color-light: #f8fafc;
+            --color-muted: #64748b;
+            
+            /* Typography Scale */
+            --font-xs: clamp(0.75rem, 1.5vw, 0.875rem);
+            --font-sm: clamp(0.875rem, 2vw, 1rem);
+            --font-base: clamp(1rem, 2.5vw, 1.125rem);
+            --font-lg: clamp(1.125rem, 3vw, 1.25rem);
+            --font-xl: clamp(1.25rem, 3.5vw, 1.5rem);
+            --font-2xl: clamp(1.5rem, 4vw, 2rem);
+            --font-3xl: clamp(2rem, 5vw, 2.5rem);
+            
+            /* Spacing */
+            --space-xs: 0.25rem;
+            --space-sm: 0.5rem;
+            --space-md: 1rem;
+            --space-lg: 1.5rem;
+            --space-xl: 2rem;
+            --space-2xl: 3rem;
+            
+            /* Border Radius */
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 20px;
+            --radius-xl: 30px;
+            --radius-full: 50px;
+            
+            /* Shadows */
+            --shadow-sm: 0 2px 10px rgba(0,0,0,0.05);
+            --shadow-md: 0 4px 20px rgba(0,0,0,0.1);
+            --shadow-lg: 0 10px 40px rgba(0,0,0,0.15);
+            --shadow-xl: 0 20px 60px rgba(0,0,0,0.2);
+            
+            /* Transitions */
+            --transition-fast: 150ms ease;
+            --transition-base: 300ms ease;
+            --transition-slow: 500ms ease;
+            --transition-spring: 500ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            
+            /* Z-Index Scale */
+            --z-base: 1;
+            --z-dropdown: 100;
+            --z-sticky: 200;
+            --z-overlay: 300;
+            --z-modal: 400;
+            --z-popover: 500;
+            --z-tooltip: 600;
+            --z-loading: 700;
+            --z-notification: 800;
+            --z-maximum: 999;
+        }
+
+        /* ============================================
+           BASE STYLES
+           ============================================ */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: var(--primary-gradient);
+            height: 100vh;
+            height: 100dvh; /* Dynamic viewport height for mobile browsers */
+            max-height: 100vh;
+            max-height: 100dvh;
+            display: flex;
+            flex-direction: column;
+            color: var(--color-dark);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            overflow: hidden;
+            /* Safe area insets for phones with notches */
+            padding-left: env(safe-area-inset-left);
+            padding-right: env(safe-area-inset-right);
+            padding-bottom: env(safe-area-inset-bottom);
+        }
+
+        /* ============================================
+           LANGUAGE SWITCHER (Header - hidden when welcome visible)
+           ============================================ */
+        .language-switcher {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: var(--z-sticky);
+            background: linear-gradient(135deg, 
+                rgba(255,255,255,0.98) 0%, 
+                rgba(248,250,252,0.98) 100%);
+            backdrop-filter: blur(20px);
+            border-radius: var(--radius-lg);
+            padding: var(--space-sm);
+            box-shadow: var(--shadow-lg);
+            display: flex;
+            gap: var(--space-xs);
+            border: 1px solid rgba(0,0,0,0.05);
+            animation: slideInLeft var(--transition-base);
+        }
+
+        .language-switcher.hidden-on-welcome {
+            display: none;
+        }
+
+        .sound-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: var(--z-sticky);
+            width: 48px;
+            height: 48px;
+            border-radius: var(--radius-lg);
+            border: 2px solid transparent;
+            background: linear-gradient(135deg, rgba(255,255,255,0.98) 0%, rgba(248,250,252,0.98) 100%);
+            backdrop-filter: blur(20px);
+            box-shadow: var(--shadow-lg);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            transition: all var(--transition-base);
+        }
+        .sound-toggle:hover {
+            border-color: var(--color-secondary);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+        .sound-toggle.muted .sound-icon { opacity: 0.5; }
+        .sound-toggle.hidden-on-welcome { display: none; }
+
+        @keyframes slideInLeft {
+            from { opacity: 0; transform: translateX(-50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        .language-button {
+            background: white;
+            border: 2px solid transparent;
+            padding: var(--space-sm) var(--space-md);
+            border-radius: var(--radius-md);
+            cursor: pointer;
+            transition: all var(--transition-base);
+            display: flex;
+            align-items: center;
+            gap: var(--space-xs);
+            font-size: var(--font-sm);
+            font-weight: 600;
+            color: var(--color-muted);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .language-button:hover {
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+            border-color: var(--color-secondary);
+            color: var(--color-dark);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .language-button.active {
+            background: var(--secondary-gradient);
+            color: white;
+            border-color: var(--color-secondary);
+            box-shadow: var(--shadow-md);
+        }
+
+        .language-button.active::after {
+            content: '✓';
+            position: absolute;
+            top: 2px;
+            right: 4px;
+            font-size: 10px;
+            background: white;
+            color: var(--color-secondary);
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .language-flag {
+            font-size: 1.2rem;
+            display: inline-flex;
+            align-items: center;
+        }
+        .language-flag img,
+        .lang-flag img {
+            display: block;
+            width: 28px;
+            height: 21px;
+            object-fit: cover;
+            border-radius: 2px;
+        }
+
+        .language-code {
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        /* ============================================
+           WELCOME SECTION WITH PROMINENT LANGUAGE SWITCHER
+           - Compact and vertically responsive
+           ============================================ */
+        .welcome-hero {
+            background: linear-gradient(135deg, rgba(255,255,255,0.98) 0%, rgba(248,250,252,0.98) 100%);
+            border-radius: var(--radius-lg);
+            padding: clamp(0.5rem, 1.5vh, 1rem) clamp(0.75rem, 2vw, 1.5rem);
+            margin-bottom: clamp(0.25rem, 1vh, 0.75rem);
+            text-align: center;
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255,255,255,0.8);
+            animation: fadeIn var(--transition-slow);
+            position: relative;
+            overflow: hidden;
+            max-width: min(700px, calc(100% - 0.5rem));
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .welcome-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #667eea, #764ba2, #3b82f6, #10b981);
+            background-size: 300% 100%;
+            animation: gradientMove 4s ease infinite;
+        }
+
+        @keyframes gradientMove {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        .welcome-hero-icon {
+            font-size: clamp(1.75rem, 4vh, 3rem);
+            margin-bottom: clamp(0.125rem, 0.5vh, 0.5rem);
+            animation: float 3s ease-in-out infinite;
+            filter: drop-shadow(0 6px 12px rgba(0,0,0,0.1));
+            line-height: 1;
+        }
+
+        .welcome-hero-title {
+            font-size: clamp(1rem, 2.5vh, 1.5rem);
+            color: var(--color-dark);
+            margin-bottom: clamp(0.125rem, 0.5vh, 0.5rem);
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            line-height: 1.2;
+        }
+
+        .welcome-hero-subtitle {
+            font-size: clamp(0.7rem, 1.5vh, 0.875rem);
+            color: var(--color-muted);
+            margin-bottom: clamp(0.25rem, 1vh, 0.75rem);
+            max-width: 550px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.4;
+        }
+
+        .welcome-language-section {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            border-radius: var(--radius-sm);
+            padding: clamp(0.375rem, 1vh, 0.75rem) clamp(0.5rem, 1.5vw, 1rem);
+            margin-bottom: clamp(0.125rem, 0.5vh, 0.375rem);
+            border: 1px solid rgba(59, 130, 246, 0.1);
+        }
+
+        .welcome-language-label {
+            font-size: clamp(0.7rem, 1.5vh, 0.875rem);
+            color: var(--color-dark);
+            font-weight: 600;
+            margin-bottom: clamp(0.125rem, 0.5vh, 0.375rem);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 4px;
+        }
+
+        .welcome-language-label::before {
+            content: '🌍';
+            font-size: clamp(0.875rem, 1.75vh, 1.1rem);
+        }
+
+        .welcome-language-buttons {
+            display: flex;
+            justify-content: center;
+            gap: clamp(0.25rem, 0.75vw, 0.5rem);
+            flex-wrap: wrap;
+        }
+
+        .welcome-lang-btn {
+            background: white;
+            border: 1.5px solid #e2e8f0;
+            padding: clamp(0.2rem, 0.6vh, 0.375rem) clamp(0.375rem, 1vw, 0.75rem);
+            border-radius: var(--radius-sm);
+            cursor: pointer;
+            transition: all var(--transition-base);
+            display: flex;
+            align-items: center;
+            gap: clamp(0.2rem, 0.4vw, 0.375rem);
+            font-size: clamp(0.65rem, 1.3vh, 0.8rem);
+            font-weight: 600;
+            color: var(--color-dark);
+            min-width: auto;
+            justify-content: center;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+        }
+
+        .welcome-lang-btn:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.15);
+            border-color: var(--color-secondary);
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+        }
+
+        .welcome-lang-btn.active {
+            background: var(--secondary-gradient);
+            color: white;
+            border-color: transparent;
+            box-shadow: 0 2px 10px rgba(59, 130, 246, 0.4);
+            transform: scale(1.01);
+        }
+
+        .welcome-lang-btn .lang-flag {
+            font-size: clamp(1rem, 2vh, 1.25rem);
+            display: inline-flex;
+            align-items: center;
+        }
+        .welcome-lang-btn .lang-flag img {
+            width: 32px;
+            height: 24px;
+            object-fit: cover;
+            border-radius: 2px;
+        }
+
+        .welcome-lang-btn .lang-name {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            line-height: 1.1;
+        }
+
+        .welcome-lang-btn .lang-code {
+            font-size: clamp(0.55rem, 1vh, 0.65rem);
+            opacity: 0.7;
+            text-transform: uppercase;
+        }
+
+        .welcome-layout-section {
+            margin-top: clamp(0.5rem, 1.5vh, 0.75rem);
+            padding-top: clamp(0.25rem, 0.75vh, 0.5rem);
+            border-top: 1px solid rgba(0,0,0,0.06);
+        }
+        .welcome-layout-label {
+            font-size: clamp(0.65rem, 1.2vh, 0.75rem);
+            color: var(--color-muted);
+            margin-bottom: clamp(0.2rem, 0.5vh, 0.375rem);
+            font-weight: 600;
+        }
+        .welcome-layout-buttons {
+            display: flex;
+            justify-content: center;
+            gap: clamp(0.375rem, 1vw, 0.5rem);
+            flex-wrap: wrap;
+        }
+        .welcome-layout-btn {
+            background: white;
+            border: 1.5px solid #e2e8f0;
+            padding: clamp(0.25rem, 0.6vh, 0.5rem) clamp(0.5rem, 1.5vw, 1rem);
+            border-radius: var(--radius-sm);
+            cursor: pointer;
+            transition: all var(--transition-base);
+            font-size: clamp(0.7rem, 1.4vh, 0.85rem);
+            font-weight: 600;
+            color: var(--color-dark);
+            box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+        }
+        .welcome-layout-btn:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.15);
+            border-color: var(--color-secondary);
+        }
+        .welcome-layout-btn.active {
+            background: var(--secondary-gradient);
+            color: white;
+            border-color: transparent;
+            box-shadow: 0 2px 10px rgba(59, 130, 246, 0.4);
+        }
+
+        .welcome-divider {
+            display: flex;
+            align-items: center;
+            margin: clamp(0.25rem, 0.75vh, 0.5rem) 0 clamp(0.125rem, 0.5vh, 0.25rem);
+            color: var(--color-muted);
+        }
+
+        .welcome-divider::before,
+        .welcome-divider::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(0,0,0,0.08), transparent);
+        }
+
+        .welcome-divider span {
+            padding: 0 clamp(0.375rem, 1.5vw, 0.75rem);
+            font-size: clamp(0.6rem, 1.2vh, 0.75rem);
+            font-weight: 500;
+        }
+
+        /* Language-specific typography adjustments */
+        body[data-lang="cs"] {
+            font-size: 98%;
+        }
+
+        body[data-lang="lt"] {
+            font-size: 97%;
+        }
+
+        body[data-lang="ro"] {
+            font-size: 99%;
+        }
+
+        /* ============================================
+           UTILITY CLASSES
+           ============================================ */
+        .visually-hidden {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+
+        .fade-in {
+            animation: fadeIn var(--transition-slow);
+        }
+
+        .slide-up {
+            animation: slideUp var(--transition-base);
+        }
+
+        .pulse {
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        /* ============================================
+           ANIMATIONS
+           ============================================ */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.95); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes slideInRight {
+            from { opacity: 0; transform: translateX(50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.05); opacity: 0.9; }
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        @keyframes shimmer {
+            0% { background-position: -200% center; }
+            100% { background-position: 200% center; }
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0) scale(1); }
+            50% { transform: translateY(-20px) scale(1.1); }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            33% { transform: translateY(-10px) rotate(-3deg); }
+            66% { transform: translateY(-5px) rotate(3deg); }
+        }
+
+        /* ============================================
+           LOADING SCREEN
+           ============================================ */
+        .loading-screen {
+            position: fixed;
+            inset: 0;
+            background: var(--primary-gradient);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            z-index: var(--z-loading);
+            transition: opacity var(--transition-slow);
+        }
+
+        .loading-screen.hide {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .loading-content {
+            text-align: center;
+            color: white;
+        }
+
+        .loading-logo {
+            width: 100px;
+            height: 100px;
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            margin: 0 auto var(--space-lg);
+            animation: float 3s ease-in-out infinite;
+            box-shadow: var(--shadow-xl);
+        }
+
+        .loading-spinner {
+            width: 60px;
+            height: 60px;
+            border: 4px solid rgba(255,255,255,0.2);
+            border-top-color: white;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto var(--space-md);
+        }
+
+        .loading-text {
+            font-size: var(--font-lg);
+            font-weight: 600;
+            margin-bottom: var(--space-sm);
+        }
+
+        .loading-progress {
+            width: 200px;
+            height: 4px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 2px;
+            overflow: hidden;
+            margin: var(--space-md) auto;
+        }
+
+        .loading-progress-bar {
+            height: 100%;
+            background: white;
+            animation: shimmer 2s linear infinite;
+            background: linear-gradient(90deg, 
+                rgba(255,255,255,0.5) 0%,
+                rgba(255,255,255,1) 50%,
+                rgba(255,255,255,0.5) 100%);
+            background-size: 200% 100%;
+        }
+
+        /* ============================================
+           ERROR SCREEN
+           ============================================ */
+        .error-screen {
+            position: fixed;
+            inset: 0;
+            background: var(--danger-gradient);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            z-index: var(--z-loading);
+            color: white;
+            text-align: center;
+            padding: var(--space-xl);
+        }
+
+        .error-screen.show {
+            display: flex;
+            animation: fadeIn var(--transition-base);
+        }
+
+        .error-content {
+            max-width: 500px;
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            padding: var(--space-2xl);
+            border-radius: var(--radius-xl);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .error-icon {
+            font-size: 4rem;
+            margin-bottom: var(--space-lg);
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        .error-message {
+            font-size: var(--font-xl);
+            font-weight: 700;
+            margin-bottom: var(--space-sm);
+        }
+
+        .error-details {
+            font-size: var(--font-base);
+            opacity: 0.9;
+            margin-bottom: var(--space-xl);
+            line-height: 1.6;
+            white-space: pre-wrap;
+        }
+
+        .btn-retry {
+            background: white;
+            color: var(--color-danger);
+            border: none;
+            padding: var(--space-md) var(--space-xl);
+            border-radius: var(--radius-full);
+            font-size: var(--font-base);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all var(--transition-base);
+            box-shadow: var(--shadow-md);
+        }
+
+        .btn-retry:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        /* ============================================
+           HEADER - Compact and responsive
+           ============================================ */
+        header {
+            background: rgba(26, 54, 93, 0.95);
+            backdrop-filter: blur(20px);
+            color: white;
+            padding: clamp(0.5rem, 1.5vh, 1rem) var(--space-md);
+            text-align: center;
+            box-shadow: var(--shadow-md);
+            position: relative;
+            overflow: hidden;
+            border-bottom: 2px solid rgba(255,255,255,0.1);
+            flex-shrink: 0;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(45deg, 
+                rgba(59,130,246,0.1) 0%, 
+                rgba(16,185,129,0.1) 100%);
+            animation: shimmer 3s linear infinite;
+            background-size: 200% 100%;
+        }
+
+        header h1 {
+            font-size: clamp(1rem, 2.5vh, 1.5rem);
+            margin-bottom: clamp(0.125rem, 0.5vh, 0.25rem);
+            position: relative;
+            z-index: 2;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+            font-weight: 700;
+            letter-spacing: -0.02em;
+        }
+
+        header p {
+            font-size: clamp(0.75rem, 1.5vh, 0.9rem);
+            opacity: 0.9;
+            position: relative;
+            z-index: 2;
+        }
+
+        body.game-mode header p {
+            display: none;
+        }
+
+        /* ============================================
+           MAIN CONTAINER
+           ============================================ */
+        #game-container {
+            width: 100%;
+            max-width: 100%;
+            margin: 0;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            padding: 8px clamp(0.5rem, 2vw, 1.5rem) 8px;
+            overflow: hidden;
+            min-height: 0;
+        }
+
+        /* ============================================
+           GAME CONTENT LAYOUT - Flexible for all screens
+           ============================================ */
+        .game-content {
+            display: grid;
+            grid-template-columns: 8fr 2fr;
+            grid-template-rows: minmax(0, 1fr);
+            gap: var(--space-md);
+            flex: 1;
+            min-height: 0;
+            opacity: 1;
+            transition: opacity var(--transition-base), grid-template-columns 0.3s ease;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .game-content.dialogue-focus {
+            grid-template-columns: 2fr 8fr !important;
+        }
+
+        .game-content.hidden {
+            display: none !important;
+        }
+
+        /* Panel toggle button — sits between left and right panels */
+        .panel-toggle {
+            position: absolute;
+            left: 80%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 20;
+            width: 26px;
+            height: 52px;
+            border-radius: 13px;
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(0,0,0,0.1);
+            box-shadow: var(--shadow-sm);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            color: var(--color-secondary);
+            transition: all 0.3s ease;
+            padding: 0;
+        }
+        .game-content.dialogue-focus .panel-toggle {
+            left: 20%;
+        }
+        .panel-toggle:hover {
+            background: var(--color-secondary);
+            color: white;
+            box-shadow: var(--shadow-md);
+        }
+        .panel-toggle::after { content: '\25C0'; }
+        .game-content.dialogue-focus .panel-toggle::after { content: '\25B6'; }
+
+        .left-panel {
+            display: flex;
+            flex-direction: column;
+            gap: clamp(0.25rem, 0.75vh, 0.5rem);
+            min-height: 0;
+            overflow-y: auto;
+            overflow-x: hidden;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+            box-shadow: none;
+            border: none;
+        }
+        .left-panel::-webkit-scrollbar { display: none; width: 0; height: 0; }
+
+        .right-panel {
+            display: flex;
+            flex-direction: column;
+            gap: clamp(0.25rem, 0.75vh, 0.5rem);
+            min-height: 0;
+            overflow: hidden;
+        }
+
+        /* ============================================
+           SCENE CONTAINER - Compact and responsive
+           ============================================ */
+        .scene-wrapper {
+            position: relative;
+            width: 100%;
+            height: auto;
+            min-height: clamp(50px, 7vh, 100px);
+            max-height: clamp(70px, 10vh, 130px);
+            flex-shrink: 0;
+        }
+
+        #scene-container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            min-height: inherit;
+            max-height: inherit;
+            background: linear-gradient(135deg, #1a1f2e 0%, #2d3748 100%);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            box-shadow: none;
+            transition: transform var(--transition-base);
+        }
+
+        #scene-container:hover {
+            transform: none !important;
+        }
+
+        #scene-image {
+            width: 100%;
+            height: 100%;
+            min-height: inherit;
+            max-height: inherit;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            transition: all var(--transition-slow);
+            background: linear-gradient(160deg, #f1f5f9 0%, #e2e8f0 50%, #cbd5e1 100%);
+        }
+
+        .scene-content {
+            text-align: left;
+            padding: clamp(0.85rem, 2vh, 1.25rem) clamp(1rem, 2.5vw, 1.5rem);
+            animation: fadeIn var(--transition-slow);
+            position: relative;
+            z-index: 2;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .scene-emoji {
+            display: none;
+        }
+
+        .scene-title {
+            font-size: clamp(0.9rem, 2.2vh, 1.15rem);
+            color: var(--color-dark);
+            font-weight: 700;
+            margin-bottom: clamp(0.35rem, 0.8vh, 0.6rem);
+            line-height: 1.3;
+            letter-spacing: -0.01em;
+        }
+
+        .scene-description {
+            font-size: clamp(0.8rem, 1.8vh, 0.95rem);
+            color: #475569;
+            max-width: 100%;
+            margin: 0;
+            line-height: 1.5;
+            letter-spacing: 0.01em;
+        }
+
+        .scene-particles {
+            position: absolute;
+            inset: 0;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: rgba(255,255,255,0.5);
+            border-radius: 50%;
+            animation: floatParticle 10s linear infinite;
+        }
+
+        @keyframes floatParticle {
+            from {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            to {
+                transform: translateY(-100vh) rotate(720deg);
+                opacity: 0;
+            }
+        }
+
+        /* ============================================
+           PROGRESS INDICATOR - Bottom Position in Left Panel
+           ============================================ */
+        #progress-indicator {
+            position: fixed;
+            top: 20px;
+            right: 136px;
+            z-index: var(--z-sticky);
+            background: linear-gradient(135deg,
+                rgba(255,255,255,0.98) 0%,
+                rgba(248,250,252,0.98) 100%);
+            backdrop-filter: blur(20px);
+            padding: 0 10px;
+            border-radius: var(--radius-lg);
+            color: var(--color-dark);
+            box-shadow: var(--shadow-lg);
+            border: 2px solid transparent;
+            overflow: visible;
+            height: 48px;
+            display: none;
+        }
+
+        #progress-indicator.show {
+            display: flex;
+            align-items: center;
+        }
+
+        /* ============================================
+           BACK TO SCENARIOS BUTTON
+           ============================================ */
+        #back-to-scenarios-container {
+            display: none;
+            position: fixed;
+            top: 20px;
+            right: 78px;
+            z-index: var(--z-sticky);
+        }
+
+        body.game-mode #back-to-scenarios-container.show {
+            display: block;
+        }
+
+        .back-to-scenarios-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, rgba(255,255,255,0.98) 0%, rgba(248,250,252,0.98) 100%);
+            backdrop-filter: blur(20px);
+            border: 2px solid transparent;
+            border-radius: var(--radius-lg);
+            cursor: pointer;
+            font-size: 1.4rem;
+            color: var(--color-muted);
+            transition: all var(--transition-base);
+            box-shadow: var(--shadow-lg);
+            padding: 0;
+        }
+
+        .back-to-scenarios-btn:hover {
+            border-color: var(--color-secondary);
+            color: var(--color-dark);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .back-to-scenarios-btn .back-text {
+            display: none;
+        }
+
+        /* Hide language switcher when in game mode */
+        body.game-mode .language-switcher {
+            display: none !important;
+        }
+
+        .progress-container {
+            position: relative;
+            height: 44px;
+            display: flex;
+            align-items: center;
+            padding: 0 8px;
+        }
+
+        .progress-label {
+            display: none;
+        }
+
+        .progress-line-bg {
+            position: absolute;
+            top: 50%;
+            left: 16px;
+            right: 16px;
+            height: 2px;
+            background: rgba(203,213,225,0.5);
+            transform: translateY(-50%);
+            z-index: 1;
+            border-radius: 2px;
+        }
+
+        .progress-line-fill {
+            position: absolute;
+            top: 50%;
+            left: 16px;
+            right: 16px;
+            height: 2px;
+            background: linear-gradient(90deg, #10b981 0%, #3b82f6 100%);
+            transform: translateY(-50%) scaleX(0);
+            transform-origin: left center;
+            z-index: 2;
+            border-radius: 2px;
+            transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .stage-dots {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 3;
+            padding: 0 4px;
+        }
+
+        .stage-dot {
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            background: white;
+            border: 2px solid #e2e8f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 10px;
+            font-weight: 700;
+            color: #94a3b8;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            flex-shrink: 0;
+            position: relative;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+            margin: 0 2px;
+        }
+
+        .stage-dot span {
+            position: relative;
+            z-index: 2;
+        }
+
+        .stage-dot.completed {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            border-color: #10b981;
+            color: white;
+            transform: scale(0.9);
+        }
+
+        .stage-dot.completed .checkmark {
+            font-size: 16px;
+        }
+
+        .stage-dot.active {
+            background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+            border-color: #3b82f6;
+            color: white;
+            transform: scale(1.15);
+            box-shadow: 0 0 0 4px rgba(59,130,246,0.15), 0 3px 10px rgba(59,130,246,0.3);
+            animation: stagePulse 2s ease-in-out infinite;
+        }
+
+        @keyframes stagePulse {
+            0%, 100% {
+                transform: scale(1.15);
+                box-shadow: 0 0 0 4px rgba(59,130,246,0.15), 0 3px 10px rgba(59,130,246,0.3);
+            }
+            50% {
+                transform: scale(1.25);
+                box-shadow: 0 0 0 6px rgba(59,130,246,0.1), 0 4px 15px rgba(59,130,246,0.4);
+            }
+        }
+
+        .stage-dot.upcoming {
+            background: #f8fafc;
+            border-color: #cbd5e1;
+            color: #94a3b8;
+            transform: scale(0.85);
+            opacity: 0.7;
+        }
+
+        .stage-notification {
+            position: fixed;
+            top: 140px;
+            left: 50%;
+            transform: translateX(-50%) translateY(-20px);
+            background: linear-gradient(135deg, rgba(30,41,59,0.95) 0%, rgba(51,65,85,0.95) 100%);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 25px;
+            opacity: 0;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 999;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+            backdrop-filter: blur(10px);
+            pointer-events: none;
+            font-size: 12px;
+        }
+
+        .stage-notification.show {
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
+        }
+
+        .stage-notification-content {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .stage-number {
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            opacity: 0.9;
+        }
+
+        .stage-name {
+            font-size: 14px;
+            font-weight: 700;
+        }
+
+        /* ============================================
+           DIALOGUE HISTORY - Flexible Height with Proper Scrolling
+           ============================================ */
+        #dialogue-history {
+            background: linear-gradient(135deg,
+                rgba(255,255,255,0.98) 0%,
+                rgba(248,250,252,0.98) 100%);
+            backdrop-filter: blur(20px);
+            border-radius: var(--radius-lg);
+            padding: var(--space-lg);
+            box-shadow: var(--shadow-lg);
+            flex: 1;
+            overflow-y: auto;
+            overflow-x: hidden;
+            display: none;
+            position: relative;
+            scroll-behavior: smooth;
+            border: 1px solid rgba(0,0,0,0.05);
+            min-height: 0;
+        }
+
+        #dialogue-history.show {
+            display: block;
+        }
+
+        #dialogue-history {
+            scrollbar-width: thin;
+            scrollbar-color: rgba(0,0,0,0.15) transparent;
+        }
+
+        #dialogue-history::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        #dialogue-history::-webkit-scrollbar-track {
+            background: transparent;
+            border-radius: 3px;
+        }
+
+        #dialogue-history::-webkit-scrollbar-thumb {
+            background: rgba(0,0,0,0.12);
+            border-radius: 3px;
+            transition: background var(--transition-fast);
+        }
+
+        #dialogue-history::-webkit-scrollbar-thumb:hover {
+            background: rgba(0,0,0,0.2);
+        }
+
+        .dialogue-message {
+            display: flex;
+            margin-bottom: var(--space-lg);
+            animation: slideUp var(--transition-base);
+            opacity: 0;
+            animation-fill-mode: forwards;
+        }
+
+        .dialogue-message.left {
+            flex-direction: row;
+        }
+
+        .dialogue-message.right {
+            flex-direction: row-reverse;
+        }
+
+        .message-avatar {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin: 0 var(--space-sm);
+            flex-shrink: 0;
+            box-shadow: var(--shadow-md);
+            position: relative;
+        }
+
+        .message-avatar::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 12px;
+            height: 12px;
+            background: var(--color-success);
+            border-radius: 50%;
+            border: 2px solid white;
+        }
+
+        .dialogue-message.left .message-avatar {
+            background: var(--neutral-gradient);
+        }
+
+        .dialogue-message.right .message-avatar {
+            background: var(--secondary-gradient);
+        }
+
+        .message-content {
+            max-width: 70%;
+            padding: var(--space-md) var(--space-lg);
+            border-radius: 18px;
+            position: relative;
+            box-shadow: var(--shadow-sm);
+            transition: transform var(--transition-fast);
+        }
+
+        .message-content:hover {
+            transform: translateY(-1px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .dialogue-message.left .message-content {
+            background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
+            border-bottom-left-radius: 4px;
+        }
+
+        .dialogue-message.right .message-content {
+            background: var(--secondary-gradient);
+            color: white;
+            border-bottom-right-radius: 4px;
+        }
+
+        .dialogue-message.wrong .message-content {
+            background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%);
+            color: var(--color-danger);
+            animation: shake 0.5s ease-in-out;
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            75% { transform: translateX(5px); }
+        }
+
+        .dialogue-message.trainer-feedback .message-content {
+            background: var(--warning-gradient);
+            color: white;
+            border: 2px solid rgba(255,255,255,0.2);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .dialogue-message.trainer-feedback.positive .message-content {
+            background: var(--success-gradient);
+        }
+
+        .dialogue-message.trainer-feedback.negative .message-content {
+            background: var(--danger-gradient);
+        }
+
+        .message-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: var(--space-xs);
+        }
+
+        .message-name {
+            font-size: var(--font-sm);
+            font-weight: 600;
+            opacity: 0.9;
+        }
+
+        .message-time {
+            font-size: var(--font-xs);
+            opacity: 0.7;
+        }
+
+        .message-text {
+            font-size: var(--font-base);
+            line-height: 1.6;
+        }
+
+        .typing-indicator {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            padding: var(--space-sm);
+        }
+
+        .typing-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--color-muted);
+            border-radius: 50%;
+            animation: typingDot 1.4s infinite;
+        }
+
+        .typing-dot:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .typing-dot:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+
+        @keyframes typingDot {
+            0%, 60%, 100% {
+                transform: translateY(0);
+                opacity: 0.5;
+            }
+            30% {
+                transform: translateY(-10px);
+                opacity: 1;
+            }
+        }
+
+        /* ============================================
+           CHOICE CONTAINER - SHOWS ALL 5 OPTIONS
+           ============================================ */
+        #choice-container {
+            background: linear-gradient(135deg, 
+                rgba(255,255,255,0.98) 0%, 
+                rgba(248,250,252,0.98) 100%);
+            backdrop-filter: blur(20px);
+            border-radius: var(--radius-md);
+            padding: clamp(0.5rem, 1.5vh, 1rem) clamp(0.75rem, 2vw, 1.5rem);
+            padding-bottom: clamp(0.25rem, 0.75vh, 0.5rem);
+            box-shadow: none;
+            display: none;
+            border: 1px solid rgba(0,0,0,0.06);
+            position: relative;
+            overflow: hidden;
+            flex: 1;
+            min-height: 0;
+        }
+
+        #choice-container.show {
+            display: flex;
+            flex-direction: column;
+            animation: slideUp var(--transition-base);
+            min-height: 0;
+        }
+
+        #choice-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--secondary-gradient);
+        }
+
+        #choice-container > * {
+            position: relative;
+            z-index: 1;
+            flex-shrink: 0;
+        }
+
+        #choice-container .choice-options {
+            flex: 1 1 auto;
+            min-height: 0;
+            max-height: 100%;
+        }
+
+        .choice-header {
+            font-weight: 700;
+            margin-bottom: clamp(0.25rem, 1vh, 0.75rem);
+            color: var(--color-dark);
+            font-size: clamp(0.85rem, 2vh, 1.1rem);
+            display: flex;
+            align-items: center;
+            gap: var(--space-xs);
+        }
+
+        .choice-timer {
+            display: none !important;
+        }
+
+        .choice-timer.show {
+            display: none !important;
+        }
+
+        .timer-bar {
+            flex: 1;
+            height: 4px;
+            background: rgba(239, 68, 68, 0.2);
+            border-radius: 2px;
+            overflow: hidden;
+        }
+
+        .timer-fill {
+            height: 100%;
+            background: var(--color-danger);
+            transition: width 1s linear;
+        }
+
+        .choice-options {
+            display: flex;
+            flex-direction: column;
+            gap: clamp(0.25rem, 0.75vh, 0.5rem);
+            flex: 1 1 auto;
+            min-height: 0;
+            overflow-y: auto;
+            overflow-x: hidden;
+            padding-right: 8px;
+            margin-bottom: clamp(0.25rem, 0.75vh, 0.5rem);
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: thin;
+            scrollbar-color: rgba(0,0,0,0.25) rgba(0,0,0,0.06);
+        }
+
+        .choice-options::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        .choice-options::-webkit-scrollbar-track {
+            background: rgba(0,0,0,0.06);
+            border-radius: 5px;
+        }
+
+        .choice-options::-webkit-scrollbar-thumb {
+            background: rgba(0,0,0,0.25);
+            border-radius: 5px;
+        }
+
+        .choice-options::-webkit-scrollbar-thumb:hover {
+            background: rgba(0,0,0,0.4);
+        }
+
+        /* CRITICAL FIX: Force all choice buttons to display */
+        .choice-button {
+            text-align: left !important;
+            padding: clamp(0.35rem, 1vh, 0.6rem) clamp(0.5rem, 1.5vw, 0.875rem) !important;
+            border: 1.5px solid rgba(0,0,0,0.1) !important;
+            background: white !important;
+            color: var(--color-dark) !important;
+            border-radius: var(--radius-sm) !important;
+            cursor: pointer !important;
+            transition: all var(--transition-base) !important;
+            position: relative !important;
+            overflow: hidden !important;
+            font-size: clamp(0.8rem, 1.8vh, 1.05rem) !important;
+            line-height: 1.4 !important;
+            min-height: auto !important;
+            word-wrap: break-word !important;
+            display: block !important;
+            flex-shrink: 0 !important;
+            width: 100% !important;
+            opacity: 1 !important;
+            visibility: visible !important;
+            height: auto !important;
+            flex-shrink: 0 !important;
+            margin-bottom: 8px !important;
+            font-weight: 500 !important;
+        }
+
+        .choice-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, 
+                transparent, 
+                rgba(59,130,246,0.1), 
+                transparent);
+            transition: left var(--transition-slow);
+        }
+
+        .choice-button:hover::before {
+            left: 100%;
+        }
+
+        .choice-button:hover {
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%) !important;
+            color: var(--color-dark) !important;
+            border-color: var(--color-secondary) !important;
+            transform: translateX(5px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .choice-button:active {
+            transform: translateX(3px);
+        }
+
+        .choice-button.selected {
+            background: var(--secondary-gradient) !important;
+            color: white !important;
+            border-color: var(--color-secondary) !important;
+            box-shadow: var(--shadow-lg) !important;
+            font-weight: 600 !important;
+        }
+
+        .choice-button.selected:hover {
+            background: var(--secondary-gradient) !important;
+            color: white !important;
+            transform: translateX(5px);
+        }
+
+        .choice-button.disabled {
+            opacity: 0.5 !important;
+            cursor: not-allowed !important;
+            pointer-events: none !important;
+            background: #f1f5f9 !important;
+            color: var(--color-muted) !important;
+        }
+
+        .submit-choice {
+            background: var(--success-gradient);
+            color: white;
+            border: none;
+            padding: clamp(0.4rem, 1.2vh, 0.65rem) clamp(1rem, 3vw, 1.5rem);
+            border-radius: var(--radius-full);
+            font-size: clamp(0.8rem, 1.8vh, 1rem);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all var(--transition-base);
+            width: 100%;
+            margin-top: clamp(0.2rem, 0.5vh, 0.4rem);
+            margin-bottom: clamp(0.4rem, 1vh, 0.75rem);
+            flex-shrink: 0;
+            box-shadow: var(--shadow-md);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            position: relative;
+            z-index: 2;
+        }
+
+        .submit-choice:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .submit-choice:active:not(:disabled) {
+            transform: translateY(0);
+        }
+
+        .submit-choice:disabled {
+            background: var(--neutral-gradient);
+            cursor: not-allowed;
+            opacity: 0.6;
+            transform: none;
+        }
+
+        /* ============================================
+           ANIMATION OVERLAY
+           ============================================ */
+        #animation-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, 
+                rgba(17,24,39,0.97) 0%, 
+                rgba(55,65,81,0.97) 100%);
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-size: var(--font-lg);
+            text-align: center;
+            padding: var(--space-xl);
+            backdrop-filter: blur(10px);
+            transition: opacity var(--transition-slow);
+            z-index: 5;
+        }
+
+        #animation-overlay.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .welcome-content {
+            max-width: 600px;
+            animation: fadeIn var(--transition-slow);
+        }
+
+        .welcome-title {
+            font-size: var(--font-3xl);
+            font-weight: 700;
+            margin-bottom: var(--space-lg);
+            background: linear-gradient(135deg, #60a5fa 0%, #a78bfa 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .welcome-description {
+            font-size: var(--font-lg);
+            opacity: 0.9;
+            margin-bottom: var(--space-xl);
+            line-height: 1.6;
+        }
+
+        .start-button {
+            padding: var(--space-lg) var(--space-2xl);
+            font-size: var(--font-lg);
+            background: var(--secondary-gradient);
+            color: white;
+            border: none;
+            border-radius: var(--radius-full);
+            cursor: pointer;
+            transition: all var(--transition-spring);
+            box-shadow: var(--shadow-lg);
+            position: relative;
+            overflow: hidden;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-weight: 600;
+        }
+
+        .start-button::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.3);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        .start-button:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        .start-button:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .start-button:active {
+            transform: translateY(-1px) scale(1.02);
+        }
+
+        /* ============================================
+           SCENARIO SELECTION
+           ============================================ */
+        #scenario-selection {
+            background: linear-gradient(135deg, 
+                rgba(255,255,255,0.98) 0%, 
+                rgba(248,250,252,0.98) 100%);
+            backdrop-filter: blur(20px);
+            border-radius: var(--radius-md);
+            padding: clamp(0.375rem, 1vh, 0.75rem) clamp(0.5rem, 1.5vw, 1rem);
+            box-shadow: var(--shadow-md);
+            display: none;
+            margin: clamp(0.125rem, 0.5vh, 0.375rem) 0;
+            border: 1px solid rgba(0,0,0,0.05);
+            position: relative;
+            z-index: 100;
+            flex: 1;
+            min-height: 0;
+            overflow-y: auto;
+        }
+
+        #scenario-selection.show {
+            display: block;
+            animation: fadeIn var(--transition-slow);
+        }
+
+        /* Hide game panels when scenario selection is visible */
+        #scenario-selection.show ~ .game-content,
+        body.welcome-mode .game-content,
+        body.welcome-mode .left-panel,
+        body.welcome-mode .right-panel,
+        body.welcome-mode #scene-container,
+        body.welcome-mode #dialogue-history,
+        body.welcome-mode #choice-container {
+            display: none !important;
+        }
+
+        /* Full width scenario selection */
+        body.welcome-mode #scenario-selection {
+            grid-column: 1 / -1;
+            width: 100%;
+            max-width: 100%;
+            margin: 0;
+            padding: 0 clamp(0.5rem, 2vw, 1rem);
+        }
+
+        .scenario-header {
+            text-align: center;
+            margin-bottom: clamp(0.25rem, 0.75vh, 0.5rem);
+        }
+
+        .scenario-title {
+            font-size: clamp(0.85rem, 2vh, 1.1rem);
+            color: var(--color-dark);
+            font-weight: 700;
+            margin-bottom: 2px;
+        }
+
+        .scenario-subtitle {
+            font-size: clamp(0.65rem, 1.4vh, 0.85rem);
+            color: var(--color-muted);
+        }
+
+        .scenario-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(min(200px, 100%), 1fr));
+            gap: clamp(0.375rem, 1vh, 0.75rem);
+            padding: 2px;
+            width: 100%;
+        }
+
+        .scenario-card {
+            background: white;
+            border-radius: var(--radius-sm);
+            padding: clamp(0.5rem, 1.25vh, 0.875rem);
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid #e2e8f0;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.04);
+            display: flex;
+            flex-direction: column;
+            min-height: clamp(80px, 12vh, 140px);
+        }
+
+        .scenario-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+            transform-origin: left;
+        }
+
+        .scenario-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.12);
+            border-color: #c7d2fe;
+        }
+
+        .scenario-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .scenario-card.completed {
+            border-color: #86efac;
+            background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+        }
+
+        .scenario-card.completed::before {
+            background: var(--success-gradient);
+            transform: scaleX(1);
+        }
+
+        .scenario-card.perfect {
+            border-color: #fcd34d;
+            background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%);
+            box-shadow: 0 8px 30px rgba(245, 158, 11, 0.15);
+        }
+
+        .scenario-card.perfect::before {
+            background: var(--warning-gradient);
+            transform: scaleX(1);
+        }
+
+        .scenario-card.locked {
+            opacity: 0.5;
+            cursor: not-allowed;
+            filter: grayscale(1);
+        }
+
+        .scenario-card.locked:hover {
+            transform: none;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            border-color: #e2e8f0;
+        }
+
+        .scenario-status {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            font-size: 1.25rem;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.15));
+        }
+
+        .scenario-icon {
+            font-size: 2.5rem;
+            margin-bottom: var(--space-sm);
+            display: block;
+            text-align: center;
+            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.1));
+        }
+
+        .scenario-card-title {
+            font-size: var(--font-base);
+            font-weight: 700;
+            color: var(--color-dark);
+            margin-bottom: var(--space-xs);
+            line-height: 1.3;
+        }
+
+        .scenario-description {
+            color: var(--color-muted);
+            font-size: var(--font-sm);
+            line-height: 1.5;
+            margin-bottom: var(--space-md);
+            flex-grow: 1;
+        }
+
+        /* POLCOM Module Tags */
+        .scenario-modules {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 3px;
+            margin-bottom: var(--space-sm);
+        }
+
+        .module-tag {
+            display: inline-flex;
+            align-items: center;
+            padding: 1px 6px;
+            border-radius: 9px;
+            font-size: 0.6rem;
+            font-weight: 600;
+            letter-spacing: 0.01em;
+            line-height: 1.4;
+            color: var(--mod-color);
+            background: color-mix(in srgb, var(--mod-color) 12%, transparent);
+            border: 1px solid color-mix(in srgb, var(--mod-color) 30%, transparent);
+        }
+
+        .module-tag.primary {
+            color: #fff;
+            background: var(--mod-color);
+            border-color: var(--mod-color);
+        }
+
+        .scenario-stats {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: var(--space-sm);
+            border-top: 1px solid rgba(0,0,0,0.06);
+            font-size: var(--font-xs);
+            color: var(--color-muted);
+            margin-top: auto;
+        }
+
+        .scenario-difficulty {
+            display: flex;
+            gap: 2px;
+        }
+
+        .difficulty-star {
+            color: var(--color-warning);
+        }
+
+        /* ============================================
+           INSTRUCTOR INTRO
+           ============================================ */
+        .instructor-intro-overlay {
+            position: fixed;
+            inset: 0;
+            background: linear-gradient(135deg, 
+                rgba(102, 126, 234, 0.95) 0%, 
+                rgba(118, 75, 162, 0.95) 100%);
+            backdrop-filter: blur(20px);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: var(--z-modal);
+            transition: opacity var(--transition-base);
+        }
+
+        .instructor-intro-overlay.show {
+            display: flex;
+            opacity: 1;
+        }
+
+        .instructor-intro {
+            background: white;
+            border-radius: var(--radius-xl);
+            padding: var(--space-2xl);
+            box-shadow: var(--shadow-xl);
+            text-align: center;
+            max-width: 600px;
+            width: 90%;
+            margin: 0 auto;
+            animation: var(--transition-spring) modalBounce;
+            position: relative;
+            overflow: hidden;
+        }
+
+        @keyframes modalBounce {
+            from {
+                opacity: 0;
+                transform: scale(0.8) translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
+
+        .instructor-intro::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--secondary-gradient);
+        }
+
+        .instructor-avatar {
+            width: 120px;
+            height: 120px;
+            background: var(--secondary-gradient);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto var(--space-xl);
+            font-size: 4rem;
+            box-shadow: var(--shadow-xl);
+            animation: bounce 0.6s ease-out 0.2s;
+            position: relative;
+        }
+
+        .instructor-avatar::after {
+            content: '';
+            position: absolute;
+            inset: -5px;
+            border-radius: 50%;
+            border: 3px solid var(--color-secondary);
+            opacity: 0.3;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        .instructor-name {
+            font-size: var(--font-2xl);
+            color: var(--color-dark);
+            font-weight: 700;
+            margin-bottom: var(--space-md);
+        }
+
+        .instructor-message {
+            color: var(--color-muted);
+            font-size: var(--font-base);
+            line-height: 1.7;
+            margin-bottom: var(--space-xl);
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .begin-scenario-button {
+            background: var(--secondary-gradient);
+            color: white;
+            border: none;
+            padding: var(--space-lg) var(--space-2xl);
+            border-radius: var(--radius-full);
+            cursor: pointer;
+            font-size: var(--font-lg);
+            font-weight: 600;
+            box-shadow: var(--shadow-lg);
+            transition: all var(--transition-spring);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .begin-scenario-button::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.3);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        .begin-scenario-button:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        .begin-scenario-button:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: var(--shadow-xl);
+        }
+
+        /* ============================================
+           SCORE DISPLAY - Hidden during gameplay
+           ============================================ */
+        .score-display {
+            display: none !important;
+        }
+
+        /* ============================================
+           TRAINER FEEDBACK - Adjusted Position
+           ============================================ */
+        #trainer-feedback {
+            background: var(--warning-gradient);
+            border-radius: var(--radius-lg);
+            padding: var(--space-md) var(--space-lg);
+            display: none;
+            box-shadow: var(--shadow-lg);
+            margin-top: var(--space-sm);
+            margin-bottom: var(--space-md);
+            position: relative;
+            overflow: hidden;
+            color: white;
+            max-height: 300px;
+            overflow-y: auto;
+            flex-shrink: 0;
+        }
+
+        #trainer-feedback.show {
+            display: block;
+            animation: slideUp var(--transition-base);
+        }
+
+        /* When scenario is complete, allow the feedback to expand */
+        #trainer-feedback.scenario-complete {
+            max-height: none;
+            overflow-y: visible;
+        }
+
+        #trainer-feedback::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: rgba(255,255,255,0.3);
+        }
+
+        #trainer-feedback.positive {
+            background: var(--success-gradient);
+        }
+
+        #trainer-feedback.negative {
+            background: var(--danger-gradient);
+        }
+
+        .trainer-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: var(--space-md);
+        }
+
+        .trainer-avatar {
+            width: 50px;
+            height: 50px;
+            background: rgba(255,255,255,0.2);
+            backdrop-filter: blur(10px);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: var(--space-md);
+            font-size: 1.5rem;
+            box-shadow: var(--shadow-md);
+        }
+
+        /* Trainer text content styling for scenario complete */
+        #trainer-text {
+            line-height: 1.6;
+        }
+
+        #trainer-text .final-score {
+            font-size: var(--font-xl);
+            font-weight: 700;
+            margin: var(--space-md) 0;
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+        }
+
+        #trainer-text .final-score .score-emoji {
+            font-size: 2rem;
+        }
+
+        #trainer-text .revelation {
+            background: rgba(255,255,255,0.15);
+            border-radius: var(--radius-md);
+            padding: var(--space-md);
+            margin: var(--space-md) 0;
+            font-style: italic;
+        }
+
+        #trainer-text .key-lessons {
+            margin: var(--space-md) 0;
+        }
+
+        #trainer-text .key-lessons h4 {
+            font-size: var(--font-base);
+            margin-bottom: var(--space-sm);
+            opacity: 0.9;
+        }
+
+        #trainer-text .key-lessons ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        #trainer-text .key-lessons li {
+            padding: var(--space-xs) 0;
+            padding-left: var(--space-lg);
+            position: relative;
+        }
+
+        #trainer-text .key-lessons li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            opacity: 0.8;
+        }
+
+        /* View Report Button inside trainer feedback */
+        .trainer-view-report-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-sm);
+            background: var(--warning-gradient);
+            color: white;
+            border: 2px solid rgba(255,255,255,0.3);
+            padding: var(--space-md) var(--space-xl);
+            border-radius: var(--radius-full);
+            font-size: var(--font-base);
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: var(--space-lg);
+            transition: all var(--transition-base);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .trainer-view-report-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+            background: linear-gradient(135deg, #f59e0b 0%, #ea580c 100%);
+        }
+
+        .trainer-title {
+            font-weight: 700;
+            font-size: var(--font-lg);
+        }
+
+        #trainer-text {
+            font-size: var(--font-base);
+            line-height: 1.6;
+        }
+
+        /* ============================================
+           REVIEW SYSTEM
+           ============================================ */
+        /* Floating review button - HIDDEN (button is now inside trainer feedback panel) */
+        .review-button-container {
+            display: none !important;
+        }
+
+        .show-review-button {
+            display: none !important;
+        }
+
+        .review-modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.8);
+            backdrop-filter: blur(10px);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: var(--z-modal);
+            opacity: 0;
+            transition: opacity var(--transition-base);
+        }
+
+        .review-modal-overlay.show {
+            display: flex;
+            opacity: 1;
+        }
+
+        .review-modal {
+            background: white;
+            border-radius: var(--radius-xl);
+            width: 90%;
+            max-width: 1000px;
+            max-height: 85vh;
+            overflow-y: auto;
+            box-shadow: var(--shadow-xl);
+            position: relative;
+            transform: scale(0.9);
+            transition: transform var(--transition-spring);
+        }
+
+        .review-modal-overlay.show .review-modal {
+            transform: scale(1);
+        }
+
+        .review-modal-header {
+            position: sticky;
+            top: 0;
+            background: var(--secondary-gradient);
+            color: white;
+            padding: var(--space-xl);
+            text-align: center;
+            z-index: 10;
+        }
+
+        .review-modal-close {
+            position: absolute;
+            top: var(--space-lg);
+            right: var(--space-lg);
+            background: rgba(255,255,255,0.2);
+            backdrop-filter: blur(10px);
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 1.5rem;
+            color: white;
+            transition: all var(--transition-base);
+        }
+
+        .review-modal-close:hover {
+            background: rgba(255,255,255,0.3);
+            transform: rotate(90deg);
+        }
+
+        .review-modal-content {
+            padding: var(--space-2xl);
+        }
+
+        .review-section {
+            background: #f9fafb;
+            padding: 1.5rem;
+            border-radius: 15px;
+            margin-bottom: 2rem;
+        }
+
+        /* ============================================
+           BADGE SYSTEM
+           ============================================ */
+        .badge-earned-animation {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0);
+            background: white;
+            padding: var(--space-2xl);
+            border-radius: var(--radius-xl);
+            box-shadow: var(--shadow-xl);
+            text-align: center;
+            z-index: var(--z-notification);
+            opacity: 0;
+            transition: all var(--transition-spring);
+        }
+
+        .badge-earned-animation.show {
+            transform: translate(-50%, -50%) scale(1);
+            opacity: 1;
+        }
+
+        .badge-icon-large {
+            font-size: 5rem;
+            margin-bottom: var(--space-lg);
+            animation: bounce 0.6s ease-out;
+        }
+
+        .badge-title {
+            font-size: var(--font-2xl);
+            color: var(--color-dark);
+            font-weight: 700;
+            margin-bottom: var(--space-sm);
+        }
+
+        .badge-description {
+            color: var(--color-muted);
+            font-size: var(--font-base);
+            margin-bottom: var(--space-lg);
+        }
+
+        .badge-continue {
+            background: var(--secondary-gradient);
+            color: white;
+            border: none;
+            padding: var(--space-md) var(--space-xl);
+            border-radius: var(--radius-full);
+            cursor: pointer;
+            font-size: var(--font-base);
+            font-weight: 600;
+            transition: all var(--transition-base);
+        }
+
+        .badge-continue:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        /* ============================================
+           RESPONSIVE DESIGN - Mobile First Approach
+           ============================================ */
+        
+        /* Extra Large Screens (Widescreen monitors) - use full width */
+        @media (min-width: 1600px) {
+            #game-container {
+                width: 100%;
+                max-width: 100%;
+            }
+            
+            .game-content {
+                grid-template-columns: 8fr 2fr;
+            }
+
+            #dialogue-history {
+                max-height: none;
+                flex: 1;
+            }
+            
+            .scenario-grid {
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            }
+            
+            .welcome-hero {
+                max-width: min(1000px, calc(100% - 1rem));
+            }
+        }
+        
+        /* Large Screens (Standard desktop/laptop) */
+        @media (min-width: 1200px) and (max-width: 1599px) {
+            .game-content {
+                grid-template-columns: 8fr 2fr;
+            }
+        }
+
+        /* Medium-Large Screens (Small laptops, large tablets landscape) */
+        @media (min-width: 1024px) and (max-width: 1199px) {
+            .game-content {
+                grid-template-columns: 8fr 2fr;
+                gap: var(--space-md);
+            }
+        }
+
+        /* Tablets and small laptops (Portrait and small landscape) */
+        @media (max-width: 1023px) {
+            .game-content {
+                grid-template-columns: 1fr;
+                gap: var(--space-sm);
+                height: auto;
+                max-height: none;
+                overflow-y: auto;
+            }
+
+            .panel-toggle { display: none; }
+
+            .left-panel {
+                max-height: none;
+                overflow-y: visible;
+            }
+
+            .right-panel {
+                max-height: 40vh;
+                min-height: 200px;
+            }
+
+            #dialogue-history {
+                max-height: 35vh;
+                min-height: 180px;
+            }
+            
+            .scenario-grid {
+                grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            }
+
+            .language-switcher {
+                top: 10px;
+                left: 10px;
+            }
+        }
+
+        /* Tablets Portrait */
+        @media (max-width: 768px) {
+            .game-content {
+                gap: var(--space-xs);
+            }
+
+            .left-panel,
+            .right-panel {
+                max-height: none;
+                overflow-y: visible;
+            }
+            
+            .right-panel {
+                min-height: 180px;
+                max-height: 35vh;
+            }
+
+            #dialogue-history {
+                max-height: 30vh;
+                min-height: 150px;
+            }
+            
+            .score-display {
+                bottom: 50px;
+                right: 10px;
+            }
+
+            .scenario-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .review-modal {
+                width: 95%;
+                max-height: 90vh;
+            }
+
+            .language-switcher {
+                flex-wrap: wrap;
+                max-width: calc(100% - 20px);
+                padding: 3px;
+            }
+
+            .language-button {
+                padding: 4px 6px;
+            }
+
+            .language-button .language-code {
+                display: none;
+            }
+            
+            .welcome-lang-btn .lang-name span:first-child {
+                display: none;
+            }
+            
+            .instructor-intro {
+                padding: var(--space-sm);
+                margin: var(--space-xs);
+            }
+            
+            .instructor-avatar {
+                width: 50px;
+                height: 50px;
+                font-size: 1.75rem;
+            }
+        }
+
+        /* Mobile phones */
+        @media (max-width: 480px) {
+            body {
+                overflow: hidden;
+            }
+            
+            header {
+                padding: 6px 8px;
+            }
+            
+            header h1 {
+                font-size: 0.9rem;
+            }
+            
+            header p {
+                font-size: 0.7rem;
+            }
+            
+            #game-container {
+                padding: 4px;
+                flex: 1;
+                overflow: hidden;
+                display: flex;
+                flex-direction: column;
+            }
+            
+            .game-content {
+                flex: 1;
+                display: flex;
+                flex-direction: column;
+                gap: 4px;
+                overflow: hidden;
+                min-height: 0;
+            }
+
+            .left-panel {
+                flex: 1;
+                min-height: 0;
+                display: flex;
+                flex-direction: column;
+                gap: 4px;
+                overflow: hidden;
+            }
+            
+            /* Hide dialogue history on mobile to save space */
+            .right-panel {
+                display: none;
+            }
+            
+            .scene-wrapper {
+                min-height: 60px;
+                max-height: 18vh;
+                flex-shrink: 0;
+            }
+            
+            #choice-container {
+                flex: 1;
+                min-height: 0;
+                display: flex;
+                flex-direction: column;
+                overflow: hidden;
+                padding: 6px 8px;
+            }
+            
+            .choice-options {
+                flex: 1;
+                min-height: 0;
+                overflow-y: auto;
+            }
+            
+            #progress-indicator {
+                height: 32px;
+                padding: 0 6px;
+            }
+
+            .stage-dot {
+                width: 16px;
+                height: 16px;
+                font-size: 8px;
+            }
+
+            .welcome-lang-btn .lang-name {
+                display: none;
+            }
+            
+            .language-switcher {
+                top: 4px;
+                left: 4px;
+                padding: 2px;
+            }
+            
+            .language-button {
+                padding: 3px 5px;
+            }
+            
+            .language-button .language-flag {
+                font-size: 1rem;
+            }
+            
+            .score-display {
+                display: none;
+            }
+            
+            .back-to-scenarios-btn {
+                padding: 3px 8px;
+                font-size: 0.65rem;
+            }
+            
+            .submit-choice {
+                padding: 8px 12px;
+                font-size: 0.8rem;
+                flex-shrink: 0;
+            }
+        }
+        
+        /* Very small phones */
+        @media (max-width: 360px) {
+            .stage-dot {
+                width: 18px;
+                height: 18px;
+                font-size: 8px;
+            }
+            
+            .message-avatar {
+                width: 26px;
+                height: 26px;
+                font-size: 0.8rem;
+            }
+            
+        }
+
+        /* Landscape mode on phones */
+        @media (max-height: 500px) and (orientation: landscape) {
+            body {
+                overflow: hidden;
+            }
+            
+            header {
+                padding: 3px 8px;
+            }
+            
+            header h1 {
+                font-size: 0.8rem;
+                margin-bottom: 0;
+            }
+            
+            header p {
+                display: none;
+            }
+            
+            #game-container {
+                padding: 3px;
+                flex: 1;
+                overflow: hidden;
+            }
+            
+            .game-content {
+                grid-template-columns: 8fr 2fr;
+                height: 100%;
+                gap: 4px;
+                overflow: hidden;
+            }
+            
+            .scene-wrapper,
+            #scene-container,
+            #scene-image {
+                min-height: 50px;
+                max-height: 30vh;
+            }
+            
+            .left-panel {
+                display: flex;
+                flex-direction: column;
+                overflow: hidden;
+                min-height: 0;
+            }
+            
+            .right-panel {
+                display: flex;
+                flex-direction: column;
+                overflow: hidden;
+                min-height: 0;
+            }
+            
+            #dialogue-history {
+                flex: 1;
+                min-height: 0;
+                overflow-y: auto;
+            }
+            
+            #choice-container {
+                flex: 1;
+                min-height: 0;
+                overflow: hidden;
+                display: flex;
+                flex-direction: column;
+            }
+            
+            .choice-options {
+                flex: 1;
+                min-height: 0;
+                overflow-y: auto;
+            }
+            
+            .welcome-hero {
+                padding: 4px 8px;
+                margin: 2px;
+            }
+            
+            .welcome-hero-icon {
+                font-size: 1.25rem;
+                margin-bottom: 2px;
+            }
+            
+            .welcome-hero-title {
+                font-size: 0.8rem;
+            }
+            
+            .welcome-hero-subtitle {
+                display: none;
+            }
+            
+            .welcome-language-section {
+                padding: 4px 6px;
+            }
+            
+            .welcome-divider {
+                margin: 4px 0 2px;
+            }
+            
+            #scenario-selection {
+                padding: 4px 6px;
+            }
+            
+            .scenario-header {
+                margin-bottom: 4px;
+            }
+            
+            .scenario-grid {
+                gap: 4px;
+            }
+            
+            .scenario-card {
+                padding: 6px;
+                min-height: 60px;
+            }
+            
+            .instructor-intro-overlay {
+                padding: 4px;
+            }
+            
+            .instructor-intro {
+                padding: 8px;
+                flex-direction: row;
+                text-align: left;
+            }
+            
+            .instructor-avatar {
+                width: 40px;
+                height: 40px;
+                margin-bottom: 0;
+                margin-right: 8px;
+            }
+            
+            #progress-indicator {
+                height: 28px;
+                padding: 0 4px;
+                top: 12px;
+                right: 100px;
+            }
+
+            .stage-dot {
+                width: 14px;
+                height: 14px;
+                font-size: 7px;
+            }
+            
+            .submit-choice {
+                padding: 6px 10px;
+                font-size: 0.75rem;
+            }
+            
+            .score-display {
+                display: none;
+            }
+        }
+
+        /* ============================================
+           UI REWRITE - Device-aware layouts
+           ============================================ */
+        .phone-view-tabs {
+            display: none;
+            flex-shrink: 0;
+        }
+        .phone-tab {
+            flex: 1;
+            padding: 10px 16px;
+            border: none;
+            background: rgba(0,0,0,0.06);
+            color: var(--color-muted);
+            font-weight: 600;
+            font-size: 0.95rem;
+            cursor: pointer;
+            border-bottom: 3px solid transparent;
+            transition: all 0.2s ease;
+        }
+        .phone-tab.active {
+            background: #fff;
+            color: var(--color-secondary);
+            border-bottom-color: var(--color-secondary);
+        }
+
+        /* ----- DESKTOP: fixed viewport, only panels scroll ----- */
+        html.device-desktop body {
+            overflow: hidden;
+            height: 100dvh;
+            max-height: 100dvh;
+        }
+        html.device-desktop body.welcome-mode {
+            overflow-y: auto;
+            height: auto;
+            min-height: 100dvh;
+        }
+        html.device-desktop #game-container {
+            flex: 1;
+            min-height: 0;
+            width: 100%;
+            max-width: 100%;
+            padding: 1rem clamp(1rem, 3vw, 2rem);
+            overflow: hidden;
+        }
+        html.device-desktop body.game-mode #game-container {
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+        html.device-desktop .game-content {
+            display: grid;
+            grid-template-columns: 8fr 2fr;
+            gap: 1.5rem;
+            flex: 1;
+            min-height: 0;
+            max-height: 100%;
+            overflow: hidden;
+        }
+        html.device-desktop .left-panel {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            min-height: 0;
+            overflow-y: auto;
+            overflow-x: hidden;
+        }
+        html.device-desktop .left-panel > *:not(#choice-container) {
+            flex-shrink: 0;
+        }
+        html.device-desktop .right-panel {
+            display: flex;
+            flex-direction: column;
+            min-height: 0;
+            overflow-y: auto;
+            overflow-x: hidden;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: thin;
+            scrollbar-color: rgba(0,0,0,0.15) transparent;
+        }
+        html.device-desktop .right-panel::-webkit-scrollbar { width: 6px; }
+        html.device-desktop .right-panel::-webkit-scrollbar-track { background: transparent; border-radius: 3px; }
+        html.device-desktop .right-panel::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.12); border-radius: 3px; }
+        html.device-desktop .right-panel::-webkit-scrollbar-thumb:hover { background: rgba(0,0,0,0.2); }
+        html.device-desktop .scene-wrapper {
+            min-height: 80px;
+            max-height: 130px;
+            flex-shrink: 0;
+        }
+        html.device-desktop .scene-title { font-size: 1.25rem; }
+        html.device-desktop .scene-description { font-size: 0.95rem; }
+        html.device-desktop .choice-header { font-size: 1.1rem; }
+        html.device-desktop .choice-button { font-size: 1.05rem; padding: 0.65rem 1rem; }
+        html.device-desktop .choice-options { flex: 1 1 auto; min-height: 0; max-height: 100%; overflow-y: auto; }
+        html.device-desktop #dialogue-history { min-height: 0; font-size: 0.95rem; }
+        html.device-desktop header { padding: 1rem 1.5rem; }
+        html.device-desktop header h1 { font-size: 1.5rem; }
+        html.device-desktop header p { font-size: 1rem; }
+        html.device-desktop .welcome-hero {
+            padding: 1.25rem 1.5rem;
+            margin-bottom: 1rem;
+        }
+        html.device-desktop .welcome-hero-title { font-size: 1.5rem; }
+        html.device-desktop .welcome-hero-subtitle { font-size: 0.95rem; line-height: 1.5; }
+        html.device-desktop .scenario-card { min-height: 140px; padding: 1.25rem; }
+        html.device-desktop .scenario-title { font-size: 1.1rem; }
+        html.device-desktop .scenario-description { font-size: 0.9rem; }
+
+        /* ----- TABLET: balanced, two-col when wide enough ----- */
+        html.device-tablet .game-content {
+            display: grid;
+            grid-template-columns: 8fr 2fr;
+            gap: 1rem;
+            min-height: 0;
+        }
+        html.device-tablet .scene-wrapper { min-height: 100px; max-height: 150px; }
+        html.device-tablet .choice-button { font-size: 1rem; }
+        html.device-tablet .welcome-hero { padding: 1rem 1.25rem; margin-bottom: 0.75rem; }
+        html.device-tablet .welcome-hero-title { font-size: 1.25rem; }
+        html.device-tablet .welcome-hero-subtitle { font-size: 0.875rem; }
+
+        /* Tablet portrait: single column, still show both panels stacked */
+        html.device-tablet.orientation-portrait .game-content {
+            grid-template-columns: 1fr;
+        }
+        html.device-tablet.orientation-portrait .panel-toggle { display: none; }
+        html.device-tablet.orientation-portrait .right-panel { min-height: 220px; }
+        html.device-tablet.orientation-portrait #dialogue-history { min-height: 200px; }
+
+        /* ----- PHONE PORTRAIT: tabs Choices / Dialogue, full-height panels ----- */
+        html.device-phone.orientation-portrait body {
+            height: 100dvh;
+            overflow: hidden;
+        }
+        html.device-phone.orientation-portrait #game-container {
+            flex: 1;
+            min-height: 0;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+        html.device-phone.orientation-portrait body.welcome-mode #game-container {
+            overflow-y: auto;
+        }
+        html.device-phone.orientation-portrait .phone-view-tabs {
+            display: flex;
+            flex-shrink: 0;
+            border-bottom: 1px solid rgba(0,0,0,0.08);
+            background: #fff;
+        }
+        html.device-phone.orientation-portrait .panel-toggle { display: none; }
+        html.device-phone.orientation-portrait .game-content {
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+            min-height: 0;
+            overflow: hidden;
+        }
+        /* Phone portrait: 1) tabs+choices (compact) 2) event window 3) dialogue (FILLS screen) */
+        html.device-phone.orientation-portrait .game-content .left-panel {
+            display: flex;
+            flex-direction: column;
+            flex-shrink: 0;
+            order: 1;
+            overflow-y: auto;
+            overflow-x: hidden;
+            min-height: 0;
+            max-height: 38vh;
+        }
+        html.device-phone.orientation-portrait .game-content .right-panel {
+            flex: 1;
+            min-height: 120px;
+            overflow-y: auto;
+            overflow-x: hidden;
+            -webkit-overflow-scrolling: touch;
+            order: 2;
+            display: block !important;
+        }
+        /* Reorder: choices first, then event window (scene), then back+progress */
+        html.device-phone.orientation-portrait .left-panel #choice-container { order: 1; }
+        html.device-phone.orientation-portrait .left-panel .scene-wrapper { order: 2; }
+        html.device-phone.orientation-portrait .left-panel #trainer-feedback { order: 3; }
+        /* Tabs - minimal height */
+        html.device-phone.orientation-portrait .phone-view-tabs {
+            flex-shrink: 0;
+            padding: 2px 0;
+            min-height: 32px;
+        }
+        html.device-phone.orientation-portrait .phone-tab {
+            padding: 4px 10px;
+            font-size: 0.8rem;
+        }
+        /* Choices - much smaller vertically, text clear */
+        html.device-phone.orientation-portrait #choice-container {
+            flex-shrink: 0;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            padding: 0.25rem 0.4rem;
+            max-height: 18vh;
+        }
+        html.device-phone.orientation-portrait .choice-header { font-size: 0.75rem; padding: 0.15rem 0; }
+        html.device-phone.orientation-portrait .choice-options {
+            flex: 1;
+            min-height: 40px;
+            max-height: 90px;
+            overflow-y: auto;
+        }
+        html.device-phone.orientation-portrait .choice-button {
+            font-size: 0.75rem;
+            padding: 0.28rem 0.4rem;
+            line-height: 1.2;
+        }
+        html.device-phone.orientation-portrait .submit-choice {
+            flex-shrink: 0;
+            padding: 0.28rem 0.4rem;
+            font-size: 0.75rem;
+        }
+        html.device-phone.orientation-portrait .choice-timer {
+            padding: 0.15rem 0;
+            font-size: 0.7rem;
+        }
+        /* Event window - compact, between choices and bottom */
+        html.device-phone.orientation-portrait .scene-wrapper {
+            flex-shrink: 0;
+            min-height: 44px;
+            max-height: 10vh;
+        }
+        html.device-phone.orientation-portrait .scene-content { padding: 0.4rem 0.6rem; }
+        html.device-phone.orientation-portrait .scene-title { font-size: 0.85rem; margin-bottom: 0.2rem; }
+        html.device-phone.orientation-portrait .scene-description { font-size: 0.75rem; }
+        html.device-phone.orientation-portrait .back-to-scenarios-btn { width: 36px; height: 36px; font-size: 1.1rem; }
+        html.device-phone.orientation-portrait #progress-indicator { height: 32px; padding: 0 6px; top: 14px; right: 100px; }
+        html.device-phone.orientation-portrait .stage-dot { width: 18px; height: 18px; font-size: 0.6rem; }
+        /* Bottom window (dialogue) - FILLS the screen */
+        html.device-phone.orientation-portrait #dialogue-history {
+            flex: 1;
+            min-height: 0;
+            overflow-y: auto;
+            font-size: 0.9rem;
+        }
+        html.device-phone.orientation-portrait .welcome-hero {
+            padding: 0.75rem 1rem;
+            margin-bottom: 0.5rem;
+        }
+        html.device-phone.orientation-portrait .welcome-hero-title { font-size: 1.1rem; }
+        html.device-phone.orientation-portrait .welcome-hero-subtitle { font-size: 0.8rem; }
+        html.device-phone.orientation-portrait .welcome-language-section { padding: 0.5rem 0.75rem; }
+        html.device-phone.orientation-portrait .scenario-card { min-height: 90px; padding: 0.75rem; }
+        html.device-phone.orientation-portrait .scenario-title { font-size: 0.95rem; }
+
+        /* ----- PHONE LANDSCAPE: two columns, readable text ----- */
+        html.device-phone.orientation-landscape body {
+            overflow: hidden;
+            height: 100dvh;
+        }
+        html.device-phone.orientation-landscape #game-container { padding: 6px 8px; overflow: hidden; }
+        html.device-phone.orientation-landscape .game-content {
+            display: grid;
+            grid-template-columns: 8fr 2fr;
+            gap: 8px;
+            flex: 1;
+            min-height: 0;
+            overflow: hidden;
+        }
+        html.device-phone.orientation-landscape .phone-view-tabs { display: none; }
+        html.device-phone.orientation-landscape .left-panel,
+        html.device-phone.orientation-landscape .right-panel {
+            display: flex !important;
+            flex-direction: column;
+            min-height: 0;
+            overflow: hidden;
+        }
+        html.device-phone.orientation-landscape .scene-wrapper {
+            min-height: 70px;
+            max-height: 28vh;
+            flex-shrink: 0;
+        }
+        html.device-phone.orientation-landscape .scene-title { font-size: 0.95rem; }
+        html.device-phone.orientation-landscape .scene-description { font-size: 0.8rem; }
+        html.device-phone.orientation-landscape .choice-header { font-size: 0.9rem; }
+        html.device-phone.orientation-landscape .choice-button { font-size: 0.8rem; padding: 0.4rem 0.6rem; line-height: 1.3; }
+        html.device-phone.orientation-landscape .choice-options { flex: 1; min-height: 0; overflow-y: auto; }
+        html.device-phone.orientation-landscape #dialogue-history { flex: 1; min-height: 0; overflow-y: auto; font-size: 0.8rem; }
+        html.device-phone.orientation-landscape .welcome-hero { padding: 0.5rem 0.75rem; margin-bottom: 0.375rem; }
+        html.device-phone.orientation-landscape .welcome-hero-title { font-size: 1rem; }
+        html.device-phone.orientation-landscape .welcome-hero-subtitle { font-size: 0.75rem; }
+        html.device-phone.orientation-landscape #progress-indicator { height: 26px; padding: 0 4px; top: 10px; right: 80px; }
+        html.device-phone.orientation-landscape .stage-dot { width: 14px; height: 14px; font-size: 7px; }
+
+        /* ============================================
+           ACCESSIBILITY
+           ============================================ */
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+                scroll-behavior: auto !important;
+            }
+        }
+
+        /* Focus styles */
+        button:focus-visible,
+        a:focus-visible,
+        input:focus-visible,
+        select:focus-visible,
+        textarea:focus-visible {
+            outline: 3px solid var(--color-secondary);
+            outline-offset: 2px;
+        }
+
+        /* High contrast mode support */
+        @media (prefers-contrast: high) {
+            :root {
+                --shadow-sm: 0 1px 2px rgba(0,0,0,0.5);
+                --shadow-md: 0 2px 4px rgba(0,0,0,0.5);
+                --shadow-lg: 0 4px 8px rgba(0,0,0,0.5);
+                --shadow-xl: 0 8px 16px rgba(0,0,0,0.5);
+            }
+
+            button,
+            .choice-button,
+            .scenario-card {
+                border-width: 2px;
+            }
+        }
+    </style>
+    <!-- Device & orientation detection - runs immediately, respects user layout preference -->
+    <script>
+    (function() {
+        var STORAGE_KEY = 'deescalation-layout-mode';
+        function getLayoutPreference() {
+            try { return localStorage.getItem(STORAGE_KEY); } catch (e) { return null; }
+        }
+        function updateDeviceClasses() {
+            var w = window.innerWidth;
+            var h = window.innerHeight;
+            var isPortrait = h >= w;
+            var cls = [];
+            var pref = getLayoutPreference();
+            if (pref === 'pc') {
+                cls.push('device-desktop');
+                cls.push('orientation-landscape');
+            } else if (pref === 'phone') {
+                cls.push('device-phone');
+                cls.push(isPortrait ? 'orientation-portrait' : 'orientation-landscape');
+            } else {
+                if (w >= 1024) cls.push('device-desktop');
+                else if (w >= 600) cls.push('device-tablet');
+                else cls.push('device-phone');
+                cls.push(isPortrait ? 'orientation-portrait' : 'orientation-landscape');
+            }
+            if (document.documentElement) document.documentElement.className = cls.join(' ');
+            if (document.body) {
+                document.body.setAttribute('data-device-width', w);
+                document.body.setAttribute('data-device-height', h);
+            }
+        }
+        window.setLayoutMode = function(mode) {
+            if (mode !== 'pc' && mode !== 'phone') return;
+            try { localStorage.setItem(STORAGE_KEY, mode); } catch (e) {}
+            var btns = document.querySelectorAll('.welcome-layout-btn');
+            btns.forEach(function(b) {
+                b.classList.toggle('active', b.getAttribute('data-layout') === mode);
+            });
+            updateDeviceClasses();
+        };
+        function initLayoutButtons() {
+            var pref = getLayoutPreference();
+            if (pref) {
+                var btns = document.querySelectorAll('.welcome-layout-btn');
+                btns.forEach(function(b) {
+                    b.classList.toggle('active', b.getAttribute('data-layout') === pref);
+                });
+            }
+        }
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', function() {
+                updateDeviceClasses();
+                initLayoutButtons();
+            });
+        } else {
+            updateDeviceClasses();
+            initLayoutButtons();
+        }
+        window.addEventListener('resize', updateDeviceClasses);
+        window.addEventListener('orientationchange', function() { setTimeout(updateDeviceClasses, 100); });
+    })();
+    </script>
+</head>
+<body data-lang="en">
+    <!-- Sound Toggle -->
+    <button type="button" class="sound-toggle" id="sound-toggle" title="Turn sound on/off" aria-label="Sound on/off">
+        <span class="sound-icon" id="sound-icon">🔊</span>
+    </button>
+
+    <!-- Back to Scenarios Button (fixed, top-right, next to sound) -->
+    <div id="back-to-scenarios-container">
+        <button class="back-to-scenarios-btn" onclick="goBackToScenarios()">
+            <span class="back-icon">←</span>
+            <span class="back-text" data-i18n="game.backToScenarios">Back to Scenarios</span>
+        </button>
+    </div>
+
+    <!-- Progress Indicator - fixed top-right, next to back & sound icons -->
+    <div id="progress-indicator">
+        <div class="progress-container">
+            <div class="progress-line-bg"></div>
+            <div class="progress-line-fill" id="progress-line-fill"></div>
+            <div class="stage-dots" id="stage-dots"></div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('sound-toggle').addEventListener('click', function() {
+            if (typeof gameState === 'undefined') return;
+            gameState.soundEnabled = !gameState.soundEnabled;
+            try { localStorage.setItem(typeof CONFIG !== 'undefined' && CONFIG.STORAGE_KEYS ? CONFIG.STORAGE_KEYS.SOUND_ENABLED : 'deescalation-sound-enabled', String(gameState.soundEnabled)); } catch (e) {}
+            var icon = document.getElementById('sound-icon');
+            var btn = document.getElementById('sound-toggle');
+            if (icon && btn) {
+                icon.textContent = gameState.soundEnabled ? '🔊' : '🔇';
+                btn.classList.toggle('muted', !gameState.soundEnabled);
+                btn.setAttribute('aria-label', gameState.soundEnabled ? 'Sound on' : 'Sound off');
+            }
+        });
+    </script>
+    <!-- Language Switcher -->
+    <div class="language-switcher" id="language-switcher">
+        <button class="language-button active" onclick="switchLanguage('en')" data-lang="en">
+            <span class="language-flag"><img src="https://flagcdn.com/w40/gb.png" alt="EN" width="28" height="21"></span>
+            <span class="language-code">EN</span>
+        </button>
+        <button class="language-button" onclick="switchLanguage('cs')" data-lang="cs">
+            <span class="language-flag"><img src="https://flagcdn.com/w40/cz.png" alt="CZ" width="28" height="21"></span>
+            <span class="language-code">CZ</span>
+        </button>
+        <button class="language-button" onclick="switchLanguage('lt')" data-lang="lt">
+            <span class="language-flag"><img src="https://flagcdn.com/w40/lt.png" alt="LT" width="28" height="21"></span>
+            <span class="language-code">LT</span>
+        </button>
+        <button class="language-button" onclick="switchLanguage('ro')" data-lang="ro">
+            <span class="language-flag"><img src="https://flagcdn.com/w40/ro.png" alt="RO" width="28" height="21"></span>
+            <span class="language-code">RO</span>
+        </button>
+    </div>
+
+    <!-- Loading Screen -->
+    <div class="loading-screen hide" id="loading-screen">
+        <div class="loading-content">
+            <div class="loading-logo">🚔</div>
+            <div class="loading-spinner"></div>
+            <div class="loading-text" data-i18n="loading.title">Loading training modules...</div>
+            <div class="loading-progress">
+                <div class="loading-progress-bar"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Error Screen -->
+    <div class="error-screen" id="error-screen">
+        <div class="error-content">
+            <div class="error-icon">⚠️</div>
+            <div class="error-message" id="error-message" data-i18n="error.title">Failed to load training data</div>
+            <div class="error-details" id="error-details" data-i18n="error.message">Please check your connection and try again.</div>
+            <button class="btn-retry" onclick="location.reload()" data-i18n="error.retry">Try Again</button>
+        </div>
+    </div>
+
+    <header>
+        <h1 data-i18n="header.title">🚔 Police De-escalation Training</h1>
+        <p data-i18n="header.subtitle">Advanced Communication System</p>
+    </header>
+
+    <div id="game-container">
+        <!-- Score Display (Hidden during gameplay) -->
+        <div class="score-display" id="score-display">
+            <div class="score-label" data-i18n="game.score">Score</div>
+            <div>
+                <span class="score-value" id="score-value">0</span>
+                <span class="score-max">/ <span id="max-score">0</span></span>
+            </div>
+        </div>
+
+        <!-- Main Game Content -->
+        <div class="game-content" id="game-content" data-view="dialogue">
+            <!-- Phone portrait: tab bar to switch Choices / Dialogue (default: Dialogue so user reads first) -->
+            <div class="phone-view-tabs" id="phone-view-tabs" aria-hidden="true">
+                <button type="button" class="phone-tab" data-tab="choices" data-i18n="game.tabChoices">Choices</button>
+                <button type="button" class="phone-tab active" data-tab="dialogue" data-i18n="game.tabDialogue">Dialogue</button>
+            </div>
+            <!-- Left Panel - Scene -->
+            <div class="left-panel" id="left-panel">
+                <!-- Scene Display -->
+                <div class="scene-wrapper">
+                    <div id="scene-container">
+                        <div id="scene-image">
+                            <div class="scene-particles" id="scene-particles"></div>
+                            <div class="scene-content">
+                                <div class="scene-emoji">🚔</div>
+                                <h3 class="scene-title">Welcome to Training</h3>
+                                <p class="scene-description">Select a scenario to begin</p>
+                            </div>
+                        </div>
+                        
+                        <div id="animation-overlay" class="hidden">
+                            <div class="welcome-content">
+                                <h2 class="welcome-title" data-i18n="welcome.mainTitle">🎯 De-escalation Training</h2>
+                                <p class="welcome-description" data-i18n="welcome.description">Master essential communication methods through real-life scenarios. Learn to de-escalate conflicts, show empathy, and serve your community with excellence.</p>
+                                <button class="start-button" onclick="gameController.startGame()" data-i18n="welcome.startButton">Start Training</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Choice Selection -->
+                <div id="choice-container">
+                    <div class="choice-header">
+                        <span>🎯</span>
+                        <span id="choice-prompt" data-i18n="game.choicePrompt">Officer Response:</span>
+                    </div>
+                    <div class="choice-timer" id="choice-timer">
+                        <span data-i18n="game.timeRemaining">⏱️ Time Remaining:</span>
+                        <div class="timer-bar">
+                            <div class="timer-fill" id="timer-fill"></div>
+                        </div>
+                        <span id="timer-value">30s</span>
+                    </div>
+                    <button class="submit-choice" onclick="gameController.submitChoice()" data-i18n="game.submitButton" disabled>Submit Response</button>
+                    <div class="choice-options" id="choice-options"></div>
+                </div>
+
+                <!-- Trainer Feedback -->
+                <div id="trainer-feedback">
+                    <div class="trainer-header">
+                        <div class="trainer-avatar" id="feedback-avatar">👨‍🏫</div>
+                        <div class="trainer-title" id="feedback-title" data-i18n="trainer.title">Training Instructor</div>
+                    </div>
+                    <div id="trainer-text"></div>
+                </div>
+            </div>
+
+            <!-- Toggle button between panels -->
+            <button type="button" class="panel-toggle" id="panel-toggle" title="Toggle panel focus"></button>
+
+            <!-- Right Panel - Dialogue -->
+            <div class="right-panel" id="right-panel">
+                <!-- Chat-style Dialogue History -->
+                <div id="dialogue-history"></div>
+            </div>
+        </div>
+
+        <!-- Instructor Introduction -->
+        <div class="instructor-intro-overlay" id="instructor-intro-overlay">
+            <div class="instructor-intro">
+                <div class="instructor-avatar" id="instructor-avatar">👨‍🏫</div>
+                <div class="instructor-name" id="instructor-name" data-i18n="instructor.defaultName">Loading...</div>
+                <div class="instructor-message" id="instructor-message" data-i18n="instructor.defaultMessage">Preparing scenario briefing...</div>
+                <button class="begin-scenario-button" onclick="gameController.beginScenario()" data-i18n="instructor.beginButton">Begin Scenario</button>
+            </div>
+        </div>
+
+        <!-- Scenario Selection -->
+        <div id="scenario-selection">
+            <!-- Welcome Hero Section -->
+            <div class="welcome-hero" id="welcome-hero">
+                <div class="welcome-hero-icon">🚔</div>
+                <h1 class="welcome-hero-title" data-i18n="welcome.heroTitle">Police De-escalation Training</h1>
+                <p class="welcome-hero-subtitle" data-i18n="welcome.heroSubtitle">Master essential communication techniques through real-world scenarios. Learn to de-escalate conflicts, show empathy, and serve your community with excellence.</p>
+                
+                <!-- Prominent Language Selection -->
+                <div class="welcome-language-section">
+                    <div class="welcome-language-label" data-i18n="welcome.selectLanguage">Select Your Language</div>
+                    <div class="welcome-language-buttons" id="welcome-language-buttons">
+                        <button class="welcome-lang-btn active" onclick="switchLanguageFromWelcome('en')" data-lang="en">
+                            <span class="lang-flag"><img src="https://flagcdn.com/w40/gb.png" alt="English" width="32" height="24"></span>
+                            <span class="lang-name">
+                                <span>English</span>
+                                <span class="lang-code">EN</span>
+                            </span>
+                        </button>
+                        <button class="welcome-lang-btn" onclick="switchLanguageFromWelcome('cs')" data-lang="cs">
+                            <span class="lang-flag"><img src="https://flagcdn.com/w40/cz.png" alt="Čeština" width="32" height="24"></span>
+                            <span class="lang-name">
+                                <span>Čeština</span>
+                                <span class="lang-code">CZ</span>
+                            </span>
+                        </button>
+                        <button class="welcome-lang-btn" onclick="switchLanguageFromWelcome('lt')" data-lang="lt">
+                            <span class="lang-flag"><img src="https://flagcdn.com/w40/lt.png" alt="Lietuvių" width="32" height="24"></span>
+                            <span class="lang-name">
+                                <span>Lietuvių</span>
+                                <span class="lang-code">LT</span>
+                            </span>
+                        </button>
+                        <button class="welcome-lang-btn" onclick="switchLanguageFromWelcome('ro')" data-lang="ro">
+                            <span class="lang-flag"><img src="https://flagcdn.com/w40/ro.png" alt="Română" width="32" height="24"></span>
+                            <span class="lang-name">
+                                <span>Română</span>
+                                <span class="lang-code">RO</span>
+                            </span>
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Layout Mode: PC vs Phone -->
+                <div class="welcome-layout-section">
+                    <div class="welcome-layout-label" data-i18n="welcome.layoutLabel">Use on</div>
+                    <div class="welcome-layout-buttons" id="welcome-layout-buttons">
+                        <button type="button" class="welcome-layout-btn active" data-layout="pc" onclick="setLayoutMode('pc')" data-i18n="welcome.layoutComputer">Computer</button>
+                        <button type="button" class="welcome-layout-btn" data-layout="phone" onclick="setLayoutMode('phone')" data-i18n="welcome.layoutPhone">Phone</button>
+                    </div>
+                </div>
+                
+                <div class="welcome-divider">
+                    <span data-i18n="welcome.chooseScenario">Choose a scenario below to begin</span>
+                </div>
+            </div>
+            
+            <div class="scenario-header">
+                <h2 class="scenario-title" data-i18n="scenarios.title">Select Training Scenario</h2>
+                <p class="scenario-subtitle" data-i18n="scenarios.subtitle">Complete scenarios, earn badges, and improve your skills</p>
+            </div>
+            <div class="scenario-grid" id="scenario-grid"></div>
+        </div>
+
+        <!-- Review Button -->
+        <div class="review-button-container">
+            <button class="show-review-button" id="show-review-button" onclick="gameController.showGameReviewModal()">
+                <span data-i18n="review.button">📊 View Training Report</span>
+            </button>
+        </div>
+
+        <!-- Game Review Modal -->
+        <div class="review-modal-overlay" id="review-modal-overlay">
+            <div class="review-modal">
+                <div class="review-modal-header">
+                    <button class="review-modal-close" onclick="gameController.closeReviewModal()">✕</button>
+                    <h2 class="review-title" data-i18n="review.title">🏆 Training Session Review</h2>
+                </div>
+                <div class="review-modal-content">
+                    <div id="game-review">
+                        <div id="review-content"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Badge Earned Popup -->
+        <div class="badge-earned-animation" id="badge-earned">
+            <div class="badge-icon-large" id="badge-icon-large">🏆</div>
+            <div class="badge-title" data-i18n="badge.earned">Badge Earned!</div>
+            <div class="badge-description" id="badge-earned-desc"></div>
+            <button class="badge-continue" onclick="gameController.closeBadgePopup()" data-i18n="badge.continue">Continue</button>
+        </div>
+    </div>
+
+    <!-- Audio Elements (sounds folder) -->
+    <audio id="success-sound" preload="auto"><source src="sounds/success.mp3" type="audio/mpeg"></audio>
+    <audio id="error-sound" preload="auto"><source src="sounds/error.mp3" type="audio/mpeg"></audio>
+    <audio id="click-sound" preload="auto"><source src="sounds/click.mp3" type="audio/mpeg"></audio>
+    <audio id="victory-sound" preload="auto"><source src="sounds/victory.mp3" type="audio/mpeg"></audio>
+    <audio id="fanfare-sound" preload="auto"><source src="sounds/fanfare.mp3" type="audio/mpeg"></audio>
+    <audio id="good-sound" preload="auto"><source src="sounds/good.mp3" type="audio/mpeg"></audio>
+
+    <!-- Load JavaScript Files -->
+    <script src="config.js"></script>
+    <script src="core.js"></script>
+    <script src="ui-managers.js?v=3"></script>
+    <script src="game-controller.js?v=2"></script>
+    
+    <!-- Initialize Game -->
+    <script>
+        // Global instances
+        let i18n;
+        let gameState;
+        let gameController;
+        
+        // Initialize game on DOM ready
+        document.addEventListener('DOMContentLoaded', async function() {
+            console.log('Initializing Police De-escalation Training...');
+            
+            try {
+                // Create instances
+                i18n = new I18nManager();
+                gameState = new GameState();
+                gameController = new GameController();
+                
+                // Initialize the game
+                await gameController.init();
+                
+                var soundBtn = document.getElementById('sound-toggle');
+                var soundIcon = document.getElementById('sound-icon');
+                if (soundBtn && soundIcon && typeof gameState !== 'undefined') {
+                    soundIcon.textContent = gameState.soundEnabled ? '🔊' : '🔇';
+                    soundBtn.classList.toggle('muted', !gameState.soundEnabled);
+                }
+                
+                console.log('Game initialized successfully!');
+            } catch (error) {
+                console.error('Failed to initialize game:', error);
+            }
+        });
+    </script>
+
+    <script>
+// ============================================
+// FIXED REVIEW MANAGER - Proper Integration
+// ============================================
+const ReviewManager = {
+    // Translation mappings for UI elements
+    translations: {
+        en: {
+            stageByStageAnalysis: "📊 Stage-by-Stage Analysis",
+            attempt: "Attempt",
+            yourChoice: "Your Choice",
+            goodChoice: "Good Choice!",
+            poorChoice: "Poor Choice:",
+            neutralChoice: "Neutral Choice:",
+            strengths: "Strengths:",
+            issues: "Issues:",
+            missedOpportunities: "Missed Opportunities:",
+            trainingFocus: "📚 Training Focus:",
+            keyLessons: "🎯 Key Lessons from this Stage:",
+            mistakesSummary: "❌ Mistakes Summary",
+            mistakesMade: "You made",
+            incorrectChoices: "incorrect choices",
+            duringScenario: "during this scenario. Here's what to remember:",
+            stage: "Stage",
+            patternsToAddress: "⚠️ Patterns to Address",
+            recommendedTraining: "📚 Recommended Training",
+            keyTakeaways: "🎯 Key Takeaways"
+        },
+        cs: {
+            stageByStageAnalysis: "📊 Analýza podle fází",
+            attempt: "Pokus",
+            yourChoice: "Vaše volba",
+            goodChoice: "Dobrá volba!",
+            poorChoice: "Špatná volba:",
+            neutralChoice: "Neutrální volba:",
+            strengths: "Silné stránky:",
+            issues: "Problémy:",
+            missedOpportunities: "Zmeškaná příležitosti:",
+            trainingFocus: "📚 Zaměření výcviku:",
+            keyLessons: "🎯 Klíčové poznatky z této fáze:",
+            mistakesSummary: "❌ Souhrn chyb",
+            mistakesMade: "Udělali jste",
+            incorrectChoices: "nesprávných voleb",
+            duringScenario: "během tohoto scénáře. Zde je to, co si zapamatovat:",
+            stage: "Fáze",
+            patternsToAddress: "⚠️ Vzorce k řešení",
+            recommendedTraining: "📚 Doporučený výcvik",
+            keyTakeaways: "🎯 Klíčová ponaučení"
+        },
+        lt: {
+            stageByStageAnalysis: "📊 Etapų analizė",
+            attempt: "Bandymas",
+            yourChoice: "Jūsų pasirinkimas",
+            goodChoice: "Geras pasirinkimas!",
+            poorChoice: "Blogas pasirinkimas:",
+            neutralChoice: "Neutralus pasirinkimas:",
+            strengths: "Stiprybės:",
+            issues: "Problemos:",
+            missedOpportunities: "Praleistos galimybės:",
+            trainingFocus: "📚 Mokymo dėmesys:",
+            keyLessons: "🎯 Pagrindinės šio etapo pamokos:",
+            mistakesSummary: "❌ Klaidų santrauka",
+            mistakesMade: "Padarėte",
+            incorrectChoices: "neteisingų pasirinkimų",
+            duringScenario: "šio scenarijaus metu. Štai ką reikia atsiminti:",
+            stage: "Etapas",
+            patternsToAddress: "⚠️ Šablonai, kuriuos reikia spręsti",
+            recommendedTraining: "📚 Rekomenduojamas mokymas",
+            keyTakeaways: "🎯 Pagrindinės išvados"
+        },
+        ro: {
+            stageByStageAnalysis: "📊 Analiză pas cu pas",
+            attempt: "Încercare",
+            yourChoice: "Alegerea dvs.",
+            goodChoice: "Alegere bună!",
+            poorChoice: "Alegere proastă:",
+            neutralChoice: "Alegere neutră:",
+            strengths: "Puncte tari:",
+            issues: "Probleme:",
+            missedOpportunities: "Oportunități ratate:",
+            trainingFocus: "📚 Focusul antrenamentului:",
+            keyLessons: "🎯 Lecțiile cheie din această etapă:",
+            mistakesSummary: "❌ Rezumatul greșelilor",
+            mistakesMade: "Ați făcut",
+            incorrectChoices: "alegeri incorecte",
+            duringScenario: "în timpul acestui scenariu. Iată ce să rețineți:",
+            stage: "Etapa",
+            patternsToAddress: "⚠️ Tipare de abordat",
+            recommendedTraining: "📚 Antrenament recomandat",
+            keyTakeaways: "🎯 Principalele concluzii"
+        }
+    },
+
+    // Get current language code
+    getCurrentLanguage() {
+        if (typeof i18n !== 'undefined' && i18n.currentLanguage) {
+            return i18n.currentLanguage;
+        }
+        
+        const bodyLang = document.body.getAttribute('data-lang');
+        if (bodyLang) {
+            return bodyLang;
+        }
+        
+        const activeButton = document.querySelector('.language-button.active');
+        if (activeButton) {
+            return activeButton.getAttribute('data-lang');
+        }
+        
+        return 'en';
+    },
+
+    // Get translated text
+    t(key) {
+        const lang = this.getCurrentLanguage();
+        return this.translations[lang]?.[key] || this.translations.en[key] || key;
+    },
+
+    // Enhanced function to get proper choice text from game history
+    getChoiceText(historyItem) {
+        // Try multiple properties to find the actual choice text
+        if (historyItem.choiceText && historyItem.choiceText !== 'undefined') {
+            return historyItem.choiceText;
+        }
+        
+        if (historyItem.choice && historyItem.choice !== 'undefined') {
+            return historyItem.choice;
+        }
+        
+        if (historyItem.text && historyItem.text !== 'undefined') {
+            return historyItem.text;
+        }
+        
+        // If we have the scenario data and choice index, get the actual choice text
+        if (typeof gameState !== 'undefined' && gameState && gameState.currentScenario && 
+            historyItem.stage !== undefined && 
+            historyItem.choiceIndex !== undefined) {
+            
+            const stage = gameState.currentScenario.stages[historyItem.stage];
+            if (stage && stage.options && stage.options[historyItem.choiceIndex]) {
+                return stage.options[historyItem.choiceIndex].text;
+            }
+        }
+        
+        // Fallback to a more descriptive default
+        const lang = this.getCurrentLanguage();
+        if (lang === 'cs') {
+            return 'Volba byla provedena';
+        } else {
+            return 'Choice was made';
+        }
+    },
+
+    // Enhanced function to get proper stage number
+    getStageNumber(historyItem, index) {
+        // First try the stage property from the history item
+        if (historyItem.stage !== undefined && historyItem.stage !== null) {
+            return historyItem.stage + 1; // Convert from 0-based to 1-based
+        }
+        
+        // If stage is undefined, try to determine from the sequence
+        // Group attempts by when they succeeded
+        const history = (typeof gameState !== 'undefined' && gameState) ? (gameState.gameHistory || []) : [];
+        let stageCounter = 1;
+        let currentStageAttempts = 0;
+        
+        for (let i = 0; i <= index; i++) {
+            const item = history[i];
+            if (item.type === 'positive') {
+                // Successful choice - move to next stage
+                if (i < index) {
+                    stageCounter++;
+                    currentStageAttempts = 0;
+                } else {
+                    // This is the current item and it's positive
+                    return stageCounter;
+                }
+            } else {
+                // Failed attempt - stay in same stage
+                currentStageAttempts++;
+                if (i === index) {
+                    return stageCounter;
+                }
+            }
+        }
+        
+        return stageCounter;
+    },
+
+    // Load review data for current scenario with language support
+    async loadReviewData() {
+        let scenarioId = (typeof gameState !== 'undefined' && gameState && gameState.currentScenario) ? gameState.currentScenario.id : '1';
+        
+        console.log('Current scenario ID:', scenarioId);
+        
+        const currentLang = this.getCurrentLanguage();
+        console.log('Current language:', currentLang);
+        
+        const scenarioIdMap = {
+            '1': 'traffic-stop',
+            '2': 'hostel-negotiation',
+            '3': 'youth-interaction',
+            '4': 'mental-health',
+            '5': 'noise-complaint',
+            '6': 'domestic-crisis',
+            '7': 'nightclub-fracas',
+            'traffic-stop': 'traffic-stop',
+            'hostel-negotiation': 'hostel-negotiation',
+            'youth-interaction': 'youth-interaction',
+            'mental-health': 'mental-health',
+            'noise-complaint': 'noise-complaint',
+            'nightclub-fracas': 'nightclub-fracas',
+            'domestic-crisis': 'domestic-crisis',
+            'custody-exchange': 'custody-exchange',
+            'hospital-disturbance': 'hospital-disturbance',
+            'road-rage': 'road-rage',
+            'street-vendor': 'street-vendor',
+            'youth-park': 'youth-park'
+        };
+        
+        let mappedId = scenarioIdMap[scenarioId];
+        
+        if (!mappedId && typeof gameState !== 'undefined' && gameState && gameState.currentScenario) {
+            const title = gameState.currentScenario.title || '';
+            console.log('Scenario title:', title);
+            
+            if (title.toLowerCase().includes('traffic') || title.toLowerCase().includes('dopravní')) {
+                mappedId = 'traffic-stop';
+            } else if (title.toLowerCase().includes('hostel')) {
+                mappedId = 'hostel-negotiation';
+            } else if (title.toLowerCase().includes('youth') || title.toLowerCase().includes('mládež')) {
+                mappedId = 'youth-interaction';
+            } else if (title.toLowerCase().includes('mental') || title.toLowerCase().includes('duševní')) {
+                mappedId = 'mental-health';
+            } else if (title.toLowerCase().includes('noise') || title.toLowerCase().includes('hluk')) {
+                mappedId = 'noise-complaint';
+            } else if (title.toLowerCase().includes('nightclub')) {
+                mappedId = 'nightclub-fracas';
+            } else if (title.toLowerCase().includes('domestic') || title.toLowerCase().includes('domácí')) {
+                mappedId = 'domestic-crisis';
+            }
+        }
+        
+        if (!mappedId) {
+            mappedId = scenarioId;
+            console.warn('Could not map scenario ID, using original:', scenarioId);
+        }
+        
+        const reviewFileName = `review-${mappedId}-${currentLang}.json`;
+        const reviewUrl = (typeof CONFIG !== 'undefined' && CONFIG.BASE_URL != null)
+            ? `${CONFIG.BASE_URL}scenarios/reviews/${reviewFileName}`
+            : `scenarios/reviews/${reviewFileName}`;
+        
+        console.log('Attempting to load review from:', reviewUrl);
+        
+        try {
+            const response = await fetch(reviewUrl);
+            if (!response.ok) {
+                throw new Error(`Review file not found: ${response.status}`);
+            }
+            const reviewData = await response.json();
+            if (typeof gameState !== 'undefined' && gameState) {
+                gameState.reviewData = reviewData;
+            }
+            console.log('Successfully loaded review data for:', mappedId, 'in language:', currentLang);
+            return reviewData;
+        } catch (error) {
+            console.log(`No review file found for ${mappedId} in ${currentLang} at ${reviewUrl}`);
+            
+            if (currentLang !== 'en') {
+                console.log('Falling back to English review...');
+                const base = (typeof CONFIG !== 'undefined' && CONFIG.BASE_URL != null) ? CONFIG.BASE_URL : '';
+                const englishReviewUrl = `${base}scenarios/reviews/review-${mappedId}-en.json`;
+                
+                try {
+                    const englishResponse = await fetch(englishReviewUrl);
+                    if (englishResponse.ok) {
+                        const reviewData = await englishResponse.json();
+                        if (typeof gameState !== 'undefined' && gameState) {
+                            gameState.reviewData = reviewData;
+                        }
+                        console.log('Successfully loaded English fallback review data');
+                        return reviewData;
+                    }
+                } catch (englishError) {
+                    console.log('English fallback also failed');
+                }
+            }
+            
+            // Do not overwrite gameState.reviewData — it may have been set at scenario load (game-controller)
+            return (typeof gameState !== 'undefined' && gameState && gameState.reviewData) ? gameState.reviewData : null;
+        }
+    },
+    
+    // Store the scenario ID when scenario starts
+    storeScenarioId(scenario) {
+        if (scenario) {
+            this.originalScenarioId = scenario.id;
+            console.log('Stored original scenario ID:', this.originalScenarioId);
+        }
+    },
+    
+    // Determine choice type based on score
+    determineChoiceType(historyItem) {
+        if (historyItem.points > 15) return 'positive';
+        if (historyItem.points < 0) return 'negative';
+        return 'neutral';
+    },
+    
+    // Build detailed review from review JSON file with proper translations and choice text
+    buildDetailedReview() {
+        if (typeof gameState === 'undefined' || !gameState) return '';
+        
+        const review = gameState.reviewData;
+        if (!review) return '';
+        
+        let html = '';
+        
+        // Stage-by-stage analysis with FIXED choice text and stage numbers
+        if (review.stageAnalysis) {
+            html += '<div class="review-section">';
+            html += `<h3 style="color: #1e293b; margin-bottom: 1.5rem;">${this.t('stageByStageAnalysis')}</h3>`;
+            
+            const history = gameState.gameHistory || [];
+            let stageAttempts = {};
+            
+            // Group history items by stage with better stage detection
+            history.forEach((historyItem, index) => {
+                const stageNum = this.getStageNumber(historyItem, index);
+                if (!stageAttempts[stageNum]) {
+                    stageAttempts[stageNum] = [];
+                }
+                // Store the actual stage number back to the item for reference
+                historyItem.displayStage = stageNum;
+                stageAttempts[stageNum].push(historyItem);
+            });
+            
+            // Display each stage with all attempts
+            Object.keys(stageAttempts).sort((a, b) => parseInt(a) - parseInt(b)).forEach(stageNum => {
+                const stageData = review.stageAnalysis[stageNum];
+                if (stageData) {
+                    const attempts = stageAttempts[stageNum];
+                    
+                    html += `
+                        <div style="margin: 1.5rem 0; padding: 1.5rem; background: white; border-radius: 10px; border-left: 4px solid #3b82f6;">
+                            <h4 style="color: #1e293b; margin-bottom: 1rem;">${stageData.stageName}</h4>
+                    `;
+                    
+                    // Show each attempt for this stage
+                    attempts.forEach((attempt, attemptIndex) => {
+                        const isCorrect = attempt.type === 'positive';
+                        const choiceType = this.determineChoiceType(attempt);
+                        const analysis = stageData.choiceAnalysis[choiceType];
+                        
+                        // Determine the border color based on choice type
+                        let borderColor = '#6b7280'; // neutral gray
+                        if (isCorrect) borderColor = '#10b981'; // green
+                        else if (attempt.type === 'negative') borderColor = '#ef4444'; // red
+                        
+                        // Get the actual choice text
+                        const choiceText = this.getChoiceText(attempt);
+                        
+                        html += `
+                            <div style="margin: 0.75rem 0; padding: 0.75rem; background: #f9fafb; border-left: 3px solid ${borderColor}; border-radius: 5px;">
+                                <p style="margin: 0.25rem 0; font-size: 0.85rem; color: #6b7280;">
+                                    <strong>${this.t('attempt')} ${attemptIndex + 1}:</strong>
+                                </p>
+                                <p style="margin: 0.25rem 0;">
+                                    <strong>${this.t('yourChoice')}:</strong> ${choiceText}
+                                </p>
+                        `;
+                        
+                        if (analysis) {
+                            if (choiceType === 'positive') {
+                                html += `
+                                    <p style="color: #059669; margin: 0.5rem 0;">
+                                        ✅ <strong>${this.t('goodChoice')}</strong> ${analysis.professionalImpact || ''}
+                                    </p>
+                                `;
+                                if (analysis.strengths && analysis.strengths.length > 0) {
+                                    html += `<p style="margin-top: 0.5rem; font-size: 0.9rem;"><strong>${this.t('strengths')}</strong></p>`;
+                                    html += '<ul style="margin: 0.25rem 0 0 1.5rem; font-size: 0.85rem; color: #059669;">';
+                                    analysis.strengths.forEach(strength => {
+                                        html += `<li>${strength}</li>`;
+                                    });
+                                    html += '</ul>';
+                                }
+                            } else if (choiceType === 'negative') {
+                                html += `
+                                    <p style="color: #dc2626; margin: 0.5rem 0;">
+                                        ❌ <strong>${this.t('poorChoice')}</strong> ${analysis.consequences || 'This approach escalated the situation.'}
+                                    </p>
+                                `;
+                                if (analysis.failures && analysis.failures.length > 0) {
+                                    html += `<p style="margin-top: 0.5rem; font-size: 0.9rem;"><strong>${this.t('issues')}</strong></p>`;
+                                    html += '<ul style="margin: 0.25rem 0 0 1.5rem; font-size: 0.85rem; color: #dc2626;">';
+                                    analysis.failures.forEach(failure => {
+                                        html += `<li>${failure}</li>`;
+                                    });
+                                    html += '</ul>';
+                                }
+                                if (analysis.trainingFocus) {
+                                    html += `
+                                        <p style="margin: 0.5rem 0; padding: 0.5rem; background: #fef2f2; border-radius: 5px;">
+                                            <strong>${this.t('trainingFocus')}</strong> ${analysis.trainingFocus}
+                                        </p>
+                                    `;
+                                }
+                            } else {
+                                html += `
+                                    <p style="color: #d97706; margin: 0.5rem 0;">
+                                        ⚠️ <strong>${this.t('neutralChoice')}</strong> ${analysis.improvement || 'Could be improved.'}
+                                    </p>
+                                `;
+                                if (analysis.missed && analysis.missed.length > 0) {
+                                    html += `<p style="margin-top: 0.5rem; font-size: 0.9rem;"><strong>${this.t('missedOpportunities')}</strong></p>`;
+                                    html += '<ul style="margin: 0.25rem 0 0 1.5rem; font-size: 0.85rem; color: #d97706;">';
+                                    analysis.missed.forEach(missed => {
+                                        html += `<li>${missed}</li>`;
+                                    });
+                                    html += '</ul>';
+                                }
+                            }
+                        } else {
+                            // Fallback if no analysis found
+                            if (attempt.feedback) {
+                                const feedbackColor = isCorrect ? '#059669' : '#dc2626';
+                                const icon = isCorrect ? '✅' : '❌';
+                                html += `
+                                    <p style="color: ${feedbackColor}; margin: 0.5rem 0;">
+                                        ${icon} ${attempt.feedback}
+                                    </p>
+                                `;
+                            }
+                        }
+                        
+                        html += '</div>';
+                    });
+                    
+                    // Add key learning points if available
+                    if (stageData.keyLearningPoints && stageData.keyLearningPoints.length > 0) {
+                        html += '<div style="margin-top: 1rem; padding: 0.75rem; background: #eff6ff; border-radius: 5px;">';
+                        html += `<p style="margin-bottom: 0.5rem;"><strong>${this.t('keyLessons')}</strong></p>`;
+                        html += '<ul style="margin: 0.25rem 0 0 1.5rem;">';
+                        stageData.keyLearningPoints.forEach(point => {
+                            html += `<li style="font-size: 0.9rem; color: #1e40af;">${point}</li>`;
+                        });
+                        html += '</ul>';
+                        html += '</div>';
+                    }
+                    
+                    html += '</div>';
+                }
+            });
+            
+            html += '</div>';
+        }
+        
+        // Summary of mistakes with FIXED stage numbers and choice text
+        const gameHistory = (typeof gameState !== 'undefined' && gameState) ? (gameState.gameHistory || []) : [];
+        const mistakes = gameHistory.filter(item => item.type === 'negative');
+        if (mistakes.length > 0) {
+            html += '<div class="review-section" style="background: #fef2f2;">';
+            html += `<h3 style="color: #1e293b; margin-bottom: 1rem;">${this.t('mistakesSummary')}</h3>`;
+            html += `<p style="margin-bottom: 1rem;">${this.t('mistakesMade')} <strong>${mistakes.length} ${this.t('incorrectChoices')}</strong> ${this.t('duringScenario')}</p>`;
+            html += '<ul style="margin-left: 1.5rem;">';
+            mistakes.forEach((mistake, index) => {
+                const stageNum = mistake.displayStage || this.getStageNumber(mistake, gameHistory.indexOf(mistake));
+                const choiceText = this.getChoiceText(mistake);
+                
+                html += `<li style="margin: 0.5rem 0;">`;
+                html += `<strong>${this.t('stage')} ${stageNum}:</strong> "${choiceText}" - `;
+                html += `<span style="color: #dc2626;">${mistake.feedback || 'This choice escalated the situation.'}</span>`;
+                html += `</li>`;
+            });
+            html += '</ul>';
+            html += '</div>';
+        }
+        
+        // Rest of the review sections (patterns, training, takeaways) remain the same...
+        if (typeof gameState !== 'undefined' && gameState && gameState.reviewData?.recommendedTraining) {
+            const metrics = gameState.getPerformanceMetrics ? gameState.getPerformanceMetrics() : 
+                          { performanceLevel: 'average' };
+            const perfLevel = metrics.performanceLevel || 'average';
+            const training = gameState.reviewData.recommendedTraining.based_on_performance[perfLevel];
+            
+            if (training && training.length > 0) {
+                html += '<div class="review-section" style="background: #e0e7ff;">';
+                html += `<h3 style="color: #1e293b; margin-bottom: 1rem;">${this.t('recommendedTraining')}</h3>`;
+                html += '<ul style="margin-left: 1.5rem;">';
+                training.forEach(course => {
+                    html += `<li style="margin: 0.5rem 0;">${course}</li>`;
+                });
+                html += '</ul>';
+                html += '</div>';
+            }
+        }
+        
+        // Scenario-specific lessons
+        if (typeof gameState !== 'undefined' && gameState && gameState.reviewData?.scenarioSpecificLessons) {
+            const lessons = Object.values(gameState.reviewData.scenarioSpecificLessons);
+            if (lessons.length > 0) {
+                html += '<div class="review-section" style="background: #f0fdf4;">';
+                html += `<h3 style="color: #1e293b; margin-bottom: 1rem;">${this.t('keyTakeaways')}</h3>`;
+                html += '<ul style="margin-left: 1.5rem;">';
+                lessons.forEach(lesson => {
+                    html += `<li style="margin: 0.5rem 0;">${lesson}</li>`;
+                });
+                html += '</ul>';
+                html += '</div>';
+            }
+        }
+        
+        return html;
+    },
+    
+    // Enhanced showGameReview method
+    async enhanceGameReview() {
+        console.log('Enhancing game review...');
+        
+        await this.loadReviewData();
+        
+        const reviewContent = document.getElementById('review-content');
+        if (!reviewContent) {
+            console.error('Review content element not found');
+            return;
+        }
+        
+        let currentHTML = reviewContent.innerHTML;
+        
+        if (typeof gameState !== 'undefined' && gameState && gameState.reviewData) {
+            console.log('Adding detailed review to display');
+            const detailedReview = this.buildDetailedReview();
+            
+            const finalAssessmentIndex = currentHTML.indexOf('Final Assessment');
+            
+            if (finalAssessmentIndex > -1) {
+                currentHTML = currentHTML.substring(0, finalAssessmentIndex - 100) + 
+                             detailedReview + 
+                             currentHTML.substring(finalAssessmentIndex - 100);
+            } else {
+                currentHTML += detailedReview;
+            }
+            
+            reviewContent.innerHTML = currentHTML;
+        } else {
+            console.log('No review data available, using basic review');
+        }
+    },
+
+    // Language change handler
+    onLanguageChange(newLanguage) {
+        console.log('Language changed to:', newLanguage);
+        if (typeof gameState !== 'undefined' && gameState) {
+            gameState.reviewData = null;
+        }
+        
+        const reviewContent = document.getElementById('review-content');
+        if (reviewContent && reviewContent.innerHTML.trim() !== '') {
+            console.log('Reloading review in new language...');
+            setTimeout(async () => {
+                await this.enhanceGameReview();
+            }, 100);
+        }
+    }
+};
+
+// ============================================
+// LANGUAGE SWITCHING FUNCTION
+// ============================================
+function switchLanguage(lang) {
+    console.log('Switching language to:', lang);
+    
+    if (typeof gameState !== 'undefined') {
+        gameState.currentLanguage = lang;
+    }
+    
+    // Update body attribute
+    document.body.setAttribute('data-lang', lang);
+    
+    // Update active language button (header)
+    document.querySelectorAll('.language-button').forEach(btn => {
+        btn.classList.remove('active');
+    });
+    const headerBtn = document.querySelector(`.language-switcher [data-lang="${lang}"]`);
+    if (headerBtn) headerBtn.classList.add('active');
+    
+    // Update welcome language buttons
+    document.querySelectorAll('.welcome-lang-btn').forEach(btn => {
+        btn.classList.remove('active');
+    });
+    const welcomeBtn = document.querySelector(`.welcome-lang-btn[data-lang="${lang}"]`);
+    if (welcomeBtn) welcomeBtn.classList.add('active');
+    
+    // Update i18n if available (this will also call reloadWithLanguage and refresh scenario list)
+    if (typeof i18n !== 'undefined' && i18n.setLanguage) {
+        i18n.setLanguage(lang);
+    }
+    
+    // Notify ReviewManager
+    if (typeof ReviewManager !== 'undefined') {
+        ReviewManager.onLanguageChange && ReviewManager.onLanguageChange(lang);
+    }
+}
+
+// Switch language from welcome screen (same function but more visible)
+function switchLanguageFromWelcome(lang) {
+    switchLanguage(lang);
+}
+
+// Go back to scenario selection from the game
+function goBackToScenarios() {
+    // Confirm if user wants to leave mid-game
+    if (gameState && gameState.currentStage > 0) {
+        const confirmMessage = i18n ? i18n.t('game.confirmLeave') || 'Are you sure you want to leave? Your progress in this scenario will be lost.' : 'Are you sure you want to leave? Your progress in this scenario will be lost.';
+        if (!confirm(confirmMessage)) {
+            return;
+        }
+    }
+    
+    // Reset game state for current scenario
+    if (gameState) {
+        gameState.currentScenario = null;
+        gameState.currentStage = 0;
+        gameState.choiceHistory = [];
+        gameState.setState('IDLE');
+    }
+    
+    // Clear dialogue
+    if (typeof DialogueManager !== 'undefined') {
+        DialogueManager.clear();
+    }
+    
+    // Hide back button and show language switcher
+    const backContainer = document.getElementById('back-to-scenarios-container');
+    if (backContainer) {
+        backContainer.classList.remove('show');
+    }
+    
+    // Remove game-mode class to show language switcher
+    document.body.classList.remove('game-mode');
+    
+    // Show scenario selection
+    if (typeof UIManager !== 'undefined') {
+        UIManager.showScenarioSelection();
+    }
+}
+
+// Hide/show header language switcher based on welcome section visibility
+function updateLanguageSwitcherVisibility() {
+    const welcomeHero = document.getElementById('welcome-hero');
+    const headerSwitcher = document.getElementById('language-switcher');
+    const soundToggle = document.getElementById('sound-toggle');
+    
+    if (welcomeHero && headerSwitcher) {
+        const welcomeVisible = welcomeHero.offsetParent !== null && 
+                               window.getComputedStyle(welcomeHero).display !== 'none';
+        
+        if (welcomeVisible) {
+            headerSwitcher.classList.add('hidden-on-welcome');
+            if (soundToggle) soundToggle.classList.add('hidden-on-welcome');
+        } else {
+            headerSwitcher.classList.remove('hidden-on-welcome');
+            if (soundToggle) soundToggle.classList.remove('hidden-on-welcome');
+        }
+    }
+}
+
+// Phone portrait: switch between Choices and Dialogue views
+function initPhoneViewTabs() {
+    var gc = document.getElementById('game-content');
+    var tabs = document.getElementById('phone-view-tabs');
+    if (!gc || !tabs) return;
+    tabs.querySelectorAll('.phone-tab').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+            var v = this.getAttribute('data-tab');
+            gc.setAttribute('data-view', v);
+            tabs.querySelectorAll('.phone-tab').forEach(function(b) { b.classList.remove('active'); });
+            this.classList.add('active');
+        });
+    });
+}
+
+function initPanelToggle() {
+    var btn = document.getElementById('panel-toggle');
+    var gc = document.getElementById('game-content');
+    if (!btn || !gc) return;
+    btn.addEventListener('click', function() {
+        gc.classList.toggle('dialogue-focus');
+    });
+}
+
+// Call on page load and when scenario selection changes
+document.addEventListener('DOMContentLoaded', function() {
+    updateLanguageSwitcherVisibility();
+    initPhoneViewTabs();
+    initPanelToggle();
+    
+    // Monitor for changes to scenario selection visibility
+    const observer = new MutationObserver(function(mutations) {
+        updateLanguageSwitcherVisibility();
+    });
+    
+    const scenarioSelection = document.getElementById('scenario-selection');
+    if (scenarioSelection) {
+        observer.observe(scenarioSelection, { attributes: true, attributeFilter: ['style', 'class'] });
+    }
+});
+
+// ============================================
+// GAME COMPLETION DETECTOR
+// ============================================
+const GameCompletionDetector = {
+    isMonitoring: false,
+    lastStageCount: 0,
+    checkInterval: null,
+    
+    startMonitoring() {
+        if (this.isMonitoring) return;
+        
+        console.log('🎯 Starting game completion monitoring...');
+        this.isMonitoring = true;
+        
+        this.checkInterval = setInterval(() => {
+            this.checkGameCompletion();
+        }, 2000); // Check every 2 seconds
+    },
+    
+    stopMonitoring() {
+        if (this.checkInterval) {
+            clearInterval(this.checkInterval);
+            this.checkInterval = null;
+        }
+        this.isMonitoring = false;
+        console.log('🎯 Stopped game completion monitoring');
+    },
+    
+    checkGameCompletion() {
+        // Check if we're in a game scenario
+        if (!gameState || !gameState.currentScenario) {
+            return;
+        }
+        
+        const scenario = gameState.currentScenario;
+        const totalStages = scenario.stages ? scenario.stages.length : 0;
+        const currentStage = gameState.currentStage || 0;
+        const gameHistory = gameState.gameHistory || [];
+        
+        // Count completed stages (stages where we got a positive response)
+        const completedStages = gameHistory.filter(item => item.type === 'positive').length;
+        
+        console.log(`🎯 Game Check - Stage: ${currentStage}/${totalStages}, Completed: ${completedStages}, History: ${gameHistory.length}`);
+        
+        // Check multiple completion conditions
+        const isComplete = this.isGameComplete(scenario, currentStage, completedStages, totalStages);
+        
+        if (isComplete) {
+            console.log('🏆 GAME COMPLETED! Triggering review...');
+            this.stopMonitoring();
+            this.triggerGameCompletion();
+        }
+    },
+    
+    isGameComplete(scenario, currentStage, completedStages, totalStages) {
+        // Only consider complete when we're actually on or past the last stage.
+        // Do NOT use feedback text keywords (e.g. "excellent") — per-stage feedback often contains them and triggered the review mid-scenario.
+        if (totalStages <= 0) return false;
+
+        // Method 1: Current stage is the last (evaluation) stage and we've advanced past the last choice stage
+        const lastStageIndex = scenario.stages.length - 1;
+        if (currentStage >= lastStageIndex) {
+            const choiceContainer = document.getElementById('choice-container');
+            const hasChoices = choiceContainer && choiceContainer.classList.contains('show');
+            // Final stage has no options; if we're on it and choices are hidden, game is complete
+            if (!hasChoices && completedStages > 0) {
+                console.log('✅ Completion detected: On final stage, no choices');
+                return true;
+            }
+        }
+
+        // Method 2: All stages completed (enough positive outcomes for each stage)
+        if (completedStages >= totalStages) {
+            console.log('✅ Completion detected: All stages completed');
+            return true;
+        }
+
+        // Method 3: Current stage index past total (safety)
+        if (currentStage >= totalStages) {
+            console.log('✅ Completion detected: Current stage exceeds total');
+            return true;
+        }
+
+        return false;
+    },
+    
+    async triggerGameCompletion() {
+        console.log('🎊 Triggering game completion sequence...');
+        
+        // Hide choice container
+        const choiceContainer = document.getElementById('choice-container');
+        if (choiceContainer) {
+            choiceContainer.classList.remove('show');
+        }
+        
+        // Hide the floating review button (we have one in the trainer feedback panel now)
+        const reviewButton = document.getElementById('show-review-button');
+        if (reviewButton) {
+            reviewButton.classList.remove('show');
+            reviewButton.style.display = 'none';
+        }
+        
+        // Wait a moment, then auto-show review
+        setTimeout(async () => {
+            console.log('🎯 Auto-showing game review...');
+            if (typeof gameController !== 'undefined' && gameController.showGameReviewEnhanced) {
+                await gameController.showGameReviewEnhanced();
+                gameController.showGameReviewModal();
+            } else {
+                // Fallback: just show the review modal
+                const reviewModal = document.getElementById('review-modal-overlay');
+                if (reviewModal) {
+                    reviewModal.classList.add('show');
+                }
+            }
+        }, 2000);
+    }
+};
+
+// ============================================
+// INTEGRATION WITH EXISTING GAME CONTROLLER
+// ============================================
+
+// Wait for the page to fully load before setting up integrations
+window.addEventListener('load', function() {
+    console.log('Setting up ReviewManager integration with language support...');
+    
+    // Hook into scenario selection to store the original ID
+    if (typeof gameController !== 'undefined') {
+        // Store original selectScenario function
+        const originalSelectScenario = gameController.selectScenario;
+        if (originalSelectScenario) {
+            gameController.selectScenario = function(scenarioId) {
+                console.log('Scenario selected with ID:', scenarioId);
+                // Store the scenario ID for later use
+                if (typeof ReviewManager !== 'undefined') {
+                    ReviewManager.storeScenarioId({ id: scenarioId });
+                }
+                // Start monitoring for game completion
+                GameCompletionDetector.startMonitoring();
+                // Call original function
+                return originalSelectScenario.call(this, scenarioId);
+            };
+        }
+        
+        // Override showGameReview function
+        const originalShowGameReview = gameController.showGameReview || gameController.prepareGameReview;
+        
+        gameController.showGameReviewEnhanced = async function() {
+            console.log('Running enhanced game review...');
+            
+            // Call the original function if it exists
+            if (originalShowGameReview) {
+                originalShowGameReview.call(this);
+            }
+            
+            // Wait a bit for the review content to be rendered
+            setTimeout(async () => {
+                if (typeof ReviewManager !== 'undefined') {
+                    await ReviewManager.enhanceGameReview();
+                }
+            }, 500);
+        };
+        
+        // Hook into the review button
+        const reviewButton = document.getElementById('show-review-button');
+        if (reviewButton) {
+            reviewButton.onclick = async function() {
+                console.log('Review button clicked');
+                await gameController.showGameReviewEnhanced();
+                gameController.showGameReviewModal();
+            };
+        }
+        
+        // Also hook into the prepareGameReview function if it exists
+        if (gameController.prepareGameReview) {
+            const originalPrepareGameReview = gameController.prepareGameReview;
+            gameController.prepareGameReview = async function() {
+                console.log('Preparing enhanced game review...');
+                originalPrepareGameReview.call(this);
+                
+                // Wait for the DOM to update
+                setTimeout(async () => {
+                    if (typeof ReviewManager !== 'undefined') {
+                        await ReviewManager.enhanceGameReview();
+                    }
+                }, 500);
+            };
+        }
+        
+        // Hook into choice submission to monitor game progress
+        if (gameController.submitChoice) {
+            const originalSubmitChoice = gameController.submitChoice;
+            gameController.submitChoice = function() {
+                console.log('Choice submitted, checking game state...');
+                const result = originalSubmitChoice.call(this);
+                
+                // Check for completion after choice processing
+                setTimeout(() => {
+                    if (GameCompletionDetector.isMonitoring) {
+                        GameCompletionDetector.checkGameCompletion();
+                    }
+                }, 1000);
+                
+                return result;
+            };
+        }
+        
+        // Hook into any game state changes
+        if (gameController.updateGameState) {
+            const originalUpdateGameState = gameController.updateGameState;
+            gameController.updateGameState = function() {
+                const result = originalUpdateGameState.call(this);
+                
+                // Check for completion after state update
+                setTimeout(() => {
+                    if (GameCompletionDetector.isMonitoring) {
+                        GameCompletionDetector.checkGameCompletion();
+                    }
+                }, 500);
+                
+                return result;
+            };
+        }
+    }
+    
+    // Also monitor for changes in gameState
+    if (typeof gameState !== 'undefined') {
+        // Create a proxy to monitor gameState changes
+        const originalGameState = gameState;
+        window.gameState = new Proxy(originalGameState, {
+            set(target, property, value) {
+                target[property] = value;
+                
+                // If game history or stage changed, check completion
+                if (property === 'gameHistory' || property === 'currentStage') {
+                    setTimeout(() => {
+                        if (GameCompletionDetector.isMonitoring) {
+                            GameCompletionDetector.checkGameCompletion();
+                        }
+                    }, 500);
+                }
+                
+                return true;
+            }
+        });
+    }
+    
+    // Find and override any review-related buttons
+    document.addEventListener('click', async function(e) {
+        if (e.target && e.target.classList && e.target.classList.contains('continue-button')) {
+            if (e.target.textContent.includes('View Complete Review') || 
+                e.target.textContent.includes('View Training Report') ||
+                e.target.textContent.includes('Zobrazit kompletní hodnocení') ||
+                e.target.textContent.includes('Zobrazit zprávu o výcviku')) {
+                console.log('Review button detected, enhancing review...');
+                setTimeout(async () => {
+                    if (typeof ReviewManager !== 'undefined') {
+                        await ReviewManager.enhanceGameReview();
+                    }
+                }, 500);
+            }
+        }
+    });
+    
+    // Add to gameState if it doesn't have these methods
+    if (typeof gameState !== 'undefined') {
+        if (!gameState.getPerformanceMetrics) {
+            gameState.getPerformanceMetrics = function() {
+                const percentage = Math.round((this.score / this.maxScore) * 100) || 0;
+                let performanceLevel = 'poor';
+                
+                if (percentage >= 90) performanceLevel = 'perfect';
+                else if (percentage >= 70) performanceLevel = 'good';
+                else if (percentage >= 50) performanceLevel = 'average';
+                
+                return {
+                    percentage: percentage,
+                    performanceLevel: performanceLevel,
+                    totalMistakes: (this.gameHistory || []).filter(item => item.type === 'negative').length,
+                    perfectRun: (this.gameHistory || []).every(item => item.type === 'positive' && item.attempt === 1),
+                    firstTryCorrect: (this.gameHistory || []).filter(item => item.type === 'positive' && item.attempt === 1).length,
+                    totalDecisions: (this.gameHistory || []).filter(item => item.type === 'positive').length
+                };
+            };
+        }
+    }
+    
+    // Manual completion trigger for testing
+    window.forceGameCompletion = function() {
+        console.log('🔧 MANUAL: Forcing game completion...');
+        GameCompletionDetector.triggerGameCompletion();
+    };
+    
+    // Manual review trigger for testing  
+    window.showReviewNow = async function() {
+        console.log('🔧 MANUAL: Showing review now...');
+        if (typeof gameController !== 'undefined' && gameController.showGameReviewEnhanced) {
+            await gameController.showGameReviewEnhanced();
+            gameController.showGameReviewModal();
+        }
+    };
+    
+    console.log('🎯 Game completion monitoring system loaded!');
+    console.log('💡 Debug commands available:');
+    console.log('   - forceGameCompletion() - Force game to complete');
+    console.log('   - showReviewNow() - Show review immediately');
+    console.log('   - GameCompletionDetector.checkGameCompletion() - Manual check');
+});
+
+// ============================================
+// DEVELOPMENT HELPERS
+// ============================================
+
+// Helper function to check if Czech review files exist
+async function checkCzechReviewFiles() {
+    const scenarios = ['traffic-stop', 'hostel-negotiation', 'youth-interaction', 'mental-health', 'noise-complaint', 'nightclub-fracas', 'domestic-crisis'];
+    const results = {};
+    
+    const base = (typeof CONFIG !== 'undefined' && CONFIG.BASE_URL != null) ? CONFIG.BASE_URL : '';
+    for (const scenario of scenarios) {
+        const url = `${base}${base.endsWith('/') ? '' : '/'}scenarios/reviews/review-${scenario}-cs.json`;
+        try {
+            const response = await fetch(url, { method: 'HEAD' });
+            results[scenario] = response.ok;
+        } catch (error) {
+            results[scenario] = false;
+        }
+    }
+    
+    console.log('Czech review file availability:', results);
+    return results;
+}
+
+// Development helper to test language switching
+function testLanguageSwitching() {
+    console.log('Testing language switching for reviews...');
+    
+    // Test switching to Czech
+    if (typeof ReviewManager !== 'undefined') {
+        ReviewManager.onLanguageChange('cs');
+        console.log('Switched to Czech');
+        
+        // Test switching back to English
+        setTimeout(() => {
+            ReviewManager.onLanguageChange('en');
+            console.log('Switched back to English');
+        }, 2000);
+    }
+}
+
+// Make functions available globally for testing
+window.checkCzechReviewFiles = checkCzechReviewFiles;
+window.testLanguageSwitching = testLanguageSwitching;
+
+    </script>
+
+</body>
+</html>

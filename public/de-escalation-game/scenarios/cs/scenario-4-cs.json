@@ -1,0 +1,428 @@
+{
+    "id": 4,
+    "title": "Krize duševního zdraví",
+    "description": "Pokročilý scénář zahrnující ženu v akutní krizi duševního zdraví před lékárnou, znepokojeného, ale netrpělivého zaměstnance lékárny, který zavolal policii, ochranitelskou kolemjdoucí a přijíždějící rodinnou příslušnici. Strážník musí vyvážit krizovou intervenci s obchodními zájmy, komunikaci založenou na souhlasu a propojení osoby s odpovídajícími službami namísto trestněprávního systému.",
+    "icon": "🧠",
+    "difficulty": 4,
+    "duration": "14-18",
+    "instructor": {
+        "name": "Seržant Okafor",
+        "avatar": "👮‍♂️",
+        "introduction": "Výjezdy ke krizím duševního zdraví patří mezi nejzávažnější situace v policejní práci. Výzkumy opakovaně ukazují, že lidé prožívající krizi duševního zdraví jsou mnohem častěji oběťmi násilí než jeho pachateli — přesto tyto výjezdy nesou obrovské riziko, pokud jsou řešeny primárně z pozice zákona místo přístupu zaměřeného na péči. Výcvik krizových intervenčních týmů nás učí, že klidná přítomnost, čas, aktivní naslouchání a nabízení možností volby jsou účinnější než příkazy a kontrola. Zásady NAMI zdůrazňují, že osoba v krizi není podezřelý — je to někdo, kdo trpí. Dnes budete reagovat na volání o ženě, která se ‚chová podivně' na obchodní ulici. Jak k ní přistoupíte v prvních šedesáti sekundách, rozhodne o tom, zda tato situace skončí propojením s péčí, nebo traumatem, které prohloubí její nedůvěru ke každému systému, který jí má pomáhat. Vaším cílem není krizi vyřešit — je vytvořit dostatek bezpečí a důvěry, aby mohla přijmout pomoc dobrovolně."
+    },
+    "timedChoices": true,
+    "completionBadges": ["scenario-4-complete"],
+    "perfectBadge": "perfect-scenario-4",
+    "finalMessage": {
+        "revelation": "Elena Marchetti je 34letá grafická designérka a matka dvou dětí, která byla před třemi dny dobrovolně hospitalizována poté, co u ní došlo k závažné úzkostné epizodě vyvolané změnou medikace bipolární poruchy. Nová medikace způsobila sluchové halucinace — děsivý vedlejší účinek, který nikdy předtím nezažila. Když v noci ve dvě hodiny ráno vešla do jejího pokoje noční sestra, kterou neznala, aby jí změřila vitální funkce, Elena zpanařila v přesvědčení, že je v nebezpečí, a odešla z nemocnice v nemocničním úboru a civilním oblečení. Chodila hodiny, dezorientovaná, než si sedla před lékárnu, kde si dříve vyzvedávala své léky — místo, které její zmatená mysl spojovala s bezpečím a léky. Nemocniční náramek, který stále měla na ruce, byl její záchytnou nití zpět k léčbě. Její sestra Sofia ji celé hodiny obvolávala nemocnice a projížděla čtvrť. Po vaší intervenci se Elena dobrovolně vrátila do nemocnice se Sofiou, kde její psychiatr upravil medikaci. Později sdělila své terapeutce, že strážník, který přijel, byl prvním člověkem toho dne, díky kterému se cítila jako lidská bytost, a ne jako problém k vyřešení. Od té doby se stabilizovala, vrátila se na částečný úvazek do práce a dobrovolně pomáhá na místní krizové lince.",
+        "keyLessons": [
+            "Lidé v krizi duševního zdraví jsou v drtivé většině spíše oběťmi než pachateli — přistupujte s péčí, nikoli s taktickou ostražitostí",
+            "Prvních 60 sekund určuje trajektorii: vzdálenost, tón, tempo a řeč těla komunikují bezpečí nebo hrozbu dříve, než padne jediné slovo",
+            "Nabízení možností volby namísto příkazů obnovuje pocit kontroly u člověka, který cítí, že veškerou kontrolu ztratil",
+            "Nemocniční náramek, lékovky nebo jiné zdravotnické indikátory jsou klíčovými kontextovými vodítky — pozorujte, než začnete jednat",
+            "Přijíždějící rodinní příslušníci v krizi potřebují vlastní deeskalaci — jejich panika může znovu eskalovat osobu, kterou jste uklidnili",
+            "Propojení člověka s dobrovolnými službami přináší lepší dlouhodobé výsledky než nedobrovolný převoz téměř ve všech situacích, které nejsou bezprostředně naléhavé",
+            "Způsob, jakým policie řeší výjezdy k duševnímu zdraví, formuje důvěru komunity jak v orgány činné v trestním řízení, tak v systém péče o duševní zdraví na celé roky"
+        ]
+    },
+    "stages": [
+        {
+            "id": 1,
+            "title": "Posouzení při příjezdu",
+            "sceneUpdate": {
+                "emoji": "🏪",
+                "title": "Vchod do lékárny — Dopoledne",
+                "desc": "Přijíždíte k lékárně na středně rušné obchodní ulici. Žena kolem pětatřiceti sedí na chodníku poblíž vchodu, mírně se houpe a má paže obtočené kolem kolen. Má na sobě džíny a pomačkanou halenku a na levém zápěstí je vidět bílý nemocniční náramek. Muž v polokošili lékárny sleduje situaci ze dveří. Starší žena s nákupní taškou stojí pár metrů opodál a vypadá ustaraně. Žádné zbraně nejsou vidět. Žádné agresivní chování."
+            },
+            "npcDialogue": [
+                {
+                    "character": "dispatcher",
+                    "text": "Hlídka směřující na Oakfield Road, lékárna Henderson's. Volající je zaměstnanec lékárny, hlásí ženu, která se ‚chová podivně' před vchodem — mluví sama se sebou, přechází sem a tam, sedí na zemi. Volající uvádí, že tam je přibližně třicet minut. Žádné zbraně hlášeny, žádné hrozby. Volající ji popisuje jako ‚zmatenou, možná pod vlivem něčeho.' Upozorňuji, může se jednat o situaci spojenou s duševním zdravím."
+                }
+            ],
+            "prompt": "Přijeli jste na místo a vidíte Elenu, Davida ve dveřích lékárny a paní Walsh nedaleko. Jak začnete své posouzení?",
+            "options": [
+                {
+                    "text": "Zastavte se asi pět metrů od ní na chodníku, nohy pevně na zemi, ruce uvolněné podél těla. Věnujte třicet sekund tichému pozorování: všimněte si řeči těla Eleny — houpání, sebeobjetí — nemocničního náramku na levém zápěstí, pomačkaného, ale civilního oblečení, vzdálenosti od vchodu. Navažte klidný oční kontakt s Davidem a paní Walsh, abyste je vzali na vědomí, aniž byste k někomu spěchali. Nechte scénu promluvit dříve, než promluvíte vy.",
+                    "feedback": "Proč: Výcvik krizové intervence zdůrazňuje pozorování před kontaktem. Třicet sekund posouzení odhalí klíčové informace: nemocniční náramek naznačuje zdravotní kontext, nikoli kriminální chování. Její houpání a samomluva svědčí o úzkosti, nikoli o agresivitě. Udržování vzdálenosti signalizuje, že nejste bezprostřední hrozbou. | DŮSLEDKY: Všimnete si náramku, jejího neagresivního postoje a toho, že sebou trhne při náhlých zvucích. David vidí, že klidně vyhodnocujete situaci. Paní Walsh vypadá s úlevou, že je tam někdo. Máte kontext, aniž byste řekli jediné slovo. | Reflexe: Jak třicet sekund pozorování změní celý váš přístup k výjezdu kvůli duševnímu zdraví?",
+                    "type": "positive",
+                    "points": 10
+                },
+                {
+                    "text": "Jděte přímo k Davidovi — on volal, takže si nejprve zjistěte jeho verzi toho, co se stalo, než přistoupíte k Eleně. Rázným krokem zamíříte ke dveřím lékárny, profesionálně přikývnete, vytáhnete zápisník a věcným tónem ho požádáte, aby popsal situaci od začátku, zatímco Elena sedí na chodníku pár metrů od vás a sleduje, jak jednáte s mužem, který na ni zavolal policii.",
+                    "feedback": "Proč: Získávání informací od volajícího je rozumné, ale přistoupit nejprve k majiteli podniku, zatímco Elena sedí na chodníku, vysílá signál: jste tu kvůli stížnosti, ne proto, že někdo potřebuje pomoc. Elena sleduje, jak mluvíte s mužem, který na ni zavolal policii, a její úzkost narůstá. | DŮSLEDKY: Získáte Davidův pohled — užitečný kontext — ale Elena vidí dvě autoritativní postavy, které o ní jednají. Přitáhne si kolena těsněji a začne se houpat rychleji. Paní Walsh se zamračí. Přístup signalizuje vyšetřování, nikoli péči. | Reflexe: Když osoba v krizi vidí, s kým mluvíte jako prvním, jaký příběh jí to říká o tom, proč jste tu?",
+                    "type": "neutral",
+                    "points": 2
+                },
+                {
+                    "text": "Přistupte přímo k Eleně a představte se — ona je ta, kdo potřebuje pomoc, tak se k ní dostaňte rychle, než se situace změní. Svým obvyklým tempem zamíříte přímo k místu, kde sedí na chodníku, zmenšíte vzdálenost na necelý metr, mírně se předkloníte a podáte ruku na pozdrav. Váš tón je vřelý a úmysly dobré, ale nezastavili jste se, abyste nejprve přečetli scénu.",
+                    "feedback": "Proč: Nutkání pomoci je správné, ale přímý a rychlý přístup k osobě v krizi duševního zdraví může působit jako konfrontace. Neposoudili jste místo, nezjistili potenciální spouštěče ani si nevšimli nemocničního náramku. Rychlý přístup k někomu, kdo je vyděšený, může vyvolat reakci boj nebo útěk. | DŮSLEDKY: Elena vzhlédne a vidí uniformovaného strážníka, jak k ní přímo směřuje. Odleze dozadu a tiskne se ke zdi, s vyděšenýma očima. ‚Nesahejte na mě!' křičí. Vaše dobré úmysly vyvolaly přesně tu reakci strachu, před kterou výcvik krizové intervence varuje. | Reflexe: Proč výcvik krizové intervence zdůrazňuje pomalý přístup a odstup, i když chcete pomoci?",
+                    "type": "partially_positive",
+                    "points": 5
+                },
+                {
+                    "text": "Okamžitě si vyžádejte posily přes rádio — nevíte, co vzala nebo co by mohla udělat. Stisknete tlačítko na ramenou vysílačky a naléhavým, úsečným tónem žádáte druhou hlídku. Pak se otočíte k paní Walsh a kolemjdoucím a gestem je odsunete: ‚Lidi, potřebuji, abyste nám tu dali prostor.' Zabezpečte oblast a držte kolemjdoucí zpátky, dokud nepřijede druhá hlídka, a zacházejte s okolím jako s potenciální hrozbou.",
+                    "feedback": "Proč: Neexistují žádné známky nebezpečí: žádná zbraň, žádná agresivita, žádné hrozby. Volání posil a zajišťování perimetru zachází s krizí duševního zdraví jako s taktickou situací. To sděluje všem — Eleně, kolemjdoucím, zaměstnanci lékárny — že tuto ženu vnímáte jako hrozbu. Příjezd dalších hlídek dramaticky eskaluje její strach. | DŮSLEDKY: Elena vidí, jak naléhavě mluvíte do vysílačky. Během několika minut přijíždí druhá hlídka. Další dva strážníci se blíží. Elena je nyní obklopena uniformami. Začíná hyperventilovat a plakat. Paní Walsh říká: ‚Tohle nepotřebuje — potřebuje pomoc!' Kolemjdoucí začíná natáčet. | Reflexe: Jakou zprávu vysílá taktická reakce člověku, který je už tak vyděšený?",
+                    "type": "negative",
+                    "points": -8
+                }
+            ]
+        },
+        {
+            "id": 2,
+            "title": "První kontakt",
+            "sceneUpdate": {
+                "emoji": "🤲",
+                "title": "Chodník u lékárny — Přibližování se k Eleně",
+                "desc": "Přibližujete se k Eleně a udržujete respektující vzdálenost. Zblízka vidíte, že má oči červené od pláče. Ruce se jí třesou. Nemocniční náramek uvádí název místního psychiatrického zařízení a datum zpřed tří dnů. Všimne si vás a ztuhne, tiskne záda ke zdi lékárny. Její dech se zrychlí."
+            },
+            "npcDialogue": [
+                {
+                    "character": "elena",
+                    "text": "(třesoucím se hlasem, s těkajícíma očima) Nesahejte na mě! Já ne — já se tam nevrátím. Prosím. Já se tam nevrátím. Oni — ty hlasy — prostě jsem musela odejít. Prosím, nenuťte mě vracet se. Nic špatného jsem neudělala."
+                }
+            ],
+            "prompt": "Elena je vyděšená a prosí. Spojuje si vás s tím, že bude nucena vrátit se do nemocnice. Jak otevřete tento rozhovor?",
+            "options": [
+                {
+                    "text": "Pomalu se snižte na úroveň jejích očí — jedno koleno na chodníku, ruce otevřené a viditelné na stehnech. Mluvte tiše, přizpůsobte se jejímu tichému tónu: ‚Jmenuji se strážník [jméno]. Nejsem tu, abych vás někam odvezl. Nikdo se vás nebude dotýkat ani vás nedonutí jít někam, kam nechcete. Vidím, že to máte opravdu těžké. Můžete mi říct své jméno?'",
+                    "feedback": "Proč: Snížení na úroveň očí redukuje nerovnováhu moci. Viditelné ruce signalizují žádnou hrozbu. Přímé oslovení jejího strachu — ‚nejsem tu, abych vás někam odvezl' — cílí na konkrétní hrůzu, kterou vyjádřila. Zeptáním se na jméno jí začínáte obnovovat identitu nad rámec ‚osoby na chodníku.' Výcvik krizové intervence označuje tato první slova za nejkritičtější okamžik jakéhokoli krizového setkání. | DŮSLEDKY: Elenino dýchání se mírně zpomalí. Zkoumá váš obličej, hledá klam. Po dlouhé pauze: ‚Elena. Jmenuji se Elena.' Vytvoří se křehké vlákno důvěry. Neutekla. Nekřičela. To je pokrok. | Reflexe: Proč je přímé oslovení konkrétního strachu osoby účinnější než obecné uklidňování?",
+                    "type": "positive",
+                    "points": 10
+                },
+                {
+                    "text": "Zůstaňte stát ve své plné výšce, ale změkčete tón a mírně nakloníte hlavu, aby váš postoj působil méně dominantně. Ruce necháte uvolněně na opasku. Promluvíte odměřeným, profesionálním hlasem: ‚Paní, jsem strážník [jméno]. Dostal jsem hlášení o někom, kdo potřebuje pomoc před lékárnou. Jste v pořádku? Potřebujete lékařskou pomoc?' Čekáte na odpověď a díváte se na ni shora.",
+                    "feedback": "Proč: Zdvořilé a starostlivé, ale stání nad někým, kdo sedí na zemi, udržuje mocenskou dynamiku. ‚Dostal jsem hlášení' jí připomíná, že ji někdo nahlásil. ‚Potřebujete lékařskou pomoc?' je klinická otázka, která neřeší její emocionální stav ani její výslovný strach z návratu do nemocnice. | DŮSLEDKY: Elena vzhlédne k uniformované postavě tyčící se nad ní. Rychle kroutí hlavou. ‚Nepotřebuji sanitku. Je mi dobře. Je mi dobře.' Zjevně jí dobře není, ale vaše otázka si vynutila odpověď ano-ne, na kterou nebyla připravená. Rozhovor uvázne. | Reflexe: Jak vaše fyzické postavení vůči osobě v krizi ovlivňuje její ochotu komunikovat?",
+                    "type": "partially_positive",
+                    "points": 5
+                },
+                {
+                    "text": "Klekněte si poblíž na chodník, ztište hlas do jemného šepotu a nabídněte vřelý, uklidňující úsměv. Mírně se předkloníte s dlaněmi nahoru: ‚Hele, to je v pořádku. Jste v bezpečí. Slibuji, že se nic špatného nestane. Pojďme si jen promluvit, ano? Všechno bude v pořádku.' Vaše slova jsou laskavá a řeč těla otevřená, ale konkrétní strach, který právě vyjádřila ohledně návratu, jste nijak nezmínili.",
+                    "feedback": "Proč: Vřelé a dobře míněné, ale dávání slibů, které nemůžete zaručit — ‚nic špatného se nestane,' ‚všechno bude v pořádku' — se může obrátit proti vám. Člověk prožívající krizi mohl slyšet přesně tato slova před traumatickým zážitkem. Obecné uklidňování bez oslovení jejího konkrétního strachu působí planě. Řekla, že se nechce vracet — a vy jste to nevzali na vědomí. | DŮSLEDKY: Elena se na vás dívá s podezřením. ‚To říkali i v nemocnici.' Vaše uklidňování jí připomnělo nesplněné sliby. Obtočí si paže těsněji. Důvěra se zatím nevytvořila. | Reflexe: Jaký je rozdíl mezi oslovením konkrétního strachu někoho a nabídkou obecné útěchy?",
+                    "type": "neutral",
+                    "points": 2
+                },
+                {
+                    "text": "Udržujte několik kroků odstupu, ale narovnejte ramena a nasaďte rázný, autoritativní tón. Krátce ukažte na náramek na její ruce: ‚Paní, potřebuji, abyste se uklidnila. Jsem strážník [jméno] a jsem tu, protože přišla stížnost. Můžete vstát, abychom si promluvili řádně? Co je s tím nemocničním náramkem?' Váš hlas nese dost jasně na to, aby ho slyšeli David i paní Walsh.",
+                    "feedback": "Proč: ‚Uklidněte se' je jedna z nejméně účinných frází v krizové intervenci — znehodnocuje emocionální stav osoby a naznačuje, že si rozčilení vybírá. Žádat ji, aby vstala, je příkaz, který zvyšuje mocenský rozdíl. Upozorňování na náramek před vybudováním jakéhokoli vztahu působí jako výslech. Zmínka o stížnosti ji rámuje jako problém. | DŮSLEDKY: Elena sebou trhne při slově ‚stížnost.' Zakryje si náramek druhou rukou, stydí se. ‚Nejsem blázen. Já jen — nechte mě na pokoji!' Prudce vstane a ustoupí. Situace eskalovala. David vstoupí dovnitř lékárny, vyděšený. | Reflexe: Proč výzkumy opakovaně ukazují, že výzva k uklidnění má opačný účinek?",
+                    "type": "negative",
+                    "points": -8
+                }
+            ]
+        },
+        {
+            "id": 3,
+            "title": "Shromažďování informací",
+            "sceneUpdate": {
+                "emoji": "👥",
+                "title": "Vchod do lékárny — Různé perspektivy",
+                "desc": "Elena sdělila své jméno, ale zůstává ostražitá. David vystoupí ze dveří lékárny a kontroluje hodinky. Paní Walsh se přiblíží, drží svou nákupní tašku a pozoruje interakci. Dva zákazníci váhají u vchodu do lékárny, nejsou si jistí, zda mají Elenu obejít. Ulice je rušná poledním provozem chodců."
+            },
+            "npcDialogue": [
+                {
+                    "character": "david",
+                    "text": "(přistupuje, hlasem tichým, ale netrpělivým) Pane strážníku, je tu od doby, než jsme otevírali. Mluví sama se sebou — myslím plné rozhovory s nikým. Některým mým zákazníkům je nepříjemné kolem ní procházet. Nechci být bezcitný, ale tady je obchod. Můžete zajistit, aby odešla?"
+                },
+                {
+                    "character": "mrs_walsh",
+                    "text": "(vykročí vpřed, ochranitelsky) Promiňte, pane strážníku — já tu taky jsem už nějakou dobu. Zkoušela jsem s ní mluvit. Není nebezpečná — je vyděšená. Pořád říkala něco o hlasech a lécích. Myslím, že přišla z nemocnice. To chudák děvče potřebuje pomoc, ne aby bylo odháněno jako toulavá kočka."
+                }
+            ],
+            "prompt": "David chce, aby Elena odešla. Paní Walsh věří, že potřebuje pomoc. Máte dva protichůdné pohledy a Elena poslouchá oba. Jak tuto situaci zvládnete?",
+            "options": [
+                {
+                    "text": "Oslovte oba přímo a při řeči se otočte ke každému z nich. K Davidovi s respektujícím přikývnutím: ‚Chápu, že to ovlivňuje váš obchod, a oceňuji, že jste zavolal — budu na tom pracovat. Můžete mi dát pár minut?' Pak se otočte k paní Walsh vřelejším tónem: ‚Děkuji, že jste na ni dohlížela. To je opravdu cenné. Řekla ještě něco, co by mi mohlo pomoci pochopit její situaci?'",
+                    "feedback": "Proč: Validuje obě strany, aniž by se přikláněl na jednu stranu před Elenou. Žádost o čas Davida řídí jeho očekávání, aniž by ho odbývala. Poděkování paní Walsh a dotaz na další informace promění kolemjdoucí v zdroj — může mít podrobnosti, které vám Elena nesdělila. Klíčové je, že Elena vidí, jak zacházíte s její situací jako s něčím, co si zaslouží porozumění, ne jen odstranění. | DŮSLEDKY: David neochotně přikývne — ‚Dobře, ale mám zákazníky.' Paní Walsh sdělí, že Elena zmínila, že se bojí sestry, a že se stále dívá na ceduli lékárny, jako by ji poznávala. Elena sleduje tuto výměnu. Někdo shromažďuje informace, aby jí pomohl, ne aby ji zatkl. Její postoj se mírně uvolní. | Reflexe: Jak proměna kolemjdoucích ve zdroje informací mění dynamiku z vynucování na péči?",
+                    "type": "positive",
+                    "points": 10
+                },
+                {
+                    "text": "Zaměřte se na Davida, protože je volající. Přistoupíte k němu ke dveřím, vytáhnete zápisník a úsečným, věcným tónem zjišťujete fakta: ‚Vyhrožovala někomu nebo se chovala agresivně? Pokusila se vstoupit do lékárny nebo fyzicky blokovat dveře?' Svou pozornost věnujete výhradně volajícímu, zatímco paní Walsh a Elena sledují z povzdálí a čekají, čí výpověď určí, co bude dál.",
+                    "feedback": "Proč: Dobré zjišťovací otázky, které stanoví, zda existuje skutečný bezpečnostní problém nebo problém s přístupem versus nepohodlí. Avšak výhradní zaměření na volajícího, zatímco paní Walsh a Elena poslouchají, vytváří dynamiku řízenou stížností. Postřehy paní Walsh — potenciálně užitečnější — zůstanou nezjištěné. | DŮSLEDKY: David přizná, že nikomu nevyhrožovala ani neblokovala dveře. ‚Ona jen... sedí tam a mluví sama se sebou. Je to zneklidňující.' Nyní víte, že neexistuje žádný bezpečnostní problém, ale paní Walsh tiše odchází a cítí se odmítnutá. Přišli jste o cenný zdroj informací. | Reflexe: Když má více lidí informace, jak rozhodujete, čí perspektivu upřednostnit — a za jakou cenu?",
+                    "type": "partially_positive",
+                    "points": 5
+                },
+                {
+                    "text": "Řekněte Davidovi sebejistě a úsečně: ‚Postarám se o to. Dejte mi prostor k práci.' Pak se bez dalšího slova otočte od něj i od paní Walsh a zaměřte veškerou pozornost zpět k Eleně. Paní Walsh otevře ústa, aby nabídla informace, ale vy už jdete kolem ní, plně soustředění na ženu na zemi, a necháváte oba kolemstojící bez jakéhokoli uznání či poděkování.",
+                    "feedback": "Proč: Návrat k Eleně je správný instinkt, ale odmítnutí Davida i paní Walsh znamená promarněné příležitosti. David potřebuje, aby jeho obava byla vzata na vědomí, jinak eskaluje — zavolá nadřízenému nebo konfrontuje Elenu sám. Paní Walsh strávila s Elenou více času než kdokoli jiný a může mít klíčové informace. ‚Postarám se o to' nastavuje nedefinované očekávání. | DŮSLEDKY: David ustoupí, ale mumlá něco o zavolání oblastnímu manažerovi. Paní Walsh vypadá uraženě a odchází. Přišli jste o spojence, který vám mohl pomoci pochopit stav Eleny. Jste nyní sami s vyděšenou ženou a máte méně informací, než jste mohli mít. | Reflexe: Jaká je cena efektivity, když znamená ztrátu spojenců a informací?",
+                    "type": "neutral",
+                    "points": 2
+                },
+                {
+                    "text": "Dřepněte si vedle Eleny a oslovte ji přímo, věcným tónem, který doléhá i ke kolemstojícím: ‚Eleno, zaměstnanec lékárny říká, že tu jste od rána a že znepokojujete zákazníky. Potřebuji pochopit, co se děje. Proč jste odešla z nemocnice?' Ukážete na náramek na její ruce — je jasné, že jste si už část jejího příběhu dali dohromady a čekáte na vysvětlení.",
+                    "feedback": "Proč: Přímá konfrontace Eleny se stížností — ‚znepokojujete zákazníky' — ji zahanbuje. Je již zranitelná a nyní se dozvídá, že ji lidé vnímají jako problém. Požadavek vysvětlení, proč odešla z nemocnice, je výslechová otázka, která narušuje její zdravotní soukromí na veřejném místě. Tento přístup upřednostňuje získávání informací před budováním důvěry. | DŮSLEDKY: Eleně se zkroutí obličej. ‚Já znepokojuji lidi? Omlouvám se. Omlouvám se. Už půjdu.' Začne vstávat, dezorientovaná a zahanbená. Paní Walsh zasáhne: ‚Podívejte se, co jste způsobil — jen tu seděla!' Situace se destabilizuje. | Reflexe: Co se stane, když předáte stížnost přímo osobě v krizi?",
+                    "type": "negative",
+                    "points": -8
+                }
+            ]
+        },
+        {
+            "id": 4,
+            "title": "Budování vztahu",
+            "sceneUpdate": {
+                "emoji": "💬",
+                "title": "Chodník u lékárny — Tichý rozhovor",
+                "desc": "David se vrátil dovnitř lékárny. Paní Walsh stojí v uctivé vzdálenosti a pozorně sleduje. Bezprostřední tlak opadl. Elena stále sedí, ale rozevřela ruce. Dívá se na vás ostražitýma, ale méně panickýma očima. Nemocniční náramek se třpytí ve slunečním světle. Lehký vánek jí pohne pramenem vlasů přes obličej. Hluk ulice se stal pozadím."
+            },
+            "npcDialogue": [
+                {
+                    "character": "elena",
+                    "text": "(tišeji, stále útržkovitě) Já ne... já nejsem blázen. Změnili mi léky a pak... začaly hlasy. Nikdy předtím jsem neslyšela hlasy. Bylo to tak hlasité. A pak ta sestra přišla v noci a já ji neznala a já prostě — musela jsem odejít. Šla jsem. Ani nevím jak dlouho. Skončila jsem tady, protože... si tu vyzvedávám recepty. Myslím. Nevím, proč jsem přišla sem. Moje sestra — Sofia ví. Ona vždycky ví, co dělat. Měla bych zavolat Sofii."
+                }
+            ],
+            "prompt": "Elena se otevírá. Odhaluje, že změna medikace způsobila děsivé vedlejší účinky, odešla z nemocnice ze strachu a má sestru, která jí pomáhá. Jak pokračujete v budování tohoto spojení?",
+            "options": [
+                {
+                    "text": "Naslouchejte každému slovu, aniž byste přerušovali, a pomalu přikyvujte na znamení, že vnímáte. Když domluví, odpovězte tichým, vyrovnaným hlasem: ‚Eleno, děkuji, že jste mi to řekla. Změna medikace způsobující hlasy musí být opravdu děsivá — dokážu pochopit, proč jste cítila, že musíte odejít. Zmínila jste svou sestru Sofii. Chtěla byste jí zavolat? Můžu vám s tím pomoct, pokud chcete, nebo můžete zavolat sama — jak vám to bude vyhovovat.'",
+                    "feedback": "Proč: Validace konkrétního zážitku — ‚změna medikace způsobující hlasy musí být opravdu děsivá' — ukazuje, že jste naslouchali a věříte jí. ‚Dokážu pochopit, proč jste cítila, že musíte odejít' přeznačuje její odchod z nemocnice z něčeho zahanbujícího na něco pochopitelného. Nabídnutí volby v tom, jak kontaktovat Sofii — ‚můžu pomoct nebo můžete sama' — obnovuje pocit kontroly. Každá nabídnutá volba znovu buduje pocit kontroly, který jí krize vzala. | DŮSLEDKY: Eleně se oči zalijí slzami — ne strachem, ale úlevou. ‚Vy mi věříte? Ohledně těch léků?' Sáhne do kapsy a vytáhne telefon s prasklým displejem. ‚Můžete... můžete tu prostě zůstat, zatímco jí zavolám? Nechci být sama.' Vytvořilo se skutečné lidské spojení. | Reflexe: Proč je obnovení pocitu volby u člověka tím nejúčinnějším nástrojem krizové deeskalace?",
+                    "type": "positive",
+                    "points": 12
+                },
+                {
+                    "text": "Soucitně přikývněte, nakloňte se vpřed s vřelým výrazem a přejděte do praktického, akčního tónu: ‚To zní opravdu těžce, Eleno. Dovolte mi zavolat za vás — přivedeme sem vaši sestru a možná promluvíme s nemocnicí o vaší medikaci. Co říkáte?' Vytáhnete telefon a jste připravení jednat jejím jménem, už směřujete k řešení, aniž byste ověřili, zda je na něj připravená.",
+                    "feedback": "Proč: Empatické a orientované na akci, ale přešli jste do řešení problému dříve, než je Elena připravena. ‚Dovolte mi zavolat za vás' přebírá kontrolu místo nabízení volby. ‚Možná promluvit s nemocnicí' může vyvolat její strach — právě odtamtud utekla. Plánování za ni, i s dobrými úmysly, zrcadlí ztrátu kontroly, kterou zažila v nemocnici. | DŮSLEDKY: Elena ztuhne při zmínce o nemocnici. ‚Nechci mluvit s nemocnicí.' Váš postup se zastaví. Otevírala se, ale zmínka o instituci, odkud utekla, vyvolala obrannou reakci. | Reflexe: Když vám někdo právě začíná důvěřovat, co se stane, když přeskočíte k řešením zahrnujícím zdroj jeho strachu?",
+                    "type": "partially_positive",
+                    "points": 5
+                },
+                {
+                    "text": "Zamyšleně přikývněte a vytáhněte zápisník, věcně cvakněte propiskou. Řekněte v nápomocném, ale procedurálním tónu: ‚Dobře, Eleno. To mi pomáhá pochopit situaci. Můžete mi říct název nemocnice a vašeho lékaře? Měl bych jim dát vědět, kde jste, aby se nebáli.' Držíte propisku připravenou, díváte se na ni vyčkávavě a berete to jako běžný krok ke zjištění údajů a vyřešení situace.",
+                    "feedback": "Proč: Dobře míněné, ale funkčně ohrožující. Ptát se na údaje o nemocnici a říkat, že je budete informovat, se v Elenině mysli překládá jako: ‚Strážník řekne nemocnici, kde jsem, aby si pro mě mohli přijít.' Přešli jste z pozice partnera v rozhovoru na spojku s nemocnicí. To je přesný opak toho, co nyní potřebuje. | DŮSLEDKY: Elenina křehká otevřenost se zhroutí. ‚Ne! Nevolejte jim. Řekla jsem vám, že se tam nevrátím!' Vstane, rozrušená, rozhlíží se po východu. Ztratili jste významný pokrok. | Reflexe: Z pohledu člověka, který utekl z instituce ze strachu, jak zní ‚dám jim vědět, kde jste'?",
+                    "type": "neutral",
+                    "points": 2
+                },
+                {
+                    "text": "Posadíte se na paty, zhluboka se nadechnete a promluvíte starostlivým, ale direktivním tónem: ‚Eleno, slyším vás. Ale je tu jedna věc — odešla jste z nemocnice bez propuštění, a to je problém. Pro vaši bezpečnost si myslím, že nejlepší je dostat vás zpátky, aby lékaři mohli vyřešit ten problém s léky. Můžu vás tam odvézt sám — bude to rychlé a jednoduché.' Podáte jí ruku, abyste jí pomohli vstát.",
+                    "feedback": "Proč: Právě jste řekli vyděšené ženě, která vás konkrétně prosila, abyste ji nevracel do nemocnice, že si myslíte, že nejlepší je vrátit ji do nemocnice. I když je to formulováno jako starost, potvrzuje to její nejhorší obavy: policie je tu, aby ji vrátila. ‚Pro vaši bezpečnost' je fráze, která předcházela nesčetným nedobrovolným zásahům. Nabídka, že ji tam odvezete, zcela ignoruje absenci jejího souhlasu. | DŮSLEDKY: Elena zpanikaří. Vstane a rychle ustupuje. ‚Vy jste lhal! Říkal jste, že mě nikam neodvezete!' Paní Walsh křičí: ‚Děsíte ji!' David přijde ke dveřím. Několik kolemjdoucích se zastaví. Důvěra, kterou jste vybudovali, je zničena. | Reflexe: Jaký je rozdíl mezi tím, co člověk potřebuje klinicky, a tím, co potřebuje v tomto okamžiku, aby se cítil dostatečně bezpečně na to, aby přijal pomoc?",
+                    "type": "negative",
+                    "points": -10
+                }
+            ]
+        },
+        {
+            "id": 5,
+            "title": "Příjezd sestry",
+            "sceneUpdate": {
+                "emoji": "🚗",
+                "title": "Vchod do lékárny — Příjezd rodiny",
+                "desc": "Auto prudce zastaví u obrubníku. Žena kolem třicítky vyskočí, nechává motor běžet a dveře otevřené. Plakala — rozmazaná řasenka, neučesané vlasy. Horečně přehlíží místo a spatří Elenu na chodníku poblíž vás. Přiběhne, hlas se jí láme."
+            },
+            "npcDialogue": [
+                {
+                    "character": "sofia",
+                    "text": "(přibíhá k Eleně, hlasem vysokým a zoufalým) Eleno! Proboha, Eleno! Hledala jsem tě všude — z nemocnice mi volali v šest ráno, celé hodiny jsem jezdila — (otočí se k vám, vyděšená a defenzivní) Prosím, nezatýkejte ji! Není to zločinec, je nemocná! Má bipolární poruchu — změnili jí léky a něco se pokazilo. Prosím, pane strážníku, potřebuje svého lékaře, ne — ne tohle. Nedávejte ji do vězení. Prosím."
+                }
+            ],
+            "prompt": "Sofia přijela v naprosté panice a strachu. Elena sleduje reakci své sestry. Sofia vás prosí, abyste Elenu nezatýkali. Jak zvládnete tuto novou dynamiku?",
+            "options": [
+                {
+                    "text": "Vykročte k Sofii s otevřenými dlaněmi, hlas klidný a vyrovnaný. Navažte s ní přímý oční kontakt a mluvte jasně přes její paniku: ‚Sofie — zhluboka se nadechněte. Elena není zatčena. Nikdo nebude zatčen. Povídali jsme si a daří se jí opravdu dobře. Vím, že jste dnes ráno prožila hodně. Můžete bezpečně zaparkovat auto a pak se k nám přidat? Elena se po vás ptala.' Jemným gestem ukážete k běžícímu autu u obrubníku.",
+                    "feedback": "Proč: Sofia potřebuje vlastní deeskalaci — její panika je upřímná, ale pokud zůstane nekontrolovaná, znovu eskaluje Elenu. ‚Zhluboka se nadechněte' je direktivní, ale pečující. ‚Elena není zatčena' přímo řeší její strach. ‚Daří se jí opravdu dobře' přeznačuje Elenu z oběti na osobu s vlastní vůlí. Žádost, aby Sofia zaparkovala, jí dává drobný úkol, který znovu zapojí racionální myšlení a získá třicet sekund klidu. ‚Elena se po vás ptala' dává Sofii smysl a uklidnění. | DŮSLEDKY: Sofia prudce vdechne, přikývne. Zaparkuje auto. Když se vrátí, její krok je pomalejší. Elena natáhne ruku. Sestry se drží. Vytvořili jste prostor pro rodinné shledání místo eskalace krize. | Reflexe: Proč drobný praktický úkol — jako zaparkovat auto — pomáhá někomu přejít z paniky do funkční přítomnosti?",
+                    "type": "positive",
+                    "points": 10
+                },
+                {
+                    "text": "S vřelým úsměvem oslovte Sofii okamžitě, jakmile k vám doběhne, a její naléhavosti odpovídejte uklidněním: ‚Vy musíte být Sofia. Jsem rád, že jste tu — Elena vás zmiňovala. Je v pořádku, jen jsme si povídali. Pojďte sem, bude ráda, že vás vidí.' Ustoupíte stranou a pustíte ji k sestře, aniž byste se zastavili k posouzení jejího rozrušeného stavu — necháte ji se slzami v očích běžet přímo ke křehké Eleně.",
+                    "feedback": "Proč: Vřelé a vstřícné, ale nezvládli jste Sofiin emocionální stav před tím, než ji přivedete k Eleně. Sofia je stále v panice — pláče, je zoufalá, má zvýšený hlas. Přivedení zpanické Sofie přímo ke křehké Eleně riskuje emocionální kolizi: Sofiin strach může znovu vyvolat Eleninu úzkost. | DŮSLEDKY: Sofia přiběhne k Eleně a chytí ji, vzlyká: ‚Tak jsem se bála! Proč jsi odešla? To nesmíš dělat!' Elenin klid se zhroutí. Začne plakat a znovu se houpat. Emocionální zahlcení zmaří vaši pečlivou práci. | Reflexe: Když příjemce pomoci v krizi přijede příbuzný, proč je důležité ho stabilizovat dříve, než interaguje s osobou, kterou jste deeskalovali?",
+                    "type": "partially_positive",
+                    "points": 5
+                },
+                {
+                    "text": "Přistupte k Sofii a ztište hlas do kontrolovaného, profesionálního rejstříku. Zvedněte jednu ruku v uklidňujícím gestu: ‚Paní, potřebuji, abyste se uklidnila. Rozumím, že jste rozrušená, ale potřebuji se vás zeptat na pár otázek ohledně zdravotního stavu Eleny — jaké léky bere, kdy byla propuštěna, kdo je její lékař.' Vytáhnete zápisník a cvakněte propiskou, přepínáte do režimu sběru informací, zatímco Elena sedí pár metrů od vás a slyší každé slovo.",
+                    "feedback": "Proč: ‚Uklidněte se' odmítá Sofiiny emoce stejně, jako by odmítlo Eleniny. Okamžité přejití k lékařským otázkám zachází se Sofiou jako se zdrojem informací, ne jako s vyděšenou příbuznou. Elena slyší, jak žádáte její soukromé zdravotní údaje od její sestry na veřejnosti — mluví se o ní, ne s ní. | DŮSLEDKY: Sofia poskytuje informace přes slzy, ale Elena sleduje tu výměnu s narůstající úzkostí. ‚Přestaňte o mně mluvit, jako bych tu nebyla!' Dynamika se mění — vy a Sofia jste nyní autoritativní postavy a Elena je předmětem jednání. | Reflexe: Co se stane s osobou v krizi, když s příchozím příbuzným zacházíte jako se spolehlivějším vypravěčem jejího příběhu?",
+                    "type": "neutral",
+                    "points": 2
+                },
+                {
+                    "text": "Rázně zvedněte dlaň k Sofii a rozšiřte postoj tak, abyste jí fyzicky zablokovali cestu k Eleně. Promluvte velitelským, neústupným tónem: ‚Paní, potřebuji, abyste se zastavila. Toto je aktivní situace a potřebuji, abyste zůstala zpátky, dokud nedokončím své posouzení. Přivedu vás k ní, až to bude vhodné.' Sofia ztuhne uprostřed kroku, její oči těkají mezi vámi a sestrou na chodníku za vašimi zády.",
+                    "feedback": "Proč: Bránění sestře v přístupu k její vyděšené sestřičce je funkčně kruté, i když je to procedurálně obhajitelné. Elena se po Sofii ptala. Sofia ji hledala celé hodiny. ‚Zůstaňte zpátky' a ‚až to bude vhodné' uplatňují kontrolu nad rodinným shledáním bez jakéhokoli bezpečnostního důvodu. Přihlížející vidí policejního strážníka, jak brání plačící ženě dostat se k její sestře. | DŮSLEDKY: Sofia vybuchne: ‚To je moje sestra! Nemůžete mi bránit se k ní dostat!' Elena křičí: ‚Sofie!' a vstane, rozrušená. Paní Walsh hlasitě řekne: ‚Nechte to ubohé děvče vidět její sestru!' Každý vztah, který jste vybudovali — s Elenou, s kolemjdoucími — se rozpadá. | Reflexe: Když neexistuje bezpečnostní důvod držet příbuzného stranou, co sděluje takové jednání o vašich prioritách?",
+                    "type": "negative",
+                    "points": -8
+                }
+            ]
+        },
+        {
+            "id": 6,
+            "title": "Propojení s podporou",
+            "sceneUpdate": {
+                "emoji": "🏥",
+                "title": "Chodník u lékárny — Plánování dalších kroků",
+                "desc": "Elena a Sofia sedí spolu na lavičce poblíž lékárny. Elena se opírá o svou sestru, klidnější než celé dopoledne. Sofia jí hladí vlasy. Akutní krize pominula, ale zůstává otázka: co bude dál? Elena potřebuje lékařskou péči — problém s medikací je reálný a nevyřešený — ale je vyděšená z návratu do nemocnice. David sleduje zevnitř, s úlevou, že vchod je volný. Paní Walsh se zdržuje nedaleko."
+            },
+            "npcDialogue": [
+                {
+                    "character": "elena",
+                    "text": "(opírá se o Sofii, tichým hlasem) Vím, že potřebuji pomoct s léky. Vím to. Ale nemůžu se vrátit na to oddělení. Ty zvuky, ta světla v noci, ta sestra, kterou jsem neznala — nemůžu. Prosím, nenuťte mě. Musí existovat jiná cesta."
+                },
+                {
+                    "character": "sofia",
+                    "text": "(dívá se na vás) Má psychiatričku — doktorku Reeves. Má taky terapeutku. Můžu jim zavolat. Ale nevím... je to dost? Měla by jet na pohotovost? Nechci ji nutit."
+                }
+            ],
+            "prompt": "Elena je ochotná přijmout pomoc, ale nemůže čelit návratu na lůžkové oddělení. Sofia má k dispozici zdroje, ale potřebuje vedení. Jak usnadníte bezpečný plán?",
+            "options": [
+                {
+                    "text": "Podívejte se na obě sestry a promluvte vyrovnaným, nespěchajícím hlasem: ‚Eleno, to, že víte, že je třeba řešit medikaci, vyžaduje skutečnou sílu. Tady jsou možnosti a vy si vyberete: Sofia může zavolat doktorce Reeves a nahlásit vedlejší účinky. Mohla byste jet na pohotovost se Sofiou — ne na lůžkové oddělení, jen na pohotovost. Nebo můžu zavolat mobilní krizový tým, aby přijel sem. Co je pro vás zvládnutelné?'",
+                    "feedback": "Proč: Ocenění Elenina sebeuvědomění — ‚to vyžaduje skutečnou sílu' — buduje důstojnost. Představení tří konkrétních možností s jejím výběrem obnovuje pocit kontroly. Rozlišení pohotovosti od lůžkového oddělení řeší její konkrétní strach. Zmínka o mobilním krizovém týmu ukazuje znalost alternativ mimo nemocnici. ‚Co je pro vás zvládnutelné?' je formulace přizpůsobená někomu, jehož svět se zdá nezvládnutelný. Každý prvek této odpovědi je založen na souhlasu a volbě. | DŮSLEDKY: Elena se podívá na Sofii. ‚Můžeme nejdřív zavolat doktorce Reeves? A pak... možná na pohotovost, pokud to řekne. Ale ne na oddělení. Slib mi, že ne na oddělení.' Sofia přikývne a vytáhne telefon. Plán se formuje — Elenin plán, ne váš. | Reflexe: Proč nabízení strukturovaných možností volby přináší lepší výsledky než nabídka jediného doporučení?",
+                    "type": "positive",
+                    "points": 12
+                },
+                {
+                    "text": "Otočte se k Sofii a promluvte praktickým, rozhodným tónem, jako byste jí předávali jasné pokyny: ‚Myslím, že zavolat doktorce Reeves je dobrý začátek. Pokud doporučí pohotovost, měla byste tam Elenu odvézt. Můžu tu počkat, zatímco budete volat.' Povzbudivě přikývnete Sofii a plán svěřujete rodině, aniž byste osobě sedící hned vedle ní nabídli jakékoli přímé slovo do toho, co se bude dít.",
+                    "feedback": "Proč: Praktické a rozumné, ale plán jste nasměrovali přes Sofii a obešli Elenu. Elena sedí hned vedle a vyjádřila vlastní pochopení toho, co potřebuje. Mluvení se Sofiou o Elenině péči — i podpůrně — pokračuje ve vzorci, kdy o ní rozhodují druzí. Navíc je nabídnuta pouze jedna cesta (lékařka a případně pohotovost) bez prozkoumání dalších možností jako mobilní krizový tým. | DŮSLEDKY: Sofia volá doktorce Reeves. Elena sedí tiše, pasivně. Plán funguje, ale Elena se necítí posílená. Spolupracuje, ale nemá pocit zmocnění. | Reflexe: Když je osoba v krizi přítomná s rodinným příslušníkem, jak udržíte tuto osobu ve středu jejího vlastního plánu péče?",
+                    "type": "partially_positive",
+                    "points": 5
+                },
+                {
+                    "text": "Nakloňte se dozadu, otevřete ruce v ústupném gestu a promluvte jemně: ‚Slyším vás, Eleno. Nikdo vás nebude nikam nutit. Jen si dejte čas. Až budete připravená, vy a Sofia si můžete promyslet, co dělat.' Vědomě ustoupíte o krok, zkřížíte uvolněně paže a dáte sestrám prostor. Váš tón je laskavý a respektující, ale nenabízíte žádné zdroje, žádné kontakty, žádný rámec — jen otevřený čas na rušné obchodní ulici.",
+                    "feedback": "Proč: Respektuje autonomii, ale vzdáváte se své role. Elena a Sofia jsou obě přetížené — ani jedna není v pozici činit složitá zdravotní rozhodnutí sama. Ustoupení úplně znamená, že nikdo se znalostí dostupných zdrojů nevede proces. Krizová intervence neznamená kontrolovat výsledek, ale znamená nabízet informované možnosti. Pasivní podpora nestačí, když je někdo v akutní krizi. | DŮSLEDKY: Sestry sedí spolu. Čas plyne. Ani jedna neví, co dělat dál. David vyjde ven: ‚Budou tu takhle sedět celý den?' Absence pokroku vytváří vakuum, které naplní frustrace. | Reflexe: Jaký je rozdíl mezi respektováním autonomie a ponecháním někoho bez zdrojů, které potřebuje k jejímu uplatnění?",
+                    "type": "neutral",
+                    "points": 2
+                },
+                {
+                    "text": "Narovnáte se a nasadíte vážný, starostlivý výraz. Promluvíte odměřeným, ale rozhodným tónem: ‚Eleno, chápu, že se nemocnice bojíte, ale situace s léky by mohla být nebezpečná. Myslím, že nejbezpečnější je, abych zajistil převoz na pohotovost, kde vás zdravotníci řádně vyšetří. Sofia může jet s vámi.' Sáhnete po vysílačce, už se chystáte vyžádat převoz dříve, než vám Elena vůbec odpoví.",
+                    "feedback": "Proč: ‚Zajistit převoz na pohotovost' je klinická formulace pro zavolání sanitky — a Elena to přesně ví. Přehlížíte její vyjádřená přání na základě vlastního posouzení zdravotního rizika, což není vaše odbornost. Řekla, že nemůže čelit nemocnici. Sofia řekla, že ji nechce nutit. Vy jste nyní ten, kdo nutí. Výcvik krizové intervence zdůrazňuje, že nedobrovolný převoz by měl být vyhrazen pro bezprostřední nebezpečí pro sebe nebo okolí — Elena tuto hranici nesplňuje. | DŮSLEDKY: Elena se odtáhne od Sofie. ‚Ne! Říkal jste, že si můžu vybrat! Slíbil jste!' Sofia se postaví mezi vás a Elenu: ‚Říká, že tam nechce! Nemůžete poslouchat?' Křehká důvěra se hroutí. Elena může utéct. | Reflexe: Když vaše posouzení toho, co někdo potřebuje zdravotně, je v rozporu s jeho vyjádřenými přáními a nehrozí bezprostřední nebezpečí, čí úsudek by měl převážit?",
+                    "type": "negative",
+                    "points": -10
+                }
+            ]
+        },
+        {
+            "id": 7,
+            "title": "Rozuzlení",
+            "sceneUpdate": {
+                "emoji": "🌤️",
+                "title": "Vchod do lékárny — Cesta vpřed",
+                "desc": "Elena si zvolila plán: Sofia zavolá doktorce Reeves a společně pojedou na pohotovost, pokud to bude doporučeno — ale ne na lůžkové oddělení. Sofia telefonuje do ordinace psychiatričky. Elena sedí na lavičce, vyčerpaná, ale klidnější. Nemocniční náramek stále obepíná její zápěstí. David se vrátil dovnitř. Paní Walsh se přibližuje s lahví vody, kterou koupila v nedaleké prodejně. Dopolední napětí ustoupilo něčemu tišímu."
+            },
+            "npcDialogue": [
+                {
+                    "character": "elena",
+                    "text": "(přijímá vodu od paní Walsh, pak se na vás podívá) Omlouvám se za tohle všechno. Vím, že jsem asi vyděsila lidi. To jsem nechtěla. Já jen... měla jsem takový strach a nevěděla jsem, kam jinam jít. (pauza) Děkuji vám, že jste se ke mně nechoval, jako kdybych byla nebezpečná. Všichni se ke mně vždycky chovají, jako kdybych byla nebezpečná."
+                },
+                {
+                    "character": "mrs_walsh",
+                    "text": "(poplácá Elenu po rameni) Nemáte se za co omlouvat, zlatíčko. (k vám) Děkuji vám, pane strážníku. Zvládl jste to krásně. Ne všichni by to tak zvládli."
+                }
+            ],
+            "prompt": "Elena se omlouvá a děkuje vám. Paní Walsh vyjadřuje vděčnost. Sofia telefonuje a dokončuje plán péče. Jak uzavřete tuto interakci?",
+            "options": [
+                {
+                    "text": "Posaďte se vedle Eleny na lavičku a promluvte tiše: ‚Eleno, nemusíte se omlouvat. Čelila jste něčemu děsivému a skončila jste na bezpečném místě — to vyžaduje odvahu, ne omluvu.' Napíšete na kartičku číslo krizové linky a mobilního krizového týmu. ‚Toto je pro případ, že byste potřebovala podporu a nemohla se dovolat doktorce Reeves nebo Sofii. Funguje nonstop a přijedou za vámi.' Pak k paní Walsh: ‚Děkuji, že jste s ní zůstala — to mělo větší význam, než si představíte.'",
+                    "feedback": "Proč: Přeznačení její omluvy — ‚to vyžaduje odvahu, ne omluvu' — je silný projev obnovení důstojnosti. Poskytnutí písemných krizových kontaktů zajišťuje, že má možnosti i po tomto setkání a mimo svou stávající síť podpory. Uznání paní Walsh validuje komunitní péči a povzbuzuje podporu ze strany kolemjdoucích. Uzavřeli jste konkrétní pomocí, emocionální validací a lidskou vřelostí. Toto je zlatý standard krizového rozuzlení. | DŮSLEDKY: Elena drží papír s číslem. Má plán, sestru, telefonní číslo a vzpomínku na strážníka, který se k ní choval jako k člověku. Paní Walsh má slzy v očích. Sofia dokončí hovor a beze slov artikuluje ‚děkuji.' Setkání končí propojením, nikoli zásahem. | Reflexe: Co sděluje poskytnutí zdrojů po krizi o tom, jak vnímáte budoucnost dané osoby?",
+                    "type": "positive",
+                    "points": 10
+                },
+                {
+                    "text": "Postavte se, upřímně se usmějte a setřete si prach z kolena. Promluvte vřele, s úlevou v hlase: ‚Jsem rád, že se to podařilo vyřešit, Eleno. Jste v dobrých rukou se Sofiou. Opatrujte se, ano?' Vděčně přikývněte na paní Walsh a otočíte se k odchodu. Vaše rozloučení je laskavé a lidské, ale v kapsách nemáte žádnou kartičku s krizovou linkou, žádné číslo pro další kontakt — nic, co by překlenulo mezeru mezi tímto okamžikem a dalším.",
+                    "feedback": "Proč: Vřelé a lidské uzavření, ale odcházíte bez poskytnutí jakýchkoli následných zdrojů. Elenina krize nezačala dnes a dnes neskončí. Co příště? Co ve tři ráno, když Sofia bude spát a hlasy se vrátí? Dobrý strážník vyřeší okamžik. Výjimečný strážník vybaví člověka pro další okamžik. | DŮSLEDKY: Elena sleduje váš odchod. Dnes se cítí lépe, ale má stejné zdroje jako předtím: Sofii a doktorku Reeves. Pokud jedna z nich nebude k dispozici během další krize, nemá záchrannou síť. Dnes to byl úspěch. Otázkou je, zda vydrží. | Reflexe: Jaký je rozdíl mezi vyřešením incidentu a vybudováním záchranné sítě pro další?",
+                    "type": "partially_positive",
+                    "points": 5
+                },
+                {
+                    "text": "Narovnejte se a nasaďte dobře míněný, ale poučný tón, jednu ruku na opasku: ‚Není se za co omlouvat, Eleno. Jen se ujistěte, že navštívíte svého lékaře a příště neodcházejte z nemocnice bez řádného propuštění. Vyvolává to hodně starostí pro všechny.' Přikývnete jí, jako byste uzavírali setkání praktickou životní radou, a zanecháváte za sebou nikoli útěchu, ale jemnou připomínku, že její jednání mělo důsledky pro ostatní.",
+                    "feedback": "Proč: Rozumná rada, ale ‚příště neodcházejte z nemocnice' je mírná výtka adresovaná člověku, který odešel, protože byl vyděšený. ‚Vyvolává to starostí pro všechny' přenáší břemeno emocí ostatních na osobu v krizi. Proměnili jste soucitné uzavření v poučení, které jí připomíná, že její úzkost byla obtíží. | DŮSLEDKY: Elena tiše přikývne, teplo mizí z jejího výrazu. Slyší: ‚Způsobila jste problém, zkuste to příště neopakovat.' Paní Walsh se zamračí. Poslední slova setkání nesou bodnutí. | Reflexe: Jak vaše závěrečná slova formují trvalou emocionální vzpomínku na celou interakci?",
+                    "type": "neutral",
+                    "points": 2
+                },
+                {
+                    "text": "Vytáhněte zápisník a cvakněte propiskou, přepínáte do procedurálního režimu: ‚Dobře. Potřebuji od vaší sestry kontaktní údaje a jméno lékaře pro mou zprávu. Budu si také muset poznamenat nemocniční náramek a skutečnost, že jste odešla bez propuštění. Všechno je to standardní dokumentace.' Metodicky zapisujete, žádáte Sofii, aby hláskovala příjmení, zaznamenáváte údaje o psychiatričce — a měníte závěrečné okamžiky lidského setkání v administrativní úkon.",
+                    "feedback": "Proč: Přechod ke sběru dat a dokumentaci v závěrečných chvílích proměňuje lidské setkání v byrokratické. ‚Standardní dokumentace' o jejím odchodu z nemocnice způsobuje, že se Elena cítí jako spisová složka, ne jako člověk. Vyžadování jména lékaře a nemocničních údajů znovu vyvolává instituci, které se bojí. Poslední dojem, který má z této interakce, je strážník zapisující si fakta o její krizi. | DŮSLEDKY: Elenin obličej ztuhne. Odrecituje informace bezvýrazně. Sofia se na vás dívá se zklamáním. Paní Walsh odchází. Teplo rozuzlení se vypaří. Elena si bude pamatovat tento konec — ne laskavost, která mu předcházela. | Reflexe: Kdy procedurální povinnosti převáží nad lidským okamžikem a kdy může dokumentace počkat?",
+                    "type": "negative",
+                    "points": -8
+                }
+            ]
+        },
+        {
+            "id": 8,
+            "title": "Rozbor",
+            "autoDialogue": true,
+            "finalScene": true,
+            "sceneUpdate": {
+                "emoji": "📋",
+                "title": "Výcvikový rozbor",
+                "desc": "Zpátky na stanici. Seržant Okafor hodnotí váš výkon v tomto scénáři reakce na krizi duševního zdraví."
+            },
+            "npcDialogue": [
+                {
+                    "character": "instructor",
+                    "text": "Výjezdy ke krizím duševního zdraví prověří vše, na co se cvičíme — a spoustu věcí, na které se necvičíme dost. Dovednosti, na kterých dnes záleželo, nebyly taktické. Byly lidské: trpělivost, aktivní naslouchání, nabízení možností volby, zvládání vlastního nepohodlí z nejistoty a důvěra v to, že osoba v krizi se může podílet na vlastním plánu péče, když jí k tomu dáte prostor. Každé vaše rozhodnutí — od vaší přístupové vzdálenosti po vaše závěrečná slova — buď budovalo důvěru, nebo ji narušovalo. Toto je typ výjezdu, který definuje, jak komunita vnímá svou policii. Projděte si svá rozhodnutí a pamatujte: cílem nikdy nebylo vyřešit Eleninu krizi duševního zdraví. Cílem bylo vytvořit dostatek bezpečí, aby ji mohla začít řešit sama."
+                }
+            ],
+            "dialogueSequence": [
+                {
+                    "character": "instructor",
+                    "text": "Tento výjezd po vás vyžadoval odnaučit se téměř každý instinkt, který standardní výcvik posiluje. Přijeli jste na místo, kde ‚problémem' byla vyděšená žena sedící na chodníku, a nejnebezpečnější věc, kterou jste mohli udělat, bylo snažit se to vyřešit příliš rychle. Proveďte mě tím, co pro vás bylo nejtěžší."
+                },
+                {
+                    "character": "officer",
+                    "text": "Nejtěžší bylo neřešit to. Zjevně byla v krizi, zjevně potřebovala pomoc, a já musel odolávat každému nutkání převzít kontrolu a odvézt ji do nemocnice. Sedět s tou nejistotou, zda přijme pomoc — to bylo trýznivé."
+                },
+                {
+                    "character": "instructor",
+                    "text": "To nepohodlí, které jste cítili, je celé ponaučení. Většina strážníků pojímá výjezdy k duševnímu zdraví jako ‚vyřešit situaci' — dostat osobu z ulice, převézt ji k péči, uzavřít výjezd. Ale ten rámec je chybný. Cílem není situaci vyřešit. Cílem je dát člověku v krizi dostatek bezpečí k vlastnímu rozhodnutí. Když jste Eleně nabídli tři možnosti a nechali ji vybrat, vrátili jste jí něco, co jí krize vzala — pocit kontroly. To je to, co výcvik krizové intervence skutečně učí, a většina strážníků to nikdy plně nepřijme za své."
+                },
+                {
+                    "character": "instructor",
+                    "text": "Zamyslete se nad tímto: Elena později řekla své terapeutce, že jste byli prvním člověkem toho dne, díky kterému se cítila jako lidská bytost, a ne jako problém k vyřešení. Ne sestřičky, ne nemocniční personál — vy. Policejní strážník na chodníku. To vám říká něco o tom, jak vzácný je skutečný přístup založený na souhlasu v krizové péči. A říká vám to něco o síle, kterou máte, když se ji rozhodnete takto použít. Nyní vám sdělím, co se stalo poté, co Elena odjela se Sofiou."
+                }
+            ]
+        }
+    ],
+    "characters": {
+        "dispatcher": {"name": "Dispečink", "avatar": "📻"},
+        "elena": {"name": "Elena Marchetti (34, v krizi)", "avatar": "😰"},
+        "david": {"name": "David (zaměstnanec lékárny)", "avatar": "👨‍⚕️"},
+        "mrs_walsh": {"name": "Paní Walsh (znepokojená kolemjdoucí)", "avatar": "👵"},
+        "sofia": {"name": "Sofia (Elenina sestra)", "avatar": "💜"},
+        "instructor": {"name": "Seržant Okafor", "avatar": "👮‍♂️"}
+    },
+    "performanceReviews": {
+        "perfect": {
+            "title": "Příkladná krizová intervence",
+            "emoji": "🌟",
+            "feedback": "Předvedli jste zlatý standard reakce na krizi duševního zdraví: pečlivé pozorování před kontaktem, klidnou a nespěchající přítomnost, komunikaci založenou na souhlasu, která obnovila Elenin pocit kontroly, dovedné zvládnutí přijíždějícího rodinného příslušníka a skutečné následné poskytnutí krizových kontaktů. Každý na té ulici — Elena, Sofia, paní Walsh, David a každý kolemjdoucí — viděl strážníka, který zacházel s osobou v krizi jako s lidskou bytostí zasloužující si důstojnost a volbu. Takto vypadá výcvik krizové intervence v praxi."
+        },
+        "good": {
+            "title": "Silná krizová reakce",
+            "emoji": "👍",
+            "feedback": "Zvládli jste citlivou krizi duševního zdraví s empatií a profesionalitou, budovali jste vztah s Elenou a směřovali k dobrovolnému řešení. Některé okamžiky mohly být silnější — možná ve zvládání rodinné dynamiky, nabízení více možností volby nebo poskytnutí následných zdrojů — ale váš celkový přístup odrážel principy krizové intervence a zacházel s Elenou důstojně."
+        },
+        "average": {
+            "title": "Adekvátní, ale neúplné",
+            "emoji": "📋",
+            "feedback": "Vyřešili jste bezprostřední situaci bez výrazné eskalace, ale promeškali důležité příležitosti pro skutečnou krizovou intervenci. Ať už to bylo příliš rychlé přiblížení, neschopnost nabídnout smysluplné možnosti volby nebo nepropojení Eleny s dlouhodobými zdroji, existovaly okamžiky, kdy mohl přístup zaměřený na péči nahradit přístup zaměřený na procedury. Projděte si principy deeskalace krizové intervence a rozdíl mezi zvládáním situace a pomocí člověku."
+        },
+        "poor": {
+            "title": "Vyžaduje výraznou revizi výcviku krizové intervence",
+            "emoji": "⚠️",
+            "feedback": "Váš přístup k této krizi duševního zdraví se příliš spoléhal na kontrolu, příkazy nebo procedurální dodržování pravidel namísto klidného přístupu založeného na souhlasu, který zdůrazňuje výcvik krizové intervence. Člověk v akutní krizi duševního zdraví potřebuje strážníka, který vytváří bezpečí svou přítomností, nikoli autoritou. Projděte si základy krizové intervence: přístupová vzdálenost, tón, nabízení možností volby, respektování vyjádřených obav a zásadní rozdíl mezi tím být nápomocný a mít kontrolu."
+        }
+    },
+    "metrics": {
+        "crisisRecognition": {
+            "name": "Rozpoznání krize",
+            "description": "Identifikace situace jako krize duševního zdraví vyžadující přístup založený na péči, namísto zacházení s ní jako s kriminálním nebo podezřelým chováním",
+            "icon": "🧠"
+        },
+        "calmPresence": {
+            "name": "Klidná přítomnost a tempo",
+            "description": "Využití vzdálenosti, tónu, řeči těla a nespěchajícího tempa ke komunikaci bezpečí namísto autority",
+            "icon": "🕊️"
+        },
+        "consentAndChoice": {
+            "name": "Souhlas a volba",
+            "description": "Nabízení možností namísto příkazů, obnovení pocitu kontroly u člověka, který cítí, že veškerou kontrolu ztratil",
+            "icon": "🤲"
+        },
+        "serviceConnection": {
+            "name": "Propojení se službami",
+            "description": "Propojení osoby s odpovídajícími zdroji péče o duševní zdraví namísto automatického přistoupení k represivnímu řešení nebo nemocničnímu převozu",
+            "icon": "🔗"
+        },
+        "stigmaAvoidance": {
+            "name": "Důstojnost a vyhýbání se stigmatizaci",
+            "description": "Zacházení s osobou jako s lidskou bytostí v bolesti, nikoli jako s problémem k vyřešení, vyhýbání se jazyku a jednání, které kriminalizuje duševní onemocnění",
+            "icon": "💛"
+        }
+    }
+}

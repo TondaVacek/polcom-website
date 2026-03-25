@@ -1,0 +1,363 @@
+{
+    "scenarioId": "1",
+    "reviewVersion": "3.0",
+    "title": "Hodnocení — Deeskalace při dopravní kontrole",
+    "stageAnalysis": {
+        "1": {
+            "stageName": "Zastavení",
+            "criticalSkills": ["Profesionální představení a nastavení tónu", "Integrace informací z dispečinku bez odhalení citlivých detailů", "Přístup zaměřený na blaho u označeného vozidla"],
+            "choiceAnalysis": {
+                "positive": {
+                    "choiceText": "Přistoupíte ze strany řidiče se svítilnou nízko, tak aby neoslňovala. Zastavíte se mírně za oknem řidiče a klidně se ohlásíte: 'Dobrý večer, pane. Jsem strážník [Jméno] z městské policie...'",
+                    "strengths": ["Otevření jménem a oddělením okamžitě splňuje procedurální požadavky a polidšťuje strážníka", "Uvedení konkrétního přestupku (85 v šedesátce) je transparentní a faktické", "Zmínění pomalého zastavení bez obvinění přirozeně integruje informaci z dispečinku", "Zeptat se 'je vše v pořádku?' před požadováním dokladů upřednostňuje člověka před přestupkem", "Nízká pozice svítilny zabraňuje agresivnímu oslňujícímu efektu, který stupňuje napětí"],
+                    "consequences": "Pan Davies sevře volant, ale jeho ramena se při vašem tónu mírně uvolní. Neodpovídá okamžitě — zpracovává skutečnost, že váš hlas není nepřátelský. Marcus mírně sklopí telefon. Vytvořili jste třísekundové okno možnosti.",
+                    "trainingFocus": "Jak pořadí toho, co řeknete jako první — představení, důvod nebo otázka na blaho — ovlivňuje okamžitou emoční reakci řidiče?"
+                },
+                "partially_positive": {
+                    "choiceText": "Přistoupíte normálně a řeknete: 'Dobrý večer. Řidičský průkaz a technický průkaz, prosím. Zastavil jsem vás za překročení rychlosti — 85 v šedesátce. Také jsem dostal z dispečinku poznámku o prověření blaha na toto vozidlo...'",
+                    "adequate": ["Transparentnost ohledně důvodu zastavení a prověření blaha", "Zdvořilý pozdrav zakládá základní profesionalitu", "Ptá se, co se děje, a projevuje zájem o situaci řidiče"],
+                    "missed": ["Odhalení prověření blaha před navázáním vztahu může působit invazivně nebo alarmujícně", "Řidič se může cítit sledovaný nebo zrazený tím, kdo zavolal", "Žádné představení jménem, což je osvědčený postup", "Na načasování citlivých informací záleží — transparentnost bez vztahu se může obrátit proti vám"],
+                    "improvement": "Využijte informaci o prověření blaha k vedení svých pozorování a otázek, místo abyste ji přímo sdělovali. Zeptejte se 'je dnes večer vše v pořádku?' bez odhalení záznamu z dispečinku — stejná starost projde bez pocitu sledování."
+                },
+                "neutral": {
+                    "choiceText": "Přistoupíte ve standardní pozici a řeknete: 'Dobrý večer. Naměřil jsem vám 85 v šedesátce. Řidičský průkaz a technický průkaz, prosím. A můžete říct spolujezdci, ať odloží telefon?'",
+                    "adequate": ["Údaj o rychlosti a žádost o doklady jsou procedurálně správné", "Klidný a přímý tón"],
+                    "missed": ["Okamžitý požadavek ohledně telefonu je problematický — nahrávání policie je zákonné právo", "Žádat spolujezdce, aby přestal natáčet, před navázáním jakéhokoli vztahu signalizuje defenzivitu", "Žádné představení jménem", "Obavy o blaho z dispečinku jsou zcela ignorovány"],
+                    "improvement": "Zcela odstraňte komentář o telefonu — nahrávání je právo, ne výzva. Přidejte představení a otevřenou otázku, která vám umožní posoudit stav řidiče bez toho, abyste nejprve požadovali doklady."
+                },
+                "negative": {
+                    "choiceText": "Přistoupíte opatrně, s rukou u opasku, a mluvíte rázně: 'Řidiči, ruce nechte na volantu. Spolujezdce, potřebuji vidět obě ruce. Nikdo se nehýbe, dokud neřeknu.'",
+                    "risks": ["Žádná artikulovatelná bezpečnostní hrozba kromě dvou cestujících a telefonu", "Příkazy ohledně rukou a pohybu bez bezpečnostních indikátorů jsou nepřiměřené", "Komunikuje hrozbu místo služby u zastavení s označeným blahem", "Dispečink indikoval obavy o blaho, ne nebezpečí"],
+                    "consequences": "Oba cestující ztuhnou. Marcus šeptá: 'Říkal jsem ti to, tati.' Ruce pana Daviese se třesou na volantu. Jakákoli osobní krize se v tomto autě pohřbí pod strachem ze strážníka. Příležitost k prověření blaha je pryč.",
+                    "betterApproach": "Vysoce pohotovostní příkazy vyhraďte pro situace s artikulovatelnými bezpečnostními indikátory — skryté pohyby, viditelné zbraně, příznaky závažného trestného činu. Vozidlo s označeným blahem se dvěma cestujícími a telefonem vyžaduje klidné představení, ne taktické příkazy."
+                }
+            },
+            "keyLearningPoints": ["Prvních třicet sekund dopravní kontroly nastaví emoční trajektorii pro vše, co následuje", "Informace z dispečinku by měly vést vaši pozornost, ne nutně vaše úvodní slova", "Ptát se na spolujezdcův telefon před představením vypráví příběh, že kamera záleží víc než člověk", "Zastavení s označeným blahem vyžaduje přístup zaměřený na blaho — zvědavost, ne příkazy"]
+        },
+        "2": {
+            "stageName": "Spolujezdec",
+            "criticalSkills": ["Potvrzení práva na nahrávání bez defenzivity", "Zvládání dvou emočních dynamik současně", "Empatie založená na pozorování bez vyslýchání"],
+            "choiceAnalysis": {
+                "positive": {
+                    "choiceText": "Nejprve se obrátíte na Marcuse s klidným přikývnutím: 'Máš naprostou pravdu — můžeš nahrávat. To je tvoje právo a nemám s tím žádný problém.' Pak se obrátíte na pana Daviese: 'V klidu hledejte technický průkaz...'",
+                    "strengths": ["Okamžité potvrzení Marcusova práva na nahrávání rozbíjí konfrontaci, na kterou se chystal", "Když teenager očekává nepřátelskost a dostane se mu respektu, celá dynamika se změní", "Říct panu Daviesovi, ať si dá na čas, ukazuje trpělivost pod tlakem", "Poznamenat, že má 'hodně na talíři', ukazuje pozornost bez vyslýchání", "Oslovuje oba cestující postupně, aniž by kteréhokoli zanedbával"],
+                    "consequences": "Marcus zamrká, viditelně překvapený. Telefon zůstává nahoře, ale jeho postoj se uvolní. Pan Davies si oddychne a najde technický průkaz v přihrádce. Teplota uvnitř vozu klesne o pět stupňů. Oba cestující jsou nyní ochotnější mluvit.",
+                    "trainingFocus": "Co se stane s konfrontací, když s člověkem souhlasíte dříve, než stihne dohádat? Jak potvrzení práva — místo jeho ignorování nebo zpochybňování — mění mocenskou dynamiku?"
+                },
+                "partially_positive": {
+                    "choiceText": "Soustředíte se výlučně na pana Daviese: 'Pane, v klidu hledejte technický průkaz. Počkám.' Marcusovo prohlášení o nahrávání zcela ignorujete.",
+                    "adequate": ["Trpělivost s hledáním dokladu je dobrý postup", "Soustředit se na řidiče je rozumné upřednostnění", "Klidný a nekonfrontační tón"],
+                    "missed": ["Marcus pronesl přímý výrok očekávající odpověď — mlčení nechává napětí nevyřešené", "Bude interpretovat neodpověď jako odmítnutí nebo jako to, že se jím hodláte zabývat později", "Otevřená fronta s konfrontačním teenagerem komplikuje pozdější fáze"],
+                    "improvement": "Jedna věta — 'Máš pravdu, můžeš nahrávat' — trvá tři sekundy a uzavře nepřátelskou frontu. Ignorovat výzvu není totéž jako ji vyřešit."
+                },
+                "neutral": {
+                    "choiceText": "Řeknete rázně, ale ne agresivně: 'Mladý pane, neřekl jsem nic o vašem telefonu. Zachovejme klid. Pane, potřebuji ten technický průkaz — podívejte se do přihrádky.'",
+                    "adequate": ["Fakticky správné, že jste o telefonu nemluvili", "Tón je kontrolovaný a profesionální", "Směřuje pana Daviese k praktickému úkonu"],
+                    "missed": ["Opravování Marcuse míjí podstatu — předjímal to, co očekával, ne reagoval na to, co jste řekli", "Oprava zní defenzivně spíše než uklidňujícně", "'Zachovejme klid' naznačuje, že klid nepanuje, což může být sebenaplňující"],
+                    "improvement": "Když někdo na vás projektuje svůj strach, oslovení strachu je účinnější než opravování projekce. 'Můžeš nahrávat — to je v pořádku' řeší strach; 'neřekl jsem nic o vašem telefonu' se s ním hádá."
+                },
+                "negative": {
+                    "choiceText": "Předkloníte se a podíváte se přímo na Marcuse: 'Kluku, dej ten telefon pryč. Tohle je mezi mnou a řidičem. Děláš to složitější, než to musí být.'",
+                    "risks": ["Přikázat nezletilému, aby přestal nahrávat, je právně pochybné a prakticky kontraproduktivní", "'Kluku' je despektivní vůči patnáctiletému", "'Děláš to složitější' obviňuje teenagera za uplatňování práva", "Tohle je přesně ta interakce, která se stane virální ze špatných důvodů"],
+                    "consequences": "Marcusova tvář ztuhne. 'Nic nikam nedávám.' Pan Davies zpanikaří: 'Pane strážníku, prosím, on se jen bojí.' Kontrola se nyní točí kolem telefonu místo kolem rychlosti nebo prověření blaha. Vytvořili jste konflikt, který neexistoval.",
+                    "betterApproach": "Zacházejte s nahráváním jako s irelevantní věcí tím, že právo okamžitě potvrdíte. Když z něčího zákonného chování uděláte problém, vy se stanete problémem v příběhu, který kamera vypráví."
+                }
+            },
+            "keyLearningPoints": ["Teenager nahrávající policejní setkání uplatňuje zákonné právo, nikoli akt vzdoru", "Když někdo očekává nepřátelskost a dostane se mu respektu, konfrontace, na kterou se připravoval, se rozplyne", "Ignorovat přímou výzvu není totéž jako ji deeskalovat — nevyřešené napětí se kumuluje", "Zvládání dvou emočních dynamik vyžaduje oslovení obou, byť krátce, spíše než výběr jedné"]
+        },
+        "3": {
+            "stageName": "Výbuch",
+            "criticalSkills": ["Reakce na syrovou emoci bez jejího oplácení nebo potlačení", "Aktivní naslouchání prokazující, že jste slyšeli konkrétní detaily", "Přechod od vymáhání k řešení problémů, když je odhalena krize"],
+            "choiceAnalysis": {
+                "positive": {
+                    "choiceText": "Odmlčíte se. Necháte ticho na chvíli znít. Pak tiše promluvíte: 'Pane Daviesi, slyšel jsem, co jste právě řekl — vaše matka je v nemocnici a řešíte opatrovnictví...'",
+                    "strengths": ["Pauza nechá jeho slova dolehnout, aniž by byla odražena zpět — klíčová deeskalační technika", "Zopakování konkrétních detailů dokazuje, že jste skutečně naslouchal, což je v jeho současné zkušenosti vzácné", "Otázka na nemocnici přesouvá konverzaci od trestu k řešení problémů", "Upřednostnění člověka bez ignorování přestupku", "Setkání s někým v bodě jeho bolesti — pokročilá deeskalace"],
+                    "consequences": "Hlas pana Daviese se láme. Jmenuje nemocnici — Svatá Kateřina, dvacet minut odsud. Marcus vás sleduje s výrazem, který se posunul od podezřívavosti k opatrné naději. Poprvé dnes v noci někdo s autoritou reagoval na bolest péčí.",
+                    "trainingFocus": "Co vás stojí naslouchat něčímu nejhoršímu okamžiku? Co to stojí je, když to neuděláte? Jak zopakování konkrétních detailů mění kvalitu spojení?"
+                },
+                "partially_positive": {
+                    "choiceText": "Soucitně přikývnete: 'Je mi líto, že tímhle vším procházíte, pane. To zní opravdu těžce. Ale pořád musím řešit to překročení rychlosti...'",
+                    "adequate": ["Upřímný soucit je vyjádřen", "Uznává obtížnost jeho situace", "Směřuje k vyřešení"],
+                    "missed": ["Obrat k 'ale pořád musím řešit to překročení rychlosti' dolehne jako zavírající se dveře", "Odhalil svou bolest a reakce je: vzato na vědomí, teď zpět k věci", "Rychlost obratu naznačuje, že jeho krize byla vyslechnuta, zvážena a shledána nedostatečnou ke změně čehokoli"],
+                    "improvement": "Odstraňte 'ale' a zůstaňte s člověkem ještě deset sekund. Zeptejte se na nemocnici, uznejte stres z opatrovnictví, pak se přirozeně vraťte ke kontrole. Obrat se stejně uskuteční — ale načasování dělá rozdíl mezi tím, být vyslyšen, a být zpracován."
+                },
+                "neutral": {
+                    "choiceText": "Zachováte pevný hlas: 'Pane, chápu, že jste rozrušen, ale potřebuji, abyste ztišil hlas. Jsou věci, které tu mohu ovlivnit, a věci, které ne...'",
+                    "adequate": ["Hlas je pevný a kontrolovaný", "Pokus o strukturování interakce"],
+                    "missed": ["'Ztište hlas' když někdo pláče kvůli své matce v nemocnici je necitlivé", "Nekřičel na vás — hroutil se", "'Věci, které mohu ovlivnit' zní jako řízení problému, ne jako rozhovor s člověkem", "Máte poslušnost, ale žádné spojení"],
+                    "improvement": "Rozlišujte mezi někým, kdo je agresivní, a někým, kdo trpí. Zvýšený hlas ze smutku vyžaduje empatii, ne kontrolu hlasitosti. Nechte emoci existovat — ustoupí, když se bude cítit vyslyšena."
+                },
+                "negative": {
+                    "choiceText": "Zachováte klidný, profesionální tón: 'Pane Daviesi, rozumím, že jste pod velkým tlakem, a je mi líto vaší matky. Ale to nemění fakt, že jste jel 85 v rezidenční zóně se synem v autě. Stres, pod kterým jste, je přesně důvod, proč na té rychlosti záleží víc.'",
+                    "risks": ["Zní profesionálně a logicky koherentně, ale načasování je ničivé — právě se zhroutil a sdílel svůj nejhorší večer", "Bere jeho zranitelnost a používá ji jako důkaz, proč je pokuta oprávněnější, ne méně", "Odměřený, rozumný tón to činí spíše kalkulovaným než otevřeně krutým — což je pro někoho v krizi nerozlišitelné", "Jeho syn natáčí strážníka, který na slzy odpovídá politickým zdůvodněním"],
+                    "consequences": "Pan Davies ztichne — ne uklidněný, ale vyhloubený. Podepíše cokoli, co mu předložíte. Marcus sleduje s výrazem za hranicí hněvu — pohled někoho, kdo si právě potvrdil něco, co vždy tušil. 'Slyšel jsi ho, ne?' řekne do telefonu. 'Taťka pláče kvůli babičce a strážník říká, že proto ta pokuta platí víc.'",
+                    "betterApproach": "Když je někdo v krizi a vy jeho tíseň použijete jako součást svého argumentu pro vymáhání, zneužíváte zranitelnost proti němu — bez ohledu na to, jak profesionálně to zní. Přiměřená reakce je naslouchat, uznat bolest a pak přejít k řešení problémů, ne konstruovat logický argument, proč jejich krize činí vymáhání důležitějším."
+                }
+            },
+            "keyLearningPoints": ["Když někdo vybuchne zoufalstvím spíše než agresí, reakce musí odpovídat emoci — empatie, ne kontrola", "Zopakování konkrétních detailů, které někdo sdílel, dokazuje, že jste naslouchali, a buduje důvěru rychleji než jakákoli technika", "Slovo 'ale' po empatii empatii maže — načasování přechodu má enormní význam", "Zvýšený hlas ze smutku a zvýšený hlas z nepřátelskosti vyžadují zcela odlišné reakce"]
+        },
+        "4": {
+            "stageName": "Kolemjdoucí",
+            "criticalSkills": ["Začlenění nových informací od členů komunity", "Adaptivní rozhodování při změně kontextu", "Zacházení s kolemjdoucími jako s přispěvateli, ne jako s rušivým elementem"],
+            "choiceAnalysis": {
+                "positive": {
+                    "choiceText": "Obrátíte se na paní Marshovou s respektuplným přikývnutím: 'Děkuji, paní Marshová. Cením si, že jste přišla. Pomáhá to mít kontext. Zabalím to tady, aby se pan Davies mohl dostat do nemocnice.'",
+                    "strengths": ["Oslovení sousedky jménem ji oslovuje jako člověka přispívajícího, ne jako rušivý element", "Její potvrzení dává další kontext k odůvodnění shovívavosti", "Oznámení záměru panu Daviesovi přináší okamžitou úlevu", "Ukazuje, že nové informace změnily vaši kalkulaci — transparentní, adaptivní policejní práce", "Proměňuje konfrontaci v komunitní okamžik"],
+                    "consequences": "Ramena paní Marshové se uvolní. Pan Davies slyšitelně vydechne. Marcus poprvé sklopí telefon do klína. Celá scéna se promění. Paní Marshová tiše řekne: 'Děkuji, pane strážníku.'",
+                    "trainingFocus": "Když vám kolemjdoucí dá informaci, která vám pomůže udělat lepší rozhodnutí, jak veřejné uznání této skutečnosti ovlivní důvěru všech přítomných? Jak vypadá adaptivní policejní práce v reálném čase?"
+                },
+                "partially_positive": {
+                    "choiceText": "Stručně uznáte paní Marshovou: 'Děkuji, paní. Situaci řeším.' Pak se znovu soustředíte na pana Daviese, aniž byste viditelně změnili svůj přístup na základě jejího vstupu.",
+                    "adequate": ["Zdvořilé uznání kolemjdoucí", "Profesionální a kontrolované", "Nevytváří negativní interakci se sousedkou"],
+                    "missed": ["Sousedka potvrzující řidičovu krizi je cenný kontext, přesto se váš přístup nemění", "Působíte rigidně spíše než adaptivně, když dorazí věrohodná informace", "Interakce s kolemjdoucí byla neutrální — žádná škoda, ale ani žádný užitek"],
+                    "improvement": "Když uprostřed setkání dorazí věrohodná nová informace, nechte svou reakci viditelně přizpůsobit. Říct 'pomáhá to mít kontext' ukazuje všem přítomným, že začleňujete informace místo toho, abyste následovali pevný scénář."
+                },
+                "neutral": {
+                    "choiceText": "Zdvořile se obrátíte na paní Marshovou: 'Paní, děkuji, ale potřebuji, abyste ustoupila ke svému pozemku. Toto je dopravní kontrola a nemohu tu mít civilisty přibližující se na místo.'",
+                    "adequate": ["Zdvořilý tón se sousedkou", "Procedurálně orientované"],
+                    "missed": ["Šedesátiletá sousedka v bačkorách stojící tři metry od vás na chodníku není bezpečnostní hrozba", "Poslat ji pryč znamená ztratit potvrzující informaci a emočního spojence", "'Civilisté přibližující se na místo' dělá z rezidenční ulice místo činu", "Rigidita podkopává přiměřenost"],
+                    "improvement": "Když je protokol v rozporu se selským rozumem, zeptejte se, který z nich buduje větší důvěru. Sousedka, která zná rodinu, je aktivum, ne zátěž. Přijměte informaci, poděkujte jí a pokračujte."
+                },
+                "negative": {
+                    "choiceText": "Podíváte se na paní Marshovou, pak zpět na pana Daviese: 'Pane, nemůže někdo přijet a odvézt vás a vašeho syna? Zjevně nejste ve stavu řídit...'",
+                    "risks": ["Navrhnout, že řidič není schopen řídit, když je emocionální, ale nikoli pod vlivem, patologizuje smutek", "Najímat jeho sousedku, aby ho zvládla, je infantilizující", "Zacházení s emočním stresem jako s řidičským rizikem bez důkazů o neschopnosti vyvolává otázky odpovědnosti", "Odebírá svéprávnost kompetentnímu dospělému, který má špatný večer"],
+                    "consequences": "Pan Davies je ponížen před sousedkou a synem. 'Nejsem opilý. Jsem rozrušený. To je rozdíl.' Marcus: 'Tati, pojďme prostě jet.' Paní Marshová vypadá nepříjemně, že byla vtažena do tohoto.",
+                    "betterApproach": "Rozlišujte mezi neschopností a emocí. Člověk, který je rozrušený, ale pozorný, soudržný a orientovaný, není neschopen řídit. Starost o blaho by měla posilovat, ne infantilizovat."
+                }
+            },
+            "keyLearningPoints": ["Kolemjdoucí, kteří znají zúčastněné strany, mohou poskytnout cenné potvrzení — zacházejte s nimi jako s komunitním aktivem", "Když dorazí věrohodná nová informace, viditelné přizpůsobení vašeho přístupu buduje důvěru u všech přihlížejících", "Rigidní dodržování procedury, když selský rozum naznačuje flexibilitu, signalizuje neústupnost, ne profesionalitu", "Existuje zásadní rozdíl mezi starostí o něčí blaho a odebíráním jeho svéprávnosti"]
+        },
+        "5": {
+            "stageName": "Rozhodnutí",
+            "criticalSkills": ["Přiměřené použití shovívavosti při vymáhání", "Formulování bezpečnostních zpráv kolem vlastních hodnot člověka", "Dokumentování úsudkových rozhodnutí vyvažujících vymáhání a soucit"],
+            "choiceAnalysis": {
+                "positive": {
+                    "choiceText": "Vrátíte se k oknu: 'Pane Daviesi, řeknu vám, co udělám. Vydám vám písemné napomenutí za rychlost. Zůstane v záznamu, že jsme spolu mluvili, ale není žádná pokuta a žádné trestné body. Vaše řidičské údaje zůstanou čisté. Ale potřebuji, abyste mě vyslechl — jet 85 v rezidenční zóně je nebezpečné bez ohledu na důvod. Kdyby se vám nebo Marcusovi něco stalo cestou do nemocnice, nebyla by to dnes večer jedna tragédie. Byly by dvě. Prosím, jeďte opatrně. Vaše matka potřebuje, abyste dorazil.'",
+                    "strengths": ["Písemné napomenutí je přiměřené — uznává přestupek, aniž by trestalo člověka v krizi", "Vysvětlení, že jeho záznam zůstane čistý, odstraňuje finanční a právní úzkost", "Bezpečnostní zpráva přeformulována kolem jeho rodiny — 'vaše matka potřebuje, abyste dorazil' — ne kolem pravidel", "Rámování nebezpečí je osobní — 'nebyla by to jedna tragédie, byly by dvě' — propojení rychlosti s lidmi, které miluje", "Shovívavost použitá moudře: volba reakce s největší pravděpodobností nejlepšího výsledku pro všechny", "Vytváří záznam bez vytváření zátěže"],
+                    "consequences": "Pan Davies přikývne, s viditelným pohnutím. 'Děkuji vám, pane strážníku. Myslím to vážně.' Marcus sleduje s výrazem, který už není nepřátelský. Paní Marshová se tiše usměje. Palubní kamera zaznamenává strážníka, který učinil promyšlené, odůvodněné rozhodnutí.",
+                    "trainingFocus": "Co odlišuje moudrou shovívavost od slabosti? Jak byste vysvětlili rozdíl ve zprávě? Kdy je napomenutí účinnější než pokuta při dosahování bezpečnostního cíle?"
+                },
+                "partially_positive": {
+                    "choiceText": "Vydáte pokutu, ale vysvětlíte: 'Pane Daviesi, musím vám napsat tuto pokutu — 25 nad limit je významné a nemohu to přehlédnout. Ale můžete to napadnout u soudu...'",
+                    "adequate": ["Upřímné a ne nepříjemné", "Zaznamenává situaci do zprávy, prokazuje povědomí", "Odkazuje řidiče na právní cestu", "Omluva kvůli matce — upřímný lidský okamžik"],
+                    "missed": ["Vydat pokutu člověku bez záznamu spěchajícímu ke své hospitalizované matce, když máte plnou pravomoc shovívavosti, vyvolává otázky ohledně úsudku", "Odkazovat ho na soud, aby napravil to, co jste mohli napravit hned, přidává zátěž někomu již přetíženému", "Poznámka ve zprávě je promyšlená, ale nemění jeho zkušenost z dnešního večera"],
+                    "improvement": "Když máte pravomoc shovívavosti a okolnosti ji jednoznačně ospravedlňují, využijte ji. Písemné napomenutí dosahuje stejného cíle bezpečnostní dokumentace bez přidávání finanční a právní zátěže někomu v ověřené krizi."
+                },
+                "neutral": {
+                    "choiceText": "Vrátíte mu doklady: 'Tak, pane Daviesi — můžete jet. Žádná pokuta dnes. Jen buďte opatrný. Doufám, že maminka bude v pořádku.'",
+                    "adequate": ["Laskavý záměr a opravdová péče", "Zcela odstraňuje zátěž vymáhání", "Přeje matce dobré"],
+                    "missed": ["Žádná zmínka o rychlosti, žádná bezpečnostní zpráva, žádné napomenutí v záznamu", "Shovívavost bez jakéhokoli uznání přestupku nic neučí", "Žádná dokumentace znamená žádný záznam, že jste ho upozornili", "Kontrola působí náhodně — jako by se stala a pak nestala"],
+                    "improvement": "Dobrá shovívavost zahrnuje zodpovědnost. Písemné napomenutí dokumentuje setkání, předává bezpečnostní zprávu a uchovává úsudek strážníka v záznamu. Prostě někoho pustit je neformální, ne shovívavé."
+                },
+                "negative": {
+                    "choiceText": "Zpracujete pokutu s opravdovým lítostí: 'Pane Daviesi, opravdu je mi líto toho, čím procházíte. Ale musím ke všem přistupovat stejně bez ohledu na okolnosti — to je podstata férového jednání. Vydat tuto pokutu je férové a konzistentní.'",
+                    "risks": ["Zní jako principiální, spravedlivé policejní jednání — ale rovnost a férovost nejsou totéž", "Zacházet s ověřenou rodinnou krizí stejně jako s běžným překročením rychlosti je rigidita převlečená za princip", "Shovívavost existuje přesně proto, že okolnosti se liší — používat 'stejné zacházení' k vyhnutí se úsudku je abdikace, ne integrita", "Nabídka napadnout to u soudu přesouvá zátěž na někoho již přetíženého", "Jeho syn sleduje strážníka, který zní rozumně a přitom dělá něco nerozumného"],
+                    "consequences": "Pan Davies podepíše třesoucí se rukou. Nehádá se — logika zněla tak principiálně, že téměř věří, že on je ten nerozumný, že touží po milosrdenství. Marcus mlčky natáčí. Paní Marshová odchází zpět do domu a kroutí hlavou. Máte obhajitelnou pokutu a naučili jste patnáctiletého, že férovost je slovo, které dospělí používají, když mají na mysli neústupnost.",
+                    "betterApproach": "Když se odvoláváte na 'stejné zacházení se všemi', abyste zdůvodnili nepřiměřenou reakci, zeptejte se, komu ta rovnost prospívá — občanovi, nebo strážníkovi, který už nemusí dělat obtížné rozhodnutí. Písemné napomenutí s bezpečnostní zprávou je přiměřené, dokumentované a skutečně férové."
+                }
+            },
+            "keyLearningPoints": ["Shovívavost není slabost — je to sofistikované využití profesionálního úsudku zakotvené ve vaší pravomoci", "Písemné napomenutí dokumentuje setkání a předává zodpovědnost bez trestání krize", "Bezpečnostní zprávy zasahují silněji, když jsou formulovány kolem vlastních hodnot člověka — rodiny, ne pravidel", "Když popisujete shovívavost jako 'dělání výjimek', odhalujete nepochopení vlastních nástrojů"]
+        },
+        "6": {
+            "stageName": "Marcus",
+            "criticalSkills": ["Upřímné zapojení s upřímnou otázkou mladého člověka o policejní práci", "Budování důvěry přes generační a zkušenostní propasti", "Prezentování profesionality jako standardu, ne jako osobní laskavosti"],
+            "choiceAnalysis": {
+                "positive": {
+                    "choiceText": "Podíváte se na něj přímo, bez povýšenosti: 'To je férová otázka, Marcusi, a jsem rád, že ses zeptal. Ne — není to vždycky takhle, a nebudu předstírat, že je. Ale takhle to má vypadat. Tvůj táta jel rychle a museli jsme to řešit. Ale je to také člověk, který prožívá strašný večer, a to taky záleží. Obojí může být pravda zároveň. Měl jsi plné právo nahrávat a raději bych, abys viděl něco, co stojí za natočení.'",
+                    "strengths": ["Upřímná odpověď — 'není to vždycky takhle' — buduje důvěryhodnost u teenagera, který si už utvořil názory", "Uznat, že jeho otec současně překročil rychlost a trpěl, ukazuje nuance v práci policie — 'obojí může být pravda zároveň'", "'Něco, co stojí za natočení' přerámuje kameru z protivnické na aspirační", "Potvrzení jeho práva na nahrávání v rámci odpovědi ctí jeho dřívější postoj", "Neobhajuje veškerou policii — získává důvěru upřímností, ne institucionální obranou", "Zasazuje semínko, kterému může trvat léta, než vyroste"],
+                    "consequences": "Marcus je dlouhý okamžik tichý. Pak pomalu přikývne. 'Dobře.' Jedno slovo — ale nese váhu. Pan Davies sleduje výměnu s něčím, co vypadá jako vděčnost. Tento třicetisekundový rozhovor může proměnit způsob, jakým Marcus mluví o policii po zbytek života.",
+                    "trainingFocus": "Když se mladý člověk ptá upřímnou otázku o policejní práci, jaká je cena nepoctivé odpovědi oproti poctivé? Jak přiznání nedokonalosti buduje větší důvěryhodnost než obrana instituce?"
+                },
+                "partially_positive": {
+                    "choiceText": "Mírně se usmějete: 'Snažím se jednat s lidmi tak, jak bych chtěl, aby jednali se mnou, Marcusi. To je vše. Nejsme všichni to, co vidíš ve zprávách...'",
+                    "adequate": ["Vřelá a lidská odpověď", "Osobní spíše než institucionální rámování", "Laskavé přesměrování na péči o otce"],
+                    "missed": ["'Nejsme všichni to, co vidíš ve zprávách' je defenzivní rámování, které staví jeho obavy jako mediálně ovlivněné", "Jemně odmítá realitu, že mnozí teenageři měli negativní setkání s policií, která nejsou ze zpráv", "Ukončuje hlubší rozhovor ve chvíli, kdy opravdu navazoval kontakt"],
+                    "improvement": "Když teenager sklopí obranu a zeptá se na něco skutečného, odpovězte do hloubky otázky. Uznejte, že policejní práce je nedokonalá, místo abyste odklonili na média. Hlubší rozhovor, ke kterému otvíral dveře, je cennější než rychlé uklidnění."
+                },
+                "neutral": {
+                    "choiceText": "Stručně přikývnete: 'Jen dělám svou práci, Marcusi. Dej na sebe pozor dnes večer.' Otočíte se směrem ke služebnímu vozu.",
+                    "adequate": ["Nekonfrontační a stručné", "Používá jeho jméno, což je respektuplné", "Nezpůsobuje škodu"],
+                    "missed": ["'Jen dělám svou práci' je neodpověď na zranitelnou otázku", "Marcus odložil telefon i svou obranu a zeptal se na něco skutečného", "Setkat se se zranitelností klišé a odchodem mu říká, že otevřenost nestála za to", "Ptal se na systém a vy jste mu dali nálepku na nárazník"],
+                    "improvement": "Když mladý člověk sklopí obranu, odpovězte na okamžik. I jediná upřímná věta — 'Takhle to má vypadat a beru to vážně' — ctí zranitelnost, kterou projevil."
+                },
+                "negative": {
+                    "choiceText": "Nakloníte se k Marcusovi s upřímným výrazem: 'Marcusi, to, co jsi dnes viděl, je to, jak má dopravní kontrola probíhat — tvůj táta spolupracoval, já jsem byl profesionální a vyřešili jsme to. Doufám, že si to zapamatuješ, až ti někdo příště bude říkat, že se máš bát policie. Spolupráce všechno usnadní.'",
+                    "risks": ["Zní jako upřímný výukový okamžik, ale jemně přepisuje to, co se stalo — kontrola nebyla rutinní, jeho otec se zhroutil a plakal", "Rámovat to jako 'takhle to normálně probíhá' minimalizuje krizi, která učinila dnešní večer mimořádným", "'Spolupráce všechno usnadní' naznačuje, že výsledek závisí na chování občana, ne na úsudku strážníka", "Říct černošskému teenagerovi, aby přestal naslouchat lidem, kteří ho varují před policií, odmítá prožitou zkušenost jako dezinformaci", "Položil zranitelnou otázku a dostal PR frázi"],
+                    "consequences": "Marcusův výraz se posune od otevřenosti k něčemu chladnějšímu. 'Jo... dobře.' Telefon zůstává v klíně, ale hledající pohled je pryč. Sahal po opravdovém rozhovoru a dostal veřejné oznámení. Okamžik pro skutečné spojení pominul.",
+                    "betterApproach": "Když mladý člověk otevře své obavy, reagujte na realitu jeho zkušenosti spíše než na narativ, který si přejete, aby měl. Upřímné přiznání — 'takhle to má vypadat, ale není to vždycky takhle' — buduje víc důvěry než vybroušená zpráva o tom, jak má systém fungovat."
+                }
+            },
+            "keyLearningPoints": ["Když se teenager ptá upřímnou otázku o policejní práci, upřímnost buduje větší důvěryhodnost než obrana instituce", "Přiznat 'není to vždycky takhle' získá důvěru, kterou 'nejsme všichni špatní' nikdy nezíská", "Setkat se se zranitelným okamžikem klišé učí člověka, že zranitelnost nestála za to", "Říkat někomu, že měl štěstí na slušného strážníka, je hrozba, ne rada — a podkopává to profesi"]
+        },
+        "7": {
+            "stageName": "Rozloučení",
+            "criticalSkills": ["Zakončení s důstojností odpovídající hloubce toho, co bylo sdíleno", "Obnovení důstojnosti přeformulováním", "Zanechání trvalého dojmu budujícího důvěru v orgány činné v trestním řízení"],
+            "choiceAnalysis": {
+                "positive": {
+                    "choiceText": "Jemně zvednete ruku: 'Pane Daviesi, nemusíte se mi omlouvat. Jste otec, který se snaží dostat ke své nemocné matce a přitom se bojí o svého syna. Také bych byl rozrušený.' Pohlédnete na Marcuse: 'Oba dva.' Pak: 'Svatá Kateřina je asi dvacet minut odsud. Jeďte Devítkou — v tuto hodinu je volnější. Jeďte opatrně. Doufám, že se vaše matka brzy zotaví.'",
+                    "strengths": ["Odmítnutí omluvy přeformulováním jeho reakce jako rozumné obnovuje jeho důstojnost", "Zahrnutí Marcuse do pochvaly — 'oba dva' — oceňuje synovu zkušenost jako stejně platnou", "Pokyny k jízdě do Svaté Kateřiny přes Devítku jsou malý, praktický akt péče nemající nic společného s policejní prací a vše společné s lidskostí", "'Doufám, že se vaše matka brzy zotaví' pojmenovává to, na čem záleží nejvíce", "Zakončení odpovídá emoční hloubce celého setkání"],
+                    "consequences": "Pan Davies sevře volant a na chvíli přikývne, neschopen mluvit. Marcus tiše řekne: 'Děkujeme.' Paní Marshová mává z chodníku. Jak SUV opatrně odjíždí, zanechali jste tři lidi s naprosto odlišnou zkušeností, než kterou očekávali.",
+                    "trainingFocus": "Jaký je rozdíl mezi ukončením kontroly a zanecháním dojmu? Jak zakončení odpovídající hloubce setkání mění příběh, který o něm lidé vyprávějí?"
+                },
+                "partially_positive": {
+                    "choiceText": "Přijmete omluvu laskavě: 'To si cením, pane Daviesi. Žádná zlá krev. Doufám, že to s vaší matkou dopadne dobře a s... vším ostatním...'",
+                    "adequate": ["Laskavé a vřelé", "Přijetí omluvy a přání všeho dobrého je upřímné", "Pozitivní závěrečný tón"],
+                    "missed": ["Vágní 'vším ostatním' se vyhýbá pojmenování situace s opatrovnictvím, kterou sdílel ve zranitelnosti", "Zakončení je příjemné, ale neodpovídá hloubce toho, co bylo sdíleno", "Dobré zakončení průměrného rozhovoru, ne skvělé zakončení mimořádného"],
+                    "improvement": "Když vám někdo svěřil své nejhlubší obavy, zakončení musí odpovídat této hloubce. Pojmenujte, co sdílel — matku, opatrovnictví, strach — aby věděl, že to bylo skutečně vyslyšeno, ne jen tolerováno."
+                },
+                "neutral": {
+                    "choiceText": "Přikývnete: 'Omluvu přijímám. Jen dodržujte rychlostní limit odsud. Pěkný večer.'",
+                    "adequate": ["Funkčně v pořádku a nekonfrontační", "Přijímá omluvu bez komplikací", "Zahrnuje připomínku rychlosti"],
+                    "missed": ["Emocionálně ploché po kontrole zahrnující zlom, proměnu teenagera a svědectví sousedky", "'Pěkný večer' je antiklimatické po hloubce setkání", "Připomínka rychlosti redukuje celou bohatou lidskou interakci zpět na dopravní přestupek"],
+                    "improvement": "Když byla kontrola emocionálně významná, zakončení musí odpovídat. Generické zakončení po hlubokém setkání znamená, že trvalou vzpomínkou je antiklimaks, ne péče, kterou jste projevili dříve."
+                },
+                "negative": {
+                    "choiceText": "Vřele přijmete omluvu: 'Děkuji vám, pane Daviesi — to pro mě hodně znamená. Chci být k vám upřímný: dnes večer jsem použil svou pravomoc shovívavosti, protože jsem viděl, že jste dobrý člověk v těžké situaci. Ale potřebuji, abyste rozuměl, že to byla výjimka, ne pravidlo. Doufám, že vám dnešní večer připomene, že systém funguje, když se k sobě lidé chovají s respektem.'",
+                    "risks": ["Zní štědře a opravdově, ale balí kázání do laskavosti", "'Použil jsem shovívavost, protože jste dobrý člověk' naznačuje, že shovívavost je podmíněna morálním hodnocením strážníkem", "'To byla výjimka, ne pravidlo' přerámuje přiměřený úsudek na zvláštní zacházení", "'Systém funguje, když se k sobě lidé chovají s respektem' jemně připisuje dobrý výsledek poslušnosti pana Daviese, ne policejní práci", "Marcus slyší 'systém funguje' a myslí na každý příběh, kde nefungoval"],
+                    "consequences": "Pan Davies přikývne a řekne 'Děkuji' — ale poděkování působí spíše vynucené než přirozené. Marcus se vrtí na sedadle — slyšel 'systém funguje' a 'byla to výjimka.' Kontrola končí pozitivně na povrchu, ale závěrečná zpráva je: měl jsi štěstí, buď vděčný a pamatuj, že to byl dar. Příběh, který Marcus vypráví, bude obsahovat frázi 'řekl, že to byla výjimka.'",
+                    "betterApproach": "Když vaše zakončení rámuje dobrý výsledek jako závislý na charakteru občana spíše než na vašem profesionálním úsudku, naznačuje to, že méně sympatickým lidem ve stejné krizi by se nedostalo stejného zacházení. Zakončete s důstojností — odmítněte omluvu přeformulováním jeho reakce jako rozumné a nechte profesionalitu mluvit sama za sebe, bez kázání."
+                }
+            },
+            "keyLearningPoints": ["Poslední dojem určuje příběh, který lidé vyprávějí — zakončení musí odpovídat emoční hloubce setkání", "Odmítnutí omluvy přeformulováním něčí reakce jako rozumné obnovuje důstojnost silněji než její přijetí", "Praktické drobné akty péče — jako pokyny k jízdě — zanechávají nepřiměřeně silné dojmy", "Připomínat někomu, že jste mu dali úlevu, přeměňuje shovívavost v dluh a dobrou vůli v zášť"]
+        }
+    },
+    "comprehensiveMetrics": {
+        "communication": {
+            "description": "Nastavení emoční trajektorie skrze profesionální představení, aktivní naslouchání a jazyk, který deeskaluje místo provokuje",
+            "indicators": {
+                "excellent": ["Profesionální představení jménem a oddělením při prvním kontaktu", "Aktivní naslouchání prokázané zopakováním konkrétních detailů, které pan Davies sdílel", "Jazyk, který deeskaloval v každé fázi — otázky místo příkazů, zvědavost místo konfrontace", "Tón přizpůsobený každému okamžiku — klidný u zastavení, tichý při zhroucení, vřelý na závěr"],
+                "poor": ["Žádné představení ani vysvětlení účelu", "Příkazy vydávané bez bezpečnostního odůvodnění — 'ruce na volant' bez artikulovatelné hrozby", "Odmítavý jazyk — 'každý má nějaké problémy', 'každou druhou historku'", "Tón neodpovídající okamžiku — požadavky na kontrolu hlasitosti během zhroucení ze smutku"]
+            }
+        },
+        "discretion": {
+            "description": "Moudré používání úsudku při vymáhání — přiřazení reakce k okolnostem místo mechanické aplikace pravidel",
+            "indicators": {
+                "excellent": ["Písemné napomenutí zvolené jako přiměřená reakce na ověřenou krizi bez předchozího záznamu", "Bezpečnostní zpráva formulována kolem vlastních hodnot řidiče — rodiny, ne pravidel", "Rozhodnutí dokumentováno a odůvodněno — shovívavost se zodpovědností", "Nové informace z dispečinku a od kolemjdoucí viditelně začleněny do rozhodování"],
+                "poor": ["Pokuta vydána navzdory plné pravomoci shovívavosti a ověřeným polehčujícím okolnostem", "Rámování 'pravidla jsou pravidla' vyhýbající se práci profesionálního úsudku", "Shovívavost popsána jako 'dělání výjimek' místo jako základní nástroj vymáhání", "Žádná dokumentace — buď rigidní pokuta, nebo neformální propuštění bez záznamu"]
+            }
+        },
+        "empathy": {
+            "description": "Rozpoznání a reakce na emoční krizi bez obětování autority nebo profesionality",
+            "indicators": {
+                "excellent": ["Pauza a ticho použité k tomu, aby bolest pana Daviese dolehla bez odražení zpět", "Konkrétní detaily zrcadleny zpět — název nemocnice, situace s opatrovnictvím — prokazující upřímné naslouchání", "Obavy o blaho přirozeně integrovány do přístupu bez invazivního odhalení detailů z dispečinku", "Důstojnost obnovena na závěr přeformulováním jeho reakce jako rozumné místo vyžadování omluvy"],
+                "poor": ["Empatie okamžitě následovaná 'ale' — uznána pak smazána", "'Ztište hlas' směřované na někoho, kdo pláče kvůli své matce", "Bolest odmítnuta jako 'historka' nebo zneužitá — 'kdybyste se opravdu staral, jel byste opatrněji'", "Podezřívavost nebo cynismus v reakci na odhalení zranitelnosti"]
+            }
+        },
+        "youthEngagement": {
+            "description": "Respektuplné jednání s mladými lidmi a kolemjdoucími, zejména když jste pozorováni nebo nahráváni",
+            "indicators": {
+                "excellent": ["Marcusovo právo na nahrávání okamžitě potvrzeno bez defenzivity", "Upřímná, poctivá odpověď na jeho otázku o policejní práci — 'není to vždycky takhle'", "Marcus zahrnut do závěrečné pochvaly — 'oba dva'", "Kamera přerámována na aspirační — 'něco, co stojí za natočení'"],
+                "poor": ["Požadavek přestat nahrávat nebo odložit telefon", "'Kluku' použito despektivně vůči patnáctiletému", "Marcus obviněn za to, že se bojí — 'ten přístup, se kterým jste přišli'", "Skrytá hrozba: 'mohlo to dopadnout úplně jinak s jiným strážníkem'"]
+            }
+        },
+        "closingImpact": {
+            "description": "Zanechání zkušenosti u každého účastníka setkání, která buduje důvěru v orgány činné v trestním řízení",
+            "indicators": {
+                "excellent": ["Zakončení odpovídalo emoční hloubce setkání — ne generické po hlubokém zážitku", "Praktická péče projevena — pokyny k jízdě do nemocnice, konkrétní přání", "Důstojnost obnovena každému — pan Davies, Marcus, paní Marshová, všichni uznáni", "Příběh, který každý svědek poté vypráví, se pozitivně odráží na strážníkovi a profesi"],
+                "poor": ["Generické zakončení — 'pěkný večer' — po emocionálně intenzivní kontrole", "Shovívavost přerámována na osobní laskavost — 'dal jsem vám úlevu'", "'Příště nemusíte narazit na někoho, kdo bude ochotný naslouchat' — skrytá hrozba jako poslední slova", "Zakončení smazalo dobrou vůli budovanou v průběhu celého setkání"]
+            }
+        }
+    },
+    "mistakePatterns": {
+        "commandDefault": {
+            "pattern": "Automatické uchylování se k příkazům a kontrolním taktikám, když situace volá po konverzaci a zvědavosti",
+            "examples": ["'Ruce na volant, nikdo se nehýbe' jako otevírací věta u zastavení s označeným blahem", "'Ztište hlas' směřované na někoho v emoční krizi", "'Dejte ten telefon pryč' směřované na teenagera uplatňujícího zákonné právo", "Taktické příkazy bez artikulovatelných bezpečnostních indikátorů"],
+            "impact": "Příkazy bez odůvodnění komunikují hrozbu místo služby. U zastavení s označeným blahem pohřbívají samotnou krizi, kterou jste byli vysláni posoudit. Člověk v krizi se stane člověkem ve strachu — a strach neprodukuje spolupráci ani informace, které potřebujete.",
+            "correction": "Příkazovou úroveň jazyka vyhraďte pro situace s artikulovatelnými bezpečnostními hrozbami. U rutinních zastavení a prověření blaha veďte představením, vysvětlením a otázkami. Zvědavost shromáždí více informací než příkazy."
+        },
+        "empathyErasure": {
+            "pattern": "Vyjádření empatie a okamžité smazání slůvkem 'ale' nebo obratem zpět k vymáhání — někdy maskované jako principiální uvažování",
+            "examples": ["'Je mi líto, že tímhle procházíte, ale pořád musím řešit to překročení rychlosti'", "'Opravdu je mi líto, ale musím ke všem přistupovat stejně — to je podstata férovosti'", "'Chápu, že jste ve stresu, ale to je přesně důvod, proč na té rychlosti záleží víc'", "Vyslechnout krizi a pak konstruovat logický argument, proč je vymáhání ještě oprávněnější"],
+            "impact": "Slovo 'ale' po empatii empatii maže. Člověk slyší: 'Uznal jsem vaši bolest, zvážil ji a shledal nedostatečnou.' Emoční otvor se zavře. Jakákoli důvěra, která se budovala, se zastaví. Řidič si zapamatuje 'ale', ne 'je mi líto.'",
+            "correction": "Zůstaňte s člověkem ještě deset sekund před přechodem. Zeptejte se na nemocnici. Uznejte stres z opatrovnictví. Pak se přirozeně vraťte ke kontrole. Přechod se stejně uskuteční — načasování je to, co ho činí lidským nebo mechanickým."
+        },
+        "cameraAnxiety": {
+            "pattern": "Reakce na nahrávání jako na hrozbu místo zacházení s ním jako s normální a právně chráněnou činností",
+            "examples": ["Žádost, aby Marcus odložil telefon, před vlastním představením", "'Tohle je mezi mnou a řidičem' — vyloučení spolujezdcova práva pozorovat a nahrávat", "Oslovení kamery před oslovením lidí", "Defenzivita, když je nahrávání zmíněno"],
+            "impact": "Reakce na kameru vypráví příběh, že vám vadí být pozorován. Pro teenagera, který už očekává policejní nepřátelskost, vaše reakce na kameru potvrzuje narativ. Interakce se stane o telefonu místo o člověku a záběry zachycují strážníka, který upřednostnil kontrolu nad pozorováním před službou komunitě.",
+            "correction": "Zacházejte s nahráváním jako s irelevantní věcí tím, že právo potvrdíte jednou větou a pokračujete. 'Můžeš nahrávat — to je tvoje právo' trvá tři sekundy a uzavře celou nepřátelskou frontu. Nejlepší reakcí na to, že jste nahráváni, je vynikající policejní práce."
+        },
+        "discretionAsDebt": {
+            "pattern": "Rámování shovívavých rozhodnutí jako osobních laskavostí, morálních hodnocení nebo výjimek vytvářejících závazek",
+            "examples": ["'Použil jsem shovívavost, protože jsem viděl, že jste dobrý člověk' — podmiňování milosrdenství hodnocením charakteru", "'To byla výjimka, ne pravidlo' — přerámování přiměřeného úsudku na zvláštní zacházení", "'Doufám, že vám dnešní večer připomene, že systém funguje, když se k sobě lidé chovají s respektem' — připisování výsledku poslušnosti občana, ne správné policejní práci", "'Systém funguje' — institucionální kázání jako zakončení, když člověk potřeboval péči, ne poselství"],
+            "impact": "Když rámujete shovívavost jako laskavost, přeměňujete profesionální úsudek v osobní moc. Člověk odchází s pocitem dluhu místo respektu. Příběh, který vypráví, není 'strážník byl férový', ale 'strážník mi to odpustil a ujistil se, že to vím.' Důvěra se stává transakční — a transakční důvěra se rozpadá v okamžiku, kdy transakce skončí.",
+            "correction": "Shovívavost je váš profesionální nástroj, ne dar. Používejte ji bez komentářů o tom, co jste mohli udělat místo toho. Síla dobrého rozhodnutí se oslabuje pokaždé, když někomu připomenete alternativu."
+        },
+        "depthMismatch": {
+            "pattern": "Reagování na emocionálně významné okamžiky generickým nebo mělkým jazykem",
+            "examples": ["'Jen dělám svou práci' v reakci na Marcusovu upřímnou otázku o policejní práci", "'Pěkný večer' po setkání zahrnujícím rodinnou krizi, proměnu teenagera a svědectví sousedky", "'Vším ostatním' místo pojmenování situace s opatrovnictvím, kterou řidič odhalil", "Klišé v reakci na zranitelnost"],
+            "impact": "Když je setkání emocionálně hluboké a reakce strážníka emocionálně generická, trvalou vzpomínkou je nesoulad. Člověk si zapamatuje, že se otevřel a strážník se vrátil ke scénáři. Zranitelnost, na kterou se odpoví klišé, učí lidi být příště méně zranitelní vůči strážníkům.",
+            "correction": "Odpovězte na úrovni okamžiku. Pokud někdo sdílí svůj nejhorší večer, pojmenujte, co sdílel. Pokud se teenager zeptá na skutečnou otázku, dejte skutečnou odpověď. Zakončení mimořádného setkání musí být mimořádné — nebo se obyčejnost zakončení stane příběhem."
+        }
+    },
+    "personalizedFeedback": {
+        "templates": {
+            "allPositive": "Vzorová komunikace při dopravní kontrole od prvního kontaktu po poslední slova. Prokázali jste kompletní sadu dovedností: profesionální představení s povědomím o blahu, okamžité potvrzení práva na nahrávání, empatická reakce na syrové zoufalství, adaptivní využití informací od kolemjdoucí, přiměřená shovívavost se zodpovědností, upřímné zapojení s upřímnou otázkou teenagera a zakončení obnovující důstojnost každému účastníkovi setkání. Palubní kamera zachytila strážníka, který dokázal, že autorita a lidskost nejsou protiklady. Toto je standard.",
+            "mostlyPositive": "Silný výkon v rámci složité, emocionálně vrstevnaté dopravní kontroly. Zachovali jste profesionalitu a opravdovou péči ve většině fází a váš úsudek byl správný u klíčových rozhodnutí. Některé příležitosti pro hlubší spojení nebo nuancovanější komunikaci byly k dispozici — možná ve způsobu zapojení Marcuse, reakci na zhroucení nebo zakončení setkání — ale váš celkový přístup budoval důvěru a prokázal druh policejní práce, která mění způsob, jakým lidé přemýšlejí o orgánech činných v trestním řízení.",
+            "mixed": "Některé aspekty této dopravní kontroly jste zvládli dobře, zejména [SPECIFIC_POSITIVE], ale kritické příležitosti byly promeškány v [SPECIFIC_GAP]. Dopravní kontrola zahrnující rodinu v krizi, nahrávajícího teenagera a znepokojenu sousedku vyžadovala konzistentní empatii a adaptivní úsudek ve všech sedmi fázích. Prostudujte okamžiky, kdy jste se uchýlili k proceduře, když situace volala po lidskosti, a procvičujte setrvání u obtížných emocí před obratem zpět k vymáhání.",
+            "mostlyNegative": "Tento scénář odhalil výrazné mezery v empatii, adaptivním úsudku a komunikaci pod emočním tlakem. I když jste [MINOR_POSITIVE], většina voleb eskalovala napětí, míjela lidské rozměry kontroly nebo nedokázala využít profesionální nástroje — shovívavost, aktivní naslouchání, upřímné zapojení — které tato situace vyžadovala. Otec v krizi, teenager sledující každý váš krok a sousedka pozorující setkání — všichni potřebovali něco, co jste konzistentně neposkytli. Prioritizujte školení v empatické komunikaci, shovívavosti jako profesionálním nástroji a zapojení mládeže.",
+            "allNegative": "Váš přístup zacházel s rodinou v krizi jako s procedurálním problémem k řízení, ne jako s lidskou situací k navigování. Příkazy nahradily konverzaci, bolest byla odmítnuta nebo zneužita, zákonné právo teenagera bylo zpochybněno, shovívavost buď chyběla, nebo byla rámována jako laskavost, a zakončení smazalo jakoukoli dobrou vůli, která mohla přežít. Každý člověk v tomto setkání — pan Davies, Marcus, paní Marshová — odešel s příběhem o policii, který potvrzuje nejhorší očekávání. To vyžaduje zásadní přeorientování směrem k empatické komunikaci, přiměřené shovívavosti a pochopení, že každá dopravní kontrola buduje nebo boří důvěru komunity."
+        }
+    },
+    "dialogueEffectivenessReview": {
+        "excellentPhrases": [
+            "Dobrý večer, pane. Jsem strážník [Jméno] z městské policie. Zastavil jsem vás, protože jste jel 85 v zóně se 60. Než se k tomu dostaneme — je dnes večer vše v pořádku?",
+            "Máš naprostou pravdu — můžeš nahrávat. To je tvoje právo a nemám s tím žádný problém.",
+            "V klidu hledejte technický průkaz. Nikam nespěchám. Vidím, že máte dnes hodně na talíři.",
+            "Pane Daviesi, slyšel jsem, co jste právě řekl — vaše matka je v nemocnici a řešíte opatrovnictví. To je obrovský tlak. Nejsem tu, abych k němu přidával.",
+            "Děkuji, paní Marshová. Cením si, že jste přišla. Pomáhá to mít kontext.",
+            "Vydám vám písemné napomenutí za rychlost. Zůstane v záznamu, že jsme spolu mluvili, ale není žádná pokuta a žádné trestné body. Vaše řidičské údaje zůstanou čisté.",
+            "Vaše matka potřebuje, abyste dorazil.",
+            "Ne — není to vždycky takhle, a nebudu předstírat, že je. Ale takhle to má vypadat.",
+            "Raději bych, abys viděl něco, co stojí za natočení.",
+            "Pane Daviesi, nemusíte se mi omlouvat. Jste otec, který se snaží dostat ke své nemocné matce a přitom se bojí o svého syna. Také bych byl rozrušený."
+        ],
+        "poorPhrases": [
+            "Řidiči, ruce nechte na volantu. Spolujezdce, potřebuji vidět obě ruce. Nikdo se nehýbe, dokud neřeknu.",
+            "Kluku, dej ten telefon pryč. Tohle je mezi mnou a řidičem. Děláš to složitější, než to musí být.",
+            "Pane, potřebuji, abyste ztišil hlas.",
+            "Stres, pod kterým jste, je přesně důvod, proč na té rychlosti záleží víc — ne míň.",
+            "Musím ke všem přistupovat stejně bez ohledu na okolnosti — to je podstata férového jednání.",
+            "To, co jsi dnes viděl, je to, jak má dopravní kontrola probíhat — spolupráce všechno usnadní.",
+            "Dnes večer jsem použil svou pravomoc shovívavosti, protože jsem viděl, že jste dobrý člověk v těžké situaci. Ale to byla výjimka, ne pravidlo.",
+            "Doufám, že vám dnešní večer připomene, že systém funguje, když se k sobě lidé chovají s respektem."
+        ],
+        "analysisCriteria": {
+            "toneCalibration": "Odpovídala fráze emoční teplotě okamžiku — klidná u zastavení, tichá při zhroucení, vřelá na závěr, upřímná s teenagerem?",
+            "welfareIntegration": "Použila fráze označení blaha z dispečinku k vedení empatického dotazování, spíše než k invazivnímu odhalení nebo taktickým příkazům?",
+            "rightsAffirmation": "Potvrdila fráze právo na nahrávání a právo na emoční projev, nebo je zpochybnila, potlačila či ignorovala?",
+            "discretionFraming": "Prezentovala fráze shovívavost jako profesionální úsudek, nebo jako osobní laskavost vytvářející dluh?",
+            "dignityRestoration": "Obnovila nebo uchovala fráze důstojnost oslovované osoby, nebo ji snížila, patronizovala či obviňovala?",
+            "lastingImpact": "Bude si tuto frázi pan Davies, Marcus a paní Marshová pamatovat pozitivně — nebo to bude okamžik, kdy se příběh obrátí k negativnímu?"
+        }
+    },
+    "scenarioSpecificLessons": {
+        "1": "Prvních třicet sekund dopravní kontroly nastaví emoční trajektorii pro vše, co následuje. Tón, postoj, pozice svítilny a to, zda se zeptáte na člověka dříve, než požadujete doklady — tyto volby předpovídají celé setkání. U zastavení s označeným blahem musí zvědavost předcházet požadavkům na poslušnost.",
+        "2": "Teenager nahrávající policejní setkání uplatňuje zákonné právo. Vaše reakce na kameru definuje příběh, který zachytí. Potvrzení práva jednou větou — tři sekundy vašeho času — rozpustí konfrontaci, na kterou se teenager celý přístup připravoval.",
+        "3": "Když někdo vybuchne zoufalstvím spíše než agresí, vyžadovanou odpovědí je empatie, ne kontrola hlasitosti. Pauza, následovaná zopakováním konkrétních detailů, které sdílel, dokazuje, že jste naslouchali — a pro někoho, jehož bolest byla neviditelná, může být vyslyšení proměňující.",
+        "4": "Kolemjdoucí, kteří znají zúčastněné strany, jsou komunitním aktivem, ne procedurální překážkou. Sousedka potvrzující řidičovu krizi vám dává kontext k odůvodnění shovívavosti. Veřejné uznání její přítomnosti ukazuje všem přítomným, že nové informace mění vaši kalkulaci — to je transparentní, adaptivní policejní práce.",
+        "5": "Shovívavost není slabost ani 'dělání výjimek.' Je to sofistikovaný profesionální nástroj zakotvený ve vaší pravomoci přesně pro situace jako je tato. Písemné napomenutí dosahuje dokumentace, předává bezpečnostní zprávu a uchovává důstojnost člověka — pokuta bez shovívavosti, když ji okolnosti ospravedlňují, odhaluje rigiditu, ne profesionalitu.",
+        "6": "Když mladý člověk sklopí obranu a položí upřímnou otázku o policejní práci, cena nepoctivé odpovědi se měří v letech. Přiznat nedokonalost — 'není to vždycky takhle' — buduje větší důvěryhodnost, než obrana instituce kdy dokáže. Tento třicetisekundový rozhovor může proměnit způsob, jakým Marcus mluví o policii po zbytek života.",
+        "7": "Poslední dojem určuje příběh, který lidé vyprávějí. Zakončení odpovídající emoční hloubce setkání — odmítnutí zbytečné omluvy, nabídnutí pokynů k jízdě, pojmenování matčina zotavení — zanechá tři lidi a palubní kameru s naprosto odlišnou zkušeností, než kterou očekávali. Generické 'pěkný večer' po hlubokém setkání znamená, že trvalou vzpomínkou je antiklimaks."
+    },
+    "recommendedTraining": {
+        "based_on_performance": {
+            "perfect": ["Pokročilá komunikace při dopravních kontrolách — školení ostatních v přístupech integrujících blaho", "Vedení v zapojení mládeže — budování důvěry s mladými lidmi během vymáhacích setkání", "Dokumentace shovívavosti — psaní zpráv odůvodňujících přiměřená úsudková rozhodnutí", "Mentoring v komunitní policejní práci — využití vzorových setkání jako akademického školicího materiálu"],
+            "good": ["Rozšířené techniky empatie pod tlakem — setrvání u obtížných emocí před přechodem", "Integrace kolemjdoucích — zacházení s členy komunity jako s aktivy během terénních setkání", "Pozitivní policejní práce před kamerou — budování pohodlí s pozorováním jako profesionálním standardem", "Dopad zakončení — odpovídání hloubce setkání v závěrečných slovech"],
+            "average": ["Základní principy deeskalace — zvědavost před příkazy, otázky před požadavky", "Shovívavost jako profesionální nástroj — kdy a jak efektivně používat písemná napomenutí", "Dovednosti aktivního naslouchání — zrcadlení konkrétních detailů pro budování důvěry v krizi", "Komunikace s mládeží — zapojení teenagerů bez povýšenosti, hrozeb nebo odmítání"],
+            "poor": ["Základy empatické komunikace při vymáhacích setkáních", "Povědomí o právech — nahrávání občany, emoční projev a přiměřená reakce", "Emoční regulace pod verbálním tlakem — rozlišování smutku od agrese", "Povinná revize etiky — shovívavost, důstojnost a cena odmítavosti v důvěře komunity"]
+        }
+    },
+    "finalReportStructure": {
+        "sections": [
+            {"title": "Celkové shrnutí výkonu", "content": ["Celkové skóre a výkonnostní úroveň", "Klíčové prokázané silné stránky v sedmi fázích", "Kritické slabiny vyžadující pozornost", "Celková trajektorie — zlepšovalo se setkání, nebo se zhoršovalo v průběhu času?"]},
+            {"title": "Analýza fáze po fázi", "content": ["Volba učiněná v každé ze sedmi interaktivních fází", "Dopad na pana Daviese, Marcuse, paní Marshovou a důvěru komunity", "Alternativní přístupy a jejich pravděpodobné důsledky", "Poučení specifická pro každou fázi"]},
+            {"title": "Hodnocení komunikace a tónu", "content": ["Nejlepší dialogové momenty a proč fungovaly", "Kontraproduktivní fráze a jejich dopad", "Kalibrace tónu v průběhu emočních změn — zastavení, nahrávání, výbuch, kolemjdoucí, rozhodnutí, teenager, zakončení", "Kvalita integrace označení blaha"]},
+            {"title": "Hodnocení empatie pod tlakem", "content": ["Kvalita reakce, když se pan Davies zhroutil", "Schopnost setrvat u obtížných emocí před obratem k proceduře", "Indikátory aktivního naslouchání — byly konkrétní detaily zrcadleny zpět?", "Obnovení důstojnosti v závěrečné části"]},
+            {"title": "Hodnocení shovívavosti a úsudku", "content": ["Analýza rozhodnutí o vymáhání — pokuta, napomenutí nebo propuštění", "Přiměřenost vzhledem k ověřeným polehčujícím okolnostem", "Jak bylo shovívavé rozhodnutí rámováno — profesionální úsudek nebo osobní laskavost", "Kvalita dokumentace a zodpovědnost"]},
+            {"title": "Zapojení mládeže a komunity", "content": ["Reakce na Marcusovo nahrávání — potvrzena, ignorována nebo zpochybněna", "Kvalita odpovědi na Marcusovu upřímnou otázku o policejní práci", "Integrace kolemjdoucí — paní Marshová oslovena jako aktivum nebo překážka", "Trvalý dojem na každého pozorovatele"]},
+            {"title": "Plán profesního rozvoje", "content": ["Okamžité školicí potřeby na základě výkonnostní úrovně", "Dlouhodobé priority rozvoje dovedností", "Doporučené kurzy a zdroje", "Otázky pro sebehodnocení pro průběžné zlepšování"]},
+            {"title": "Aplikace v reálném světě", "content": ["Jak se tento scénář promítá do skutečných nočních dopravních kontrol s rozrušenými řidiči", "Budování důvěry komunity skrze rutinní vymáhací setkání", "Multiplikační efekt — jak jedno dobře zvládnuté zastavení ovlivní vztah celé rodiny k orgánům činným v trestním řízení", "Policejní práce v éře kamer — každá interakce je potenciálně veřejná"]}
+        ]
+    }
+}

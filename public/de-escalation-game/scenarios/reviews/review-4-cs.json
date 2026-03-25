@@ -1,0 +1,427 @@
+{
+    "scenarioId": "4",
+    "reviewVersion": "2.0",
+    "title": "Krize duševního zdraví — Analýza výkonu",
+
+    "stageAnalysis": {
+        "1": {
+            "stageName": "Posouzení při příjezdu",
+            "criticalSkills": ["Pozorování místa před kontaktem", "Identifikace vodítek zdravotního kontextu", "Odolávání taktickému rámování u neohrožujících situací", "Řízení přístupové vzdálenosti"],
+            "learningObjective": "Posoudit místo krize duševního zdraví pozorováním spíše než akcí, identifikovat klíčové ukazatele jako nemocniční náramek, neagresivní postoj a kontext prostředí, než promluvíte s kýmkoli.",
+            "choiceAnalysis": {
+                "positive": {
+                    "choiceText": "Zastavte se asi pět metrů od ní. Věnujte třicet sekund pozorování: všimněte si řeči těla Eleny, nemocničního náramku, jejího oblečení, vzdálenosti od vchodu. Navažte klidný oční kontakt s Davidem a paní Walsh, abyste je vzali na vědomí, aniž byste k někomu spěchali.",
+                    "strengths": ["Přístup pozorování-před-kontaktem v souladu s výcvikem krizové intervence odhalí klíčové informace dříve, než padne jediné slovo", "Udržování pěti metrů vzdálenosti komunikuje bezpečí místo hrozby osobě v krizi", "Všimnutí si nemocničního náramku přeznačuje celé setkání z podezřelého chování na zdravotní kontext", "Klidný oční kontakt s Davidem a paní Walsh bere obě strany na vědomí bez upřednostňování jedné z nich", "Třicet sekund trpělivosti zabrání minutám nápravy reakce strachu způsobené spěchem"],
+                    "consequences": "Všimnete si náramku, jejího neagresivního postoje a toho, že sebou trhne při náhlých zvucích. David vidí, že klidně vyhodnocujete situaci. Paní Walsh vypadá s úlevou. Máte klíčový kontext, aniž byste řekli jediné slovo.",
+                    "trainingFocus": "Jak třicet sekund pozorování změní celý váš přístup k výjezdu kvůli duševnímu zdraví? Jaké detaily odhalí klid, které by akce přehlédla?"
+                },
+                "partially_positive": {
+                    "choiceText": "Přistupte přímo k Eleně a představte se. Ona je ta, kdo potřebuje pomoc — dostaňte se k ní rychle, než se situace změní.",
+                    "adequate": ["Dobrý instinkt upřednostnit osobu v nouzi před stěžovatelem", "Záměr pomoci je upřímný a poháněný empatií"],
+                    "missed": ["Žádné posouzení místa znamená přehlédnutí nemocničního náramku a dalšího klíčového kontextu", "Rychlý přístup k osobě v krizi duševního zdraví může vyvolat reakci boj nebo útěk", "Rychlý pohyb komunikuje naléhavost, kterou vyděšená osoba čte jako hrozbu", "Potenciální spouštěče nebyly identifikovány před kontaktem"],
+                    "improvement": "Přeměňte nutkání pomoci v záměrné pozorování. Výcvik krizové intervence učí, že nejrychlejší způsob, jak pomoci někomu v krizi, je zpomalit — posoudit místo, všimnout si zdravotních ukazatelů a přiblížit se tempem, které komunikuje klid, nikoli naléhavost."
+                },
+                "neutral": {
+                    "choiceText": "Jděte přímo k Davidovi — on volal, takže si nejprve zjistěte jeho verzi toho, co se stalo, než přistoupíte k Eleně.",
+                    "adequate": ["Logické zjistit kontext od volajícího před kontaktem", "Hledání informací před jednáním ukazuje procedurální disciplínu"],
+                    "missed": ["Elena sleduje, jak jdete k muži, který na ni zavolal policii — optika přiklánění se na jednu stranu", "Žádné nezávislé posouzení místa znamená spoléhání na Davidovo rámování", "Elenina úzkost narůstá, když dvě autoritativní postavy o ní jednají", "Potenciálně užitečnější postřehy paní Walsh zůstanou nezjištěné"],
+                    "improvement": "Krátké období pozorování před kontaktem s kýmkoli zachovává neutralitu. Osoba v krizi sleduje, s kým mluvíte jako prvním, jako signál toho, proč jste tu — přístup ke stěžovateli jí říká, že jste tu kvůli stížnosti, ne proto, že někdo potřebuje péči.",
+                    "consequences": "Získáte Davidův pohled, ale Elena vidí dvě autoritativní postavy, které o ní jednají. Přitáhne si kolena těsněji a začne se houpat rychleji. Přístup signalizuje vyšetřování, nikoli péči."
+                },
+                "negative": {
+                    "choiceText": "Okamžitě si vyžádejte posily přes rádio — nevíte, co vzala nebo co by mohla udělat. Zabezpečte oblast a držte kolemjdoucí zpátky, dokud nepřijede druhá hlídka.",
+                    "risks": ["Žádné známky nebezpečí — žádná zbraň, žádná agresivita, žádné hrozby", "Volání posil a zajišťování perimetru zachází s krizí duševního zdraví jako s taktickou situací", "Sděluje všem přítomným, že tuto ženu vnímáte jako hrozbu", "Příjezd dalších hlídek dramaticky eskaluje strach u někoho, kdo je již vyděšený", "Dispečink již uvedl žádné zbraně a žádné hrozby — posily jsou nepřiměřené"],
+                    "consequences": "Elena vidí, jak naléhavě mluvíte do vysílačky. Přijíždí druhá hlídka. Další dva strážníci se blíží. Elena je obklopena uniformami, začíná hyperventilovat a plakat. Paní Walsh protestuje. Kolemjdoucí začíná natáčet. Situace eskalovala z ženy sedící na chodníku na zásah více hlídek.",
+                    "betterApproach": "Klidně pozorujte z bezpečné vzdálenosti. Neexistují žádné ukazatele hrozby. Jeden strážník s trpělivostí a výcvikem krizové intervence je správným zdrojem — další hlídky vytvářejí krizi, které měly zabránit."
+                }
+            },
+            "keyLearningPoints": ["Třicet sekund pozorování odhalí více než deset minut nápravy špatného prvního přístupu", "Nemocniční náramek, neagresivní postoj a sebeuklidňující chování jsou klíčovými kontextovými vodítky, která přeznačují celé setkání", "Rámování dispečinku — ‚chová se podivně, možná pod vlivem něčeho' — může předpojmout váš přístup, pokud si ho nezávisle neověříte", "U výjezdů k duševnímu zdraví to, ke komu přistoupíte jako prvnímu a jak rychle se pohybujete, komunikuje více než vaše slova"]
+        },
+        "2": {
+            "stageName": "První kontakt",
+            "criticalSkills": ["Přímé oslovení vyjádřených obav", "Fyzické postavení ke snížení mocenské nerovnováhy", "Kalibrace tónu pro krizovou komunikaci", "Budování důvěry specifičností místo obecného uklidňování"],
+            "learningObjective": "Navázat první slovní kontakt s osobou v akutní krizi duševního zdraví způsobem, který přímo osloví její vyjádřený strach, sníží mocenskou nerovnováhu a vytvoří základ pro důvěru.",
+            "choiceAnalysis": {
+                "positive": {
+                    "choiceText": "Pomalu se snižte na úroveň jejích očí, mějte ruce viditelné, mluvte tiše: ‚Jmenuji se strážník [jméno]. Nejsem tu, abych vás někam odvezl. Nikdo se vás nebude dotýkat ani vás nedonutí jít někam, kam nechcete. Vidím, že to máte opravdu těžké. Můžete mi říct své jméno?'",
+                    "strengths": ["Snížení na úroveň očí fyzicky redukuje mocenskou nerovnováhu — již se nad sedící osobou netyčíte", "Viditelné ruce signalizují žádnou fyzickou hrozbu", "Přímé oslovení jejího vyjádřeného strachu — ‚nejsem tu, abych vás někam odvezl' — cílí na konkrétní hrůzu, kterou vyjádřila", "Zeptáním se na jméno jí začínáte obnovovat identitu nad rámec ‚osoby na chodníku'", "Tichý tón odpovídá emocionálnímu rejstříku, který potřebuje, nikoli procedurálnímu rejstříku policejní práce"],
+                    "consequences": "Elenino dýchání se mírně zpomalí. Po dlouhé pauze sdělí své jméno. Vytvoří se křehké vlákno důvěry. Neutekla. Nekřičela. To je pokrok.",
+                    "trainingFocus": "Proč je přímé oslovení konkrétního strachu osoby účinnější než obecné uklidňování? Jak vaše fyzické postavení vůči osobě v krizi mění její ochotu komunikovat?"
+                },
+                "partially_positive": {
+                    "choiceText": "Zůstaňte stát, ale změkčete tón: ‚Paní, jsem strážník [jméno]. Dostal jsem hlášení o někom, kdo potřebuje pomoc před lékárnou. Jste v pořádku? Potřebujete lékařskou pomoc?'",
+                    "adequate": ["Zdvořilý a profesionální tón", "Představení se jménem je přiměřené"],
+                    "missed": ["Stání nad někým, kdo sedí na zemi, udržuje mocenskou dynamiku, která působí ohrožujícně", "‚Dostal jsem hlášení' jí připomíná, že ji někdo nahlásil — je předmětem hlášení, nikoli osobou přijímající péči", "‚Potřebujete lékařskou pomoc?' je klinická otázka ano-ne, která neřeší její emocionální stav", "Její výslovný strach z návratu do nemocnice není vzat na vědomí"],
+                    "improvement": "Snižte se na úroveň jejích očí, abyste komunikovali rovnost místo autority. Nahraďte klinické otázky odpověďmi, které řeší její vyjádřený strach. Řekla vám, že se nechce vracet — vezměte to na vědomí, než se na cokoli ptáte."
+                },
+                "neutral": {
+                    "choiceText": "Klekněte si poblíž a řekněte jemně: ‚Hele, to je v pořádku. Jste v bezpečí. Slibuji, že se nic špatného nestane. Pojďme si jen promluvit, ano? Všechno bude v pořádku.'",
+                    "adequate": ["Kleknutí ukazuje dobrý instinkt ohledně fyzického postavení", "Jemný tón je přiměřený situaci"],
+                    "missed": ["Dávání slibů, které nemůžete zaručit — ‚nic špatného se nestane' — se může obrátit proti vám u někoho, kdo slyšel tato slova před traumatickými zážitky", "Obecné uklidňování bez oslovení jejího konkrétního strachu působí planě", "Řekla, že se nechce vracet do nemocnice — ten strach nebyl vzat na vědomí", "‚Všechno bude v pořádku' je typ fráze, který předcházel nesplněným slibům v její minulosti"],
+                    "improvement": "Nahraďte obecnou útěchu konkrétním uznáním. Místo ‚všechno bude v pořádku' zkuste ‚nejsem tu, abych vás někam odvezl, kam nechcete.' Oslovte strach, který skutečně vyjádřila, ne strach, který předpokládáte.",
+                    "consequences": "Elena se na vás dívá s podezřením: ‚To říkali i v nemocnici.' Vaše uklidňování jí připomnělo nesplněné sliby. Důvěra se nevytvořila."
+                },
+                "negative": {
+                    "choiceText": "Udržujte odstup, ale mluvte rázně: ‚Paní, potřebuji, abyste se uklidnila. Jsem strážník [jméno] a jsem tu, protože přišla stížnost. Můžete vstát, abychom si promluvili? Co je s tím nemocničním náramkem?'",
+                    "risks": ["‚Uklidněte se' je jedna z nejméně účinných frází v krizové intervenci — znehodnocuje emocionální stav osoby", "Žádat ji, aby vstala, je příkaz, který zvyšuje mocenský rozdíl", "Zmínka o stížnosti ji rámuje jako problém", "Upozorňování na náramek před jakýmkoli navázáním vztahu působí jako výslech", "Výzkumy opakovaně ukazují, že výzva k uklidnění má opačný účinek"],
+                    "consequences": "Elena sebou trhne při slově ‚stížnost.' Zakryje si náramek druhou rukou, stydí se. ‚Nejsem blázen. Já jen — nechte mě na pokoji!' Prudce vstane a ustoupí. Situace eskalovala.",
+                    "betterApproach": "Snižte se na její úroveň, udržujte tichý hlas a přímo oslovte strach, který vyjádřila. Začněte tím, co neuděláte — ‚nejsem tu, abych vás někam odvezl' — než se na cokoli ptáte."
+                }
+            },
+            "keyLearningPoints": ["První slova, která řeknete osobě v krizi, určují trajektorii pro vše, co následuje", "Oslovení konkrétního strachu, který někdo vyjádřil, je silnější než jakékoli obecné uklidňování", "Fyzické postavení komunikuje bezpečí nebo hrozbu dříve než slova — tyčit se nad někým na zemi je projev moci, ne péče", "Výzva k uklidnění u krize duševního zdraví spolehlivě vyvolá opačný účinek"]
+        },
+        "3": {
+            "stageName": "Shromažďování informací",
+            "criticalSkills": ["Zvládání protichůdných perspektiv zúčastněných stran", "Proměna kolemjdoucích ve zdroje informací", "Validace obav bez přiklánění se na stranu", "Ochrana osoby v krizi před zahanbením"],
+            "learningObjective": "Vyvážit požadavky majitele podniku, který chce osobu odstranit, s postřehy ochranitelské kolemjdoucí, zatímco Elena poslouchá vše a vyvozuje závěry o tom, proč jste tu.",
+            "choiceAnalysis": {
+                "positive": {
+                    "choiceText": "Oslovte oba přímo. K Davidovi: ‚Chápu, že to ovlivňuje váš obchod, a oceňuji, že jste zavolal — budu na tom pracovat. Můžete mi dát pár minut?' K paní Walsh: ‚Děkuji, že jste na ni dohlížela. To je opravdu cenné. Řekla ještě něco, co by mi mohlo pomoci pochopit její situaci?'",
+                    "strengths": ["Validuje obě strany bez přiklánění se na jednu stranu před Elenou", "Žádost o čas Davida řídí jeho očekávání bez odmítnutí jeho obav", "Poděkování paní Walsh promění kolemjdoucí ve zdroj s potenciálně klíčovými informacemi", "Elena vidí, jak zacházíte s její situací jako s něčím, co si zaslouží porozumění, ne jen odstranění", "Shromažďování informací od někoho, kdo strávil čas s Elenou před vaším příjezdem, je takticky chytré"],
+                    "consequences": "David neochotně přikývne. Paní Walsh sdělí, že Elena zmínila, že se bojí sestry, a stále se dívá na ceduli lékárny, jako by ji poznávala. Elena sleduje, jak někdo shromažďuje informace, aby jí pomohl, ne aby ji zatkl. Její postoj se uvolní.",
+                    "trainingFocus": "Jak proměna kolemjdoucích ve zdroje informací mění dynamiku z vynucování na péči? Proč záleží na tom, koho posloucháte před osobou v krizi?"
+                },
+                "partially_positive": {
+                    "choiceText": "Zaměřte se na Davida, protože je volající: ‚Vyhrožovala někomu nebo se chovala agresivně? Pokusila se vstoupit do lékárny nebo fyzicky blokovat dveře?'",
+                    "adequate": ["Dobré diagnostické otázky, které stanoví, zda existuje skutečný bezpečnostní problém nebo problém s přístupem", "Oddělení vymahatelné újmy od subjektivního nepohodlí je dobrá policejní práce"],
+                    "missed": ["Výhradní zaměření na volajícího, zatímco Elena poslouchá, vytváří dynamiku řízenou stížností", "Postřehy paní Walsh — potenciálně užitečnější — zůstanou nezjištěné", "Elena vidí strážníka upřednostňujícího výpověď majitele podniku", "Ochranitelská kolemjdoucí, která je s Elenou třicet minut, je lepší zdroj informací, než využíváte"],
+                    "improvement": "Po zjištění Davidovy výpovědi aktivně vyhledejte postřehy paní Walsh. Strávila s Elenou více času než kdokoli přítomný a může mít klíčové informace o Elenině stavu, vyjádřeních a potřebách."
+                },
+                "neutral": {
+                    "choiceText": "Řekněte Davidovi: ‚Postarám se o to. Dejte mi prostor k práci.' Pak obraťte veškerou pozornost zpět k Eleně a ignorujte paní Walsh.",
+                    "adequate": ["Návrat k Eleně je správný instinkt — ona je osobou, která potřebuje pomoc", "Žádost o prostor od Davida snižuje tlak na interakci"],
+                    "missed": ["‚Postarám se o to' nastavuje nedefinované očekávání, které si David vyplní vlastními předpoklady", "David může eskalovat, pokud se jeho obava zdá neuznána — zavolá nadřízenému nebo konfrontuje Elenu sám", "Paní Walsh má klíčové informace z času stráveného s Elenou, které jsou nyní ztracené", "Odmítnutí obou stran vás stojí informace a spojence"],
+                    "improvement": "Věnujte třicet sekund uznání Davida i paní Walsh, než se vrátíte k Eleně. Stručná validace Davidových obav a otázka paní Walsh mohou poskytnout klíčový kontext, který změní celý váš přístup.",
+                    "consequences": "David ustoupí, ale mumlá o zavolání oblastnímu manažerovi. Paní Walsh vypadá uraženě a odchází. Přišli jste o spojence, který vám mohl pomoci pochopit stav Eleny. Jste nyní sami s méně informacemi."
+                },
+                "negative": {
+                    "choiceText": "Řekněte Eleně přímo: ‚Eleno, zaměstnanec lékárny říká, že tu jste od rána a že znepokojujete zákazníky. Potřebuji pochopit, co se děje. Proč jste odešla z nemocnice?'",
+                    "risks": ["Předání stížnosti přímo Eleně ji zahanbuje — ‚znepokojujete zákazníky' říká zranitelné osobě, že je problém", "Požadování vysvětlení, proč odešla z nemocnice, narušuje její zdravotní soukromí na veřejném místě", "Tento přístup upřednostňuje získávání informací před budováním důvěry", "Elena slyší, že primární zájem strážníka je stížnost, ne její blaho"],
+                    "consequences": "Eleně se zkroutí obličej. ‚Já znepokojuji lidi? Omlouvám se. Omlouvám se. Už půjdu.' Začne vstávat, dezorientovaná a zahanbená. Paní Walsh zasáhne. Situace se destabilizuje.",
+                    "betterApproach": "Nikdy nepředávejte stížnost přímo osobě v krizi. Zvládněte stěžovatele a kolemjdoucí odděleně, shromážděte informace od obou a vraťte se k Eleně s péčí — ne s výtkami ostatních."
+                }
+            },
+            "keyLearningPoints": ["Když osoba v krizi slyší, koho posloucháte a co říkají, každé slovo formuje, zda vás vnímá jako pomocníka nebo vymahatele zákona", "Kolemjdoucí, kteří strávili čas s osobou, jsou zdroji informací — jejich odmítnutí vás stojí poznatky a spojence", "Předání stížnosti přímo osobě v krizi duševního zdraví způsobuje zahanbení a destabilizaci", "Zvládání protichůdných zúčastněných stran vyžaduje validaci každého bez přiklánění se na stranu před zranitelnou osobou"]
+        },
+        "4": {
+            "stageName": "Budování vztahu",
+            "criticalSkills": ["Aktivní naslouchání s konkrétní validací", "Obnovení pocitu kontroly prostřednictvím volby", "Odolávání nutkání řešit problém dříve, než je osoba připravena", "Přeznačení hanby na porozumění"],
+            "learningObjective": "Prohloubit důvěru s Elenou, když odhaluje změnu medikace, děsivé halucinace a útěk z nemocnice, pomocí validace a volby k udržení křehkého spojení.",
+            "choiceAnalysis": {
+                "positive": {
+                    "choiceText": "Plně naslouchejte, pak odpovězte: ‚Eleno, děkuji, že jste mi to řekla. Změna medikace způsobující hlasy musí být opravdu děsivá — dokážu pochopit, proč jste cítila, že musíte odejít. Zmínila jste svou sestru Sofii. Chtěla byste jí zavolat? Můžu vám s tím pomoct, pokud chcete, nebo můžete zavolat sama — jak vám to bude vyhovovat.'",
+                    "strengths": ["Validace konkrétního zážitku — ‚změna medikace způsobující hlasy musí být opravdu děsivá' — ukazuje, že jste naslouchali a věříte jí", "Přeznačuje její odchod z nemocnice ze zahanbujícího útěku na pochopitelnou reakci", "Nabídnutí volby v tom, jak kontaktovat Sofii — ‚můžu pomoct nebo můžete sama' — obnovuje pocit kontroly", "Každá nabídnutá volba znovu buduje pocit kontroly, který jí krize vzala", "‚Jak vám to bude vyhovovat' je formulace přizpůsobená někomu, kdo ztratil veškerý pocit kontroly"],
+                    "consequences": "Eleně se oči zalijí slzami úlevy: ‚Vy mi věříte? Ohledně těch léků?' Vytáhne telefon a požádá vás, abyste zůstali, zatímco zavolá Sofii. Vytvořilo se skutečné lidské spojení.",
+                    "trainingFocus": "Proč je obnovení pocitu volby u člověka tím nejúčinnějším nástrojem krizové deeskalace? Co sděluje víra v něčí vyprávění o jeho zážitku?"
+                },
+                "partially_positive": {
+                    "choiceText": "Přikývněte a řekněte: ‚To zní opravdu těžce, Eleno. Dovolte mi zavolat za vás — přivedeme sem vaši sestru a možná promluvíme s nemocnicí o vaší medikaci. Co říkáte?'",
+                    "adequate": ["Empatický tón a upřímná starost", "Přístup orientovaný na akci směřující k řešení"],
+                    "missed": ["‚Dovolte mi zavolat za vás' přebírá kontrolu místo nabízení volby — rozhodujete vy, ne ona", "Zmínka o nemocnici může vyvolat její strach — právě odtamtud utekla", "Plánování za ni zrcadlí ztrátu kontroly, kterou zažila v nemocnici", "Přechod k řešením dříve, než je Elena připravena, může uzavřít důvěru, která se budovala"],
+                    "improvement": "Nechte Elenu vést. Nabídněte možnosti místo přebírání kontroly. Místo ‚dovolte mi za vás zavolat' se zeptejte ‚chtěla byste jí zavolat sama, nebo chcete, abych zavolal já?' Vyhněte se zmínce o nemocnici, dokud ji Elena sama nezmíní — udělá to, až bude připravena."
+                },
+                "neutral": {
+                    "choiceText": "Řekněte: ‚Dobře, Eleno. To mi pomáhá pochopit situaci. Můžete mi říct název nemocnice a vašeho lékaře? Měl bych jim dát vědět, kde jste, aby se nebáli.'",
+                    "adequate": ["Uznání, že její informace vám pomáhají porozumět, ukazuje, že nasloucháte", "Starost o povědomí nemocnice o jejím pobytu je dobře míněná"],
+                    "missed": ["Ptát se na údaje o nemocnici a říkat, že je budete informovat, se překládá jako: ‚Strážník řekne nemocnici, kde jsem, aby si pro mě mohli přijít'", "Přešli jste z pozice partnera v rozhovoru na spojku s nemocnicí — přesně ta role, které se bojí", "Křehká důvěra, která se budovala, se hroutí pod institucionálním jazykem", "Z Eleniny perspektivy jste se právě stali osobou, která k ní přivede nemocnici"],
+                    "improvement": "Nenabízejte kontaktovat instituci, ze které osoba utekla, dokud o to výslovně nepožádá nebo nesouhlasí. Zaměřte se na to, co Elena chce — zmínila Sofii. Následujte její vedení, ne své procedurální instinkty.",
+                    "consequences": "Elenina křehká otevřenost se zhroutí: ‚Ne! Nevolejte jim. Řekla jsem vám, že se tam nevrátím!' Vstane, rozrušená, rozhlíží se po východu. Významný pokrok byl ztracen."
+                },
+                "negative": {
+                    "choiceText": "Řekněte: ‚Eleno, slyším vás. Ale je tu jedna věc — odešla jste z nemocnice bez propuštění, a to je problém. Pro vaši bezpečnost si myslím, že nejlepší je dostat vás zpátky, aby lékaři mohli vyřešit ten problém s léky. Můžu vás tam odvézt.'",
+                    "risks": ["Řekli jste vyděšené ženě, která vás prosila, abyste ji nevracel do nemocnice, že si myslíte, že nejlepší je ji vrátit", "I formulováno jako starost to potvrzuje její nejhorší obavy: policie je tu, aby ji vrátila", "‚Pro vaši bezpečnost' je fráze, která předcházela nesčetným nedobrovolným zásahům proti lidem v krizi", "Nabídka, že ji tam odvezete, zcela ignoruje absenci jejího souhlasu", "Výcvik krizové intervence zdůrazňuje, že nedobrovolný převoz by měl být vyhrazen pro bezprostřední nebezpečí — Elena tuto hranici nesplňuje"],
+                    "consequences": "Elena zpanikaří: ‚Vy jste lhal! Říkal jste, že mě nikam neodvezete!' Paní Walsh křičí. David přijde ke dveřím. Několik kolemjdoucích se zastaví. Důvěra vybudovaná pečlivou prací je zničena.",
+                    "betterApproach": "Oddělte, co někdo klinicky potřebuje, od toho, co potřebuje v tomto okamžiku, aby se cítil dostatečně bezpečně na přijetí pomoci. Elena potřebuje úpravu medikace — ale přijme ji dobrovolně, pouze pokud vám důvěřuje. Narušení té důvěry kvůli prosazení klinického výsledku zničí obojí."
+                }
+            },
+            "keyLearningPoints": ["Víra v něčí vyprávění o jeho zážitku — ‚vy mi věříte ohledně těch léků?' — je jedním z nejsilnějších aktů budování důvěry v krizové intervenci", "Nabízení možností volby namísto rozhodování za někoho obnovuje pocit kontroly, který krize duševního zdraví odnímá", "Zmínka o instituci, ze které někdo utekl, dříve než je připraven, může okamžitě zhroutit křehkou důvěru", "Rozdíl mezi tím, co někdo klinicky potřebuje, a tím, co emocionálně potřebuje v tomto okamžiku, je ústředním napětím krizové intervence"]
+        },
+        "5": {
+            "stageName": "Příjezd sestry",
+            "criticalSkills": ["Deeskalace zpaniklého rodinného příslušníka", "Prevence emocionální reeskalace", "Využití drobných úkolů k opětovnému zapojení racionálního myšlení", "Ochrana klidu, který jste vybudovali"],
+            "learningObjective": "Zvládnout příjezd Eleniny sestry Sofie, která je zpaniklá a defenzivní, způsobem, který Sofii stabilizuje dříve, než interaguje s Elenou, a zabrání tomu, aby rodinné shledání zničilo klid, který jste vybudovali.",
+            "choiceAnalysis": {
+                "positive": {
+                    "choiceText": "Promluvte k Sofii klidně, ale jasně: ‚Sofie — zhluboka se nadechněte. Elena není zatčena. Nikdo nebude zatčen. Povídali jsme si a daří se jí opravdu dobře. Vím, že jste dnes ráno prožila hodně. Můžete bezpečně zaparkovat auto a pak se k nám přidat? Elena se po vás ptala.'",
+                    "strengths": ["Sofia potřebuje vlastní deeskalaci — její panika je upřímná, ale pokud zůstane nekontrolovaná, znovu eskaluje Elenu", "‚Zhluboka se nadechněte' je direktivní, ale pečující — dává jí něco fyzického k provedení", "‚Elena není zatčena' přímo řeší Sofiin vyjádřený strach", "‚Daří se jí opravdu dobře' přeznačuje Elenu z oběti na osobu s vlastní vůlí", "Žádost, aby Sofia zaparkovala, jí dává drobný úkol, který znovu zapojí racionální myšlení a získá třicet sekund klidu", "‚Elena se po vás ptala' dává Sofii smysl a uklidnění"],
+                    "consequences": "Sofia se nadechne, přikývne, zaparkuje auto. Když se vrátí, její krok je pomalejší. Elena natáhne ruku. Sestry se drží. Rodinné shledání nahrazuje eskalaci krize.",
+                    "trainingFocus": "Proč drobný praktický úkol — jako zaparkovat auto — pomáhá někomu přejít z paniky do funkční přítomnosti? Jak stabilizace rodinného příslušníka chrání pokrok, který jste udělali s osobou v krizi?"
+                },
+                "partially_positive": {
+                    "choiceText": "Oslovte Sofii okamžitě: ‚Vy musíte být Sofia. Jsem rád, že jste tu. Elena vás zmiňovala. Je v pořádku — jen jsme si povídali. Pojďte sem, bude ráda, že vás vidí.'",
+                    "adequate": ["Vřelé a vstřícné — validuje Sofiinu přítomnost a spojení s Elenou", "Identifikace Sofie jménem a odkaz na Elenina slova ukazuje pozornost"],
+                    "missed": ["Sofiin emocionální stav nebyl zvládnut před přivedením k Eleně", "Sofia je stále v panice — pláče, je zoufalá, má zvýšený hlas", "Přivedení zpanické Sofie přímo ke křehké Eleně riskuje emocionální zahlcení, které zmaří vaši pečlivou práci", "Žádný zklidňující mechanismus před shledáním"],
+                    "improvement": "Vložte krátký stabilizační krok před umožněním kontaktu. Požádejte Sofii, aby zaparkovala auto, zhluboka se nadechla nebo se prostě na deset sekund zastavila. Krátká prodleva převede její paniku do přítomnosti a ochrání klid, který jste s Elenou vybudovali."
+                },
+                "neutral": {
+                    "choiceText": "Přistupte k Sofii a ztište hlas: ‚Paní, potřebuji, abyste se uklidnila. Rozumím, že jste rozrušená, ale potřebuji se vás zeptat na pár otázek ohledně zdravotního stavu Eleny — jaké léky bere, kdy byla propuštěna, kdo je její lékař.'",
+                    "adequate": ["Pokus o zvládnutí Sofiina emocionálního stavu ukazuje povědomí, že její panika je faktor", "Lékařské otázky mohou přinést užitečné informace"],
+                    "missed": ["‚Uklidněte se' odmítá Sofiiny emoce stejně, jako by odmítlo Eleniny", "Okamžité přejití k lékařským otázkám zachází se Sofiou jako se zdrojem informací, ne jako s vyděšenou příbuznou", "Elena slyší, jak žádáte její soukromé zdravotní údaje od její sestry na veřejnosti", "O Eleně se mluví, ne s ní — stává se předmětem jednání místo účastníkem"],
+                    "improvement": "Řešte Sofiin emocionální stav dříve, než začnete získávat informace. Ubezpečte ji, že Elena je v bezpečí a nemá právní problémy. Lékařské otázky mohou přijít později — v tomto okamžiku Sofia potřebuje slyšet, že její sestra je v pořádku, a Elena potřebuje neslyšet svou soukromou anamnézu probíranou na veřejnosti.",
+                    "consequences": "Sofia poskytuje informace přes slzy, ale Elena sleduje s narůstající úzkostí: ‚Přestaňte o mně mluvit, jako bych tu nebyla!' Dynamika se mění na autoritativní postavy diskutující o předmětu jednání, přičemž Elena je odstavena."
+                },
+                "negative": {
+                    "choiceText": "Zvedněte ruku k Sofii: ‚Paní, potřebuji, abyste se zastavila. Toto je aktivní situace a potřebuji, abyste zůstala zpátky, dokud nedokončím své posouzení. Přivedu vás k ní, až to bude vhodné.'",
+                    "risks": ["Bránění sestře v přístupu k její vyděšené sestřičce je funkčně kruté, když neexistuje bezpečnostní důvod", "Elena se po Sofii ptala — odepření tohoto shledání nikomu neslouží", "‚Aktivní situace' a ‚zůstaňte zpátky' je taktický jazyk pro rodinný okamžik", "Přihlížející vidí policejního strážníka bránícího plačící ženě dostat se k její sestře", "Každý vztah vybudovaný s Elenou, paní Walsh a kolemjdoucími se okamžitě rozpadá"],
+                    "consequences": "Sofia vybuchne: ‚To je moje sestra! Nemůžete mi bránit se k ní dostat!' Elena křičí ‚Sofie!' a vstane, rozrušená. Paní Walsh hlasitě protestuje. Každý vybudovaný vztah se hroutí.",
+                    "betterApproach": "Když neexistuje bezpečnostní důvod držet příbuzného stranou, usnadněte shledání — ale nejprve zvládněte emocionální stav příbuzného. Desetisekundová pauza, aby se Sofia nadechla, chrání Elenu, aniž by jí odepřela osobu, po které se ptala."
+                }
+            },
+            "keyLearningPoints": ["Přijíždějící rodinní příslušníci v krizi potřebují vlastní deeskalaci — jejich panika může znovu eskalovat osobu, kterou jste uklidnili", "Drobný praktický úkol jako zaparkovat auto převede někoho z paniky do funkčního myšlení během sekund", "Diskuse o soukromých zdravotních informacích osoby před ní a na veřejnosti z ní dělá předmět jednání místo účastníka", "Když neexistuje bezpečnostní důvod blokovat rodinné shledání, činit tak je vnímáno jako krutost — rodinou i každým přihlížejícím"]
+        },
+        "6": {
+            "stageName": "Propojení s podporou",
+            "criticalSkills": ["Nabízení strukturovaných možností volby v plánu péče", "Rozlišení pohotovosti od lůžkové péče k oslovení konkrétních obav", "Znalost alternativ mimo nemocnici", "Udržení osoby ve středu jejího vlastního plánu péče"],
+            "learningObjective": "Usnadnit dobrovolný plán péče, který řeší Eleniny skutečné zdravotní potřeby a zároveň respektuje její odmítnutí návratu na lůžkové oddělení, pomocí strukturovaných možností volby a znalostí dostupných krizových zdrojů.",
+            "choiceAnalysis": {
+                "positive": {
+                    "choiceText": "Promluvte k oběma: ‚Eleno, to, že víte, že je třeba řešit medikaci, mi hodně napovídá — to vyžaduje skutečnou sílu. Tady jsou některé možnosti a vy si vyberete: Sofia může teď zavolat doktorce Reeves, nahlásit vedlejší účinky a získat urgentní poradenství. Mohla byste také jet na pohotovost se Sofiou — ne na lůžkové oddělení, jen na pohotovost kvůli vyhodnocení medikace. Nebo pokud byste raději, můžu zavolat náš mobilní krizový tým, aby sem přijel a pomohl vám promyslet další kroky. Co je pro vás zvládnutelné?'",
+                    "strengths": ["Ocenění Elenina sebeuvědomění — ‚to vyžaduje skutečnou sílu' — buduje důstojnost místo závislosti", "Představení tří konkrétních možností s jejím výběrem plně obnovuje pocit kontroly", "Rozlišení pohotovosti od lůžkového oddělení řeší její konkrétní strach s přesností", "Zmínka o mobilním krizovém týmu ukazuje znalost alternativ mimo nemocnici", "‚Co je pro vás zvládnutelné?' je formulace přizpůsobená někomu, jehož svět se zdá nezvládnutelný", "Každý prvek je založen na souhlasu a volbě — zlatý standard praxe krizové intervence"],
+                    "consequences": "Elena se podívá na Sofii: ‚Můžeme nejdřív zavolat doktorce Reeves? A pak možná na pohotovost, pokud to řekne. Ale ne na oddělení.' Plán se formuje — Elenin plán, ne váš.",
+                    "trainingFocus": "Proč nabízení strukturovaných možností volby přináší lepší výsledky než nabídka jediného doporučení? Jak rozlišení mezi typy zdravotnických zařízení řeší konkrétní strach místo obecné kategorie?"
+                },
+                "partially_positive": {
+                    "choiceText": "Řekněte Sofii: ‚Myslím, že zavolat doktorce Reeves je dobrý začátek. Pokud doporučí pohotovost, měla byste tam Elenu odvézt. Můžu tu počkat, zatímco budete volat.'",
+                    "adequate": ["Praktická a rozumná cesta vpřed", "Odkázání na úsudek psychiatričky je zdravotně přiměřené", "Nabídka čekání ukazuje odhodlání situaci dotáhnout"],
+                    "missed": ["Plán je směřován přes Sofii a obchází Elenu, která sedí hned vedle", "Elena vyjádřila vlastní pochopení toho, co potřebuje — mluvení kolem ní pokračuje ve vzorci, kdy o ní rozhodují druzí", "Je nabídnuta pouze jedna cesta místo prozkoumání alternativ jako mobilní krizový tým", "Elena se stává pasivní ve svém vlastním plánu péče místo tvůrkyní rozhodnutí"],
+                    "improvement": "Oslovte Elenu přímo a nabídněte více možností. I když věříte, že zavolání doktorce Reeves je nejlepší cesta, představte ji jako jednu z několika voleb — včetně alternativ mimo nemocnici — a nechte Elenu rozhodnout. Samotný proces volby je stejně terapeutický jako volba samotná."
+                },
+                "neutral": {
+                    "choiceText": "Řekněte: ‚Slyším vás, Eleno. Nikdo vás nebude nikam nutit. Jen si dejte čas. Až budete připravená, vy a Sofia si můžete promyslet, co dělat.' Ustupte a nechte sestry mluvit.",
+                    "adequate": ["Plně respektuje Eleninu autonomii", "Nevnucuje žádný postup", "Ustoupení vytváří prostor pro sestry"],
+                    "missed": ["Respektuje autonomii, ale vzdává se role strážníka jako zprostředkovatele zdrojů", "Ani Elena, ani Sofia není v pozici samostatně zvládat složitá zdravotní rozhodnutí", "Nikdo se znalostí dostupných krizových zdrojů nevede proces", "Pasivní podpora je nedostatečná, když je někdo v akutní krizi — potřebují informované možnosti, ne jen svolení k volbě"],
+                    "improvement": "Autonomie neznamená opuštění. Nabídka informovaných možností — psychiatr, pohotovost, mobilní krizový tým — není kontrolování výsledku. Je to poskytnutí zdrojů, které někdo potřebuje k smysluplnému uplatnění své autonomie.",
+                    "consequences": "Sestry sedí spolu. Čas plyne. Ani jedna neví, co dělat dál. David vyjde ven s dotazem, jestli tu budou sedět celý den. Absence pokroku vytváří vakuum, které naplní frustrace."
+                },
+                "negative": {
+                    "choiceText": "Řekněte: ‚Eleno, chápu, že se nemocnice bojíte, ale situace s léky by mohla být nebezpečná. Myslím, že nejbezpečnější je, abych zajistil převoz na pohotovost, kde vás zdravotníci vyšetří. Sofia může jet s vámi.'",
+                    "risks": ["‚Zajistit převoz na pohotovost' je klinická formulace pro zavolání sanitky — Elena přesně ví, co to znamená", "Přehlížíte její vyjádřená přání na základě vlastního posouzení zdravotního rizika, což není vaše odbornost", "Výslovně řekla, že nemůže čelit nemocnici, a vy nyní věc prosazujete", "Výcvik krizové intervence zdůrazňuje, že nedobrovolný převoz by měl být vyhrazen pro bezprostřední nebezpečí pro sebe nebo okolí — Elena tuto hranici nesplňuje", "Sofia řekla, že nechce Elenu nutit — vy jste nyní ten, kdo nutí"],
+                    "consequences": "Elena se odtáhne: ‚Ne! Říkal jste, že si můžu vybrat! Slíbil jste!' Sofia se postaví mezi vás a Elenu. Křehká důvěra se hroutí. Elena může utéct.",
+                    "betterApproach": "Když vaše posouzení zdravotní potřeby je v rozporu s vyjádřenými přáními osoby a nehrozí bezprostřední nebezpečí, její přání mají přednost. Nabídněte alternativy, které řeší zdravotní obavy bez opětovného zavedení obávané instituce. Telefonát psychiatričce, návštěva mobilního krizového týmu nebo dobrovolná návštěva pohotovosti za jejích podmínek — to vše jsou cesty, které ctí bezpečnost i souhlas."
+                }
+            },
+            "keyLearningPoints": ["Nabídka tří strukturovaných možností volby vytváří dobrovolný plán péče; nabídka jediného doporučení vyvolává odpor nebo pasivní souhlas", "Rozlišení mezi typy zdravotnických zařízení — pohotovost versus lůžkové oddělení — řeší konkrétní strach místo vyvolání obecného", "Znalost alternativ mimo nemocnici, jako jsou mobilní krizové týmy, je nezbytná pro strážníky s výcvikem krizové intervence", "Udržení osoby ve středu jejího vlastního plánu péče není jen uctivé — přináší lepší dlouhodobé výsledky než plány vnucené druhými"]
+        },
+        "7": {
+            "stageName": "Rozuzlení",
+            "criticalSkills": ["Uzavření obnovující důstojnost", "Poskytnutí krizových zdrojů pro budoucí potřeby", "Uznání přínosu kolemjdoucích", "Přeznačení omluvy na odvahu"],
+            "learningObjective": "Uzavřít interakci obnovením Eleniny důstojnosti, poskytnutím hmatatelných krizových zdrojů pro budoucí epizody a uznáním komunitní podpory, která přispěla k bezpečnému rozuzlení.",
+            "choiceAnalysis": {
+                "positive": {
+                    "choiceText": "Posaďte se vedle Eleny na lavičku: ‚Eleno, nemusíte se omlouvat. Čelila jste něčemu děsivému a skončila jste na bezpečném místě a požádala o pomoc — to vyžaduje odvahu, ne omluvu. Než odejdu, chci se ujistit, že tohle máte.' Napište číslo místní krizové linky a mobilního krizového týmu. ‚Toto je pro případ, že byste někdy potřebovala podporu a nemohla se dovolat doktorce Reeves nebo Sofii. Funguje 24 hodin denně a přijedou za vámi.' Pak k paní Walsh: ‚Děkuji vám, že jste s ní zůstala — to mělo větší význam, než si dokážete představit.'",
+                    "strengths": ["Přeznačení její omluvy — ‚to vyžaduje odvahu, ne omluvu' — je silný projev obnovení důstojnosti", "Poskytnutí písemných krizových kontaktů zajišťuje, že má možnosti i po tomto setkání", "Specifikace ‚24 hodin denně a přijedou za vámi' řeší realitu nočních krizí", "Uznání paní Walsh validuje komunitní péči a povzbuzuje podporu kolemjdoucích", "Posazení se vedle ní na lavičku — ne stání nad ní — odpovídá rovnosti, kterou jste udržovali celou dobu", "Toto je zlatý standard krizového rozuzlení: konkrétní pomoc, emocionální validace a lidská vřelost"],
+                    "consequences": "Elena drží papír s číslem krizové linky. Má plán, sestru, telefonní číslo a vzpomínku na strážníka, který se k ní choval jako k člověku. Sofia beze slov artikuluje ‚děkuji.' Setkání končí propojením, nikoli zásahem.",
+                    "trainingFocus": "Co sděluje poskytnutí zdrojů po krizi o tom, jak vnímáte budoucnost dané osoby? Jaký je rozdíl mezi vyřešením incidentu a vybudováním záchranné sítě pro další?"
+                },
+                "partially_positive": {
+                    "choiceText": "Usmějte se a řekněte: ‚Jsem rád, že se to podařilo vyřešit, Eleno. Jste v dobrých rukou se Sofiou. Opatrujte se.' Kývněte na paní Walsh a chystejte se k odchodu.",
+                    "adequate": ["Vřelé a lidské uzavření, které udržuje spojení vybudované během setkání", "Vyjádření upřímné radosti z výsledku je emocionálně přiměřené", "Uznání Sofiiny role posiluje rodinný podpůrný systém"],
+                    "missed": ["Žádné následné zdroje poskytnuty — Elenina krize nezačala dnes a dnes neskončí", "Co ve tři ráno, když Sofia bude spát a hlasy se vrátí?", "Dobrý strážník vyřeší okamžik — výjimečný strážník vybaví člověka pro další okamžik", "Paní Walsh dostane kývnutí, ale ne uznání, které si její hodiny tiché ochrany zaslouží"],
+                    "improvement": "Před odchodem napište číslo krizové linky a kontakt na mobilní krizový tým. Trvá to třicet sekund a může to zachránit život během další epizody. Rozdíl mezi dobrým rozuzlením a skvělým je v tom, zda je osoba lépe vybavena po vašem odchodu."
+                },
+                "neutral": {
+                    "choiceText": "Řekněte: ‚Není se za co omlouvat, Eleno. Jen se ujistěte, že navštívíte svého lékaře a příště neodcházejte z nemocnice bez řádného propuštění. Vyvolává to hodně starostí pro všechny.'",
+                    "adequate": ["Nepřijetí zbytečné omluvy je přiměřené", "Návštěva lékaře je rozumná zdravotní rada"],
+                    "missed": ["‚Příště neodcházejte z nemocnice' je mírná výtka adresovaná člověku, který odešel, protože byl vyděšený", "‚Vyvolává to starostí pro všechny' přenáší břemeno emocí ostatních na osobu v krizi", "Uzavření se proměňuje ze soucitného rozuzlení v ponaučení", "Žádné krizové zdroje poskytnuty pro budoucí epizody"],
+                    "improvement": "Poslední slova setkání formují trvalou emocionální vzpomínku. Uzavřete důstojností a zdroji, ne radami o tom, co měla udělat jinak. Ví, že odešla z nemocnice — nepotřebuje, abyste jí říkali, ať to příště nedělá.",
+                    "consequences": "Elena tiše přikývne, teplo mizí z jejího výrazu. Slyší: ‚Způsobila jste problém, zkuste to příště neopakovat.' Poslední slova setkání nesou bodnutí, které barví vzpomínku na celou interakci."
+                },
+                "negative": {
+                    "choiceText": "Řekněte: ‚Dobře. Potřebuji od vaší sestry kontaktní údaje a jméno lékaře pro mou zprávu. Budu si také muset poznamenat nemocniční náramek a skutečnost, že jste odešla bez propuštění. Všechno je to standardní dokumentace.'",
+                    "risks": ["Přechod ke sběru dat v závěrečných chvílích proměňuje lidské setkání v byrokratické", "‚Standardní dokumentace' o jejím odchodu z nemocnice způsobuje, že se Elena cítí jako spisová složka", "Vyžadování jména lékaře a nemocničních údajů znovu vyvolává instituci, které se bojí", "Posledním dojmem je strážník zapisující si fakta o její krizi — ne člověk, který se staral", "Dokumentace může proběhnout později nebo přes Sofii soukromě — nemusí probíhat v tomto okamžiku"],
+                    "consequences": "Elenin obličej ztuhne. Odrecituje informace bezvýrazně. Sofia se dívá se zklamáním. Paní Walsh odchází. Teplo rozuzlení se vypaří. Elena si bude pamatovat tento konec, ne laskavost, která mu předcházela.",
+                    "betterApproach": "Dokumentace je nutná — ale na načasování záleží. Uzavřete lidskou interakci důstojností a zdroji. Podrobnosti pro dokumentaci zjistěte od Sofie později nebo následným telefonátem. Posledních šedesát sekund formuje trvalou vzpomínku na celé setkání."
+                }
+            },
+            "keyLearningPoints": ["Poslední slova krizového setkání formují trvalou emocionální vzpomínku na celou interakci", "Poskytnutí písemných krizových kontaktů — 24hodinová linka, mobilní krizový tým — proměňuje vyřešení incidentu v trvalou záchrannou síť", "Přeznačení omluvy osoby na uznání její odvahy je silný akt obnovení důstojnosti", "Dokumentace má své místo, ale proměna soucitného rozuzlení v cvičení sběru dat zničí důvěru, kterou jste budovali celou hodinu"]
+        }
+    },
+
+    "scoringExplanation": {
+        "maxPossibleScore": 87,
+        "scoreBreakdown": {
+            "stage1_arrivalAssessment": "12 bodů (pozitivní), 5 (částečně pozitivní), 2 (neutrální), -8 (negativní)",
+            "stage2_firstContact": "12 bodů (pozitivní), 5 (částečně pozitivní), 2 (neutrální), -8 (negativní)",
+            "stage3_gatheringInformation": "12 bodů (pozitivní), 5 (částečně pozitivní), 2 (neutrální), -8 (negativní)",
+            "stage4_buildingRapport": "12 bodů (pozitivní), 5 (částečně pozitivní), 2 (neutrální), -10 (negativní)",
+            "stage5_theSisterArrives": "12 bodů (pozitivní), 5 (částečně pozitivní), 2 (neutrální), -10 (negativní)",
+            "stage6_connectingToSupport": "12 bodů (pozitivní), 5 (částečně pozitivní), 2 (neutrální), -8 (negativní)",
+            "stage7_resolution": "15 bodů (pozitivní), 5 (částečně pozitivní), 2 (neutrální), -5 (negativní)"
+        },
+        "performanceThresholds": {
+            "perfect": "80–87 bodů — Příkladná krizová intervence: Reakce zlatého standardu s pozorováním, komunikací založenou na souhlasu, dovedným zvládnutím rodiny a komplexním propojením se zdroji",
+            "good": "50–79 bodů — Silná krizová reakce: Empatický a profesionální přístup s některými promarněnými příležitostmi v nabízení volby, zvládání rodiny nebo poskytování zdrojů",
+            "average": "20–49 bodů — Adekvátní, ale neúplné: Situace vyřešena bez výrazné eskalace, ale významné příležitosti krizové intervence promeškány — procedury upřednostněny před péčí v klíčových momentech",
+            "poor": "Pod 20 bodů — Vyžaduje výraznou revizi výcviku krizové intervence: Přístup spoléhal na kontrolu, příkazy nebo procedurální dodržování pravidel místo klidného přístupu založeného na souhlasu, který výcvik krizové intervence zdůrazňuje"
+        }
+    },
+
+    "comprehensiveMetrics": {
+        "crisisRecognition": {
+            "description": "Identifikace situace jako krize duševního zdraví vyžadující přístup založený na péči, namísto zacházení s ní jako s kriminálním nebo podezřelým chováním",
+            "indicators": {
+                "excellent": ["Nemocniční náramek identifikován při prvním pozorování a využit k přeznačení setkání", "Elenino houpání a samomluva rozpoznány jako ukazatele úzkosti, ne jako známky užívání látek nebo nebezpečí", "Rámování dispečinku (‚chová se podivně, možná pod vlivem něčeho') přehodnoceno nezávislým posouzením", "Žádné posily vyžádány u neohrožující situace — zachován přístup jednoho strážníka s výcvikem krizové intervence", "Vedlejší účinky medikace pochopeny jako příčina Elenina chování, nikoli kriminální záměr"],
+                "poor": ["Posily vyžádány navzdory absenci ukazatelů hrozby — taktická reakce na zdravotní situaci", "Elenina samomluva považována za známku užívání látek nebo nebezpečí místo úzkosti", "Nemocniční náramek nepovšimnut nebo využit výslechově místo jako kontext", "Rámování dispečinku přijato bez nezávislého posouzení", "Elena vnímána jako podezřelá osoba místo osoby v zdravotní krizi"]
+            }
+        },
+        "calmPresence": {
+            "description": "Využití vzdálenosti, tónu, řeči těla a nespěchajícího tempa ke komunikaci bezpečí namísto autority",
+            "indicators": {
+                "excellent": ["Udržována pětimetrová vzdálenost při prvním pozorování — žádný spěch ke kontaktu", "Snížení na úroveň Eleniných očí při prvním kontaktu místo tyčení se nad ní", "Tichý hlas a viditelné ruce použity v celém průběhu setkání", "Eleně poskytnuty dlouhé pauzy k odpovědi bez vyplňování ticha příkazy", "Tempo interakce odpovídalo Eleninu emocionálnímu stavu, ne procedurální naléhavosti"],
+                "poor": ["Rychlý přístup, který vyvolal Eleninu reakci boj nebo útěk", "Stání nad sedící osobou po celou dobu rozhovoru — udržována mocenská nerovnováha", "Rázný nebo rozkazovačný tón použit na vyděšenou osobu", "‚Uklidněte se' použito jako pokyn — výzkumy ukazují, že to eskaluje místo deeskaluje", "Tempo kontaktu řízeno procedurální efektivitou místo Eleninou připraveností"]
+            }
+        },
+        "consentAndChoice": {
+            "description": "Nabízení možností namísto příkazů, obnovení pocitu kontroly u člověka, který cítí, že veškerou kontrolu ztratil",
+            "indicators": {
+                "excellent": ["Více možností nabídnuto pro kontaktování Sofie — ‚můžu pomoct nebo můžete sama'", "Tři konkrétní možnosti péče představeny ve fázi plánování s Eleniným výběrem", "Pohotovost odlišena od lůžkového oddělení pro přesné oslovení jejího konkrétního strachu", "Elenino odmítnutí návratu do nemocnice respektováno bez nátlaku", "Každý rozhodovací bod rámován jako Elenina volba — ‚co je pro vás zvládnutelné?'"],
+                "poor": ["Rozhodnutí činěna za Elenu a sdělována jako plány — ‚zajistím převoz'", "Návrat do nemocnice představen jako jediná nebo nejlepší možnost navzdory Eleninu vyjádřenému strachu", "Plán péče směřován přes Sofii, zcela obcházející Elenu", "Elenino výslovné odmítnutí přehlíženo na základě strážníkova posouzení zdravotní potřeby", "Příkazy použity tam, kde by volby dosáhly dobrovolné spolupráce"]
+            }
+        },
+        "serviceConnection": {
+            "description": "Propojení osoby s odpovídajícími zdroji péče o duševní zdraví namísto automatického přistoupení k represivnímu řešení nebo nemocničnímu převozu",
+            "indicators": {
+                "excellent": ["Písemné číslo krizové linky a kontakt na mobilní krizový tým poskytnuty před odchodem", "Prokázána znalost alternativ mimo nemocnici — mobilní krizový tým nabídnut jako možnost", "Doktorka Reeves a existující podpůrná síť integrovány do plánu péče", "Zdroje specifikovány jako 24hodinové a mobilní — řešení reality nočních krizí", "Elena odchází s více možnostmi podpory, než měla před setkáním"],
+                "poor": ["Žádné krizové zdroje poskytnuty — setkání řeší okamžik, ale ne průběžnou potřebu", "Automaticky přistoupeno k nemocničnímu převozu bez prozkoumání alternativ", "Mobilní krizový tým a krizová linka nezmíněny ani nabídnuty", "Elena odchází se stejnými zdroji jako předtím — pouze Sofia a doktorka Reeves", "Setkání vyřešilo incident, ale nevybudovalo záchrannou síť pro další"]
+            }
+        },
+        "stigmaAvoidance": {
+            "description": "Zacházení s osobou jako s lidskou bytostí v bolesti, nikoli jako s problémem k vyřešení, vyhýbání se jazyku a jednání, které kriminalizuje duševní onemocnění",
+            "indicators": {
+                "excellent": ["Elenin odchod z nemocnice přeznačen ze zahanbujícího útěku na pochopitelnou reakci", "Její omluva přeznačena — ‚to vyžaduje odvahu, ne omluvu'", "Stížnost nepředána Eleně — nebyla jí sdělena informace, že ‚znepokojuje zákazníky'", "Zdravotní informace neprobírány veřejně ani nezískávány od Sofie před Elenou", "Elenino sebeuvědomění ohledně potřeby pomoci s léky oceněno jako síla, ne jako pouhá shoda"],
+                "poor": ["Stížnost předána přímo Eleně — ‚znepokojujete zákazníky'", "Nemocniční náramek výslechově zmíněn před vybudováním vztahu", "Elenina zdravotní situace probírána mezi strážníkem a Sofiou, zatímco Elena poslouchala jako předmět jednání", "Eleně řečeno, aby příště neodcházela z nemocnice — výtka rámovaná jako rada", "Dokumentace a sběr dat upřednostněny před lidským uzavřením v závěrečných momentech"]
+            }
+        }
+    },
+
+    "mistakePatterns": {
+        "tacticalOverreaction": {
+            "pattern": "Zacházení s krizí duševního zdraví jako s taktickou situací vyžadující posily, kontrolu perimetru nebo rychlý zásah",
+            "examples": ["Volání posil přes rádio, když neexistují žádné ukazatele hrozby — žádná zbraň, žádná agresivita, žádné hrozby", "Rychlý přístup k Eleně ve snaze ‚pomoci, než se situace změní' — vyvolání její reakce boj nebo útěk", "Použití rázného tónu a příkazů jako ‚potřebuji, abyste se uklidnila' nebo ‚můžete vstát'", "Zabezpečení oblasti a držení kolemjdoucích zpátky, jako by se jednalo o nebezpečnou scénu"],
+            "impact": "Taktické rámování krize duševního zdraví sděluje osobě i všem přihlížejícím, že je vnímána jako hrozba. Další hlídky, rychlý přístup a kontrola perimetru eskalují strach u někoho, kdo je již vyděšený. Reakce vytváří krizi, které měla zabránit.",
+            "correction": "Pozorujte před jednáním. Jeden strážník s výcvikem krizové intervence a trpělivostí je správným zdrojem pro neohrožující výjezd k duševnímu zdraví. Taktické reakce si ponechte pro situace se skutečnými ukazateli hrozby. Třicet sekund klidu zabrání třiceti minutám eskalace."
+        },
+        "prematureProblemSolving": {
+            "pattern": "Přeskakování k řešením, kontaktu s nemocnicí nebo plánům péče dříve, než si osoba vybuduje dostatek důvěry k přijetí pomoci",
+            "examples": ["Nabídka kontaktovat nemocnici dříve, než je Elena připravena — ‚měl bych jim dát vědět, kde jste'", "Zmínka o nemocnici, když se Elena právě začínala otevírat o svém strachu z ní", "Plánování přes Sofii, zatímco Elena pasivně sedí — ‚dovolte mi za vás zavolat'", "Navržení převozu na pohotovost bez představení alternativ nebo dotazu, co Elena chce"],
+            "impact": "Řešení problémů před vybudováním důvěry působí jako kontrola, ne péče. Když navrhované řešení zahrnuje instituci, ze které osoba utekla, předčasné řešení problémů potvrzuje její nejhorší obavy. Elenina křehká otevřenost se zhroutí pokaždé, když je nemocnice zmíněna dříve, než je připravena.",
+            "correction": "Následujte vedení osoby. Když Elena zmíní Sofii, pomožte jí kontaktovat Sofii. Když Elena uzná, že potřebuje pomoc s léky, pak nabídněte možnosti péče. Budování důvěry a hledání řešení jsou sekvenční, ne simultánní. Osoba vám řekne, kdy je připravena — naslouchejte tomu."
+        },
+        "agencyBypass": {
+            "pattern": "Rozhodování za osobu v krizi místo nabízení možností volby, i s dobrými úmysly",
+            "examples": ["Směřování plánu péče přes Sofii — ‚myslím, že zavolat doktorce Reeves je dobrý začátek' — zatímco Elena pasivně sedí", "Zajišťování převozu na pohotovost bez Elenina souhlasu — ‚myslím, že nejbezpečnější je zajistit převoz'", "Převzetí telefonátu Sofii místo nabídky Eleně volby, jak se s ní spojit", "Úplné ustoupení a ponechání Eleny a Sofie, aby si poradily samy bez informovaných možností"],
+            "impact": "Elenina krize začala ztrátou kontroly — děsivé halucinace, neznámá sestra, nemocnice, ze které nemohla odejít. Každý okamžik, kdy někdo jiný za ni rozhoduje, opakuje dynamiku, která ji přiměla k útěku. I dobře míněné plány vnucené druhými vyvolávají podřízenost, ne posílení.",
+            "correction": "Nabídněte strukturované možnosti volby a nechte osobu vybrat. ‚Chtěla byste jí zavolat sama, nebo chcete, abych zavolal já?' ‚Tady jsou tři možnosti — co je pro vás zvládnutelné?' Samotný proces volby je terapeutický pro někoho, kdo ztratil veškerý pocit kontroly."
+        },
+        "familyMismanagement": {
+            "pattern": "Selhání ve stabilizaci zpaniklého rodinného příslušníka před umožněním kontaktu s osobou v krizi",
+            "examples": ["Přivedení Sofie přímo k Eleně bez zvládnutí Sofiiny paniky — vedoucí k emocionálnímu zahlcení", "Úplné zablokování přístupu Sofie k Eleně, když neexistuje bezpečnostní důvod", "Využití Sofie jako zdroje zdravotních informací před Elenou — ‚jaké léky bere?'", "Výzva Sofii k uklidnění a okamžité získávání zdravotních údajů"],
+            "impact": "Zpaniklý rodinný příslušník, který hledal celé hodiny, nese obrovskou emocionální energii. Nezvládnutá, tato energie zaplaví osobu v krizi: Sofiiny vzlyky a uchopení zruší klid vybudovaný pečlivou deeskalací. Zcela zablokované shledání je vnímáno jako krutost všemi přítomnými.",
+            "correction": "Stabilizujte rodinného příslušníka krátkým praktickým úkolem — ‚bezpečně zaparkujte auto a pak se k nám přidejte.' Tento desetisekundový přechod změní paniku ve funkční přítomnost. Pak usnadněte shledání. Zdravotní údaje probírejte s příbuzným soukromě, ne před osobou v krizi."
+        },
+        "closureFailure": {
+            "pattern": "Ukončení setkání bez poskytnutí zdrojů, nebo ukončení výtkami či dokumentací, které narušují vybudovanou důvěru",
+            "examples": ["Odchod bez poskytnutí čísla krizové linky nebo kontaktu na mobilní krizový tým", "Výtka Eleně, aby příště neodcházela z nemocnice — proměna uzavření v ponaučení", "Přechod k dokumentaci a sběru dat v závěrečných momentech — ‚potřebuji jméno lékaře pro zprávu'", "Sdělení ‚vyvolává to starostí pro všechny' — přenesení břemene emocí ostatních na Elenu"],
+            "impact": "Posledních šedesát sekund setkání formuje trvalou emocionální vzpomínku na celou interakci. Vřelý třicetiminutový rozhovor následovaný výtkou nebo byrokratickým sběrem dat je zapamatován jako výtka. Elenina vzpomínka na toto setkání — která formuje, zda kdy znovu bude důvěřovat policii — je určena tím, jak skončilo, ne tím, jak začalo.",
+            "correction": "Uzavřete důstojností a zdroji. Přeznačte omluvy na uznání odvahy. Poskytněte písemné krizové kontakty. Uznejte přínosy kolemjdoucích. Dokumentaci si ponechte na dobu po dokončení lidské interakce. Na posledních slovech záleží nejvíce."
+        }
+    },
+
+    "personalizedFeedback": {
+        "templates": {
+            "allPositive": "Příkladná krizová intervence od prvního pozorování po závěrečné předání zdrojů. Předvedli jste kompletní soubor dovedností krizové intervence: trpělivé pozorování, které odhalilo nemocniční náramek dříve, než jste řekli jediné slovo, postavení na úrovni očí a přímé uznání Eleniných vyjádřených obav, dovedné zvládnutí protichůdných perspektiv zúčastněných stran, komunikace založená na volbě, která obnovila Elenin pocit kontroly v každém rozhodovacím bodě, klidná stabilizace Sofie před rodinným shledáním a komplexní poskytnutí zdrojů, které Elenu vybavilo pro další krizi, ne jen pro tuto. Každý na té ulici — Elena, Sofia, paní Walsh, David a každý kolemjdoucí — viděl strážníka, který zacházel s osobou v krizi duševního zdraví jako s lidskou bytostí zasloužující si důstojnost a volbu.",
+            "mostlyPositive": "Silná krizová intervence s upřímnou empatií a instinkty v souladu s výcvikem krizové intervence. Vybudovali jste smysluplný vztah s Elenou a směřovali k dobrovolnému řešení, které respektovalo její autonomii. Některé okamžiky mohly být silnější — možná v nabízení více strukturovaných možností volby, zvládnutí Sofiina emocionálního stavu před shledáním, plnějším využití paní Walsh jako zdroje informací nebo poskytnutí písemných krizových kontaktů před odchodem. Váš celkový přístup zacházel s Elenou jako s osobou v bolesti, ne jako s problémem k vyřešení, což je základ efektivní krizové reakce.",
+            "mixed": "Prokázali jste kompetenci v některých oblastech této krize duševního zdraví, ale měli jste potíže s plnou komplexitou komunikace založené na souhlasu. Byly okamžiky skutečného spojení s Elenou vedle okamžiků, kdy procedury, naléhavost nebo instinkt řešit problémy přebily trpělivost, kterou výcvik krizové intervence vyžaduje. Projděte si konkrétní fáze, kde se volby posunuly od přístupu péče na prvním místě k přístupu kontroly na prvním místě, a zvažte, jak by nabízení možností volby místo rozhodování za Elenu mohlo změnit tyto výsledky. Dovednosti jsou přítomny — konzistence potřebuje rozvoj.",
+            "mostlyNegative": "Tento scénář odhalil významné mezery mezi standardními policejními instinkty a přístupem zaměřeným na péči, který výjezdy ke krizím duševního zdraví vyžadují. Zatímco některé okamžiky prokázaly povědomí o Elenině zranitelnosti, většina voleb se přikláněla k taktické reakci, komunikaci založené na příkazech, předčasnému řešení problémů nebo procedurálním prioritám, které eskalovaly místo deeskalovaly její úzkost. Elena potřebovala strážníka, který vytváří bezpečí klidnou přítomností, validuje její konkrétní obavy a nabízí možnosti volby — ne strážníka, který zachází s její krizí jako se situací k zvládnutí. Projděte si základy krizové intervence: přístupová vzdálenost, tón, nabízení možností volby, respektování vyjádřených obav a zásadní rozdíl mezi tím být nápomocný a mít kontrolu.",
+            "allNegative": "Váš přístup k Elenině krizi duševního zdraví se spoléhal na kontrolu, příkazy, taktické rámování a procedurální dodržování pravidel — přesný opak toho, co učí výcvik krizové intervence. Žena v akutní úzkosti, vyděšená z nemocnice, prosící, abyste ji nevracel, se setkala s voláním posil, požadavky na uklidnění, plány nemocničního převozu a žádostmi o dokumentaci. Každá volba eskalovala její strach místo budování důvěry, kterou potřebovala k dobrovolnému přijetí pomoci. Výzkumy jsou jasné: lidé v krizi duševního zdraví jsou v drtivé většině spíše oběťmi než pachateli a komunikace založená na souhlasu přináší lepší výsledky než nátlak téměř ve všech situacích, kde nehrozí bezprostřední nebezpečí. To vyžaduje zásadní přeorientování z represivního přístupu na přístup zaměřený na péči."
+        }
+    },
+
+    "dialogueEffectivenessReview": {
+        "excellentPhrases": [
+            "Nejsem tu, abych vás někam odvezl. Nikdo se vás nebude dotýkat ani vás nedonutí jít někam, kam nechcete.",
+            "Změna medikace způsobující hlasy musí být opravdu děsivá — dokážu pochopit, proč jste cítila, že musíte odejít.",
+            "Můžu vám s tím pomoct, pokud chcete, nebo můžete zavolat sama — jak vám to bude vyhovovat.",
+            "Chápu, že to ovlivňuje váš obchod, a oceňuji, že jste zavolal — budu na tom pracovat. Můžete mi dát pár minut?",
+            "Děkuji, že jste na ni dohlížela. To je opravdu cenné.",
+            "Elena není zatčena. Nikdo nebude zatčen. Povídali jsme si a daří se jí opravdu dobře.",
+            "Tady jsou některé možnosti a vy si vyberete.",
+            "Eleno, nemusíte se omlouvat. Čelila jste něčemu děsivému a skončila jste na bezpečném místě a požádala o pomoc — to vyžaduje odvahu, ne omluvu."
+        ],
+        "poorPhrases": [
+            "Paní, potřebuji, abyste se uklidnila. Jsem strážník [jméno] a jsem tu, protože přišla stížnost.",
+            "Můžete vstát, abychom si promluvili? Co je s tím nemocničním náramkem?",
+            "Eleno, zaměstnanec lékárny říká, že tu jste od rána a že znepokojujete zákazníky.",
+            "Pro vaši bezpečnost si myslím, že nejlepší je dostat vás zpátky, aby lékaři mohli vyřešit ten problém s léky. Můžu vás tam odvézt.",
+            "Paní, potřebuji, abyste se zastavila. Toto je aktivní situace a potřebuji, abyste zůstala zpátky, dokud nedokončím své posouzení.",
+            "Myslím, že nejbezpečnější je, abych zajistil převoz na pohotovost, kde vás zdravotníci vyšetří.",
+            "Jen se ujistěte, že navštívíte svého lékaře a příště neodcházejte z nemocnice bez řádného propuštění. Vyvolává to hodně starostí pro všechny.",
+            "Potřebuji od vaší sestry kontaktní údaje a jméno lékaře pro mou zprávu. Budu si také muset poznamenat nemocniční náramek a skutečnost, že jste odešla bez propuštění."
+        ],
+        "analysisCriteria": {
+            "fearAcknowledgment": "Oslovila fráze přímo Elenin vyjádřený strach z návratu do nemocnice, nebo ho ignorovala či posílila?",
+            "agencyRestoration": "Nabídla fráze Eleně volbu, nebo za ni rozhodla — i s dobrými úmysly?",
+            "stigmaLanguage": "Zacházela fráze s Elenou jako s osobou v bolesti, nebo jako s problémem k vyřešení, případem k zdokumentování nebo stížností k vyřízení?",
+            "emotionalCalibration": "Odpovídala fráze Eleninu emocionálnímu stavu — tichý tón pro strach, specifičnost pro zmatek — nebo vnucovala procedurální rejstřík lidskému okamžiku?",
+            "trustTrajectory": "Stavěla fráze na důvěře vybudované v předchozích fázích, nebo zaváděla informace, požadavky či institucionální odkazy, které zhroutily křehký pokrok?",
+            "familySensitivity": "Když byla Sofia přítomna, udržela fráze Elenu ve středu její vlastní péče, nebo zacházela se Sofiou jako se spolehlivějším vypravěčem a tvůrcem rozhodnutí?"
+        }
+    },
+
+    "scenarioSpecificLessons": {
+        "1": "Lidé v krizi duševního zdraví jsou v drtivé většině spíše oběťmi než pachateli. Rámování dispečinku — ‚chová se podivně, možná pod vlivem něčeho' — může vytvořit přístup založený na podezření, který nemá oporu ve skutečné scéně. Vašich třicet sekund pozorování je protilátkou proti zaujatosti rámováním.",
+        "2": "Prvních šedesát sekund určuje trajektorii výjezdu ke krizi duševního zdraví. Vzdálenost, tón, tempo a řeč těla komunikují bezpečí nebo hrozbu dříve, než padne jediné slovo. Snížení na úroveň očí, ukázání rukou a tichá řeč nejsou volitelné zdvořilosti — jsou samotnou intervencí.",
+        "3": "Přímé oslovení vyjádřeného strachu osoby je silnější než jakékoli obecné uklidňování. Elena řekla, že se bojí návratu do nemocnice. Říct ‚nejsem tu, abych vás někam odvezl' cílí na tu konkrétní hrůzu. Říct ‚všechno bude v pořádku' nikoli.",
+        "4": "Nabízení možností volby namísto příkazů obnovuje pocit kontroly u člověka, který cítí, že veškerou kontrolu ztratil. Změna medikace, která způsobí děsivé halucinace, nemocnice, kde o vás rozhodují druzí, neznámá sestra vstupující do vašeho pokoje ve dvě ráno — celá Elenina krize je o ztrátě kontroly. Každá nabídnutá volba ji začíná obnovovat.",
+        "5": "Přijíždějící rodinní příslušníci v krizi potřebují vlastní deeskalaci. Sofia celé hodiny jezdila, plakala, vyděšená. Její panika je upřímná — ale pokud dorazí k Eleně dříve, než je stabilizovaná, emocionální kolize zmaří klid, který jste třicet minut budovali. Drobný úkol jako zaparkovat auto převede paniku do funkční přítomnosti.",
+        "6": "Propojení člověka s dobrovolnými službami přináší lepší dlouhodobé výsledky než nedobrovolný převoz téměř ve všech situacích, které nejsou bezprostředně naléhavé. Elena se vrátila do nemocnice dobrovolně se Sofiou poté, co si zvolila vlastní plán péče. Kdyby byla převezena nedobrovolně, její nedůvěra k policii, nemocnicím a systému péče o duševní zdraví by se prohloubila — možná trvale.",
+        "7": "Způsob, jakým policie řeší výjezdy k duševnímu zdraví, formuje důvěru komunity jak v orgány činné v trestním řízení, tak v systém péče o duševní zdraví na celé roky. Paní Walsh, David, Sofia, každý kolemjdoucí a každá osoba, které o tomto setkání řeknou, si utvoří očekávání o tom, co se stane, když policie reaguje na člověka v krizi. Jeden dobře zvládnutý výjezd se šíří jako vlny.",
+        "8": "Cílem reakce na krizi duševního zdraví není krizi vyřešit — je vytvořit dostatek bezpečí a důvěry, aby ji osoba mohla začít řešit sama. Elenin problém s medikací, její psychiatrická péče, její vztah s nemocnicí — nic z toho není na vás, abyste opravili. Vaší rolí je vybudovat most mezi jejím strachem a její ochotou přijmout pomoc."
+    },
+
+    "recommendedTraining": {
+        "based_on_performance": {
+            "perfect": ["Pokročilá certifikace instruktora krizové intervence — školení dalších strážníků v komunikaci založené na souhlasu v krizových situacích", "Dynamika rodinných krizí — zvládání přijíždějících příbuzných během výjezdů k duševnímu zdraví", "Mapování komunitních zdrojů duševního zdraví — budování partnerství s mobilními krizovými týmy, krizovými linkami a službami vzájemné podpory"],
+            "good": ["Rozšířená praxe scénářů krizové intervence — budování konzistence v nabízení volby a obnovování pocitu kontroly napříč všemi fázemi krizového setkání", "Znalost krizových zdrojů — místní mobilní krizové týmy, 24hodinové krizové linky a alternativy mimo nemocnici", "Techniky deeskalace rodiny — stabilizace zpaniklých blízkých dříve, než interagují s osobou v krizi"],
+            "average": ["Základní principy krizové intervence — pozorování před kontaktem, přístupová vzdálenost, kalibrace tónu a komunikace založená na souhlasu", "Aktivní naslouchání v krizi — rozdíl mezi obecným uklidňováním a konkrétním uznáním strachu", "Strukturované nabízení volby — představení možností místo doporučení k obnovení pocitu kontroly v akutní krizi"],
+            "poor": ["Povinná recertifikace krizové intervence s důrazem na přístup péče na prvním místě versus kontroly na prvním místě u výjezdů k duševnímu zdraví", "Rozpoznání krize duševního zdraví — rozlišení zdravotních krizí od kriminálního chování pomocí pozorovatelných ukazatelů", "Souhlas a autonomie v krizové intervenci — kdy je nedobrovolný zásah oprávněný a kdy ne", "Základy deeskalace — přístupová vzdálenost, řeč těla, tón a zdokumentované selhání výzvy ‚uklidněte se' jako techniky krizové intervence"]
+        }
+    },
+
+    "finalReportStructure": {
+        "sections": [
+            {
+                "title": "Celkové shrnutí výkonu",
+                "content": ["Celkové skóre a úroveň výkonu", "Klíčové silné stránky v přístupu krizové intervence", "Kritické mezery v aplikaci dovedností krizové intervence", "Celková trajektorie: budovala se důvěra, nebo se narušovala napříč sedmi fázemi?"]
+            },
+            {
+                "title": "Analýza krizové intervence po jednotlivých fázích",
+                "content": ["Volba učiněná v každé fázi a její bezprostřední dopad na Elenu", "Trajektorie důvěry — jak každá volba stavěla na předchozím pokroku nebo ho podkopávala", "Alternativní přístupy a jejich pravděpodobné důsledky", "Klíčové ponaučení specifické pro každou fázi krizového setkání"]
+            },
+            {
+                "title": "Rozpoznání krize a posouzení místa",
+                "content": ["Byl nemocniční náramek identifikován a využit k přeznačení setkání?", "Bylo rámování dispečinku přehodnoceno nezávislým pozorováním?", "Bylo místo posouzeno jako krize duševního zdraví, nebo bylo zacházeno jako s výjezdem k podezřelé osobě?", "Byly ukazatele hrozby přesně vyhodnoceny — nebo bylo s neohrožující osobou zacházeno takticky?"]
+            },
+            {
+                "title": "Posouzení souhlasu, volby a pocitu kontroly",
+                "content": ["V kolika rozhodovacích bodech byla Eleně nabídnuta skutečná volba versus bylo za ni rozhodnuto?", "Byl plán péče Elenin plán, nebo strážníkův plán?", "Byly prozkoumány a představeny alternativy k nemocničnímu převozu?", "Odcházela Elena s pocitem posílení k účasti na vlastní péči, nebo pasivní a řízená?"]
+            },
+            {
+                "title": "Hodnocení zvládání zúčastněných stran",
+                "content": ["Davidovy obchodní obavy — uznány a zvládnuty, nebo upřednostněny či odmítnuty?", "Postřehy paní Walsh — využity jako zpravodajství, nebo ignorovány?", "Sofiин příjezd — stabilizována před kontaktem s Elenou, nebo jí dovoleno znovu eskalovat?", "Elena — udržena ve středu vlastní péče po celou dobu, nebo o ní diskutováno jako o předmětu jednání?"]
+            },
+            {
+                "title": "Efektivita komunikace a dialogu",
+                "content": ["Nejefektivnější fráze použité během setkání", "Fráze, které eskalovaly nebo podkopávaly důvěru", "Uznání strachu — byl Elenin vyjádřený strach z nemocnice přímo osloven?", "Dopad závěrečného projevu — obnovila poslední slova důstojnost, nebo nesla bodnutí?"]
+            },
+            {
+                "title": "Propojení se zdroji a následné kroky",
+                "content": ["Byly poskytnuty kontakty na krizovou linku a mobilní krizový tým?", "Byla prokázána znalost alternativ mimo nemocnici?", "Odcházela Elena s více možnostmi podpory, než měla před setkáním?", "Byla záchranná síť vybudována pro další krizi, ne jen pro tuto?"]
+            },
+            {
+                "title": "Profesionální rozvoj a aplikace v praxi",
+                "content": ["Okamžité priority rozvoje dovedností krizové intervence na základě tohoto výkonu", "Jak se toto setkání promítá do reálných výjezdů ke krizím duševního zdraví", "Dlouhodobý dopad na důvěru komunity v závislosti na tom, jak policie řeší situace duševního zdraví", "Doporučené výcvikové kurzy a zdroje pro další růst"]
+            }
+        ]
+    }
+}

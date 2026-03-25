@@ -1,0 +1,515 @@
+{
+  "scenarioId": "mental-health-balanced",
+  "reviewVersion": "1.0",
+  "title": "Mental Health Crisis - Performance Analysis",
+  "stageAnalysis": {
+    "1": {
+      "stageName": "Arrival on Scene",
+      "criticalSkills": [
+        "First contact",
+        "Non-threatening approach",
+        "Safe distance"
+      ],
+      "choiceAnalysis": {
+        "positive": {
+          "choiceText": "Slowly approach to a safe distance and introduce yourself.",
+          "strengths": [
+            "Non-threatening approach, respect for personal space",
+            "Building trust from the start",
+            "Calm presence"
+          ],
+          "professionalImpact": "Your measured approach reduces stress and establishes the foundation for cooperation."
+        },
+        "neutral": {
+          "choiceText": "Raise your voice and announce police identity.",
+          "adequate": [
+            "Follows protocol",
+            "Gets attention"
+          ],
+          "missed": [
+            "Lacks empathy",
+            "Less suitable for de-escalation"
+          ],
+          "improvement": "Use a quieter and gentler tone — loud commands can feel threatening."
+        },
+        "negative": {
+          "choiceText": "Quick physical contact and grabbing the arm.",
+          "failures": [
+            "Doesn't respect personal space",
+            "Increases the risk of flight or resistance",
+            "Undermines trust"
+          ],
+          "consequences": "Such an approach will likely trigger a defensive reaction and escalate the situation.",
+          "trainingFocus": "Practice maintaining safe distance and non-touch contact techniques."
+        }
+      },
+      "keyLearningPoints": [
+        "First contact sets the tone of the interaction.",
+        "Personal space is essential for emotional safety.",
+        "A calm introduction supports cooperation."
+      ]
+    },
+    "2": {
+      "stageName": "Establishing Communication",
+      "criticalSkills": [
+        "Respect for autonomy",
+        "Communication tone",
+        "Building trust"
+      ],
+      "choiceAnalysis": {
+        "positive": {
+          "choiceText": "Respect the distance and express willingness to wait.",
+          "strengths": [
+            "Shows respect",
+            "Gives space",
+            "Reduces perceived pressure"
+          ],
+          "professionalImpact": "Maintaining control without pressure supports trust."
+        },
+        "neutral": {
+          "choiceText": "Insist on duty but wait nearby.",
+          "adequate": [
+            "Doesn't worsen the situation",
+            "Adheres to duty"
+          ],
+          "missed": [
+            "Authoritative tone",
+            "Less empathy"
+          ],
+          "improvement": "Soften the wording so it feels less like a command and more like an offer."
+        },
+        "negative": {
+          "choiceText": "Raise your voice and move closer.",
+          "failures": [
+            "Increases pressure",
+            "Reinforces distrust",
+            "May trigger panic"
+          ],
+          "consequences": "The person may feel threatened and react unpredictably.",
+          "trainingFocus": "Practice voice control and working with space."
+        }
+      },
+      "keyLearningPoints": [
+        "Respecting boundaries is the foundation of cooperation.",
+        "Pressure weakens trust.",
+        "Expressing willingness to wait reduces stress."
+      ]
+    },
+    "3": {
+      "stageName": "Environment Control",
+      "criticalSkills": [
+        "Crowd management",
+        "Reducing sensory overload",
+        "Situational safety"
+      ],
+      "choiceAnalysis": {
+        "positive": {
+          "choiceText": "Ask bystanders to step back and offer a quieter location.",
+          "strengths": [
+            "Reduces disruptive stimuli",
+            "Gives a choice",
+            "Calms the situation"
+          ],
+          "professionalImpact": "Appropriate environment management contributes to de-escalation."
+        },
+        "neutral": {
+          "choiceText": "Ignore the crowd and focus solely on Peter.",
+          "adequate": [
+            "Maintains focus on the subject"
+          ],
+          "missed": [
+            "Doesn't address environmental stressors",
+            "Missed opportunity"
+          ],
+          "improvement": "Consider managing the surroundings — the environment affects stress levels."
+        },
+        "negative": {
+          "choiceText": "Position patrols on surrounding streets to monitor Peter.",
+          "failures": [
+            "Feels like being surrounded",
+            "Increases the feeling of threat"
+          ],
+          "consequences": "Increased police presence may frighten Peter and worsen his condition.",
+          "trainingFocus": "Practice the 'less is more' principle in crisis intervention."
+        }
+      },
+      "keyLearningPoints": [
+        "The environment has a critical impact on a crisis.",
+        "Reducing stimuli supports calming.",
+        "Crowds and backup can make the situation worse."
+      ]
+    },
+    "4": {
+      "stageName": "Active Listening",
+      "criticalSkills": [
+        "Emotion validation",
+        "Empathetic response",
+        "Verbal de-escalation"
+      ],
+      "choiceAnalysis": {
+        "positive": {
+          "choiceText": "Empathetic statement and offer to slow down together.",
+          "strengths": [
+            "Validates the experience",
+            "Builds trust",
+            "Has a calming effect"
+          ],
+          "professionalImpact": "Supports cooperation and reduces tension."
+        },
+        "neutral": {
+          "choiceText": "Practical breathing advice without validation.",
+          "adequate": [
+            "May help physically calm down"
+          ],
+          "missed": [
+            "Missing acknowledgment of emotions",
+            "Feels distant"
+          ],
+          "improvement": "Combine practical advice with validation for complete communication."
+        },
+        "negative": {
+          "choiceText": "Pressure to calm down quickly.",
+          "failures": [
+            "Dismisses the experience",
+            "Increases resistance"
+          ],
+          "consequences": "The person may lose trust and shut down.",
+          "trainingFocus": "Develop empathetic listening techniques."
+        }
+      },
+      "keyLearningPoints": [
+        "Empathy is an effective de-escalation tool.",
+        "Validating feelings strengthens trust.",
+        "A dismissive tone reduces cooperation."
+      ]
+    },
+    "5": {
+      "stageName": "Crisis Disclosure",
+      "criticalSkills": [
+        "Suicide risk recognition",
+        "Crisis intervention",
+        "Supportive communication"
+      ],
+      "choiceAnalysis": {
+        "positive": {
+          "choiceText": "A direct, compassionate inquiry about suicidal thoughts.",
+          "strengths": [
+            "Takes the disclosure seriously",
+            "Shows empathy",
+            "Opens space for sharing"
+          ],
+          "professionalImpact": "A critical step toward protecting life and appropriate intervention."
+        },
+        "neutral": {
+          "choiceText": "Offering hope without a direct inquiry.",
+          "adequate": [
+            "Provides reassurance"
+          ],
+          "missed": [
+            "Doesn't directly verify risk",
+            "May underestimate the situation"
+          ],
+          "improvement": "Always verify whether there is imminent danger."
+        },
+        "negative": {
+          "choiceText": "Diverting attention from the serious disclosure.",
+          "failures": [
+            "Minimizes the risk",
+            "Increases shame",
+            "Reduces willingness to share"
+          ],
+          "consequences": "The person may withdraw and the risk remains hidden.",
+          "trainingFocus": "Practice crisis intervention techniques and validation."
+        }
+      },
+      "keyLearningPoints": [
+        "Any hint of suicidality must be taken seriously.",
+        "Validation of emotions is essential.",
+        "Avoiding the topic increases risk."
+      ]
+    },
+    "6": {
+      "stageName": "Offering Options",
+      "criticalSkills": [
+        "Choice architecture",
+        "Respect for autonomy",
+        "Resource engagement"
+      ],
+      "choiceAnalysis": {
+        "positive": {
+          "choiceText": "Offer multiple options and let Peter choose.",
+          "strengths": [
+            "Supports autonomy",
+            "Reduces resistance",
+            "Increases cooperation"
+          ],
+          "professionalImpact": "Having a choice strengthens dignity and supports acceptance of help."
+        },
+        "neutral": {
+          "choiceText": "Decide for him by calling paramedics.",
+          "adequate": [
+            "Ensures help",
+            "Maintains safety"
+          ],
+          "missed": [
+            "Lacks sense of control for the person",
+            "Lukewarm cooperation"
+          ],
+          "improvement": "Even when deciding, offer at least some element of choice."
+        },
+        "negative": {
+          "choiceText": "Order involuntary transport to the hospital.",
+          "failures": [
+            "Removes autonomy entirely",
+            "Deepens trauma"
+          ],
+          "consequences": "The person may feel powerless and threatened.",
+          "trainingFocus": "Practice the principle of least restrictive intervention."
+        }
+      },
+      "keyLearningPoints": [
+        "Choice strengthens trust.",
+        "The principle of least restrictive intervention protects dignity.",
+        "Involuntary measures should be a last resort."
+      ]
+    },
+    "7": {
+      "stageName": "Follow-Up Support",
+      "criticalSkills": [
+        "Closing the interaction",
+        "Providing resources",
+        "Validation"
+      ],
+      "choiceAnalysis": {
+        "positive": {
+          "choiceText": "Thank them and provide contacts for crisis services.",
+          "strengths": [
+            "Strengthens trust",
+            "Provides practical resources",
+            "Supports a dignified closing"
+          ],
+          "professionalImpact": "The person leaves with a sense of hope and concrete options for help."
+        },
+        "neutral": {
+          "choiceText": "Formal closing without further support.",
+          "adequate": [
+            "Professional and safe"
+          ],
+          "missed": [
+            "Missing emotional validation",
+            "No support for the future"
+          ],
+          "improvement": "Closing with encouragement and contacts significantly strengthens the effect of the intervention."
+        },
+        "negative": {
+          "choiceText": "A scolding remark and a quick wrap-up.",
+          "failures": [
+            "Diminishes the sense of support",
+            "Undermines trust"
+          ],
+          "consequences": "The person may hesitate to seek help in the future.",
+          "trainingFocus": "Practice closing interactions with an emphasis on support and dignity."
+        }
+      },
+      "keyLearningPoints": [
+        "The final interaction leaves a lasting impression.",
+        "Support and resources increase the chance of seeking help in the future.",
+        "A scolding tone undermines previous efforts."
+      ]
+    }
+  },
+  "comprehensiveMetrics": {
+    "communicationEffectiveness": {
+      "description": "Quality of verbal and non-verbal communication.",
+      "indicators": {
+        "excellent": [
+          "Active listening and empathy",
+          "Clear and calm expression",
+          "Use of validation and reflection",
+          "Maintaining a calm tone"
+        ],
+        "poor": [
+          "Dismissive or directive tone",
+          "Interrupting or talking over",
+          "Ignoring non-verbal cues",
+          "Confusing or contradictory messages"
+        ]
+      }
+    },
+    "emotionalIntelligence": {
+      "description": "Ability to recognize and respond to emotions.",
+      "indicators": {
+        "excellent": [
+          "Correct recognition of emotional states",
+          "Responding with empathy",
+          "Validating feelings",
+          "Regulating own emotions"
+        ],
+        "poor": [
+          "Ignoring signs of despair",
+          "Criticism or moralizing",
+          "Losing control of emotions",
+          "Escalation through invalidation"
+        ]
+      }
+    },
+    "proceduralCompliance": {
+      "description": "Adherence to protocols and safety.",
+      "indicators": {
+        "excellent": [
+          "Safe distance and environment control",
+          "Offering resources",
+          "Documenting the intervention",
+          "Cooperation with professionals"
+        ],
+        "poor": [
+          "Disregarding safety principles",
+          "Omitting crisis resources",
+          "Lack of documentation",
+          "Excessive restriction without reason"
+        ]
+      }
+    }
+  },
+  "mistakePatterns": {
+    "escalation": {
+      "pattern": "Choices that increased tension.",
+      "examples": [
+        "Physical contact without consent",
+        "Loud commands",
+        "Threats"
+      ],
+      "impact": "Escalation worsens the condition and complicates de-escalation.",
+      "correction": "Practice calm presence and a non-threatening approach."
+    },
+    "dismissive": {
+      "pattern": "Minimizing the crisis experience.",
+      "examples": [
+        "Advice without validation",
+        "Diverting attention from suicidal disclosure"
+      ],
+      "impact": "Increases shame and reduces willingness to cooperate.",
+      "correction": "Acknowledge emotions and respond to serious statements directly."
+    },
+    "authoritarian": {
+      "pattern": "Excessive emphasis on control.",
+      "examples": [
+        "Decision-making without choice",
+        "Restrictive approach"
+      ],
+      "impact": "Undermines trust and cooperation.",
+      "correction": "Offer options and respect autonomy."
+    }
+  },
+  "dialogueEffectivenessReview": {
+    "excellentPhrases": [
+      "'That must be really tough. Let's try to slow things down together.'",
+      "'I'm sorry you feel that way. I want you to be safe.'",
+      "'We can call someone close to you or the paramedics — it's up to you.'"
+    ],
+    "poorPhrases": [
+      "'You need to calm down quickly or this will become a problem.'",
+      "'Distract yourself with something else and don't think about it.'",
+      "'Next time try to manage without the police.'"
+    ],
+    "analysisCriteria": {
+      "tone": "Was the tone adequate?",
+      "clarity": "Were the messages clear and understandable?",
+      "empathy": "Did responses acknowledge feelings and experiences?",
+      "effectiveness": "Did responses contribute to de-escalation?",
+      "safety": "Did they support the safety of all parties?"
+    }
+  },
+  "scenarioSpecificLessons": {
+    "1": "First contact must be non-threatening and calm.",
+    "2": "Environment management is essential for calming the person.",
+    "3": "Validation and empathy are tactical tools, not just courtesy.",
+    "4": "Suicidal statements require an immediate and direct response.",
+    "5": "Choice and autonomy strengthen trust and cooperation.",
+    "6": "Restrictive procedures should be a last resort.",
+    "7": "Final support and providing resources have a long-term impact."
+  },
+  "recommendedTraining": {
+    "based_on_performance": {
+      "perfect": [
+        "Advanced crisis intervention",
+        "CIT instructor",
+        "Mental health specialization"
+      ],
+      "good": [
+        "Extended de-escalation training",
+        "Trauma-informed practice",
+        "Suicide prevention"
+      ],
+      "average": [
+        "Basic CIT training",
+        "Active listening",
+        "Emotional intelligence development"
+      ],
+      "poor": [
+        "Mandatory crisis training",
+        "Mental health first aid",
+        "Empathy training"
+      ]
+    }
+  },
+  "finalReportStructure": {
+    "sections": [
+      {
+        "title": "Overall Performance Summary",
+        "content": [
+          "Score",
+          "Performance level",
+          "Strengths",
+          "Weaknesses"
+        ]
+      },
+      {
+        "title": "Step-by-Step Analysis",
+        "content": [
+          "Player's choices",
+          "Impact",
+          "Alternative approaches",
+          "Lessons learned"
+        ]
+      },
+      {
+        "title": "Communication Effectiveness",
+        "content": [
+          "Strong moments",
+          "Weak moments",
+          "Evaluation criteria"
+        ]
+      },
+      {
+        "title": "Key Decision Points",
+        "content": [
+          "First contact",
+          "Environment management",
+          "Response to crisis disclosure"
+        ]
+      },
+      {
+        "title": "Behavioral Patterns",
+        "content": [
+          "Consistent strengths",
+          "Recurring mistakes"
+        ]
+      },
+      {
+        "title": "Professional Development",
+        "content": [
+          "Training needs",
+          "Recommended resources"
+        ]
+      },
+      {
+        "title": "Real-World Application",
+        "content": [
+          "How to apply in the field",
+          "Best practices"
+        ]
+      }
+    ]
+  }
+}

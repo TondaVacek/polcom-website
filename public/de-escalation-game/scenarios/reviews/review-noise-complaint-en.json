@@ -1,0 +1,539 @@
+{
+  "scenarioId": "noise-complaint",
+  "reviewVersion": "1.0",
+  "title": "Noise Complaint - Performance Analysis",
+  "stageAnalysis": {
+    "1": {
+      "stageName": "Initial Contact",
+      "criticalSkills": [
+        "Communication tone",
+        "Professionalism",
+        "Negotiation"
+      ],
+      "choiceAnalysis": {
+        "positive": {
+          "choiceText": "Good evening, I'm Officer Svoboda. I've received a complaint about loud music. Can we find a way together to keep the volume at a level that's acceptable for everyone?",
+          "strengths": [
+            "Shows cooperation",
+            "Maintains professional approach",
+            "Aims toward resolution"
+          ],
+          "professionalImpact": "Positive choice builds trust and increases the chance of voluntary cooperation."
+        },
+        "neutral": {
+          "choiceText": "Good evening, I've received a complaint from your neighbors about loud music. What's going on here and how can I resolve this?",
+          "adequate": [
+            "Approach is acceptable",
+            "Maintains professional framework"
+          ],
+          "missed": [
+            "Lacks more empathy",
+            "Insufficient explanation of reasons"
+          ],
+          "improvement": "Add more context and empathy to strengthen cooperation."
+        },
+        "negative": {
+          "choiceText": "Good evening, I'm asking you to turn that music off immediately or you'll get a fine.",
+          "failures": [
+            "Too harsh a tone",
+            "Increases resistance",
+            "Undermines neutrality"
+          ],
+          "consequences": "Negative choice increases conflict and reduces trust.",
+          "trainingFocus": "Practice de-escalation and neutral phrasing."
+        }
+      },
+      "keyLearningPoints": [
+        "Balancing a professional tone with empathy is key.",
+        "Transparent communication supports trust.",
+        "Ultimatums increase tension — cooperation is more effective."
+      ]
+    },
+    "2": {
+      "stageName": "Finding Common Ground",
+      "criticalSkills": [
+        "Communication tone",
+        "Professionalism",
+        "Negotiation"
+      ],
+      "choiceAnalysis": {
+        "positive": {
+          "choiceText": "I understand this is your space. But at the same time, quiet hours apply so that others can sleep too. Let's agree on a volume level that's fair for everyone.",
+          "strengths": [
+            "Shows cooperation",
+            "Maintains professional approach",
+            "Aims toward resolution"
+          ],
+          "professionalImpact": "Positive choice builds trust and increases the chance of voluntary cooperation."
+        },
+        "neutral": {
+          "choiceText": "You're at home, I understand that. At the same time, I have an official complaint. Let's resolve this through a conversation to avoid further steps.",
+          "adequate": [
+            "Approach is acceptable",
+            "Maintains professional framework"
+          ],
+          "missed": [
+            "Lacks more empathy",
+            "Insufficient explanation of reasons"
+          ],
+          "improvement": "Add more context and empathy to strengthen cooperation."
+        },
+        "negative": {
+          "choiceText": "This isn't just your home, it's part of a community. If you make noise at night, there will be consequences for you.",
+          "failures": [
+            "Too harsh a tone",
+            "Increases resistance",
+            "Undermines neutrality"
+          ],
+          "consequences": "Negative choice increases conflict and reduces trust.",
+          "trainingFocus": "Practice de-escalation and neutral phrasing."
+        }
+      },
+      "keyLearningPoints": [
+        "Balancing a professional tone with empathy is key.",
+        "Transparent communication supports trust.",
+        "Ultimatums increase tension — cooperation is more effective."
+      ]
+    },
+    "3": {
+      "stageName": "Offering Options",
+      "criticalSkills": [
+        "Communication tone",
+        "Professionalism",
+        "Negotiation"
+      ],
+      "choiceAnalysis": {
+        "positive": {
+          "choiceText": "You could close the windows, turn down the bass, move the party inside, and agree on a time when the music will stop.",
+          "strengths": [
+            "Shows cooperation",
+            "Maintains professional approach",
+            "Aims toward resolution"
+          ],
+          "professionalImpact": "Positive choice builds trust and increases the chance of voluntary cooperation."
+        },
+        "neutral": {
+          "choiceText": "Try turning down the volume and see if that's enough for the neighbors. If not, try to work it out together.",
+          "adequate": [
+            "Approach is acceptable",
+            "Maintains professional framework"
+          ],
+          "missed": [
+            "Lacks more empathy",
+            "Insufficient explanation of reasons"
+          ],
+          "improvement": "Add more context and empathy to strengthen cooperation."
+        },
+        "negative": {
+          "choiceText": "Either turn off the music right now and stop disturbing quiet hours, or I'll fine you.",
+          "failures": [
+            "Too harsh a tone",
+            "Increases resistance",
+            "Undermines neutrality"
+          ],
+          "consequences": "Negative choice increases conflict and reduces trust.",
+          "trainingFocus": "Practice de-escalation and neutral phrasing."
+        }
+      },
+      "keyLearningPoints": [
+        "Balancing a professional tone with empathy is key.",
+        "Transparent communication supports trust.",
+        "Ultimatums increase tension — cooperation is more effective."
+      ]
+    },
+    "4": {
+      "stageName": "Confirming the Agreement",
+      "criticalSkills": [
+        "Communication tone",
+        "Professionalism",
+        "Negotiation"
+      ],
+      "choiceAnalysis": {
+        "positive": {
+          "choiceText": "Thank you for your cooperation. To summarize: the music will be quieter and will end by one. If anything comes up again, both you and the neighbors have my contact information.",
+          "strengths": [
+            "Shows cooperation",
+            "Maintains professional approach",
+            "Aims toward resolution"
+          ],
+          "professionalImpact": "Positive choice builds trust and increases the chance of voluntary cooperation."
+        },
+        "neutral": {
+          "choiceText": "Fine, let's leave it at that. I expect you to keep to what was agreed.",
+          "adequate": [
+            "Approach is acceptable",
+            "Maintains professional framework"
+          ],
+          "missed": [
+            "Lacks more empathy",
+            "Insufficient explanation of reasons"
+          ],
+          "improvement": "Add more context and empathy to strengthen cooperation."
+        },
+        "negative": {
+          "choiceText": "Fine, so we have a deal, but I'm warning you — any further violation will result in immediate sanctions.",
+          "failures": [
+            "Too harsh a tone",
+            "Increases resistance",
+            "Undermines neutrality"
+          ],
+          "consequences": "Negative choice increases conflict and reduces trust.",
+          "trainingFocus": "Practice de-escalation and neutral phrasing."
+        }
+      },
+      "keyLearningPoints": [
+        "Balancing a professional tone with empathy is key.",
+        "Transparent communication supports trust.",
+        "Ultimatums increase tension — cooperation is more effective."
+      ]
+    },
+    "5": {
+      "stageName": "On-Site Reflection",
+      "criticalSkills": [
+        "Communication tone",
+        "Professionalism",
+        "Negotiation"
+      ],
+      "choiceAnalysis": {
+        "positive": {
+          "choiceText": "No problem at all — we just agreed to lower the volume so everyone can get a good night's sleep.",
+          "strengths": [
+            "Shows cooperation",
+            "Maintains professional approach",
+            "Aims toward resolution"
+          ],
+          "professionalImpact": "Positive choice builds trust and increases the chance of voluntary cooperation."
+        },
+        "neutral": {
+          "choiceText": "There was a noise complaint, it's been resolved. Please go back inside the apartment.",
+          "adequate": [
+            "Approach is acceptable",
+            "Maintains professional framework"
+          ],
+          "missed": [
+            "Lacks more empathy",
+            "Insufficient explanation of reasons"
+          ],
+          "improvement": "Add more context and empathy to strengthen cooperation."
+        },
+        "negative": {
+          "choiceText": "That's none of your concern, everything's been resolved. Go back inside.",
+          "failures": [
+            "Too harsh a tone",
+            "Increases resistance",
+            "Undermines neutrality"
+          ],
+          "consequences": "Negative choice increases conflict and reduces trust.",
+          "trainingFocus": "Practice de-escalation and neutral phrasing."
+        }
+      },
+      "keyLearningPoints": [
+        "Balancing a professional tone with empathy is key.",
+        "Transparent communication supports trust.",
+        "Ultimatums increase tension — cooperation is more effective."
+      ]
+    },
+    "6": {
+      "stageName": "Follow-Up Assessment",
+      "criticalSkills": [
+        "Communication tone",
+        "Professionalism",
+        "Negotiation"
+      ],
+      "choiceAnalysis": {
+        "positive": {
+          "choiceText": "Yes, we agreed the music will be turned down and will end by 1:00 AM. If it continues or happens again, let us know.",
+          "strengths": [
+            "Shows cooperation",
+            "Maintains professional approach",
+            "Aims toward resolution"
+          ],
+          "professionalImpact": "Positive choice builds trust and increases the chance of voluntary cooperation."
+        },
+        "neutral": {
+          "choiceText": "They said they'd turn it down. We'll see how it goes. If it continues, call us.",
+          "adequate": [
+            "Approach is acceptable",
+            "Maintains professional framework"
+          ],
+          "missed": [
+            "Lacks more empathy",
+            "Insufficient explanation of reasons"
+          ],
+          "improvement": "Add more context and empathy to strengthen cooperation."
+        },
+        "negative": {
+          "choiceText": "Everything's been resolved, you don't need to worry about anything else.",
+          "failures": [
+            "Too harsh a tone",
+            "Increases resistance",
+            "Undermines neutrality"
+          ],
+          "consequences": "Negative choice increases conflict and reduces trust.",
+          "trainingFocus": "Practice de-escalation and neutral phrasing."
+        }
+      },
+      "keyLearningPoints": [
+        "Balancing a professional tone with empathy is key.",
+        "Transparent communication supports trust.",
+        "Ultimatums increase tension — cooperation is more effective."
+      ]
+    },
+    "7": {
+      "stageName": "Debrief with Instructor",
+      "criticalSkills": [
+        "Communication tone",
+        "Professionalism",
+        "Negotiation"
+      ],
+      "choiceAnalysis": {
+        "positive": {
+          "choiceText": "I maintained a calm tone, offered specific options, and summarized the agreement. But I can also see areas where I could have shown more empathy.",
+          "strengths": [
+            "Shows cooperation",
+            "Maintains professional approach",
+            "Aims toward resolution"
+          ],
+          "professionalImpact": "Positive choice builds trust and increases the chance of voluntary cooperation."
+        },
+        "neutral": {
+          "choiceText": "The important thing is the music got quieter. And I followed most of the procedure.",
+          "adequate": [
+            "Approach is acceptable",
+            "Maintains professional framework"
+          ],
+          "missed": [
+            "Lacks more empathy",
+            "Insufficient explanation of reasons"
+          ],
+          "improvement": "Add more context and empathy to strengthen cooperation."
+        },
+        "negative": {
+          "choiceText": "I just did what was necessary to prevent the situation from escalating.",
+          "failures": [
+            "Too harsh a tone",
+            "Increases resistance",
+            "Undermines neutrality"
+          ],
+          "consequences": "Negative choice increases conflict and reduces trust.",
+          "trainingFocus": "Practice de-escalation and neutral phrasing."
+        }
+      },
+      "keyLearningPoints": [
+        "Balancing a professional tone with empathy is key.",
+        "Transparent communication supports trust.",
+        "Ultimatums increase tension — cooperation is more effective."
+      ]
+    }
+  },
+  "comprehensiveMetrics": {
+    "communicationEffectiveness": {
+      "description": "Overall quality of communication during the noise complaint resolution",
+      "indicators": {
+        "excellent": [
+          "Consistent use of a cooperative tone",
+          "Explaining rules without confrontation",
+          "Clear summary of agreed-upon steps",
+          "Maintaining open dialogue with all parties"
+        ],
+        "poor": [
+          "Aggressive or threatening tone",
+          "Lack of explanation of reasons",
+          "Unclear agreements or vague instructions",
+          "Ignoring neighbors' needs or questions"
+        ]
+      }
+    },
+    "emotionalIntelligence": {
+      "description": "Ability to recognize and respond to the resident's and neighbors' emotions",
+      "indicators": {
+        "excellent": [
+          "Acknowledging the resident's frustration",
+          "Maintaining composure during defensive reactions",
+          "Using calming and validating language",
+          "Empathetic summary and thanks for cooperation"
+        ],
+        "poor": [
+          "Overlooking defensive reactions",
+          "Using critical or mocking language",
+          "Refusing to listen to the resident",
+          "Unnecessary threats instead of explanation"
+        ]
+      }
+    },
+    "proceduralCompliance": {
+      "description": "Adherence to procedures and community policing principles",
+      "indicators": {
+        "excellent": [
+          "Transparent communication of the reason for the intervention",
+          "Explanation of quiet hours and the legal framework",
+          "Ensuring the option for follow-up contact",
+          "Maintaining professional neutrality"
+        ],
+        "poor": [
+          "Insufficient explanation of rules",
+          "Unprofessional language",
+          "Taking sides in the dispute",
+          "Offering only ultimatums"
+        ]
+      }
+    },
+    "communityTrust": {
+      "description": "Building trust with neighbors and the community",
+      "indicators": {
+        "excellent": [
+          "Providing information to other neighbors as well",
+          "Offering contact for future resolution",
+          "Showing respect to all involved",
+          "Maintaining impartiality"
+        ],
+        "poor": [
+          "Refusing to communicate with neighbors",
+          "Ignoring questions or concerns",
+          "Threatening sanctions without explanation",
+          "Failing to answer neighbors' questions"
+        ]
+      }
+    }
+  },
+  "mistakePatterns": {
+    "escalation": {
+      "pattern": "Choices that increased tension",
+      "examples": [
+        "Ultimatums and threats",
+        "Refusing to listen",
+        "Distrustful tone"
+      ],
+      "impact": "Each escalation reduces willingness to cooperate and increases tension.",
+      "correction": "Practice de-escalation techniques and patient explanation."
+    },
+    "avoidance": {
+      "pattern": "Avoiding the problem",
+      "examples": [
+        "Offering overly vague solutions",
+        "Shifting responsibility to neighbors"
+      ],
+      "impact": "The problem remains unresolved and may return.",
+      "correction": "Provide specific and actionable solution options."
+    },
+    "judgmental": {
+      "pattern": "Moralizing or bias",
+      "examples": [
+        "Siding with neighbors",
+        "Dismissing the complaint",
+        "Sarcastic remarks"
+      ],
+      "impact": "Undermines neutrality and police credibility.",
+      "correction": "Maintain professional language and a neutral approach."
+    }
+  },
+  "dialogueEffectivenessReview": {
+    "excellentPhrases": [
+      "'Good evening, I'm Officer Svoboda. I've received a complaint about loud music. Can we find a way together to keep the volume at a level that's acceptable for everyone?'",
+      "'I understand this is your space. But at the same time, quiet hours apply so that others can sleep too. Let's agree on a volume level that's fair for everyone.'",
+      "'Thank you for your cooperation. To summarize: the music will be quieter and will end by one. If anything comes up again, both you and the neighbors have my contact information.'"
+    ],
+    "poorPhrases": [
+      "'Good evening, I'm asking you to turn that music off immediately or you'll get a fine.'",
+      "'That's none of your concern, everything's been resolved. Go back inside.'",
+      "'Either turn off the music right now and stop disturbing quiet hours, or I'll fine you.'"
+    ],
+    "analysisCriteria": {
+      "tone": "Was an appropriate tone and approach used?",
+      "clarity": "Was the message clear and understandable?",
+      "empathy": "Did it show understanding of emotions and frustration?",
+      "effectiveness": "Did it lead to agreement and calming of the situation?",
+      "professionalism": "Did it maintain neutrality and professionalism?"
+    }
+  },
+  "scenarioSpecificLessons": {
+    "1": "The opening tone sets the atmosphere for the entire interaction.",
+    "2": "Acknowledging the resident's rights must go hand in hand with explaining community rules.",
+    "3": "Offering multiple practical options increases voluntary compliance.",
+    "4": "Summarizing the agreement and thanking strengthens cooperation.",
+    "5": "Response to guests and other neighbors affects trust in the police.",
+    "6": "Transparent communication with the community prevents repeated complaints.",
+    "7": "Self-reflection after an intervention supports professional growth."
+  },
+  "recommendedTraining": {
+    "based_on_performance": {
+      "perfect": [
+        "Advanced negotiation techniques",
+        "Community conflict management",
+        "De-escalation training"
+      ],
+      "good": [
+        "Extended active listening skills",
+        "Mediation in neighborhood disputes",
+        "Professional communication"
+      ],
+      "average": [
+        "Conflict resolution basics",
+        "Effective ways to explain rules",
+        "Building neutrality"
+      ],
+      "poor": [
+        "Basic de-escalation training",
+        "Professional communication workshop",
+        "Introduction to community policing"
+      ]
+    }
+  },
+  "finalReportStructure": {
+    "sections": [
+      {
+        "title": "Overall Performance Summary",
+        "content": [
+          "Score",
+          "Strengths",
+          "Weaknesses"
+        ]
+      },
+      {
+        "title": "Step-by-Step Analysis",
+        "content": [
+          "Choices and impacts",
+          "Alternative approaches",
+          "Learning points"
+        ]
+      },
+      {
+        "title": "Communication Effectiveness",
+        "content": [
+          "Good practice",
+          "Poor practice",
+          "Tone and language analysis"
+        ]
+      },
+      {
+        "title": "Community Relationship",
+        "content": [
+          "Trust building",
+          "Transparency",
+          "Neutrality"
+        ]
+      },
+      {
+        "title": "Pattern Analysis",
+        "content": [
+          "Recurring mistakes",
+          "Consistent strengths"
+        ]
+      },
+      {
+        "title": "Professional Development",
+        "content": [
+          "Training needs",
+          "Recommended resources"
+        ]
+      },
+      {
+        "title": "Real-World Application",
+        "content": [
+          "Impact on fieldwork",
+          "Applicable procedures"
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,453 @@
+{
+    "id": 1,
+    "title": "Deeskalace při dopravní kontrole",
+    "description": "Pokročilý scénář zahrnující noční dopravní kontrolu, která odhalí rodinu v krizi. Navigujte situací s rozrušeným řidičem, dospívajícím spolujezdcem natáčejícím setkání, aktualizacemi z dispečinku a znepokojená kolemjdoucí — to vše při zachování profesionality, empatie a bezpečnosti strážníka.",
+    "icon": "🚗",
+    "difficulty": 2,
+    "duration": "12-18",
+    "instructor": {
+        "name": "Seržant Williams",
+        "avatar": "👨‍🏫",
+        "introduction": "Dopravní kontroly patří mezi nejčastější — a nejnebezpečnější — interakce v policejní práci. Jsou také místem, kde se buduje nebo boří důvěra komunity, setkání po setkání. Dnes v noci zastavíte vozidlo za dopravní přestupek, ale to, co začne jako rutina, se stane něčím daleko složitějším. Řidič je pod enormním osobním tlakem, který zvenku nevidíte. Ve voze je spolujezdec, jehož chování bude zkouškou vaší sebekontroly. A každá vaše volba bude pozorována — lidmi v autě, kolemjdoucími a možná i kamerami. Výzkumy opakovaně ukazují, že tón strážníka v prvních třiceti sekundách předpovídá trajektorii celého zastavení. Vaší prací není jen vymáhání zákona — je to komunikace, úsudek a lidskost pod tlakem. Způsob, jakým tuto kontrolu zvládnete, definuje, jakým strážníkem se stáváte."
+    },
+    "timedChoices": true,
+    "completionBadges": [
+        "scenario-1-complete"
+    ],
+    "perfectBadge": "perfect-scenario-1",
+    "finalMessage": {
+        "revelation": "Pan Richard Davies je 47letý středoškolský učitel dějepisu a samoživitel, který už týdny potichu padá na dno. Tři dny před vaším zastavením jeho bývalá manželka podala návrh na neodkladnou změnu opatrovnictví s tvrzením, že je nezpůsobilý rodič — návrh vyvolaný nikoli týráním, ale mstivým sporem o zápis jejich syna Marcuse do školy. Davies nespal více než tři hodiny za noc od chvíle, kdy obdržel právní dokumenty. Překročení rychlosti nebyla bezohlednost — vezl Marcuse k jeho babičce, protože právě přijal telefonát, že jeho matka Eleanor upadla a sanitkou ji vezou do nemocnice. Měl hrůzu z toho, že ve stejném týdnu přijde o matku i o syna. Marcus, patnáctiletý, který nahrával vaše setkání, toho večera zveřejnil upravenou verzi videa. Ve verzi, která se stala virální — s více než 200 000 zhlédnutími — diváci viděli policistu, který zůstal klidný, když na něj křičeli, který jednal s černošským teenagerem s respektem místo podezřívavosti a který projevil rodině upřímný soucit v jejich nejhorším okamžiku. Celé video bylo později použito třemi policejními akademiemi jako ukázkový příklad vzorové komunikace při dopravní kontrole. Matka pana Daviese se plně zotavila. Jeho případ o opatrovnictví byl vyřešen v jeho prospěch o šest týdnů později. Marcus, který dříve kamarádům říkal, že nechce mít s policií nic společného, napsal školní esej s názvem 'Noc, kdy jsem změnil názor na policajty.' Vaše jediná dopravní kontrola potichu proměnila vztah celé rodiny k orgánům činným v trestním řízení.",
+        "keyLessons": [
+            "Prvních třicet sekund dopravní kontroly nastaví emoční trajektorii pro vše, co následuje — tón, postoj a volba slov mají enormní význam",
+            "Když je někdo během kontroly nepřátelský, téměř vždy za tímto chováním stojí neviditelná krize — zvědavost poslouží lépe než konfrontace",
+            "Teenager nahrávající policejní setkání uplatňuje zákonné právo, nikoli akt vzdoru — vaše reakce na kameru definuje příběh",
+            "Shovívavost není slabost — volba napomenutí místo pokuty, když to okolnosti ospravedlňují, je sofistikovaným využitím profesionálního úsudku",
+            "Uznat bolest druhého člověka neohrožuje vaši autoritu; posiluje ji tím, že ukazuje, že moc a empatie mohou koexistovat",
+            "Každou dopravní kontrolu někdo pozoruje — řidič, spolujezdci, kolemjdoucí, palubní kamery — a každý pozorovatel si na základě toho, co vidí, vytváří trvalý dojem o policii",
+            "Deeskalace není technika aplikovaná na obtížné lidi; je to komunikační disciplína aplikovaná na každou interakci, zejména ty rutinní"
+        ]
+    },
+    "stages": [
+        {
+            "id": 1,
+            "title": "Zastavení",
+            "sceneUpdate": {
+                "emoji": "🚗",
+                "title": "Rezidenční ulice — 21:47",
+                "desc": "Naměříte tmavě modré SUV jedoucí 85 v zóně s limitem 60 na rezidenční ulici. Zapnete majáky. Vozidlo zastavuje až téměř o blok dále, nerovně, s jedním kolem na obrubníku. Ve světle vašich reflektorů vidíte dva cestující — dospělého řidiče a co vypadá jako dospívajícího spolujezdce na předním sedadle. Spolujezdec okamžitě zvedne něco — telefon."
+            },
+            "npcDialogue": [
+                {
+                    "character": "dispatcher",
+                    "text": "Jednotka 14, registrační značka náleží Richardu Daviesovi, 47 let. Vozidlo je registrované a v pořádku. Žádné zatykače, žádný záznam. Jedna poznámka — na toto vozidlo je aktivní žádost o prověření blaha z doby před přibližně hodinou. Rodinný příslušník zavolal s obavami o psychický stav řidiče. Postupujte s vědomím této informace."
+                }
+            ],
+            "prompt": "Dispečink upozornil na obavy o blaho řidiče. Chystáte se přistoupit k vozidlu. Jak začnete?",
+            "options": [
+                {
+                    "text": "Přistoupíte ze strany řidiče se svítilnou skloněnou nízko, aby nikoho neoslňovala. Zastavíte se těsně za oknem řidiče, jednu ruku volně podél těla, a promluvíte klidným, vyrovnaným hlasem: 'Dobrý večer, pane. Jsem strážník [Jméno] z městské policie. Zastavil jsem vás, protože jste jel 85 v zóně se 60. Než se k tomu dostaneme — je dnes večer vše v pořádku? Chvíli vám trvalo, než jste zastavil, a chci se ujistit, že jste v pořádku.'",
+                    "feedback": "Proč: Otevření vaším jménem a důvodem zastavení okamžitě splňuje procedurální požadavky. Zmínění pomalého zastavení bez obvinění — a propojení s otázkou na blaho — přirozeně integruje informaci z dispečinku. Zeptat se 'je vše v pořádku?' před požadováním dokladů signalizuje, že vidíte člověka, ne jen přestupek. Poloha svítilny zabraňuje agresivnímu oslňujícímu efektu, který stupňuje napětí. | DŮSLEDKY: Pan Davies sevře volant, ale jeho ramena se při vašem tónu mírně uvolní. Neodpovídá okamžitě — zpracovává skutečnost, že váš hlas není nepřátelský. Marcus mírně sklopí telefon. Vytvořili jste třísekundové okno možnosti. | Reflexe: Jak pořadí toho, co řeknete jako první — představení, důvod nebo otázka na blaho — ovlivňuje okamžitou emoční reakci řidiče?",
+                    "type": "positive",
+                    "points": 10
+                },
+                {
+                    "text": "Přistoupíte ve standardní pozici ze strany řidiče, svítilnu v dominantní ruce namířenou do interiéru. Bez osobního představení přejdete rovnou k věci, hlas stručný a věcný: 'Dobrý večer. Naměřil jsem vám 85 v šedesátce. Řidičský průkaz a technický průkaz, prosím.' Pohlédnete na zvednutý telefon spolujezdce a pak přidáte důrazně: 'A můžete říct spolujezdci, ať odloží telefon?'",
+                    "feedback": "Proč: Údaj o rychlosti a žádost o doklady jsou procedurálně správné, ale okamžitý požadavek ohledně telefonu je problematický. Nahrávání policie je zákonné právo. Žádat spolujezdce, aby přestal natáčet — zejména před navázáním jakéhokoli vztahu — signalizuje defenzivitu a naznačuje, že vám vadí být pozorován. Také jste se nepředstavil jménem, což je osvědčený postup. | DŮSLEDKY: Marcus zatne čelist — telefon jde výš, ne níž. Pan Davies vyštěkne: 'Může si natáčet, co chce.' Vaše první výměna je nyní konfrontační na dvou frontách. | Reflexe: Když reagujete na kameru dříve, než se vůbec představíte, jaký příběh to říká člověku, který natáčí?",
+                    "type": "neutral",
+                    "points": 2
+                },
+                {
+                    "text": "Přistoupíte opatrně od zadní části vozidla, jednu ruku u opasku, svítilnou přejíždíte zadní sedadlo, než dorazíte k oknu. Postoj máte strnulý, ramena vtažená, čelist zaťatou. Ostrým velitelským tónem promluvíte dřív, než naváže oční kontakt: 'Řidiči, ruce nechte na volantu. Spolujezdce, potřebuji vidět obě ruce. Nikdo se nehýbe, dokud neřeknu.' Pak vysvětlíte důvod zastavení.",
+                    "feedback": "Proč: Neexistuje žádná artikulovatelná bezpečnostní hrozba kromě dvou cestujících a telefonu. Vydávání příkazů o rukách a pohybu jako úvodní slovo — bez bezpečnostních indikátorů jako jsou skryté pohyby, viditelné zbraně nebo příznaky závažného trestného činu — je nepřiměřená eskalace. Komunikuje to hrozbu místo služby. Poznámka z dispečinku indikovala obavy o blaho, ne nebezpečí. | DŮSLEDKY: Oba cestující ztuhnou. Marcus šeptá: 'Říkal jsem ti to, tati.' Ruce pana Daviese se třesou na volantu. Jakákoli osobní krize se v tomto autě právě pohřbila pod strachem ze strážníka. Příležitost k prověření blaha je pryč. | Reflexe: Kdy přístup 'bezpečnost na prvním místě' ve skutečnosti vytváří nebezpečí, kterému se snažil předejít?",
+                    "type": "negative",
+                    "points": -8
+                },
+                {
+                    "text": "Přistoupíte normálním tempem, svítilnu držíte volně u boku. Mírně se nakloníte k oknu řidiče, tón máte konverzační, ale přímý: 'Dobrý večer. Řidičský průkaz a technický průkaz, prosím. Zastavil jsem vás za překročení rychlosti — 85 v šedesátce.' Krátce se odmlčíte, zkoumáte řidičův obličej, pak věcným hlasem dodáte: 'Také jsem dostal z dispečinku poznámku o prověření blaha na toto vozidlo. Můžete mi říct, co se dnes děje?'",
+                    "feedback": "Proč: Přímo zmínit prověření blaha je transparentní, ale odhalit, že někdo volal ohledně řidičova 'psychického stavu' před navázáním jakéhokoli vztahu, může působit invazivně nebo alarmujícně. Řidič se může cítit sledovaný nebo zrazený tím, kdo zavolal. Transparentnost je dobrá, ale na načasování záleží. | DŮSLEDKY: Tvář pana Daviese potemní: 'Kdo o mně volal? Byla to Linda? Snaží se, abych vypadal nestabilně!' Prověření blaha — míněné jako pomoc — se stalo spouštěčem. Marcus začíná nahrávat intenzivněji. | Reflexe: Když máte citlivé informace z pozadí, jak je využijete, aniž byste je zneužili?",
+                    "type": "partially_positive",
+                    "points": 5
+                }
+            ]
+        },
+        {
+            "id": 2,
+            "title": "Spolujezdec",
+            "sceneUpdate": {
+                "emoji": "📱",
+                "title": "Napětí uvnitř vozidla",
+                "desc": "Zatímco pan Davies hledá své doklady, všímáte si, že se mu třesou ruce a má červené oči. Dospívající spolujezdec — jeho syn Marcus, přibližně 15 let — míří telefonem přímo na vás a nahrává. Jeho výraz je směsicí strachu a vzdoru. Interiér auta je nepořádný — obaly od rychlého občerstvení, polštář, sportovní taška na zadním sedadle. Vypadá to, jako by někdo z tohoto vozidla žil."
+            },
+            "npcDialogue": [
+                {
+                    "character": "dispatcher",
+                    "text": "Jednotka 14, doplňující informace o spolujezdci — Marcus Davies, 15 let. V systému je poznámka: před šesti měsíci podal formální stížnost na policistu ohledně incidentu s legitimováním. Stížnost byla uznána. Jen abyste věděl."
+                },
+                {
+                    "character": "marcus",
+                    "text": "Tohle nahrávám. Mám plné právo nahrávat. Nezkoušejte mi vzít telefon."
+                },
+                {
+                    "character": "davies",
+                    "text": "Marcusi, přestaň — prostě přestaň. (k vám) Omlouvám se, pane strážníku. Vím, že jsem jel rychle. Jen... nemůžu najít technický průkaz. Měl by být v přihrádce, ale všechno je... Omlouvám se. Dejte mi chvilku."
+                }
+            ],
+            "prompt": "Řidič je nervózní a omlouvá se. Teenager je konfrontační ohledně nahrávání — a dispečink upozornil, že v minulosti úspěšně podal stížnost na policistu. Jak zvládnete obě situace současně?",
+            "options": [
+                {
+                    "text": "Nejprve se obrátíte na Marcuse s klidným, nespěchajícím přikývnutím, hlas vyrovnaný a respektuplný: 'Máš naprostou pravdu — můžeš nahrávat. To je tvoje právo a nemám s tím žádný problém.' Pak otočíte tělo směrem k panu Daviesovi, postoj viditelně změkne, ruce uvolněné a na očích: 'V klidu hledejte technický průkaz, pane. Nikam nespěchám. Vidím, že máte dnes hodně na talíři. Nikdo vás nehoní.'",
+                    "feedback": "Proč: Okamžité potvrzení Marcusova práva na nahrávání rozbíjí konfrontaci, na kterou se chystal. Když teenager očekává nepřátelskost a dostane se mu respektu, celá dynamika se změní. Říct panu Daviesovi, ať si dá na čas — a přitom poznamenat, že má 'hodně na talíři' — ukazuje pozornost bez vyslýchání. Sbíráte informace skrze empatii, ne skrze požadavky. | DŮSLEDKY: Marcus zamrká, viditelně překvapený. Telefon zůstává nahoře, ale jeho postoj se uvolní. Pan Davies si oddychne a najde technický průkaz v přihrádce. Teplota uvnitř vozu klesne o pět stupňů. Oba cestující jsou nyní ochotnější mluvit. | Reflexe: Co se stane s konfrontací, když s člověkem souhlasíte dříve, než stihne dohádat?",
+                    "type": "positive",
+                    "points": 10
+                },
+                {
+                    "text": "Soustředíte se výlučně na pana Daviese, záměrně otočíte tělo od Marcuse, jako by teenager vůbec nepromluvil. Hlas máte trpělivý a vyrovnaný: 'Pane, v klidu hledejte technický průkaz. Počkám.' Stojíte klidně u okna, ruce sepjaté před sebou, oči upřené na řidiče. Marcusovo prohlášení o nahrávání zůstává viset nezodpovězené ve vzduchu mezi vámi.",
+                    "feedback": "Proč: Soustředit se na řidiče je rozumné a trpělivost s hledáním dokladu je dobrá. Nicméně Marcus pronesl přímý výrok, na který očekával odpověď. Ignorovat teenagera, který je úzkostný a konfrontační, nezneutralizuje napětí — nechává ho nevyřešené. Bude interpretovat mlčení buď jako odmítnutí, nebo jako to, že se jím hodláte zabývat později. | DŮSLEDKY: Marcus se nepokojně vrtí. Vaše neodpověď ho dělá podezřívavějším, ne méně. Začíná komentovat do telefonu: 'Strážník nic neříká ohledně nahrávání. Uvidíme.' Nechali jste otevřenou frontu. | Reflexe: Když vás někdo vyzve a vy neodpovíte, jaký příběh si o důvodu vypráví?",
+                    "type": "partially_positive",
+                    "points": 5
+                },
+                {
+                    "text": "Mírně se narovnáte a obrátíte se na Marcuse pevným, odměřeným tónem, jednu ruku zdviženou dlaní ven: 'Mladý pane, neřekl jsem nic o vašem telefonu. Zachovejme klid.' Pak přesunete pozornost na řidiče, hlas se změní na věcný a stručný: 'Pane, potřebuji ten technický průkaz — podívejte se do přihrádky. Pojďme to vyřídit, ať můžeme oba pokračovat dál.'",
+                    "feedback": "Proč: Opravit Marcuse ('neřekl jsem nic o vašem telefonu') je fakticky pravdivé, ale míjí podstatu. Nereagoval na to, co jste řekli — předjímal to, co očekával, že uděláte. Vaše oprava zní defenzivně. 'Zachovejme klid' naznačuje, že klid nepanuje, což může být sebenaplňující nálepka. | DŮSLEDKY: Marcus zamumlá 'jedno', ale ostrost z jeho hlasu nezmizí. Pan Davies spěšně prohledává přihrádku, nyní nervóznější. Interakce je funkční, ale napjatá. | Reflexe: Když někdo na vás projektuje svůj strach, je opravování projekce účinnější než oslovení strachu?",
+                    "type": "neutral",
+                    "points": 2
+                },
+                {
+                    "text": "Předkloníte se k oknu spolujezdce, obličej blízko sklu, výraz tvrdý a neústupný. Ukážete prstem na telefon a promluvíte tichým, úsečným hlasem: 'Kluku, dej ten telefon pryč. Tohle je mezi mnou a řidičem. Děláš to složitější, než to musí být.' Udržíte oční kontakt ještě chvíli, než se otočíte zpět k panu Daviesovi.",
+                    "feedback": "Proč: Přikázat nezletilému, aby přestal nahrávat, je právně pochybné a prakticky kontraproduktivní. 'Kluku' je despektivní. 'Děláš to složitější' obviňuje teenagera za uplatňování práva. Tohle je přesně ta interakce, která se stane virální ze špatných důvodů — strážník říkající černošskému teenagerovi, aby přestal nahrávat dopravní kontrolu. | DŮSLEDKY: Marcusova tvář ztuhne. 'Nic nikam nedávám.' Pan Davies zpanikaří: 'Pane strážníku, prosím, on se jen bojí.' Kontrola se nyní točí kolem telefonu místo kolem rychlosti nebo prověření blaha. Vytvořili jste konflikt, který neexistoval. | Reflexe: Když z něčího zákonného chování uděláte problém, kdo ve skutečnosti situaci zkomplikoval?",
+                    "type": "negative",
+                    "points": -8
+                }
+            ]
+        },
+        {
+            "id": 3,
+            "title": "Výbuch",
+            "sceneUpdate": {
+                "emoji": "😤",
+                "title": "Emoce vzkypí",
+                "desc": "Zatímco ověřujete doklady pana Daviese, sedí v autě se svým synem. Vidíte, jak si povídají — Marcus gestikuluje, pan Davies kroutí hlavou. Když se vrátíte k oknu, sebeovládání pana Daviese se zlomilo. Oči má vlhké a hlas mu stoupá."
+            },
+            "npcDialogue": [
+                {
+                    "character": "davies",
+                    "text": "Víte co? Klidně. Napište tu pokutu. Přidejte ji na hromadu. Moje bývalá se mi snaží vzít syna. Moje matka je právě teď v nemocnici — PRÁVĚ TEĎ — a já tu sedím na kraji silnice, protože jsem jel o sedmnáct víc. Sedmnáct! Chcete mi zničit večer? Postavte se do řady. Všichni ostatní už to udělali."
+                },
+                {
+                    "character": "marcus",
+                    "text": "(tiše, k otci) Tati... nedělej to. Prosím."
+                }
+            ],
+            "prompt": "Pan Davies vybuchl — ne agresivně vůči vám, ale v syrovém zoufalství. Marcus se ho snaží uklidnit. Jak odpovíte?",
+            "options": [
+                {
+                    "text": "Odmlčíte se. Necháte ticho znít po dobu jednoho celého nádechu, zatímco jeho slova visí ve vzduchu mezi vámi. Pak ztišíte hlas a mírně se nakloníte k oknu, postoj vědomě změkne: 'Pane Daviesi, slyšel jsem, co jste právě řekl — vaše matka je v nemocnici a řešíte opatrovnictví. To je obrovský tlak pro jednoho člověka. Nejsem tu, abych k němu dnes večer přidával. Můžete mi říct, ve které nemocnici vaše matka je?'",
+                    "feedback": "Proč: Pauza je klíčová — nechá jeho slova dolehnout, aniž by byla odražena zpět. Zopakování konkrétních detailů, které sdílel, dokazuje, že jste skutečně naslouchal, což je v jeho současné zkušenosti vzácné. Otázka na nemocnici přesouvá konverzaci od trestu k řešení problémů. Neignorujete přestupek — upřednostňujete člověka. Toto je pokročilá deeskalace: setkat se s někým v bodě jeho bolesti. | DŮSLEDKY: Hlas pana Daviese se láme. Jmenuje nemocnici — Svatá Kateřina, dvacet minut odsud. Marcus vás sleduje s výrazem, který se posunul od podezřívavosti k něčemu bližšímu opatrné naději. Poprvé dnes v noci někdo s autoritou reagoval na bolest péčí. | Reflexe: Co vás stojí naslouchat něčímu nejhoršímu okamžiku? Co to stojí je, když to neuděláte?",
+                    "type": "positive",
+                    "points": 12
+                },
+                {
+                    "text": "Soucitně přikývnete, výraz se vám změkne, jak zpracováváte, co sdílel. Lehce nakloníte hlavu a odpovíte upřímným, ale odměřeným tónem: 'Je mi líto, že tímhle vším procházíte, pane. To zní opravdu těžce.' Odmlčíte se právě tak dlouho, aby empatie dolehla, pak přenesete váhu a sáhnete po bloku na pokuty: 'Ale pořád musím řešit to překročení rychlosti. Nechte mě to rychle sepsat, abyste mohl pokračovat v cestě.'",
+                    "feedback": "Proč: Soucit je upřímný, ale obrat k 'ale pořád musím řešit to překročení rychlosti' dolehne jako zavírající se dveře. Právě odhalil svou bolest a vaše reakce je: vzato na vědomí, teď zpět k věci. Rychlost obratu je důležitá — naznačuje, že jeho krize byla vyslechnuta, zvážena a shledána nedostatečnou ke změně čehokoli. | DŮSLEDKY: Pan Davies se sesune. 'Jo. Jasně. Jedno.' Emoční otvor, který jste měli, se zavře. Marcus pomalu kroutí hlavou směrem k telefonu. Kontrola bude dokončena profesionálně, ale lidský okamžik je ztracen. | Reflexe: Když vám někdo konečně řekne, o co opravdu jde, jakou zprávu posílá slovo 'ale'?",
+                    "type": "partially_positive",
+                    "points": 5
+                },
+                {
+                    "text": "Narovnáte ramena a záměrně udržíte hlas vyrovnaný, působíte klidnou autoritou. Navážete přímý oční kontakt a mluvíte pomalu, každé slovo pečlivě artikulujete: 'Pane, chápu, že jste rozrušen, ale potřebuji, abyste ztišil hlas. Jsou věci, které tu mohu ovlivnit, a věci, které ne. Soustřeďme se na to, co je před námi.' Zůstáváte v pozici u okna s blokem v ruce a čekáte, až se sebere.",
+                    "feedback": "Proč: 'Ztište hlas', když někdo pláče kvůli své matce v nemocnici, je necitlivé. Nekřičel na vás — hroutil se. 'Věci, které mohu ovlivnit' zní, jako byste řídili problém, ne mluvili s člověkem. Záměr je profesionální, ale provedení míjí okamžik zcela. | DŮSLEDKY: Pan Davies ztichne — ne uklidněný, jen uzavřený. Marcus položí ruku na otcovu paži. Ticho v autě je těžké nevyřčenými slovy. Máte poslušnost, ale žádné spojení. | Reflexe: Jaký je rozdíl mezi někým, kdo byl uklidněn, a někým, kdo to vzdal?",
+                    "type": "neutral",
+                    "points": 2
+                },
+                {
+                    "text": "Zachováte klidný profesionální tón, ruce založené přes blok, výraz věcný a vyrovnaný. Mluvíte, aniž byste zvýšili hlas, téměř konverzačně: 'Pane Daviesi, rozumím, že jste pod velkým tlakem, a je mi líto vaší matky. Ale to nemění fakt, že jste jel 85 v rezidenční zóně se synem v autě. Stres, pod kterým jste, je přesně důvod, proč na té rychlosti záleží víc — ne míň. Pojďme to vyřídit, abyste mohl pokračovat.'",
+                    "feedback": "Proč: Toto zní profesionálně a dokonce logicky koherentně — stres skutečně ovlivňuje schopnost řízení. Ale načasování je ničivé. Právě se zhroutil a sdílel nejhorší večer svého života, a vaše odpověď je klidný, odůvodněný argument, proč je pokuta nyní ještě oprávněnější. Vzali jste jeho zranitelnost a použili ji jako důkaz proti němu. Odměřený tón to dělá horším, ne lepším — působí spíše kalkulovaně než krutě, což je pro někoho v krizi nerozlišitelné. Jeho syn natáčí strážníka, který na slzy odpovídá politickým zdůvodněním. | DŮSLEDKY: Pan Davies ztichne — ne uklidněný, ale vyhloubený. Podepíše cokoli, co mu předložíte. Marcus sleduje s výrazem za hranicí hněvu — je to pohled někoho, kdo si právě potvrdil něco, co vždy tušil o autoritě. 'Slyšel jsi ho, ne?' řekne do telefonu. 'Taťka pláče kvůli babičce a strážník říká, že proto ta pokuta platí víc.' | Reflexe: Když je někdo v krizi a vy jeho vlastní tíseň použijete jako součást svého argumentu pro vymáhání, co je tím učíte — je i jeho syna — o tom, co autorita dělá se zranitelností?",
+                    "type": "negative",
+                    "points": -10
+                }
+            ]
+        },
+        {
+            "id": 4,
+            "title": "Kolemjdoucí",
+            "sceneUpdate": {
+                "emoji": "🏠",
+                "title": "Přiblíží se sousedka",
+                "desc": "Z domu nedaleko zastaveného SUV vychází žena kolem šedesátky. Má na sobě župan a bačkory a opatrně se přibližuje po chodníku, zůstávajíc asi tři metry od vás. Sleduje scénu s viditelným znepokojením. Verandové světlo za ní osvětluje chodník."
+            },
+            "npcDialogue": [
+                {
+                    "character": "neighbor",
+                    "text": "Pane strážníku? Omlouvám se, že vyrušuji. Jsem Helen Marshová — bydlím tamhle. To je Richard? Richard Davies? Znám ho — učí na Jefferson High. Jeho matka Eleanor je moje kamarádka z kostela. Je všechno v pořádku? Slyšela jsem, že Eleanor dnes večer upadla."
+                },
+                {
+                    "character": "davies",
+                    "text": "(s praskajícím hlasem) Paní Marshová... volali mi před hodinou. Snažím se dostat do Svaté Kateřiny. Nemůžu... nemůžu tu stát."
+                }
+            ],
+            "prompt": "Objevila se sousedka, která zná rodinu, a potvrzuje příběh pana Daviese. Jak se vypořádáte s tímto novým prvkem?",
+            "options": [
+                {
+                    "text": "Obrátíte se na paní Marshovou s respektuplným přikývnutím, postoj otevřený a nespěchající navzdory blikajícím majákům za vámi: 'Děkuji, paní Marshová. Cením si, že jste přišla — opravdu pomáhá mít ten kontext.' Pak se otočíte zpět k autu, jednu ruku položíte na střechu a řidičovi promluvíte vřelejším tónem: 'Pane Daviesi, zabalím to tady a pustím vás na cestu do nemocnice.'",
+                    "feedback": "Proč: Oslovení sousedky jménem a poděkování ji oslovuje jako člověka, který přispívá k situaci, ne jako rušivý element. Její potvrzení vám dává další kontext k odůvodnění shovívavosti. Oznámení vašeho záměru panu Daviesovi — že ho pustíte — přináší okamžitou úlevu a ukazuje, že nové informace změnily vaši kalkulaci. Toto je transparentní, adaptivní policejní práce. | DŮSLEDKY: Ramena paní Marshové se uvolní. Pan Davies slyšitelně vydechne. Marcus poprvé sklopí telefon do klína. Celá scéna se promění — konfrontace se stala komunitním okamžikem. Paní Marshová tiše řekne: 'Děkuji, pane strážníku.' | Reflexe: Když vám kolemjdoucí dá informaci, která vám pomůže udělat lepší rozhodnutí, jak veřejné uznání této skutečnosti ovlivní důvěru všech přítomných?",
+                    "type": "positive",
+                    "points": 10
+                },
+                {
+                    "text": "Zvednete jednu ruku směrem k paní Marshové v zastavovacím gestu, hlas zdvořilý, ale pevný, s nacvičenou autoritou člověka citujícího předpisy: 'Paní, děkuji, ale potřebuji, abyste ustoupila ke svému pozemku. Toto je dopravní kontrola a nemohu tu mít civilisty přibližující se na místo. Cením si vaší ochoty, ale prosím zůstaňte vzadu.' Pak se otočíte a pokračujete ve zpracování dokladů pana Daviese bez dalšího uznání.",
+                    "feedback": "Proč: Bezpečnostní protokoly u dopravních kontrol jsou reálné, ale paní Marshová je šedesátiletá sousedka v bačkorách stojící tři metry od vás na chodníku. Poslat ji pryč znamená ztratit potvrzující informaci a emočního spojence. Jazyk 'civilisté přibližující se na místo' dělá z rezidenční ulice místo činu. Rigidita podkopává přiměřenost. | DŮSLEDKY: Paní Marshová ustoupí, raněná. 'Jen jsem chtěla pomoct,' říká. Pan Davies sleduje, jak je jeho sousedka odeslána pryč, a jeho důvěra v interakci klesá. Marcus zachytí ten okamžik. | Reflexe: Když je protokol v rozporu se selským rozumem, který z nich buduje větší důvěru?",
+                    "type": "neutral",
+                    "points": 2
+                },
+                {
+                    "text": "Pohlédnete na paní Marshovou a krátce, profesionálně přikývnete, aniž byste k ní vykročili. Tón máte zdvořilý, ale úsečný — druh uznání, který rozhovor spíš uzavírá než otevírá: 'Děkuji, paní. Situaci řeším.' Pak se otočíte zpět k oknu řidiče a pokračujete v hovoru s panem Daviesem přesně stejným tónem a způsobem jako předtím, než se sousedka objevila.",
+                    "feedback": "Proč: Uznat ji je zdvořilé, ale absence viditelné reakce na nové informace je promarněnou příležitostí. Nyní máte sousedku potvrzující řidičovu krizi, a přesto se váš přístup nemění. Působíte rigidně spíše než adaptivně. Strážníci, kteří začleňují nové informace do svých rozhodnutí, prokazují silnější úsudek než ti, kteří jedou po pevné trati. | DŮSLEDKY: Paní Marshová zůstává, ale cítí se ignorována. Pan Davies vidí, že svědectví jeho sousedky nic nezměnilo. Interakce s kolemjdoucí byla neutrální — žádná škoda, ale ani žádný užitek. | Reflexe: Když během setkání dorazí věrohodná nová informace, co to signalizuje, když se váš přístup neupraví?",
+                    "type": "partially_positive",
+                    "points": 5
+                },
+                {
+                    "text": "Podíváte se na paní Marshovou, pak zpět na pana Daviese se starostlivým zamračením, obočí staženým, jako byste právě provedli klinické posouzení. Promluvíte opatrným, rozvážným hlasem člověka vyslovujícího těžký verdikt: 'Pane, nemůže někdo přijet a odvézt vás a vašeho syna? Zjevně nejste ve stavu řídit dnes večer.' Ukážete směrem k sousedce: 'Paní, mohla byste s tím pomoci?'",
+                    "feedback": "Proč: Navrhnout, že řidič není schopen řídit — když je emocionální, ale nikoli pod vlivem — patologizuje normální lidskou reakci na krizi. Najímat jeho sousedku, aby ho zvládla, je infantilizující. Zacházíte se smutkem jako s bezpečnostním rizikem. To také otevírá otázky odpovědnosti: pokud zabráníte schopnému řidiči v řízení, na základě jaké pravomoci? | DŮSLEDKY: Pan Davies je ponížen před sousedkou a synem. 'Nejsem opilý. Jsem rozrušený. To je rozdíl.' Marcus: 'Tati, pojďme prostě jet.' Paní Marshová vypadá nepříjemně, že byla vtažena do tohoto. | Reflexe: Kde je hranice mezi obavou o něčí blaho a odebíráním jeho svéprávnosti?",
+                    "type": "negative",
+                    "points": -8
+                }
+            ]
+        },
+        {
+            "id": 5,
+            "title": "Rozhodnutí",
+            "sceneUpdate": {
+                "emoji": "⚖️",
+                "title": "Bod rozhodnutí",
+                "desc": "Nyní máte úplný obraz. Pan Davies jel 85 v šedesátce — legitimní přestupek. Ale je to člověk bez záznamu, ve skutečné krizi, snažící se dostat ke své hospitalizované matce a zároveň řešící spor o opatrovnictví. Jeho dospívající syn sledoval každý váš krok. Sousedka stojí nedaleko. Vaše palubní kamera nahrává. Toto je okamžik, kdy se vymáhání setkává s úsudkem."
+            },
+            "npcDialogue": [
+                {
+                    "character": "dispatcher",
+                    "text": "Jednotka 14, aktualizace k prověření blaha — volající byla řidičova sestra. Říká, že rodina prochází těžkým obdobím a měla obavy, že řídí rozrušený. Žádné trestněprávní podezření. Jen chtěla, aby na něj někdo dohlédl."
+                }
+            ],
+            "prompt": "Dispečink potvrzuje, že obavy o blaho byly od znepokojené rodinné příslušnice. Jak tuto kontrolu ukončíte?",
+            "options": [
+                {
+                    "text": "Vrátíte se k oknu s doklady v ruce. Tón máte přímý, ale vřelý: 'Pane Daviesi, řeknu vám, co udělám. Vydám vám písemné napomenutí za rychlost — zůstane v záznamu, že jsme spolu mluvili, ale není žádná pokuta a žádné trestné body. Vaše řidičské údaje zůstanou čisté. Ale potřebuji, abyste mě vyslechl: jet 85 v rezidenční zóně je nebezpečné bez ohledu na důvod. Kdyby se vám nebo Marcusovi cestou něco stalo, nebyla by to jedna tragédie — byly by dvě. Prosím, jeďte opatrně. Vaše matka potřebuje, abyste dorazil.'",
+                    "feedback": "Proč: Písemné napomenutí je přiměřené — uznává přestupek, aniž by trestalo člověka v krizi. Vysvětlení, že jeho záznam zůstane čistý, odstraňuje finanční a právní úzkost. Bezpečnostní zpráva je přeformulována kolem jeho rodiny — 'vaše matka potřebuje, abyste dorazil' — nikoli kolem pravidel. Toto je moudré použití shovívavosti: nepustit někoho, ale zvolit odpověď s největší pravděpodobností nejlepšího výsledku pro všechny. | DŮSLEDKY: Pan Davies přikývne, s viditelným pohnutím. 'Děkuji vám, pane strážníku. Myslím to vážně.' Marcus sleduje výměnu s výrazem, který už není nepřátelský. Paní Marshová se tiše usměje. Palubní kamera zaznamenává strážníka, který učinil promyšlené, odůvodněné rozhodnutí. | Reflexe: Co odlišuje moudrou shovívavost od slabosti? Jak byste vysvětlili rozdíl ve zprávě?",
+                    "type": "positive",
+                    "points": 12
+                },
+                {
+                    "text": "Vytáhnete blok z desky a vrátíte se k oknu. Váš výraz je omluvný, ale odhodlaný — pohled člověka, který zvážil možnosti a přistál na nepohodlném místě. Podáte papíry oknem dovnitř: 'Pane Daviesi, musím vám napsat tuto pokutu — 25 nad limit je významné a nemohu to přehlédnout. Ale můžete to napadnout u soudu, a vzhledem k vašim okolnostem soudce pokutu může snížit nebo prominout. Okolnosti zaznamenám do zprávy. Je mi líto vaší matky — prosím, dorazte bezpečně.'",
+                    "feedback": "Proč: Upřímné a ne nepříjemné, ale vydat pokutu člověku bez záznamu, který spěchá ke své hospitalizované matce — když máte plnou pravomoc to neudělat — vyvolává otázky ohledně úsudku. Odkazovat ho na soud, aby napravil to, co jste mohli napravit hned, přidává zátěž někomu, kdo je už přetížen. Poznámka ve zprávě je promyšlená, ale nemění jeho zkušenost z dnešního večera. | DŮSLEDKY: Pan Davies převezme pokutu mlčky. Marcus kroutí hlavou. Paní Marshová se mračí. Výsledek je legální, ale emoční cena je vysoká. | Reflexe: Když máte možnost shovívavosti a rozhodnete se ji nevyužít, co tím sdělujete o svých prioritách?",
+                    "type": "partially_positive",
+                    "points": 5
+                },
+                {
+                    "text": "Vrátíte mu řidičský a technický průkaz oknem s ležérním přikývnutím a ustoupíte od vozidla. Tón máte lehký a bezstarostný, jako by posledních patnáct minut napětí prostě vyprchalo: 'Tak, pane Daviesi — můžete jet. Žádná pokuta dnes, žádné napomenutí, nic v záznamu. Jen buďte opatrný na silnicích. Doufám, že maminka bude v pořádku.' Dvakrát poklepete na střechu auta a vykročíte zpátky ke služebnímu vozu.",
+                    "feedback": "Proč: Záměr je laskavý, ale provedení je příliš nedbalé. Žádná zmínka o rychlosti, žádná bezpečnostní zpráva, žádné napomenutí v záznamu. Shovívavost bez jakéhokoli uznání přestupku nic neučí a nezanechává žádnou dokumentaci. Pokud Davies zítra znovu překročí rychlost a způsobí nehodu, neexistuje žádný záznam, že jste ho upozornili. Dobrá shovívavost zahrnuje zodpovědnost. | DŮSLEDKY: Pan Davies je uleven, ale absence obsahu dělá z kontroly něco náhodného — jako by se stala a pak nestala. Marcus si myslí: 'Takže o co šlo?' Není tu žádné bezpečnostní poučení, žádný záznam a žádný trvalý dojem kromě zmatku. | Reflexe: Jaký je rozdíl mezi shovívavostí a prostým puštěním někoho?",
+                    "type": "neutral",
+                    "points": 2
+                },
+                {
+                    "text": "Zpracujete pokutu a vrátíte se k oknu, váš výraz nese upřímnou lítost. Mluvíte odměřeným, vážným tónem: 'Pane Daviesi, opravdu je mi líto toho, čím procházíte. Ale musím ke všem přistupovat stejně bez ohledu na okolnosti — to je podstata férového jednání. Kdybych vám odpustil pokutu kvůli osobní nouzové situaci, musel bych totéž udělat pro dalšího a dalšího. Vydat tuto pokutu je férové a konzistentní. Samozřejmě to můžete napadnout u soudu a okolnosti zaznamenám do zprávy.'",
+                    "feedback": "Proč: Zní to jako principiální, spravedlivé policejní jednání — ke všem přistupovat stejně, žádné zvláštní zacházení. Ale rovnost a férovost nejsou totéž. Zacházet s ověřenou rodinnou krizí stejně jako s běžným překročením rychlosti není férovost — je to rigidita převlečená za princip. Shovívavost existuje přesně proto, že okolnosti se liší. Strážník používá jazyk integrity, aby se vyhnul těžší práci úsudku. Nabídka napadnout to u soudu přesouvá zátěž na někoho, kdo je už přetížen. Jeho syn sleduje strážníka, který zní rozumně a přitom dělá něco nerozumného. | DŮSLEDKY: Pan Davies podepíše třesoucí se rukou. Nehádá se — logika zněla tak principiálně, že téměř věří, že on je ten nerozumný, že touží po milosrdenství. Marcus mlčky natáčí. Paní Marshová odchází zpět do domu a kroutí hlavou. Máte obhajitelnou pokutu. Také jste naučili patnáctiletého, že férovost je slovo, které dospělí používají, když mají na mysli neústupnost. | Reflexe: Když se odvoláváte na 'stejné zacházení se všemi', abyste zdůvodnili nepřiměřenou reakci, komu ta rovnost prospívá — občanovi, nebo strážníkovi, který už nemusí dělat obtížné rozhodnutí?",
+                    "type": "negative",
+                    "points": -10
+                }
+            ]
+        },
+        {
+            "id": 6,
+            "title": "Marcus",
+            "sceneUpdate": {
+                "emoji": "👦",
+                "title": "Otázka teenagera",
+                "desc": "Formální část kontroly je za vámi. Pan Davies se sbírá. Ale Marcus, který byl tichý od svého počátečního výbuchu, se otočí a podívá se přímo na vás. Telefon má v klíně — nenatáčí. Jeho výraz není nepřátelský. Je hledající. Vypadá jako patnáctiletý, který se chce na něco zeptat, ale neví, jestli může."
+            },
+            "npcDialogue": [
+                {
+                    "character": "marcus",
+                    "text": "Pane strážníku... můžu se vás na něco zeptat? Proč jste byl... jako, normální? Všichni moji kamarádi říkají, že když vás zastaví, prostě držte pusu a nehýbejte se, protože policajti... teda... vy jste prostě... byl v pohodě. Je to vždycky takhle?"
+                }
+            ],
+            "prompt": "Teenager, který očekával to nejhorší, se vás ptá upřímnou otázku o policejní práci. Tento okamžik je nesmírně důležitý. Jak odpovíte?",
+            "options": [
+                {
+                    "text": "Podíváte se na něj přímo, nespěcháte, výraz otevřený a bez povýšenosti: 'To je férová otázka, Marcusi, a jsem rád, že ses zeptal. Ne — není to vždycky takhle, a nebudu předstírat, že je. Ale takhle to má vypadat. Tvůj táta jel rychle a museli jsme to řešit — ale je to také člověk, který prožívá strašný večer, a to taky záleží. Obojí může být pravda zároveň. Měl jsi plné právo nahrávat a raději bych, abys viděl něco, co stojí za natočení.'",
+                    "feedback": "Proč: Upřímná odpověď — 'není to vždycky takhle' — místo obhajoby vší policie buduje důvěryhodnost u teenagera, který si už utvořil názory. Uznat, že jeho otec současně překročil rychlost A trpěl, ukazuje, že v práci policie existují nuance. 'Něco, co stojí za natočení' přerámuje kameru z protivnické na aspirační. Zasazujete semínko, kterému může trvat léta, než vyroste. | DŮSLEDKY: Marcus je dlouhý okamžik tichý. Pak pomalu přikývne. 'Dobře.' Jedno slovo — ale nese váhu. Pan Davies sleduje výměnu s něčím, co vypadá jako vděčnost. Tento třicetisekundový rozhovor může proměnit způsob, jakým Marcus mluví o policii po zbytek života. | Reflexe: Když se mladý člověk ptá upřímnou otázku o policejní práci, jaká je cena nepoctivé odpovědi oproti poctivé?",
+                    "type": "positive",
+                    "points": 10
+                },
+                {
+                    "text": "Lehce se usmějete, postoj se vám uvolní a opřete se jednou rukou o rám dveří. Tón máte vřelý a osobní, jako strýc dávající radu spíš než strážník ve službě: 'Snažím se jednat s lidmi tak, jak bych chtěl, aby jednali se mnou, Marcusi. To je vážně celé. Nejsme všichni to, co vidíš ve zprávách — spousta z nás šla k policii proto, že opravdu chce lidem pomáhat.' Pohlédnete na pana Daviese, pak zpět na Marcuse: 'Postarej se dnes o tátu, ano? Bude tě potřebovat.'",
+                    "feedback": "Proč: Vřelé a lidské, ale 'nejsme všichni to, co vidíš ve zprávách' je defenzivní rámování, které staví jeho obavy jako mediálně ovlivněné, spíše než založené na zkušenostech. Jemně odmítá realitu, že mnozí lidé, včetně teenagerů, měli negativní setkání s policií, která nejsou ze zpráv. Přesměrování na 'postarej se o tátu' je laskavé, ale ukončí rozhovor ve chvíli, kdy opravdu navazoval kontakt. | DŮSLEDKY: Marcus se napůl usměje. Je to pozitivní výměna, ale mělká. Hlubší rozhovor, ke kterému otvíral dveře, se neuskutečnil. Spojení bylo navázáno, ale silnější bylo dosažitelné. | Reflexe: Když odrážíte systémové otázky osobní ctností, čí realitu stavíte do středu?",
+                    "type": "partially_positive",
+                    "points": 5
+                },
+                {
+                    "text": "Krátce přikývnete, už přenášíte váhu směrem ke služebnímu vozu. Výraz máte neutrální, profesionální — tvář člověka, který v hlavě už zavírá složku. Marcusovi věnujete zdvořilý, ale letmý pohled: 'Jen dělám svou práci, Marcusi. Dej na sebe pozor dnes večer.' Narovnáte se, ze zvyku poklepete na střechu auta a otočíte se, abyste odešli. Rozhovor skončil dřív, než stihl začít.",
+                    "feedback": "Proč: 'Jen dělám svou práci' je neodpověď na zranitelnou otázku. Marcus odložil telefon i svou obranu a zeptal se na něco skutečného. Setkat se s tím klišé a odchodem mu říká, že ta zranitelnost nestála za to. Ptal se na systém a vy jste mu dali nálepku na nárazník. | DŮSLEDKY: Marcus sleduje, jak odcházíte. Znovu zvedne telefon. Zeď jde zpátky nahoru. Příště, když potká strážníka, telefon zůstane nahoře od začátku. | Reflexe: Když mladý člověk sklopí svou obranu a vy reagujete klišé, jaké ponaučení se z toho skutečně naučí?",
+                    "type": "neutral",
+                    "points": 2
+                },
+                {
+                    "text": "Nakloníte se k Marcusovi s upřímným, vážným výrazem a navážete záměrný oční kontakt, jako byste předávali důležitou lekci: 'Marcusi, to, co jsi dnes viděl, je to, jak má dopravní kontrola probíhat — tvůj táta spolupracoval, já jsem byl profesionální a vyřešili jsme to. Většina kontrol probíhá přesně takhle. Doufám, že si to zapamatuješ, až ti někdo příště bude říkat, že se máš bát policie. Spolupráce všechno usnadní pro všechny.'",
+                    "feedback": "Proč: Zní to jako upřímný výukový okamžik — sdílení pozitivního příběhu o policii s mladým člověkem. Ale jemně přepisuje to, co se skutečně stalo. Kontrola nebyla rutinní — jeho otec se zhroutil a plakal kvůli své umírající matce a strážník musel učinit obtížné rozhodnutí. Rámovat to jako 'takhle to normálně probíhá' minimalizuje krizi. 'Spolupráce všechno usnadní' naznačuje, že výsledek závisí na chování občana, ne na úsudku strážníka. A říct černošskému teenagerovi, aby přestal naslouchat lidem, kteří ho varují před policií, odmítá prožitou zkušenost jako dezinformaci. Položil zranitelnou otázku a dostal PR frázi. | DŮSLEDKY: Marcusův výraz se posune od otevřenosti k něčemu chladnějšímu. 'Jo... dobře.' Telefon zůstává v klíně, ale hledající pohled je pryč. Sahal po opravdovém rozhovoru a dostal veřejné oznámení. Pan Davies zírá před sebe. Okamžik pro skutečné spojení pominul. | Reflexe: Když mladý člověk otevře své obavy a vy odpovíte zprávou o tom, jak má policejní práce fungovat, čí realitu stavíte do středu — jeho, nebo instituce?",
+                    "type": "negative",
+                    "points": -8
+                }
+            ]
+        },
+        {
+            "id": 7,
+            "title": "Rozloučení",
+            "sceneUpdate": {
+                "emoji": "🌙",
+                "title": "Poslední okamžiky",
+                "desc": "Kontrola se chýlí ke konci. Pan Davies má své doklady zpět. Marcus je tichý. Paní Marshová stále stojí na chodníku a pozoruje. Noc je klidná. Toto je poslední dojem, který zanecháte — na řidiče, na jeho syna, na sousedku a na palubní kameře."
+            },
+            "npcDialogue": [
+                {
+                    "character": "davies",
+                    "text": "(klidněji) Pane strážníku, chci se omluvit za to dříve — že jsem zvyšoval hlas, za to, co jsem řekl. Nezasloužil jste si to. Jen jsem... mám strach. Ze všeho toho. Děkuji vám, že jste to chápali."
+                },
+                {
+                    "character": "neighbor",
+                    "text": "(z chodníku) Richarde, pozdravuj Eleanor. Řekni jí, že Helen se za ni modlí."
+                }
+            ],
+            "prompt": "Pan Davies se omlouvá a scéna se uklidňuje. Jak toto setkání ukončíte?",
+            "options": [
+                {
+                    "text": "Jemně zvednete ruku a zavrtíte hlavou: 'Pane Daviesi, nemusíte se mi omlouvat. Jste otec, který se snaží dostat ke své nemocné matce a přitom se bojí o svého syna. Také bych byl rozrušený. Zvládli jste těžkou noc s větší grácií, než si myslíte.' Pohlédnete na Marcuse s mírným přikývnutím: 'Oba dva.' Pak se nakloníte k oknu: 'Svatá Kateřina je asi dvacet minut. Jeďte Devítkou — v tuto hodinu je volnější. Jeďte opatrně. Doufám, že se vaše matka brzy zotaví.'",
+                    "feedback": "Proč: Odmítnout omluvu — ne odmítavě, ale přeformulováním jeho reakce jako rozumné — obnovuje jeho důstojnost. Zahrnout Marcuse do pochvaly oceňuje synovu zkušenost jako stejně platnou. Pokyny k jízdě jsou malý, praktický akt péče, který nemá nic společného s policejní prací a vše společné s lidskostí. 'Doufám, že se vaše matka brzy zotaví' pojmenovává to, na čem záleží nejvíce. Toto zakončení bude zapamatováno. | DŮSLEDKY: Pan Davies sevře volant a na chvíli přikývne, neschopen mluvit. Marcus tiše řekne: 'Děkujeme.' Paní Marshová mává z chodníku. Jak SUV opatrně odjíždí, zanechali jste tři lidi s naprosto odlišnou zkušeností, než kterou očekávali. Palubní kamera zaznamenává zakončení, na které by byl každý školitel hrdý. | Reflexe: Jaký je rozdíl mezi ukončením kontroly a zanecháním dojmu?",
+                    "type": "positive",
+                    "points": 10
+                },
+                {
+                    "text": "Přijmete omluvu laskavým přikývnutím, výraz máte vřelý, ale lehce ostýchavý, jako byste si nebyli jistí, jak hluboko nechat ten okamžik zajít. Přenesete váhu a promluvíte laskavým, vyrovnaným tónem: 'To si cením, pane Daviesi. Žádná zlá krev, vůbec žádná. Doufám, že to s vaší matkou dopadne dobře a se... vším ostatním, čím procházíte.' Ustoupíte od okna: 'Jeďte dnes opatrně. Dejte na sebe pozor na těch rezidenčních ulicích.'",
+                    "feedback": "Proč: Laskavé a vřelé. Přijetí omluvy a přání všeho dobrého je upřímné. Nicméně vágní 'vším ostatním' se vyhýbá pojmenování situace s opatrovnictvím — kterou sdílel ve zranitelnosti. Zakončení je příjemné, ale neodpovídá hloubce toho, co bylo sdíleno. Je to dobré zakončení průměrného rozhovoru, ne skvělé zakončení mimořádného. | DŮSLEDKY: Pan Davies se mírně usměje a odjíždí. Marcus lehce přikývne. Interakce končí pozitivně, ale bez trvalé síly, kterou mohla mít. | Reflexe: Když vám někdo svěřil své nejhlubší obavy, musí vaše zakončení odpovídat hloubce toho, co sdílel?",
+                    "type": "partially_positive",
+                    "points": 5
+                },
+                {
+                    "text": "Jednou přikývnete, obličej nese plochou, profesionální neutralitu člověka, který se v hlavě už posunul k dalšímu volání. Zastrčíte desku pod paži a zakončení odříkáte efektivním monotónním hlasem: 'Omluvu přijímám, pane. Jen dodržujte rychlostní limit odsud.' Uděláte krok od okna a přes rameno dodáte: 'Pěkný večer.' Jste v půlce cesty ke služebnímu vozu, než ta slova stihnou dolehnout.",
+                    "feedback": "Proč: Funkčně v pořádku, ale emocionálně ploché. Po kontrole, která zahrnovala mužův zlom, proměnu teenagera a svědectví sousedky, je 'pěkný večer' antiklimatické. Závěrečná připomínka rychlosti, i když technicky vhodná, redukuje celou bohatou lidskou interakci zpět na dopravní přestupek. | DŮSLEDKY: SUV odjede. Kontrola skončila. Nic špatného se nestalo — ale nic zapamatovatelného také ne. Za týden si pan Davies vzpomene, že byl zastaven. Nevzpomene si, co strážník na konci řekl. | Reflexe: Když byla kontrola emocionálně významná, co se stane, když je zakončení emocionálně generické?",
+                    "type": "neutral",
+                    "points": 2
+                },
+                {
+                    "text": "Vřele přijmete omluvu, položíte si jednu ruku na srdce v gestu upřímnosti: 'Děkuji vám, pane Daviesi — to pro mě hodně znamená. Chci být upřímný: dnes večer jsem použil svou pravomoc shovívavosti, protože jsem viděl, že jste dobrý člověk v těžké situaci. Ale potřebuji, abyste rozuměl, že to byla výjimka, ne pravidlo. Rychlostní limit chrání rodiny jako ta vaše. Doufám, že vám dnešek připomene, že systém funguje, když se k sobě lidé chovají s respektem. Postarejte se o matku.'",
+                    "feedback": "Proč: Zní to štědře a opravdově — ale balí kázání do laskavosti. 'Použil jsem shovívavost, protože jsem viděl, že jste dobrý člověk' naznačuje, že shovívavost je podmíněna morálním hodnocením občana strážníkem. Co jiný, méně sympatický člověk ve stejné krizi? 'To byla výjimka, ne pravidlo' přerámuje přiměřený úsudek na zvláštní zacházení. 'Systém funguje, když se k sobě lidé chovají s respektem' jemně připisuje dobrý výsledek poslušnosti pana Daviese, nikoli správnému výkonu policie. Marcus z předního sedadla to slyší jasně. | DŮSLEDKY: Pan Davies přikývne a řekne 'Děkuji' — ale to poděkování působí spíše vynucené než přirozené. Marcus se vrtí na sedadle. Slyšel 'systém funguje' a 'byla to výjimka.' Kontrola končí pozitivně na povrchu, ale závěrečná zpráva je: měl jsi štěstí, buď vděčný a pamatuj, že to byl dar. Příběh, který Marcus vypráví, bude obsahovat frázi 'řekl, že to byla výjimka.' | Reflexe: Když vaše zakončení rámuje dobrý výsledek jako závislý na charakteru občana spíše než na vašem profesionálním úsudku, co se stane s lidmi, kteří nezapadají do vašeho obrazu 'dobrého člověka v těžké situaci'?",
+                    "type": "negative",
+                    "points": -8
+                }
+            ]
+        },
+        {
+            "id": 8,
+            "title": "Rozbor",
+            "sceneUpdate": {
+                "emoji": "👨‍🏫",
+                "title": "Školicí rozbor",
+                "desc": "Zpět na stanici. Seržant Williams hodnotí váš výkon v tomto scénáři dopravní kontroly."
+            },
+            "autoDialogue": true,
+            "finalScene": true,
+            "npcDialogue": [],
+            "prompt": "",
+            "options": [],
+            "dialogueSequence": [
+                {
+                    "character": "trainer",
+                    "text": "To bylo vrstevnaté zastavení, strážníku. Co začalo jako přestupek za překročení rychlosti, se proměnilo v prověření blaha, rodinnou krizi, okamžik občanských práv s nahráváním a komunitní interakci se sousedkou. Pojďme si probrat, jak jste se orientovali v každé vrstvě."
+                },
+                {
+                    "character": "officer",
+                    "text": "Nejtěžší část bylo, když se pan Davies zhroutil. V tu chvíli jsem se musel rozhodnout, zda víc záleží na přestupku, nebo na člověku přede mnou."
+                },
+                {
+                    "character": "trainer",
+                    "text": "To je špatné zarámování — a uvědomit si to je samo o sobě poučení. Nikdy to nebylo 'přestupek nebo člověk.' Na obojím záleželo. Otázka byla, jak obojí ctít. To je podstata shovívavosti. Ne vybírat mezi zákonem a soucitem, ale najít, kde se překrývají."
+                },
+                {
+                    "character": "trainer",
+                    "text": "A syn — Marcus. Ten rozhovor na konci, pokud jste ho zvládli dobře, mohl být to nejdůležitější, co jste dnes večer udělali. Ten chlapec bude v životě potkávat desítky dalších strážníků. To, co viděl dnes večer, buď potvrdilo jeho obavy, nebo je zpochybnilo. Nyní vám sdělím, co se stalo po tomto zastavení..."
+                }
+            ]
+        }
+    ],
+    "characters": {
+        "dispatcher": {
+            "name": "Dispečink",
+            "avatar": "📻"
+        },
+        "davies": {
+            "name": "Pan Richard Davies (řidič, 47)",
+            "avatar": "😰"
+        },
+        "marcus": {
+            "name": "Marcus Davies (syn, 15)",
+            "avatar": "📱"
+        },
+        "neighbor": {
+            "name": "Helen Marshová (sousedka, 63)",
+            "avatar": "👵"
+        },
+        "officer": {
+            "name": "Vy (Strážník)",
+            "avatar": "👮"
+        },
+        "trainer": {
+            "name": "Seržant Williams",
+            "avatar": "👨‍🏫"
+        }
+    },
+    "performanceReviews": {
+        "perfect": {
+            "title": "Vzorová dopravní kontrola!",
+            "emoji": "🌟",
+            "feedback": "Předvedli jste zlatý standard komunikace při dopravní kontrole: profesionální představení, upřímnou empatii pod tlakem, vhodné použití shovívavosti, respektuplné jednání s nahrávajícím teenagerem a zakončení, které zanechalo v každém účastníkovi lepší dojem o policii. Tato kontrola bude zapamatována jako bod obratu — nejen pro pana Daviese a Marcuse, ale pro každého kolemjdoucího, který ji viděl."
+        },
+        "good": {
+            "title": "Silný výkon",
+            "emoji": "✅",
+            "feedback": "Zvládli jste složitou, emocionálně nabitou dopravní kontrolu s profesionalitou a opravdovou péčí. Některé příležitosti pro hlubší spojení nebo nuancovanější komunikaci byly k dispozici, ale váš celkový přístup byl solidní a váš úsudek přiměřený."
+        },
+        "average": {
+            "title": "Adekvátní reakce",
+            "emoji": "📊",
+            "feedback": "Dokončili jste kontrolu bez závažných chyb, ale několik příležitostí pro smysluplnou deeskalaci a lidské spojení bylo promeškáno. Technické aspekty kontroly byly zvládnuty, ale emoční rozměry — teenager, krize, sousedka — vyžadovaly větší zapojení."
+        },
+        "poor": {
+            "title": "Potřeba výrazného zlepšení",
+            "emoji": "⚠️",
+            "feedback": "Váš přístup eskaloval napětí na více místech, minul lidské rozměry kontroly a mohl poškodit důvěru komunity. Dopravní kontrola zahrnující rodinu v krizi, nahrávajícího teenagera a znepokojenu sousedku vyžadovala empatii a úsudek, které nebyly dostatečně prokázány. Prostudujte principy deeskalace, pravidla shovívavosti a komunikační techniky."
+        }
+    },
+    "metrics": {
+        "communication": {
+            "name": "Komunikace a tón",
+            "description": "Nastavení emoční trajektorie skrze profesionální představení, aktivní naslouchání a jazyk, který deeskaluje místo provokuje",
+            "icon": "🗣️"
+        },
+        "discretion": {
+            "name": "Profesionální shovívavost",
+            "description": "Moudré používání úsudku při vymáhání — přiřazení reakce k okolnostem místo mechanické aplikace pravidel",
+            "icon": "⚖️"
+        },
+        "empathy": {
+            "name": "Empatie pod tlakem",
+            "description": "Rozpoznání a reakce na emoční krizi bez obětování autority nebo profesionality",
+            "icon": "💚"
+        },
+        "youthEngagement": {
+            "name": "Zapojení mládeže a komunity",
+            "description": "Respektuplné jednání s mladými lidmi a kolemjdoucími, zejména když jste pozorováni nebo nahráváni",
+            "icon": "👥"
+        },
+        "closingImpact": {
+            "name": "Trvalý dojem",
+            "description": "Zanechání zkušenosti u každého účastníka setkání, která buduje důvěru v orgány činné v trestním řízení",
+            "icon": "🌟"
+        }
+    }
+}

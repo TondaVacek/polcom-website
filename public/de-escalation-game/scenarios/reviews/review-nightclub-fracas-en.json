@@ -1,0 +1,537 @@
+{
+  "scenarioId": "nightclub-fracas",
+  "reviewVersion": "1.0",
+  "title": "Street Brawl Outside a Nightclub - Performance Analysis",
+  "stageAnalysis": {
+    "1": {
+      "stageName": "Arrival on Scene",
+      "criticalSkills": [
+        "Command presence",
+        "Voice projection",
+        "Immediate assessment"
+      ],
+      "choiceAnalysis": {
+        "positive": {
+          "choiceText": "'Everyone step back. I need space so I can sort this out safely.'",
+          "strengths": [
+            "Effective communication",
+            "Clear direction",
+            "De-escalation effect"
+          ],
+          "professionalImpact": "Excellent! Clear commands cut through the chaos. Your authoritative presence creates a pause in the action."
+        },
+        "negative": {
+          "choiceText": "Rush physically between the groups and push them apart.",
+          "failures": [
+            "Escalation",
+            "Safety endangerment"
+          ],
+          "consequences": "Dangerous! Immediate physical intervention in an unstable crowd endangers safety and escalates the situation.",
+          "trainingFocus": "What are the risks if you choose physical action before communication?"
+        },
+        "neutral": {
+          "choiceText": "Stand aside and observe, wait for backup before engaging.",
+          "adequate": [
+            "Maintaining composure"
+          ],
+          "missed": [
+            "Missed opportunity for full control"
+          ],
+          "improvement": "What consequences can a delay in intervention have in such a volatile situation?"
+        }
+      },
+      "keyLearningPoints": [
+        "How do you take control of this chaotic scene?"
+      ]
+    },
+    "2": {
+      "stageName": "Crowd Management",
+      "criticalSkills": [
+        "Crowd psychology",
+        "Bystander management",
+        "Environment control"
+      ],
+      "choiceAnalysis": {
+        "positive": {
+          "choiceText": "'For everyone's safety, please step back. Those of you not involved, please move along.'",
+          "strengths": [
+            "Effective communication",
+            "Clear direction",
+            "De-escalation effect"
+          ],
+          "professionalImpact": "Good crowd management. You acknowledge their presence while setting clear boundaries."
+        },
+        "neutral": {
+          "choiceText": "'Move along, this doesn't concern you. Let us handle it.'",
+          "adequate": [
+            "Maintaining composure"
+          ],
+          "missed": [
+            "Missed opportunity for full control"
+          ],
+          "improvement": "How could you phrase a brief instruction that is both clear and respectful?"
+        },
+        "negative": {
+          "choiceText": "'If you don't disperse immediately, we'll arrest all of you!'",
+          "failures": [
+            "Escalation",
+            "Safety endangerment"
+          ],
+          "consequences": "Too aggressive. Threatening the crowd can turn them against the police.",
+          "trainingFocus": "How does a crowd react when you communicate with threats instead of calming the situation?"
+        }
+      },
+      "keyLearningPoints": [
+        "The crowd is fueling the conflict. How do you manage it?"
+      ]
+    },
+    "3": {
+      "stageName": "Separating the Parties",
+      "criticalSkills": [
+        "Colleague coordination",
+        "Tactical safety",
+        "Party separation"
+      ],
+      "choiceAnalysis": {
+        "positive": {
+          "choiceText": "'Spacek, take the one in the blue jacket to the entrance. I'll stay here. Gentlemen, keep your distance.'",
+          "strengths": [
+            "Effective communication",
+            "Clear direction",
+            "De-escalation effect"
+          ],
+          "professionalImpact": "Great coordination! You've increased safety and shown leadership."
+        },
+        "neutral": {
+          "choiceText": "'I'll handle it myself, don't take him anywhere. Stay alert in case anything happens.'",
+          "adequate": [
+            "Maintaining composure"
+          ],
+          "missed": [
+            "Missed opportunity for full control"
+          ],
+          "improvement": "What might you miss if you try to handle the situation alone?"
+        },
+        "negative": {
+          "choiceText": "'That's enough! On the ground!' (reaching for handcuffs without warning)",
+          "failures": [
+            "Escalation",
+            "Safety endangerment"
+          ],
+          "consequences": "Too aggressive. Deploying handcuffs can escalate the situation.",
+          "trainingFocus": "What are the risks when you use physical force before it's absolutely necessary?"
+        }
+      },
+      "keyLearningPoints": [
+        "Both opponents are still yelling at each other. How do you ensure they stay apart?"
+      ]
+    },
+    "4": {
+      "stageName": "Friend's Intervention",
+      "criticalSkills": [
+        "Empathy",
+        "Working with supporters",
+        "Tension de-escalation"
+      ],
+      "choiceAnalysis": {
+        "positive": {
+          "choiceText": "Calmly: 'I understand you want to help him. You can help him most by stepping back and letting me talk to him.'",
+          "strengths": [
+            "Effective communication",
+            "Clear direction",
+            "De-escalation effect"
+          ],
+          "professionalImpact": "Empathetic approach. You acknowledge the friend's concern, reducing their resistance."
+        },
+        "neutral": {
+          "choiceText": "'I don't have time for you right now, go to my colleague.'",
+          "adequate": [
+            "Maintaining composure"
+          ],
+          "missed": [
+            "Missed opportunity for full control"
+          ],
+          "improvement": "Can ignoring an upset person help calm the situation?"
+        },
+        "negative": {
+          "choiceText": "'One more word and I'll arrest you!'",
+          "failures": [
+            "Escalation",
+            "Safety endangerment"
+          ],
+          "consequences": "Confrontational approach. Threats can make the situation worse.",
+          "trainingFocus": "How do threats affect willingness to cooperate?"
+        }
+      },
+      "keyLearningPoints": [
+        "The aggressor's friend is intervening. How do you respond?"
+      ]
+    },
+    "5": {
+      "stageName": "Primary De-escalation",
+      "criticalSkills": [
+        "Emotion validation",
+        "Respect management",
+        "Behavior redirection"
+      ],
+      "choiceAnalysis": {
+        "positive": {
+          "choiceText": "'I hear you — this was about respect. Right now I need you to stay calm and keep your distance. We'll talk about your side of things.'",
+          "strengths": [
+            "Effective communication",
+            "Clear direction",
+            "De-escalation effect"
+          ],
+          "professionalImpact": "Perfect! You acknowledge the emotions and redirect the behavior."
+        },
+        "negative": {
+          "choiceText": "'Calm down or you're coming with us.'",
+          "failures": [
+            "Escalation",
+            "Safety endangerment"
+          ],
+          "consequences": "Bad approach. You're dismissing his emotions and threatening him.",
+          "trainingFocus": "How does this attitude affect trust?"
+        },
+        "neutral": {
+          "choiceText": "'Sir, please calm down. Everything will be fine.'",
+          "adequate": [
+            "Maintaining composure"
+          ],
+          "missed": [
+            "Missed opportunity for full control"
+          ],
+          "improvement": "What would be more appropriate to say about the feeling of disrespect?"
+        }
+      },
+      "keyLearningPoints": [
+        "How do you address the emotional core of the conflict?"
+      ]
+    },
+    "6": {
+      "stageName": "Negotiating a Resolution",
+      "criticalSkills": [
+        "Practical problem solving",
+        "Negotiation",
+        "Maintaining authority"
+      ],
+      "choiceAnalysis": {
+        "positive": {
+          "choiceText": "'You'll each leave in a different direction. My colleague will tell security to bring your jacket outside.'",
+          "strengths": [
+            "Effective communication",
+            "Clear direction",
+            "De-escalation effect"
+          ],
+          "professionalImpact": "Excellent negotiation. You're offering clear and realistic steps."
+        },
+        "negative": {
+          "choiceText": "'I don't care about your jacket. Just get lost or we'll arrest both of you.'",
+          "failures": [
+            "Escalation",
+            "Safety endangerment"
+          ],
+          "consequences": "Dismisses a legitimate need and threatens; often leads to renewed defiance.",
+          "trainingFocus": "How can you maintain firmness while respecting minor needs?"
+        },
+        "neutral": {
+          "choiceText": "'Let's settle this with a mutual apology so we don't have to resort to harsher measures.'",
+          "adequate": [
+            "Maintaining composure"
+          ],
+          "missed": [
+            "Missed opportunity for full control"
+          ],
+          "improvement": "How do people react when you brush off their concerns?"
+        }
+      },
+      "keyLearningPoints": [
+        "How do you propose workable steps?"
+      ]
+    },
+    "7": {
+      "stageName": "Ensuring Compliance",
+      "criticalSkills": [
+        "Positive reinforcement",
+        "Practical support",
+        "Compliance assurance"
+      ],
+      "choiceAnalysis": {
+        "positive": {
+          "choiceText": "'Thanks for your cooperation. My colleague will help you call a taxi, and both of you — don't come back here tonight.'",
+          "strengths": [
+            "Effective communication",
+            "Clear direction",
+            "De-escalation effect"
+          ],
+          "professionalImpact": "Perfect! You reinforce positive behavior and offer support."
+        },
+        "negative": {
+          "choiceText": "'If I see you here again tonight, you're going to jail.'",
+          "failures": [
+            "Escalation",
+            "Safety endangerment"
+          ],
+          "consequences": "Ending with a threat. This undermines cooperation.",
+          "trainingFocus": "What effect does ending the situation with a threat have?"
+        },
+        "neutral": {
+          "choiceText": "'Each of you go the opposite way. Don't let me see you here again.'",
+          "adequate": [
+            "Maintaining composure"
+          ],
+          "missed": [
+            "Missed opportunity for full control"
+          ],
+          "improvement": "Why is it important to end communication on a positive note?"
+        }
+      },
+      "keyLearningPoints": [
+        "How do you ensure the resolution holds?"
+      ]
+    }
+  },
+  "comprehensiveMetrics": {
+    "communicationEffectiveness": {
+      "description": "Overall quality of verbal and non-verbal communication",
+      "indicators": {
+        "excellent": [
+          "Active listening demonstrated consistently",
+          "Appropriate tone for each situation",
+          "Clear, concise information delivery",
+          "Effective use of silence and patience"
+        ],
+        "poor": [
+          "Interrupting or talking over parties",
+          "Aggressive or dismissive tone",
+          "Confusing or contradictory messages",
+          "Failure to read non-verbal cues"
+        ]
+      }
+    },
+    "emotionalIntelligence": {
+      "description": "Ability to recognize and respond to emotions",
+      "indicators": {
+        "excellent": [
+          "Accurate recognition of emotional states",
+          "Responding with appropriate empathy",
+          "Managing own emotional reactions",
+          "De-escalation through emotional validation"
+        ],
+        "poor": [
+          "Overlooking obvious emotional distress",
+          "Responding with judgment or criticism",
+          "Letting personal feelings influence the response",
+          "Escalation through emotional invalidation"
+        ]
+      }
+    },
+    "proceduralCompliance": {
+      "description": "Adherence to legal and departmental requirements",
+      "indicators": {
+        "excellent": [
+          "Compliance with all legal requirements",
+          "Proper documentation",
+          "Activation of appropriate services",
+          "Maintaining safety protocols"
+        ],
+        "poor": [
+          "Missed mandatory reporting",
+          "Failure to follow safety procedures",
+          "Ignoring legal requirements",
+          "Incomplete or no documentation"
+        ]
+      }
+    },
+    "crowdAndSceneControl": {
+      "description": "Managing the crowd and scene without escalating or over-relying on force",
+      "indicators": {
+        "excellent": [
+          "Clear verbal commands for space and separation",
+          "Acknowledged bystanders and offered practical solutions",
+          "Controlled the scene without threats or mass arrest language",
+          "Closed with clear directions (e.g. leave in different directions, no return tonight)"
+        ],
+        "poor": [
+          "Rushed in physically without clear verbal structure",
+          "Threatened to arrest everyone or used mass punishment language",
+          "Dismissed legitimate concerns (e.g. jacket) and escalated",
+          "Left scene without clear outcome or next steps"
+        ]
+      }
+    }
+  },
+  "mistakePatterns": {
+    "escalation": {
+      "pattern": "Choices that increased tension or threatened the crowd",
+      "examples": [
+        "Rushing physically between groups without clear verbal command",
+        "If you don't disperse immediately, we'll arrest all of you!",
+        "Calm down or you're coming with us",
+        "If I see you here again tonight, you're going to jail"
+      ],
+      "impact": "Threats and physical intervention without structure escalate street fracas and can turn bystanders into antagonists. Complaint and use-of-force risk increase.",
+      "correction": "Establish control with clear voice and structure; ask for space and separation; offer practical solutions; avoid mass arrest or punitive closing language."
+    },
+    "missingCues": {
+      "pattern": "Failure to read the scene or address underlying concerns",
+      "examples": [
+        "Ignoring the reason for the fight (e.g. respect, property)",
+        "No acknowledgment of bystanders or their safety",
+        "Dismissing practical needs (e.g. jacket) that block cooperation"
+      ],
+      "impact": "Parties and crowd feel unheard; compliance is reluctant; risk of re-escalation or complaint.",
+      "correction": "Acknowledge what happened briefly; address practical needs where possible; give clear, step-by-step directions."
+    },
+    "judgmental": {
+      "pattern": "Imposing personal values or criticism",
+      "examples": [
+        "Scolding",
+        "Moralizing",
+        "Blaming"
+      ],
+      "impact": "Judgment destroys trust and prevents disclosure",
+      "correction": "Maintain professional neutrality and focus on safety"
+    },
+    "procedural": {
+      "pattern": "Over-reliance on procedure without humanity",
+      "examples": [
+        "Robotic responses",
+        "Checklist approach",
+        "No empathy"
+      ],
+      "impact": "Reduces compliance and overlooks critical information",
+      "correction": "Balance procedure with human connection"
+    }
+  },
+  "personalizedFeedback": {
+    "templates": {
+      "allPositive": "Excellent performance! In this challenging street scenario, you demonstrated exceptional communication skills. Your ability to clearly take control of the chaos, manage the crowd, and offer practical solutions prevented escalation. Using de-escalation instead of force shows mastery of modern policing interventions.",
+      "mostlyPositive": "Strong overall performance in handling the street brawl. You showed good emotional intelligence and mostly made the right decisions. Key strength: effective crowd management. Area for growth: more consistent boundary-setting during the intervention. Your professional presence had a positive impact on the outcome.",
+      "mixed": "You handled some aspects well, such as clear separation of parties and crowd management. However, you missed several opportunities for calmer de-escalation and strengthening cooperation. Remember that street interventions require a combination of authority and empathy. Review negotiation techniques and positive reinforcement to improve your responses.",
+      "mostlyNegative": "This scenario revealed gaps in street brawl communication skills. While you managed to stop the physical conflict, most of your choices were too harsh or threatening and increased tension. Specifically, using threats against the crowd worsened the situation. Immediate training in crowd de-escalation and professional voice communication is recommended.",
+      "allNegative": "Your approach during this scenario was risky and potentially dangerous. Consistent threats and physical interventions without attempts at negotiation could have led to serious escalation. Mandatory corrective training in crowd management, de-escalation techniques, and professional communication is essential. Remember: a well-directed voice and clear structure can stop violence without the use of force."
+    }
+  },
+  "dialogueEffectivenessReview": {
+    "excellentPhrases": [
+      "'Everyone step back. I need space so I can sort this out safely.'",
+      "'For everyone's safety, please step back. Those of you not involved, please move along.'",
+      "'I hear you — this was about respect. Right now I need you to stay calm and keep your distance.'",
+      "'You'll each leave in a different direction. Security will bring your jacket outside.'",
+      "'Thanks for your cooperation. My colleague will help you call a taxi, and both of you — don't come back here tonight.'"
+    ],
+    "poorPhrases": [
+      "'Rush physically between the groups and push them apart.'",
+      "'If you don't disperse immediately, we'll arrest all of you!'",
+      "'Calm down or you're coming with us.'",
+      "'I don't care about your jacket. Just get lost or we'll arrest both of you.'",
+      "'If I see you here again tonight, you're going to jail.'"
+    ],
+    "analysisCriteria": {
+      "tone": "Was it appropriate for the emotional context?",
+      "clarity": "Was the message clear and unambiguous?",
+      "empathy": "Did it acknowledge feelings and show understanding?",
+      "effectiveness": "Did it achieve the intended outcome?",
+      "safety": "Did it prioritize everyone's safety?"
+    }
+  },
+  "scenarioSpecificLessons": {
+    "1": "Street brawls require immediate and clear verbal scene control.",
+    "2": "The crowd acts as a conflict catalyst — it must be actively addressed and managed.",
+    "3": "Coordination with a colleague is key to maintaining safety and separating parties.",
+    "4": "Empathetic engagement with the aggressor's friends or supporters can reduce tension.",
+    "5": "Respect and acknowledging emotions are essential for de-escalating public conflicts.",
+    "6": "Practical solutions that save face promote voluntary compliance.",
+    "7": "Positive reinforcement and practical help (e.g., a taxi) ensure a lasting resolution.",
+    "8": "A professional tone under public scrutiny shapes both trust and police reputation."
+  },
+  "recommendedTraining": {
+    "based_on_performance": {
+      "perfect": [
+        "Advanced crowd management techniques",
+        "Street safety tactics leadership",
+        "Crisis communication instructor training"
+      ],
+      "good": [
+        "Extended public order tactics",
+        "Crowd psychology and bystander management",
+        "Negotiation under high pressure"
+      ],
+      "average": [
+        "Basic street conflict de-escalation",
+        "Command presence development",
+        "Working with emotions in public interventions"
+      ],
+      "poor": [
+        "Basic scene control",
+        "Voice command and clear communication training",
+        "Safe party separation tactics",
+        "Introduction to conflict crowd management"
+      ]
+    }
+  },
+  "finalReportStructure": {
+    "sections": [
+      {
+        "title": "Overall Performance Summary",
+        "content": [
+          "Score",
+          "Performance level",
+          "Key strengths",
+          "Critical weaknesses"
+        ]
+      },
+      {
+        "title": "Step-by-Step Analysis",
+        "content": [
+          "Choice made",
+          "Impact",
+          "Alternative approaches",
+          "Learning points"
+        ]
+      },
+      {
+        "title": "Communication Effectiveness",
+        "content": [
+          "Best moments",
+          "Missed opportunities",
+          "Dialogue analysis"
+        ]
+      },
+      {
+        "title": "Crowd and Scene Management",
+        "content": [
+          "Verbal control and space/separation",
+          "Response to bystanders and crowd",
+          "Practical solutions (e.g. jacket, taxi)",
+          "Closing directions and outcome"
+        ]
+      },
+      {
+        "title": "Pattern Analysis",
+        "content": [
+          "Consistent strengths",
+          "Recurring mistakes",
+          "Decision-making trends"
+        ]
+      },
+      {
+        "title": "Professional Development",
+        "content": [
+          "Immediate training needs",
+          "Long-term skill development",
+          "Recommended resources"
+        ]
+      },
+      {
+        "title": "Real-World Application",
+        "content": [
+          "How this translates to fieldwork",
+          "Common scenarios",
+          "Best practices"
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,439 @@
+{
+    "id": 2,
+    "title": "Vyjednávání při hlukové stížnosti v hostelu",
+    "description": "Pokročilý scénář zahrnující noční hlukovou stížnost v městském hostelu, kde skupina mezinárodních batůžkářů hlasitě slaví ve společenské místnosti. Policista musí vyvážit protichůdné zájmy — frustrovaných hostů hotelu, noční recepční uvízlé uprostřed, kulturních rozdílů, přítomnosti alkoholu a tenké hranice mezi vymáháním a normami pohostinství — a to vše při zachování profesionálních hranic v komerčním prostředí.",
+    "icon": "🏨",
+    "difficulty": 3,
+    "duration": "12-18",
+    "instructor": {
+        "name": "Seržant Novák",
+        "avatar": "👮‍♂️",
+        "introduction": "Hlukové stížnosti ve sdíleném ubytování patří mezi nejčastější a nejsložitější výjezdy, které budete řešit. Leží na křižovatce pravidel soukromého vlastnictví, zákona o veřejném pořádku, kultury pohostinství a mezilidských konfliktů. Dnes v noci jedete do hostelu — místa, kde cizí lidé z různých zemí a s různými očekáváními sdílejí stěny a společné prostory. Stěžovatel je obchodník s oprávněnou potřebou klidu. Zdrojem hluku je skupina mladých batůžkářů, kteří věří, že dělají přesně to, k čemu hostely existují. A mezi nimi je uvězněná recepční s omezenými pravomocemi, která vám zavolala, protože vyčerpala všechny možnosti. Vaší výzvou není postavit se na jednu stranu. Je to najít řešení, které respektuje oprávněné potřeby všech, zachovává přiměřenost a zanechá každou stranu s pocitem, že byla vyslyšena. Tvrdý zásah skupinu odradí a může se stát virálním. Pasivní vyhýbání selže u stěžovatele i recepční. Správná cesta je někde uprostřed — a to, jak ji najdete, definuje vaši efektivitu."
+    },
+    "timedChoices": true,
+    "completionBadges": ["scenario-2-complete"],
+    "perfectBadge": "perfect-scenario-2",
+    "finalMessage": {
+        "revelation": "Skupina batůžkářů cestovala společně tři týdny napříč Evropou. Dnešní noc byla jejich poslední, než se rozjedou každý jinam — Liam zpět do Melbourne, Priya na výzkumnou stáž do Berlína, ostatní rozprchnutí po kontinentech. Slavili konec výletu, který plánovali dva roky. Liamova hlučnost maskovala upřímný smutek z rozpadu skupiny. Priya se snažila skupinu ztišit déle než hodinu před vaším příjezdem, ale nechtěla zkazit náladu. Prezentace pana Kimury následující ráno byla o zakázku v hodnotě tříletého obratu jeho divize — stres za jeho hněvem byl obrovský. Marta, recepční, pracovala na nočních směnách sama šest měsíců a opakovaně žádala vedení o jasnější pravidla ohledně hluku a lepší pravomoci k řešení sporů; nedostala ani jedno. Po vašem zásahu se skupina přesunula na rozloučení do nedaleké noční kavárny. Pan Kimura se dobře vyspal a jeho prezentace dopadla skvěle. Marta podala vedení formální návrh na hlukovou politiku a jako katalyzátor uvedla vaši návštěvu. Liam napsal na cestovatelské fórum: 'Na naši poslední noc nás navštívila policie — a upřímně, ten policista to zvládl naprosto brilantně.'",
+        "keyLessons": [
+            "Ve sdíleném ubytování mají často jak hlučná skupina, tak stěžovatel oprávněné pozice — řešení vyžaduje uznání obou",
+            "Kulturní očekávání ohledně hluku, společenského života a policejní autority se enormně liší — co se jednomu zdá normální, druhému připadá skandální",
+            "Komerční zařízení jako hostely mají vlastní odpovědnost za pravidla a jejich vymáhání — role policie je podpořit, ne nahradit soukromý management",
+            "Přítomnost alkoholu vyžaduje kalibrovanou komunikaci — ne obvinění, ale vědomí, že lidé pod vlivem zpracovávají informace odlišně",
+            "Identifikace spolupracujících jedinců ve skupině (jako Priya) a jejich posílení jako spojenců je účinnější než konfrontace s nejhlasitějším hlasem",
+            "Profesionální hranice jsou důležité — přijetí nápoje, připojení se k oslavě nebo stranění jedné straně podkopává vaši autoritu a neutralitu",
+            "Následná komunikace se všemi zúčastněnými stranami — nejen se zdrojem hluku — buduje důvěru a zabraňuje opakovaným výjezdům"
+        ]
+    },
+    "stages": [
+        {
+            "id": 1,
+            "title": "Příjezd k hostelu",
+            "sceneUpdate": {
+                "emoji": "🏨",
+                "title": "Městský hostel — Recepce",
+                "desc": "Páteční večer, 23:40. Přijíždíte k městskému hostelu střední třídy. Přes skleněné dveře už slyšíte hudbu dunící odněkud z hloubi budovy. Recepce je čistá, ale obnošená — opotřebované pohovky, nástěnka pokrytá letáky na výlety. Žena ve čtyřicítce za pultem na vás naléhavě mává. Vypadá vyčerpaně a zjevně je ráda, že vás vidí."
+            },
+            "npcDialogue": [
+                {
+                    "character": "dispatcher",
+                    "text": "Hlídka vyjíždí na hlukovou stížnost do Hostelu Europa, Havlíčkova 34. Noční recepční hlásí skupinu hostů, kteří pouštějí hlasitou hudbu a odmítají ztlumit hlasitost navzdory opakovaným žádostem. Stěžovalo si několik dalších hostů. Recepční hlásí, že nedošlo k žádnému násilí ani vyhrožování, ale situace eskaluje, protože se rozčiluje stále více hostů."
+                },
+                {
+                    "character": "marta",
+                    "text": "Díkybohu, že jste tady. Jsem Marta, noční recepční. Ve společenské místnosti je skupina šesti batůžkářů — oslavují zhruba od devíti. Hudba, zpěv, pití. Třikrát jsem je žádala, aby ztišili. Poprvé ztlumili hudbu asi na deset minut, pak se hlasitost zase postupně zvýšila. Podruhé se ten Australan — Liam — jen zasmál a řekl: 'Jsme v hostelu, ne v knihovně.' Potřetí mi řekl, ať se uklidním. Už mám čtyři stížnosti od ostatních hostů a japonský obchodník hrozí, že odejde a bude požadovat vrácení peněz. Nemám pravomoc je vyhodit — to je rozhodnutí manažerky a ta nebere telefon. Nevěděla jsem, co jiného dělat."
+                }
+            ],
+            "prompt": "Marta vám podala podrobnou zprávu. Jak začnete svůj přístup?",
+            "options": [
+                {
+                    "text": "Rychle přikývnout Martě a vydat se rovnou chodbou ke společenské místnosti. Rázným krokem následujete dunění basů, ramena rovná, ruce volně podél těla — žádné otálení, žádné další otázky. Situace je z Martina popisu dostatečně jasná a každá minuta strávená na recepci je další minuta, kdy ostatní hosté nemohou spát. Čím dříve budete u zdroje hluku, tím rychleji se celá věc vyřeší. Na hlukovou politiku hostelu nebo další podrobnosti se neptáte — to se dořeší za pochodu.",
+                    "feedback": "Proč: Přesun přímo ke zdroji hluku bez získání dalšího kontextu znamená, že vstoupíte do místnosti plné popíjejících a slavících lidí jako neinformovaná autorita. Neznáte hlukovou politiku hostelu, skutečné pravomoci Marty, nevíte, zda existují jazykové bariéry, ani jak vypadá dynamika skupiny. Rychlost se zdá efektivní, ale stojí vás přípravu. | DŮSLEDKY: Otevřete dveře společenské místnosti. Šest překvapených tváří se otočí k vám. Liam ironicky zvedne pivo na přivítanou. Nemáte plán, neznáte pravidla a nevíte, kdo je kdo. Skupina vidí policistu, který přišel hledat problémy. | Reflexe: Jak vstup do situace bez přípravy ovlivňuje vaši schopnost ji kontrolovat?",
+                    "type": "neutral",
+                    "points": 2
+                },
+                {
+                    "text": "Opřít se o recepční pult, udržovat klidný a profesionální tón a položit Martě klíčové doplňující otázky: Má hostel vyvěšená pravidla o hluku nebo stanovenou dobu nočního klidu? Jaké je datum odjezdu skupiny? Jsou všichni ubytovaní na jednom pokoji? Byl někdo ze skupiny agresivní, nebo jen hlučný? Co přesně požaduje ten japonský obchodník — ticho, vrácení peněz, nebo vystěhování skupiny? Vytáhnout zápisník a zapisovat si klíčové detaily, jak Marta odpovídá.",
+                    "feedback": "Proč: Vynikající sběr informací. Znalost hlukové politiky určuje, zda vymáháte domovní řád nebo zákon o veřejném pořádku — to jsou velmi odlišné pravomoci. Datum odjezdu vám řekne, zda je to jednorázový nebo opakující se problém. Rozlišení mezi 'agresivní' a 'hlučný' formuje váš přístup. Pochopení konkrétního požadavku obchodníka vám zabrání v domýšlení. Tato příprava stojí dvě minuty a ušetří dvacet. | DŮSLEDKY: Marta vám sdělí, že noční klid je od 23:00 podle podmínek rezervace — teď je po této hodině. Skupina odjíždí zítra. Jsou v šestilůžkovém pokoji, ale oslava se koná ve společenské místnosti. Nikdo nevyhrožoval, jen byli odmítaví. Pan Kimura chce klid — konkrétně nepožadoval vystěhování. Vstupujete do situace informovaní a připravení. | Reflexe: Jak dvě minuty přípravy změní kvalitu každého dalšího rozhodnutí?",
+                    "type": "positive",
+                    "points": 10
+                },
+                {
+                    "text": "Zkřížit ruce a mírně zavrtět hlavou s věcným výrazem. Vysvětlit Martě, že tohle je v podstatě záležitost managementu — měla by dál zkoušet kontaktovat svou manažerku a řešit to jako interní záležitost hostelu. Soukromá pravidla o hluku nemůžete jako policie vymáhat, to spadá pod vlastní politiku zařízení. Nejlepší postup je, aby vedení rozhodlo, zda hosty varovat nebo vystěhovat. Otočit se ke dveřím a chystat se k odchodu.",
+                    "feedback": "Proč: Je pravda, že hluková pravidla hostelu jsou soukromá pravidla. Ale Marta zavolala policii, protože vyčerpala vlastní možnosti. Říct jí, ať dál zkouší manažerku, která nebere telefon, ji ponechá bez pomoci ve zhoršující se situaci. Byli jste na tento výjezd vysláni — jeho odmítnutí poškozuje její důvěru v policii a ponechává ostatní hosty trpět. Hluk po 23:00 může navíc spadat pod městskou vyhlášku o rušení nočního klidu. | DŮSLEDKY: Marta zklamaně sklopí tvář. Řekne: 'Ale oni mě neposlouchají. Co mám dělat?' Odejdete. Za dvacet minut volá policii sám pan Kimura, ještě rozzlobenější. Přijíždí jiná hlídka a nachází horší situaci. | Reflexe: I když je jurisdikce sdílená se soukromým managementem, jaká je cena odchodu od člověka, který požádal o pomoc?",
+                    "type": "negative",
+                    "points": -8
+                },
+                {
+                    "text": "Zvednout uklidňujícím gestem ruku a věnovat Martě vřelý, klidný pohled. Upřímně jí poděkovat za zavolání a ujistit ji, že se o to od teď postaráte — nemusí se už strachovat. Požádat ji, aby ukázala směr ke společenské místnosti, abyste mohli situaci posoudit na vlastní oči a představit se skupině. Narovnat vestu, sebevědomě přikývnout a vydat se naznačeným směrem, aniž byste se dále ptali na pravidla, noční klid nebo konkrétní přání ostatních hostů.",
+                    "feedback": "Proč: Profesionální a uklidňující pro Martu, což je dobré — je ve stresu už několik hodin. Ale 'postarám se o to' je vágní a vytváří očekávání, které možná nebudete moci splnit. Neptali jste se na noční klid, pravidla ani na konkrétní stížnosti. Jdete tam s dobrými úmysly, ale s málo informacemi. | DŮSLEDKY: Jdete směrem ke společenské místnosti s obecnou představou o problému, ale bez konkrétních detailů o pravidlech, složení skupiny nebo o tom, co stěžovatelé skutečně chtějí. Zvládnutelné, ale budete sbírat informace za pochodu v místnosti plné lidí, kteří popíjeli. | Reflexe: Když někoho ujistíte, že se o to 'postaráte,' jaké očekávání tím vytvoříte a můžete ho vždy splnit?",
+                    "type": "partially_positive",
+                    "points": 5
+                }
+            ]
+        },
+        {
+            "id": 2,
+            "title": "Stěžovatel",
+            "sceneUpdate": {
+                "emoji": "😤",
+                "title": "Chodba — Frustrace pana Kimury",
+                "desc": "Když se přesouváte z recepce ke společenské místnosti, otevřou se dveře na chodbě. Muž kolem padesátky vyjde v hotelovém županu a vypadá zničeně. Jeho pokoj je přímo nad společenskou místností. Zahlédne vaši uniformu a okamžitě vás zastaví. Jeho angličtina je precizní, ale s přízvukem, jeho postoj je strnulý navzdory vyčerpání. Lehce se ukloní, než promluví — reflex formálnosti. Jeho frustrace je sotva skrytá pod rouškou sebeovládání, ale všimnete si, že se mu lehce třesou ruce. V japonské kultuře skutečnost, že vás konfrontuje přímo — namísto řešení záležitosti soukromě přes management — signalizuje, jak zoufalá situace je."
+            },
+            "npcDialogue": [
+                {
+                    "character": "mr_kimura",
+                    "text": "Pane policisto. Děkuji, že jste přišel. Jsem Takeši Kimura. Zítra ráno v 8 hodin mám velmi důležitou prezentaci — konferenci v Hiltonu. Záměrně jsem si vybral soukromý pokoj v tomto hostelu, protože konferenční hotely byly plně obsazené. Tři hodiny nemůžu spát. Hudba, křik — proniká to skrz podlahu. Opakovaně jsem žádal recepční. Nic se nemění. Zaplatil jsem za pokoj. Mám právo na spánek. U nás doma by se tohle nikdy netolerovat. Tito lidé nemají žádný ohled na ostatní. Chci, aby byli dnes v noci z budovy odstraněni."
+                }
+            ],
+            "prompt": "Pan Kimura je formálně zdvořilý, ale hluboce frustrovaný, a požaduje vystěhování skupiny. Samotná jeho přímočarost signalizuje, jak daleko za hranice svého komfortu byl dotlačen. Jak zareagujete?",
+            "options": [
+                {
+                    "text": "Přizpůsobit se jeho formálnímu tónu a promluvit s klidným respektem: 'Pane Kimuro, rozumím vám — přijít o spánek před důležitou prezentací je nesmírně frustrující. Vaši stížnost beru vážně a budu se jí osobně věnovat. Smím se zeptat: jde vám hlavně o to, aby hluk přestal, nebo konkrétně potřebujete, aby byla skupina odstraněna? Může existovat více než jeden způsob řešení. Poté se vrátím k vašim dveřím a osobně potvrdím, že je situace vyřešena.'",
+                    "feedback": "Proč: Autenticky potvrzuje jeho frustraci — zmínka o prezentaci ukazuje, že jste poslouchali. Přizpůsobení jeho formálnímu registru ukazuje kulturní povědomí. 'Beru vaši stížnost vážně' přímo řeší strach, že nikdo nebude jednat. Příslib návratu k jeho dveřím je zásadní — v japonské obchodní kultuře má následné jednání a osobní zodpovědnost obrovskou váhu. Klíčová otázka odděluje jeho potřebu (spánek) od jeho navrhovaného řešení (vystěhování), čímž rozšiřuje vaše možnosti. | DŮSLEDKY: Pan Kimura se na chvíli zastaví. Příslib osobního návratu ho uklidní — takto funguje zodpovědnost v jeho světě. Přizná: 'Potřebuji jen, aby to přestalo. Potřebuji spát. Pokud budou ticho, to stačí.' Jeho požadavek se změkčí z vystěhování na ticho. Získali jste důvěru prostřednictvím kulturní citlivosti. | Reflexe: Proč je oddělení základní potřeby člověka od jeho vyjádřeného požadavku jednou z nejmocnějších vyjednávacích technik — a jak kulturní povědomí ovlivňuje způsob, jakým ji prezentujete?",
+                    "type": "positive",
+                    "points": 10
+                },
+                {
+                    "text": "Rozhodně přikývnout a zaujmout pevný postoj, ramena zpříma, aby bylo jasné, že jednáte s rozhodností. Podívat se panu Kimurovi přímo do očí a promluvit s ráznou jistotou: 'Slyším vás, pane Kimuro. To je nepřijatelné. Máte plné právo na spánek v pokoji, za který jste zaplatil, a chápu, že zítřejší prezentace je pro vás klíčová. Půjdu tam hned a zajistím, aby to okamžitě přestalo. Dnes v noci už vás nikdo rušit nebude.'",
+                    "feedback": "Proč: Potvrzující a rozhodné — pan Kimura se cítí vyslyšen. Ale 'zajistím, aby to okamžitě přestalo' je slib, který možná nebudete moci okamžitě splnit. Pokud skupina bude odporovat, vyjednávání zabere čas, a trpělivost pana Kimury je nyní kalibrovaná na 'okamžitě.' Také jste situaci zarámovali jednostranně, aniž byste vyslechli druhou stranu. | DŮSLEDKY: Pan Kimura přikývne, zatím spokojený. Ale jeho očekávání je nastaveno: okamžité ticho. Pokud vaše vyjednávání se skupinou potrvá dvacet minut, bude opět na chodbě, ještě rozzlobenější. Vyměnili jste krátkodobé uklidnění za přísnější časový tlak. | Reflexe: Když slíbíte rychlost, abyste uspokojili rozrušeného člověka, jak to omezuje vaši schopnost najít promyšlené řešení?",
+                    "type": "partially_positive",
+                    "points": 5
+                },
+                {
+                    "text": "Zvednout obě ruce v uklidňujícím gestu a zvolit měřený, vysvětlující tón. Pečlivě volit každé slovo: 'Pane Kimuro, chápu, že je to frustrující. Musím ale být upřímný — odstranění hostů ze soukromého zařízení není rozhodnutí policie, ale managementu hostelu. Co mohu udělat, je promluvit se skupinou o hluku. Ale vystěhování je věc mezi vámi a hostelem. Doporučil bych kontaktovat přímo manažerku ohledně tohoto konkrétního požadavku.'",
+                    "feedback": "Proč: Technicky přesné — vystěhování je rozhodnutí managementu. Ale vést odpověď tím, co nemůžete udělat, člověku, který tři hodiny nemohl spát před kariérně zlomovou prezentací, působí jako byrokratické odbytí. Nezajímají ho jurisdikční hranice; zajímá ho spánek. Horší je, že pro člověka z kultury, kde vyžádání si policejní pomoci vyžadovalo překonání značného nepohodlí, slyšet 'není to moje kompetence' znamená ztrátu tváře za to, že vůbec požádal. Reagovali jste na jeho vyjádřený požadavek, ale ignorovali jeho skutečnou potřebu. | DŮSLEDKY: Tvář pana Kimury ztuhne. 'Takže policie také nemůže pomoci.' Stáhne se do pokoje s pocitem, že nikdo — ani recepční, ani policie — nedokáže jeho problém vyřešit. Ztratil tvář tím, že požádal o pomoc, která byla odmítnuta. Jeho frustrace se mění v rezignaci, což je horší než hněv. | Reflexe: Když je někdo v tísni, co se stane, když začnete procedurálními omezeními místo empatie — zvláště když pro něj požádání o pomoc bylo už samo o sobě kulturně obtížné?",
+                    "type": "neutral",
+                    "points": 2
+                },
+                {
+                    "text": "Mírně pokrčit rameny a naklonit hlavu se soucitným, ale lehce odmítavým výrazem. Promluvit tónem, který má být praktický, ale dopadá jako povýšený: 'Pane, oceňuji vaši frustraci, ale tohle je hostel — sdílené prostory a určitý hluk k tomu zkrátka patří. Není to čtyřhvězdičkový hotel. Možná byste mohl zkusit špunty do uší? Na recepci by mohli nějaké mít. Zajdu tam a požádám skupinu, aby to drželi v klidu, ale upřímně vám ticho zaručit nemůžu.'",
+                    "feedback": "Proč: Navrhovat špunty do uší člověku, který tři hodiny nespal, je odmítavé a povýšené. 'Tohle je hostel' fakticky říká platícímu hostovi, že jeho stížnost je neplatná kvůli tomu, kde se ubytoval. Postavili jste se na stranu hlučných dříve, než jste je potkali. Pro pana Kimuru konkrétně — být veřejně odmítnut poté, co překonal kulturní nechuť žádat o pomoc, je hluboce ponižující — ztráta tváře, která nebude zapomenuta. Pan Kimura si záměrně rezervoval soukromý pokoj a je za hodinou nočního klidu hostelu. Jeho stížnost je oprávněná. | DŮSLEDKY: Pan Kimura na vás upřeně hledí, pak s tichou zuřivostí řekne: 'Rozumím. Budu psát vašemu oddělení a vedení hostelu. Dobrou noc, pane policisto.' Dveře se zavřou. Ztratili jste důvěru zúčastněné strany za třicet sekund a způsobili mu ztrátu tváře — něco, co jeho kultura považuje za vážnou újmu. | Reflexe: Když zlehčíte oprávněnou stížnost někoho, co vás to stojí z hlediska spolupráce a důvěry — a o kolik je to horší, když si v kultuře dané osoby samotný akt stěžování vyžadoval mimořádný krok?",
+                    "type": "negative",
+                    "points": -8
+                }
+            ]
+        },
+        {
+            "id": 3,
+            "title": "Společenská místnost",
+            "sceneUpdate": {
+                "emoji": "🎶",
+                "title": "Společenská místnost — Oslava",
+                "desc": "Otevřete dveře společenské místnosti. Scéna je přesně taková, jakou jste čekali, a ještě víc. Bluetooth reproduktor na stole chroustá rockovou hudbu na značné hlasitosti. Šest lidí ve věku dvacet až třicet let je rozmístěno po místnosti — dva tančí, jeden brní na kytaru, ostatní sedí s pivem. Stůl je pokrytý lahvemi, obaly od svačin a hracími kartami. Vysoký, spálený od slunce Australan v nátělníku si vás všimne jako první a široce se usmívá. Napočítáte na stole nejméně tucet prázdných pivních lahví a všimnete si, že jedna osoba vzadu se lehce kýve i vsedě. Místnost silně páchne pivem a jídlem z rychlého občerstvení. Tišší Indka u okna vzhlédne od telefonu s výrazem, který je napůl rozpaky, napůl úleva."
+            },
+            "npcDialogue": [
+                {
+                    "character": "liam",
+                    "text": "(hlasitě, s úsměvem, drží pivo, oči lehce skelné) Óóó, kavalerie dorazila! Ahoj, pane policisto! Pojďte dál, pojďte dál — dejte si pivo, kámo! Máme dost. Nebojte, je dobrý, žádná ta levná břečka. Přisedněte si! (otočí se ke skupině) Hej, lidi — máme speciálního hosta!"
+                }
+            ],
+            "prompt": "Liam vás vítá jako hosta na oslavě, nabízí vám alkohol a předvádí se před přáteli. Všímáte si známek značné konzumace alkoholu ve skupině. Jak zvládnete tento první moment a zároveň posoudíte míru opilosti?",
+            "options": [
+                {
+                    "text": "S úsměvem natáhnout ruku a hravým gestem vzít od Liama pivo, prsty ovinout kolem lahve, a pak ho s úsměvem odložit na nejbližší stůl. Zachovat odlehčený, kamarádský tón: 'Lákavé, ale jsem ve službě, kámo. Podívejte, vidím, že se tu parádně bavíte — muzika je dobrá, nálada výborná, chápu to. Ale dostal jsem stížnosti na hluk a musíme si o tom promluvit. Nikdo nemá problém, jen potřebuji pár slov.' Neprohlížet místnost kvůli míře opilosti ani si nevšímat, kdo je střízlivý a kdo ne.",
+                    "feedback": "Proč: Vzít pivo — i jen abyste ho odložili — překračuje profesionální hranici. V tu vteřinu skupina vidí policistu, který přijal nápoj od osoby, kvůli které přijel. Vysílá to signál, že jste přístupný až do bodu, kdy se dáte zmanipulovat. Ani odložení nemazá ten moment. Liam bude tlačit dál, protože jste projevili flexibilitu u hranice, která měla být pevná. Také jste úplně přeskočili posouzení míry opilosti skupiny, což určuje, jak potřebujete komunikovat — opilí lidé zpracovávají informace odlišně a vyžadují jednodušší, kratší pokyny. | DŮSLEDKY: Liam se vítězoslavně směje: 'Vidíte? Ten policajt je v pohodě! No tak, jen doušek!' Skupina se příliš uvolní — vidí vás jako někoho, kdo se dá odzbrojit šarmem. Vaše autorita se už narušuje. A stále nemáte přehled o tom, jak je kdo opilý. | Reflexe: Proč jsou profesionální hranice nejdůležitější v prvních třiceti vteřinách setkání — a proč včasné posouzení míry opilosti mění celou vaši komunikační strategii?",
+                    "type": "neutral",
+                    "points": 2
+                },
+                {
+                    "text": "Vstoupit dovnitř, pivo nevzít, ale zachovat vřelý a uvolněný tón: 'Ha — děkuji za pohostinnost, Liame, ale budu muset odmítnout. Jsem policista [jméno].' Během řeči nenápadně prohlédnout místnost — spočítat lahve, zkontrolovat oči a koordinaci, zaznamenat, kdo je při smyslech a kdo ne. Poté: 'Nepřišel jsem nic rušit — ale potřebuji minutu vašeho času, protože tu máme situaci, kterou musíme vyřešit. Mohl by někdo ztlumit hudbu, abychom se navzájem slyšeli?'",
+                    "feedback": "Proč: Odmítnutí piva je jasné, ale bez konfrontace. Použití jeho jména (z briefingu od Marty) ukazuje přípravu a personalizuje interakci. Zásadní je, že zatímco mluvíte vřele, provádíte vizuální posouzení alkoholu — to je procedurální dovednost, ne paranoia. Vědět, kdo je mírně posilněný versus výrazně opilý, vám řekne, kdo dokáže zpracovat složité instrukce a kdo ne. 'Nepřišel jsem nic rušit' snižuje obranu skupiny. Žádost o ztlumení hudby testuje jejich ochotu spolupracovat. | DŮSLEDKY: Liam je mírně překvapený, že znáte jeho jméno. Váš průzkum odhalí: Liam je středně opilý, ale funkční, dva další jsou na tom podobně, Priya se zdá být víceméně střízlivá a jedna osoba vzadu je silně opilá, ale tichá. Priya sáhne a ztlumí reproduktor. Místnost se ztíší. Nyní víte, s kým můžete rozumně jednat a kdo potřebuje jednodušší pokyny. | Reflexe: Jak rychlé, nekonfrontační posouzení opilosti mění způsob komunikace se skupinou — a proč je důležité vědět, kdo je dostatečně střízlivý, aby se stal vaším spojencem?",
+                    "type": "positive",
+                    "points": 10
+                },
+                {
+                    "text": "Zastavit se ve dveřích, nohy rozkročené, a zablokovat východ svým tělem. Čelist sevřená, výraz ledový. Neusmívat se, nikoho nepozdravit, neuznat Liamovo natažené pivo. Od první slabiky vyzařovat čistou autoritu: 'Nikdo už dnes nebude nic pít. Okamžitě vypněte tu hudbu. Mám několik stížností a porušujete noční klid. Tohle je vaše jediné varování.' Neposuzovat, kdo je střízlivý a kdo opilý.",
+                    "feedback": "Proč: Maximální autorita, nulový vztah. Vstoupili jste do místnosti šesti lidí, kteří pili a slavili, a vaším prvním krokem je zakázat alkohol a vydat ultimátum. To spouští skupinovou obrannou reakci — sjednotí se proti vám. 'Vaše jediné varování' je hrozba, která nenechává prostor pro vyjednávání. Nařizovat dospělým, že nesmí pít ve společenské místnosti hostelu, může také překračovat vaše pravomoci. Také jste neposoudili míru opilosti, což znamená, že váš komunikační přístup není kalibrovaný — křičet ultimáta na opilé lidi je zvláště kontraproduktivní, protože alkohol oslabuje jejich schopnost zpracovat hrozby a zvyšuje pravděpodobnost odporu. | DŮSLEDKY: Místnost ztichne — ale ne v souladu. V nepřátelství. Liamův úsměv zmizí. Zkříží se ruce. Někdo zamumlá: 'Tohle je směšné.' Nejvíce opilá osoba vzadu se nejistě postaví: 'Nemůžete nám poroučet.' Vytvořili jste konfrontaci šest proti jednomu, která nemusela existovat. | Reflexe: Když vstoupíte do skupinové situace s maximální autoritou a nulovým vztahem, jakou dynamiku vytvoříte — a jak alkohol tuto dynamiku zhoršuje?",
+                    "type": "negative",
+                    "points": -8
+                },
+                {
+                    "text": "Úplně ignorovat Liamovy divadelní výstupy — nepřijmout pivo, neusmát se, ani na něj nepohlédnout. Místo toho se podívat přes jeho rameno a projít přímo přes místnost k tišší ženě u okna, která působí daleko rozumněji a přístupněji. Nabídnout jí zdvořilé přikývnutí a ztišit hlas, abyste s ní mohli vést klidný, soukromý rozhovor a získat skutečný obrázek situace od někoho, kdo se nepředvádí. Za zády vám Liam stojí s nataženým pivem a slábnoucím úsměvem.",
+                    "feedback": "Proč: Identifikovat spolupracující osobu je chytré, ale obejít sociálního vůdce skupiny je taktická chyba. Tím, že projdete kolem Liama bez povšimnutí, signalizujete, že ho ignorujete. Před jeho přáteli je to veřejná urážka. Bude eskalovat, aby znovu potvrdil svůj status. Dynamika skupiny vyžaduje, abyste nejprve zapojili vůdce, byť jen krátce. | DŮSLEDKY: Liamův výraz se změní. 'Hej, já s vámi mluvím, kámo.' Jeho hlas je hlasitější a už není přátelský. Zbytek skupiny ztuhne. Priya se tváří nesvůj. Z veselého křiklouna jste udělali člověka, který se cítí nerespektovaný. | Reflexe: Proč v skupinové situaci ignorování sociálního vůdce obvykle přinese opačný efekt?",
+                    "type": "partially_positive",
+                    "points": 5
+                }
+            ]
+        },
+        {
+            "id": 4,
+            "title": "Stanovení hranic",
+            "sceneUpdate": {
+                "emoji": "💪",
+                "title": "Společenská místnost — Liam se brání",
+                "desc": "Hudba je tišší, ale Liam není připravený ustoupit. Opírá se o stůl, pivo v ruce, a předvádí se před svým publikem. Jeho tón je na povrchu stále přátelský, ale pod ním je výzva. Ostatní batůžkáři pozorně sledují výměnu — jejich řeč těla bude kopírovat Liamovu reakci. Priya sleduje ze strany, zjevně si přeje, aby se situace vyřešila, ale nechce Liamovi odporovat před skupinou."
+            },
+            "npcDialogue": [
+                {
+                    "character": "liam",
+                    "text": "Podívejte, pane policisto, bez urážky, jo? Ale tohle je hostel. HOSTEL. Přesně na tohle hostely jsou — potkávat lidi, bavit se, sdílet příběhy. Nic neničíme, s nikým se nepereme. Jestli lidi chtějí klid a ticho, měli by si zarezervovat hotel, ne ubytovnu za dvacet eur za noc. Cestujeme spolu tři týdny a tohle je naše poslední noc. To nám nemůžete vzít."
+                }
+            ],
+            "prompt": "Liam přednáší svůj argument — a není zcela neoprávněný. Ale noční klid platí a ostatní hosté trpí. Jak odpovíte?",
+            "options": [
+                {
+                    "text": "Uznat jeho argument a pak přerámovat: 'Liame, já to vlastně chápu — poslední noc spolu, konec velkého výletu. Na tom záleží. A máte pravdu, hostely jsou společenská místa. Ale noční klid začal v jedenáct a nahoře jsou lidé, kteří taky zaplatili svých dvacet eur a nemůžou spát. Vaše práva a jejich se neliší. Takže otázka není, jestli můžete slavit — ale jak a kde. Raději vám pomůžu najít způsob, jak pokračovat, než abych večer ukončil. Ale hlasitost a místo se musí změnit.'",
+                    "feedback": "Proč: Potvrzuje jeho emocionální kontext (poslední noc, konec výletu) i jeho logický argument (hostely jsou společenská místa), než přinese protiargument. 'Vaše práva a jejich práva se neliší' je zlomový bod — přerámuje situaci z 'my versus oni' na sdílenou odpovědnost. 'Raději vám pomůžu pokračovat ve večeru, než abych ho ukončil' vás staví do pozice spojence jejich oslavy, ne jejího nepřítele. Hranice je jasná: hlasitost a místo se musí změnit. Ale řešení zůstává otevřené pro vyjednávání. | DŮSLEDKY: Liamova pozice těla se změní. Neztratil tvář — souhlasili jste s jeho předpokladem, než jste ho přesměrovali. Jeden z dalších batůžkářů řekne: 'Má pravdu, Liame.' Sociální tlak uvnitř skupiny začíná pracovat ve váš prospěch. | Reflexe: Jak uznání něčího argumentu před jeho přesměrováním změní jeho ochotu pohnout se?",
+                    "type": "positive",
+                    "points": 10
+                },
+                {
+                    "text": "Stát si pevně za svým, zachovat strnulý postoj a výraz nezasažený Liamovým citovým apelem. Zkřížit ruce a promluvit plochým, nekompromisním tónem, z něhož je jasné, že nejste tu od debaty: 'Chápu, že je to vaše poslední noc, ale pravidla jsou pravidla. Noční klid je noční klid. Když hostel říká 23:00, tak 23:00. Potřebuji, abyste okamžitě vypnuli hudbu a ztišili se. To není k diskusi.' Udržovat s Liamem oční kontakt a čekat na splnění.",
+                    "feedback": "Proč: Jasné a vymahatelné — ale 'pravidla jsou pravidla' je jazyk rigidní autority a odmítá emocionální kontext, který Liam právě sdílel. Nebyl vyslyšen, takže klade větší odpor. 'Není k diskusi' uzavírá všechny dveře. Možná dosáhnete dnešní noci souladu, ale vynucením, ne dohodou. | DŮSLEDKY: Liamova čelist ztuhne. 'Jasně. Pravidla jsou pravidla.' Přehnaně demonstrativně vypne hudbu. Místnost ochladne. Někdo zamumlá něco o policii v téhle zemi. Oslava je zabita, ne vyřešena. Soulad dosažen, dobrá vůle zničena. | Reflexe: Jaký je rozdíl mezi souladem a spoluprací a co přináší trvalejší výsledky?",
+                    "type": "neutral",
+                    "points": 2
+                },
+                {
+                    "text": "Upřímně se rozesmát a jednou tlesknout rukama, jako by Liam právě řekl skvělou pointu. Opřít se o rám dveří v uvolněné póze a zrcadlit neformální energii skupiny: 'Víte co, nemáte tak úplně nepravdu — hostely jsou přece od toho, aby se v nich bavilo. Pár jich znám. Řeknu vám co, udržte to na rozumné hlasitosti a já řeknu recepční, že je to vyřešené. Užijte si poslední noc — jen ne v koncertní hlasitosti. Platí?' Natáhnout pěst směrem k Liamovi na odsouhlasení.",
+                    "feedback": "Proč: Tím, že souhlasíte s Liamem a žádáte vágní 'rozumnou hlasitost,' jste se fakticky postavili na stranu hlučných. 'Rozumná hlasitost' není vymahatelný standard — znamená to, co si Liam rozhodne po dalším pivu. Říct Martě, že 'je to vyřešené,' když se nic konkrétního nezměnilo, ji připravuje na další tři hodiny stížností. Upřednostnili jste oblíbenost před efektivitou. | DŮSLEDKY: Liam se usměje: 'Frajer!' Hudba se do patnácti minut vrátí na původní hlasitost. Pan Kimura volá znovu. Marta je rozzuřená. Přijíždí jiná hlídka a zjistí, že jste situaci nechal nevyřešenou. | Reflexe: Kdy se vstřícnost stává selháním ve výkonu vaší práce?",
+                    "type": "negative",
+                    "points": -8
+                },
+                {
+                    "text": "Obejít Liama a oslovit celou skupinu, přejet pohledem každou tvář v místnosti, aby se každý cítil zahrnutý do rozhovoru. Zvýšit hlas právě natolik, aby přenesl přes ztlumenou hudbu: 'Všichni — slyším vás a vím, že je to výjimečný večer. Ale mám hostel plný hostů, kteří nemůžou spát, a recepční, která prosí už několik hodin. Někdo nahoře má zítra v osm ráno důležitý pracovní závazek. Žádám vás o pomoc — co můžeme udělat, aby to fungovalo pro všechny?'",
+                    "feedback": "Proč: Rozšíření konverzace mimo Liama je takticky chytré — ředí jeho dominanci a zve další hlasy. Zmínění recepční a hosta nahoře polidšťuje stěžovatele. 'Žádám vás o pomoc' staví skupinu do role řešitelů, ne porušovatelů pravidel. Ovšem otevřená otázka šesti lidem, kteří popíjeli, může přinést šest různých odpovědí a žádný jasný směr. Bez navrženého rámce můžete ztratit kontrolu nad konverzací. | DŮSLEDKY: Několik lidí mluví najednou. Priya řekne něco rozumného, ale je přehlušena. Liam opakuje svůj argument o hostelu hlasitěji. Skupinová diskuse má dobré úmysly, ale je chaotická. Demokratizovali jste problém, ale neposkytli strukturu. | Reflexe: Kdy je otevření diskuse skupině produktivní a kdy potřebuje navrhovaný rámec, aby fungovalo?",
+                    "type": "partially_positive",
+                    "points": 5
+                }
+            ]
+        },
+        {
+            "id": 5,
+            "title": "Hledání střední cesty",
+            "sceneUpdate": {
+                "emoji": "🤝",
+                "title": "Společenská místnost — Priya zasáhne",
+                "desc": "Konverzace se posunula. Liam stále vzdoruje, ale méně bojovně. Ostatní batůžkáři se na sebe dívají a odhadují náladu. Priya, která tiše naslouchala, vstane a přiblíží se. Je zjevně svědomím skupiny — výmluvná, dostatečně střízlivá, aby vnímala atmosféru, a viditelně nesvá z patové situace. Oslovuje vás i Liama."
+            },
+            "npcDialogue": [
+                {
+                    "character": "priya",
+                    "text": "(mluví opatrně, dívá se střídavě na vás a Liama) Liame, on má pravdu. Byli jsme fakt hluční. Chtěla jsem něco říct už dávno. Ta recepční nás prosila třikrát. (k vám) Pane policisto, omlouvám se za tohle. Opravdu slavíme naši poslední noc — myslíme to upřímně, nejsme jen banda idiotů. Ale měli jsme být ohleduplnější. Existuje nějaké jiné místo, kam bychom mohli jít? Třeba nějaký bar poblíž, který má ještě otevřeno? Nebo bychom to mohli přesunout ven na dvůr? Jen... nechci, aby to dopadlo špatně. Má to být hezká vzpomínka."
+                }
+            ],
+            "prompt": "Priya nabízí zprostředkování kompromisu a navrhuje alternativy. Jak s touto příležitostí naložíte?",
+            "options": [
+                {
+                    "text": "Otočit se k Priye s vřelým, uznalým přikývnutím a zapojit ji přímo jako partnerku v řešení: 'Priyo, děkuji — přesně takové uvažování pomáhá. Zmínila jste bar nebo dvůr. Ověřím u recepční ohledně dvora — pokud je k dispozici a daleko od ložnic, mohlo by to fungovat jako mezikrok. Nebo pokud je poblíž noční bar, to je další skvělá možnost. Liame, co myslíte — šla by do toho vaše skupina, přesunout se někam jinam a pokračovat ve večeru?'",
+                    "feedback": "Proč: Vyzdvižení Priyi jako konstruktivního hlasu odměňuje spolupracující chování a přesouvá sociální tlak uvnitř skupiny. Ověření u Marty ohledně dvora ukazuje důslednost místo ukvapených slibů. Nabídnutí dvou možností — dvůr nebo bar — dává skupině pocit vlivu. Přesměrování na Liama pro jeho názor ho zapojuje zpět bez konfrontace; může říct ano, místo aby se podrobil. Toto je učebnicové kolaborativní řešení problémů. | DŮSLEDKY: Liam se podívá na Priyu, pak na vás. Dynamika se posunula — Priya mu dala sociální svolení ke spolupráci, aniž by ztratil tvář. 'Ten dvůr by mohl fungovat,' řekne pomaleji než předtím. Další batůžkář hledá na telefonu bary. Skupina teď řeší problém sama. | Reflexe: Jak posílení spolupracujícího člena skupiny mění dynamiku efektivněji než konfrontace s tím vzdorujícím?",
+                    "type": "positive",
+                    "points": 10
+                },
+                {
+                    "text": "Nadšeně skočit po Priyině návrhu a lusknout prsty, jako by problém byl už vyřešený. Obrátit se na skupinu s optimistickým tónem: 'Skvělý nápad, Priyo. Tak na dvůr — to je perfektní. Liame, vezmi reproduktor a lahve, svolej všechny. Můžete v pohodě pokračovat v oslavě venku, žádný problém. Vyřešeno, všichni spokojení.' Začít sbírat pivní lahve ze stolu, aby se přesun urychlil, aniž byste ověřili u Marty, zda dvůr nesousedí s ložnicemi hostů.",
+                    "feedback": "Proč: Rozhodné a zaměřené na řešení, ale zavázali jste se ke dvoru, aniž byste ověřili u Marty, zda není blízko ložnic. Pokud je dvůr přímo pod okny hostů, přesunuli jste hluk, ale nevyřešili ho. Také dáváte jednostranné svolení k 'pokračování v oslavě' venku, což může porušovat městskou vyhlášku o hluku. Rychlost je příjemná, ale vynechává ověření. | DŮSLEDKY: Skupina se nadšeně přesouvá na dvůr s reproduktorem. Za patnáct minut si stěžují hosté z přízemí na hluk přímo za okny. Marta vám volá: 'Teď jsou ještě hlasitější a dvůr nemůžu zavřít.' Rychlost vytvořila nový problém. | Reflexe: Proč ověření řešení před jeho realizací zabrání tomu, abyste řešili tentýž problém dvakrát?",
+                    "type": "partially_positive",
+                    "points": 5
+                },
+                {
+                    "text": "Zvednout ruku, aby proťala diskusi, a přetnout vyjednávání — trpělivost je na hranici. Promluvit s osekanou autoritou a Priyin návrh úplně ignorovat, jako by nepromluvila: 'Podívejte, nejjednodušší řešení je tohle — dnes je oslava u konce. Žádný dvůr, žádný bar, žádné alternativy. Sbalte se, jděte na pokoje, vyspěte se. Měli jste hezký večer. Je půlnoc a lidé se snaží spát. Čas to zabalit.' Ukázat gestem ke chodbě a zkřížit ruce v očekávání, že se začnou přesouvat.",
+                    "feedback": "Proč: Měli jste spolupracujícího člena skupiny, který nabízel kreativní řešení, a vy jste ho úplně přeskočili rozkazem. Priya podstoupila sociální riziko tím, že se ozvala proti vůdci své skupiny — ignorování jejího příspěvku trestá přesně to chování, které chcete podpořit. 'Oslava je u konce' je také nepřiměřené, když existují alternativy a jsou vám nabízeny. Volíte reakci s maximální autoritou, když jsou k dispozici a nabízejí se vám možnosti s nižší autoritou. | DŮSLEDKY: Priya sklopí tvář — vystrčila krk zbytečně. Liam vybuchne: 'To je kravina! Právě nabídla, že se přesuneme, a vy nás stejně zavíráte?' Skupina se sjednotí proti vám. Ztratili jste jak vzdorujícího, tak spolupracujícího člena. | Reflexe: Když někdo nabídne konstruktivní řešení, jaký vzkaz vysíláte, když ho přebijete rozkazem?",
+                    "type": "negative",
+                    "points": -8
+                },
+                {
+                    "text": "Uznat Priyu krátkým přikývnutím, ale přejít rovnou k praktické stránce, aniž byste prozkoumali její návrhy na dvůr nebo bar. Ztišit hlas do rozumného, umírněného tónu: 'Priyo, to oceňuji. Navrhl bych následující — mohli by všichni začít tady pomalu končit? Dopijte si v klidu, ale žádná další hudba ve společenské místnosti dnes v noci. Pokud si chcete tiše povídat, to je naprosto v pořádku, ale zpěv a reproduktor musí od této chvíle přestat. Společenská místnost zůstává otevřená, ale hlasitost musí odpovídat spánkové hodině.'",
+                    "feedback": "Proč: Rozumné a umírněné. 'Dopijte' je lidské a 'žádná další hudba' stanovuje jasnou hranici. Ale částečně jste ignorovali Priyiny kreativní alternativy — bar, dvůr. Tím, že jdete rovnou do režimu ukončování, volíte omezení místo přemístění. Skupina dostane méně, než Priya navrhla, což může působit jako vyjednávání ve zlé víře. Navíc 'tiché povídání' ve skupině šesti lidí po několika pivech je spíše zbožné přání než realita. | DŮSLEDKY: Skupina nechutně poslechne. Reproduktor se vypne. Ale 'tiché povídání' postupně sílí s pokračujícím pitím. Za třicet minut je Marta zpátky tam, kde začala. Omezení fungovalo krátkodobě, ale nemělo udržitelný mechanismus. | Reflexe: Když je nabídnuta kreativní alternativa, jakou cenu má volba omezení místo přemístění?",
+                    "type": "neutral",
+                    "points": 2
+                }
+            ]
+        },
+        {
+            "id": 6,
+            "title": "Zajištění dohody",
+            "sceneUpdate": {
+                "emoji": "📋",
+                "title": "Společenská místnost — Podmínky",
+                "desc": "Skupina se přiklání ke spolupráci. Priyin zásah změnil dynamiku. Liam stále bručí, ale ostatní batůžkáři jsou připraveni jít dál — jeden už balí karty, další si obouva boty. Klíčem je nyní uzavřít konkrétní, funkční dohodu, než momentum vyprchá. Marta potvrdila, že dvůr je na vzdálené straně budovy, daleko od ložnic, a že dva bloky odtud je nonstop bar The Night Owl."
+            },
+            "npcDialogue": [
+                {
+                    "character": "liam",
+                    "text": "(neochotně, ale s menším odporem) Dobře, dobře. Takže co, půjdeme sedět na dvůr? Nebo najdeme ten bar? (podívá se na skupinu) Co říkáte?"
+                },
+                {
+                    "character": "priya",
+                    "text": "(k Liamovi, s úsměvem) Ten bar by vlastně mohl být fajn. Někam jinam na naši poslední noc. A nebudeme se muset bát, že si někdo bude stěžovat. (k vám) Můžeme si vzít piva, když půjdeme na dvůr, nebo je to problém?"
+                }
+            ],
+            "prompt": "Skupina je připravená se přesunout, ale záleží na detailech. Jak dohodu uzavřete?",
+            "options": [
+                {
+                    "text": "Strukturovaným tónem stanovit jasné, konkrétní podmínky: 'Navrhuji následující. Možnost A: dvůr — je daleko od ložnic, můžete si vzít pití a povídat, ale bez reproduktoru a hlasy na úrovni běžného rozhovoru. Možnost B: bar The Night Owl, dva bloky tamtím směrem — tam můžete být tak hluční, jak chcete, mají otevřeno celou noc. V každém případě musí být společenská místnost vyklizená a tichá do deseti minut. Liame, Priyo — co vám vyhovuje?'",
+                    "feedback": "Proč: Konkrétní, strukturované a posilující. Dvě jasné možnosti s definovanými parametry. Desetiminutový časový rámec je konkrétní, ne neomezený. Oslovení Liama i Priyi distribuuje vedení. Možnost dvora má jasnou podmínku (bez reproduktoru, úroveň rozhovoru). Možnost baru je zarámována jako výhoda ('tak hluční, jak chcete'). Proměnili jste zásah vymáhání v strukturovanou volbu. | DŮSLEDKY: Skupina okamžitě diskutuje o možnostech — ale konstruktivně. Dva chtějí bar, tři preferují dvůr. Rozdělí se přátelsky. Liam jde se skupinou do baru, Priya zůstává na dvoře. Do osmi minut je společenská místnost prázdná a tichá. Dohoda je konkrétní, dobrovolná a samovymahatelná. | Reflexe: Proč konkrétní, strukturované volby přinášejí lepší dodržování než vágní dohody?",
+                    "type": "positive",
+                    "points": 10
+                },
+                {
+                    "text": "Mávnout rukou směrem k zadním dveřím v uvolněném, ledabylém gestu. Udržet bezstarostný a odbytý tón, jako by na detailech teď, když je skupina ochotná se přesunout, vlastně nezáleželo: 'Jednoduché — prostě se přesuňte na dvůr. Vezměte si, co chcete, piva, reproduktor, karty, všechno. Jen to tam udržte v klidu a je to v pohodě. Řeknu recepční, že jste se přemístili.' Ustoupit stranou, aby mohla skupina projít, aniž byste stanovili konkrétní podmínky ohledně hlasitosti nebo co se stane, když stížnosti obnoví.",
+                    "feedback": "Proč: 'Udržte to v klidu' je tatáž instrukce, kterou Marta dala třikrát a třikrát selhala. Bez konkrétních parametrů — žádný reproduktor, úroveň rozhovoru, co se stane, když to zesílí — jste hluk přesunuli, ale neřídíte ho. 'Vezměte si, co chcete' je benevolentní až do bodu rezignace na odpovědnost. Šest lidí s pivem na dvoře o půlnoci bez jasných hranic bude hlasitějších. | DŮSLEDKY: Skupina se přesune na dvůr s reproduktorem. Oslava pokračuje v plné venkovní hlasitosti. Hosté na straně dvora si stěžují. Přemístili jste problém, ne vyřešili. | Reflexe: Co dělá rozdíl mezi dohodou, která vydrží, a dohodou, která se okamžitě rozpadne?",
+                    "type": "neutral",
+                    "points": 2
+                },
+                {
+                    "text": "Naklonit se dopředu a promluvit praktickým, poradenským tónem, který jasně favorizuje jednu možnost nad druhou. Navázat oční kontakt střídavě s Liamem a Priyou: 'Myslím, že bar je vaše nejlepší volba, upřímně. Dvůr je stále majetek hostelu a nemůžu zaručit, že si někdo zase nebude stěžovat, když tam budete o půlnoci sedět a smát se. Pokud půjdete do Night Owl, můžete si užít večer přesně tak, jak chcete, bez jakýchkoli omezení a strachu z hluku. Důrazně bych to doporučil.'",
+                    "feedback": "Proč: Nasměrování do baru zcela odstraňuje problém z hostelu, což je čisté a efektivní. Ale 'důrazně doporučovat' jednu možnost nad druhou odebírá volbu, kterou byste měli nabízet. Pokud skupina později pocítí, že byli vytlačeni z ubytování, za které zaplatili, buduje se rozladění. Navíc někteří možná nechtějí utrácet peníze v baru. Vaší úlohou je prezentovat možnosti, ne vybírat za ně. | DŮSLEDKY: Většina skupiny jde do baru, ale dva batůžkáři, kteří jsou unavení a mají málo peněz, zůstávají s pocitem, že byli dotlačeni k odchodu z ubytování, za které zaplatili. Jeden si stěžuje na recepci: 'Policie nám řekla, že nemůžeme používat hostel.' Neřekli jste to, ale tak to vyznělo. | Reflexe: Jaký je rozdíl mezi prezentováním možností a nasměrováním někoho k výsledku, který preferujete vy?",
+                    "type": "partially_positive",
+                    "points": 5
+                },
+                {
+                    "text": "Přikývnout, když se skupina začíná organizovat, ale pak zvednout prst a zpřísnit výraz právě ve chvíli, kdy kooperativní nálada vrcholí. Přenést váhu dopředu a ztišit hlas do varovného registru: 'Tak dvůr nebo bar, vaše volba. Ale musím být jasný — pokud budu dnes v noci kvůli stejné věci volaný znovu, nebude to příjemný rozhovor. Budou pokuty a formální protokoly o rušení nočního klidu vypsané na každého z vás jednotlivě. Rozumíme si?' Přejet pohledem po místnosti a ujistit se, že každý tu hrozbu registruje.",
+                    "feedback": "Proč: Dohoda se už formovala. Skupina spolupracovala. Přidání hrozby v okamžiku dosažení řešení otráví dobrou vůli, kterou jste dvacet minut budovali. 'Nebude to příjemný rozhovor příště' je zastřená hrozba, která přerámuje celou interakci jako varování místo spolupráce. Lidé si pamatují, jak věci končí, víc než jak začínají. Právě jste zajistili, že trvalou vzpomínkou bude hrozba, ne spravedlivé řešení. | DŮSLEDKY: Místnost ztichne. Liamův výraz ztuhne. Priya odvrátí pohled. Skupina odchází — do baru, ne na dvůr — protože hostel teď působí nepřátelsky. Spolupracují, ale ze strachu, ne z přesvědčení. Liam si zapamatuje hrozbu, ne férové jednání. | Reflexe: Kdy přidání varování k úspěšnému vyjednávání podkopává vše, čeho jste dosáhli?",
+                    "type": "negative",
+                    "points": -8
+                }
+            ]
+        },
+        {
+            "id": 7,
+            "title": "Uzavření případu",
+            "sceneUpdate": {
+                "emoji": "✅",
+                "title": "Recepce — Následná komunikace",
+                "desc": "Společenská místnost je tichá. Batůžkáři se rozprchli — někteří na dvůr, někteří do The Night Owl. Ze dvora je slyšet vzdálený, tlumený rozhovor, ale nic, co by rušilo spánek. Budova působí klidně. Vracíte se na recepci, kde čeká Marta. Stále potřebujete navštívit pana Kimuru. Způsob, jakým tento zásah uzavřete, určí, zda dnešní řešení vydrží a zda všechny strany budou mít pocit, že situace byla řešena spravedlivě."
+            },
+            "npcDialogue": [
+                {
+                    "character": "marta",
+                    "text": "(viditelně ulevená) Je ticho. Nemůžu tomu uvěřit — snažila jsem se tři hodiny. Děkuji, pane policisto. Opravdu. (zaváhá) Myslíte, že zůstanou potichu? A... měla bych se podívat za panem Kimurou? Byl velmi rozrušený."
+                }
+            ],
+            "prompt": "Bezprostřední krize je vyřešena. Jak uzavřete setkání s Martou a panem Kimurou?",
+            "options": [
+                {
+                    "text": "Ocenit Martu a dát jí praktické rady: 'Udělala jste správně, že jste zavolala, Marto. Skupina se přesunula — někteří na dvůr s jasnými podmínkami, někteří do baru. Pokud se dvůr rozhlučí, můžete je požádat o návrat na pokoje a zavolat nám znovu. Doporučil bych také promluvit s manažerkou o písemné hlukové politice — dalo by vám to větší pravomoc příště.' Pak zaklepat na dveře pana Kimury: 'Pane Kimuro, je ticho. Měl byste moci spát. Přeji úspěšnou prezentaci.'",
+                    "feedback": "Proč: Uzavírá kruh s oběma zúčastněnými stranami. Marta dostává potvrzení správnosti svého jednání, jasnou informaci, svolení zavolat znovu a konstruktivní návrh na systémové zlepšení. Neřešíte jen dnešek — pomáháte předejít příštímu pátku. Pan Kimura dostává osobní zprávu, která se zabývá jeho konkrétním zájmem (prezentace), což ukazuje, že jste naslouchali a pamatujete si. Obě strany se cítí vnímány, vyslyšeny a respektovány. Takto vypadá kompletní následná komunikace. | DŮSLEDKY: Marta si poznamenává návrh na politiku — chtěla to vedení navrhnout už dávno a nyní má policejní doporučení na podporu. Pan Kimura otevře dveře, vděčně přikývne a jednoduše řekne: 'Děkuji. Jste velmi profesionální.' Obě strany mají pocit, že systém dnes v noci fungoval pro ně. | Reflexe: Proč následná komunikace se všemi zúčastněnými stranami — nejen se zdrojem hluku — definuje, zda je řešení opravdu kompletní?",
+                    "type": "positive",
+                    "points": 10
+                },
+                {
+                    "text": "Dát Martě rychlé, profesionální uklidnění, aniž byste zacházeli do detailů. Zkontrolovat hodinky a držet závěr stručný: 'Teď by to mělo být v pořádku, Marto. Skupina se přesunula. Pokud se to znovu rozjede, prostě nám zavolejte — přijedeme znovu, žádný problém. Hezký zbytek směny.' Nabídnout krátký úsměv a zamířit k východu. Při průchodu kolem patra pana Kimury se rozhodnout neklepat — všimne si ticha sám a usne. Není důvod ho dál rušit.",
+                    "feedback": "Proč: Hluk je vyřešen a technicky má Marta možnost znovu zavolat. Ale pan Kimura vás osobně zastavil, svěřil se vám se svou zranitelností ohledně prezentace a byl mu přislíben zásah. Nevrátit se k němu ho ponechá s pocitem zapomenutí — jako by byl jen číslo stížnosti, ne člověk. 'Všimne si ticha' předpokládá, že neleží vzhůru v úzkosti. Třicetivteřinové zaklepání na dveře nic nestojí a uzavírá lidský kruh. Marta navíc nedostává žádné rady pro příště — vyřešili jste dnešek, ale neinvestovali do zítřka. | DŮSLEDKY: Marta se cítí, že jí bylo pomoženo, ale ne podpořeno. Pan Kimura leží v posteli a slyší ticho, ale není si jistý, jestli vydrží, a pamatuje si, že se policista nevrátil. Řešení drží, ale pro lidi, kteří ho nejvíce potřebovali, působí neúplně. | Reflexe: Jaký je rozdíl mezi vyřešenou situací a situací, kde se každý zúčastněný cítí, že je vyřešena?",
+                    "type": "partially_positive",
+                    "points": 5
+                },
+                {
+                    "text": "Opřít se o recepční pult a zaujmout přímý, poučující tón, pomalu vrtět hlavou. Navázat s Martou oční kontakt a předložit své hodnocení: 'Přesunuli se, takže hluk je vyřešený. Ale upřímně, Marto, měla jste to zvládnout dřív, než se to dostalo do tohoto bodu. Měla jste tři hodiny a šest pokusů situaci zvládnout. Příště buďte důraznější hned napoprvé — stanovte jasné hranice už při první žádosti, ne až při třetí — a nebudete nás muset kvůli něčemu takovému volat.'",
+                    "feedback": "Proč: Obviňovat Martu — která to zkoušela třikrát, jejíž manažerka nebere telefon a nemá pravomoc hosty vystěhovat — je nespravedlivé a nepřesné. Zavolala policii, protože vyčerpala své možnosti, ne proto, že byla líná. Říkat pracovníkovi v první linii, aby byl 'důraznější,' ignoruje systémové problémy: žádná jasná pravidla, žádná podpora managementu, žádná pravomoc. Trestáte člověka, který požádal o pomoc, za to, že pomoc potřeboval. | DŮSLEDKY: Martina úleva se vypaří. Cítí se kritizovaná po hodinách stresu. Příště, až bude problém s hlukem, bude váhat s voláním policie — bude se to snažit řešit sama a situace bude horší, když konečně eskaluje. Poškodili jste pracovní vztah a snížili pravděpodobnost budoucích volání. | Reflexe: Když pracovník v první linii zavolá o podporu, co se stane s budoucí spoluprací, když ho zkritizujete?",
+                    "type": "negative",
+                    "points": -8
+                },
+                {
+                    "text": "Poskytnout Martě věcnou zprávu o stavu v úsečném, efektivním tónu a vytáhnout z kapsy vizitku. Neposadit se, nezdržovat se: 'Situace je prozatím vyřešena. Stalo se toto: skupina se rozdělila mezi dvůr a bar poblíž. Pokud skupina na dvoře začne být hlasitá, tady jsou moje údaje — zavolejte nám přímo. Na pana Kimuru se podívám cestou ven, aby věděl, že je to vyřešené.' Předat vizitku, stroze přikývnout a zamířit ke schodům. Rychlé, efektivní, profesionální.",
+                    "feedback": "Proč: Profesionální a informativní — Marta ví, co se stalo a co dělat. Kontrola pana Kimury je dobrá. Ale interakce je spíše transakční než podpůrná. Marta se s tím potýkala sama celé hodiny a řešení je předáno jako hlášení o stavu. Žádné ocenění, žádný návrh na systémové zlepšení, žádné uznání, že byla v obtížné pozici. Efektivní, ale chybí lidský prvek, který buduje trvalou důvěru. | DŮSLEDKY: Pan Kimura oceňuje informaci. Marta je vděčná, ale interakce působí klinicky. Nebude váhat zavolat znovu, ale nebude si tohle pamatovat jako výjimečnou policejní práci. Profesionální adekvátnost, ne profesionální excelence. | Reflexe: Jaký je rozdíl mezi profesionální transakcí a profesionálním vztahem?",
+                    "type": "neutral",
+                    "points": 2
+                }
+            ]
+        },
+        {
+            "id": 8,
+            "title": "Závěrečné hodnocení a odhalení",
+            "sceneUpdate": {
+                "emoji": "🏁",
+                "title": "Závěrečné hodnocení",
+                "desc": "Zpátky na stanici. Seržant Novák hodnotí váš výkon ve scénáři hlukové stížnosti v hostelu."
+            },
+            "npcDialogue": [],
+            "autoDialogue": true,
+            "finalScene": true,
+            "prompt": "",
+            "options": [],
+            "dialogueSequence": [
+                {
+                    "character": "trainer",
+                    "text": "To byl klamně složitý výjezd, policisto. Co vypadalo jako jednoduchá hluková stížnost, se proměnilo ve vícestranné vyjednávání zahrnující kulturní rozdíly, komerční odpovědnost, osobní zranitelnost a tenkou hranici mezi vymáháním a usnadněním. Pojďme si říct, jak jste se zorientovali ve všech těch vrstvách."
+                },
+                {
+                    "character": "officer",
+                    "text": "Upřímně, nejtěžší byl Liam. Byl šarmantní a hlasitý a s úsměvem posouval každou hranici. Pořád jsem si nebyl jistý, jestli jsem příliš benevolentní, nebo příliš přísný."
+                },
+                {
+                    "character": "trainer",
+                    "text": "To napětí, které jste cítili, je celé ponaučení. Většina policistů považuje hlukové stížnosti za nudné výjezdy — nízké riziko, přímočaré, jdeme dál. To je přesně špatný pohled. Hlukové stížnosti jsou nejčastější interakcí mezi policií a veřejností. Formují důvěru komunity více než jakýkoli jiný typ výjezdu. Majitel hostelu, který nám příští měsíc zavolá kvůli závažnému incidentu, turista, který přátelům vypráví o své zkušenosti s českou policií, obchodník, který se rozhoduje, zda je toto město profesionální — všechny tyto výsledky byly zaséty dnes v noci podle toho, jak jste zvládli jednu hlučnou rozlučkovou oslavu."
+                },
+                {
+                    "character": "trainer",
+                    "text": "A skutečná dovednost, kterou jste dnes procvičovali, nebyla regulace hlasitosti — byl to management zúčastněných stran. Marta potřebovala podporu a systémovou změnu. Pan Kimura potřeboval uznání a spánek. Liam potřeboval zachovat svou hrdost. Priya potřebovala svolení být hlasem rozumu. Museli jste obsloužit všechny čtyři, aniž byste kohokoli zradili. Teď vám řeknu, co se stalo poté, co jste z toho hostelu odešli."
+                }
+            ]
+        }
+    ],
+    "characters": {
+        "dispatcher": {
+            "name": "Dispečink",
+            "avatar": "📻"
+        },
+        "marta": {
+            "name": "Marta (noční recepční, 42)",
+            "avatar": "🙋‍♀️"
+        },
+        "liam": {
+            "name": "Liam (australský batůžkář, 26)",
+            "avatar": "🎒"
+        },
+        "priya": {
+            "name": "Priya (indická batůžkářka, 24)",
+            "avatar": "👩"
+        },
+        "mr_kimura": {
+            "name": "Pan Kimura (japonský obchodník, 53)",
+            "avatar": "👔"
+        },
+        "trainer": {
+            "name": "Seržant Novák",
+            "avatar": "👮‍♂️"
+        }
+    },
+    "performanceReviews": {
+        "perfect": {
+            "title": "Výjimečné vyjednávání!",
+            "emoji": "🌟",
+            "feedback": "Prokázali jste vynikající dovednosti vícestranného vyjednávání ve složitém prostředí sdíleného ubytování. Váš přístup vyvážil oprávněné potřeby každé zúčastněné strany: přání batůžkářů slavit, právo pana Kimury na spánek, Martinu potřebu podpory a provozní požadavky hostelu. Shromáždili jste informace před jednáním, udrželi profesionální hranice pod sociálním tlakem, identifikovali a posílili spolupracujícího spojence uvnitř skupiny a uzavřeli kruh s každou zapojenou osobou. Každá volba odrážela kulturní citlivost, přiměřenost a upřímný zájem o udržitelné výsledky namísto rychlých řešení."
+        },
+        "good": {
+            "title": "Silný výkon",
+            "emoji": "✅",
+            "feedback": "Hlukovou stížnost s více zúčastněnými stranami jste zvládli dobře, projevili jste férový přístup a pracovali na řešení místo pouhého vymáhání. Zapojili jste se do perspektivy skupiny a našli funkční řešení. Některé příležitosti pro hlubší kulturní citlivost, lepší následnou komunikaci nebo strategičtější využití skupinové dynamiky byly zmeškány, ale váš přístup byl profesionální a přiměřený."
+        },
+        "average": {
+            "title": "Adekvátní reakce",
+            "emoji": "📊",
+            "feedback": "Vyřešili jste bezprostřední problém s hlukem, ale váš přístup postrádal důležité dimenze situace. Ať už spěcháním přes přípravu, opomenutím zapojení všech zúčastněných stran, nebo volbou vymáhání místo spolupráce, řešení bylo funkční, ale křehké. Přehodnoťte svůj přístup k vícestranným vyjednáváním, kulturní citlivosti a rozdílu mezi souladem a spoluprací."
+        },
+        "poor": {
+            "title": "Vyžaduje výrazné zlepšení",
+            "emoji": "⚠️",
+            "feedback": "Váš přístup vytvořil zbytečný konflikt v situaci, která byla hlasitá, ale ne nebezpečná. Hlukové stížnosti ve sdíleném ubytování vyžadují vyjednávání, kulturní citlivost a přiměřenost — ne tvrdé vymáhání. Tím, že jste se nepřipravili, odmítli oprávněné perspektivy nebo eskalovali prostřednictvím rigidní autority, jste zanechali více zúčastněných stran v horším stavu, než když jste přijeli. Přehodnoťte základy vyjednávání, přiměřenou reakci a management zúčastněných stran."
+        }
+    },
+    "metrics": {
+        "negotiationSkills": {
+            "name": "Vyjednávací dovednosti",
+            "description": "Schopnost nacházet vzájemně přijatelná řešení prostřednictvím aktivního naslouchání, přerámování, strukturovaných voleb a kolaborativního řešení problémů místo příkazů",
+            "icon": "🤝"
+        },
+        "culturalSensitivity": {
+            "name": "Kulturní citlivost",
+            "description": "Povědomí o různých kulturních normách ohledně hluku, společenského života, autority a osobního prostoru v mezinárodním prostředí a respekt k nim",
+            "icon": "🌍"
+        },
+        "proportionateResponse": {
+            "name": "Přiměřená reakce",
+            "description": "Přizpůsobení úrovně zásahu skutečné závažnosti situace — použití minimální potřebné autority k dosažení řešení",
+            "icon": "⚖️"
+        },
+        "stakeholderManagement": {
+            "name": "Management zúčastněných stran",
+            "description": "Zapojení všech dotčených stran — zdroje hluku, stěžovatelů a personálu zařízení — a zajištění, že každý se cítí vyslyšen a ošetřen",
+            "icon": "👥"
+        },
+        "professionalBoundaries": {
+            "name": "Profesionální hranice",
+            "description": "Udržování vhodného chování policisty — odmítání společenských nabídek, vyhýbání se stranění a vyvážení vřelosti s autoritou",
+            "icon": "🛡️"
+        }
+    }
+}
