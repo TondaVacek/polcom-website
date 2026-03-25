@@ -49,15 +49,15 @@ const lang = 'lt' as const;
 
       <form class="contact-form" id="contactForm">
         <div class="form-group">
-          <label for="name">Jūsų Vardas, Pavardė</label>
+          <label for="name">Jūsų Vardas, Pavardė <span class="required">*</span></label>
           <input type="text" id="name" name="name" required />
         </div>
         <div class="form-group">
-          <label for="email">El. pašto adresas</label>
+          <label for="email">El. pašto adresas <span class="required">*</span></label>
           <input type="email" id="email" name="email" required />
         </div>
         <div class="form-group">
-          <label for="message">Žinutė</label>
+          <label for="message">Žinutė <span class="required">*</span></label>
           <textarea id="message" name="message" rows="6" required></textarea>
         </div>
         <button type="submit" class="btn btn-primary" id="submitBtn">
@@ -278,6 +278,7 @@ const lang = 'lt' as const;
     box-shadow: 0 4px 16px rgba(27, 58, 107, 0.25);
   }
 
+  .required { color: #dc2626; }
   .form-status { margin-top: 1rem; font-size: 0.9rem; font-weight: 500; }
   .form-status.success { color: #16a34a; }
   .form-status.error { color: #dc2626; }
