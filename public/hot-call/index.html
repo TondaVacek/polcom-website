@@ -335,6 +335,9 @@
     return index !== -1 ? index + 1 : 1;
   }
 
+  // Base URL for card images
+  const BASE_URL = 'https://pub-b33a41e64ab14f4d92f341fa4bf701bd.r2.dev/hot-call/';
+
   // PDF download URLs for each language
   const PDF_URLS = {
     ENG: BASE_URL + 'ENGLISH - Hot call game cards.pdf',
@@ -342,9 +345,6 @@
     LT: BASE_URL + 'LITHUANIA - Hot call game cards.pdf',
     RO: BASE_URL + 'ROMANIA - Hot call game cards.pdf'
   };
-
-  // Base URL for card images
-  const BASE_URL = 'https://pub-b33a41e64ab14f4d92f341fa4bf701bd.r2.dev/hot-call/';
   
   // Current language
   let currentLang = 'ENG';
