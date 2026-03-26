@@ -46,15 +46,16 @@ const lang = 'lt' as const;
 </Layout>
 
 <style>
-  .page-hero { padding: calc(72px + 4rem) 0 3rem; background: var(--color-bg-elevated); border-bottom: 1px solid var(--color-border); }
+  .page-hero { padding: calc(72px + 4rem) 0 3.5rem; background: var(--color-bg-elevated); border-bottom: 1px solid var(--color-border); }
   .games-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 2rem; }
-  .game-card { display: flex; flex-direction: column; padding: 2.5rem; background: var(--color-bg-card); border: 1px solid var(--color-border); border-radius: var(--radius-md); transition: border-color 0.2s, box-shadow 0.2s; text-decoration: none; color: inherit; }
-  .game-card:hover { border-color: var(--color-accent); box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08); }
-  .game-icon { font-size: 2.5rem; margin-bottom: 1.25rem; }
+  .game-card { display: flex; flex-direction: column; padding: 2.5rem; background: var(--color-bg-card); border: 1px solid var(--color-border); border-radius: var(--radius); transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s; text-decoration: none; color: inherit; }
+  .game-card:hover { border-color: var(--color-accent); box-shadow: 0 12px 32px rgba(27,58,107,0.1); transform: translateY(-3px); }
+  .game-icon { font-size: 2.5rem; margin-bottom: 1.5rem; width: 56px; height: 56px; display: flex; align-items: center; justify-content: center; background: var(--color-accent-glow); border-radius: var(--radius-sm); }
   .game-title { font-family: var(--font-display); font-size: 1.4rem; font-weight: 500; color: var(--color-text); margin-bottom: 0.75rem; }
   .game-desc { font-size: 0.95rem; color: var(--color-text-muted); line-height: 1.7; flex: 1; }
   .game-meta { display: flex; gap: 1rem; margin-top: 1.5rem; padding-top: 1.25rem; border-top: 1px solid var(--color-border); flex-wrap: wrap; }
-  .game-meta span { font-size: 0.8rem; color: var(--color-accent); font-weight: 500; }
-  .game-cta { margin-top: 1.25rem; font-size: 0.9rem; font-weight: 500; color: var(--color-accent-light); }
+  .game-meta span { font-size: 0.78rem; color: var(--color-accent); font-weight: 500; background: var(--color-accent-glow); padding: 0.15rem 0.6rem; border-radius: 100px; }
+  .game-cta { margin-top: 1.25rem; font-size: 0.9rem; font-weight: 600; color: var(--color-accent); transition: color 0.2s; }
+  .game-card:hover .game-cta { color: var(--color-accent-light); }
   @media (max-width: 560px) { .games-grid { grid-template-columns: 1fr; } }
 </style>

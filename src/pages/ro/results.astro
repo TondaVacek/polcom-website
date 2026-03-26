@@ -60,23 +60,6 @@ const lang = 'ro' as const;
           <p>Plan de gazduire pe termen lung, contract de intreținere și un kit media gata pregatit (set de logo-uri, video explicativ, șabloane pentru social-media).</p>
         </div>
       </div>
-      <div class="outputs-list" style="margin-top: 3rem;">
-        <h3>Rezultate principale</h3>
-        <ul>
-          <li>Curriculum cu resurse pentru educatori</li>
-          <li>Instrumente interactive: cartonașe, activitați, infografice, videoclipuri</li>
-          <li>Platforma de invațare online multilingva</li>
-          <li>Maiestria ascultarii active</li>
-          <li>Comunicarea echitabila și incluziva</li>
-          <li>Mesajele la presiune ridicata</li>
-          <li>De-escaladarea și rezolvarea conflictelor</li>
-          <li>Tactici de negociere și persuasiune</li>
-          <li>Inteligența emoționala in poliție</li>
-          <li>Evaluare pilot și raport de bune practici</li>
-          <li>Kit de durabilitate și diseminare</li>
-        </ul>
-      </div>
-
       <a href="https://polcom-training.eu/" class="btn btn-primary" style="margin-top: 2.5rem;" target="_blank" rel="noopener">
         Accesați platforma de formare      </a>
     </div>
@@ -85,7 +68,7 @@ const lang = 'ro' as const;
 
 <style>
   .page-hero {
-    padding: calc(72px + 4rem) 0 3rem;
+    padding: calc(72px + 4rem) 0 3.5rem;
     background: var(--color-bg-elevated);
     border-bottom: 1px solid var(--color-border);
   }
@@ -93,7 +76,7 @@ const lang = 'ro' as const;
   .modules-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 1.25rem;
+    gap: 1.5rem;
   }
 
   .btn {
@@ -132,7 +115,7 @@ const lang = 'ro' as const;
   .outputs-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 1.25rem;
+    gap: 1.5rem;
     margin-top: 2rem;
   }
 
@@ -141,12 +124,13 @@ const lang = 'ro' as const;
     border: 1px solid var(--color-border);
     border-radius: var(--radius);
     padding: 1.75rem;
-    transition: transform 0.3s, border-color 0.3s;
+    transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
   }
 
   .output-card:hover {
     transform: translateY(-3px);
     border-color: var(--color-accent);
+    box-shadow: 0 8px 24px rgba(27,58,107,0.08);
   }
 
   .output-card h3 {
@@ -185,37 +169,4 @@ const lang = 'ro' as const;
     color: var(--color-accent-light);
   }
 
-  .outputs-list h3 {
-    font-family: var(--font-body);
-    font-size: 1.1rem;
-    font-weight: 600;
-    color: var(--color-text);
-    margin-bottom: 1rem;
-  }
-
-  .outputs-list ul {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 0.6rem;
-  }
-
-  .outputs-list li {
-    font-size: 0.925rem;
-    color: var(--color-text-muted);
-    padding-left: 1.5rem;
-    position: relative;
-    line-height: 1.6;
-  }
-
-  .outputs-list li::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 0.55em;
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background: var(--color-accent);
-  }
 </style>

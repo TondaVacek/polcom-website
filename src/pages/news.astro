@@ -340,31 +340,79 @@ const posts = [
 
   <section class="section">
     <div class="container">
-      <div class="news-list">
-        {posts.map((post, i) => (
-          <article class={`news-item animate-in delay-${Math.min(i + 1, 6)}`}>
-            <div class="news-meta">
-              <time>{post.date}</time>
-              <span class="news-author">{post.author}</span>
-            </div>
-            <h2 class="news-title">{post.title}</h2>
-            <p class="news-excerpt">{post.excerpt}</p>
-            {post.image && (
-              <div class="news-images">
-                <img src={post.image} alt={post.title} class="news-image" />
-                {post.image2 && <img src={post.image2} alt={post.title} class="news-image" />}
-              </div>
-            )}
-          </article>
-        ))}
+      <div class="news-list" id="news-list">
+        {posts.map((post, i) => {
+          const year = new Date(post.date).getFullYear();
+          const prevYear = i > 0 ? new Date(posts[i - 1].date).getFullYear() : null;
+          const showYearDivider = i === 0 || year !== prevYear;
+          return (
+            <>
+              {showYearDivider && (
+                <div class:list={['year-divider', { 'news-hidden': i >= 8 }]} data-index={i}>
+                  <span class="year-label">{year}</span>
+                </div>
+              )}
+              <article class:list={[`news-item animate-in delay-${Math.min(i + 1, 6)}`, { 'news-hidden': i >= 8 }]} data-index={i}>
+                <div class="news-meta">
+                  <time>{post.date}</time>
+                  <span class="news-author">{post.author}</span>
+                </div>
+                <h2 class="news-title">{post.title}</h2>
+                <p class="news-excerpt">{post.excerpt}</p>
+                {post.image && (
+                  <div class="news-images">
+                    <img src={post.image} alt={post.title} class="news-image" loading="lazy" />
+                    {post.image2 && <img src={post.image2} alt={post.title} class="news-image" loading="lazy" />}
+                  </div>
+                )}
+              </article>
+            </>
+          );
+        })}
+      </div>
+      <div class="load-more-wrapper" id="load-more-wrapper">
+        <button class="btn-load-more" id="load-more-btn">
+          Show more
+          <span class="load-more-count" id="load-more-count">({posts.length - 8} older posts)</span>
+        </button>
       </div>
     </div>
   </section>
 </Layout>
 
+<script>
+  const BATCH = 10;
+  const btn = document.getElementById('load-more-btn');
+  const countEl = document.getElementById('load-more-count');
+  const wrapper = document.getElementById('load-more-wrapper');
+  const hidden = () => document.querySelectorAll('#news-list .news-hidden');
+
+  function reveal() {
+    const items = [...hidden()];
+    if (items.length === 0) return;
+    const toShow = items.slice(0, BATCH);
+    toShow.forEach((el, i) => {
+      el.classList.remove('news-hidden');
+      el.style.animation = `fadeUp 0.4s ease-out ${i * 0.04}s both`;
+    });
+    const remaining = items.length - toShow.length;
+    if (remaining <= 0) {
+      wrapper.style.display = 'none';
+    } else {
+      countEl.textContent = `(${remaining} older posts)`;
+    }
+  }
+
+  btn?.addEventListener('click', reveal);
+
+  if (hidden().length === 0) {
+    wrapper.style.display = 'none';
+  }
+</script>
+
 <style>
   .page-hero {
-    padding: calc(72px + 4rem) 0 3rem;
+    padding: calc(72px + 4rem) 0 3.5rem;
     background: var(--color-bg-elevated);
     border-bottom: 1px solid var(--color-border);
   }
@@ -375,14 +423,36 @@ const posts = [
     gap: 1px;
   }
 
+  .year-divider {
+    padding: 2rem 0 0.75rem;
+    margin-top: 1rem;
+  }
+
+  .year-divider:first-child {
+    padding-top: 0;
+    margin-top: 0;
+  }
+
+  .year-label {
+    font-family: var(--font-display);
+    font-size: 1.75rem;
+    color: var(--color-accent);
+    font-weight: 400;
+    letter-spacing: -0.02em;
+  }
+
   .news-item {
-    padding: 2rem 0;
+    padding: 2.25rem 0;
     border-bottom: 1px solid var(--color-border);
     transition: background 0.2s;
   }
 
   .news-item:first-child {
     padding-top: 0;
+  }
+
+  .news-item:first-child .news-title {
+    font-size: 1.75rem;
   }
 
   .news-meta {
@@ -413,21 +483,22 @@ const posts = [
     font-size: 1.5rem;
     font-weight: 400;
     color: var(--color-text);
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.65rem;
     line-height: 1.3;
+    letter-spacing: -0.01em;
   }
 
   .news-excerpt {
-    font-size: 0.95rem;
+    font-size: 0.925rem;
     color: var(--color-text-muted);
     line-height: 1.7;
-    max-width: 700px;
+    max-width: 720px;
   }
 
   .news-images {
     display: flex;
     gap: 1rem;
-    margin-top: 1rem;
+    margin-top: 1.25rem;
     flex-wrap: wrap;
   }
 
@@ -435,8 +506,51 @@ const posts = [
     max-width: 400px;
     max-height: 280px;
     object-fit: cover;
-    border-radius: var(--radius-sm);
+    border-radius: var(--radius);
     border: 1px solid var(--color-border);
+    transition: opacity 0.2s;
+  }
+
+  .news-image:hover {
+    opacity: 0.9;
+  }
+
+  .news-hidden {
+    display: none;
+  }
+
+  .load-more-wrapper {
+    display: flex;
+    justify-content: center;
+    padding-top: 2.5rem;
+  }
+
+  .btn-load-more {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 2rem;
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--color-text);
+    cursor: pointer;
+    transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+  }
+
+  .btn-load-more:hover {
+    border-color: var(--color-accent);
+    box-shadow: 0 4px 16px rgba(27, 58, 107, 0.08);
+    transform: translateY(-1px);
+  }
+
+  .load-more-count {
+    font-weight: 400;
+    color: var(--color-text-muted);
+    font-size: 0.8rem;
   }
 
   @media (max-width: 560px) {

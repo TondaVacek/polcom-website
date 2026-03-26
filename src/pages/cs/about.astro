@@ -61,15 +61,17 @@ const lang = 'cs' as const;
 </script>
 
 <style>
-  .page-hero { padding: calc(72px + 4rem) 0 3rem; background: var(--color-bg-elevated); border-bottom: 1px solid var(--color-border); }
+  .page-hero { padding: calc(72px + 4rem) 0 3.5rem; background: var(--color-bg-elevated); border-bottom: 1px solid var(--color-border); }
   .content-grid { display: grid; grid-template-columns: 1fr 320px; gap: 4rem; align-items: start; }
-  .content-main h2 { font-family: var(--font-display); font-size: 1.75rem; font-weight: 400; margin: 2.5rem 0 1rem; color: var(--color-text); }
+  .content-main h2 { font-family: var(--font-display); font-size: 1.75rem; font-weight: 400; margin: 2.5rem 0 1rem; color: var(--color-text); letter-spacing: -0.01em; }
   .content-main h2:first-child { margin-top: 0; }
-  .content-main p { color: var(--color-text-muted); line-height: 1.8; margin-bottom: 1rem; }
+  .content-main p { color: var(--color-text-muted); font-size: 0.95rem; line-height: 1.8; margin-bottom: 1.25rem; }
+  .content-main p:last-child { margin-bottom: 0; }
+  .content-sidebar { position: sticky; top: calc(72px + 2rem); align-self: start; }
   .info-card { background: var(--color-bg-card); border: 1px solid var(--color-border); border-radius: var(--radius); padding: 1.75rem; position: static; }
   .info-card h3 { font-size: 0.85rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--color-accent); margin-bottom: 1.25rem; }
   .info-card dl { display: grid; gap: 1rem; }
   .info-card dt { font-size: 0.78rem; color: var(--color-text-muted); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.15rem; }
   .info-card dd { font-size: 0.95rem; color: var(--color-text); font-weight: 500; }
-  @media (max-width: 768px) { .content-grid { grid-template-columns: 1fr; gap: 2rem; } .info-card { position: static; } }
+  @media (max-width: 768px) { .content-grid { grid-template-columns: 1fr; gap: 2rem; } .content-sidebar { position: static; } }
 </style>

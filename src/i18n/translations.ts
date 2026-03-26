@@ -47,7 +47,7 @@ export const translations: Record<Lang, Record<string, string>> = {
     'footer.rights': '© 2024–2026 POLICE-COM. All rights reserved.',
     'events.title': 'Current Events',
     'events.implementation.title': 'Project implementation date',
-    'events.implementation.desc': 'All the planned project results will be availabe by the end of November 2025 the latest. We will keep you updated if there is more to explore in POLICE-COM.',
+    'events.implementation.desc': 'All the planned project results will be available by the end of November 2025 the latest. We will keep you updated if there is more to explore in POLICE-COM.',
     'events.training.title': 'Trainings of trainers',
     'events.training.desc': 'Once our training materials are finalized, we will organize a specialized training session to introduce the resources, the training platform, and the innovative methods to educators and trainers in law enforcement institutions. If you\'re interested in participating, please send us a message.',
     'events.portal.title': 'Training portal pilot testing',

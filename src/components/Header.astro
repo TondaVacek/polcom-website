@@ -153,14 +153,15 @@ const navItems = [
     transition: color 0.2s, background 0.2s;
   }
 
-  .nav-link:hover,
-  .nav-link.active {
+  .nav-link:hover {
     color: var(--color-text);
     background: var(--color-bg-elevated);
   }
 
   .nav-link.active {
-    color: var(--color-accent-light);
+    color: var(--color-accent);
+    background: var(--color-accent-glow);
+    font-weight: 600;
   }
 
   .header-actions {

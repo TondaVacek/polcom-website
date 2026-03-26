@@ -84,6 +84,18 @@ const { title, lang, description = 'POLICE-COM — Training portal for police ac
     color: var(--color-accent-light);
   }
 
+  /* Keyboard focus styles */
+  :focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+
+  ::selection {
+    background: rgba(27, 58, 107, 0.15);
+    color: var(--color-text);
+  }
+
   img {
     max-width: 100%;
     height: auto;
@@ -132,6 +144,7 @@ const { title, lang, description = 'POLICE-COM — Training portal for police ac
     line-height: 1.15;
     color: var(--color-text);
     margin-bottom: 1.5rem;
+    letter-spacing: -0.015em;
   }
 
   .section-subtitle {
@@ -139,6 +152,7 @@ const { title, lang, description = 'POLICE-COM — Training portal for police ac
     color: var(--color-text-muted);
     max-width: 640px;
     line-height: 1.7;
+    letter-spacing: -0.005em;
   }
 
   @keyframes fadeUp {

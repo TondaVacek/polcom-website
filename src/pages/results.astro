@@ -60,32 +60,16 @@ const lang = defaultLang;
           <p>Long-term hosting plan, maintenance agreement and a ready-made media kit (logo set, explainer video, social-media templates).</p>
         </div>
       </div>
-      <div class="outputs-list" style="margin-top: 3rem;">
-        <h3>Main Outputs</h3>
-        <ul>
-          <li>Curriculum with educator resources</li>
-          <li>Interactive tools: cards, activities, infographics, videos</li>
-          <li>Multilingual online learning platform</li>
-          <li>Active Listening Mastery</li>
-          <li>Fair & Inclusive Communication</li>
-          <li>High-Pressure Messaging</li>
-          <li>Conflict De-escalation & Resolution</li>
-          <li>Negotiation & Persuasion Tactics</li>
-          <li>Emotional Intelligence for Policing</li>
-          <li>Pilot evaluation & best-practice report</li>
-          <li>Sustainability & dissemination kit</li>
-        </ul>
-      </div>
-
-      <a href="https://polcom-training.eu/" class="btn btn-primary" style="margin-top: 2.5rem;" target="_blank" rel="noopener">
-        Access the Training Platform      </a>
+      <a href="https://polcom-training.eu/" class="btn btn-primary" style="margin-top: 3rem;" target="_blank" rel="noopener">
+        Access the Training Platform
+      </a>
     </div>
   </section>
 </Layout>
 
 <style>
   .page-hero {
-    padding: calc(72px + 4rem) 0 3rem;
+    padding: calc(72px + 4rem) 0 3.5rem;
     background: var(--color-bg-elevated);
     border-bottom: 1px solid var(--color-border);
   }
@@ -93,7 +77,7 @@ const lang = defaultLang;
   .modules-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 1.25rem;
+    gap: 1.5rem;
   }
 
   .btn {
@@ -132,7 +116,7 @@ const lang = defaultLang;
   .outputs-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 1.25rem;
+    gap: 1.5rem;
     margin-top: 2rem;
   }
 
@@ -141,12 +125,13 @@ const lang = defaultLang;
     border: 1px solid var(--color-border);
     border-radius: var(--radius);
     padding: 1.75rem;
-    transition: transform 0.3s, border-color 0.3s;
+    transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
   }
 
   .output-card:hover {
     transform: translateY(-3px);
     border-color: var(--color-accent);
+    box-shadow: 0 8px 24px rgba(27, 58, 107, 0.08);
   }
 
   .output-card h3 {
@@ -185,37 +170,4 @@ const lang = defaultLang;
     color: var(--color-accent-light);
   }
 
-  .outputs-list h3 {
-    font-family: var(--font-body);
-    font-size: 1.1rem;
-    font-weight: 600;
-    color: var(--color-text);
-    margin-bottom: 1rem;
-  }
-
-  .outputs-list ul {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 0.6rem;
-  }
-
-  .outputs-list li {
-    font-size: 0.925rem;
-    color: var(--color-text-muted);
-    padding-left: 1.5rem;
-    position: relative;
-    line-height: 1.6;
-  }
-
-  .outputs-list li::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 0.55em;
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background: var(--color-accent);
-  }
 </style>

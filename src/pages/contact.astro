@@ -132,7 +132,7 @@ const lang = defaultLang;
 
 <style>
   .page-hero {
-    padding: calc(72px + 4rem) 0 3rem;
+    padding: calc(72px + 4rem) 0 3.5rem;
     background: var(--color-bg-elevated);
     border-bottom: 1px solid var(--color-border);
   }
@@ -155,6 +155,11 @@ const lang = defaultLang;
     border: 1px solid var(--color-border);
     border-radius: var(--radius);
     padding: 1.75rem;
+    transition: border-color 0.2s;
+  }
+
+  .contact-card:hover {
+    border-color: rgba(27, 58, 107, 0.2);
   }
 
   .contact-card h3 {
@@ -254,13 +259,14 @@ const lang = defaultLang;
     color: var(--color-text);
     font-family: var(--font-body);
     font-size: 0.95rem;
-    transition: border-color 0.2s;
+    transition: border-color 0.2s, box-shadow 0.2s;
     outline: none;
   }
 
   .form-group input:focus,
   .form-group textarea:focus {
     border-color: var(--color-accent);
+    box-shadow: 0 0 0 3px var(--color-accent-glow);
   }
 
   .form-group textarea {

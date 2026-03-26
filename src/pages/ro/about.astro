@@ -74,7 +74,7 @@ const lang = 'ro' as const;
 
 <style>
   .page-hero {
-    padding: calc(72px + 4rem) 0 3rem;
+    padding: calc(72px + 4rem) 0 3.5rem;
     background: var(--color-bg-elevated);
     border-bottom: 1px solid var(--color-border);
   }
@@ -92,6 +92,7 @@ const lang = 'ro' as const;
     font-weight: 400;
     margin: 2.5rem 0 1rem;
     color: var(--color-text);
+    letter-spacing: -0.01em;
   }
 
   .content-main h2:first-child {
@@ -100,8 +101,19 @@ const lang = 'ro' as const;
 
   .content-main p {
     color: var(--color-text-muted);
+    font-size: 0.95rem;
     line-height: 1.8;
-    margin-bottom: 1rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .content-main p:last-child {
+    margin-bottom: 0;
+  }
+
+  .content-sidebar {
+    position: sticky;
+    top: calc(72px + 2rem);
+    align-self: start;
   }
 
   .info-card {
@@ -172,7 +184,7 @@ const lang = 'ro' as const;
       gap: 2rem;
     }
 
-    .info-card {
+    .content-sidebar {
       position: static;
     }
   }

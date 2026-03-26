@@ -60,23 +60,6 @@ const lang = 'lt' as const;
           <p>Ilgalaikis prieglobos planas, techninės priežiūros sutartis ir paruoštas žiniasklaidos priemonių rinkinys (logotipo rinkinys, aiškinamasis vaizdo įrašas, socialinių tinklų šablonai).</p>
         </div>
       </div>
-      <div class="outputs-list" style="margin-top: 3rem;">
-        <h3>Pagrindiniai rezultatai</h3>
-        <ul>
-          <li>Mokymo programa su dėstytojų ištekliais</li>
-          <li>Interaktyvios priemonės: kortelės, užduotys, infografikos, vaizdo įrašai</li>
-          <li>Daugiakalbė internetinė mokymosi platforma</li>
-          <li>Aktyvaus klausymosi meistriškumas</li>
-          <li>Sąžiningas ir įtraukus bendravimas</li>
-          <li>Didelio spaudimo pranešimų siuntimas</li>
-          <li>Konfliktų deeskalavimas ir sprendimas</li>
-          <li>Derybų ir įtikinėjimo taktika</li>
-          <li>Emocinis intelektas policijos veikloje</li>
-          <li>Bandomasis vertinimas ir geriausios praktikos ataskaita</li>
-          <li>Tvarumo ir sklaidos rinkinys</li>
-        </ul>
-      </div>
-
       <a href="https://polcom-training.eu/" class="btn btn-primary" style="margin-top: 2.5rem;" target="_blank" rel="noopener">
         Prisijungti prie mokymo platformos      </a>
     </div>
@@ -85,7 +68,7 @@ const lang = 'lt' as const;
 
 <style>
   .page-hero {
-    padding: calc(72px + 4rem) 0 3rem;
+    padding: calc(72px + 4rem) 0 3.5rem;
     background: var(--color-bg-elevated);
     border-bottom: 1px solid var(--color-border);
   }
@@ -93,7 +76,7 @@ const lang = 'lt' as const;
   .modules-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 1.25rem;
+    gap: 1.5rem;
   }
 
   .btn {
@@ -132,7 +115,7 @@ const lang = 'lt' as const;
   .outputs-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 1.25rem;
+    gap: 1.5rem;
     margin-top: 2rem;
   }
 
@@ -141,12 +124,13 @@ const lang = 'lt' as const;
     border: 1px solid var(--color-border);
     border-radius: var(--radius);
     padding: 1.75rem;
-    transition: transform 0.3s, border-color 0.3s;
+    transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
   }
 
   .output-card:hover {
     transform: translateY(-3px);
     border-color: var(--color-accent);
+    box-shadow: 0 8px 24px rgba(27,58,107,0.08);
   }
 
   .output-card h3 {
@@ -185,37 +169,4 @@ const lang = 'lt' as const;
     color: var(--color-accent-light);
   }
 
-  .outputs-list h3 {
-    font-family: var(--font-body);
-    font-size: 1.1rem;
-    font-weight: 600;
-    color: var(--color-text);
-    margin-bottom: 1rem;
-  }
-
-  .outputs-list ul {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 0.6rem;
-  }
-
-  .outputs-list li {
-    font-size: 0.925rem;
-    color: var(--color-text-muted);
-    padding-left: 1.5rem;
-    position: relative;
-    line-height: 1.6;
-  }
-
-  .outputs-list li::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 0.55em;
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background: var(--color-accent);
-  }
 </style>
