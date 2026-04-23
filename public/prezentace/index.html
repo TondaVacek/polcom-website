@@ -1,0 +1,1601 @@
+<!doctype html>
+<html lang="cs">
+<head>
+<meta charset="utf-8">
+<title>POLICE-COM · Multiplier Praha</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=IBM+Plex+Sans:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<script src="deck-stage.js"></script>
+<style>
+  :root {
+    --paper: #f3efe6;
+    --paper-2: #ebe5d6;
+    --paper-3: #e2dac6;
+    --ink: #141210;
+    --ink-2: #2b2622;
+    --ink-soft: #5a544c;
+    --rule: #c7bfaa;
+    --rule-soft: #d7cfb8;
+    --indigo: #1e3a6b;
+    --indigo-2: #2a4f8f;
+    --rust: #a23d1f;
+    --gold: #8a6d1f;
+  }
+  html, body { margin: 0; padding: 0; background: #0a0907; font-family: 'IBM Plex Sans', sans-serif; color: var(--ink); }
+  deck-stage { background: #0a0907; }
+  deck-stage > section {
+    background: var(--paper);
+    color: var(--ink);
+    position: relative;
+    overflow: hidden;
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 1.45;
+  }
+
+  /* ============ SHARED CHROME ============ */
+  .serif { font-family: 'Instrument Serif', serif; font-weight: 400; letter-spacing: -0.01em; }
+  .mono { font-family: 'IBM Plex Mono', monospace; }
+  .uc { text-transform: uppercase; letter-spacing: 0.14em; font-weight: 500; }
+
+  .folio {
+    position: absolute;
+    left: 80px; right: 80px; bottom: 36px;
+    display: flex; align-items: center; justify-content: space-between;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 15px;
+    color: var(--ink-soft);
+    letter-spacing: 0.04em;
+    border-top: 1px solid var(--rule);
+    padding-top: 14px;
+  }
+  .folio .folio-left { display: flex; gap: 32px; }
+  .folio .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--rust); display: inline-block; vertical-align: middle; margin-right: 10px; }
+
+  .masthead {
+    position: absolute;
+    top: 36px; left: 80px; right: 80px;
+    display: flex; align-items: center; justify-content: space-between;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 15px;
+    color: var(--ink-soft);
+    letter-spacing: 0.04em;
+    border-bottom: 1px solid var(--rule);
+    padding-bottom: 14px;
+  }
+  .masthead .brand { color: var(--ink); font-weight: 600; letter-spacing: 0.18em; }
+
+  .kicker {
+    font-family: 'IBM Plex Mono', monospace;
+    text-transform: uppercase;
+    font-size: 16px;
+    letter-spacing: 0.18em;
+    color: var(--rust);
+    font-weight: 500;
+  }
+
+  .rule { height: 1px; background: var(--rule); border: 0; }
+
+  /* ============ SLIDE 1 — COVER ============ */
+  .cover {
+    display: grid;
+    grid-template-columns: 1fr;
+    padding: 80px 80px 240px;
+    align-content: space-between;
+    height: 100%;
+    box-sizing: border-box;
+  }
+  .cover-top {
+    display: flex; justify-content: space-between; align-items: flex-start;
+    font-family: 'IBM Plex Mono', monospace; font-size: 24px; color: var(--ink-soft);
+    letter-spacing: 0.04em;
+  }
+  .cover-top .brand-mark {
+    color: var(--ink); font-weight: 600; letter-spacing: 0.22em; font-size: 24px;
+  }
+  .cover-mid {
+    display: grid; grid-template-columns: 1fr; gap: 40px;
+    margin-top: -60px;
+  }
+  .cover-title {
+    font-family: 'Instrument Serif', serif;
+    font-size: 220px;
+    line-height: 0.88;
+    letter-spacing: -0.03em;
+    color: var(--ink);
+    font-weight: 400;
+  }
+  .cover-title .amp { color: var(--rust); font-style: italic; }
+  .cover-sub {
+    font-family: 'Instrument Serif', serif;
+    font-style: italic;
+    font-size: 64px;
+    line-height: 1.05;
+    color: var(--ink-2);
+    max-width: 1200px;
+    letter-spacing: -0.01em;
+  }
+  .cover-bottom {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 48px;
+    align-items: end;
+    border-top: 1px solid var(--rule);
+    padding-top: 28px;
+  }
+  .cb-col .label { font-family: 'IBM Plex Mono', monospace; font-size: 24px; color: var(--ink-soft); letter-spacing: 0.16em; text-transform: uppercase; margin-bottom: 8px; }
+  .cb-col .val { font-family: 'IBM Plex Sans', sans-serif; font-size: 26px; color: var(--ink); font-weight: 500; }
+  .cb-col .val .sep { color: var(--rule); margin: 0 10px; }
+
+  /* ============ SLIDE 2 — FUNDING ============ */
+  .content {
+    padding: 110px 80px 120px;
+    height: 100%;
+    box-sizing: border-box;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    gap: 36px;
+  }
+  .slide-header {
+    display: grid; grid-template-columns: 1fr auto; align-items: end; gap: 40px;
+    border-bottom: 1px solid var(--rule);
+    padding-bottom: 22px;
+  }
+  .slide-header h1 {
+    font-family: 'Instrument Serif', serif;
+    font-size: 96px; line-height: 0.95; margin: 6px 0 0;
+    letter-spacing: -0.02em;
+    font-weight: 400;
+  }
+  .slide-header .subtitle {
+    font-family: 'Instrument Serif', serif;
+    font-style: italic;
+    font-size: 30px; color: var(--ink-soft); margin-top: 10px;
+  }
+  .slide-header .right {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 16px; color: var(--ink-soft); text-align: right; letter-spacing: 0.04em;
+    line-height: 1.6;
+  }
+
+  /* funding grid */
+  .funding-grid {
+    display: grid;
+    grid-template-columns: 1.3fr 1fr 1fr 1fr;
+    gap: 0;
+    align-items: stretch;
+  }
+  .fund-cell {
+    padding: 32px 32px 32px 0;
+    border-right: 1px solid var(--rule);
+    display: flex; flex-direction: column; justify-content: space-between;
+    min-height: 360px;
+  }
+  .fund-cell:not(:first-child) { padding-left: 32px; }
+  .fund-cell:last-child { border-right: 0; }
+  .fund-cell .tag { font-family: 'IBM Plex Mono', monospace; font-size: 15px; color: var(--rust); letter-spacing: 0.18em; text-transform: uppercase; margin-bottom: 20px; }
+  .fund-cell .big {
+    font-family: 'Instrument Serif', serif;
+    font-size: 110px; line-height: 0.9; letter-spacing: -0.03em; color: var(--ink);
+  }
+  .fund-cell .big.small { font-size: 88px; }
+  .fund-cell .desc { font-size: 20px; color: var(--ink-2); margin-top: 20px; line-height: 1.4; }
+  .fund-cell .desc strong { font-weight: 600; color: var(--ink); }
+  .fund-cell p { margin: 0; }
+  .fund-cell .prog { font-family: 'Instrument Serif', serif; font-size: 44px; line-height: 1; color: var(--ink); letter-spacing: -0.02em; }
+
+  .proj-ref {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 15px;
+    color: var(--ink-soft);
+    letter-spacing: 0.04em;
+    border-top: 1px solid var(--rule);
+    padding-top: 20px;
+    display: flex; justify-content: space-between;
+  }
+
+  /* ============ SLIDE 3 — CONSORTIUM ============ */
+  .partners {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 0;
+  }
+  .partner {
+    padding: 28px 32px;
+    border-right: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+    display: flex; flex-direction: column; justify-content: space-between;
+    position: relative;
+    min-height: 240px;
+  }
+  .partner:nth-child(3n) { border-right: 0; }
+  .partner:nth-child(n+4) { border-bottom: 0; }
+  .partner .flag {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 15px; letter-spacing: 0.2em; color: var(--ink-soft); text-transform: uppercase;
+    display: flex; align-items: center; gap: 12px; margin-bottom: 12px;
+  }
+  .partner .flag .role {
+    color: var(--rust); font-weight: 600;
+  }
+  .partner .name {
+    font-family: 'Instrument Serif', serif;
+    font-size: 46px; line-height: 1;
+    color: var(--ink); letter-spacing: -0.02em;
+  }
+  .partner .desc {
+    font-size: 20px; color: var(--ink-2); line-height: 1.4; margin-top: 16px;
+  }
+  .partner .num {
+    position: absolute; top: 14px; right: 20px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 14px; color: var(--ink-soft); letter-spacing: 0.1em;
+  }
+
+  .consortium-formula {
+    text-align: center;
+    font-family: 'Instrument Serif', serif;
+    font-style: italic;
+    font-size: 26px;
+    color: var(--ink-2);
+    padding: 20px 0 0;
+    border-top: 1px solid var(--rule);
+    position: absolute;
+    left: 80px; right: 80px;
+    bottom: 110px;
+    z-index: 2;
+    background: var(--paper);
+  }
+  .consortium-formula .arrow { color: var(--rust); margin: 0 14px; font-style: normal; }
+  .consortium-formula b { color: var(--ink); font-style: normal; font-family: 'IBM Plex Mono', monospace; font-size: 16px; letter-spacing: 0.12em; text-transform: uppercase; font-weight: 600; }
+
+  /* ============ SLIDE 4 — OUTPUTS ============ */
+  .outputs {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0;
+  }
+  .out {
+    padding: 44px 40px;
+    border-right: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 32px;
+    align-items: start;
+    min-height: 260px;
+  }
+  .out:nth-child(2n) { border-right: 0; }
+  .out:nth-child(n+3) { border-bottom: 0; }
+  .out .oidx {
+    font-family: 'Instrument Serif', serif;
+    font-size: 120px; line-height: 0.85; color: var(--rust);
+    font-style: italic; letter-spacing: -0.03em;
+  }
+  .out h3 {
+    font-family: 'Instrument Serif', serif;
+    font-size: 50px; line-height: 1.05;
+    margin: 0 0 14px; letter-spacing: -0.01em;
+    font-weight: 400;
+  }
+  .out p { margin: 0 0 8px; color: var(--ink-2); font-size: 21px; line-height: 1.5; }
+  .out p.emph { font-family: 'Instrument Serif', serif; font-style: italic; color: var(--ink); font-size: 24px; margin-top: 12px; }
+
+  /* ============ SLIDE 5 — MODULES ============ */
+  .modules {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+  }
+  .mod {
+    padding: 28px 32px;
+    border-right: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+    min-height: 210px;
+    display: flex; flex-direction: column; gap: 10px;
+    position: relative;
+  }
+  .mod:nth-child(3n) { border-right: 0; }
+  .mod:nth-child(n+4) { border-bottom: 0; }
+  .mod .mnum {
+    font-family: 'Instrument Serif', serif;
+    font-size: 52px; line-height: 1; color: var(--ink);
+    letter-spacing: -0.02em;
+    display: flex; align-items: baseline; gap: 14px;
+  }
+  .mod .mnum::before {
+    content: ''; width: 40px; height: 1px; background: var(--rust); display: block;
+  }
+  .mod h4 {
+    font-family: 'Instrument Serif', serif;
+    font-size: 38px; line-height: 1.1; margin: 0;
+    font-weight: 400; letter-spacing: -0.01em;
+  }
+  .mod p {
+    margin: 0; color: var(--ink-soft); font-size: 20px; line-height: 1.45;
+  }
+
+  .module-foot {
+    text-align: center;
+    font-family: 'Instrument Serif', serif;
+    font-style: italic;
+    font-size: 24px;
+    color: var(--ink-2);
+    padding: 28px 0 0;
+    border-top: 1px solid var(--rule);
+  }
+  .module-foot .steps { font-family: 'IBM Plex Mono', monospace; font-style: normal; font-size: 18px; color: var(--ink); letter-spacing: 0.08em; }
+  .module-foot .arrow { color: var(--rust); margin: 0 10px; }
+
+  /* ============ SLIDE 6 — PORTAL ============ */
+  .portal {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: 64px;
+    align-items: start;
+  }
+  .portal-left .hero-num {
+    font-family: 'Instrument Serif', serif;
+    font-size: 320px; line-height: 0.8; color: var(--ink);
+    letter-spacing: -0.04em;
+  }
+  .portal-left .hero-num sup {
+    font-size: 120px; color: var(--rust); font-style: italic; vertical-align: top; margin-left: 8px;
+  }
+  .portal-left .hero-sub {
+    font-family: 'Instrument Serif', serif;
+    font-style: italic;
+    font-size: 38px; color: var(--ink-2); margin-top: -12px;
+  }
+  .portal-left .url {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 24px; color: var(--indigo); margin-top: 28px;
+    border-top: 1px solid var(--rule);
+    padding-top: 20px;
+  }
+  .portal-left .url::before { content: '→  '; color: var(--rust); }
+
+  .portal-right { display: flex; flex-direction: column; gap: 28px; }
+  .portal-block .label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 15px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--rust); margin-bottom: 10px; font-weight: 500;
+  }
+  .portal-block .body {
+    font-size: 22px; color: var(--ink-2); line-height: 1.5;
+  }
+  .portal-block .body b { color: var(--ink); font-weight: 500; }
+  .portal-quote {
+    font-family: 'Instrument Serif', serif;
+    font-style: italic;
+    font-size: 32px; line-height: 1.3;
+    color: var(--ink);
+    border-left: 2px solid var(--rust);
+    padding: 8px 0 8px 24px;
+    margin-top: 10px;
+  }
+  .portal-answer {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 17px; letter-spacing: 0.04em;
+    color: var(--ink-soft); margin-top: 32px;
+    clear: both;
+  }
+  .portal-answer b { color: var(--indigo); font-weight: 600; }
+
+  /* ============ SLIDE 7 — SAMPLES ============ */
+  .samples {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    gap: 0;
+    margin-bottom: 70px;
+  }
+  .sample {
+    padding: 20px 22px;
+    border-right: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+    display: flex; flex-direction: column; gap: 6px;
+    min-height: 160px;
+  }
+  .sample:nth-child(3n) { border-right: 0; }
+  .sample:nth-child(n+7) { border-bottom: 0; }
+  .sample .meta {
+    display: flex; gap: 10px; align-items: center; font-family: 'IBM Plex Mono', monospace;
+    font-size: 14px; letter-spacing: 0.16em; text-transform: uppercase;
+  }
+  .sample .meta .m { background: var(--ink); color: var(--paper); padding: 3px 8px; font-weight: 600; }
+  .sample .meta .type { color: var(--rust); font-weight: 600; }
+  .sample h5 {
+    font-family: 'Instrument Serif', serif;
+    font-size: 28px; line-height: 1.1;
+    margin: 4px 0 2px; font-weight: 400; letter-spacing: -0.01em;
+  }
+  .sample p {
+    margin: 0; font-size: 17px; color: var(--ink-soft); line-height: 1.35;
+  }
+
+  .samples-foot {
+    padding-top: 16px; border-top: 1px solid var(--rule);
+    font-family: 'IBM Plex Mono', monospace; font-size: 15px; color: var(--ink-soft);
+    letter-spacing: 0.04em; display: flex; justify-content: space-between;
+  }
+  .samples-foot b { color: var(--ink); font-weight: 600; }
+
+  /* ============ SLIDE 8 — MOODLE ============ */
+  .moodle {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 72px;
+    align-items: start;
+  }
+  .moodle-left h2 {
+    font-family: 'Instrument Serif', serif;
+    font-size: 110px; line-height: 0.92; margin: 0;
+    letter-spacing: -0.03em; font-weight: 400;
+  }
+  .moodle-url {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 28px; color: var(--indigo);
+    margin-top: 24px;
+    border-top: 1px solid var(--rule); padding-top: 18px;
+  }
+  .moodle-url::before { content: '→  '; color: var(--rust); }
+  .moodle-specs {
+    margin-top: 40px;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 24px;
+  }
+  .moodle-specs .spec .n {
+    font-family: 'Instrument Serif', serif;
+    font-size: 56px; line-height: 1; color: var(--ink); letter-spacing: -0.02em;
+  }
+  .moodle-specs .spec .l {
+    font-family: 'IBM Plex Mono', monospace; font-size: 16px; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--ink-soft); margin-top: 6px;
+  }
+  .moodle-langs {
+    margin-top: 32px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 22px; letter-spacing: 0.12em;
+    color: var(--ink);
+    display: flex; gap: 14px; align-items: center; flex-wrap: wrap;
+  }
+  .moodle-langs .sep { color: var(--rule); }
+  .moodle-langs .pill { background: transparent; border: 1px solid var(--ink); padding: 6px 12px; font-weight: 600; }
+
+  .moodle-right ul {
+    list-style: none; padding: 0; margin: 0;
+  }
+  .moodle-right li {
+    display: grid; grid-template-columns: 40px 1fr; gap: 0;
+    align-items: baseline;
+    padding: 24px 0;
+    border-bottom: 1px solid var(--rule);
+  }
+  .moodle-right li:first-child { padding-top: 0; }
+  .moodle-right li:last-child { border-bottom: 0; }
+  .moodle-right li .arrow {
+    font-family: 'Instrument Serif', serif;
+    font-style: italic;
+    font-size: 30px; color: var(--rust);
+  }
+  .moodle-right li .text {
+    font-size: 26px; color: var(--ink); line-height: 1.4;
+  }
+  .moodle-right li .text b { font-family: 'Instrument Serif', serif; font-style: italic; font-weight: 400; font-size: 30px; }
+  .moodle-banner {
+    font-family: 'Instrument Serif', serif; font-style: italic;
+    font-size: 30px; color: var(--ink-2);
+    margin-top: 24px;
+    padding-top: 20px;
+    border-top: 1px solid var(--rule);
+  }
+
+  /* ============ SLIDE 9 — GAMES ============ */
+  .games { display: grid; grid-template-columns: 1fr 1fr; gap: 0; }
+  .game {
+    padding: 16px 48px 16px 0;
+    border-right: 1px solid var(--rule);
+    display: flex; flex-direction: column; gap: 10px;
+    min-width: 0;
+  }
+  .game + .game { padding: 16px 0 16px 48px; border-right: 0; }
+  .game .gmeta {
+    font-family: 'IBM Plex Mono', monospace; font-size: 16px; letter-spacing: 0.2em;
+    text-transform: uppercase; color: var(--rust); font-weight: 600;
+  }
+  .game h2 {
+    font-family: 'Instrument Serif', serif;
+    font-size: 64px; line-height: 0.95; margin: 0;
+    font-weight: 400; letter-spacing: -0.02em;
+  }
+  .game .gsub {
+    font-family: 'Instrument Serif', serif; font-style: italic;
+    font-size: 24px; color: var(--ink-soft); margin-top: 2px;
+  }
+  .game ul { list-style: none; margin: 6px 0 0; padding: 0; }
+  .game li {
+    position: relative;
+    padding: 9px 0 9px 32px;
+    border-bottom: 1px solid var(--rule);
+    font-size: 20px; color: var(--ink); line-height: 1.35;
+  }
+  .game li .a {
+    position: absolute; left: 0; top: 5px;
+    color: var(--rust); font-family: 'Instrument Serif', serif; font-style: italic;
+    font-size: 28px; line-height: 1;
+  }
+  .game li:last-child { border-bottom: 0; }
+
+  .games-note {
+    font-family: 'IBM Plex Mono', monospace; font-size: 16px;
+    color: var(--ink-soft); letter-spacing: 0.1em; text-transform: uppercase;
+    padding-top: 14px;
+  }
+
+  /* ============ SLIDE 10 — AUDIENCE ============ */
+  .audience {
+    display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 0;
+  }
+  .aud-col { padding: 36px 40px 36px 0; border-right: 1px solid var(--rule); }
+  .aud-col:last-child { padding: 36px 0 36px 48px; border-right: 0; }
+  .aud-col .ktag {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 15px; letter-spacing: 0.2em; text-transform: uppercase;
+    font-weight: 600; color: var(--rust); margin-bottom: 8px;
+  }
+  .aud-col h3 {
+    font-family: 'Instrument Serif', serif; font-size: 60px; line-height: 1;
+    margin: 0 0 28px; letter-spacing: -0.02em; font-weight: 400;
+  }
+  .aud-col h3 em { font-style: italic; color: var(--ink-soft); }
+  .aud-col ul { list-style: none; margin: 0; padding: 0; }
+  .aud-col li {
+    padding: 16px 0;
+    border-top: 1px solid var(--rule-soft);
+    font-size: 24px; color: var(--ink); line-height: 1.3;
+    display: grid; grid-template-columns: 44px 1fr; align-items: baseline;
+  }
+  .aud-col li:first-child { border-top: 0; }
+  .aud-col li .idx {
+    font-family: 'IBM Plex Mono', monospace; font-size: 15px; color: var(--ink-soft);
+    letter-spacing: 0.1em;
+  }
+  .aud-col li .abbr { color: var(--ink); font-weight: 600; margin-right: 6px; }
+  .aud-col.secondary ul { columns: 2; column-gap: 36px; column-rule: 1px solid var(--rule-soft); }
+  .aud-col.secondary li { break-inside: avoid; }
+
+  /* ============ SLIDE 11 — USE CASES ============ */
+  .usecases {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+  }
+  .uc-card {
+    padding: 36px 28px;
+    border-right: 1px solid var(--rule);
+    min-height: 440px;
+    display: flex; flex-direction: column; gap: 20px;
+  }
+  .uc-card:last-child { border-right: 0; }
+  .uc-card .uc-num {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 15px; letter-spacing: 0.2em; color: var(--ink-soft);
+  }
+  .uc-card .uc-role {
+    font-family: 'Instrument Serif', serif; font-size: 52px;
+    letter-spacing: -0.02em; line-height: 1; color: var(--rust); font-style: italic;
+    font-weight: 400;
+  }
+  .uc-card .uc-body {
+    font-size: 23px; color: var(--ink); line-height: 1.45;
+  }
+  .uc-card .uc-body p { margin: 0 0 10px; }
+  .uc-card .uc-body p.alt { color: var(--ink-soft); }
+
+  .uc-foot {
+    font-family: 'Instrument Serif', serif; font-style: italic;
+    font-size: 34px; color: var(--ink-2);
+    padding: 28px 0 0;
+    border-top: 1px solid var(--rule);
+    text-align: center;
+  }
+  .uc-foot b { font-family: 'IBM Plex Mono', monospace; font-style: normal; font-weight: 600; font-size: 18px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink); }
+
+  /* ============ SLIDE 12 — SUSTAINABILITY ============ */
+  .sust { display: grid; grid-template-columns: 1.4fr 1fr; gap: 0; }
+  .sust-left { padding-right: 48px; border-right: 1px solid var(--rule); }
+  .sust-left ul { list-style: none; margin: 0; padding: 0; }
+  .sust-left li {
+    padding: 22px 0; border-bottom: 1px solid var(--rule);
+    display: grid; grid-template-columns: 48px 1fr auto; align-items: baseline; gap: 16px;
+  }
+  .sust-left li:last-child { border-bottom: 0; }
+  .sust-left li .n {
+    font-family: 'IBM Plex Mono', monospace; font-size: 16px; color: var(--ink-soft); letter-spacing: 0.1em;
+  }
+  .sust-left li .title {
+    font-family: 'Instrument Serif', serif;
+    font-size: 38px; color: var(--ink); letter-spacing: -0.01em;
+  }
+  .sust-left li .desc {
+    font-size: 20px; color: var(--ink-soft); margin-top: 4px;
+  }
+  .sust-left li .tag {
+    font-family: 'IBM Plex Mono', monospace; font-size: 15px; letter-spacing: 0.12em;
+    color: var(--rust); text-transform: uppercase;
+  }
+
+  .sust-right { padding-left: 48px; display: flex; flex-direction: column; justify-content: space-between; gap: 32px; }
+  .cc-card {
+    background: var(--ink); color: var(--paper);
+    padding: 32px; position: relative;
+  }
+  .cc-card .cc-label {
+    font-family: 'IBM Plex Mono', monospace; font-size: 15px; letter-spacing: 0.2em;
+    text-transform: uppercase; color: var(--paper-3); margin-bottom: 14px;
+  }
+  .cc-card .cc-big {
+    font-family: 'Instrument Serif', serif; font-size: 96px;
+    line-height: 0.9; letter-spacing: -0.03em;
+  }
+  .cc-card .cc-desc {
+    font-size: 20px; color: var(--paper-2); line-height: 1.5; margin-top: 18px;
+    border-top: 1px solid #2b2622; padding-top: 16px;
+  }
+  .sust-tagline {
+    font-family: 'Instrument Serif', serif; font-style: italic;
+    font-size: 40px; color: var(--ink); line-height: 1.2;
+  }
+  .sust-tagline::before { content: '“'; color: var(--rust); }
+  .sust-tagline::after { content: '”'; color: var(--rust); }
+
+  /* ============ SLIDE 13 — CLOSING ============ */
+  .closing {
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    height: 100%;
+    padding: 80px;
+    box-sizing: border-box;
+    gap: 40px;
+  }
+  .closing .huge {
+    font-family: 'Instrument Serif', serif;
+    font-size: 180px; line-height: 0.9; letter-spacing: -0.03em;
+    font-weight: 400;
+  }
+  .closing .huge .it { font-style: italic; color: var(--rust); }
+  .closing-mid {
+    display: grid; grid-template-columns: 1.2fr 1fr; gap: 80px; align-items: end;
+    padding-top: 20px; border-top: 1px solid var(--rule);
+  }
+  .closing-links { display: grid; grid-template-columns: repeat(2, 1fr); gap: 28px 40px; }
+  .clink {
+    display: flex; flex-direction: column; gap: 4px;
+    border-top: 1px solid var(--rule-soft);
+    padding-top: 14px;
+  }
+  .clink .l { font-family: 'IBM Plex Mono', monospace; font-size: 15px; color: var(--ink-soft); letter-spacing: 0.18em; text-transform: uppercase; }
+  .clink .u { font-family: 'IBM Plex Mono', monospace; font-size: 26px; color: var(--indigo); }
+  .closing-signoff {
+    font-family: 'Instrument Serif', serif; font-size: 40px; line-height: 1.2;
+    color: var(--ink);
+  }
+  .closing-signoff .italic { font-style: italic; color: var(--rust); }
+  .closing-signoff .contact {
+    font-family: 'IBM Plex Mono', monospace; font-size: 17px; color: var(--ink-soft);
+    letter-spacing: 0.04em; margin-top: 14px;
+  }
+  .closing-disclaimer {
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 15px; line-height: 1.5;
+    color: var(--ink-soft);
+    border-top: 1px solid var(--rule);
+    padding-top: 18px;
+    display: grid; grid-template-columns: 1fr auto; gap: 40px; align-items: start;
+  }
+  .closing-disclaimer .meta {
+    font-family: 'IBM Plex Mono', monospace; white-space: nowrap; letter-spacing: 0.04em;
+  }
+
+  /* Partner logos */
+  .partner .logo-row {
+    height: 56px; display: flex; align-items: center; margin-bottom: 14px;
+  }
+  .partner .logo-row img {
+    max-height: 56px; max-width: 200px; object-fit: contain; object-position: left center;
+  }
+
+  /* EU logo image */
+  .eu-logo-img { height: 64px; width: auto; display: block; }
+  .eu-logo-img.sm { height: 44px; }
+
+  /* QR codes */
+  .qr-block { display: flex; flex-direction: column; align-items: center; gap: 10px; }
+  .qr-block img { width: 150px; height: 150px; background: #fff; padding: 6px; border: 1px solid var(--rule); box-sizing: border-box; display: block; }
+  .qr-block.sm img { width: 110px; height: 110px; }
+  .qr-block .qr-label { font-family: 'IBM Plex Mono', monospace; font-size: 13px; color: var(--ink-soft); letter-spacing: 0.1em; text-transform: uppercase; text-align: center; }
+  .qr-block .qr-url { font-family: 'IBM Plex Mono', monospace; font-size: 14px; color: var(--indigo); text-align: center; }
+
+  .qr-grid {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px;
+    padding: 20px 0;
+  }
+
+  /* Cross-platform flag chips (replaces emoji flags for Win/older-Chrome safety) */
+  .cflag {
+    display: inline-block;
+    width: 24px; height: 16px;
+    vertical-align: -3px;
+    border: 1px solid rgba(20,18,16,0.18);
+    line-height: 0;
+    box-sizing: content-box;
+    flex-shrink: 0;
+  }
+  .cflag svg { display: block; width: 100%; height: 100%; }
+
+  /* Game-card screenshot (slide 9) */
+  .game-shot {
+    display: block;
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    object-position: center top;
+    border: 1px solid var(--rule);
+    background: var(--paper-2);
+  }
+
+  /* EU strip */
+  .eu-strip {
+    display: inline-flex; align-items: center; gap: 10px;
+    font-family: 'IBM Plex Mono', monospace; font-size: 15px; letter-spacing: 0.12em;
+    color: var(--ink-soft); text-transform: uppercase;
+  }
+  .eu-stars {
+    width: 14px; height: 14px; border-radius: 50%; background: var(--indigo); display: inline-block;
+    position: relative;
+  }
+  .eu-stars::after {
+    content: '★'; color: #f4c20d; font-size: 10px; position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
+  }
+
+</style>
+</head>
+<body>
+
+<script type="application/json" id="speaker-notes">[]</script>
+
+<deck-stage width="1920" height="1080">
+
+  <!-- ============ SLIDE 1 — COVER ============ -->
+  <section data-screen-label="01 Cover">
+    <div class="cover">
+      <div class="cover-top">
+        <div class="brand-mark">POLICE — COM</div>
+        <div>Erasmus+ KA220-VET&nbsp;&nbsp;·&nbsp;&nbsp;2023 — 2026</div>
+      </div>
+
+      <div class="cover-mid">
+        <div class="cover-title">
+          Police<span class="amp">—</span>Com.
+        </div>
+        <div class="cover-sub">
+          Inovativní vzdělávání policie<br>v komunikaci.
+        </div>
+      </div>
+
+      <div class="cover-bottom">
+        <div class="cb-col">
+          <div class="label">Multiplier event</div>
+          <div class="val">Sál architektů <span class="sep">·</span> Staroměstská radnice <span class="sep">·</span> Praha</div>
+        </div>
+        <div class="cb-col">
+          <div class="label">Datum</div>
+          <div class="val">23. 4. 2026</div>
+        </div>
+        <div class="cb-col">
+          <div class="label">Řečník</div>
+          <div class="val">Antonín Vacek <span class="sep">·</span> Mise HERo</div>
+        </div>
+      </div>
+    </div>
+    <div class="closing-disclaimer" style="position: absolute; left: 80px; right: 80px; bottom: 60px;">
+      <div style="display: flex; gap: 24px; align-items: flex-start;">
+        <img src="assets/eu-funding/eu_cofunded_cs.png" alt="Spolufinancováno Evropskou unií" class="eu-logo-img sm" style="flex: 0 0 auto;">
+        <div>Vyjádřené názory a stanoviska představují názory a stanoviska autorů a nemusí nutně odrážet názory a stanoviska Evropské unie nebo Domu zahraniční spolupráce. Evropská unie ani poskytovatel grantu za ně nenesou odpovědnost.</div>
+      </div>
+      <div class="meta">Erasmus+ KA220-VET<br>Projekt č. 2023-1-CZ01-KA220-VET-000167148<br>DZS &nbsp;·&nbsp; CZ · LT · RO</div>
+    </div>
+  </section>
+
+  <!-- ============ SLIDE 2 — FINANCOVÁNÍ ============ -->
+  <section data-screen-label="02 Financování">
+    <div class="masthead">
+      <div class="brand">POLICE — COM</div>
+      <div>I. Financování &nbsp;·&nbsp; Erasmus+ KA2 VET</div>
+    </div>
+    <div class="content">
+      <div class="slide-header">
+        <div>
+          <div class="kicker">§ 01 &nbsp;—&nbsp; Financování</div>
+          <h1>Financováno<br>Evropskou unií.</h1>
+          <div class="subtitle">Erasmus+ KA2&nbsp;VET &nbsp;·&nbsp; Dům zahraniční spolupráce</div>
+        </div>
+        <div class="right">
+          Číslo projektu<br>
+          <span style="color: var(--ink); font-size: 15px;">2023-1-CZ01-KA220-VET-000167148</span><br><br>
+          Žadatel a koordinátor<br>
+          <span style="color: var(--ink); font-size: 15px;">Mise HERo, z. ú.</span>
+        </div>
+      </div>
+
+      <div class="funding-grid">
+        <div class="fund-cell">
+          <div>
+            <div class="tag">Program</div>
+            <div class="prog">Erasmus+<br>KA220 — VET</div>
+          </div>
+          <div class="desc">
+            Partnerství pro spolupráci v odborném vzdělávání.<br>
+            <span style="font-family: 'IBM Plex Mono', monospace; font-size: 13px; color: var(--ink-soft); letter-spacing: 0.08em;">Národní agentura: Dům zahraniční spolupráce (DZS)</span>
+          </div>
+        </div>
+        <div class="fund-cell">
+          <div>
+            <div class="tag">Rozpočet</div>
+            <div class="big">400<span style="font-size: 64px; color: var(--rust); font-style: italic; vertical-align: super; margin-left: 4px;">k</span><span style="font-size: 64px; color: var(--ink-soft);">€</span></div>
+          </div>
+          <div class="desc">Celkový&nbsp;rozpočet projektu</div>
+        </div>
+        <div class="fund-cell">
+          <div>
+            <div class="tag">Trvání</div>
+            <div class="big small">30<span style="font-family: 'IBM Plex Mono', monospace; font-size: 28px; color: var(--ink-soft); letter-spacing: 0.05em; margin-left: 10px;">měs.</span></div>
+          </div>
+          <div class="desc">1. 10. 2023 &nbsp;→&nbsp; 30. 4. 2026</div>
+        </div>
+        <div class="fund-cell">
+          <div>
+            <div class="tag">Konsorcium</div>
+            <div class="big small">6<span style="font-family: 'IBM Plex Mono', monospace; font-size: 28px; color: var(--ink-soft); letter-spacing: 0.05em; margin-left: 14px;">partnerů</span></div>
+          </div>
+          <div class="desc">ze 3 zemí <span style="color:var(--rust)">—</span> CZ · LT · RO</div>
+        </div>
+      </div>
+
+      <div class="proj-ref">
+        <div><span class="eu-strip"><span class="eu-stars"></span>European Union Funding</span></div>
+        <div>Erasmus+&nbsp;&nbsp;·&nbsp;&nbsp;Key Action 2&nbsp;&nbsp;·&nbsp;&nbsp;Vocational Education &amp; Training</div>
+      </div>
+    </div>
+    <div class="folio">
+      <div class="folio-left"><span><span class="dot"></span>POLICE-COM &nbsp; Multiplier Praha</span><span>23. 4. 2026</span></div>
+      <div>03 / 13</div>
+    </div>
+  </section>
+
+  <!-- ============ SLIDE 3 — KONSORCIUM ============ -->
+  <section data-screen-label="03 Konsorcium">
+    <div class="masthead">
+      <div class="brand">POLICE — COM</div>
+      <div>II. Konsorcium &nbsp;·&nbsp; 6 partnerů ve 3 zemích</div>
+    </div>
+    <div class="content">
+      <div class="slide-header">
+        <div>
+          <div class="kicker">§ 02 &nbsp;—&nbsp; Konsorcium</div>
+          <h1>Kdo to dělá.</h1>
+          <div class="subtitle">6 partnerů &nbsp;·&nbsp; 3 země &nbsp;·&nbsp; 4 jazyky</div>
+        </div>
+        <div class="right">
+          Univerzity <span style="color:var(--rust)">+</span> NGO<br>
+          <span style="color:var(--rust)">+</span> SME <span style="color:var(--rust)">+</span> policejní odbory
+        </div>
+      </div>
+
+      <div class="partners">
+        <div class="partner">
+          <div class="num">01</div>
+          <div>
+            <div class="logo-row"><img src="assets/logos/logo-misehero.png" alt="Mise HERo"></div>
+            <div class="flag"><span class="cflag" aria-label="CZ"><svg viewBox="0 0 30 20" xmlns="http://www.w3.org/2000/svg"><rect width="30" height="10" fill="#fff"/><rect y="10" width="30" height="10" fill="#d7141a"/><polygon points="0,0 15,10 0,20" fill="#11457e"/></svg></span> &nbsp; CZ &nbsp;·&nbsp; <span class="role">Koordinátor</span></div>
+            <div class="name">Mise HERo</div>
+          </div>
+          <div class="desc">Gamifikace ve vzdělávání</div>
+        </div>
+        <div class="partner">
+          <div class="num">02</div>
+          <div>
+            <div class="logo-row"><img src="assets/logos/logo-mindset.png" alt="Mindset Mentors"></div>
+            <div class="flag"><span class="cflag" aria-label="CZ"><svg viewBox="0 0 30 20" xmlns="http://www.w3.org/2000/svg"><rect width="30" height="10" fill="#fff"/><rect y="10" width="30" height="10" fill="#d7141a"/><polygon points="0,0 15,10 0,20" fill="#11457e"/></svg></span> &nbsp; CZ &nbsp;·&nbsp; SME</div>
+            <div class="name">Mindset Mentors</div>
+          </div>
+          <div class="desc">Vzdělávání v komunikaci a práci s týmem</div>
+        </div>
+        <div class="partner">
+          <div class="num">03</div>
+          <div>
+            <div class="logo-row"><img src="assets/logos/logo-mru.png" alt="Mykolas Romeris University"></div>
+            <div class="flag"><span class="cflag" aria-label="LT"><svg viewBox="0 0 30 18" xmlns="http://www.w3.org/2000/svg"><rect width="30" height="6" fill="#fdb913"/><rect y="6" width="30" height="6" fill="#006a44"/><rect y="12" width="30" height="6" fill="#c1272d"/></svg></span> &nbsp; LT &nbsp;·&nbsp; Univerzita</div>
+            <div class="name">Mykolas Romeris University</div>
+          </div>
+          <div class="desc">Výzkum práva a bezpečnosti</div>
+        </div>
+        <div class="partner">
+          <div class="num">04</div>
+          <div>
+            <div class="logo-row"><img src="assets/logos/logo-sif.png" alt="Social Innovation Fund"></div>
+            <div class="flag"><span class="cflag" aria-label="LT"><svg viewBox="0 0 30 18" xmlns="http://www.w3.org/2000/svg"><rect width="30" height="6" fill="#fdb913"/><rect y="6" width="30" height="6" fill="#006a44"/><rect y="12" width="30" height="6" fill="#c1272d"/></svg></span> &nbsp; LT &nbsp;·&nbsp; NGO</div>
+            <div class="name">Social Innovation Fund</div>
+          </div>
+          <div class="desc">Sociální inkluze a vzdělávání</div>
+        </div>
+        <div class="partner">
+          <div class="num">05</div>
+          <div>
+            <div class="logo-row"><img src="assets/logos/logo-cpip.png" alt="CPIP"></div>
+            <div class="flag"><span class="cflag" aria-label="RO"><svg viewBox="0 0 30 20" xmlns="http://www.w3.org/2000/svg"><rect width="10" height="20" fill="#002b7f"/><rect x="10" width="10" height="20" fill="#fcd116"/><rect x="20" width="10" height="20" fill="#ce1126"/></svg></span> &nbsp; RO &nbsp;·&nbsp; NGO</div>
+            <div class="name">CPIP</div>
+          </div>
+          <div class="desc">Celoživotní vzdělávání</div>
+        </div>
+        <div class="partner">
+          <div class="num">06</div>
+          <div>
+            <div class="logo-row"><img src="assets/logos/logo-europol.jpg" alt="EUROPOL Trade Union"></div>
+            <div class="flag"><span class="cflag" aria-label="RO"><svg viewBox="0 0 30 20" xmlns="http://www.w3.org/2000/svg"><rect width="10" height="20" fill="#002b7f"/><rect x="10" width="10" height="20" fill="#fcd116"/><rect x="20" width="10" height="20" fill="#ce1126"/></svg></span> &nbsp; RO &nbsp;·&nbsp; Odbory</div>
+            <div class="name">EUROPOL Trade Union</div>
+          </div>
+          <div class="desc">Odbory rumunské policie</div>
+        </div>
+      </div>
+
+      <div class="consortium-formula">
+        <b>Univerzity + NGO + SME + policejní odbory</b> <span class="arrow">→</span> materiály tvořené <em>s policisty,</em> ne o nich.
+      </div>
+    </div>
+    <div class="folio">
+      <div class="folio-left"><span><span class="dot"></span>POLICE-COM &nbsp; Multiplier Praha</span><span>23. 4. 2026</span></div>
+      <div>04 / 13</div>
+    </div>
+  </section>
+
+  <!-- ============ SLIDE 4 — CO JSME VYTVOŘILI ============ -->
+  <section data-screen-label="04 Co jsme vytvořili">
+    <div class="masthead">
+      <div class="brand">POLICE — COM</div>
+      <div>III. Výstupy &nbsp;·&nbsp; 4 propojené nástroje</div>
+    </div>
+    <div class="content">
+      <div class="slide-header">
+        <div>
+          <div class="kicker">§ 03 &nbsp;—&nbsp; Výstupy</div>
+          <h1>Co jsme vytvořili.</h1>
+          <div class="subtitle">4 propojené výstupy &nbsp;·&nbsp; vše zdarma a otevřené</div>
+        </div>
+        <div class="right">
+          Kurikulum &nbsp;·&nbsp; Portál<br>
+          Platforma &nbsp;·&nbsp; Hry
+        </div>
+      </div>
+
+      <div class="outputs">
+        <div class="out">
+          <div class="oidx">01</div>
+          <div>
+            <h3>Kompetenční kurikulum,<br>metodika a materiály</h3>
+            <p>6 modulů podložených výzkumem reálných potřeb policie a trenérů bezpečnostních složek.</p>
+            <p class="emph">Stavebnice — použijte celé, nebo jednotlivé moduly.</p>
+          </div>
+        </div>
+        <div class="out">
+          <div class="oidx">02</div>
+          <div>
+            <h3>Portál materiálů</h3>
+            <p>1 252 materiálů napříč 4 jazyky, plně filtrovatelný.</p>
+            <p class="emph">Lektor najde aktivitu za 5 minut.</p>
+          </div>
+        </div>
+        <div class="out">
+          <div class="oidx">03</div>
+          <div>
+            <h3>E-learningová platforma</h3>
+            <p>Moodle, 6 kurzů ve 4 jazycích, gamifikováno.</p>
+            <p class="emph">Self-study, prezenčně nebo blended.</p>
+          </div>
+        </div>
+        <div class="out">
+          <div class="oidx">04</div>
+          <div>
+            <h3>2 interaktivní hry</h3>
+            <p>Hot Call (karetní simulace) + Deeskalační hra (větvený scénář).</p>
+            <p class="emph">Online i k vytisknutí.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="folio">
+      <div class="folio-left"><span><span class="dot"></span>POLICE-COM &nbsp; Multiplier Praha</span><span>23. 4. 2026</span></div>
+      <div>05 / 13</div>
+    </div>
+  </section>
+
+  <!-- ============ SLIDE 5 — MODULY ============ -->
+  <section data-screen-label="05 Moduly">
+    <div class="masthead">
+      <div class="brand">POLICE — COM</div>
+      <div>IV. Kurikulum &nbsp;·&nbsp; 6 komunikačních modulů</div>
+    </div>
+    <div class="content">
+      <div class="slide-header">
+        <div>
+          <div class="kicker">§ 04 &nbsp;—&nbsp; Kurikulum</div>
+          <h1>6 komunikačních modulů.</h1>
+          <div class="subtitle">Stavebnice: celé portfolio, nebo samostatné moduly</div>
+        </div>
+        <div class="right">
+          Podloženo výzkumem<br>
+          reálných potřeb v terénu
+        </div>
+      </div>
+
+      <div class="modules">
+        <div class="mod">
+          <div class="mnum">01</div>
+          <h4>Aktivní naslouchání</h4>
+          <p>Budování důvěry, parafráze, empatie.</p>
+        </div>
+        <div class="mod">
+          <div class="mnum">02</div>
+          <h4>Respektující a nediskriminační komunikace</h4>
+          <p>Předsudky, inkluzivní jazyk.</p>
+        </div>
+        <div class="mod">
+          <div class="mnum">03</div>
+          <h4>Komunikace v tlakových situacích</h4>
+          <p>Krizové sdělení, regulace emocí.</p>
+        </div>
+        <div class="mod">
+          <div class="mnum">04</div>
+          <h4>Deeskalace konfliktu</h4>
+          <p>Postupná deeskalace, model LEAPS.</p>
+        </div>
+        <div class="mod">
+          <div class="mnum">05</div>
+          <h4>Vyjednávání a přesvědčování</h4>
+          <p>Taktická empatie, rapport, win-win.</p>
+        </div>
+        <div class="mod">
+          <div class="mnum">06</div>
+          <h4>Emoční inteligence</h4>
+          <p>Sebeovládání, neverbalita, mindfulness.</p>
+        </div>
+      </div>
+
+      <div class="module-foot">
+        Každý modul <span class="arrow">→</span> <span class="steps">PRE-ASSESSMENT · ZÁKLADNÍ NÁCVIK · POKROČILÁ APLIKACE</span> &nbsp;·&nbsp; přizpůsobí se úrovni skupiny.
+      </div>
+    </div>
+    <div class="folio">
+      <div class="folio-left"><span><span class="dot"></span>POLICE-COM &nbsp; Multiplier Praha</span><span>23. 4. 2026</span></div>
+      <div>06 / 13</div>
+    </div>
+  </section>
+
+  <!-- ============ SLIDE 6 — PORTÁL ============ -->
+  <section data-screen-label="06 Portál">
+    <div class="masthead">
+      <div class="brand">POLICE — COM</div>
+      <div>V. Portál &nbsp;·&nbsp; policecom.eu/materials</div>
+    </div>
+    <div class="content">
+      <div class="slide-header">
+        <div>
+          <div class="kicker">§ 05 &nbsp;—&nbsp; Portál materiálů</div>
+          <h1>Srdce udržitelnosti.</h1>
+          <div class="subtitle">Veřejně dostupná knihovna &nbsp;·&nbsp; plně filtrovatelná</div>
+        </div>
+        <div class="right">
+          Hosting zajištěný dlouhodobě<br>
+          i&nbsp;po&nbsp;roce 2026
+        </div>
+      </div>
+
+      <div class="portal">
+        <div class="portal-left">
+          <div class="hero-num">1&thinsp;200<sup>+</sup></div>
+          <div class="hero-sub">školicích materiálů ve 4 jazycích</div>
+          <div style="font-family: 'IBM Plex Mono', monospace; font-size: 14px; color: var(--ink-soft); margin-top: 20px; letter-spacing: 0.06em;">Přes 300 materiálů v češtině.</div>
+          <div class="url">policecom.eu/materials</div>
+          <div style="margin-top: 28px; display: flex; gap: 16px; align-items: center;">
+            <img src="assets/qr/qr_materials.png" alt="QR portál materiálů" style="width: 160px; height: 160px; background: #fff; padding: 8px; box-sizing: border-box; border: 1px solid var(--rule);">
+            <div style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: var(--ink-soft); letter-spacing: 0.14em; text-transform: uppercase; line-height: 1.6;">Naskenuj<br>a&nbsp;vyzkoušej</div>
+          </div>
+        </div>
+        <div class="portal-right">
+          <div class="portal-block">
+            <div class="label">Typy materiálů</div>
+            <div class="body">
+              aktivity &nbsp;·&nbsp; handouty &nbsp;·&nbsp; prezentace &nbsp;·&nbsp; role-play &nbsp;·&nbsp; hry &nbsp;·&nbsp; case studies &nbsp;·&nbsp; videa &nbsp;·&nbsp; icebreakery &nbsp;·&nbsp; assessmenty &nbsp;·&nbsp; akční plány
+            </div>
+          </div>
+          <div class="portal-block">
+            <div class="label">Filtry</div>
+            <div class="body">
+              modul &nbsp;·&nbsp; fáze &nbsp;·&nbsp; typ &nbsp;·&nbsp; téma &nbsp;·&nbsp; délka &nbsp;·&nbsp; velikost skupiny &nbsp;·&nbsp; jazyk
+            </div>
+          </div>
+          <div class="portal-block">
+            <div class="label">Ke stažení</div>
+            <div class="body"><b>PDF · DOCX · PPTX</b> a další.</div>
+          </div>
+          <div class="portal-block">
+            <div class="label">Použití</div>
+            <div class="portal-quote">Lektor si zadá: „30 min, modul 4, pokročilí, skupina 6, česky."</div>
+            <div class="portal-answer">Portál vrátí: <b>vyrobené materiály připravené k použití.</b></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="folio">
+      <div class="folio-left"><span><span class="dot"></span>POLICE-COM &nbsp; Multiplier Praha</span><span>23. 4. 2026</span></div>
+      <div>07 / 13</div>
+    </div>
+  </section>
+
+  <!-- ============ SLIDE 7 — UKÁZKY ============ -->
+  <section data-screen-label="07 Ukázky">
+    <div class="masthead">
+      <div class="brand">POLICE — COM</div>
+      <div>VI. Ukázky &nbsp;·&nbsp; 9 příkladů z 1 252</div>
+    </div>
+    <div class="content">
+      <div class="slide-header">
+        <div>
+          <div class="kicker">§ 06 &nbsp;—&nbsp; Ukázky</div>
+          <h1>Ukázky konkrétních materiálů.</h1>
+          <div class="subtitle">9 příkladů z 1 252 &nbsp;—&nbsp; napříč všemi 6 moduly</div>
+        </div>
+        <div class="right">
+          Metadata <span style="color:var(--rust)">→</span> délka, skupina, pomůcky<br>
+          Formáty <span style="color:var(--rust)">→</span> PDF · DOCX · PPTX
+        </div>
+      </div>
+
+      <div class="samples">
+        <div class="sample">
+          <div class="meta"><span class="m">M1</span><span class="type">Role-play</span></div>
+          <h5>Policista a svědek</h5>
+          <p>Nácvik otevřených otázek a parafráze ve výslechu.</p>
+        </div>
+        <div class="sample">
+          <div class="meta"><span class="m">M1</span><span class="type">Hra</span></div>
+          <h5>Drawing Game</h5>
+          <p>Popiš obraz slovy — cvičení přesné komunikace.</p>
+        </div>
+        <div class="sample">
+          <div class="meta"><span class="m">M2</span><span class="type">Case Study</span></div>
+          <h5>Analýza komunikace</h5>
+          <p>Rozbor reálné interakce hlídky v menšinové komunitě.</p>
+        </div>
+        <div class="sample">
+          <div class="meta"><span class="m">M3</span><span class="type">Aktivita</span></div>
+          <h5>Chladné hlavy</h5>
+          <p>Regulace emocí pod tlakem &nbsp;·&nbsp; 30 min &nbsp;·&nbsp; skupina 4–8.</p>
+        </div>
+        <div class="sample">
+          <div class="meta"><span class="m">M4</span><span class="type">Video</span></div>
+          <h5>Pět kroků deeskalace (LEAPS)</h5>
+          <p>Instruktážní video + strukturovaná debata.</p>
+        </div>
+        <div class="sample">
+          <div class="meta"><span class="m">M4</span><span class="type">Aktivita</span></div>
+          <h5>Analýza bodycam záznamu</h5>
+          <p>Krok za krokem: co policista udělal dobře a co ne.</p>
+        </div>
+        <div class="sample">
+          <div class="meta"><span class="m">M4</span><span class="type">Role-play</span></div>
+          <h5>Zabarikádovaný otec</h5>
+          <p>Scénář krizové negociace &nbsp;·&nbsp; 3 role &nbsp;·&nbsp; 45 min.</p>
+        </div>
+        <div class="sample">
+          <div class="meta"><span class="m">M5</span><span class="type">Assessment</span></div>
+          <h5>Thomas-Kilmann (TKI)</h5>
+          <p>Vlastní styl řešení konfliktu — diagnostika.</p>
+        </div>
+        <div class="sample">
+          <div class="meta"><span class="m">M6</span><span class="type">Icebreaker</span></div>
+          <h5>Dvě pravdy a lež</h5>
+          <p>Rozbíjení bariér v nové skupině &nbsp;·&nbsp; 15 min.</p>
+        </div>
+      </div>
+
+      </div>
+    </div>
+    <div class="folio">
+      <div class="folio-left"><span><span class="dot"></span>POLICE-COM &nbsp; Multiplier Praha</span><span>23. 4. 2026</span></div>
+      <div>08 / 13</div>
+    </div>
+  </section>
+
+  <!-- ============ SLIDE 8 — MOODLE ============ -->
+  <section data-screen-label="08 E-learning">
+    <div class="masthead">
+      <div class="brand">POLICE — COM</div>
+      <div>VII. E-learning &nbsp;·&nbsp; polcom-training.eu</div>
+    </div>
+    <div class="content">
+      <div class="slide-header">
+        <div>
+          <div class="kicker">§ 07 &nbsp;—&nbsp; E-learning</div>
+          <h1>E-learningová platforma.</h1>
+          <div class="subtitle">Moodle &nbsp;·&nbsp; 6 kurzů &nbsp;·&nbsp; 4 jazyky</div>
+        </div>
+        <div class="right">
+          Zdarma &nbsp;·&nbsp; bez komerčních omezení<br>
+          otevřené pro akademie
+        </div>
+      </div>
+
+      <div class="moodle">
+        <div class="moodle-left">
+          <h2>Otevřený<br>tréninkový<br>systém.</h2>
+          <div class="moodle-url">polcom-training.eu</div>
+
+          <div class="moodle-specs">
+            <div class="spec">
+              <div class="n">6</div>
+              <div class="l">kompletních kurzů</div>
+            </div>
+            <div class="spec">
+              <div class="n">4</div>
+              <div class="l">jazykové mutace</div>
+            </div>
+          </div>
+
+          <div class="moodle-langs">
+            <span class="pill">EN</span>
+            <span class="pill">CS</span>
+            <span class="pill">LT</span>
+            <span class="pill">RO</span>
+          </div>
+        </div>
+
+        <div class="moodle-right">
+          <ul>
+            <li><span class="arrow">→</span><span class="text"><b>Self-study,</b> prezenčně nebo blended.</span></li>
+            <li><span class="arrow">→</span><span class="text"><b>Instruktor</b> přidělí modul, sleduje pokrok, certifikuje.</span></li>
+            <li><span class="arrow">→</span><span class="text"><b>Přístup zdarma</b> po registraci.</span></li>
+            <li><span class="arrow">→</span><span class="text"><b>Přihlášení e-mailem,</b> bez bariér.</span></li>
+          </ul>
+          <div class="moodle-banner" style="display: flex; gap: 20px; align-items: center; justify-content: space-between;">
+            <span>Otevřené pro policejní akademie napříč EU.</span>
+            <img src="assets/qr/qr_elearning.png" alt="QR polcom-training.eu" style="width: 150px; height: 150px; background: #fff; padding: 8px; box-sizing: border-box; border: 1px solid var(--rule); flex: 0 0 auto;">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="folio">
+      <div class="folio-left"><span><span class="dot"></span>POLICE-COM &nbsp; Multiplier Praha</span><span>23. 4. 2026</span></div>
+      <div>09 / 13</div>
+    </div>
+  </section>
+
+  <!-- ============ SLIDE 9 — HRY ============ -->
+  <section data-screen-label="09 Hry">
+    <div class="masthead">
+      <div class="brand">POLICE — COM</div>
+      <div>VIII. Hry &nbsp;·&nbsp; 2 interaktivní nástroje</div>
+    </div>
+    <div class="content">
+      <div class="slide-header">
+        <div>
+          <div class="kicker">§ 08 &nbsp;—&nbsp; Hry</div>
+          <h1>2 interaktivní hry.</h1>
+          <div class="subtitle">Podrobně: druhá část programu (Dscalator)</div>
+        </div>
+        <div class="right" style="display: flex; gap: 18px; align-items: flex-end;">
+          <div style="text-align: right; padding-bottom: 4px;">
+            Online &nbsp;·&nbsp; tisk &nbsp;·&nbsp; mobil<br>zdarma, bez registrace
+            <div style="font-family: 'IBM Plex Mono', monospace; font-size: 14px; color: var(--indigo); margin-top: 10px;">policecom.eu/games</div>
+          </div>
+          <img src="assets/qr/qr_games.png" alt="QR policecom.eu/games" style="width: 160px; height: 160px; background: #fff; padding: 8px; box-sizing: border-box; border: 1px solid var(--rule); display: block; flex-shrink: 0;">
+        </div>
+      </div>
+
+      <div class="games">
+        <div class="game">
+          <img class="game-shot" src="assets/screenshots/hotcall-cards.png" alt="Hot Call — karty">
+          <div class="gmeta">01 &nbsp;—&nbsp; Karetní simulace</div>
+          <h2>Hot Call.</h2>
+          <div class="gsub">Karetní simulace situací</div>
+          <ul>
+            <li><span class="a">→</span> 90 karet na jazyk &nbsp;<span style="color:var(--ink-soft)">(situační · eskalační · deeskalační)</span></li>
+            <li><span class="a">→</span> 3–6 hráčů + facilitátor</li>
+            <li><span class="a">→</span> ~1 vyučovací hodina</li>
+            <li><span class="a">→</span> Online i k vytisknutí &nbsp;·&nbsp; zdarma</li>
+          </ul>
+        </div>
+        <div class="game">
+          <img class="game-shot" src="assets/screenshots/deesc-dialogue.png" alt="Deeskalační hra — dialog">
+          <div class="gmeta">02 &nbsp;—&nbsp; Větvený scénář</div>
+          <h2>Deeskalační<br>hra.</h2>
+          <div class="gsub">Větvená scénářová simulace</div>
+          <ul>
+            <li><span class="a">→</span> 14 scénářů &nbsp;<span style="color:var(--ink-soft)">(domácí spory, krize, mladiství…)</span></li>
+            <li><span class="a">→</span> Automatické skórování + tréninkový report</li>
+            <li><span class="a">→</span> Běží v prohlížeči i na mobilu</li>
+            <li><span class="a">→</span> Bez registrace &nbsp;·&nbsp; zdarma</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="folio">
+      <div class="folio-left"><span><span class="dot"></span>POLICE-COM &nbsp; Multiplier Praha</span><span>23. 4. 2026</span></div>
+      <div>10 / 13</div>
+    </div>
+  </section>
+
+  <!-- ============ SLIDE 10 — KOMU SLOUŽÍ ============ -->
+  <section data-screen-label="10 Komu to slouží">
+    <div class="masthead">
+      <div class="brand">POLICE — COM</div>
+      <div>IX. Cílová skupina &nbsp;·&nbsp; primární + přenositelné</div>
+    </div>
+    <div class="content">
+      <div class="slide-header">
+        <div>
+          <div class="kicker">§ 09 &nbsp;—&nbsp; Komu to slouží</div>
+          <h1>Komu to slouží.</h1>
+          <div class="subtitle">Primární &nbsp;+&nbsp; přenositelné použití</div>
+        </div>
+        <div class="right">
+          Modulární design <span style="color:var(--rust)">→</span><br>
+          přenositelné napříč obory
+        </div>
+      </div>
+
+      <div class="audience">
+        <div class="aud-col">
+          <div class="ktag">Primárně</div>
+          <h3>Policejní vzdělávání.</h3>
+          <ul>
+            <li><span class="idx">01</span><span>Policejní akademie a střední policejní školy</span></li>
+            <li><span class="idx">02</span><span>Lektoři v rámci policejního sboru</span></li>
+            <li><span class="idx">03</span><span>Univerzitní programy bezpečnostních studií</span></li>
+            <li><span class="idx">04</span><span>Stáže a další vzdělávání policistů</span></li>
+          </ul>
+        </div>
+        <div class="aud-col secondary">
+          <div class="ktag">Sekundárně</div>
+          <h3>Modulární design <em>/ další obory</em>.</h3>
+          <ul>
+            <li><span class="idx">·</span><span><span class="abbr">HZS</span> Hasičský záchranný sbor</span></li>
+            <li><span class="idx">·</span><span><span class="abbr">ZZS</span> Zdravotnická záchranná služba</span></li>
+            <li><span class="idx">·</span><span><span class="abbr">VS ČR</span> Vězeňská služba ČR</span></li>
+            <li><span class="idx">·</span><span><span class="abbr">PMS ČR</span> Probační a mediační služba</span></li>
+            <li><span class="idx">·</span><span>Celní správa, pohraniční stráž</span></li>
+            <li><span class="idx">·</span><span>Orgány činné v trestním řízení</span></li>
+            <li><span class="idx">·</span><span>Soukromá bezpečnost, krizové řízení</span></li>
+            <li><span class="idx">·</span><span>Sociální pracovníci</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="folio">
+      <div class="folio-left"><span><span class="dot"></span>POLICE-COM &nbsp; Multiplier Praha</span><span>23. 4. 2026</span></div>
+      <div>11 / 13</div>
+    </div>
+  </section>
+
+  <!-- ============ SLIDE 11 — SCÉNÁŘE ============ -->
+  <section data-screen-label="11 Scénáře použití">
+    <div class="masthead">
+      <div class="brand">POLICE — COM</div>
+      <div>X. Scénáře použití &nbsp;·&nbsp; po skončení projektu</div>
+    </div>
+    <div class="content">
+      <div class="slide-header">
+        <div>
+          <div class="kicker">§ 10 &nbsp;—&nbsp; Jak to využít</div>
+          <h1>Jak to využít<br>po skončení projektu.</h1>
+          <div class="subtitle">4 konkrétní scénáře použití</div>
+        </div>
+        <div class="right">
+          K použití nás nepotřebujete.<br>
+          <span style="color:var(--ink); font-family: 'Instrument Serif', serif; font-style: italic; font-size: 18px;">Stačí prohlížeč.</span>
+        </div>
+      </div>
+
+      <div class="usecases">
+        <div class="uc-card">
+          <div class="uc-num">01 &nbsp; Scénář</div>
+          <div class="uc-role">Lektor.</div>
+          <div class="uc-body">
+            <p>Sestavím si 30min aktivitu přes filtr za <b>5 minut</b>.</p>
+            <p class="alt">Stáhnu Word, upravím pod sebe, vytisknu.</p>
+          </div>
+        </div>
+        <div class="uc-card">
+          <div class="uc-num">02 &nbsp; Scénář</div>
+          <div class="uc-role">Akademie.</div>
+          <div class="uc-body">
+            <p>Vložím celý modul do <b>učebního plánu</b>.</p>
+            <p class="alt">Kurikulum, materiály i assessmenty mám hotové.</p>
+          </div>
+        </div>
+        <div class="uc-card">
+          <div class="uc-num">03 &nbsp; Scénář</div>
+          <div class="uc-role">Policista.</div>
+          <div class="uc-body">
+            <p>Samostudium přes <b>Moodle</b> — kdykoliv, odkudkoliv.</p>
+            <p class="alt">Dokončím kurz, dostanu certifikát.</p>
+          </div>
+        </div>
+        <div class="uc-card">
+          <div class="uc-num">04 &nbsp; Scénář</div>
+          <div class="uc-role">Adaptace.</div>
+          <div class="uc-body">
+            <p>Otevřené licence — <b>přeložím, upravím, rozšířím</b>.</p>
+            <p class="alt">Pro svůj kontext, region, specializaci.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="uc-foot">
+        <b>Zero barriers</b> &nbsp;—&nbsp; K použití nás nepotřebujete. Stačí prohlížeč.
+      </div>
+    </div>
+    <div class="folio">
+      <div class="folio-left"><span><span class="dot"></span>POLICE-COM &nbsp; Multiplier Praha</span><span>23. 4. 2026</span></div>
+      <div>12 / 13</div>
+    </div>
+  </section>
+
+  <!-- ============ SLIDE 12 — UDRŽITELNOST ============ -->
+  <section data-screen-label="12 Udržitelnost">
+    <div class="masthead">
+      <div class="brand">POLICE — COM</div>
+      <div>XI. Udržitelnost &nbsp;·&nbsp; po roce 2026</div>
+    </div>
+    <div class="content">
+      <div class="slide-header">
+        <div>
+          <div class="kicker">§ 11 &nbsp;—&nbsp; Udržitelnost</div>
+          <h1>Udržitelnost.</h1>
+          <div class="subtitle">POLICE-COM po roce 2026</div>
+        </div>
+        <div class="right">
+          Otevřené licence &nbsp;·&nbsp; CC BY 4.0<br>
+          Hosting zajištěný i&nbsp;dál
+        </div>
+      </div>
+
+      <div class="sust">
+        <div class="sust-left">
+          <ul>
+            <li>
+              <div class="n">01</div>
+              <div>
+                <div class="title">Hosting portálu i Moodlu</div>
+                <div class="desc">Mise HERo udrží portál v provozu i do budoucna.</div>
+              </div>
+              <div class="tag">trvalé</div>
+            </li>
+            <li>
+              <div class="n">02</div>
+              <div>
+                <div class="title">Otevřené licence</div>
+                <div class="desc">Materiály volně šiřitelné — sdílet, upravovat i komerčně využívat.</div>
+              </div>
+              <div class="tag">CC BY 4.0</div>
+            </li>
+            <li>
+              <div class="n">03</div>
+              <div>
+                <div class="title">Best-practice report</div>
+                <div class="desc">Co v pilotáži fungovalo, co ne — pro další iterace.</div>
+              </div>
+              <div class="tag">report</div>
+            </li>
+            <li>
+              <div class="n">04</div>
+              <div>
+                <div class="title">Partneři pokračují</div>
+                <div class="desc">V šíření ve svých zemích (CZ · LT · RO).</div>
+              </div>
+              <div class="tag">3 země</div>
+            </li>
+            <li>
+              <div class="n">05</div>
+              <div>
+                <div class="title">Dnešní multiplier event</div>
+                <div class="desc">Přenos na vás — další generaci školení.</div>
+              </div>
+              <div class="tag">dnes</div>
+            </li>
+          </ul>
+        </div>
+        <div class="sust-right">
+          <div class="cc-card">
+            <div class="cc-label">Licence</div>
+            <div class="cc-big">CC BY<br>4.0</div>
+            <div class="cc-desc">Sdílet, upravovat i komerčně využívat — stačí uvést autora a odkaz na licenci.</div>
+          </div>
+          <div class="sust-tagline">
+            Projekt končí. Portfolio zůstává.
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="folio">
+      <div class="folio-left"><span><span class="dot"></span>POLICE-COM &nbsp; Multiplier Praha</span><span>23. 4. 2026</span></div>
+      <div>13 / 13</div>
+    </div>
+  </section>
+
+  <!-- ============ SLIDE 13 — CLOSING ============ -->
+  <section data-screen-label="13 Kde nás najdete">
+    <div class="closing">
+      <div>
+        <div class="kicker">§ 12 &nbsp;—&nbsp; Kontakt</div>
+        <div class="huge">Děkuji za<br><span class="it">pozornost.</span></div>
+      </div>
+
+      <div class="closing-mid">
+        <div>
+          <div style="font-family: 'IBM Plex Mono', monospace; font-size: 13px; color: var(--ink-soft); letter-spacing: 0.18em; text-transform: uppercase; margin-bottom: 18px;">Kde POLICE-COM najdete</div>
+          <div class="closing-links">
+            <div class="clink" style="display: grid; grid-template-columns: auto 1fr; gap: 16px; align-items: center;">
+              <img src="assets/qr/qr_policecom.png" alt="QR policecom.eu" style="width: 130px; height: 130px; background: #fff; padding: 6px; box-sizing: border-box; border: 1px solid var(--rule);">
+              <div>
+                <div class="l">hlavní web</div>
+                <div class="u">policecom.eu</div>
+              </div>
+            </div>
+            <div class="clink" style="display: grid; grid-template-columns: auto 1fr; gap: 16px; align-items: center;">
+              <img src="assets/qr/qr_materials.png" alt="QR portál materiálů" style="width: 130px; height: 130px; background: #fff; padding: 6px; box-sizing: border-box; border: 1px solid var(--rule);">
+              <div>
+                <div class="l">portál materiálů</div>
+                <div class="u">policecom.eu/materials</div>
+              </div>
+            </div>
+            <div class="clink" style="display: grid; grid-template-columns: auto 1fr; gap: 16px; align-items: center;">
+              <img src="assets/qr/qr_elearning.png" alt="QR e-learning" style="width: 130px; height: 130px; background: #fff; padding: 6px; box-sizing: border-box; border: 1px solid var(--rule);">
+              <div>
+                <div class="l">e-learning</div>
+                <div class="u">polcom-training.eu</div>
+              </div>
+            </div>
+            <div class="clink" style="display: grid; grid-template-columns: auto 1fr; gap: 16px; align-items: center;">
+              <img src="assets/qr/qr_games.png" alt="QR hry" style="width: 130px; height: 130px; background: #fff; padding: 6px; box-sizing: border-box; border: 1px solid var(--rule);">
+              <div>
+                <div class="l">hry</div>
+                <div class="u">policecom.eu/games</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="closing-signoff">
+          <span class="italic">Antonín Vacek</span><br>
+          Mise HERo
+          <div class="contact">antonin.vacek@misehero.cz</div>
+        </div>
+      </div>
+
+      <div class="closing-disclaimer">
+        <div style="display: flex; gap: 24px; align-items: flex-start;">
+          <img src="assets/eu-funding/eu_cofunded_cs.png" alt="Spolufinancováno Evropskou unií" class="eu-logo-img sm" style="flex: 0 0 auto;">
+          <div>Vyjádřené názory a stanoviska představují názory a stanoviska autorů a nemusí nutně odrážet názory a stanoviska Evropské unie nebo Domu zahraniční spolupráce. Evropská unie ani poskytovatel grantu za ně nenesou odpovědnost.</div>
+        </div>
+        <div class="meta">Erasmus+ KA220-VET<br>Projekt č. 2023-1-CZ01-KA220-VET-000167148<br>DZS</div>
+      </div>
+    </div>
+  </section>
+
+</deck-stage>
+
+</body>
+</html>
