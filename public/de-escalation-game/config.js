@@ -4,7 +4,9 @@
  */
 
 const CONFIG = {
-    BASE_URL: (function(){ try{ const u=new URL(window.location.href); const b=u.searchParams.get('base'); if(b){ return b.endsWith('/')?b:b+'/'; } var path=u.pathname.replace(/\/[^/]*$/, '/'); return u.origin + path; }catch(e){} return ''; })(),
+    // ?base= override is only accepted as a same-origin relative path (no absolute URLs,
+    // no protocol-relative //, no data:/javascript: schemes) to prevent loading attacker-controlled JSON.
+    BASE_URL: (function(){ try{ const u=new URL(window.location.href); const b=u.searchParams.get('base'); if(b && !/^[a-z]+:/i.test(b) && b.indexOf('//') !== 0){ return b.endsWith('/')?b:b+'/'; } var path=u.pathname.replace(/\/[^/]*$/, '/'); return u.origin + path; }catch(e){} return ''; })(),
     SUPPORTED_LANGUAGES: ['en', 'cs', 'lt', 'ro'],
     DEFAULT_LANGUAGE: 'en',
     FILE_PATHS: {
@@ -246,3 +248,17 @@ const CONFIG = {
         UNLIMITED_TIME: false
     }
 };
+
+/**
+ * HTML-escape helper for data-derived strings injected via innerHTML.
+ * All scenario/review/translation JSON text is plain text, so it must be
+ * escaped before being interpolated into HTML templates (XSS hardening).
+ */
+function esc(value) {
+    return String(value == null ? '' : value)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;');
+}

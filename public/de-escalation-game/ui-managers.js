@@ -78,14 +78,23 @@ class UIManager {
             if (isPerfect) card.classList.add('perfect');
             
             card.onclick = () => gameController.selectScenario(scenario.id);
-            
+            // Keyboard accessibility: cards act as buttons
+            card.setAttribute('tabindex', '0');
+            card.setAttribute('role', 'button');
+            card.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    gameController.selectScenario(scenario.id);
+                }
+            });
+
             let statusIcon = '';
             if (isPerfect) statusIcon = '🌟';
             else if (isCompleted) statusIcon = '✅';
             
             const difficulty = '⭐'.repeat(scenario.difficulty || 3);
-            const duration = scenario.duration || '10-15';
-            const cardTitle = `${i18n.t('scenarios.scenario')} ${scenarioNumber}: ${scenario.title}`;
+            const duration = esc(scenario.duration || '10-15');
+            const cardTitle = `${esc(i18n.t('scenarios.scenario'))} ${scenarioNumber}: ${esc(scenario.title)}`;
 
             // Generate POLCOM module tags (show scores >= 4)
             let moduleTags = '';
@@ -104,7 +113,7 @@ class UIManager {
                         const color = moduleColors[key] || '#6B7280';
                         const name = i18n.t(`polcomModules.${key}`) || key;
                         const cls = score >= 5 ? 'module-tag primary' : 'module-tag';
-                        tags.push(`<span class="${cls}" style="--mod-color:${color}" title="${name}: ${score}/5">${name}</span>`);
+                        tags.push(`<span class="${cls}" style="--mod-color:${color}" title="${esc(name)}: ${esc(score)}/5">${esc(name)}</span>`);
                     }
                 }
                 if (tags.length) {
@@ -114,13 +123,13 @@ class UIManager {
 
             card.innerHTML = `
                 ${statusIcon ? `<div class="scenario-status">${statusIcon}</div>` : ''}
-                <div class="scenario-icon">${scenario.icon}</div>
+                <div class="scenario-icon">${esc(scenario.icon)}</div>
                 <div class="scenario-card-title">${cardTitle}</div>
-                <div class="scenario-description">${scenario.description}</div>
+                <div class="scenario-description">${esc(scenario.description)}</div>
                 ${moduleTags}
                 <div class="scenario-stats">
                     <div class="scenario-difficulty">${difficulty}</div>
-                    <div class="scenario-duration">${duration} ${i18n.t('scenarios.minutes')}</div>
+                    <div class="scenario-duration">${duration} ${esc(i18n.t('scenarios.minutes'))}</div>
                 </div>
             `;
             
@@ -369,8 +378,8 @@ class UIManager {
         notification.className = 'stage-notification';
         notification.innerHTML = `
             <div class="stage-notification-content">
-                <span class="stage-number">${stageLabel} ${stageNumber} ${ofLabel} ${totalStages}</span>
-                <span class="stage-name">${stageName || 'In Progress'}</span>
+                <span class="stage-number">${esc(stageLabel)} ${stageNumber} ${esc(ofLabel)} ${totalStages}</span>
+                <span class="stage-name">${esc(stageName || 'In Progress')}</span>
             </div>
         `;
         
@@ -445,13 +454,13 @@ class DialogueManager {
         const time = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
         
         messageDiv.innerHTML = `
-            <div class="message-avatar">${this.getCharacterAvatar(character)}</div>
+            <div class="message-avatar">${esc(this.getCharacterAvatar(character))}</div>
             <div class="message-content">
                 <div class="message-header">
-                    <span class="message-name">${this.getCharacterName(character)}</span>
+                    <span class="message-name">${esc(this.getCharacterName(character))}</span>
                     <span class="message-time">${time}</span>
                 </div>
-                <div class="message-text">${text}</div>
+                <div class="message-text">${esc(text)}</div>
             </div>
         `;
         
@@ -471,7 +480,7 @@ class DialogueManager {
         const indicator = document.createElement('div');
         indicator.className = 'dialogue-message left typing-message';
         indicator.innerHTML = `
-            <div class="message-avatar">${this.getCharacterAvatar(character)}</div>
+            <div class="message-avatar">${esc(this.getCharacterAvatar(character))}</div>
             <div class="message-content">
                 <div class="typing-indicator">
                     <div class="typing-dot"></div>
@@ -522,9 +531,9 @@ class SceneManager {
             sceneImage.innerHTML = `
                 <div class="scene-particles" id="scene-particles"></div>
                 <div class="scene-content">
-                    <div class="scene-emoji">${sceneData.emoji}</div>
-                    <h3 class="scene-title">${sceneData.title}</h3>
-                    <p class="scene-description">${sceneData.desc}</p>
+                    <div class="scene-emoji">${esc(sceneData.emoji)}</div>
+                    <h3 class="scene-title">${esc(sceneData.title)}</h3>
+                    <p class="scene-description">${esc(sceneData.desc)}</p>
                 </div>
             `;
             sceneImage.style.opacity = '1';

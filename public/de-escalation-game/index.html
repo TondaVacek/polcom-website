@@ -3294,7 +3294,7 @@
         <!-- Main Game Content -->
         <div class="game-content" id="game-content" data-view="dialogue">
             <!-- Phone portrait: tab bar to switch Choices / Dialogue (default: Dialogue so user reads first) -->
-            <div class="phone-view-tabs" id="phone-view-tabs" aria-hidden="true">
+            <div class="phone-view-tabs" id="phone-view-tabs">
                 <button type="button" class="phone-tab" data-tab="choices" data-i18n="game.tabChoices">Choices</button>
                 <button type="button" class="phone-tab active" data-tab="dialogue" data-i18n="game.tabDialogue">Dialogue</button>
             </div>
@@ -3350,17 +3350,17 @@
             </div>
 
             <!-- Toggle button between panels -->
-            <button type="button" class="panel-toggle" id="panel-toggle" title="Toggle panel focus"></button>
+            <button type="button" class="panel-toggle" id="panel-toggle" title="Toggle panel focus" aria-label="Toggle panel focus"></button>
 
             <!-- Right Panel - Dialogue -->
             <div class="right-panel" id="right-panel">
                 <!-- Chat-style Dialogue History -->
-                <div id="dialogue-history"></div>
+                <div id="dialogue-history" aria-live="polite"></div>
             </div>
         </div>
 
         <!-- Instructor Introduction -->
-        <div class="instructor-intro-overlay" id="instructor-intro-overlay">
+        <div class="instructor-intro-overlay" id="instructor-intro-overlay" role="dialog" aria-modal="true" aria-labelledby="instructor-name">
             <div class="instructor-intro">
                 <div class="instructor-avatar" id="instructor-avatar">👨‍🏫</div>
                 <div class="instructor-name" id="instructor-name" data-i18n="instructor.defaultName">Loading...</div>
@@ -3435,17 +3435,17 @@
 
         <!-- Review Button -->
         <div class="review-button-container">
-            <button class="show-review-button" id="show-review-button" onclick="gameController.showGameReviewModal()">
+            <button class="show-review-button" id="show-review-button" onclick="gameController.prepareGameReview()">
                 <span data-i18n="review.button">📊 View Training Report</span>
             </button>
         </div>
 
         <!-- Game Review Modal -->
-        <div class="review-modal-overlay" id="review-modal-overlay">
+        <div class="review-modal-overlay" id="review-modal-overlay" role="dialog" aria-modal="true" aria-labelledby="review-modal-title">
             <div class="review-modal">
                 <div class="review-modal-header">
-                    <button class="review-modal-close" onclick="gameController.closeReviewModal()">✕</button>
-                    <h2 class="review-title" data-i18n="review.title">🏆 Training Session Review</h2>
+                    <button class="review-modal-close" onclick="gameController.closeReviewModal()" aria-label="Close review">✕</button>
+                    <h2 class="review-title" id="review-modal-title" data-i18n="review.title">🏆 Training Session Review</h2>
                 </div>
                 <div class="review-modal-content">
                     <div id="game-review">
@@ -3456,7 +3456,7 @@
         </div>
 
         <!-- Badge Earned Popup -->
-        <div class="badge-earned-animation" id="badge-earned">
+        <div class="badge-earned-animation" id="badge-earned" role="dialog" aria-modal="true">
             <div class="badge-icon-large" id="badge-icon-large">🏆</div>
             <div class="badge-title" data-i18n="badge.earned">Badge Earned!</div>
             <div class="badge-description" id="badge-earned-desc"></div>
@@ -3465,18 +3465,18 @@
     </div>
 
     <!-- Audio Elements (sounds folder) -->
-    <audio id="success-sound" preload="auto"><source src="sounds/success.mp3" type="audio/mpeg"></audio>
-    <audio id="error-sound" preload="auto"><source src="sounds/error.mp3" type="audio/mpeg"></audio>
-    <audio id="click-sound" preload="auto"><source src="sounds/click.mp3" type="audio/mpeg"></audio>
-    <audio id="victory-sound" preload="auto"><source src="sounds/victory.mp3" type="audio/mpeg"></audio>
-    <audio id="fanfare-sound" preload="auto"><source src="sounds/fanfare.mp3" type="audio/mpeg"></audio>
-    <audio id="good-sound" preload="auto"><source src="sounds/good.mp3" type="audio/mpeg"></audio>
+    <audio id="success-sound" preload="none"><source src="sounds/success.mp3" type="audio/mpeg"></audio>
+    <audio id="error-sound" preload="none"><source src="sounds/error.mp3" type="audio/mpeg"></audio>
+    <audio id="click-sound" preload="none"><source src="sounds/click.mp3" type="audio/mpeg"></audio>
+    <audio id="victory-sound" preload="none"><source src="sounds/victory.mp3" type="audio/mpeg"></audio>
+    <audio id="fanfare-sound" preload="none"><source src="sounds/fanfare.mp3" type="audio/mpeg"></audio>
+    <audio id="good-sound" preload="none"><source src="sounds/good.mp3" type="audio/mpeg"></audio>
 
     <!-- Load JavaScript Files -->
-    <script src="config.js"></script>
-    <script src="core.js"></script>
-    <script src="ui-managers.js?v=3"></script>
-    <script src="game-controller.js?v=2"></script>
+    <script src="config.js?v=4"></script>
+    <script src="core.js?v=4"></script>
+    <script src="ui-managers.js?v=4"></script>
+    <script src="game-controller.js?v=4"></script>
     
     <!-- Initialize Game -->
     <script>
@@ -3508,6 +3508,24 @@
                 console.log('Game initialized successfully!');
             } catch (error) {
                 console.error('Failed to initialize game:', error);
+                // Show a visible error with a reload button instead of a dead screen
+                try {
+                    const loadingScreen = document.getElementById('loading-screen');
+                    if (loadingScreen) {
+                        loadingScreen.classList.add('hide');
+                        loadingScreen.style.display = 'none';
+                    }
+                    const errorDetails = document.getElementById('error-details');
+                    if (errorDetails) {
+                        errorDetails.textContent = (error && error.message) ? error.message : String(error);
+                    }
+                    const errorScreen = document.getElementById('error-screen');
+                    if (errorScreen) {
+                        errorScreen.classList.add('show');
+                    }
+                } catch (uiError) {
+                    console.error('Could not display error screen:', uiError);
+                }
             }
         });
     </script>
@@ -3526,6 +3544,7 @@ const ReviewManager = {
             goodChoice: "Good Choice!",
             poorChoice: "Poor Choice:",
             neutralChoice: "Neutral Choice:",
+            partiallyPositiveChoice: "Partially Good Choice:",
             strengths: "Strengths:",
             issues: "Issues:",
             missedOpportunities: "Missed Opportunities:",
@@ -3547,6 +3566,7 @@ const ReviewManager = {
             goodChoice: "Dobrá volba!",
             poorChoice: "Špatná volba:",
             neutralChoice: "Neutrální volba:",
+            partiallyPositiveChoice: "Částečně dobrá volba:",
             strengths: "Silné stránky:",
             issues: "Problémy:",
             missedOpportunities: "Zmeškaná příležitosti:",
@@ -3568,6 +3588,7 @@ const ReviewManager = {
             goodChoice: "Geras pasirinkimas!",
             poorChoice: "Blogas pasirinkimas:",
             neutralChoice: "Neutralus pasirinkimas:",
+            partiallyPositiveChoice: "Iš dalies geras pasirinkimas:",
             strengths: "Stiprybės:",
             issues: "Problemos:",
             missedOpportunities: "Praleistos galimybės:",
@@ -3589,6 +3610,7 @@ const ReviewManager = {
             goodChoice: "Alegere bună!",
             poorChoice: "Alegere proastă:",
             neutralChoice: "Alegere neutră:",
+            partiallyPositiveChoice: "Alegere parțial bună:",
             strengths: "Puncte tari:",
             issues: "Probleme:",
             missedOpportunities: "Oportunități ratate:",
@@ -3701,124 +3723,20 @@ const ReviewManager = {
         return stageCounter;
     },
 
-    // Load review data for current scenario with language support
-    async loadReviewData() {
-        let scenarioId = (typeof gameState !== 'undefined' && gameState && gameState.currentScenario) ? gameState.currentScenario.id : '1';
-        
-        console.log('Current scenario ID:', scenarioId);
-        
-        const currentLang = this.getCurrentLanguage();
-        console.log('Current language:', currentLang);
-        
-        const scenarioIdMap = {
-            '1': 'traffic-stop',
-            '2': 'hostel-negotiation',
-            '3': 'youth-interaction',
-            '4': 'mental-health',
-            '5': 'noise-complaint',
-            '6': 'domestic-crisis',
-            '7': 'nightclub-fracas',
-            'traffic-stop': 'traffic-stop',
-            'hostel-negotiation': 'hostel-negotiation',
-            'youth-interaction': 'youth-interaction',
-            'mental-health': 'mental-health',
-            'noise-complaint': 'noise-complaint',
-            'nightclub-fracas': 'nightclub-fracas',
-            'domestic-crisis': 'domestic-crisis',
-            'custody-exchange': 'custody-exchange',
-            'hospital-disturbance': 'hospital-disturbance',
-            'road-rage': 'road-rage',
-            'street-vendor': 'street-vendor',
-            'youth-park': 'youth-park'
-        };
-        
-        let mappedId = scenarioIdMap[scenarioId];
-        
-        if (!mappedId && typeof gameState !== 'undefined' && gameState && gameState.currentScenario) {
-            const title = gameState.currentScenario.title || '';
-            console.log('Scenario title:', title);
-            
-            if (title.toLowerCase().includes('traffic') || title.toLowerCase().includes('dopravní')) {
-                mappedId = 'traffic-stop';
-            } else if (title.toLowerCase().includes('hostel')) {
-                mappedId = 'hostel-negotiation';
-            } else if (title.toLowerCase().includes('youth') || title.toLowerCase().includes('mládež')) {
-                mappedId = 'youth-interaction';
-            } else if (title.toLowerCase().includes('mental') || title.toLowerCase().includes('duševní')) {
-                mappedId = 'mental-health';
-            } else if (title.toLowerCase().includes('noise') || title.toLowerCase().includes('hluk')) {
-                mappedId = 'noise-complaint';
-            } else if (title.toLowerCase().includes('nightclub')) {
-                mappedId = 'nightclub-fracas';
-            } else if (title.toLowerCase().includes('domestic') || title.toLowerCase().includes('domácí')) {
-                mappedId = 'domestic-crisis';
-            }
-        }
-        
-        if (!mappedId) {
-            mappedId = scenarioId;
-            console.warn('Could not map scenario ID, using original:', scenarioId);
-        }
-        
-        const reviewFileName = `review-${mappedId}-${currentLang}.json`;
-        const reviewUrl = (typeof CONFIG !== 'undefined' && CONFIG.BASE_URL != null)
-            ? `${CONFIG.BASE_URL}scenarios/reviews/${reviewFileName}`
-            : `scenarios/reviews/${reviewFileName}`;
-        
-        console.log('Attempting to load review from:', reviewUrl);
-        
-        try {
-            const response = await fetch(reviewUrl);
-            if (!response.ok) {
-                throw new Error(`Review file not found: ${response.status}`);
-            }
-            const reviewData = await response.json();
-            if (typeof gameState !== 'undefined' && gameState) {
-                gameState.reviewData = reviewData;
-            }
-            console.log('Successfully loaded review data for:', mappedId, 'in language:', currentLang);
-            return reviewData;
-        } catch (error) {
-            console.log(`No review file found for ${mappedId} in ${currentLang} at ${reviewUrl}`);
-            
-            if (currentLang !== 'en') {
-                console.log('Falling back to English review...');
-                const base = (typeof CONFIG !== 'undefined' && CONFIG.BASE_URL != null) ? CONFIG.BASE_URL : '';
-                const englishReviewUrl = `${base}scenarios/reviews/review-${mappedId}-en.json`;
-                
-                try {
-                    const englishResponse = await fetch(englishReviewUrl);
-                    if (englishResponse.ok) {
-                        const reviewData = await englishResponse.json();
-                        if (typeof gameState !== 'undefined' && gameState) {
-                            gameState.reviewData = reviewData;
-                        }
-                        console.log('Successfully loaded English fallback review data');
-                        return reviewData;
-                    }
-                } catch (englishError) {
-                    console.log('English fallback also failed');
-                }
-            }
-            
-            // Do not overwrite gameState.reviewData — it may have been set at scenario load (game-controller)
-            return (typeof gameState !== 'undefined' && gameState && gameState.reviewData) ? gameState.reviewData : null;
-        }
-    },
-    
-    // Store the scenario ID when scenario starts
-    storeScenarioId(scenario) {
-        if (scenario) {
-            this.originalScenarioId = scenario.id;
-            console.log('Stored original scenario ID:', this.originalScenarioId);
-        }
-    },
-    
-    // Determine choice type based on score
+    // NOTE: Review data is loaded once by gameController.loadReviewData() at scenario
+    // selection and stored in gameState.reviewData — the single source of truth.
+    // The former ReviewManager.loadReviewData() remapped numeric scenario IDs to the
+    // wrong slug review files and overwrote the correct data; it has been removed.
+
+    // Determine choice type from the recorded choice type in gameHistory
+    // (scoring points are 10-12 for positive options, so a points heuristic misclassifies them)
     determineChoiceType(historyItem) {
-        if (historyItem.points > 15) return 'positive';
-        if (historyItem.points < 0) return 'negative';
-        return 'neutral';
+        switch (historyItem.type) {
+            case 'positive': return 'positive';
+            case 'partially_positive': return 'partially_positive';
+            case 'negative': return 'negative';
+            default: return 'neutral';
+        }
     },
     
     // Build detailed review from review JSON file with proper translations and choice text
@@ -3857,7 +3775,7 @@ const ReviewManager = {
                     
                     html += `
                         <div style="margin: 1.5rem 0; padding: 1.5rem; background: white; border-radius: 10px; border-left: 4px solid #3b82f6;">
-                            <h4 style="color: #1e293b; margin-bottom: 1rem;">${stageData.stageName}</h4>
+                            <h4 style="color: #1e293b; margin-bottom: 1rem;">${esc(stageData.stageName)}</h4>
                     `;
                     
                     // Show each attempt for this stage
@@ -3870,17 +3788,18 @@ const ReviewManager = {
                         let borderColor = '#6b7280'; // neutral gray
                         if (isCorrect) borderColor = '#10b981'; // green
                         else if (attempt.type === 'negative') borderColor = '#ef4444'; // red
-                        
+                        else if (attempt.type === 'partially_positive') borderColor = '#84cc16'; // light green
+
                         // Get the actual choice text
                         const choiceText = this.getChoiceText(attempt);
-                        
+
                         html += `
                             <div style="margin: 0.75rem 0; padding: 0.75rem; background: #f9fafb; border-left: 3px solid ${borderColor}; border-radius: 5px;">
                                 <p style="margin: 0.25rem 0; font-size: 0.85rem; color: #6b7280;">
                                     <strong>${this.t('attempt')} ${attemptIndex + 1}:</strong>
                                 </p>
                                 <p style="margin: 0.25rem 0;">
-                                    <strong>${this.t('yourChoice')}:</strong> ${choiceText}
+                                    <strong>${this.t('yourChoice')}:</strong> ${esc(choiceText)}
                                 </p>
                         `;
                         
@@ -3888,49 +3807,53 @@ const ReviewManager = {
                             if (choiceType === 'positive') {
                                 html += `
                                     <p style="color: #059669; margin: 0.5rem 0;">
-                                        ✅ <strong>${this.t('goodChoice')}</strong> ${analysis.professionalImpact || ''}
+                                        ✅ <strong>${this.t('goodChoice')}</strong> ${esc(analysis.professionalImpact || '')}
                                     </p>
                                 `;
                                 if (analysis.strengths && analysis.strengths.length > 0) {
                                     html += `<p style="margin-top: 0.5rem; font-size: 0.9rem;"><strong>${this.t('strengths')}</strong></p>`;
                                     html += '<ul style="margin: 0.25rem 0 0 1.5rem; font-size: 0.85rem; color: #059669;">';
                                     analysis.strengths.forEach(strength => {
-                                        html += `<li>${strength}</li>`;
+                                        html += `<li>${esc(strength)}</li>`;
                                     });
                                     html += '</ul>';
                                 }
                             } else if (choiceType === 'negative') {
                                 html += `
                                     <p style="color: #dc2626; margin: 0.5rem 0;">
-                                        ❌ <strong>${this.t('poorChoice')}</strong> ${analysis.consequences || 'This approach escalated the situation.'}
+                                        ❌ <strong>${this.t('poorChoice')}</strong> ${esc(analysis.consequences || 'This approach escalated the situation.')}
                                     </p>
                                 `;
                                 if (analysis.failures && analysis.failures.length > 0) {
                                     html += `<p style="margin-top: 0.5rem; font-size: 0.9rem;"><strong>${this.t('issues')}</strong></p>`;
                                     html += '<ul style="margin: 0.25rem 0 0 1.5rem; font-size: 0.85rem; color: #dc2626;">';
                                     analysis.failures.forEach(failure => {
-                                        html += `<li>${failure}</li>`;
+                                        html += `<li>${esc(failure)}</li>`;
                                     });
                                     html += '</ul>';
                                 }
                                 if (analysis.trainingFocus) {
                                     html += `
                                         <p style="margin: 0.5rem 0; padding: 0.5rem; background: #fef2f2; border-radius: 5px;">
-                                            <strong>${this.t('trainingFocus')}</strong> ${analysis.trainingFocus}
+                                            <strong>${this.t('trainingFocus')}</strong> ${esc(analysis.trainingFocus)}
                                         </p>
                                     `;
                                 }
                             } else {
+                                // neutral and partially_positive share the same analysis shape (improvement + missed)
+                                const label = choiceType === 'partially_positive' ? this.t('partiallyPositiveChoice') : this.t('neutralChoice');
+                                const labelColor = choiceType === 'partially_positive' ? '#65a30d' : '#d97706';
+                                const labelIcon = choiceType === 'partially_positive' ? '🟡' : '⚠️';
                                 html += `
-                                    <p style="color: #d97706; margin: 0.5rem 0;">
-                                        ⚠️ <strong>${this.t('neutralChoice')}</strong> ${analysis.improvement || 'Could be improved.'}
+                                    <p style="color: ${labelColor}; margin: 0.5rem 0;">
+                                        ${labelIcon} <strong>${label}</strong> ${esc(analysis.improvement || 'Could be improved.')}
                                     </p>
                                 `;
                                 if (analysis.missed && analysis.missed.length > 0) {
                                     html += `<p style="margin-top: 0.5rem; font-size: 0.9rem;"><strong>${this.t('missedOpportunities')}</strong></p>`;
                                     html += '<ul style="margin: 0.25rem 0 0 1.5rem; font-size: 0.85rem; color: #d97706;">';
                                     analysis.missed.forEach(missed => {
-                                        html += `<li>${missed}</li>`;
+                                        html += `<li>${esc(missed)}</li>`;
                                     });
                                     html += '</ul>';
                                 }
@@ -3942,7 +3865,7 @@ const ReviewManager = {
                                 const icon = isCorrect ? '✅' : '❌';
                                 html += `
                                     <p style="color: ${feedbackColor}; margin: 0.5rem 0;">
-                                        ${icon} ${attempt.feedback}
+                                        ${icon} ${esc(attempt.feedback)}
                                     </p>
                                 `;
                             }
@@ -3957,7 +3880,7 @@ const ReviewManager = {
                         html += `<p style="margin-bottom: 0.5rem;"><strong>${this.t('keyLessons')}</strong></p>`;
                         html += '<ul style="margin: 0.25rem 0 0 1.5rem;">';
                         stageData.keyLearningPoints.forEach(point => {
-                            html += `<li style="font-size: 0.9rem; color: #1e40af;">${point}</li>`;
+                            html += `<li style="font-size: 0.9rem; color: #1e40af;">${esc(point)}</li>`;
                         });
                         html += '</ul>';
                         html += '</div>';
@@ -3983,8 +3906,8 @@ const ReviewManager = {
                 const choiceText = this.getChoiceText(mistake);
                 
                 html += `<li style="margin: 0.5rem 0;">`;
-                html += `<strong>${this.t('stage')} ${stageNum}:</strong> "${choiceText}" - `;
-                html += `<span style="color: #dc2626;">${mistake.feedback || 'This choice escalated the situation.'}</span>`;
+                html += `<strong>${this.t('stage')} ${stageNum}:</strong> "${esc(choiceText)}" - `;
+                html += `<span style="color: #dc2626;">${esc(mistake.feedback || 'This choice escalated the situation.')}</span>`;
                 html += `</li>`;
             });
             html += '</ul>';
@@ -3993,17 +3916,19 @@ const ReviewManager = {
         
         // Rest of the review sections (patterns, training, takeaways) remain the same...
         if (typeof gameState !== 'undefined' && gameState && gameState.reviewData?.recommendedTraining) {
-            const metrics = gameState.getPerformanceMetrics ? gameState.getPerformanceMetrics() : 
-                          { performanceLevel: 'average' };
-            const perfLevel = metrics.performanceLevel || 'average';
+            // Use the game controller's canonical performance analysis
+            // (earnedPoints / (interactive stages x 100)) for the training tier.
+            const perfLevel = (typeof gameController !== 'undefined' && gameController)
+                ? gameController.analyzePerformance().performanceLevel
+                : 'average';
             const training = gameState.reviewData.recommendedTraining.based_on_performance[perfLevel];
-            
+
             if (training && training.length > 0) {
                 html += '<div class="review-section" style="background: #e0e7ff;">';
                 html += `<h3 style="color: #1e293b; margin-bottom: 1rem;">${this.t('recommendedTraining')}</h3>`;
                 html += '<ul style="margin-left: 1.5rem;">';
                 training.forEach(course => {
-                    html += `<li style="margin: 0.5rem 0;">${course}</li>`;
+                    html += `<li style="margin: 0.5rem 0;">${esc(course)}</li>`;
                 });
                 html += '</ul>';
                 html += '</div>';
@@ -4018,7 +3943,7 @@ const ReviewManager = {
                 html += `<h3 style="color: #1e293b; margin-bottom: 1rem;">${this.t('keyTakeaways')}</h3>`;
                 html += '<ul style="margin-left: 1.5rem;">';
                 lessons.forEach(lesson => {
-                    html += `<li style="margin: 0.5rem 0;">${lesson}</li>`;
+                    html += `<li style="margin: 0.5rem 0;">${esc(lesson)}</li>`;
                 });
                 html += '</ul>';
                 html += '</div>';
@@ -4026,56 +3951,6 @@ const ReviewManager = {
         }
         
         return html;
-    },
-    
-    // Enhanced showGameReview method
-    async enhanceGameReview() {
-        console.log('Enhancing game review...');
-        
-        await this.loadReviewData();
-        
-        const reviewContent = document.getElementById('review-content');
-        if (!reviewContent) {
-            console.error('Review content element not found');
-            return;
-        }
-        
-        let currentHTML = reviewContent.innerHTML;
-        
-        if (typeof gameState !== 'undefined' && gameState && gameState.reviewData) {
-            console.log('Adding detailed review to display');
-            const detailedReview = this.buildDetailedReview();
-            
-            const finalAssessmentIndex = currentHTML.indexOf('Final Assessment');
-            
-            if (finalAssessmentIndex > -1) {
-                currentHTML = currentHTML.substring(0, finalAssessmentIndex - 100) + 
-                             detailedReview + 
-                             currentHTML.substring(finalAssessmentIndex - 100);
-            } else {
-                currentHTML += detailedReview;
-            }
-            
-            reviewContent.innerHTML = currentHTML;
-        } else {
-            console.log('No review data available, using basic review');
-        }
-    },
-
-    // Language change handler
-    onLanguageChange(newLanguage) {
-        console.log('Language changed to:', newLanguage);
-        if (typeof gameState !== 'undefined' && gameState) {
-            gameState.reviewData = null;
-        }
-        
-        const reviewContent = document.getElementById('review-content');
-        if (reviewContent && reviewContent.innerHTML.trim() !== '') {
-            console.log('Reloading review in new language...');
-            setTimeout(async () => {
-                await this.enhanceGameReview();
-            }, 100);
-        }
     }
 };
 
@@ -4110,11 +3985,6 @@ function switchLanguage(lang) {
     if (typeof i18n !== 'undefined' && i18n.setLanguage) {
         i18n.setLanguage(lang);
     }
-    
-    // Notify ReviewManager
-    if (typeof ReviewManager !== 'undefined') {
-        ReviewManager.onLanguageChange && ReviewManager.onLanguageChange(lang);
-    }
 }
 
 // Switch language from welcome screen (same function but more visible)
@@ -4132,6 +4002,12 @@ function goBackToScenarios() {
         }
     }
     
+    // Cancel any pending dialogue/choice timeouts so old NPC lines/choices
+    // don't leak into the next scenario run
+    if (typeof gameController !== 'undefined' && gameController && gameController.clearPendingTimeouts) {
+        gameController.clearPendingTimeouts();
+    }
+
     // Reset game state for current scenario
     if (gameState) {
         gameState.currentScenario = null;
@@ -4221,360 +4097,6 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
-// ============================================
-// GAME COMPLETION DETECTOR
-// ============================================
-const GameCompletionDetector = {
-    isMonitoring: false,
-    lastStageCount: 0,
-    checkInterval: null,
-    
-    startMonitoring() {
-        if (this.isMonitoring) return;
-        
-        console.log('🎯 Starting game completion monitoring...');
-        this.isMonitoring = true;
-        
-        this.checkInterval = setInterval(() => {
-            this.checkGameCompletion();
-        }, 2000); // Check every 2 seconds
-    },
-    
-    stopMonitoring() {
-        if (this.checkInterval) {
-            clearInterval(this.checkInterval);
-            this.checkInterval = null;
-        }
-        this.isMonitoring = false;
-        console.log('🎯 Stopped game completion monitoring');
-    },
-    
-    checkGameCompletion() {
-        // Check if we're in a game scenario
-        if (!gameState || !gameState.currentScenario) {
-            return;
-        }
-        
-        const scenario = gameState.currentScenario;
-        const totalStages = scenario.stages ? scenario.stages.length : 0;
-        const currentStage = gameState.currentStage || 0;
-        const gameHistory = gameState.gameHistory || [];
-        
-        // Count completed stages (stages where we got a positive response)
-        const completedStages = gameHistory.filter(item => item.type === 'positive').length;
-        
-        console.log(`🎯 Game Check - Stage: ${currentStage}/${totalStages}, Completed: ${completedStages}, History: ${gameHistory.length}`);
-        
-        // Check multiple completion conditions
-        const isComplete = this.isGameComplete(scenario, currentStage, completedStages, totalStages);
-        
-        if (isComplete) {
-            console.log('🏆 GAME COMPLETED! Triggering review...');
-            this.stopMonitoring();
-            this.triggerGameCompletion();
-        }
-    },
-    
-    isGameComplete(scenario, currentStage, completedStages, totalStages) {
-        // Only consider complete when we're actually on or past the last stage.
-        // Do NOT use feedback text keywords (e.g. "excellent") — per-stage feedback often contains them and triggered the review mid-scenario.
-        if (totalStages <= 0) return false;
-
-        // Method 1: Current stage is the last (evaluation) stage and we've advanced past the last choice stage
-        const lastStageIndex = scenario.stages.length - 1;
-        if (currentStage >= lastStageIndex) {
-            const choiceContainer = document.getElementById('choice-container');
-            const hasChoices = choiceContainer && choiceContainer.classList.contains('show');
-            // Final stage has no options; if we're on it and choices are hidden, game is complete
-            if (!hasChoices && completedStages > 0) {
-                console.log('✅ Completion detected: On final stage, no choices');
-                return true;
-            }
-        }
-
-        // Method 2: All stages completed (enough positive outcomes for each stage)
-        if (completedStages >= totalStages) {
-            console.log('✅ Completion detected: All stages completed');
-            return true;
-        }
-
-        // Method 3: Current stage index past total (safety)
-        if (currentStage >= totalStages) {
-            console.log('✅ Completion detected: Current stage exceeds total');
-            return true;
-        }
-
-        return false;
-    },
-    
-    async triggerGameCompletion() {
-        console.log('🎊 Triggering game completion sequence...');
-        
-        // Hide choice container
-        const choiceContainer = document.getElementById('choice-container');
-        if (choiceContainer) {
-            choiceContainer.classList.remove('show');
-        }
-        
-        // Hide the floating review button (we have one in the trainer feedback panel now)
-        const reviewButton = document.getElementById('show-review-button');
-        if (reviewButton) {
-            reviewButton.classList.remove('show');
-            reviewButton.style.display = 'none';
-        }
-        
-        // Wait a moment, then auto-show review
-        setTimeout(async () => {
-            console.log('🎯 Auto-showing game review...');
-            if (typeof gameController !== 'undefined' && gameController.showGameReviewEnhanced) {
-                await gameController.showGameReviewEnhanced();
-                gameController.showGameReviewModal();
-            } else {
-                // Fallback: just show the review modal
-                const reviewModal = document.getElementById('review-modal-overlay');
-                if (reviewModal) {
-                    reviewModal.classList.add('show');
-                }
-            }
-        }, 2000);
-    }
-};
-
-// ============================================
-// INTEGRATION WITH EXISTING GAME CONTROLLER
-// ============================================
-
-// Wait for the page to fully load before setting up integrations
-window.addEventListener('load', function() {
-    console.log('Setting up ReviewManager integration with language support...');
-    
-    // Hook into scenario selection to store the original ID
-    if (typeof gameController !== 'undefined') {
-        // Store original selectScenario function
-        const originalSelectScenario = gameController.selectScenario;
-        if (originalSelectScenario) {
-            gameController.selectScenario = function(scenarioId) {
-                console.log('Scenario selected with ID:', scenarioId);
-                // Store the scenario ID for later use
-                if (typeof ReviewManager !== 'undefined') {
-                    ReviewManager.storeScenarioId({ id: scenarioId });
-                }
-                // Start monitoring for game completion
-                GameCompletionDetector.startMonitoring();
-                // Call original function
-                return originalSelectScenario.call(this, scenarioId);
-            };
-        }
-        
-        // Override showGameReview function
-        const originalShowGameReview = gameController.showGameReview || gameController.prepareGameReview;
-        
-        gameController.showGameReviewEnhanced = async function() {
-            console.log('Running enhanced game review...');
-            
-            // Call the original function if it exists
-            if (originalShowGameReview) {
-                originalShowGameReview.call(this);
-            }
-            
-            // Wait a bit for the review content to be rendered
-            setTimeout(async () => {
-                if (typeof ReviewManager !== 'undefined') {
-                    await ReviewManager.enhanceGameReview();
-                }
-            }, 500);
-        };
-        
-        // Hook into the review button
-        const reviewButton = document.getElementById('show-review-button');
-        if (reviewButton) {
-            reviewButton.onclick = async function() {
-                console.log('Review button clicked');
-                await gameController.showGameReviewEnhanced();
-                gameController.showGameReviewModal();
-            };
-        }
-        
-        // Also hook into the prepareGameReview function if it exists
-        if (gameController.prepareGameReview) {
-            const originalPrepareGameReview = gameController.prepareGameReview;
-            gameController.prepareGameReview = async function() {
-                console.log('Preparing enhanced game review...');
-                originalPrepareGameReview.call(this);
-                
-                // Wait for the DOM to update
-                setTimeout(async () => {
-                    if (typeof ReviewManager !== 'undefined') {
-                        await ReviewManager.enhanceGameReview();
-                    }
-                }, 500);
-            };
-        }
-        
-        // Hook into choice submission to monitor game progress
-        if (gameController.submitChoice) {
-            const originalSubmitChoice = gameController.submitChoice;
-            gameController.submitChoice = function() {
-                console.log('Choice submitted, checking game state...');
-                const result = originalSubmitChoice.call(this);
-                
-                // Check for completion after choice processing
-                setTimeout(() => {
-                    if (GameCompletionDetector.isMonitoring) {
-                        GameCompletionDetector.checkGameCompletion();
-                    }
-                }, 1000);
-                
-                return result;
-            };
-        }
-        
-        // Hook into any game state changes
-        if (gameController.updateGameState) {
-            const originalUpdateGameState = gameController.updateGameState;
-            gameController.updateGameState = function() {
-                const result = originalUpdateGameState.call(this);
-                
-                // Check for completion after state update
-                setTimeout(() => {
-                    if (GameCompletionDetector.isMonitoring) {
-                        GameCompletionDetector.checkGameCompletion();
-                    }
-                }, 500);
-                
-                return result;
-            };
-        }
-    }
-    
-    // Also monitor for changes in gameState
-    if (typeof gameState !== 'undefined') {
-        // Create a proxy to monitor gameState changes
-        const originalGameState = gameState;
-        window.gameState = new Proxy(originalGameState, {
-            set(target, property, value) {
-                target[property] = value;
-                
-                // If game history or stage changed, check completion
-                if (property === 'gameHistory' || property === 'currentStage') {
-                    setTimeout(() => {
-                        if (GameCompletionDetector.isMonitoring) {
-                            GameCompletionDetector.checkGameCompletion();
-                        }
-                    }, 500);
-                }
-                
-                return true;
-            }
-        });
-    }
-    
-    // Find and override any review-related buttons
-    document.addEventListener('click', async function(e) {
-        if (e.target && e.target.classList && e.target.classList.contains('continue-button')) {
-            if (e.target.textContent.includes('View Complete Review') || 
-                e.target.textContent.includes('View Training Report') ||
-                e.target.textContent.includes('Zobrazit kompletní hodnocení') ||
-                e.target.textContent.includes('Zobrazit zprávu o výcviku')) {
-                console.log('Review button detected, enhancing review...');
-                setTimeout(async () => {
-                    if (typeof ReviewManager !== 'undefined') {
-                        await ReviewManager.enhanceGameReview();
-                    }
-                }, 500);
-            }
-        }
-    });
-    
-    // Add to gameState if it doesn't have these methods
-    if (typeof gameState !== 'undefined') {
-        if (!gameState.getPerformanceMetrics) {
-            gameState.getPerformanceMetrics = function() {
-                const percentage = Math.round((this.score / this.maxScore) * 100) || 0;
-                let performanceLevel = 'poor';
-                
-                if (percentage >= 90) performanceLevel = 'perfect';
-                else if (percentage >= 70) performanceLevel = 'good';
-                else if (percentage >= 50) performanceLevel = 'average';
-                
-                return {
-                    percentage: percentage,
-                    performanceLevel: performanceLevel,
-                    totalMistakes: (this.gameHistory || []).filter(item => item.type === 'negative').length,
-                    perfectRun: (this.gameHistory || []).every(item => item.type === 'positive' && item.attempt === 1),
-                    firstTryCorrect: (this.gameHistory || []).filter(item => item.type === 'positive' && item.attempt === 1).length,
-                    totalDecisions: (this.gameHistory || []).filter(item => item.type === 'positive').length
-                };
-            };
-        }
-    }
-    
-    // Manual completion trigger for testing
-    window.forceGameCompletion = function() {
-        console.log('🔧 MANUAL: Forcing game completion...');
-        GameCompletionDetector.triggerGameCompletion();
-    };
-    
-    // Manual review trigger for testing  
-    window.showReviewNow = async function() {
-        console.log('🔧 MANUAL: Showing review now...');
-        if (typeof gameController !== 'undefined' && gameController.showGameReviewEnhanced) {
-            await gameController.showGameReviewEnhanced();
-            gameController.showGameReviewModal();
-        }
-    };
-    
-    console.log('🎯 Game completion monitoring system loaded!');
-    console.log('💡 Debug commands available:');
-    console.log('   - forceGameCompletion() - Force game to complete');
-    console.log('   - showReviewNow() - Show review immediately');
-    console.log('   - GameCompletionDetector.checkGameCompletion() - Manual check');
-});
-
-// ============================================
-// DEVELOPMENT HELPERS
-// ============================================
-
-// Helper function to check if Czech review files exist
-async function checkCzechReviewFiles() {
-    const scenarios = ['traffic-stop', 'hostel-negotiation', 'youth-interaction', 'mental-health', 'noise-complaint', 'nightclub-fracas', 'domestic-crisis'];
-    const results = {};
-    
-    const base = (typeof CONFIG !== 'undefined' && CONFIG.BASE_URL != null) ? CONFIG.BASE_URL : '';
-    for (const scenario of scenarios) {
-        const url = `${base}${base.endsWith('/') ? '' : '/'}scenarios/reviews/review-${scenario}-cs.json`;
-        try {
-            const response = await fetch(url, { method: 'HEAD' });
-            results[scenario] = response.ok;
-        } catch (error) {
-            results[scenario] = false;
-        }
-    }
-    
-    console.log('Czech review file availability:', results);
-    return results;
-}
-
-// Development helper to test language switching
-function testLanguageSwitching() {
-    console.log('Testing language switching for reviews...');
-    
-    // Test switching to Czech
-    if (typeof ReviewManager !== 'undefined') {
-        ReviewManager.onLanguageChange('cs');
-        console.log('Switched to Czech');
-        
-        // Test switching back to English
-        setTimeout(() => {
-            ReviewManager.onLanguageChange('en');
-            console.log('Switched back to English');
-        }, 2000);
-    }
-}
-
-// Make functions available globally for testing
-window.checkCzechReviewFiles = checkCzechReviewFiles;
-window.testLanguageSwitching = testLanguageSwitching;
 
     </script>
 

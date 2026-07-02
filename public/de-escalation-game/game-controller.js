@@ -5,8 +5,25 @@
 
 class GameController {
     constructor() {
+        this.pendingTimeouts = []; // Registry of scheduled dialogue/choice timeouts (cancellable)
         this.initializeEventListeners();
         this.reviewData = null; // Will hold the review JSON for current scenario
+    }
+
+    // Schedule a timeout that can be cancelled when the player leaves a scenario,
+    // so stale NPC lines/choices never leak into a new run.
+    scheduleTimeout(callback, delay) {
+        const id = setTimeout(() => {
+            this.pendingTimeouts = this.pendingTimeouts.filter(t => t !== id);
+            callback();
+        }, delay);
+        this.pendingTimeouts.push(id);
+        return id;
+    }
+
+    clearPendingTimeouts() {
+        this.pendingTimeouts.forEach(id => clearTimeout(id));
+        this.pendingTimeouts = [];
     }
 
     initializeEventListeners() {
@@ -19,8 +36,27 @@ class GameController {
                         choices[index].click();
                     }
                 } else if (e.key === 'Enter' && gameState.selectedChoice !== null) {
+                    // If focus is on a choice button, let its own click activation handle
+                    // Enter — otherwise Enter would submit the previously selected choice.
+                    if (e.target && e.target.classList && e.target.classList.contains('choice-button')) {
+                        return;
+                    }
                     this.submitChoice();
                 }
+            }
+        });
+
+        // Escape closes dialogs that have a close affordance (review modal, badge popup)
+        document.addEventListener('keydown', (e) => {
+            if (e.key !== 'Escape') return;
+            const reviewModal = document.getElementById('review-modal-overlay');
+            if (reviewModal && reviewModal.classList.contains('show')) {
+                this.closeReviewModal();
+                return;
+            }
+            const badgePopup = document.getElementById('badge-earned');
+            if (badgePopup && badgePopup.classList.contains('show')) {
+                this.closeBadgePopup();
             }
         });
 
@@ -96,58 +132,61 @@ class GameController {
 
     async loadReviewData(scenarioId) {
         const lang = gameState.currentLanguage;
-        // Fallback: numeric EN scenarios 4,5,7 use slug-based review files (no review-4-en, etc.)
-        const numericToSlugReview = { 4: 'mental-health-balanced', 5: 'noise-complaint', 7: 'nightclub-fracas' };
         try {
-            let reviewPath = `${CONFIG.BASE_URL}scenarios/reviews/review-${scenarioId}-${lang}.json`;
+            const reviewPath = `${CONFIG.BASE_URL}scenarios/reviews/review-${scenarioId}-${lang}.json`;
             this.reviewData = await this.loadJSON(reviewPath);
             if (gameState) gameState.reviewData = this.reviewData;
             console.log('Review data loaded for scenario:', scenarioId);
-        } catch (first) {
-            const slug = numericToSlugReview[scenarioId];
-            if (slug && lang === 'en') {
-                try {
-                    const fallbackPath = `${CONFIG.BASE_URL}scenarios/reviews/review-${slug}-en.json`;
-                    this.reviewData = await this.loadJSON(fallbackPath);
-                    if (gameState) gameState.reviewData = this.reviewData;
-                    console.log('Review data loaded (fallback) for scenario:', scenarioId, '->', slug);
-                } catch (e) {
-                    this.reviewData = null;
-                    if (gameState) gameState.reviewData = null;
-                }
-            } else {
-                this.reviewData = null;
-                if (gameState) gameState.reviewData = null;
-            }
+        } catch (e) {
+            this.reviewData = null;
+            if (gameState) gameState.reviewData = null;
         }
     }
 
     loadProgress() {
-        const savedBadges = localStorage.getItem(CONFIG.STORAGE_KEYS.BADGES);
-        if (savedBadges) {
-            gameState.earnedBadges = JSON.parse(savedBadges);
+        // localStorage may be blocked (iframe embeds) or hold corrupted values —
+        // never let that kill initialization.
+        try {
+            const savedBadges = localStorage.getItem(CONFIG.STORAGE_KEYS.BADGES);
+            if (savedBadges) {
+                const badges = JSON.parse(savedBadges);
+                if (Array.isArray(badges)) {
+                    gameState.earnedBadges = badges;
+                }
+            }
+        } catch (e) {
+            console.warn('Could not restore saved badges:', e);
+            gameState.earnedBadges = [];
         }
-        
-        const savedProgress = localStorage.getItem(CONFIG.STORAGE_KEYS.PROGRESS);
-        if (savedProgress) {
-            const progress = JSON.parse(savedProgress);
-            // Restore saved progress data
-            if (progress.totalScore !== undefined) {
-                gameState.score = progress.totalScore;
+
+        try {
+            const savedProgress = localStorage.getItem(CONFIG.STORAGE_KEYS.PROGRESS);
+            if (savedProgress) {
+                const progress = JSON.parse(savedProgress);
+                // Restore saved progress data
+                if (progress && progress.totalScore !== undefined) {
+                    gameState.score = progress.totalScore;
+                }
+                if (progress && progress.language) {
+                    gameState.currentLanguage = progress.language;
+                }
             }
-            if (progress.language) {
-                gameState.currentLanguage = progress.language;
-            }
+        } catch (e) {
+            console.warn('Could not restore saved progress:', e);
         }
     }
 
     saveProgress() {
-        localStorage.setItem(CONFIG.STORAGE_KEYS.BADGES, JSON.stringify(gameState.earnedBadges));
-        localStorage.setItem(CONFIG.STORAGE_KEYS.PROGRESS, JSON.stringify({
-            lastPlayed: Date.now(),
-            totalScore: gameState.score,
-            language: gameState.currentLanguage
-        }));
+        try {
+            localStorage.setItem(CONFIG.STORAGE_KEYS.BADGES, JSON.stringify(gameState.earnedBadges));
+            localStorage.setItem(CONFIG.STORAGE_KEYS.PROGRESS, JSON.stringify({
+                lastPlayed: Date.now(),
+                totalScore: gameState.score,
+                language: gameState.currentLanguage
+            }));
+        } catch (e) {
+            console.warn('Could not save progress:', e);
+        }
     }
 
     startGame() {
@@ -157,6 +196,8 @@ class GameController {
 
     async selectScenario(scenarioId) {
         console.log('Selecting scenario:', scenarioId);
+        // Cancel any dialogue/choice timeouts left over from a previous run
+        this.clearPendingTimeouts();
         gameState.setState('LOADING');
         UIManager.showLoading();
         
@@ -304,17 +345,17 @@ class GameController {
                 const entry = typeof dialogue === 'string'
                     ? { character: 'npc', text: dialogue }
                     : (dialogue?.character != null && dialogue?.text != null ? dialogue : { character: 'npc', text: String(dialogue) });
-                setTimeout(() => {
+                this.scheduleTimeout(() => {
                     const typingIndicator = DialogueManager.showTypingIndicator(entry.character);
-                    setTimeout(() => {
+                    this.scheduleTimeout(() => {
                         typingIndicator.remove();
                         DialogueManager.addMessage(entry.character, entry.text);
                     }, CONFIG.TIMERS.TYPING_DELAY);
                 }, index * CONFIG.TIMERS.MESSAGE_DELAY);
             });
         }
-        
-        setTimeout(() => {
+
+        this.scheduleTimeout(() => {
             if (!stage.options || stage.options.length === 0) {
                 document.getElementById('choice-container').style.display = 'none';
                 this.showFinalRevelation();
@@ -332,19 +373,19 @@ class GameController {
         document.getElementById('choice-container').style.display = 'none';
         
         stage.dialogueSequence.forEach((dialogue, index) => {
-            setTimeout(() => {
+            this.scheduleTimeout(() => {
                 const typingIndicator = DialogueManager.showTypingIndicator(dialogue.character);
-                
-                setTimeout(() => {
+
+                this.scheduleTimeout(() => {
                     typingIndicator.remove();
                     DialogueManager.addMessage(
-                        dialogue.character, 
-                        dialogue.text, 
+                        dialogue.character,
+                        dialogue.text,
                         dialogue.character === 'officer'
                     );
-                    
+
                     if (index === stage.dialogueSequence.length - 1) {
-                        setTimeout(() => {
+                        this.scheduleTimeout(() => {
                             this.showFinalRevelation();
                         }, 3000);
                     }
@@ -374,7 +415,7 @@ class GameController {
         options.forEach((option, index) => {
             const button = document.createElement('button');
             button.className = 'choice-button';
-            button.innerHTML = `<span style="opacity: 0.6">${index + 1}.</span> ${option.text}`;
+            button.innerHTML = `<span style="opacity: 0.6">${index + 1}.</span> ${esc(option.text)}`;
             button.onclick = () => this.selectChoice(index, button);
             button.setAttribute('data-index', index);
             choiceOptions.appendChild(button);
@@ -420,7 +461,8 @@ class GameController {
         gameState.communicationScores.push(communicationScore);
         
         const canAdvance = selectedOption.type === 'positive' || selectedOption.type === 'partially_positive';
-        const isWrong = selectedOption.type !== 'positive';
+        // partially_positive advances and scores 75 — do not style it as a wrong (red) bubble
+        const isWrong = !canAdvance;
         DialogueManager.addMessage('officer', selectedOption.text, true, isWrong);
         
         // Graduated scoring: 100 (first-try positive), 75 (first-try partial), 50 (retry success)
@@ -438,19 +480,19 @@ class GameController {
         }
         UIManager.updateScore();
         
-        setTimeout(() => {
+        this.scheduleTimeout(() => {
             const typingIndicator = DialogueManager.showTypingIndicator('trainer');
-            
-            setTimeout(() => {
+
+            this.scheduleTimeout(() => {
                 typingIndicator.remove();
                 DialogueManager.addMessage(
-                    'trainer', 
-                    selectedOption.feedback, 
-                    false, 
-                    false, 
+                    'trainer',
+                    selectedOption.feedback,
+                    false,
+                    false,
                     selectedOption.type
                 );
-                
+
                 if (selectedOption.type === 'positive') {
                     this.playSound('success');
                 } else {
@@ -479,7 +521,7 @@ class GameController {
         
         document.getElementById('choice-container').style.display = 'none';
         
-        setTimeout(() => {
+        this.scheduleTimeout(() => {
             gameState.isSubmitting = false;
             if (canAdvance && gameState.currentStage < gameState.currentScenario.stages.length - 1) {
                 this.continueToNextStage();
@@ -574,12 +616,12 @@ class GameController {
             i18n.t('game.retryNeutral');
         
         const typingIndicator = DialogueManager.showTypingIndicator('trainer');
-        
-        setTimeout(() => {
+
+        this.scheduleTimeout(() => {
             typingIndicator.remove();
             DialogueManager.addMessage('trainer', retryMessage);
-            
-            setTimeout(() => {
+
+            this.scheduleTimeout(() => {
                 document.getElementById('choice-container').style.display = 'block';
                 this.showChoices(stage.options, stage.prompt);
             }, 1500);
@@ -618,31 +660,31 @@ class GameController {
         if (scenario.finalMessage?.keyLessons && scenario.finalMessage.keyLessons.length > 0) {
             keyLessonsHTML = `
                 <div class="key-lessons">
-                    <h4>📚 ${i18n.t('review.keyLessons') || 'Key Lessons'}</h4>
+                    <h4>📚 ${esc(i18n.t('review.keyLessons') || 'Key Lessons')}</h4>
                     <ul>
-                        ${scenario.finalMessage.keyLessons.map(lesson => `<li>${lesson}</li>`).join('')}
+                        ${scenario.finalMessage.keyLessons.map(lesson => `<li>${esc(lesson)}</li>`).join('')}
                     </ul>
                 </div>
             `;
         }
-        
+
         let finalHTML = `
             <div class="final-score">
-                <span class="score-emoji">${performanceMessages.emoji || '🎯'}</span>
+                <span class="score-emoji">${esc(performanceMessages.emoji || '🎯')}</span>
                 <div>
-                    <div>${performanceMessages.title || i18n.t('review.complete')}</div>
-                    <div>${analysis.percentage}% — ${i18n.t('review.grade') || 'Grade'} ${analysis.grade}</div>
+                    <div>${esc(performanceMessages.title || i18n.t('review.complete'))}</div>
+                    <div>${analysis.percentage}% — ${esc(i18n.t('review.grade') || 'Grade')} ${analysis.grade}</div>
                 </div>
             </div>
-            
+
             <div class="revelation">
-                ${scenario.finalMessage?.revelation || i18n.t('review.wellDone')}
+                ${esc(scenario.finalMessage?.revelation || i18n.t('review.wellDone'))}
             </div>
-            
+
             ${keyLessonsHTML}
-            
+
             <button class="trainer-view-report-btn" onclick="gameController.prepareGameReview()">
-                📊 ${i18n.t('review.viewComplete')}
+                📊 ${esc(i18n.t('review.viewComplete'))}
             </button>
         `;
         
@@ -751,7 +793,7 @@ class GameController {
         const descEl = document.getElementById('badge-earned-desc');
         
         iconEl.textContent = badge.icon || '🏅';
-        descEl.innerHTML = `<strong>${badge.name}</strong><br>${badge.description}`;
+        descEl.innerHTML = `<strong>${esc(badge.name)}</strong><br>${esc(badge.description)}`;
         
         popup.classList.add('show');
         this.playSound('fanfare');
@@ -762,9 +804,8 @@ class GameController {
     }
 
     async prepareGameReview() {
-        if (typeof ReviewManager !== 'undefined') {
-            await ReviewManager.loadReviewData();
-        }
+        // Review data (gameState.reviewData) was already loaded by loadReviewData()
+        // during scenario selection — it is the single source of truth.
         this.showGameReview();
         this.showGameReviewModal();
     }

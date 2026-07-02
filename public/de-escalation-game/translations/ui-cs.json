@@ -8,7 +8,8 @@
     "message": "Zkontrolujte prosím připojení a zkuste to znovu.",
     "retry": "Zkusit znovu",
     "runtime": "Chyba běhu",
-    "scenarioLoad": "Nepodařilo se načíst scénář"
+    "scenarioLoad": "Nepodařilo se načíst scénář",
+    "languageSwitch": "Přepnutí jazyka se nezdařilo. Zkuste to prosím znovu."
   },
   "header": {
     "title": "🚔 Trénink deeskalace konfliktů",

@@ -8,7 +8,8 @@
     "message": "Vă rugăm verificați conexiunea și încercați din nou.",
     "retry": "Reîncercați",
     "runtime": "Eroare de execuție",
-    "scenarioLoad": "Nu s-a putut încărca scenariul"
+    "scenarioLoad": "Nu s-a putut încărca scenariul",
+    "languageSwitch": "Schimbarea limbii a eșuat. Vă rugăm să încercați din nou."
   },
   "header": {
     "title": "🚔 Antrenament de dezescaladare a conflictelor",

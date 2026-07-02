@@ -14,7 +14,13 @@ class I18nManager {
     }
 
     getSavedLanguage() {
-        return localStorage.getItem(CONFIG.STORAGE_KEYS.LANGUAGE);
+        // localStorage can be unavailable (blocked third-party storage in iframe embeds, privacy modes)
+        try {
+            return localStorage.getItem(CONFIG.STORAGE_KEYS.LANGUAGE);
+        } catch (e) {
+            console.warn('localStorage unavailable, using default language:', e);
+            return null;
+        }
     }
 
     async init() {
@@ -53,7 +59,11 @@ class I18nManager {
         }
 
         this.currentLanguage = lang;
-        localStorage.setItem(CONFIG.STORAGE_KEYS.LANGUAGE, lang);
+        try {
+            localStorage.setItem(CONFIG.STORAGE_KEYS.LANGUAGE, lang);
+        } catch (e) {
+            console.warn('Could not persist language preference:', e);
+        }
         
         // Update body data attribute for CSS adjustments
         document.body.setAttribute('data-lang', lang);
@@ -148,7 +158,11 @@ class GameState {
         this.timeRemaining = CONFIG.TIMERS.CHOICE_TIMEOUT;
         this.choiceTimer = null;
         this.isSubmitting = false;
-        this.soundEnabled = localStorage.getItem(CONFIG.STORAGE_KEYS.SOUND_ENABLED) !== 'false';
+        try {
+            this.soundEnabled = localStorage.getItem(CONFIG.STORAGE_KEYS.SOUND_ENABLED) !== 'false';
+        } catch (e) {
+            this.soundEnabled = true;
+        }
         
         // Enhanced tracking for comprehensive review
         this.choiceTypes = []; // Track pattern of choices (positive/neutral/negative)

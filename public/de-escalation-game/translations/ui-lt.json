@@ -7,7 +7,8 @@
     "message": "Patikrinkite ryšį ir bandykite dar kartą.",
     "retry": "Bandyti dar kartą",
     "runtime": "Vykdymo klaida",
-    "scenarioLoad": "Nepavyko įkelti scenarijaus"
+    "scenarioLoad": "Nepavyko įkelti scenarijaus",
+    "languageSwitch": "Nepavyko perjungti kalbos. Bandykite dar kartą."
   },
   "header": {
     "title": "Policijos komunikacijos mokymo sistema",
