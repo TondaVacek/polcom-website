@@ -565,6 +565,66 @@
       "name": "Youth Park Expert",
       "description": "Completed youth park scenario with perfect score",
       "icon": "⭐"
+    },
+    "perfect-traffic": {
+      "name": "Perfect Traffic Stop",
+      "description": "Achieved a perfect score in the traffic stop scenario",
+      "icon": "🏆"
+    },
+    "perfect-negotiation": {
+      "name": "Perfect Negotiation",
+      "description": "Achieved a perfect score in the hostel noise complaint negotiation",
+      "icon": "🏆"
+    },
+    "perfect-youth": {
+      "name": "Perfect Youth Interaction",
+      "description": "Achieved a perfect score in the youth interaction scenario",
+      "icon": "🏆"
+    },
+    "perfect-crisis": {
+      "name": "Perfect Crisis Response",
+      "description": "Achieved a perfect score in the mental health crisis scenario",
+      "icon": "🏆"
+    },
+    "perfect-noise": {
+      "name": "Perfect Noise Complaint Response",
+      "description": "Achieved a perfect score in the noise complaint scenario",
+      "icon": "🏆"
+    },
+    "perfect-market": {
+      "name": "Perfect Market Mediation",
+      "description": "Achieved a perfect score in the market dispute scenario",
+      "icon": "🏆"
+    },
+    "perfect-street": {
+      "name": "Perfect Street Response",
+      "description": "Achieved a perfect score in the nightclub street fracas scenario",
+      "icon": "🏆"
+    },
+    "perfect-domestic-crisis": {
+      "name": "Perfect Domestic Crisis Response",
+      "description": "Achieved a perfect score in the domestic crisis scenario",
+      "icon": "🌟"
+    },
+    "custody-mediator": {
+      "name": "Custody Exchange Mediator",
+      "description": "Demonstrated mediation skills during a child custody exchange",
+      "icon": "⚖️"
+    },
+    "hospital-specialist": {
+      "name": "Hospital Intervention Specialist",
+      "description": "Demonstrated expertise during a hospital intervention",
+      "icon": "🏥"
+    },
+    "road-rage-specialist": {
+      "name": "Road Rage Specialist",
+      "description": "Expertly defused a road rage confrontation",
+      "icon": "🚗"
+    },
+    "vendor-mediator": {
+      "name": "Street Vendor Mediator",
+      "description": "Resolved a street vendor dispute fairly and peacefully",
+      "icon": "🤝"
     }
   }
 }

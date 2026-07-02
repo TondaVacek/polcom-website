@@ -364,6 +364,10 @@
     }
   ],
   "characters": {
+    "officer": {
+      "name": "Vy (policista)",
+      "avatar": "👮"
+    },
     "dispatcher": {
       "name": "Dispečink",
       "avatar": "📻"

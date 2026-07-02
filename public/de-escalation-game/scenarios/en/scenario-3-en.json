@@ -373,6 +373,10 @@
         }
     ],
     "characters": {
+        "officer": {
+            "name": "You (Officer)",
+            "avatar": "👮"
+        },
         "dispatcher": { "name": "Dispatcher", "avatar": "📻" },
         "marcus": { "name": "Marcus Williams (teen, 17)", "avatar": "🧑‍🦱" },
         "jaylen": { "name": "Jaylen Carter (teen, 15)", "avatar": "👦" },

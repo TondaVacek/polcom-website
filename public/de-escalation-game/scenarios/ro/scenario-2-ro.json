@@ -364,6 +364,10 @@
         }
     ],
     "characters": {
+        "officer": {
+            "name": "Tu (Ofițer)",
+            "avatar": "👮"
+        },
         "dispatcher": {
             "name": "Dispecerat",
             "avatar": "📻"

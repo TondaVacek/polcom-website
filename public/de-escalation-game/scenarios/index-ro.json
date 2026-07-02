@@ -26,26 +26,26 @@
     },
     {
       "id": 2,
-      "title": "Dispută domestică",
-      "description": "Gestionați o situație sensibilă cu empatie și răbdare",
-      "icon": "🏠",
-      "difficulty": 4,
-      "duration": "20-25",
+      "title": "Negocierea unei plângeri de zgomot la hostel",
+      "description": "Învățați să negociați o rezolvare pașnică în timpul unei plângeri de zgomot noaptea târziu într-un hostel aglomerat",
+      "icon": "🏨",
+      "difficulty": 3,
+      "duration": "15-20",
       "badges": {
-        "mediator": {
+        "negotiation-expert": {
           "minScore": 75
         },
-        "perfect-domestic": {
+        "perfect-negotiation": {
           "minScore": 100
         }
       },
       "modules": {
         "AL": 4,
-        "RNDC": 4,
-        "CHPS": 3,
+        "RNDC": 3,
+        "CHPS": 2,
         "CDR": 4,
-        "NPT": 3,
-        "EIC": 4
+        "NPT": 5,
+        "EIC": 3
       }
     },
     {
@@ -122,25 +122,25 @@
     },
     {
       "id": 6,
-      "title": "Negociere plângere zgomot la hostel",
-      "description": "Învățați să negociați o rezolvare pașnică în timpul unei plângeri de zgomot noaptea târziu într-un hostel aglomerat.",
-      "icon": "🏨",
+      "title": "Disputa la piață — Negociere calmă",
+      "description": "O neînțelegere legată de un loc de parcare la o piață de weekend a atras atenția. Folosiți o comunicare clară și o negociere pașnică pentru a rezolva rapid disputa",
+      "icon": "🛒",
       "difficulty": 3,
       "duration": "15-20",
       "badges": {
-        "negotiation-expert": {
-          "minScore": 80
+        "market-mediator": {
+          "minScore": 70
         },
-        "perfect-negotiation": {
+        "perfect-market": {
           "minScore": 100
         }
       },
       "modules": {
         "AL": 4,
-        "RNDC": 3,
+        "RNDC": 5,
         "CHPS": 2,
-        "CDR": 4,
-        "NPT": 5,
+        "CDR": 5,
+        "NPT": 4,
         "EIC": 3
       }
     },
@@ -150,12 +150,12 @@
       "description": "Comunicați clar într-un mediu de mare presiune și preveniți escaladarea.",
       "icon": "🚨",
       "difficulty": 4,
-      "duration": "15-20",
+      "duration": "18-22",
       "badges": {
-        "crowd-control-expert": {
+        "street-specialist": {
           "minScore": 80
         },
-        "perfect-crowd-control": {
+        "perfect-street": {
           "minScore": 100
         }
       },
@@ -540,6 +540,81 @@
       "name": "Mediator vânzător stradal",
       "description": "A demonstrat abilități de mediere în situația vânzătorului stradal",
       "icon": "🍜"
+    },
+    "master-communicator": {
+      "name": "Maestru al comunicării",
+      "description": "A finalizat cu succes toate scenariile de antrenament",
+      "icon": "🎖️"
+    },
+    "perfect-scenario-1": {
+      "name": "Control de trafic perfect",
+      "description": "A finalizat perfect scenariul controlului de trafic",
+      "icon": "⭐"
+    },
+    "perfect-scenario-2": {
+      "name": "Rezolvare perfectă a disputei domestice",
+      "description": "A finalizat perfect scenariul disputei domestice",
+      "icon": "⭐"
+    },
+    "perfect-scenario-3": {
+      "name": "Interacțiune perfectă cu tinerii",
+      "description": "A finalizat perfect scenariul interacțiunii cu tinerii",
+      "icon": "⭐"
+    },
+    "perfect-scenario-4": {
+      "name": "Intervenție perfectă în criză",
+      "description": "A finalizat perfect scenariul crizei de sănătate mintală",
+      "icon": "⭐"
+    },
+    "perfect-scenario-5": {
+      "name": "Rezolvare perfectă a plângerii de zgomot",
+      "description": "A finalizat perfect scenariul plângerii pentru zgomot",
+      "icon": "⭐"
+    },
+    "perfect-scenario-6": {
+      "name": "Negociere perfectă la hostel",
+      "description": "A finalizat perfect scenariul negocierii la hostel",
+      "icon": "⭐"
+    },
+    "perfect-scenario-7": {
+      "name": "Gestionare perfectă a încăierării stradale",
+      "description": "A finalizat perfect scenariul încăierării stradale la clubul de noapte",
+      "icon": "⭐"
+    },
+    "perfect-scenario-domestic-crisis": {
+      "name": "Gestionare perfectă a crizei domestice",
+      "description": "A finalizat perfect scenariul disputei domestice cu criză de sănătate mintală",
+      "icon": "⭐"
+    },
+    "domestic-expert": {
+      "name": "Specialist în situații domestice",
+      "description": "A gestionat situația domestică cu profesionalism și compasiune",
+      "icon": "🏆"
+    },
+    "crisis-intervention": {
+      "name": "Maestru al intervenției în criză",
+      "description": "A gestionat perfect criza de sănătate mintală",
+      "icon": "🌟"
+    },
+    "market-mediator": {
+      "name": "Ofițer al păcii în piață",
+      "description": "Gestionare expertă a disputelor din spațiul public",
+      "icon": "🏪"
+    },
+    "perfect-market": {
+      "name": "Mediere perfectă la piață",
+      "description": "Scor perfect în scenariul disputei de la piață",
+      "icon": "🏆"
+    },
+    "street-specialist": {
+      "name": "Expert al turei de noapte",
+      "description": "Gestionarea situațiilor tensionate din viața de noapte",
+      "icon": "🌃"
+    },
+    "perfect-street": {
+      "name": "Răspuns stradal perfect",
+      "description": "Scor perfect în scenariul încăierării de la clubul de noapte",
+      "icon": "🏆"
     }
   },
   "difficultyLevels": {

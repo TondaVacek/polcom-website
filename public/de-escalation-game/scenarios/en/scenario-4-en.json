@@ -369,6 +369,10 @@
         }
     ],
     "characters": {
+        "officer": {
+            "name": "You (Officer)",
+            "avatar": "👮"
+        },
         "dispatcher": {"name": "Dispatcher", "avatar": "📻"},
         "elena": {"name": "Elena Marchetti (34, in crisis)", "avatar": "😰"},
         "david": {"name": "David (pharmacy worker)", "avatar": "👨‍⚕️"},

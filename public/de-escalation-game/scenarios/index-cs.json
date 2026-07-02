@@ -26,26 +26,26 @@
     },
     {
       "id": 2,
-      "title": "Domácí spor",
-      "description": "Zvládněte citlivou domácí situaci s empatií a trpělivostí",
-      "icon": "🏠",
-      "difficulty": 4,
-      "duration": "20-25",
+      "title": "Vyjednávání stížnosti na hluk v hostelu",
+      "description": "Naučte se vyjednat mírové řešení během pozdní noční stížnosti na hluk v rušném městském hostelu",
+      "icon": "🏨",
+      "difficulty": 3,
+      "duration": "15-20",
       "badges": {
-        "mediator": {
+        "negotiation-expert": {
           "minScore": 75
         },
-        "perfect-domestic": {
+        "perfect-negotiation": {
           "minScore": 100
         }
       },
       "modules": {
         "AL": 4,
-        "RNDC": 4,
-        "CHPS": 3,
+        "RNDC": 3,
+        "CHPS": 2,
         "CDR": 4,
-        "NPT": 3,
-        "EIC": 4
+        "NPT": 5,
+        "EIC": 3
       }
     },
     {
@@ -122,25 +122,25 @@
     },
     {
       "id": 6,
-      "title": "Vyjednávání stížnosti na hluk v hostelu",
-      "description": "Naučte se vyjednat mírové řešení během pozdní noční stížnosti na hluk v rušném městském hostelu",
-      "icon": "🏨",
+      "title": "Tržní spor — Klidné vyjednávání",
+      "description": "Neshoda o parkovací místo na víkendovém trhu přitáhla pozornost. Použijte jasnou komunikaci a mírné vyjednávání k rychlému vyřešení sporu",
+      "icon": "🛒",
       "difficulty": 3,
       "duration": "15-20",
       "badges": {
-        "negotiation-expert": {
-          "minScore": 80
+        "market-mediator": {
+          "minScore": 70
         },
-        "perfect-negotiation": {
+        "perfect-market": {
           "minScore": 100
         }
       },
       "modules": {
         "AL": 4,
-        "RNDC": 3,
+        "RNDC": 5,
         "CHPS": 2,
-        "CDR": 4,
-        "NPT": 5,
+        "CDR": 5,
+        "NPT": 4,
         "EIC": 3
       }
     },
@@ -150,12 +150,12 @@
       "description": "Komunikujte jasně v prostředí vysokého tlaku a předcházejte eskalaci vyhrocené hádky",
       "icon": "🚨",
       "difficulty": 4,
-      "duration": "15-20",
+      "duration": "18-22",
       "badges": {
-        "crowd-control-expert": {
+        "street-specialist": {
           "minScore": 80
         },
-        "perfect-crowd-control": {
+        "perfect-street": {
           "minScore": 100
         }
       },
@@ -176,11 +176,14 @@
       "difficulty": 5,
       "duration": "25-35",
       "badges": {
-        "advanced-crisis-specialist": {
-          "minScore": 85
+        "domestic-expert": {
+          "minScore": 90
+        },
+        "crisis-intervention": {
+          "minScore": 100
         },
         "perfect-domestic-crisis": {
-          "minScore": 100
+          "minScore": 120
         }
       },
       "modules": {
@@ -537,6 +540,81 @@
       "name": "Mediátor pouličního prodejce",
       "description": "Prokázal mediační dovednosti u pouličního prodejce",
       "icon": "🍜"
+    },
+    "master-communicator": {
+      "name": "Mistr komunikace",
+      "description": "Úspěšně dokončil všechny tréninkové scénáře",
+      "icon": "🎖️"
+    },
+    "perfect-scenario-1": {
+      "name": "Perfektní dopravní kontrola",
+      "description": "Perfektní zvládnutí scénáře dopravní kontroly",
+      "icon": "⭐"
+    },
+    "perfect-scenario-2": {
+      "name": "Perfektní řešení domácího sporu",
+      "description": "Perfektní zvládnutí scénáře domácího sporu",
+      "icon": "⭐"
+    },
+    "perfect-scenario-3": {
+      "name": "Perfektní interakce s mládeží",
+      "description": "Perfektní zvládnutí scénáře interakce s mládeží",
+      "icon": "⭐"
+    },
+    "perfect-scenario-4": {
+      "name": "Perfektní krizová intervence",
+      "description": "Perfektní zvládnutí scénáře krize duševního zdraví",
+      "icon": "⭐"
+    },
+    "perfect-scenario-5": {
+      "name": "Perfektní řešení stížnosti na hluk",
+      "description": "Perfektní zvládnutí scénáře stížnosti na hluk",
+      "icon": "⭐"
+    },
+    "perfect-scenario-6": {
+      "name": "Perfektní vyjednávání v hostelu",
+      "description": "Perfektní zvládnutí scénáře vyjednávání v hostelu",
+      "icon": "⭐"
+    },
+    "perfect-scenario-7": {
+      "name": "Perfektní zvládnutí pouliční rvačky",
+      "description": "Perfektní zvládnutí scénáře rvačky u nočního klubu",
+      "icon": "⭐"
+    },
+    "perfect-scenario-domestic-crisis": {
+      "name": "Perfektní zvládnutí domácí krize",
+      "description": "Perfektní zvládnutí scénáře domácího sporu s krizí duševního zdraví",
+      "icon": "⭐"
+    },
+    "market-mediator": {
+      "name": "Strážce klidu na trhu",
+      "description": "Expertní zvládnutí sporů ve veřejném prostoru",
+      "icon": "🏪"
+    },
+    "perfect-market": {
+      "name": "Perfektní mediace na trhu",
+      "description": "Dosažení plného počtu bodů ve scénáři tržního sporu",
+      "icon": "🏆"
+    },
+    "street-specialist": {
+      "name": "Expert noční směny",
+      "description": "Zvládnutí vypjatých situací nočního života",
+      "icon": "🌃"
+    },
+    "perfect-street": {
+      "name": "Perfektní zásah na ulici",
+      "description": "Dosažení plného počtu bodů ve scénáři rvačky u nočního klubu",
+      "icon": "🏆"
+    },
+    "crisis-intervention": {
+      "name": "Mistr krizové intervence",
+      "description": "Perfektní zvládnutí krize duševního zdraví se všemi metrikami na maximu",
+      "icon": "🌟"
+    },
+    "domestic-expert": {
+      "name": "Specialista na domácí zásahy",
+      "description": "Expertní a citlivé zvládnutí domácích situací",
+      "icon": "🏆"
     }
   },
   "difficultyLevels": {

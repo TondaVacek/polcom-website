@@ -369,6 +369,10 @@
         }
     ],
     "characters": {
+        "officer": {
+            "name": "Tu (Ofițer)",
+            "avatar": "👮"
+        },
         "dispatcher": {"name": "Dispecerat", "avatar": "📻"},
         "elena": {"name": "Elena Marchetti (34, în criză)", "avatar": "😰"},
         "david": {"name": "David (angajat farmacie)", "avatar": "👨‍⚕️"},

@@ -369,6 +369,10 @@
         }
     ],
     "characters": {
+        "officer": {
+            "name": "Vy (policista)",
+            "avatar": "👮"
+        },
         "dispatcher": {"name": "Dispečink", "avatar": "📻"},
         "elena": {"name": "Elena Marchetti (34, v krizi)", "avatar": "😰"},
         "david": {"name": "David (zaměstnanec lékárny)", "avatar": "👨‍⚕️"},

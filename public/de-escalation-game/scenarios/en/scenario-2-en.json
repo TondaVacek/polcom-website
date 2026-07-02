@@ -362,6 +362,10 @@
         }
     ],
     "characters": {
+        "officer": {
+            "name": "You (Officer)",
+            "avatar": "👮"
+        },
         "dispatcher": {
             "name": "Dispatcher",
             "avatar": "📻"

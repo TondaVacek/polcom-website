@@ -375,6 +375,10 @@
         }
     ],
     "characters": {
+        "officer": {
+            "name": "Jūs (Pareigūnas)",
+            "avatar": "👮"
+        },
         "dispatcher": {
             "name": "Dispečerinė",
             "avatar": "📻"
