@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="HOT CALL – an educational card simulation of communication and active listening for emergency services. Part of the POL-COM Erasmus+ project.">
   <title>HOT CALL - Card Simulation</title>
   <style>
     :root{--maxW:1300px;--gap:.8rem;--scale:1}
@@ -172,9 +173,17 @@
 
     /* Remove button on cards */
     .card.dynamic{cursor:pointer;}
-    .remove-btn{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:rgba(220,53,69,0.95);color:#fff;padding:0.5rem 1rem;border-radius:6px;font-size:1rem;font-weight:bold;display:none;pointer-events:none;z-index:10;}
-    .card.dynamic:hover .remove-btn{display:block;}
-    .card.dynamic:hover img{opacity:0.3;}
+    .remove-btn{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:rgba(220,53,69,0.95);color:#fff;padding:0.5rem 1rem;border-radius:6px;font-size:1rem;font-weight:bold;display:none;border:none;cursor:pointer;z-index:10;}
+    .remove-btn:hover{background:rgba(200,35,51,1);}
+    .card.dynamic:hover .remove-btn,.card.dynamic.show-remove .remove-btn,.card.dynamic:focus-within .remove-btn{display:block;}
+    .card.dynamic:hover img,.card.dynamic.show-remove img,.card.dynamic:focus-within img{opacity:0.3;}
+
+    /* Non-blocking toast message */
+    #toast{position:fixed;bottom:1.5rem;left:50%;transform:translateX(-50%);background:rgba(13,71,161,0.95);color:#fff;padding:0.7rem 1.4rem;border-radius:8px;font-size:1rem;z-index:2000;opacity:0;pointer-events:none;transition:opacity 0.3s;max-width:90vw;text-align:center;}
+    #toast.show{opacity:1;}
+
+    /* Placeholder shown when a card image fails to load */
+    .card-load-error{padding:1rem;text-align:center;font-size:0.9rem;color:#666;}
 
     /* Button states for when all cards are drawn */
     button.all-drawn{background:#4caf50!important;}
@@ -183,7 +192,7 @@
     /* Rules modal */
     .modal{display:none;position:fixed;z-index:1000;left:0;top:0;width:100%;height:100%;background:rgba(0,0,0,0.5);overflow:auto;}
     .modal-content{background:#fff;margin:5% auto;padding:2rem;width:min(90%,800px);border-radius:10px;position:relative;max-height:80vh;overflow-y:auto;}
-    .close-modal{position:absolute;right:1rem;top:1rem;font-size:2rem;font-weight:bold;cursor:pointer;color:#666;line-height:1;}
+    .close-modal{position:absolute;right:1rem;top:1rem;font-size:2rem;font-weight:bold;cursor:pointer;color:#666;line-height:1;background:none;border:none;padding:0;}
     .close-modal:hover{color:#000;}
     .modal h2{margin-top:0;color:#0d47a1;}
     .modal p{line-height:1.6;margin:1rem 0;}
@@ -305,10 +314,12 @@
     </div></div>
   </div>
 
+  <div id="toast" role="status" aria-live="polite"></div>
+
   <!-- Rules Modal (outside of gameScreen so it can show from startup too) -->
-  <div id="rulesModal" class="modal">
+  <div id="rulesModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="rulesTitle">
     <div class="modal-content">
-      <span class="close-modal" id="closeModal">&times;</span>
+      <button class="close-modal" id="closeModal" aria-label="Close">&times;</button>
       <h2 id="rulesTitle">Game Rules</h2>
       <div id="rulesContent">
         <p>Manual content will be loaded here.</p>
@@ -328,10 +339,9 @@
     deescalation: [11, 12, 13, 14, 15, 26, 27, 28, 29, 30, 41, 42, 43, 44, 45, 56, 57, 58, 59, 60, 71, 72, 73, 74, 75, 86, 87, 88, 89, 90]
   };
 
-  // Map card numbers to scene numbers (only 30 scenes available)
+  // Map card numbers to scene numbers (scenes exist only for situation cards, in deck order)
   function getSceneNumber(cardNumber) {
-    const situationOrder = [1, 2, 3, 4, 5, 16, 17, 18, 19, 20, 31, 32, 33, 34, 35, 46, 47, 48, 49, 50, 61, 62, 63, 64, 65, 76, 77, 78, 79, 80];
-    const index = situationOrder.indexOf(cardNumber);
+    const index = CARD_TYPES.situation.indexOf(cardNumber);
     return index !== -1 ? index + 1 : 1;
   }
 
@@ -346,9 +356,29 @@
     RO: BASE_URL + 'ROMANIA - Hot call game cards.pdf'
   };
   
-  // Current language
+  // Language codes: internal (ENG/CZ/LT/RO) -> asset/manual suffix
+  const LANG_CODES = { ENG: 'en', CZ: 'cz', LT: 'lt', RO: 'ro' };
+  const HTML_LANGS = { ENG: 'en', CZ: 'cs', LT: 'lt', RO: 'ro' };
+  const LANG_STORAGE_KEY = 'hotcall-lang';
+
+  // Current language (restored from a previous visit when available)
   let currentLang = 'ENG';
-  
+  let langRestored = false;
+  try {
+    const saved = localStorage.getItem(LANG_STORAGE_KEY);
+    if (saved && LANG_CODES[saved]) {
+      currentLang = saved;
+      langRestored = true;
+    }
+  } catch (e) { /* storage unavailable (private mode) – keep default */ }
+
+  function setLanguage(lang) {
+    if (!LANG_CODES[lang]) return;
+    currentLang = lang;
+    document.documentElement.lang = HTML_LANGS[lang];
+    try { localStorage.setItem(LANG_STORAGE_KEY, lang); } catch (e) { /* ignore */ }
+  }
+
   // Card decks
   let situationDeck = [];
   let escalationDeck = [];
@@ -370,6 +400,23 @@
       [a[i], a[j]] = [a[j], a[i]];
     }
   };
+
+  // Non-blocking replacement for alert()
+  let toastTimer = null;
+  function showToast(message) {
+    const toast = $('toast');
+    toast.textContent = message;
+    toast.classList.add('show');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => toast.classList.remove('show'), 2500);
+  }
+
+  // Preload the next card of each deck so draws feel instant
+  function preloadNextCards() {
+    [situationDeck, escalationDeck, deEscalationDeck].forEach(deck => {
+      if (deck.length) new Image().src = deck[deck.length - 1].url;
+    });
+  }
   
   // Startup screen translations
   const startupTranslations = {
@@ -447,12 +494,8 @@
     $('btnBackFromRules').textContent = t.backToMenu;
   }
   
-  // Update button text based on language
-  function updateButtonText() {
-    const langMap = { ENG: 'en', CZ: 'cz', LT: 'lt', RO: 'ro' };
-    const langCode = langMap[currentLang];
-
-    const translations = {
+  // In-game UI translations (incl. full rules/manual HTML per language)
+  const TRANSLATIONS = {
       ENG: {
         title: "HOT CALL - Training Simulation",
         situation: "Draw Situation",
@@ -906,27 +949,177 @@
         rules: "Taisyklės",
         downloadCards: "⬇ Atsisiųsti kortas",
         rulesTitle: "Žaidimo taisyklės",
-        rulesContent: `<p>Vadovo turinys bus įkeltas čia.</p>
-          <p>Tai mokymo simuliacija ekstremalioms situacijoms.</p>
-          <p>Žaidėjai traukia situacijų kortas ir reaguoja eskalacijos arba deeskalacijos kortomis.</p>
-          <div style="text-align:center;margin:1.5rem 0;">
-            <img src="https://pub-b33a41e64ab14f4d92f341fa4bf701bd.r2.dev/hot-call/hotcall-manual-lt-1.png" alt="Žaidimo apžvalga" style="max-width:100%;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,0.1);">
+        rulesContent: `
+          <h3>HOT CALL: KOMUNIKACIJOS IR AKTYVIOJO KLAUSYMOSI SIMULIACIJA KORTELĖMIS</h3>
+          <p><strong>Edukacinis kortelių žaidimas skubios pagalbos tarnyboms.</strong></p>
+
+          <div style="background:#f0f4f8;padding:1rem;border-radius:8px;margin:1rem 0;">
+            <p><strong>Trukmė:</strong> 1 pamokos valanda arba pagal poreikį</p>
+            <p><strong>Žaidėjų skaičius:</strong> 3–6 + instruktorius (Head Honcho), padėjėjai (Deputy Honcho) ir skubiosios pagalbos tarnybų nariai (Actionables)</p>
+            <p><strong>Tikslinė grupė:</strong> policijos pareigūnai, ugniagesiai, paramedikai, saugumo ir sveikatos priežiūros sričių studentai.</p>
           </div>
-          <p><em>Pilnas lietuviškas vadovas bus greitai prieinamas.</em></p>
+
           <div style="text-align:center;margin:1.5rem 0;">
-            <img src="https://pub-b33a41e64ab14f4d92f341fa4bf701bd.r2.dev/hot-call/hotcall-manual-lt-2.png" alt="Kortų pavyzdys" style="max-width:100%;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,0.1);">
+            <img src="https://pub-b33a41e64ab14f4d92f341fa4bf701bd.r2.dev/hot-call/hotcall-manual-lt-1.png" alt="Žaidimo apžvalga – kortelės ir scenos" style="max-width:100%;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,0.1);">
           </div>
+
+          <h4>Žaidimo tikslas:</h4>
+          <ul>
+            <li>Analizuoti imituojamas krizines situacijas ir nustatyti svarbiausius momentus, kuriuose buvo panaudotos moduliuose išmoktos komunikacijos technikos.</li>
+            <li>Padėti dalyviams atpažinti tinkamą ir netinkamą technikų naudojimą.</li>
+            <li>Suteikti galimybę treniruotis priimti sprendimus, bendrauti ir savireflektuoti modeliniuose scenarijuose.</li>
+          </ul>
+
+          <h4>Žaidimo turinys:</h4>
+          <ul>
+            <li><strong>SITUACIJOS kortelės</strong> (pradinės situacijos aprašymas – policijos, gaisrinės ar medicininės)</li>
+            <li><strong>ESKALACIJOS kortelės</strong> (situacijos pablogėjimas)</li>
+            <li><strong>DEESKALACIJOS kortelės</strong> (įtampos mažinimas, bendradarbiavimo galimybė)</li>
+            <li><strong>Miesto žemėlapis</strong> (fiktyvi erdvė, kurioje vyksta situacija – parkas, aikštė, ligoninė, daugiabutis...)</li>
+          </ul>
+
           <div style="text-align:center;margin:1.5rem 0;">
-            <img src="https://pub-b33a41e64ab14f4d92f341fa4bf701bd.r2.dev/hot-call/hotcall-manual-lt-3.png" alt="Situacijos traukimas" style="max-width:100%;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,0.1);">
+            <img src="https://pub-b33a41e64ab14f4d92f341fa4bf701bd.r2.dev/hot-call/hotcall-manual-lt-2.png" alt="SITUACIJOS kortelės pavyzdys su scenomis" style="max-width:100%;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,0.1);">
           </div>
+
+          <h4>Žaidimo taisyklės:</h4>
+
+          <h5>Žaidimo pradžia</h5>
+          <ul>
+            <li>Instruktorius – <strong>Head Honcho</strong> – paaiškina taisykles ir paskirsto vaidmenis.</li>
+            <li>Instruktoriaus padėjėjai – <strong>Deputy Honchos</strong> – reaguos pagal ištrauktas korteles (deeskalacija arba eskalacija).</li>
+            <li>Dalyviai – <strong>Actionables</strong> – vaidina skubios pagalbos tarnybų (policijos, ugniagesių, greitosios pagalbos) darbuotojus.</li>
+            <li>Instruktorius nusprendžia, ar komanda (arba atskiras dalyvis) spręs SITUACIJOS kortelę pagal vieną iš šių scenarijų (deeskalacija arba eskalacija), ar pagal kelis.</li>
+            <li>Žaidimą galima modifikuoti; Head Honcho gali pridėti savo korteles, nuspręsti dėl situacijų, pakeisti orą, paros laiką ir pan.</li>
+          </ul>
+
+          <h5>Simuliacijos pradžia – SITUACIJOS kortelė (SIT)</h5>
+          <ul>
+            <li>Komanda ištraukia arba gauna SITUACIJOS kortelę (pvz., „Atvykstate į parką, kur agresyvus vyras puola moterį.")</li>
+            <li>Dalyviai reaguoja – apibūdina, ką darytų, ką pasakytų, kaip bendrautų, gestikuliuotų ir pan.</li>
+          </ul>
+
           <div style="text-align:center;margin:1.5rem 0;">
-            <img src="https://pub-b33a41e64ab14f4d92f341fa4bf701bd.r2.dev/hot-call/hotcall-manual-lt-4.png" alt="Kelios kortos" style="max-width:100%;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,0.1);">
+            <img src="https://pub-b33a41e64ab14f4d92f341fa4bf701bd.r2.dev/hot-call/hotcall-manual-lt-3.png" alt="SITUACIJOS kortelės traukimas" style="max-width:100%;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,0.1);">
           </div>
+
+          <h5>Vystymasis – ESKALACIJOS (ESC) arba DEESKALACIJOS (DEE) kortelė</h5>
+          <ul>
+            <li>Head Honcho įvertina žaidėjų bendravimą ir nusprendžia, ar situacija eskaluojasi, ar deeskaluojasi.</li>
+            <li>Komanda traukia atitinkamą kortelę (pvz., „Vyras išsitraukia peilį" arba „Atvyksta jo žmona ir bando jį nuraminti.")</li>
+            <li>Čia Deputy Honchos atlieka kortelėse nurodytus vaidmenis.</li>
+            <li>Actionables vėl reaguoja, bendrauja ir bando išspręsti situaciją.</li>
+          </ul>
+
           <div style="text-align:center;margin:1.5rem 0;">
-            <img src="https://pub-b33a41e64ab14f4d92f341fa4bf701bd.r2.dev/hot-call/hotcall-manual-lt-5.png" alt="Kortos pašalinimas" style="max-width:100%;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,0.1);">
+            <img src="https://pub-b33a41e64ab14f4d92f341fa4bf701bd.r2.dev/hot-call/hotcall-manual-lt-4.png" alt="Kelios ištrauktos ESKALACIJOS/DEESKALACIJOS kortelės" style="max-width:100%;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,0.1);">
           </div>
+
+          <h5>Refleksija – grupinė diskusija</h5>
+          <p>Išsprendus (arba užbaigus) situaciją, vyksta refleksija:</p>
+          <ul>
+            <li>Kas pavyko? Kas nepavyko?</li>
+            <li>Ar buvo panaudota kokia nors bendravimo technika?</li>
+            <li>Kokie žodžiai, tonas ir neverbalinė komunikacija padėjo ar pakenkė?</li>
+            <li>Koks buvo rezultatas? Ką būtų buvę galima padaryti kitaip?</li>
+          </ul>
+
+          <h4>Vaidmenų aprašymai:</h4>
+
+          <h5>Instruktoriaus vaidmuo – Head Honcho:</h5>
+          <ul>
+            <li>Veda žaidimą – maišo korteles, reaguoja į veiksmus, prireikus keičia žaidimo taisykles.</li>
+            <li>Gali vaidinti antraeilius personažus (agresorius, liudininkus, civilius).</li>
+            <li>Vertina situacijos raidą ir sprendžia dėl eskalacijos ar deeskalacijos.</li>
+            <li>Fiksuoja žaidėjų pažangą ir pastabas.</li>
+            <li>Skatina žaidėjus apmąstyti – nesako, kas yra „teisinga", bet kas yra logiška.</li>
+          </ul>
+
+          <h5>Asistento vaidmuo – Deputy Honcho:</h5>
+          <ul>
+            <li>Padeda instruktoriui organizuoti žaidimą, valdyti laiką ir stebėti eigą.</li>
+            <li>Prireikus atlieka antraeilius vaidmenis (pvz., civiliai, liudininkai).</li>
+            <li>Stebi žaidėjų reakcijas ir užrašo svarbiausius momentus refleksijai.</li>
+            <li>Dalyvauja refleksijoje – išskiria įdomias pastabas ir situacijas.</li>
+            <li>Gali padėti grupėms išsiaiškinti taisykles ir suteikti paramą.</li>
+          </ul>
+
+          <h5>Žaidėjų vaidmuo – Actionables:</h5>
+          <ul>
+            <li>Vaidina gelbėjimo tarnybų atstovus – policininkus, ugniagesius, paramedikus.</li>
+            <li>Reaguoja į kortelėse aprašytas krizines situacijas ir nusprendžia, kokių veiksmų imtis.</li>
+            <li>Bendradarbiauja kaip komanda – diskutuoja, planuoja, paskirsto vaidmenis ir užduotis.</li>
+            <li>Aktyviai naudoja bendravimo ir aktyvaus klausymosi techniką.</li>
+            <li>Refleksijos metu apibūdina savo požiūrį, apsvarsto alternatyvas ir aptaria, kas pavyko, o kas ne.</li>
+          </ul>
+
+          <div style="text-align:center;margin:1.5rem 0;">
+            <img src="https://pub-b33a41e64ab14f4d92f341fa4bf701bd.r2.dev/hot-call/hotcall-manual-lt-5.png" alt="Kortelės pašalinimo funkcija" style="max-width:100%;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,0.1);">
+          </div>
+
+          <h4>Rekomenduojama refleksijos struktūra:</h4>
+          <ol>
+            <li><strong>Situacijos apibendrinimas:</strong> Kas įvyko? Kaip viskas klostėsi?</li>
+            <li><strong>Technikų identifikavimas:</strong> Kokie aktyvaus klausymosi elementai buvo panaudoti?</li>
+            <li><strong>Veiksmingumo vertinimas:</strong> Kas prisidėjo prie situacijos nuraminimo ar eskalacijos?</li>
+            <li><strong>Alternatyvūs požiūriai:</strong> Ką būtų buvę galima padaryti kitaip ir kodėl?</li>
+            <li><strong>Asmeninis pritaikymas:</strong> Kaip tai pritaikytumėte realiame gyvenime?</li>
+          </ol>
+
+          <h4>Refleksijos patarimai, kai žaidimas nesiklosto:</h4>
+
+          <h5>Žaidėjai tyli / nežino, ką pasakyti</h5>
+          <ul>
+            <li>Užduokite paprastą klausimą: „Ką darytumėte pirmiausia?"</li>
+            <li>Pasiūlykite variantus (A, B, C)</li>
+            <li>Suteikite jiems laiko apgalvoti ir leiskite minutę tylos</li>
+            <li>Įtraukite Deputy Honcho, kad jis švelniai nukreiptų žaidėjus</li>
+          </ul>
+
+          <h5>Žaidėjai atrodo sutrikę</h5>
+          <ul>
+            <li>Paprastai pakartokite situaciją</li>
+            <li>Nubraižykite situaciją žemėlapyje, parodykite erdvę</li>
+            <li>Priminkite jiems, kad tikslas – pabandyti reaguoti, o ne būti tobuliems</li>
+          </ul>
+
+          <h5>Grupė yra pasyvi / nesidomi</h5>
+          <ul>
+            <li>Paskirkite konkrečius vaidmenis</li>
+            <li>Nustatykite laiko iššūkius</li>
+            <li>Keiskite dinamiką tarp skirtingų gelbėjimo tarnybų</li>
+            <li>Priminkite jiems, kad visi mokosi</li>
+          </ul>
+
           <div style="text-align:center;margin:1.5rem 0;">
             <img src="https://pub-b33a41e64ab14f4d92f341fa4bf701bd.r2.dev/hot-call/hotcall-manual-lt-6.png" alt="Kalbos pasirinkimas" style="max-width:100%;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,0.1);">
+          </div>
+
+          <h4>Kortelių kūrimo gairės:</h4>
+
+          <h5>SITUACIJOS kortelė (SIT)</h5>
+          <ul>
+            <li>Pradinės krizinės situacijos aprašymas</li>
+            <li>Vietos nurodymas (mokykla, gyvenamasis namas ir pan.)</li>
+            <li>Realistiška, suprantama, gali būti išsami</li>
+            <li>Neturėtų būti vertinimų ar sprendimų</li>
+            <li>Privalo apimti vieną pagrindinę problemą, kuri gali paaštrėti arba būti išspręsta</li>
+          </ul>
+
+          <h5>ESKALACIJOS kortelė (ESC)</h5>
+          <ul>
+            <li>Situacija blogėja – didėja stresas, įtampa, grėsmės</li>
+            <li>Turėtų būti tiesiogiai susijusi su situacijos tipu, o ne su konkrečiomis detalėmis</li>
+            <li>Veiksmas turėtų būti logiškas ir realistiškas</li>
+            <li>Neturėtų atrodyti kaip žaidimo pabaiga</li>
+          </ul>
+
+          <h5>DEESKALACIJOS kortelė (DEE)</h5>
+          <ul>
+            <li>Situacijos nuraminimas, sąlygų pagerinimas</li>
+            <li>Seka po SIT kortelės, tačiau neturėtų reikšti „žaidimo pabaigos"</li>
+            <li>Gali apimti kitų asmenų įsikišimą, emocinį poslinkį, liudininkų paramą</li>
+          </ul>
           </div>
           <div style="text-align:center;margin:1.5rem 0;">
             <img src="https://pub-b33a41e64ab14f4d92f341fa4bf701bd.r2.dev/hot-call/hotcall-manual-lt-7.png" alt="Valdymo mygtukai" style="max-width:100%;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,0.1);">
@@ -1143,9 +1336,12 @@
         allDrawn: "(Toate trase)",
         backToMenu: "☰ Meniu"
       }
-    };
-    
-    const t = translations[currentLang];
+  };
+
+  // Update button text based on language
+  function updateButtonText() {
+    const t = TRANSLATIONS[currentLang];
+    document.title = t.title;
     $('headerTitle').textContent = t.title;
     $('btnSituation').textContent = t.situation;
     $('btnEsc').textContent = t.escalation;
@@ -1158,8 +1354,7 @@
     
     // Update rules content with correct language screenshots
     if ($('rulesContent')) {
-      const langMap = { ENG: 'en', CZ: 'cz', LT: 'lt', RO: 'ro' };
-      const langCode = langMap[currentLang];
+      const langCode = LANG_CODES[currentLang];
       let content = t.rulesContent;
       
       // Replace all screenshot URLs with the correct language version
@@ -1213,10 +1408,23 @@
     updateButtonText();
   }
   
-  function showRulesFromStartup() {
-    currentScreen = 'rules';
-    updateButtonText(); // Make sure rules content is updated
+  /* ---------- Rules modal open/close (with focus management) ---------- */
+  let lastFocusedBeforeModal = null;
+
+  function openRulesModal() {
+    lastFocusedBeforeModal = document.activeElement;
     $('rulesModal').style.display = 'block';
+    $('closeModal').focus();
+  }
+
+  function closeRulesModal() {
+    $('rulesModal').style.display = 'none';
+    if (lastFocusedBeforeModal && typeof lastFocusedBeforeModal.focus === 'function') {
+      lastFocusedBeforeModal.focus();
+    }
+    if (currentScreen === 'rules') {
+      showStartupScreen();
+    }
   }
   
   function resetGame() {
@@ -1242,21 +1450,31 @@
   function renderReactions() {
     document.querySelectorAll('.dynamic').forEach(el => el.remove());
     const grid = $('cardsGrid');
-    
+    const t = window.currentTranslations || { remove: "Remove", inDevelopment: "In development" };
+
     reactions.forEach((reaction, index) => {
       const div = document.createElement('div');
       div.className = 'card dynamic';
-      const t = window.currentTranslations || { remove: "Remove" };
-      div.innerHTML = `
-        <img src="${reaction.url}" alt="reaction">
-        <div class="remove-btn">${t.remove}</div>
-      `;
-      
-      // Add click handler to remove card
-      div.onclick = () => {
+
+      const img = document.createElement('img');
+      img.src = reaction.url;
+      img.alt = `reaction card ${reaction.number}`;
+      img.onerror = function() {
+        const fallback = document.createElement('div');
+        fallback.className = 'card-load-error';
+        fallback.textContent = `${t.inDevelopment} (#${reaction.number})`;
+        this.replaceWith(fallback);
+      };
+
+      const removeBtn = document.createElement('button');
+      removeBtn.type = 'button';
+      removeBtn.className = 'remove-btn';
+      removeBtn.textContent = t.remove;
+      removeBtn.onclick = (e) => {
+        e.stopPropagation();
         reactions.splice(index, 1);
         renderReactions();
-        
+
         // Re-enable buttons if they were disabled due to max reactions
         if ($('btnEsc').disabled && escalationDeck.length > 0) {
           $('btnEsc').disabled = false;
@@ -1265,44 +1483,53 @@
           $('btnDee').disabled = false;
         }
       };
-      
+
+      // Touch devices have no hover: tapping the card only reveals the Remove
+      // button; removal itself requires an explicit press on that button.
+      div.onclick = () => {
+        document.querySelectorAll('.card.dynamic.show-remove').forEach(el => {
+          if (el !== div) el.classList.remove('show-remove');
+        });
+        div.classList.toggle('show-remove');
+      };
+
+      div.appendChild(img);
+      div.appendChild(removeBtn);
       grid.appendChild(div);
     });
   }
-  
+
+  // Token guards against a slow older scene load overwriting a newer one
+  let sceneLoadToken = 0;
+
   function updateScenes(cardNumber) {
     const t = window.currentTranslations || { inDevelopment: "In development", scene: "Scene" };
     const sceneNumber = getSceneNumber(cardNumber);
-    
-    const leftImg = new Image();
-    leftImg.src = getSceneUrl('left', cardNumber);
-    leftImg.alt = `left scene ${sceneNumber}`;
-    leftImg.onload = function() {
-      $('leftScene').innerHTML = '';
-      $('leftScene').appendChild(this);
-    };
-    leftImg.onerror = function() {
-      $('leftScene').innerHTML = `<div style="padding:20px; text-align:center;">${t.inDevelopment}<br><small>${t.scene} ${sceneNumber}</small></div>`;
-    };
-    
-    const rightImg = new Image();
-    rightImg.src = getSceneUrl('right', cardNumber);
-    rightImg.alt = `right scene ${sceneNumber}`;
-    rightImg.onload = function() {
-      $('rightScene').innerHTML = '';
-      $('rightScene').appendChild(this);
-    };
-    rightImg.onerror = function() {
-      $('rightScene').innerHTML = `<div style="padding:20px; text-align:center;">${t.inDevelopment}<br><small>${t.scene} ${sceneNumber}</small></div>`;
-    };
+    const token = ++sceneLoadToken;
+
+    [['left', 'leftScene'], ['right', 'rightScene']].forEach(([side, boxId]) => {
+      const img = new Image();
+      img.src = getSceneUrl(side, cardNumber);
+      img.alt = `${side} scene ${sceneNumber}`;
+      img.onload = function() {
+        if (token !== sceneLoadToken) return;
+        $(boxId).innerHTML = '';
+        $(boxId).appendChild(this);
+      };
+      img.onerror = function() {
+        if (token !== sceneLoadToken) return;
+        $(boxId).innerHTML = `<div style="padding:20px; text-align:center;">${t.inDevelopment}<br><small>${t.scene} ${sceneNumber}</small></div>`;
+      };
+    });
   }
-  
+
   function draw(deck, label, callback) {
     if (!deck.length) {
-      alert(`No more ${label} cards.`);
+      const t = window.currentTranslations || { allDrawn: "(All drawn)" };
+      showToast(`${label} ${t.allDrawn}`);
       return null;
     }
-    
+
     const card = deck.pop();
     if (callback) callback(card);
     return card;
@@ -1317,7 +1544,7 @@
       // Add selected to clicked
       btn.classList.add('selected');
       // Update language
-      currentLang = btn.dataset.lang;
+      setLanguage(btn.dataset.lang);
       // Update dropdown to match
       $('langSelect').value = currentLang;
       // Update startup screen text
@@ -1328,29 +1555,24 @@
       $('mainChoices').classList.add('visible');
     });
   });
-  
+
   // Read Rules button
   $('btnReadRules').addEventListener('click', function(e) {
     e.preventDefault();
     e.stopPropagation();
     currentScreen = 'rules';
     updateButtonText();
-    $('rulesModal').style.display = 'block';
+    openRulesModal();
   });
-  
+
   // Start Game button
   $('btnStartGame').addEventListener('click', function(e) {
     e.preventDefault();
     showGameScreen();
   });
-  
+
   // Back to menu from rules
-  $('btnBackFromRules').onclick = () => {
-    $('rulesModal').style.display = 'none';
-    if (currentScreen === 'rules') {
-      showStartupScreen();
-    }
-  };
+  $('btnBackFromRules').onclick = closeRulesModal;
   
   /* ---------- Game buttons ---------- */
   $('btnSituation').onclick = () => {
@@ -1358,32 +1580,46 @@
       currentSituationNumber = card.number;
       updateScenes(card.number);
     });
-    
+
     if (!card) return;
-    
-    $('situationCard').innerHTML = `<img src="${card.url}" alt="situation">`;
+
+    const t = window.currentTranslations || { inDevelopment: "In development" };
+    const img = document.createElement('img');
+    img.src = card.url;
+    img.alt = `situation card ${card.number}`;
+    img.onerror = function() {
+      const fallback = document.createElement('div');
+      fallback.className = 'card-load-error';
+      fallback.textContent = `${t.inDevelopment} (#${card.number})`;
+      this.replaceWith(fallback);
+    };
+    $('situationCard').innerHTML = '';
+    $('situationCard').appendChild(img);
+
     $('btnSituation').disabled = true;
     $('btnEsc').disabled = false;
     $('btnDee').disabled = false;
-    
+
     reactions.length = 0;
     renderReactions();
+    preloadNextCards();
   };
-  
+
   function addReaction(card) {
     reactions.unshift(card);
     renderReactions();
-    
+    preloadNextCards();
+
     if (reactions.length === maxReactions) {
       $('btnEsc').disabled = true;
       $('btnDee').disabled = true;
     }
   }
-  
+
   $('btnEsc').onclick = () => {
     const card = draw(escalationDeck, 'Escalation');
     if (card) addReaction(card);
-    
+
     if (!escalationDeck.length) {
       $('btnEsc').disabled = true;
       $('btnEsc').classList.add('all-drawn');
@@ -1391,11 +1627,11 @@
       $('btnEsc').textContent = t.escalation + ' ' + t.allDrawn;
     }
   };
-  
+
   $('btnDee').onclick = () => {
     const card = draw(deEscalationDeck, 'De-Escalation');
     if (card) addReaction(card);
-    
+
     if (!deEscalationDeck.length) {
       $('btnDee').disabled = true;
       $('btnDee').classList.add('all-drawn');
@@ -1417,18 +1653,26 @@
   
   /* ---------- Language selector (in game) ---------- */
   $('langSelect').onchange = (e) => {
-    currentLang = e.target.value;
+    setLanguage(e.target.value);
     updateButtonText();
     updateStartupLanguage();
-    
+
     // Update language buttons selection
     document.querySelectorAll('.lang-btn').forEach(btn => {
       btn.classList.toggle('selected', btn.dataset.lang === currentLang);
     });
-    
+
+    // Re-point remaining deck cards and drawn reactions to the new language's
+    // images WITHOUT resetting the decks. (Rebuilding the decks here used to
+    // return already-drawn cards to play, so the same card could be drawn twice.)
+    [situationDeck, escalationDeck, deEscalationDeck].forEach(deck => {
+      deck.forEach(card => { card.url = getCardUrl(card.number); });
+    });
+    reactions.forEach(card => { card.url = getCardUrl(card.number); });
+
     // Update all visible cards with new language
     if (currentSituationNumber) {
-      $('situationCard').innerHTML = `<img src="${getCardUrl(currentSituationNumber)}" alt="situation">`;
+      $('situationCard').innerHTML = `<img src="${getCardUrl(currentSituationNumber)}" alt="situation card ${currentSituationNumber}">`;
       updateScenes(currentSituationNumber);
     } else {
       const t = window.currentTranslations;
@@ -1436,19 +1680,10 @@
       $('leftScene').innerHTML = t.clickDrawSituation;
       $('rightScene').innerHTML = t.clickDrawSituation;
     }
-    
-    // Update reaction cards
-    const grid = $('cardsGrid');
-    const dynamicCards = grid.querySelectorAll('.dynamic');
-    
-    reactions.forEach((reaction, index) => {
-      if (dynamicCards[index]) {
-        dynamicCards[index].innerHTML = `<img src="${getCardUrl(reaction.number)}" alt="reaction">`;
-      }
-    });
-    
-    // Re-initialize decks with new language
-    initializeDecks();
+
+    // Re-render reaction cards (keeps their Remove buttons working)
+    renderReactions();
+    preloadNextCards();
   };
   
   /* ---------- Zoom controls ---------- */
@@ -1480,31 +1715,41 @@
   };
 
   /* ---------- Rules Modal ---------- */
-  $('btnRules').onclick = () => {
-    $('rulesModal').style.display = 'block';
-  };
-  
-  $('closeModal').onclick = () => {
-    $('rulesModal').style.display = 'none';
-    if (currentScreen === 'rules') {
-      showStartupScreen();
-    }
-  };
-  
+  $('btnRules').onclick = openRulesModal;
+
+  $('closeModal').onclick = closeRulesModal;
+
   // Close modal when clicking outside of it
   window.onclick = (event) => {
     if (event.target === $('rulesModal')) {
-      $('rulesModal').style.display = 'none';
-      if (currentScreen === 'rules') {
-        showStartupScreen();
-      }
+      closeRulesModal();
     }
   };
-  
+
+  // Close modal with the Escape key
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && $('rulesModal').style.display === 'block') {
+      closeRulesModal();
+    }
+  });
+
   /* ---------- Initialize ---------- */
+  setLanguage(currentLang);
   initializeDecks();
   applyScale();
-  // Start on startup screen (already visible by default)
+
+  // If a language was chosen on a previous visit, restore the whole selection
+  // state so the visitor lands one click from starting the game.
+  if (langRestored) {
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+      btn.classList.toggle('selected', btn.dataset.lang === currentLang);
+    });
+    $('langSelect').value = currentLang;
+    updateStartupLanguage();
+    updateButtonText();
+    $('mainChoices').classList.add('visible');
+  }
+  // Otherwise start on the startup screen with the multilingual prompt (default)
 </script>
 
 </body>
