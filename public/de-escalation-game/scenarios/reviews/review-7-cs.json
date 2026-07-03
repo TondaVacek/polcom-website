@@ -36,7 +36,7 @@
           "improvement": "Bezpečnost strážníka neznamená čekat na ideální podmínky. Slovní zásah z bezpečné vzdálenosti (§ 53 umožňuje výzvu bez okamžitého donucení) zvládá bezpečnost i povinnost současně."
         },
         "negative": {
-          "choiceText": "Bez zastavení se vrhnete mezi Dannyho a Viktora a nataženýma rukama je od sebe odtlačujete hrubou silou, bez posouzení zbraní, davu i polohy zraněné.",
+          "choiceText": "Bez zastavení se vrhnete mezi Dannyho a Viktora a nataženýma rukama je od sebe odtlačujete hrubou silou, podrážky zapřené o dlažbu, hlavu otočenou střídavě k jednomu a druhému.",
           "failures": [
             "Fyzické vsunutí mezi dva opilé agresivní muže bez posouzení scény vás vystavuje extrémnímu riziku",
             "Obrací zákonné pořadí § 53 — donucení bez předchozí výzvy a výstrahy",
@@ -307,7 +307,7 @@
           "professionalImpact": "Tón se změnil, část davu odešla, dva svědci zůstali, provokatér ztratil publikum a telefony teď zachycují kompetenci místo podívané."
         },
         "neutral": {
-          "choiceText": "Otočíte se k davu zády a úplně ho ignorujete jako kulisu, zaměříte se jen na aktéry a poznámky — zraněná zůstává bez pozornosti.",
+          "choiceText": "Otočíte se k davu zády a úplně ho ignorujete jako kulisu, zaměříte se jen na aktéry a poznámky, přecházíte mezi nimi s hlavou skloněnou k zápisníku.",
           "adequate": [
             "Udržuje zaměření na primární interakci",
             "Vyhýbá se přímé eskalaci s davem"
@@ -331,7 +331,7 @@
           "trainingFocus": "Nahraďte příkazy informacemi a volbami; kameru berte jako spojence, který zachytí vaši profesionalitu. Telefony se bez zákonného důvodu nezabavují."
         },
         "partially_positive": {
-          "choiceText": "Prorazíte davem k provokatérovi a tiše mu vyhrožujete odpovědností — „jestli se někdo zraní, bude to na vás“ — zatímco aktéři zůstávají bez dozoru.",
+          "choiceText": "Prorazíte davem k provokatérovi a tiše mu vyhrožujete odpovědností — „jestli se někdo zraní, bude to na vás“ — záda otočená k oběma aktérům.",
           "adequate": [
             "Řeší nejdestabilizujícího jedince přímo",
             "Tichý hlas zabraňuje veřejné konfrontaci",

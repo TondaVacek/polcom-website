@@ -3,6 +3,26 @@
   "title": "Pouliční potyčka u nočního klubu",
   "description": "Pokročilý scénář odehrávající se v 1:30 v noci na chodníku před nočním klubem Vibe v Ústí nad Labem. Strkanice kvůli politému drinku se přelila z klubu na ulici, dva podnapilí muži stojí proti sobě, nestabilní dav natáčí na telefony, jedna kolemjdoucí je zraněná a vyhazovač může pomoci, nebo situaci zhoršit. Strážník přijíždí sám, posily jsou osm minut daleko. Musí oddělit aktéry, zvládnout dynamiku davu, postarat se o zraněnou, správně právně kvalifikovat jednání a obnovit veřejný pořádek v prostředí plném adrenalinu a alkoholu — to vše pod okem kamer a v mezích zákona o policii.",
   "icon": "🚨",
+  "lawContext": {
+    "9": "2008-273",
+    "10": "2008-273",
+    "11": "2008-273",
+    "13": "2008-273",
+    "24": "2008-273",
+    "26": "2008-273",
+    "52": "2008-273",
+    "53": "2008-273",
+    "54": "2008-273",
+    "63": "2008-273",
+    "5": "2016-251",
+    "7": "2016-251",
+    "76": "1961-141",
+    "145": "2009-40",
+    "146": "2009-40",
+    "158": "2009-40",
+    "337": "2009-40",
+    "358": "2009-40"
+  },
   "difficulty": 4,
   "duration": "12-18",
   "instructor": {
@@ -53,7 +73,7 @@
           "points": 10
         },
         {
-          "text": "Bez zastavení se vrhnete do mezery mezi oba muže, rozkročíte se a nataženýma rukama je začnete od sebe odtlačovat hrubou silou. Cítíte, jak se jejich těla napínají proti vašemu tlaku. Ostře a hlasitě křičíte: „Přestaňte! Oba HNED ustupte!“ Tlačíte dál a snažíte se vytvořit vzdálenost čistě fyzickou přítomností — aniž byste posoudili možné zbraně, náladu davu, polohu zraněné dívky nebo vlastní únikovou cestu pro případ, že se otočí proti vám.",
+          "text": "Bez zastavení se vrhnete do mezery mezi oba muže, rozkročíte se a nataženýma rukama je začnete od sebe odtlačovat hrubou silou. Cítíte, jak se jejich těla napínají proti vašemu tlaku. Ostře a hlasitě křičíte: „Přestaňte! Oba HNED ustupte!“ Tlačíte dál a snažíte se vytvořit vzdálenost čistě fyzickou přítomností, podrážky zapřené o dlažbu, hlavu otočenou střídavě k jednomu a druhému z nich.",
           "feedback": "Proč: Fyzicky se vsunout mezi dva opilé agresivní muže bez posouzení scény a bez předchozí výzvy vás vystavuje extrémnímu riziku a obrací pořadí, které ukládá § 53 (nejdřív výzva a výstraha, teprve pak přiměřené donucení). Nevíte, zda má některý zbraň, zda je dav nepřátelský ani kde je zraněná. Fyzický kontakt před slovním pokynem konfrontaci nevytváří, nýbrž vyvolává. Se ZZS a posilami na cestě vaše zranění znamená, že celá scéna zůstane bez kontroly. | DŮSLEDKY: Dannyho ruka vás při gestikulaci zasáhne do ramene. Viktor vnímá váš tlak jako agresi a zaujme bojový postoj. Dav se pohrne dopředu. Stojíte uprostřed třísměrné fyzické konfrontace bez posil a bez přehledu. | Reflexe: Kdy fyzický zásah bez předchozí slovní deeskalace situaci nezklidní, ale zbytečně zbraní?",
           "type": "negative",
           "points": -8
@@ -103,7 +123,7 @@
           "points": 10
         },
         {
-          "text": "Vystoupíte dopředu a křičíte dost nahlas, aby vás slyšeli všichni — aktéři, vyhazovač, dav, každý telefon. Váš hlas prořízne hluk jako siréna: „OBA — PŘESTAŇTE mluvit. Nezajímá mě, kdo to začal. Oba skončíte v poutech, jestli se HNED neoddělíte.“ Ukazujete prstem střídavě doleva a doprava: „Danny — tamhle. Viktor — tamhle. POHYB.“ Tereza sebou při tom hluku trhne, dav na okamžik ztichne, telefony míří stabilně na vás.",
+          "text": "Vystoupíte dopředu a křičíte dost nahlas, aby vás slyšeli všichni — aktéři, vyhazovač, dav, každý telefon. Váš hlas prořízne hluk jako siréna: „OBA — PŘESTAŇTE mluvit. Nezajímá mě, kdo to začal. Oba skončíte v poutech, jestli se HNED neoddělíte.“ Ukazujete prstem střídavě doleva a doprava: „Danny — tamhle. Viktor — tamhle. POHYB.“ Zůstanete stát v širokém postoji mezi nimi, bradu zvednutou, a přejíždíte pohledem z jednoho na druhého.",
           "feedback": "Proč: Hlasitost a hrozba poutu mohou vyvolat krátkodobé podřízení ze strachu, ale u opilých stejně pravděpodobně vyprovokují vzdor. Především jde o předčasnou hrozbu donucení, aniž byste naplnili pořadí § 53 (výzva → výstraha → donucení) a bez titulu pro spoutání podle § 54 — pouta se používají vůči osobě zajišťované či omezené na svobodě, ne jako pohrůžka do davu. „Nezajímá mě, kdo to začal“ navíc odmítá obě jejich stížnosti, tedy jedinou věc, na které jim záleží nejvíc, a před kamerami dělá z ústupu ponížení. | DŮSLEDKY: Danny křičí zpět: „Tak mě zatkněte!“ Viktor se nafoukne: „Ano, zatkněte, chci podat stížnost!“ Nikdo se nehne, Tereza pláče. Eskalovali jste do souboje vůlí, který nevyhrajete bez použití síly. | Reflexe: Když pohrozíte důsledky před publikem, co se stane s kalkulací opilého člověka o ústupu?",
           "type": "negative",
           "points": -8
@@ -115,7 +135,7 @@
           "points": 5
         },
         {
-          "text": "Obrátíte se na vyhazovače a ukážete ke vchodu za sametovým lanem: „Radku, odveďte je oba dovnitř do klubu. Oddělené místnosti — kancelář, sklad, cokoli máte. Vyslechnu je tam, kde je ticho a pryč od davu.“ Vykročíte ke dveřím a čekáte, že Radek půjde s oběma muži za vámi. Hudba z klubu duní hlasitěji, jak se přibližujete. Vrátný vás sleduje se zkříženýma rukama a vrtí hlavou dřív, než dojdete k prahu.",
+          "text": "Obrátíte se na vyhazovače a ukážete ke vchodu za sametovým lanem: „Radku, odveďte je oba dovnitř do klubu. Oddělené místnosti — kancelář, sklad, cokoli máte. Vyslechnu je tam, kde je ticho a pryč od davu.“ Vykročíte ke dveřím a čekáte, že Radek půjde s oběma muži za vámi. Hudba z klubu duní hlasitěji, jak se přibližujete. Cestou rukou pokynete oběma mužům, ať jdou s Radkem za vámi.",
           "feedback": "Proč: Vracet aktéry zpět do podniku, ze kterého byli právě vyvedeni, plodí problémy: klub je zdrojem konfliktu, hluku a alkoholu, vyhazovač je odtud vyhodil a vedení může vstup odmítnout. Navíc ztratíte přehled o zraněné a o davu venku, což naráží na povinnost neodkládat péči o ohrožené (§ 11). Klidnější prostředí je správný instinkt, ale ne za cenu návratu ke spouštěči. | DŮSLEDKY: Radek zaváhá — dostal pokyn je dostat ven. Vrátný zablokuje vchod: „Zpátky se nevrátí.“ Danny i Viktor protestují, dav je zmatený. Ztratili jste čas i kredibilitu návrhem, který byl okamžitě zamítnut. | Reflexe: Proč přesun aktérů zpět ke zdroji konfliktu situaci většinou zhorší?",
           "type": "neutral",
           "points": 2
@@ -161,7 +181,7 @@
           "points": 2
         },
         {
-          "text": "Jednou přikývnete, buďte struční a věcní. Zvednete ruku, ať zpomalíte jeho rozvláčné vyprávění, a dáte stručnou instrukci: „Rozumím, Danny. Slyším vás — máte pocit, že jste byl vyprovokovaný. Jdu si promluvit s tím druhým a zjistit jeho verzi, pak uvidíme dál. Zůstaňte tady s Terezou. Nechoďte k němu. Jasný?“ Podržíte oční kontakt, otočíte se na patě a vykročíte k Viktorovi, aniž byste čekal, až se Dannyho emoční stav uklidní.",
+          "text": "Jednou přikývnete, stručně a věcně. Zvednete ruku, ať zpomalíte jeho rozvláčné vyprávění, a dáte stručnou instrukci: „Rozumím, Danny. Slyším vás — máte pocit, že jste byl vyprovokovaný. Jdu si promluvit s tím druhým a zjistit jeho verzi, pak uvidíme dál. Zůstaňte tady s Terezou. Nechoďte k němu. Jasný?“ Podržíte oční kontakt, otočíte se na patě a rázným krokem vykročíte přes chodník k Viktorovi u stání taxi.",
           "feedback": "Proč: Efektivní a stanoví jasnou hranici; „slyším vás — máte pocit, že jste byl vyprovokovaný“ nabízí minimální uznání a oznámit, že zjistíte druhou stranu, je transparentní. Interakce je ale příliš krátká na skutečnou deeskalaci — uznali jste ho, ale neuklidnili. Nechat opilého, rozčileného muže jen s přítelkyní jako dozorem, bez fyzické bariéry a autority, je riskantní; „jasný?“ může opilému uchu znít konfrontačně. | DŮSLEDKY: Danny neochotně přikývne, ale jakmile odejdete, dál reptá a přechází. Bez trvalého uklidňujícího kontaktu se adrenalin znovu prosadí. Tereza se snaží, ale snaží se celý večer. Když se vrátíte, může být rozčilenější než předtím. | Reflexe: Jaká je minimální míra emočního zapojení, než opustíte nestabilního jedince?",
           "type": "partially_positive",
           "points": 5
@@ -195,19 +215,19 @@
           "points": 10
         },
         {
-          "text": "Opřete se o zídku vedle Viktora, soucitně přikývnete a necháte výraz vyjádřit upřímný zájem o krev na jeho bradě. Vřelým, uklidňujícím hlasem: „Věřím vám, Viktore. Ten druhý byl zjevně agresor. Postarám se, ať je to vyřízené spravedlivě. Máte plné právo podat oznámení a pomůžu vám s tím. Chci, ať víte, že tu někdo stojí na vaší straně.“ Viktorova ramena se mírně uvolní. Radek sleduje zpovzdálí a mlčí.",
+          "text": "Opřete se o zídku vedle Viktora, soucitně přikývnete a necháte výraz vyjádřit upřímný zájem o krev na jeho bradě. Vřelým, uklidňujícím hlasem: „Věřím vám, Viktore. Ten druhý byl zjevně agresor. Postarám se, ať je to vyřízené spravedlivě. Máte plné právo podat oznámení a pomůžu vám s tím. Chci, ať víte, že tu někdo stojí na vaší straně.“ Mluvíte pomalu, ruku volně položenou na zídce mezi vámi, a soucitně u toho přikyvujete.",
           "feedback": "Proč: Empatické a dobře míněné, ale prohlásit „věřím vám“ a „zjevně agresor“ před dokončením šetření vás zavazuje k výsledku dřív, než máte obě verze a ztotožnění (§ 63). Pokud důkazy později Viktorovu verzi byť jen zčásti vyvrátí, vaše důvěryhodnost se zhroutí. Slíbit pomoc s oznámením dřív, než posoudíte, zda formální postup vůbec věci prospěje, zbytečně zvyšuje sázky u incidentu, který může skončit podáním ruky. | DŮSLEDKY: Viktor se cítí vyslyšený — zatím. Zarámovali jste to ale jako trestný čin s agresorem a obětí. Danny se bude cítit zrazený, až se o tom dozví. Radek může nabýt dojmu, že je jeho vlastní jednání pod drobnohledem, a stáhne se. | Reflexe: Jaký je rozdíl mezi uznáním něčí zkušenosti a prohlášením jeho verze za oficiální pravdu?",
           "type": "partially_positive",
           "points": 5
         },
         {
-          "text": "Zůstanete stát, vytáhnete zápisník a nasadíte věcný tón. Cvaknete propiskou a bez úvodu zahájíte standardní postup: „Pane, chápu, že došlo ke konfliktu. Potřebuju vaše celé jméno, datum narození a adresu. A budu potřebovat vidět doklad totožnosti. Můžete to poskytnout?“ Čekáte s perem nad zápisníkem a neutrálním výrazem. Dva přihlížející, kteří se přesunuli blíž, pozorně sledují, zatímco Viktor zírá na váš zápisník.",
+          "text": "Zůstanete stát, vytáhnete zápisník a nasadíte věcný tón. Cvaknete propiskou a bez úvodu zahájíte standardní postup: „Pane, chápu, že došlo ke konfliktu. Potřebuju vaše celé jméno, datum narození a adresu. A budu potřebovat vidět doklad totožnosti. Můžete to poskytnout?“ Čekáte s perem nad zápisníkem a neutrálním výrazem. Stojíte nad ním vzpřímeně, zápisník otevřený ve výši hrudi, a poklepáváte propiskou o papír.",
           "feedback": "Proč: Ztotožnění je zákonné a namístě (§ 63 opravňuje vyzvat k prokázání totožnosti osobu podezřelou z přestupku či trestného činu), ale okamžitě požadovat doklady od člověka, který právě řekl „vždycky to schytám já“, potvrzuje jeho nejhorší obavu. Neuznali jste jeho zranění, jeho výpověď ani jeho pocit křivdy; procedura není chybná sama o sobě, chybné je její načasování — nejdřív péče a vztah, doklady mohou přijít vzápětí. | DŮSLEDKY: Viktor ztuhne: „Vidíte? Doklady. Vždycky doklady pro toho, kdo to schytal.“ Zkříží ruce. Radek se nesvůj zavrtí, dva přihlížející si vymění pohledy. Viktor přestane spolupracovat a každé jeho slovo o zaujatosti se zdánlivě potvrdilo. | Reflexe: Když vám někdo řekne, že se cítí být terčem, jak vaše úplně příští akce ten pocit buď potvrdí, nebo vyvrátí?",
           "type": "negative",
           "points": -8
         },
         {
-          "text": "Narovnáte se a řešíte jeho pocit křivdy přímo, pevným deklarativním tónem. Podíváte se Viktorovi do očí: „Viktore, chci být naprosto jasný — na tom, jak to řeším, nemá váš původ ani vaše minulé zkušenosti absolutně žádný vliv. Ke všem přistupuju stejně. Takže, oba jste byli do incidentu zapojení a já se potřebuju dobrat podstaty. Řekněte mi, co se stalo.“ Zkřížíte ruce a čekáte, nestrannost vyzařujete postojem a klidným pohledem.",
+          "text": "Narovnáte se a řešíte jeho pocit křivdy přímo, pevným deklarativním tónem. Podíváte se Viktorovi do očí: „Viktore, chci být naprosto jasný — na tom, jak to řeším, nemá váš původ ani vaše minulé zkušenosti absolutně žádný vliv. Ke všem přistupuju stejně. Takže, oba jste byli do incidentu zapojení a já se potřebuju dobrat podstaty. Řekněte mi, co se stalo.“ Zkřížíte ruce a čekáte, postoj vzpřímený, pohled klidný a neuhýbavý.",
           "feedback": "Proč: Záměr je dobrý, ale „ke všem přistupuju stejně“ je tvrzení, kterému Viktor nemá důvod od cizího člověka věřit, a taková prohlášení často působí spíš odmítavě než konejšivě. Přeskočit rovnou k „oba jste byli zapojení do incidentu“ navíc staví toho, kdo dostal ránu a byl hrubě vyhozen, na roveň druhému hned poté, co popsal svou křivdu — a předjímá kvalifikaci dřív, než máte fakta. | DŮSLEDKY: Viktor slyší slova, ale necítí je. „Jasně, všichni stejně,“ řekne bezvýrazně. Spolupracuje minimálně a bez důvěry; jeho výpověď je opatrná a stručná. Příležitost ke skutečnému zapojení je pryč. | Reflexe: Proč prohlášení o férovosti často znějí prázdně a jaké činy komunikují nestrannost účinněji než slova?",
           "type": "neutral",
           "points": 2
@@ -241,19 +261,19 @@
           "points": 10
         },
         {
-          "text": "Otočíte se k davu, vykročíte agresivně dopředu a zakřičíte plným hlasem, ukazujete na půlkruh telefonů: „Všichni nezúčastnění — ODEJDĚTE. HNED. Tohle je policejní zákrok. Kdo bude zasahovat, bude zadržen za maření. A schovejte ty telefony a jděte dál!“ Váš hlas se odráží od fasády klubu. Přejíždíte pohledem přes dav a navazujete oční kontakt s provokatérem i s lidmi, co natáčejí. Váš postoj říká, že to myslíte vážně.",
+          "text": "Otočíte se k davu, vykročíte agresivně dopředu a zakřičíte plným hlasem, ukazujete na půlkruh telefonů: „Všichni nezúčastnění — ODEJDĚTE. HNED. Tohle je policejní zákrok. Kdo bude zasahovat, bude zadržen za maření. A schovejte ty telefony a jděte dál!“ Váš hlas se odráží od fasády klubu. Přejíždíte pohledem přes dav a navazujete oční kontakt s provokatérem i s lidmi, co natáčejí. Stojíte v širokém postoji, palce zaháknuté za opasek.",
           "feedback": "Proč: Nařídit 15–20 opilým lidem rozchod v 1:30 málokdy funguje. Hrozba zadržením za „maření“ na veřejném chodníku je právně pochybná (maření míří na maření rozhodnutí, ne na přihlížení) a prakticky nevymahatelná. Vyzývat je, ať schovají telefony, je zásah do práva natáčet bez zákonného důvodu — signalizuje, že nechcete být sledován, a nutí je sledovat víc. Agrese vůči davu riskuje jeho sjednocení proti vám; nebezpečnější než neklidný dav je jen dav nepřátelský. | DŮSLEDKY: Nikdo neodejde. Provokatér se směje: „Tak nás zatkněte všechny!“ Telefony zůstávají nahoře, pár lidí se ze vzdoru přiblíží. Danny i Viktor reagují na křik, adrenalin znovu vyskočí. Eskalovali jste dav a destabilizovali aktéry současně. | Reflexe: Proč rozkaz velké opilé skupině k rozchodu téměř nikdy k rozchodu nevede?",
           "type": "negative",
           "points": -8
         },
         {
-          "text": "Otočíte se k davu zády a úplně ho ignorujete — je to jen kulisa, ne priorita. Veškerou pozornost zaměříte na oba aktéry, vytáhnete zápisník a začnete si třídit poznámky. Křik za zády, pomalý potlesk, telefony — to všechno filtrujete jako šum. Dav se sám začne nudit a odejde, až bude po dramatu. Přecházíte mezi pozicemi Dannyho a Viktora se zaměřením na výslech, zatímco zraněná dívka na obrubníku zůstává bez pozornosti.",
+          "text": "Otočíte se k davu zády a úplně ho ignorujete — je to jen kulisa, ne priorita. Veškerou pozornost zaměříte na oba aktéry, vytáhnete zápisník a začnete si třídit poznámky. Křik za zády, pomalý potlesk, telefony — to všechno filtrujete jako šum. Rovnoměrným krokem přecházíte mezi pozicemi Dannyho a Viktora, hlavu skloněnou k zápisníku a zády k půlkruhu diváků, a soustředíte se jen na otázky k výslechu.",
           "feedback": "Proč: Dav není pasivní kulisa, ale aktivní proměnná. Provokatér křičící „nechte je se poprat“ přímo zvyšuje adrenalin Dannyho i Viktora. Ignorovat dav znamená ignorovat i zraněnou, což je selhání povinné péče (§ 11 — nekonáním nesmí vzniknout ohroženým osobám bezdůvodná újma). Davy před kluby v 1:30 se nenudí a neodcházejí — opijí se a přešlapují. | DŮSLEDKY: Bez povšimnutí dav přitvrdí, pomalý potlesk zesílí. Danny začne předvádět pro publikum — naparuje se, zvyšuje hlas, Viktor ho zrcadlí. Zraněná dál sedí bez pomoci, Terezina úzkost eskaluje. Situace se vrací ke konfrontaci. | Reflexe: Kdy ignorování destabilizujícího faktoru umožní jeho růst nad vaši schopnost ho zvládnout?",
           "type": "neutral",
           "points": 2
         },
         {
-          "text": "Prorazíte přímo davem k člověku, který křičel „nechte je se poprat“. Postavíte se tak blízko, že mezi vámi cítí noční chlad, a mluvíte tiše, ať slyší jen on a jeho parta: „Příteli, potřebuju, abyste s tím přestal. Ztěžujete mi práci a ohrožujete lidi. Jestli se někdo zraní, protože jste je hecoval, bude to na vás. Buď pomozte, nebo odejděte.“ Držíte jeho pohled a čekáte na odpověď, zatímco za vašimi zády zůstávají oba aktéři bez dozoru.",
+          "text": "Prorazíte přímo davem k člověku, který křičel „nechte je se poprat“. Postavíte se k němu skoro na dotek a mluvíte tiše, ať slyší jen on a jeho parta: „Příteli, potřebuju, abyste s tím přestal. Ztěžujete mi práci a ohrožujete lidi. Jestli se někdo zraní, protože jste je hecoval, bude to na vás. Buď pomozte, nebo odejděte.“ Držíte jeho pohled a čekáte na odpověď, záda otočená k místu, kde stojí Danny s Viktorem.",
           "feedback": "Proč: Řešit nejhlasitějšího provokatéra je lákavé — uříznout hadovi hlavu. Vyčlenit jednoho z opilého davu ale vyvolá vzdor stejně snadno jako poslušnost, a v 1:30 s alkoholem je vzdor pravděpodobnější. Odejít od aktérů ke konfrontaci s křiklounem navíc snižuje kontrolu nad hlavní scénou; když provokatér eskaluje, máte tři problémy místo jednoho. | DŮSLEDKY: Muž se nafoukne: „Nebo co? Zatknete mě za mluvení?“ Jeho parta se kolem něj shlukne. Vedete teď samostatnou konfrontaci, zatímco Danny a Viktor jsou bez dozoru. Dav má nové ohnisko — vy proti křiklounovi. | Reflexe: Kdy konfrontace s nejhlasitějším hlasem v davu problém vyřeší a kdy vytvoří nový?",
           "type": "partially_positive",
           "points": 5
@@ -291,13 +311,13 @@
           "points": 12
         },
         {
-          "text": "Ustoupíte o krok a klinicky posoudíte fakta. Danny strčil první — to je fyzický útok. Viktor má viditelné zranění, Radek je potvrzující svědek. Vytáhnete pouta a přistoupíte k Dannymu, který sedí u zdi s Terezou: „Danny, zadržuju vás pro podezření z výtržnictví. Strčil jste první, to je útok. Viktor je oběť, Radek svědek. Zpracuju to řádně — je to jasnej případ.“ Saháte po jeho paži, zatímco Terezin výraz se rozpadá na kusy.",
+          "text": "Ustoupíte o krok a klinicky posoudíte fakta. Danny strčil první — to je fyzický útok. Viktor má viditelné zranění, Radek je potvrzující svědek. Vytáhnete pouta a přistoupíte k Dannymu, který sedí u zdi s Terezou: „Danny, zadržuju vás pro podezření z výtržnictví. Strčil jste první, to je útok. Viktor je oběť, Radek svědek. Zpracuju to řádně — je to jasnej případ.“ Saháte po jeho paži, pouta rozevřená v druhé ruce.",
           "feedback": "Proč: Technicky svůdné, ale právně i takticky chybné. Strkanice kvůli politému drinku bez vážného zranění nedosahuje intenzity výtržnictví podle § 358 (NS žádá vyšší intenzitu a závažnost; ne každé strčení je výtržnost) a rozhodně nejde o rvačku podle § 158. Zbývá přestupková rovina, kterou lze vyřešit domluvou. Zadržení podezřelého (§ 76 tr. řádu) předpokládá trestný čin a některý z důvodů vazby — nic z toho zde není. Zákrok je proto nepřiměřený (§ 11), traumatizuje Terezu, povyšuje bagatelní věc na trestní záznam a před kamerami se stane příběhem. Vyhazovač — klíčový svědek — začne minimalizovat vlastní hrubé zacházení, jakmile poteče formální řízení. | DŮSLEDKY: Danny vybuchne: „Zadržujete MĚ?!“ Tereza je hysterická, Viktor protestuje — o tohle nežádal. Radek zmlkne a uvědomí si, že i jeho jednání může být zkoumáno. Zadržení před telefony se stane virálním. Bagatelní incident je najednou trestní kauza, ze které nemá nikdo prospěch. | Reflexe: Když vám zákon dává pravomoc zakročit, jak poznáte, zda zákrok slouží spravedlnosti, nebo ji podkopává?",
           "type": "negative",
           "points": -10
         },
         {
-          "text": "Přejdete na půlcestu mezi Dannyho zeď a Viktorovo stání taxi, zvýšíte hlas právě tak, aby vás slyšely obě strany, a vyhlásíte verdikt se zkříženýma rukama: „Tak, oba jste pili, oba jste se prali a mohl bych vás oba zajistit za narušení veřejného pořádku. Ale dnes využiju svou pravomoc a nechám to být. Jděte domů, nevracejte se. Jestli o některém z vás ještě uslyším, strávíte noc na cele. Jasný?“ Ukážete Dannymu jedním směrem a Viktorovi druhým, čekáte na neochotné přikývnutí.",
+          "text": "Přejdete na půlcestu mezi Dannyho zeď a Viktorovo stání taxi, zvýšíte hlas právě tak, aby vás slyšely obě strany, a vyhlásíte verdikt se zkříženýma rukama: „Tak, oba jste pili, oba jste se prali a mohl bych vás oba zajistit za narušení veřejného pořádku. Ale dnes využiju svou pravomoc a nechám to být. Jděte domů, nevracejte se. Jestli o některém z vás ještě uslyším, strávíte noc na cele. Jasný?“ Ukážete Dannymu jedním směrem a Viktorovi druhým, čekáte na přikývnutí.",
           "feedback": "Proč: Výsledek je rozumný — žádné zajištění, jděte domů — ale zarámování je problematické. „Mohl bych vás oba zajistit“ staví hrozbu donucení nad milosrdný akt, takže podřízení působí jako vděčnost za shovívavost, ne jako spravedlivý výsledek. Nerozlišuje, kdo začal a kdo má oprávněnou stížnost; Viktor, který dostal ránu a byl hrubě vyhozen, slyší, že je stejně vinen. Chybí i pojmenování kvalifikace, takže oba odcházejí s pocitem, že nebyli vyslyšeni. | DŮSLEDKY: Oba odejdou, ale ani jeden nemá pocit spravedlnosti. Danny si myslí, že měl štěstí; Viktor si myslí, že ho policie brala stejně jako útočníka, přestože dostal ránu. Nikdo se nic nenaučil. Je to řešení z pohodlnosti, ne ze spravedlnosti. | Reflexe: Jaký je rozdíl mezi úvahou, která situaci vyřeší, a úvahou, která ji jen ukončí?",
           "type": "partially_positive",
           "points": 5
@@ -347,13 +367,13 @@
           "points": 5
         },
         {
-          "text": "Obrátíte se okamžitě k Radkovi — jeho přiznání je závažné a nemůže čekat. Odvedete ho stranou od zbývajících kolemjdoucích a ztišíte hlas do vážného tónu: „Radku, musím být jasný: to, co popisujete, může být nepřiměřená síla, dokonce ublížení na zdraví. Potřebuju, abyste přesně sepsal, co se dělo při vyhazování. Podle kamer může následovat prošetření. Cením si upřímnosti, ale ignorovat to nemůžu.“ Za vámi dívka na obrubníku posune oteklý kotník a sleduje, jak strážník znovu prochází kolem ní.",
+          "text": "Obrátíte se okamžitě k Radkovi — jeho přiznání je závažné a nemůže čekat. Odvedete ho stranou od zbývajících kolemjdoucích a ztišíte hlas do vážného tónu: „Radku, musím být jasný: to, co popisujete, může být nepřiměřená síla, dokonce ublížení na zdraví. Potřebuju, abyste přesně sepsal, co se dělo při vyhazování. Podle kamer může následovat prošetření. Cením si upřímnosti, ale ignorovat to nemůžu.“ Při řeči držíte otevřený zápisník a heslovitě si zapisujete Radkova slova, zády k obrubníku, kde sedí zraněná dívka.",
           "feedback": "Proč: Brát přiznání vážně je profesionálně správné a nadměrná síla vyhazovače může skutečně naplnit § 146, případně § 358 — vyhazovač může být pachatel. Jenže zraněná, která čeká přes půl hodiny, stále sedí na obrubníku; upřednostnit formální proces před akutní potřebou péče obrací pořadí priorit, protože zdraví má přednost. Radek nabídl upřímnost dobrovolně; setkat se s ní okamžitými formálními důsledky zajistí, že příště už žádný vyhazovač upřímný nebude, a ztratíte spolupracujícího svědka. | DŮSLEDKY: Radkova tvář se uzavře: „Tak zapomeňte, že jsem něco říkal,“ a odejde dovnitř. Ztratili jste komunitního spojence i svědka. Mezitím Míša přemýšlí, jestli jí někdo pomůže. Procedurálně správná akce přišla na úkor té lidské. | Reflexe: Když někdo dobrovolně přizná chybu, jak vaše reakce určí, zda budou on i ostatní k policii v budoucnu upřímní?",
           "type": "neutral",
           "points": 2
         },
         {
-          "text": "Pohlédnete dolů na dívku na obrubníku, jak procházíte kolem — kotník viditelně oteklý, třese se v tenkých šatech. Zastavíte se právě na tak dlouho, abyste ji oslovil bez zastavení kroku: „Slečno, pokud jste zraněná, měla byste zavolat 155 nebo jet na pohotovost. Můžu vám popsat cestu. Potřebujete ještě něco?“ Začne odpovídat, ale vy se už otáčíte k vozidlu. Hlášení je třeba sepsat, dokud jsou detaily čerstvé.",
+          "text": "Pohlédnete dolů na dívku na obrubníku, jak procházíte kolem — kotník viditelně oteklý, třese se v tenkých šatech. Zastavíte se právě na tak dlouho, abyste ji oslovil bez zastavení kroku: „Slečno, pokud jste zraněná, měla byste zavolat 155 nebo jet na pohotovost. Můžu vám popsat cestu. Potřebujete ještě něco?“ Poslední slova doříkáváte už v chůzi, otočený k vozidlu — hlášení je třeba sepsat, dokud jsou detaily čerstvé.",
           "feedback": "Proč: Říct zraněné, opuštěné devatenáctileté dívce, ať si sama zavolá záchranku — když vy jste ta pomoc na místě — je zanedbání povinné péče (§ 11 vám ukládá nedopustit, aby nekonáním vznikla ohrožené osobě bezdůvodná újma). Sedí na studeném obrubníku půl hodiny a čeká; nasměrovat ji, ať si pomůže sama, abyste mohl dělat papíry, jí říká, že vaše hlášení je důležitější než její kotník. Tohle je moment, který bude vyprávět léta. | DŮSLEDKY: Míše spadne obličej. Zavolá 155 sama, sama na obrubníku ve dvě ráno. Radek sleduje ode dveří a kroutí hlavou. Poslední kolemjdoucí natáčejí strážníka nasedajícího do auta, zatímco zraněná dívka sedí sama. Tohle video se stane virálním — ale ne z dobrých důvodů. | Reflexe: Když je zraněná osoba sama a zranitelná, jaký je minimální standard péče, který jí dlužíte, a jaký vzkaz vysílá jeho nesplnění každému svědkovi?",
           "type": "negative",
           "points": -8

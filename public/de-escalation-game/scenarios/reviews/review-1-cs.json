@@ -22,7 +22,7 @@
           "professionalImpact": "Váš klidný, transparentní úvod vytvořil krátké okno spolupráce a nastavil kooperativní tón celé kontroly."
         },
         "neutral": {
-          "choiceText": "Úsečné 'Doklady. Řidičák, techničák, pojištění' bez představení a bez sdělení důvodu, se svícením do obličeje a popoháněním.",
+          "choiceText": "Úsečné 'Dobrý večer. Doklady. Řidičák, techničák, pojištění.' se svícením do obličeje a netrpělivým popoháněním 'tak bude to?'.",
           "adequate": [
             "Výzva k dokladům je věcně v pořádku (§ 6 odst. 8)",
             "Kontrola byla zahájena a úkon proběhl"
@@ -160,7 +160,7 @@
           "professionalImpact": "Získal jste spolupráci a zároveň položil základ, aby řidič později neudělal osudovou chybu odmítnutím."
         },
         "neutral": {
-          "choiceText": "Pouhé 'Vyzývám vás k dechové zkoušce, foukejte' bez vysvětlení, co je orientační měření a co znamená odmítnutí.",
+          "choiceText": "Pouhé 'Vyzývám vás k dechové zkoušce, foukejte do náustku' — klidně držíte přístroj a beze slova čekáte, jestli řidič foukne.",
           "adequate": [
             "Samotná výzva je zákonná a v pořádku (§ 5 odst. 1 písm. f)",
             "Řidič je vyzván k povinné zkoušce"
@@ -229,7 +229,7 @@
           "professionalImpact": "Vaše profesionalita je teď zdokumentovaná jako spojenec, ne jako důkaz proti vám."
         },
         "neutral": {
-          "choiceText": "Mladíka víceméně ignorujete, nezakážete natáčení, ale ani ho nepotvrdíte — děláte, jako by tam nebyl.",
+          "choiceText": "Mladíka si víceméně nevšímáte — krátce po něm loupnete okem a děláte, jako by tam s telefonem nestál.",
           "adequate": [
             "Nezakázání natáčení je správné",
             "Soustředění na řidiče jako jádro situace"
@@ -297,7 +297,7 @@
           "professionalImpact": "Ochránil jste řidiče před osudovou chybou z neznalosti a získal jeho spolupráci — učebnicové zvládnutí klíčového momentu."
         },
         "neutral": {
-          "choiceText": "Formálně správné 'máte 0,62, vyzývám vás k lékařskému vyšetření, odmítnutí se řeší dál ve správním řízení', ale bez důrazu, že odmítnutí je nejtěžší varianta — 'je to na vás'.",
+          "choiceText": "Formálně správné 'máte 0,62, vyzývám vás k lékařskému vyšetření, odmítnutí se řeší dál ve správním řízení' a neutrální 'je to na vás', řečené úředním tempem s očima ve formuláři.",
           "adequate": [
             "Sdělení podezření a zákonná výzva k vyšetření (§ 5 odst. 1 písm. g)",
             "Informace, že odmítnutí se řeší dál",
@@ -368,7 +368,7 @@
           "professionalImpact": "Zabránil jste odjezdu, aniž na někoho sáhl, a máte na kameře policistu, který zvládl krizi klidem."
         },
         "neutral": {
-          "choiceText": "Klidně řidiče zastavíte a necháte couvnout, ale nenabídnete žádné řešení rozvozu ani neřeknete, co bude dál — jen čekáte.",
+          "choiceText": "Klidně řidiče zastavíte, zůstanete stát mezi ním a dveřmi a mlčky čekáte, až se sám sebere.",
           "adequate": [
             "Fyzické zaujetí prostoru je přiměřené (§ 11)",
             "Nesáhnutí po donucovacích prostředcích",
@@ -382,7 +382,7 @@
           "improvement": "Když někoho zastavíte, dejte mu i cestu vpřed — jak vyřešit rozvoz, co bude následovat. Bez ní je klid jen dočasný."
         },
         "negative": {
-          "choiceText": "Tvrdé 'Ani hnout!', stržení řidiče od vozu, otočení na kapotu a nasazení pout se slovy 'za pokus o útěk vás zajistím, měl jste poslechnout', přestože se přestal bránit.",
+          "choiceText": "Tvrdé 'Ani hnout!', stržení řidiče od vozu, otočení na kapotu a nasazení pout se slovy 'za pokus o útěk vás zajistím, měl jste poslechnout' a přitažení rukou za záda.",
           "failures": [
             "Nepřiměřený zákrok (§ 11) — řidič panikařil, neútočil",
             "Nasazení pout (§ 54) a zajištění (§ 26) bez bezprostředního ohrožení života/zdraví/majetku a bez vyčerpání mírnějšího postupu",

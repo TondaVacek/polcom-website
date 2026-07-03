@@ -47,7 +47,7 @@
           "trainingFocus": "Procvičte rozlišení skutečné taktické naléhavosti od promítané. Jeden strážník s trpělivostí je u neohrožujícího výjezdu k duševnímu zdraví správným — a přiměřeným — zdrojem."
         },
         "partially_positive": {
-          "choiceText": "Vydáte se rovnou k ženě, zmenšíte vzdálenost na necelý metr a podáte ruku na pozdrav, aniž byste nejdřív přečetli scénu a všimli si náramku.",
+          "choiceText": "Vydáte se rovnou k ženě rázným tempem, zmenšíte vzdálenost na necelý metr, podáte ruku na pozdrav a vřele nabídnete pomoc.",
           "adequate": [
             "Dobrý instinkt upřednostnit osobu v nouzi před oznamovatelem",
             "Záměr pomoci je upřímný a poháněný empatií"
@@ -91,7 +91,7 @@
           "professionalImpact": "Dech se jí zpomalí a sdělí jméno. Vzniklo křehké vlákno důvěry — neutekla, nekřičela, což je základ pro vše další."
         },
         "neutral": {
-          "choiceText": "Kleknete si a jemně nabídnete plané sliby: ‚Jste v bezpečí, slibuju, že se nic zlého nestane, všechno bude dobré' — aniž byste zmínili její konkrétní strach z návratu.",
+          "choiceText": "Kleknete si a jemně nabídnete plané sliby: ‚Jste v bezpečí, slibuju, že se nic zlého nestane, všechno bude dobré' — obecné chlácholení, které míjí její konkrétní strach z návratu.",
           "adequate": [
             "Kleknutí ukazuje dobrý instinkt ohledně fyzického postavení",
             "Jemný tón je přiměřený situaci"
@@ -329,7 +329,7 @@
           "trainingFocus": "Když neexistuje bezpečnostní důvod držet příbuzného stranou, usnadněte shledání — ale nejdřív zvládněte jeho emoce. Desetisekundová pauza na nádech chrání Elišku, aniž by jí odepřela osobu, po které se ptala."
         },
         "partially_positive": {
-          "choiceText": "Vřele pustíte plačící, zoufalou Sofii přímo k Elišce, aniž byste nejdřív zvládli její rozrušení.",
+          "choiceText": "Vřele přivítáte Sofii a pustíte ji plačící a zoufalou rovnou ke křehké Elišce, sám zůstanete o krok pozadu.",
           "adequate": [
             "Vřelé a vstřícné — validuje Sofiinu přítomnost a spojení s Eliškou",
             "Identifikace Sofie jménem a odkaz na Eliščina slova ukazuje pozornost"
@@ -368,7 +368,7 @@
           "professionalImpact": "Eliška se rozhodne: ‚Nejdřív zavoláme doktorce, pak ať to posoudí záchranář. Ale ne na oddělení.' Rodí se plán — Eliščin, ne váš — postavený na souhlasu a na správném rozdělení rolí."
         },
         "neutral": {
-          "choiceText": "Úplně ustoupíte: ‚Nikdo vás nenutí, dejte si čas, vy a Sofie si to promyslíte' — bez nabídky zdrojů, kontaktů či rámce.",
+          "choiceText": "Úplně ustoupíte: ‚Nikdo vás nenutí, dejte si čas, vy a Sofie si to promyslíte' — poodstoupíte, ruce spojené za zády, a přehlížíte ulici.",
           "adequate": [
             "Plně respektuje Eliščinu autonomii",
             "Nevnucuje žádný postup a vytváří prostor pro sestry"
@@ -393,7 +393,7 @@
           "trainingFocus": "Když se posouzení zdravotní potřeby střetne s vyjádřenými přáními a nehrozí bezprostřední nebezpečí, přání osoby má přednost. Nabídněte alternativy, které řeší zdraví bez vynucení — posouzení ZZS, telefonát psychiatričce, dobrovolné vyšetření za jejích podmínek."
         },
         "partially_positive": {
-          "choiceText": "Nasměrujete plán přes Sofii: ‚Zavolejte doktorce Bláhové, když doporučí pohotovost, odvezte ji' — aniž byste Elišce sedící vedle nabídli slovo.",
+          "choiceText": "Nasměrujete plán přes Sofii: ‚Zavolejte doktorce Bláhové, když doporučí pohotovost, odvezte ji' — celý rozhovor vedete jen se sestrou, zády k Elišce.",
           "adequate": [
             "Praktická a rozumná cesta vpřed",
             "Odkázání na úsudek psychiatričky je zdravotně přiměřené",
@@ -464,7 +464,7 @@
           "trainingFocus": "Úřední záznam o zákroku je nutný (čas, důvody, přivolání ZZS), ale na načasování a formě záleží. Uzavřete lidskou interakci důstojností a zdroji; údaje pro dokumentaci zjistěte od Sofie později nebo mimo Elišku."
         },
         "partially_positive": {
-          "choiceText": "Vřele se rozloučíte: ‚Jsem rád, že se to podařilo, jste v dobrých rukou se Sofií, opatrujte se' — bez předání jakýchkoli následných zdrojů.",
+          "choiceText": "Vřele se rozloučíte: ‚Jsem rád, že se to podařilo, jste v dobrých rukou se Sofií, opatrujte se' — zvednete ruku na pozdrav a volným krokem odejdete k vozu.",
           "adequate": [
             "Vřelé a lidské uzavření, které udržuje vybudované spojení",
             "Vyjádření upřímné radosti z výsledku je emočně přiměřené",
