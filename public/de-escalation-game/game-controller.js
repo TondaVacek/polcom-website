@@ -672,7 +672,7 @@ class GameController {
                 <div class="key-lessons">
                     <h4>📚 ${esc(i18n.t('review.keyLessons') || 'Key Lessons')}</h4>
                     <ul>
-                        ${scenario.finalMessage.keyLessons.map(lesson => `<li>${esc(lesson)}</li>`).join('')}
+                        ${scenario.finalMessage.keyLessons.map(lesson => `<li>${linkifyLaw(esc(lesson), scenario.lawContext)}</li>`).join('')}
                     </ul>
                 </div>
             `;
@@ -687,8 +687,8 @@ class GameController {
                 </div>
             </div>
 
-            <div class="revelation">
-                ${esc(scenario.finalMessage?.revelation || i18n.t('review.wellDone'))}
+            <div class="revelation message-text">
+                ${paragraphsHTML(scenario.finalMessage?.revelation || i18n.t('review.wellDone'), scenario.lawContext)}
             </div>
 
             ${keyLessonsHTML}

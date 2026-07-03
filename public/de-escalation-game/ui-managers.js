@@ -445,7 +445,15 @@ class DialogueManager {
         messageDiv.className = classes.join(' ');
         
         const time = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: false });
-        
+
+        const lawCtx = (typeof gameState !== 'undefined' && gameState && gameState.currentScenario && gameState.currentScenario.lawContext) || null;
+        // Trainer feedback ("Proč | DŮSLEDKY | Reflexe") renders as labelled
+        // blocks; everything else as readable paragraphs.
+        const bodyHTML = feedbackType
+            ? formatFeedbackHTML(text, lawCtx)
+            : paragraphsHTML(text, lawCtx);
+        const textClass = feedbackType ? 'message-text feedback-blocks' : 'message-text';
+
         messageDiv.innerHTML = `
             <div class="message-avatar">${esc(this.getCharacterAvatar(character))}</div>
             <div class="message-content">
@@ -453,7 +461,7 @@ class DialogueManager {
                     <span class="message-name">${esc(this.getCharacterName(character))}</span>
                     <span class="message-time">${time}</span>
                 </div>
-                <div class="message-text">${esc(text)}</div>
+                <div class="${textClass}">${bodyHTML}</div>
             </div>
         `;
         

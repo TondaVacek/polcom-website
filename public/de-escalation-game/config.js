@@ -262,3 +262,119 @@ function esc(value) {
         .replace(/"/g, '&quot;')
         .replace(/'/g, '&#39;');
 }
+
+/**
+ * Turn Czech statute citations in ALREADY-ESCAPED text into links to the
+ * public law collection (zakonyprolidi.cz) so players can read the source.
+ * Hrefs are built only from matched digits / a fixed act table, so the
+ * output stays safe to inject via innerHTML.
+ */
+function linkifyLaw(html, lawContext) {
+    const ODST_PISM = '((?:\\s+odst\\.\\s*\\d+)?(?:\\s+písm\\.\\s*[a-z]\\))?(?:\\s+a\\s+násl\\.)?)';
+    // Acts commonly referred to by name (slug = zakonyprolidi.cz/cs/<slug>)
+    const NAMED_ACTS = [
+        ['trestního\\s+zákoníku|trestní\\s+zákoník|tr\\.\\s*zák\\.', '2009-40'],
+        ['trestního\\s+řádu|tr\\.\\s*řádu', '1961-141'],
+        ['zákon[au]?\\s+o\\s+[Pp]olicii(?:\\s+ČR)?', '2008-273'],
+        ['zákon[au]?\\s+o\\s+silničním\\s+provozu', '2000-361'],
+        ['zákon[auě]?\\s+o\\s+zdravotních\\s+službách', '2011-372'],
+    ];
+    const anchor = (par) => {
+        if (!par) return '';
+        const m = par.match(/(\d+[a-z]?)(?:[^\d]*odst\.\s*(\d+))?(?:.*?písm\.\s*([a-z])\))?/);
+        if (!m) return '';
+        return '#p' + m[1] + (m[2] ? '-' + m[2] : '') + (m[3] ? '-' + m[3] : '');
+    };
+    const link = (slug, par, label) =>
+        `<a class="law-link" href="https://www.zakonyprolidi.cz/cs/${slug}${anchor(par)}" target="_blank" rel="noopener noreferrer">${label}</a>`;
+    // Apply fn only to segments not already inside an <a> element
+    const outsideAnchors = (text, fn) =>
+        text.split(/(<a\b[^>]*>[^]*?<\/a>)/g).map((seg, i) => (i % 2 ? seg : fn(seg))).join('');
+
+    let out = String(html == null ? '' : html);
+    // 1) "§ X [odst. N] [písm. y)] zák./zákona č. N/YYYY Sb." — paragraph with act number
+    out = outsideAnchors(out, (t) => t.replace(
+        new RegExp('§\\s*(\\d+[a-z]?)' + ODST_PISM + '\\s+(?:zákona|zák\\.|zákon[auěem]*)\\s*(?:č\\.\\s*)?(\\d{1,3})\\/(\\d{4})\\s*Sb\\.', 'g'),
+        (m, par, tail, num, year) => link(`${year}-${num}`, `§ ${par}${tail}`, m)
+    ));
+    // 2) "§ X trestního zákoníku" and other acts referenced by name
+    for (const [name, slug] of NAMED_ACTS) {
+        out = outsideAnchors(out, (t) => t.replace(
+            new RegExp('§\\s*(\\d+[a-z]?)' + ODST_PISM + '\\s+(?:' + name + ')', 'g'),
+            (m, par, tail) => link(slug, `§ ${par}${tail}`, m)
+        ));
+    }
+    // 3) bare "§ N" resolved through the scenario's lawContext map
+    //    (scenario JSON: "lawContext": { "11": "2008-273", ... })
+    if (lawContext) {
+        out = outsideAnchors(out, (t) => t.replace(
+            new RegExp('§\\s*(\\d+[a-z]?)' + ODST_PISM, 'g'),
+            (m, par, tail) => {
+                const slug = lawContext[par.toLowerCase()];
+                return slug ? link(slug, `§ ${par}${tail}`, m) : m;
+            }
+        ));
+    }
+    // 4) bare act references: "zák. č. N/YYYY Sb." / "N/YYYY Sb."
+    out = outsideAnchors(out, (t) => t.replace(
+        /((?:zákona|zák\.|zákon[auěem]*)\s*(?:č\.\s*)?)?(\d{1,3})\/(\d{4})\s*Sb\./g,
+        (m, pre, num, year) => link(`${year}-${num}`, '', m)
+    ));
+    return out;
+}
+
+/**
+ * Render plain dialogue/revelation text as HTML: escape, linkify statutes,
+ * and split on blank lines into <p> paragraphs for readability.
+ */
+function paragraphsHTML(rawText, lawContext) {
+    return String(rawText == null ? '' : rawText)
+        .split(/\n\s*\n/)
+        .map(p => p.trim())
+        .filter(p => p.length)
+        .map(p => `<p>${linkifyLaw(esc(p), lawContext)}</p>`)
+        .join('');
+}
+
+// Category detection for feedback labels (Proč / DŮSLEDKY / Reflexe and their
+// EN/LT/RO equivalents) — used to pick an icon and a section class.
+const FEEDBACK_CATEGORIES = [
+    { icon: '💡', cls: 'fb-why',      keys: ['proč', 'why', 'kodėl', 'de ce'] },
+    { icon: '➡️', cls: 'fb-effect',   keys: ['důsledky', 'dusledky', 'consequences', 'pasekmės', 'padariniai', 'consecințe', 'consecinte'] },
+    { icon: '🤔', cls: 'fb-reflect',  keys: ['reflexe', 'reflection', 'refleksija', 'reflectare', 'reflecție', 'reflectie'] },
+];
+
+/**
+ * Format a choice-feedback string into labelled blocks. The data uses
+ * "Proč: … | DŮSLEDKY: … | Reflexe: …" (localised label + '|' separator),
+ * so we split on '|', pull the leading "Label:" off each part, and render
+ * each as an icon + heading + body. Language-agnostic: the icon is chosen by
+ * matching the label keywords, falling back to position, then to none.
+ * Statute citations in the body stay clickable.
+ */
+function formatFeedbackHTML(rawText, lawContext) {
+    const parts = String(rawText == null ? '' : rawText)
+        .split(/\s*\|\s*/)
+        .map(p => p.trim())
+        .filter(p => p.length);
+    if (!parts.length) return '';
+
+    return parts.map((part, i) => {
+        let label = '', body = part;
+        const colon = part.indexOf(':');
+        if (colon > 0 && colon <= 24) {          // a real leading "Label:"
+            label = part.slice(0, colon).trim();
+            body = part.slice(colon + 1).trim();
+        }
+        const low = label.toLowerCase();
+        let cat = FEEDBACK_CATEGORIES.find(c => c.keys.some(k => low.startsWith(k)));
+        if (!cat && parts.length === 3) cat = FEEDBACK_CATEGORIES[i];  // fall back to position
+        const icon = cat ? cat.icon : '';
+        const cls = cat ? cat.cls : '';
+        const bodyHTML = linkifyLaw(esc(body), lawContext);
+        const labelHTML = label
+            ? `<span class="fb-label">${icon ? icon + ' ' : ''}${esc(label)}</span>`
+            : '';
+        return `<div class="fb-block ${cls}">${labelHTML}<span class="fb-body">${bodyHTML}</span></div>`;
+    }).join('');
+}

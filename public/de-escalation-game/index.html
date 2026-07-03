@@ -1247,9 +1247,66 @@
             opacity: 0.7;
         }
 
+        /* Statute citation links (feedback, report, lessons) */
+        .law-link {
+            color: inherit;
+            font-weight: 600;
+            text-decoration: underline;
+            text-decoration-style: dotted;
+            text-underline-offset: 2px;
+        }
+        .law-link:hover, .law-link:focus-visible {
+            text-decoration-style: solid;
+            color: #1d4ed8;
+        }
+
         .message-text {
             font-size: var(--font-base);
             line-height: 1.6;
+        }
+        /* Paragraph spacing inside dialogue / revelation bubbles */
+        .message-text p {
+            margin: 0 0 0.6em;
+        }
+        .message-text p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Structured trainer feedback: Proč / DŮSLEDKY / Reflexe blocks */
+        .feedback-blocks {
+            display: flex;
+            flex-direction: column;
+            gap: 0.6rem;
+        }
+        .fb-block {
+            display: block;
+            padding: 0.5rem 0.7rem;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.55);
+            border-left: 3px solid var(--color-muted, #94a3b8);
+        }
+        .fb-block .fb-label {
+            display: block;
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.03em;
+            text-transform: uppercase;
+            opacity: 0.75;
+            margin-bottom: 0.15rem;
+        }
+        .fb-block .fb-body {
+            display: block;
+            line-height: 1.55;
+        }
+        .fb-block.fb-why    { border-left-color: #3b82f6; }   /* modrá – proč */
+        .fb-block.fb-effect { border-left-color: #f59e0b; }   /* oranžová – důsledky */
+        .fb-block.fb-reflect{ border-left-color: #8b5cf6; }   /* fialová – reflexe */
+        /* On dark trainer bubbles keep blocks legible */
+        .dialogue-message.trainer-feedback .fb-block {
+            background: rgba(255, 255, 255, 0.14);
+        }
+        @media (prefers-color-scheme: dark) {
+            .fb-block { background: rgba(255, 255, 255, 0.08); }
         }
 
         .typing-indicator {
@@ -2880,10 +2937,10 @@
     <audio id="good-sound" preload="none"><source src="sounds/good.mp3" type="audio/mpeg"></audio>
 
     <!-- Load JavaScript Files -->
-    <script src="config.js?v=4"></script>
-    <script src="core.js?v=4"></script>
-    <script src="ui-managers.js?v=4"></script>
-    <script src="game-controller.js?v=4"></script>
+    <script src="config.js?v=6"></script>
+    <script src="core.js?v=6"></script>
+    <script src="ui-managers.js?v=6"></script>
+    <script src="game-controller.js?v=6"></script>
     
     <!-- Initialize Game -->
     <script>
@@ -2957,6 +3014,7 @@ const ReviewManager = {
             missedOpportunities: "Missed Opportunities:",
             trainingFocus: "📚 Training Focus:",
             keyLessons: "🎯 Key Lessons from this Stage:",
+            legalFramework: "⚖️ Legal framework:",
             mistakesSummary: "❌ Mistakes Summary",
             mistakesMade: "You made",
             incorrectChoices: "incorrect choices",
@@ -2979,6 +3037,7 @@ const ReviewManager = {
             missedOpportunities: "Zmeškaná příležitosti:",
             trainingFocus: "📚 Zaměření výcviku:",
             keyLessons: "🎯 Klíčové poznatky z této fáze:",
+            legalFramework: "⚖️ Právní rámec:",
             mistakesSummary: "❌ Souhrn chyb",
             mistakesMade: "Udělali jste",
             incorrectChoices: "nesprávných voleb",
@@ -3001,6 +3060,7 @@ const ReviewManager = {
             missedOpportunities: "Praleistos galimybės:",
             trainingFocus: "📚 Mokymo dėmesys:",
             keyLessons: "🎯 Pagrindinės šio etapo pamokos:",
+            legalFramework: "⚖️ Teisinis pagrindas:",
             mistakesSummary: "❌ Klaidų santrauka",
             mistakesMade: "Padarėte",
             incorrectChoices: "neteisingų pasirinkimų",
@@ -3023,6 +3083,7 @@ const ReviewManager = {
             missedOpportunities: "Oportunități ratate:",
             trainingFocus: "📚 Focusul antrenamentului:",
             keyLessons: "🎯 Lecțiile cheie din această etapă:",
+            legalFramework: "⚖️ Cadrul legal:",
             mistakesSummary: "❌ Rezumatul greșelilor",
             mistakesMade: "Ați făcut",
             incorrectChoices: "alegeri incorecte",
@@ -3137,6 +3198,11 @@ const ReviewManager = {
 
     // Determine choice type from the recorded choice type in gameHistory
     // (scoring points are 10-12 for positive options, so a points heuristic misclassifies them)
+    // Scenario-specific map for resolving bare-paragraph citations to acts
+    lawCtx() {
+        return (typeof gameState !== 'undefined' && gameState && gameState.currentScenario && gameState.currentScenario.lawContext) || null;
+    },
+
     determineChoiceType(historyItem) {
         switch (historyItem.type) {
             case 'positive': return 'positive';
@@ -3214,35 +3280,35 @@ const ReviewManager = {
                             if (choiceType === 'positive') {
                                 html += `
                                     <p style="color: #059669; margin: 0.5rem 0;">
-                                        ✅ <strong>${this.t('goodChoice')}</strong> ${esc(analysis.professionalImpact || '')}
+                                        ✅ <strong>${this.t('goodChoice')}</strong> ${linkifyLaw(esc(analysis.professionalImpact || ''), this.lawCtx())}
                                     </p>
                                 `;
                                 if (analysis.strengths && analysis.strengths.length > 0) {
                                     html += `<p style="margin-top: 0.5rem; font-size: 0.9rem;"><strong>${this.t('strengths')}</strong></p>`;
                                     html += '<ul style="margin: 0.25rem 0 0 1.5rem; font-size: 0.85rem; color: #059669;">';
                                     analysis.strengths.forEach(strength => {
-                                        html += `<li>${esc(strength)}</li>`;
+                                        html += `<li>${linkifyLaw(esc(strength), this.lawCtx())}</li>`;
                                     });
                                     html += '</ul>';
                                 }
                             } else if (choiceType === 'negative') {
                                 html += `
                                     <p style="color: #dc2626; margin: 0.5rem 0;">
-                                        ❌ <strong>${this.t('poorChoice')}</strong> ${esc(analysis.consequences || 'This approach escalated the situation.')}
+                                        ❌ <strong>${this.t('poorChoice')}</strong> ${linkifyLaw(esc(analysis.consequences || 'This approach escalated the situation.'), this.lawCtx())}
                                     </p>
                                 `;
                                 if (analysis.failures && analysis.failures.length > 0) {
                                     html += `<p style="margin-top: 0.5rem; font-size: 0.9rem;"><strong>${this.t('issues')}</strong></p>`;
                                     html += '<ul style="margin: 0.25rem 0 0 1.5rem; font-size: 0.85rem; color: #dc2626;">';
                                     analysis.failures.forEach(failure => {
-                                        html += `<li>${esc(failure)}</li>`;
+                                        html += `<li>${linkifyLaw(esc(failure), this.lawCtx())}</li>`;
                                     });
                                     html += '</ul>';
                                 }
                                 if (analysis.trainingFocus) {
                                     html += `
                                         <p style="margin: 0.5rem 0; padding: 0.5rem; background: #fef2f2; border-radius: 5px;">
-                                            <strong>${this.t('trainingFocus')}</strong> ${esc(analysis.trainingFocus)}
+                                            <strong>${this.t('trainingFocus')}</strong> ${linkifyLaw(esc(analysis.trainingFocus), this.lawCtx())}
                                         </p>
                                     `;
                                 }
@@ -3253,14 +3319,14 @@ const ReviewManager = {
                                 const labelIcon = choiceType === 'partially_positive' ? '🟡' : '⚠️';
                                 html += `
                                     <p style="color: ${labelColor}; margin: 0.5rem 0;">
-                                        ${labelIcon} <strong>${label}</strong> ${esc(analysis.improvement || 'Could be improved.')}
+                                        ${labelIcon} <strong>${label}</strong> ${linkifyLaw(esc(analysis.improvement || 'Could be improved.'), this.lawCtx())}
                                     </p>
                                 `;
                                 if (analysis.missed && analysis.missed.length > 0) {
                                     html += `<p style="margin-top: 0.5rem; font-size: 0.9rem;"><strong>${this.t('missedOpportunities')}</strong></p>`;
                                     html += '<ul style="margin: 0.25rem 0 0 1.5rem; font-size: 0.85rem; color: #d97706;">';
                                     analysis.missed.forEach(missed => {
-                                        html += `<li>${esc(missed)}</li>`;
+                                        html += `<li>${linkifyLaw(esc(missed), this.lawCtx())}</li>`;
                                     });
                                     html += '</ul>';
                                 }
@@ -3268,13 +3334,7 @@ const ReviewManager = {
                         } else {
                             // Fallback if no analysis found
                             if (attempt.feedback) {
-                                const feedbackColor = isCorrect ? '#059669' : '#dc2626';
-                                const icon = isCorrect ? '✅' : '❌';
-                                html += `
-                                    <p style="color: ${feedbackColor}; margin: 0.5rem 0;">
-                                        ${icon} ${esc(attempt.feedback)}
-                                    </p>
-                                `;
+                                html += `<div class="feedback-blocks" style="margin: 0.5rem 0;">${formatFeedbackHTML(attempt.feedback, this.lawCtx())}</div>`;
                             }
                         }
                         
@@ -3287,7 +3347,19 @@ const ReviewManager = {
                         html += `<p style="margin-bottom: 0.5rem;"><strong>${this.t('keyLessons')}</strong></p>`;
                         html += '<ul style="margin: 0.25rem 0 0 1.5rem;">';
                         stageData.keyLearningPoints.forEach(point => {
-                            html += `<li style="font-size: 0.9rem; color: #1e40af;">${esc(point)}</li>`;
+                            html += `<li style="font-size: 0.9rem; color: #1e40af;">${linkifyLaw(esc(point), this.lawCtx())}</li>`;
+                        });
+                        html += '</ul>';
+                        html += '</div>';
+                    }
+
+                    // Legal framework for this stage (verified statute references)
+                    if (stageData.legalConsiderations && stageData.legalConsiderations.length > 0) {
+                        html += '<div style="margin-top: 0.75rem; padding: 0.75rem; background: #fefce8; border-left: 3px solid #ca8a04; border-radius: 5px;">';
+                        html += `<p style="margin-bottom: 0.5rem;"><strong>${this.t('legalFramework')}</strong></p>`;
+                        html += '<ul style="margin: 0.25rem 0 0 1.5rem;">';
+                        stageData.legalConsiderations.forEach(item => {
+                            html += `<li style="font-size: 0.9rem; color: #713f12;">${linkifyLaw(esc(item), this.lawCtx())}</li>`;
                         });
                         html += '</ul>';
                         html += '</div>';
@@ -3314,7 +3386,7 @@ const ReviewManager = {
                 
                 html += `<li style="margin: 0.5rem 0;">`;
                 html += `<strong>${this.t('stage')} ${stageNum}:</strong> "${esc(choiceText)}" - `;
-                html += `<span style="color: #dc2626;">${esc(mistake.feedback || 'This choice escalated the situation.')}</span>`;
+                html += `<span style="color: #dc2626;">${linkifyLaw(esc(mistake.feedback || 'This choice escalated the situation.'), this.lawCtx())}</span>`;
                 html += `</li>`;
             });
             html += '</ul>';
@@ -3335,7 +3407,7 @@ const ReviewManager = {
                 html += `<h3 style="color: #1e293b; margin-bottom: 1rem;">${this.t('recommendedTraining')}</h3>`;
                 html += '<ul style="margin-left: 1.5rem;">';
                 training.forEach(course => {
-                    html += `<li style="margin: 0.5rem 0;">${esc(course)}</li>`;
+                    html += `<li style="margin: 0.5rem 0;">${linkifyLaw(esc(course), this.lawCtx())}</li>`;
                 });
                 html += '</ul>';
                 html += '</div>';
@@ -3350,7 +3422,7 @@ const ReviewManager = {
                 html += `<h3 style="color: #1e293b; margin-bottom: 1rem;">${this.t('keyTakeaways')}</h3>`;
                 html += '<ul style="margin-left: 1.5rem;">';
                 lessons.forEach(lesson => {
-                    html += `<li style="margin: 0.5rem 0;">${esc(lesson)}</li>`;
+                    html += `<li style="margin: 0.5rem 0;">${linkifyLaw(esc(lesson), this.lawCtx())}</li>`;
                 });
                 html += '</ul>';
                 html += '</div>';
