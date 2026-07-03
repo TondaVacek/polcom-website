@@ -1298,12 +1298,19 @@
             display: block;
             line-height: 1.55;
         }
+        /* Category colours only on light backgrounds (e.g. the report) */
         .fb-block.fb-why    { border-left-color: #3b82f6; }   /* modrá – proč */
         .fb-block.fb-effect { border-left-color: #f59e0b; }   /* oranžová – důsledky */
         .fb-block.fb-reflect{ border-left-color: #8b5cf6; }   /* fialová – reflexe */
-        /* On dark trainer bubbles keep blocks legible */
-        .dialogue-message.trainer-feedback .fb-block {
-            background: rgba(255, 255, 255, 0.14);
+        /* Inside the coloured trainer bubble (green/red/amber) the category
+           colours clash, so use neutral translucent-white panels + borders;
+           the icon and label already distinguish the three blocks. */
+        .dialogue-message.trainer-feedback .fb-block,
+        .dialogue-message.trainer-feedback .fb-block.fb-why,
+        .dialogue-message.trainer-feedback .fb-block.fb-effect,
+        .dialogue-message.trainer-feedback .fb-block.fb-reflect {
+            background: rgba(255, 255, 255, 0.16);
+            border-left-color: rgba(255, 255, 255, 0.65);
         }
         @media (prefers-color-scheme: dark) {
             .fb-block { background: rgba(255, 255, 255, 0.08); }
