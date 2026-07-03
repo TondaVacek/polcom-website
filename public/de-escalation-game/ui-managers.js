@@ -225,20 +225,13 @@ class UIManager {
             backContainer.classList.add('show');
         }
         
-        // Set display based on device: phone portrait needs flex, others need grid
+        // Layout (grid on desktop/landscape, single-column flow in portrait)
+        // is fully CSS-driven via html.device-* classes; just clear the inline
+        // display left by showScenarioSelection and any stale panel-focus state.
         const gc = document.getElementById('game-content');
-        const isPhonePortrait = document.documentElement.classList.contains('device-phone') &&
-            document.documentElement.classList.contains('orientation-portrait');
         if (gc) {
-            gc.style.display = isPhonePortrait ? 'flex' : 'grid';
-        }
-        // Phone layout: default to Dialogue view so user reads first, then manually switches to Choices
-        const tabs = document.getElementById('phone-view-tabs');
-        if (gc && tabs && document.documentElement.classList.contains('device-phone')) {
-            gc.setAttribute('data-view', 'dialogue');
-            tabs.querySelectorAll('.phone-tab').forEach(function(b) {
-                b.classList.toggle('active', b.getAttribute('data-tab') === 'dialogue');
-            });
+            gc.style.display = '';
+            gc.classList.remove('dialogue-focus');
         }
         // Progress bar is initialized in beginScenario() to avoid double-init
         // Ensure dialogue history is visible
@@ -451,7 +444,7 @@ class DialogueManager {
         
         messageDiv.className = classes.join(' ');
         
-        const time = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+        const time = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: false });
         
         messageDiv.innerHTML = `
             <div class="message-avatar">${esc(this.getCharacterAvatar(character))}</div>

@@ -391,46 +391,9 @@
             text-transform: uppercase;
         }
 
-        .welcome-layout-section {
-            margin-top: clamp(0.5rem, 1.5vh, 0.75rem);
-            padding-top: clamp(0.25rem, 0.75vh, 0.5rem);
-            border-top: 1px solid rgba(0,0,0,0.06);
-        }
-        .welcome-layout-label {
-            font-size: clamp(0.65rem, 1.2vh, 0.75rem);
-            color: var(--color-muted);
-            margin-bottom: clamp(0.2rem, 0.5vh, 0.375rem);
-            font-weight: 600;
-        }
-        .welcome-layout-buttons {
-            display: flex;
-            justify-content: center;
-            gap: clamp(0.375rem, 1vw, 0.5rem);
-            flex-wrap: wrap;
-        }
-        .welcome-layout-btn {
-            background: white;
-            border: 1.5px solid #e2e8f0;
-            padding: clamp(0.25rem, 0.6vh, 0.5rem) clamp(0.5rem, 1.5vw, 1rem);
-            border-radius: var(--radius-sm);
-            cursor: pointer;
-            transition: all var(--transition-base);
-            font-size: clamp(0.7rem, 1.4vh, 0.85rem);
-            font-weight: 600;
-            color: var(--color-dark);
-            box-shadow: 0 1px 4px rgba(0,0,0,0.04);
-        }
-        .welcome-layout-btn:hover {
-            transform: translateY(-1px);
-            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.15);
-            border-color: var(--color-secondary);
-        }
-        .welcome-layout-btn.active {
-            background: var(--secondary-gradient);
-            color: white;
-            border-color: transparent;
-            box-shadow: 0 2px 10px rgba(59, 130, 246, 0.4);
-        }
+        /* The manual Computer/Phone layout picker is obsolete (layout is
+           fully responsive). The section stays in the DOM for compatibility
+           but is hidden — see the device-layout section below. */
 
         .welcome-divider {
             display: flex;
@@ -746,81 +709,45 @@
         }
 
         /* ============================================
-           GAME CONTENT LAYOUT - Flexible for all screens
+           GAME CONTENT LAYOUT
+           Desktop / landscape: calm two-column board —
+           left = scene + choices, right = dialogue.
+           Portrait (phone/tablet): single-column flow —
+           scene banner, dialogue, choices + sticky submit.
+           Both panels scroll INTERNALLY; the page never scrolls in play.
            ============================================ */
         .game-content {
             display: grid;
-            grid-template-columns: 8fr 2fr;
+            grid-template-columns: minmax(0, 3fr) minmax(300px, 2fr);
             grid-template-rows: minmax(0, 1fr);
             gap: var(--space-md);
             flex: 1;
             min-height: 0;
-            opacity: 1;
-            transition: opacity var(--transition-base), grid-template-columns 0.3s ease;
             overflow: hidden;
             position: relative;
-        }
-
-        .game-content.dialogue-focus {
-            grid-template-columns: 2fr 8fr !important;
         }
 
         .game-content.hidden {
             display: none !important;
         }
 
-        /* Panel toggle button — sits between left and right panels */
-        .panel-toggle {
-            position: absolute;
-            left: 80%;
-            top: 50%;
-            transform: translate(-50%, -50%);
-            z-index: 20;
-            width: 26px;
-            height: 52px;
-            border-radius: 13px;
-            background: rgba(255,255,255,0.95);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(0,0,0,0.1);
-            box-shadow: var(--shadow-sm);
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 14px;
-            color: var(--color-secondary);
-            transition: all 0.3s ease;
-            padding: 0;
-        }
-        .game-content.dialogue-focus .panel-toggle {
-            left: 20%;
-        }
-        .panel-toggle:hover {
-            background: var(--color-secondary);
-            color: white;
-            box-shadow: var(--shadow-md);
-        }
-        .panel-toggle::after { content: '\25C0'; }
-        .game-content.dialogue-focus .panel-toggle::after { content: '\25B6'; }
+        /* Legacy panel-focus toggle: layout is now balanced, both panels always
+           visible. The button stays in the DOM (initPanelToggle / API compat)
+           but is hidden; .dialogue-focus (still added by game-controller on
+           submit) intentionally has no layout effect anymore. */
+        .panel-toggle { display: none !important; }
 
         .left-panel {
             display: flex;
             flex-direction: column;
-            gap: clamp(0.25rem, 0.75vh, 0.5rem);
+            gap: clamp(0.5rem, 1vh, 0.75rem);
             min-height: 0;
-            overflow-y: auto;
-            overflow-x: hidden;
-            -webkit-overflow-scrolling: touch;
-            scrollbar-width: none;
-            box-shadow: none;
-            border: none;
+            overflow: hidden;
         }
-        .left-panel::-webkit-scrollbar { display: none; width: 0; height: 0; }
 
         .right-panel {
             display: flex;
             flex-direction: column;
-            gap: clamp(0.25rem, 0.75vh, 0.5rem);
             min-height: 0;
             overflow: hidden;
         }
@@ -831,45 +758,34 @@
         .scene-wrapper {
             position: relative;
             width: 100%;
-            height: auto;
-            min-height: clamp(50px, 7vh, 100px);
-            max-height: clamp(70px, 10vh, 130px);
             flex-shrink: 0;
         }
 
         #scene-container {
             position: relative;
             width: 100%;
-            height: 100%;
-            min-height: inherit;
-            max-height: inherit;
+            max-height: clamp(90px, 16vh, 160px);
             background: linear-gradient(135deg, #1a1f2e 0%, #2d3748 100%);
             border-radius: var(--radius-md);
             overflow: hidden;
-            box-shadow: none;
-            transition: transform var(--transition-base);
-        }
-
-        #scene-container:hover {
-            transform: none !important;
         }
 
         #scene-image {
             width: 100%;
-            height: 100%;
-            min-height: inherit;
+            min-height: 64px;
             max-height: inherit;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            display: block;
             position: relative;
-            transition: all var(--transition-slow);
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: thin;
+            transition: opacity var(--transition-slow);
             background: linear-gradient(160deg, #f1f5f9 0%, #e2e8f0 50%, #cbd5e1 100%);
         }
 
         .scene-content {
             text-align: left;
-            padding: clamp(0.85rem, 2vh, 1.25rem) clamp(1rem, 2.5vw, 1.5rem);
+            padding: clamp(0.6rem, 1.5vh, 1rem) clamp(0.875rem, 2vw, 1.25rem);
             animation: fadeIn var(--transition-slow);
             position: relative;
             z-index: 2;
@@ -1371,30 +1287,31 @@
         }
 
         /* ============================================
-           CHOICE CONTAINER - SHOWS ALL 5 OPTIONS
+           CHOICE PANEL
+           Flex column: header (fixed) + options list (scrolls
+           internally) + submit bar pinned BELOW the list — the
+           button is always reachable and never covers options.
+           NOTE: game-controller toggles inline display block/none;
+           a small shim in the init script rewrites 'block' -> 'flex'.
            ============================================ */
         #choice-container {
-            background: linear-gradient(135deg, 
-                rgba(255,255,255,0.98) 0%, 
+            background: linear-gradient(135deg,
+                rgba(255,255,255,0.98) 0%,
                 rgba(248,250,252,0.98) 100%);
-            backdrop-filter: blur(20px);
             border-radius: var(--radius-md);
-            padding: clamp(0.5rem, 1.5vh, 1rem) clamp(0.75rem, 2vw, 1.5rem);
-            padding-bottom: clamp(0.25rem, 0.75vh, 0.5rem);
-            box-shadow: none;
+            padding: clamp(0.5rem, 1.2vh, 0.875rem) clamp(0.75rem, 1.5vw, 1.25rem);
+            padding-bottom: 0;
             display: none;
+            flex-direction: column;
             border: 1px solid rgba(0,0,0,0.06);
             position: relative;
-            overflow: hidden;
-            flex: 1;
+            flex: 0 1 auto;
             min-height: 0;
+            overflow: hidden;
         }
 
         #choice-container.show {
             display: flex;
-            flex-direction: column;
-            animation: slideUp var(--transition-base);
-            min-height: 0;
         }
 
         #choice-container::before {
@@ -1407,26 +1324,15 @@
             background: var(--secondary-gradient);
         }
 
-        #choice-container > * {
-            position: relative;
-            z-index: 1;
-            flex-shrink: 0;
-        }
-
-        #choice-container .choice-options {
-            flex: 1 1 auto;
-            min-height: 0;
-            max-height: 100%;
-        }
-
         .choice-header {
             font-weight: 700;
-            margin-bottom: clamp(0.25rem, 1vh, 0.75rem);
+            margin-bottom: clamp(0.375rem, 1vh, 0.625rem);
             color: var(--color-dark);
-            font-size: clamp(0.85rem, 2vh, 1.1rem);
+            font-size: clamp(0.875rem, 2vh, 1.05rem);
             display: flex;
             align-items: center;
             gap: var(--space-xs);
+            flex-shrink: 0;
         }
 
         .choice-timer {
@@ -1454,134 +1360,92 @@
         .choice-options {
             display: flex;
             flex-direction: column;
-            gap: clamp(0.25rem, 0.75vh, 0.5rem);
+            gap: clamp(0.375rem, 0.8vh, 0.5rem);
             flex: 1 1 auto;
             min-height: 0;
             overflow-y: auto;
             overflow-x: hidden;
-            padding-right: 8px;
-            margin-bottom: clamp(0.25rem, 0.75vh, 0.5rem);
             -webkit-overflow-scrolling: touch;
+            overscroll-behavior: contain;
+            padding-right: 4px;
             scrollbar-width: thin;
-            scrollbar-color: rgba(0,0,0,0.25) rgba(0,0,0,0.06);
+            scrollbar-color: rgba(0,0,0,0.25) transparent;
         }
 
-        .choice-options::-webkit-scrollbar {
-            width: 10px;
-        }
+        .choice-options::-webkit-scrollbar { width: 8px; }
+        .choice-options::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.2); border-radius: 4px; }
 
-        .choice-options::-webkit-scrollbar-track {
-            background: rgba(0,0,0,0.06);
-            border-radius: 5px;
-        }
-
-        .choice-options::-webkit-scrollbar-thumb {
-            background: rgba(0,0,0,0.25);
-            border-radius: 5px;
-        }
-
-        .choice-options::-webkit-scrollbar-thumb:hover {
-            background: rgba(0,0,0,0.4);
-        }
-
-        /* CRITICAL FIX: Force all choice buttons to display */
         .choice-button {
-            text-align: left !important;
-            padding: clamp(0.35rem, 1vh, 0.6rem) clamp(0.5rem, 1.5vw, 0.875rem) !important;
-            border: 1.5px solid rgba(0,0,0,0.1) !important;
-            background: white !important;
-            color: var(--color-dark) !important;
-            border-radius: var(--radius-sm) !important;
-            cursor: pointer !important;
-            transition: all var(--transition-base) !important;
-            position: relative !important;
-            overflow: hidden !important;
-            font-size: clamp(0.8rem, 1.8vh, 1.05rem) !important;
-            line-height: 1.4 !important;
-            min-height: auto !important;
-            word-wrap: break-word !important;
-            display: block !important;
-            flex-shrink: 0 !important;
-            width: 100% !important;
-            opacity: 1 !important;
-            visibility: visible !important;
-            height: auto !important;
-            flex-shrink: 0 !important;
-            margin-bottom: 8px !important;
-            font-weight: 500 !important;
-        }
-
-        .choice-button::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
+            text-align: left;
+            padding: clamp(0.5rem, 1.2vh, 0.7rem) clamp(0.625rem, 1.5vw, 0.875rem);
+            border: 1.5px solid rgba(0,0,0,0.1);
+            background: white;
+            color: var(--color-dark);
+            border-radius: var(--radius-sm);
+            cursor: pointer;
+            transition: background var(--transition-fast),
+                        border-color var(--transition-fast),
+                        box-shadow var(--transition-fast);
+            font-size: clamp(0.875rem, 1.8vh, 1rem);
+            line-height: 1.45;
+            font-weight: 500;
             width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, 
-                transparent, 
-                rgba(59,130,246,0.1), 
-                transparent);
-            transition: left var(--transition-slow);
-        }
-
-        .choice-button:hover::before {
-            left: 100%;
+            min-height: 44px;
+            flex-shrink: 0; /* never squash below content in the scrolling list */
+            display: block;
+            word-wrap: break-word;
         }
 
         .choice-button:hover {
-            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%) !important;
-            color: var(--color-dark) !important;
-            border-color: var(--color-secondary) !important;
-            transform: translateX(5px);
-            box-shadow: var(--shadow-md);
-        }
-
-        .choice-button:active {
-            transform: translateX(3px);
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+            border-color: var(--color-secondary);
+            box-shadow: var(--shadow-sm);
         }
 
         .choice-button.selected {
-            background: var(--secondary-gradient) !important;
-            color: white !important;
-            border-color: var(--color-secondary) !important;
-            box-shadow: var(--shadow-lg) !important;
-            font-weight: 600 !important;
+            background: var(--secondary-gradient);
+            color: white;
+            border-color: var(--color-secondary);
+            box-shadow: var(--shadow-md);
+            font-weight: 600;
         }
 
         .choice-button.selected:hover {
-            background: var(--secondary-gradient) !important;
-            color: white !important;
-            transform: translateX(5px);
+            background: var(--secondary-gradient);
+            color: white;
         }
 
         .choice-button.disabled {
-            opacity: 0.5 !important;
-            cursor: not-allowed !important;
-            pointer-events: none !important;
-            background: #f1f5f9 !important;
-            color: var(--color-muted) !important;
+            opacity: 0.5;
+            cursor: not-allowed;
+            pointer-events: none;
+            background: #f1f5f9;
+            color: var(--color-muted);
+        }
+
+        /* Submit bar: fixed part of the flex column, always below the
+           options list and inside the viewport (safe-area aware). */
+        .choice-submit-bar {
+            flex-shrink: 0;
+            padding: clamp(0.5rem, 1vh, 0.75rem) 0
+                     calc(clamp(0.5rem, 1vh, 0.75rem) + env(safe-area-inset-bottom, 0px));
         }
 
         .submit-choice {
             background: var(--success-gradient);
             color: white;
             border: none;
-            padding: clamp(0.4rem, 1.2vh, 0.65rem) clamp(1rem, 3vw, 1.5rem);
+            padding: clamp(0.5rem, 1.2vh, 0.7rem) clamp(1rem, 3vw, 1.5rem);
             border-radius: var(--radius-full);
-            font-size: clamp(0.8rem, 1.8vh, 1rem);
+            font-size: clamp(0.875rem, 1.8vh, 1rem);
             font-weight: 600;
             cursor: pointer;
             transition: all var(--transition-base);
             width: 100%;
-            margin-top: clamp(0.2rem, 0.5vh, 0.4rem);
-            margin-bottom: clamp(0.4rem, 1vh, 0.75rem);
-            flex-shrink: 0;
+            min-height: 44px;
             box-shadow: var(--shadow-md);
             text-transform: uppercase;
             letter-spacing: 0.05em;
-            position: relative;
-            z-index: 2;
         }
 
         .submit-choice:hover:not(:disabled) {
@@ -1941,14 +1805,22 @@
             background: white;
             border-radius: var(--radius-xl);
             padding: var(--space-2xl);
+            padding-bottom: 0;
             box-shadow: var(--shadow-xl);
             text-align: center;
             max-width: 600px;
             width: 90%;
             margin: 0 auto;
+            /* Never taller than the viewport: long briefings scroll
+               internally while the begin button stays visible (sticky). */
+            max-height: min(92dvh, 100%);
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
+            overscroll-behavior: contain;
             animation: var(--transition-spring) modalBounce;
             position: relative;
-            overflow: hidden;
         }
 
         @keyframes modalBounce {
@@ -2028,8 +1900,14 @@
             transition: all var(--transition-spring);
             text-transform: uppercase;
             letter-spacing: 0.05em;
-            position: relative;
             overflow: hidden;
+            /* Pinned to the bottom of the (scrollable) intro sheet */
+            position: sticky;
+            bottom: 0;
+            margin-top: auto;
+            margin-bottom: var(--space-xl);
+            align-self: center;
+            flex-shrink: 0;
         }
 
         .begin-scenario-button::before {
@@ -2071,14 +1949,13 @@
             padding: var(--space-md) var(--space-lg);
             display: none;
             box-shadow: var(--shadow-lg);
-            margin-top: var(--space-sm);
-            margin-bottom: var(--space-md);
             position: relative;
-            overflow: hidden;
             color: white;
             max-height: 300px;
             overflow-y: auto;
-            flex-shrink: 0;
+            -webkit-overflow-scrolling: touch;
+            flex: 0 1 auto;
+            min-height: 0;
         }
 
         #trainer-feedback.show {
@@ -2086,10 +1963,12 @@
             animation: slideUp var(--transition-base);
         }
 
-        /* When scenario is complete, allow the feedback to expand */
+        /* When scenario is complete, the final report takes the free
+           space in the panel and scrolls internally (report button
+           stays reachable without page scroll). */
         #trainer-feedback.scenario-complete {
             max-height: none;
-            overflow-y: visible;
+            flex: 1 1 auto;
         }
 
         #trainer-feedback::before {
@@ -2253,10 +2132,11 @@
         .review-modal {
             background: white;
             border-radius: var(--radius-xl);
-            width: 90%;
-            max-width: 1000px;
-            max-height: 85vh;
-            overflow-y: auto;
+            width: min(92%, 940px);
+            max-height: 88vh;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
             box-shadow: var(--shadow-xl);
             position: relative;
             transform: scale(0.9);
@@ -2268,24 +2148,25 @@
         }
 
         .review-modal-header {
-            position: sticky;
-            top: 0;
+            position: relative;
+            flex-shrink: 0;
             background: var(--secondary-gradient);
             color: white;
-            padding: var(--space-xl);
+            padding: var(--space-lg) calc(var(--space-xl) + 44px);
             text-align: center;
             z-index: 10;
         }
 
         .review-modal-close {
             position: absolute;
-            top: var(--space-lg);
+            top: 50%;
+            transform: translateY(-50%);
             right: var(--space-lg);
             background: rgba(255,255,255,0.2);
             backdrop-filter: blur(10px);
             border: none;
-            width: 40px;
-            height: 40px;
+            width: 44px;
+            height: 44px;
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -2293,16 +2174,21 @@
             cursor: pointer;
             font-size: 1.5rem;
             color: white;
-            transition: all var(--transition-base);
+            transition: background var(--transition-base);
         }
 
         .review-modal-close:hover {
             background: rgba(255,255,255,0.3);
-            transform: rotate(90deg);
         }
 
+        /* The content, not the whole modal, scrolls — the header with the
+           close button is always visible. */
         .review-modal-content {
-            padding: var(--space-2xl);
+            padding: var(--space-xl);
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
+            overscroll-behavior: contain;
+            min-height: 0;
         }
 
         .review-section {
@@ -2372,727 +2258,275 @@
         }
 
         /* ============================================
-           RESPONSIVE DESIGN - Mobile First Approach
+           RESPONSIVE DEVICE LAYOUTS
+           The detection script sets html.device-desktop /
+           device-tablet / device-phone + orientation-portrait /
+           orientation-landscape purely from the viewport size —
+           the manual Computer/Phone toggle is gone.
            ============================================ */
-        
-        /* Extra Large Screens (Widescreen monitors) - use full width */
-        @media (min-width: 1600px) {
-            #game-container {
-                width: 100%;
-                max-width: 100%;
-            }
-            
-            .game-content {
-                grid-template-columns: 8fr 2fr;
-            }
 
-            #dialogue-history {
-                max-height: none;
-                flex: 1;
-            }
-            
-            .scenario-grid {
-                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            }
-            
-            .welcome-hero {
-                max-width: min(1000px, calc(100% - 1rem));
-            }
-        }
-        
-        /* Large Screens (Standard desktop/laptop) */
-        @media (min-width: 1200px) and (max-width: 1599px) {
-            .game-content {
-                grid-template-columns: 8fr 2fr;
-            }
-        }
+        /* Tab bar element kept for API compatibility, but the portrait
+           layout no longer needs tab juggling — it is one column. */
+        .phone-view-tabs { display: none !important; }
 
-        /* Medium-Large Screens (Small laptops, large tablets landscape) */
-        @media (min-width: 1024px) and (max-width: 1199px) {
-            .game-content {
-                grid-template-columns: 8fr 2fr;
-                gap: var(--space-md);
-            }
-        }
+        /* Obsolete manual Computer/Phone picker (layout is fully
+           responsive; setLayoutMode() remains defined as a no-op). */
+        .welcome-layout-section { display: none !important; }
 
-        /* Tablets and small laptops (Portrait and small landscape) */
-        @media (max-width: 1023px) {
-            .game-content {
-                grid-template-columns: 1fr;
-                gap: var(--space-sm);
-                height: auto;
-                max-height: none;
-                overflow-y: auto;
-            }
+        /* Neutralize the inline flex/grid display that showGameView may
+           set on #game-content: in game mode the layout is CSS-driven. */
+        body.game-mode .game-content:not(.hidden) { display: grid !important; }
 
-            .panel-toggle { display: none; }
-
-            .left-panel {
-                max-height: none;
-                overflow-y: visible;
-            }
-
-            .right-panel {
-                max-height: 40vh;
-                min-height: 200px;
-            }
-
-            #dialogue-history {
-                max-height: 35vh;
-                min-height: 180px;
-            }
-            
-            .scenario-grid {
-                grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-            }
-
-            .language-switcher {
-                top: 10px;
-                left: 10px;
-            }
-        }
-
-        /* Tablets Portrait */
-        @media (max-width: 768px) {
-            .game-content {
-                gap: var(--space-xs);
-            }
-
-            .left-panel,
-            .right-panel {
-                max-height: none;
-                overflow-y: visible;
-            }
-            
-            .right-panel {
-                min-height: 180px;
-                max-height: 35vh;
-            }
-
-            #dialogue-history {
-                max-height: 30vh;
-                min-height: 150px;
-            }
-            
-            .score-display {
-                bottom: 50px;
-                right: 10px;
-            }
-
-            .scenario-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .review-modal {
-                width: 95%;
-                max-height: 90vh;
-            }
-
-            .language-switcher {
-                flex-wrap: wrap;
-                max-width: calc(100% - 20px);
-                padding: 3px;
-            }
-
-            .language-button {
-                padding: 4px 6px;
-            }
-
-            .language-button .language-code {
-                display: none;
-            }
-            
-            .welcome-lang-btn .lang-name span:first-child {
-                display: none;
-            }
-            
-            .instructor-intro {
-                padding: var(--space-sm);
-                margin: var(--space-xs);
-            }
-            
-            .instructor-avatar {
-                width: 50px;
-                height: 50px;
-                font-size: 1.75rem;
-            }
-        }
-
-        /* Mobile phones */
-        @media (max-width: 480px) {
-            body {
-                overflow: hidden;
-            }
-            
-            header {
-                padding: 6px 8px;
-            }
-            
-            header h1 {
-                font-size: 0.9rem;
-            }
-            
-            header p {
-                font-size: 0.7rem;
-            }
-            
-            #game-container {
-                padding: 4px;
-                flex: 1;
-                overflow: hidden;
-                display: flex;
-                flex-direction: column;
-            }
-            
-            .game-content {
-                flex: 1;
-                display: flex;
-                flex-direction: column;
-                gap: 4px;
-                overflow: hidden;
-                min-height: 0;
-            }
-
-            .left-panel {
-                flex: 1;
-                min-height: 0;
-                display: flex;
-                flex-direction: column;
-                gap: 4px;
-                overflow: hidden;
-            }
-            
-            /* Hide dialogue history on mobile to save space */
-            .right-panel {
-                display: none;
-            }
-            
-            .scene-wrapper {
-                min-height: 60px;
-                max-height: 18vh;
-                flex-shrink: 0;
-            }
-            
-            #choice-container {
-                flex: 1;
-                min-height: 0;
-                display: flex;
-                flex-direction: column;
-                overflow: hidden;
-                padding: 6px 8px;
-            }
-            
-            .choice-options {
-                flex: 1;
-                min-height: 0;
-                overflow-y: auto;
-            }
-            
-            #progress-indicator {
-                height: 32px;
-                padding: 0 6px;
-            }
-
-            .stage-dot {
-                width: 16px;
-                height: 16px;
-                font-size: 8px;
-            }
-
-            .welcome-lang-btn .lang-name {
-                display: none;
-            }
-            
-            .language-switcher {
-                top: 4px;
-                left: 4px;
-                padding: 2px;
-            }
-            
-            .language-button {
-                padding: 3px 5px;
-            }
-            
-            .language-button .language-flag {
-                font-size: 1rem;
-            }
-            
-            .score-display {
-                display: none;
-            }
-            
-            .back-to-scenarios-btn {
-                padding: 3px 8px;
-                font-size: 0.65rem;
-            }
-            
-            .submit-choice {
-                padding: 8px 12px;
-                font-size: 0.8rem;
-                flex-shrink: 0;
-            }
-        }
-        
-        /* Very small phones */
-        @media (max-width: 360px) {
-            .stage-dot {
-                width: 18px;
-                height: 18px;
-                font-size: 8px;
-            }
-            
-            .message-avatar {
-                width: 26px;
-                height: 26px;
-                font-size: 0.8rem;
-            }
-            
-        }
-
-        /* Landscape mode on phones */
-        @media (max-height: 500px) and (orientation: landscape) {
-            body {
-                overflow: hidden;
-            }
-            
-            header {
-                padding: 3px 8px;
-            }
-            
-            header h1 {
-                font-size: 0.8rem;
-                margin-bottom: 0;
-            }
-            
-            header p {
-                display: none;
-            }
-            
-            #game-container {
-                padding: 3px;
-                flex: 1;
-                overflow: hidden;
-            }
-            
-            .game-content {
-                grid-template-columns: 8fr 2fr;
-                height: 100%;
-                gap: 4px;
-                overflow: hidden;
-            }
-            
-            .scene-wrapper,
-            #scene-container,
-            #scene-image {
-                min-height: 50px;
-                max-height: 30vh;
-            }
-            
-            .left-panel {
-                display: flex;
-                flex-direction: column;
-                overflow: hidden;
-                min-height: 0;
-            }
-            
-            .right-panel {
-                display: flex;
-                flex-direction: column;
-                overflow: hidden;
-                min-height: 0;
-            }
-            
-            #dialogue-history {
-                flex: 1;
-                min-height: 0;
-                overflow-y: auto;
-            }
-            
-            #choice-container {
-                flex: 1;
-                min-height: 0;
-                overflow: hidden;
-                display: flex;
-                flex-direction: column;
-            }
-            
-            .choice-options {
-                flex: 1;
-                min-height: 0;
-                overflow-y: auto;
-            }
-            
-            .welcome-hero {
-                padding: 4px 8px;
-                margin: 2px;
-            }
-            
-            .welcome-hero-icon {
-                font-size: 1.25rem;
-                margin-bottom: 2px;
-            }
-            
-            .welcome-hero-title {
-                font-size: 0.8rem;
-            }
-            
-            .welcome-hero-subtitle {
-                display: none;
-            }
-            
-            .welcome-language-section {
-                padding: 4px 6px;
-            }
-            
-            .welcome-divider {
-                margin: 4px 0 2px;
-            }
-            
-            #scenario-selection {
-                padding: 4px 6px;
-            }
-            
-            .scenario-header {
-                margin-bottom: 4px;
-            }
-            
-            .scenario-grid {
-                gap: 4px;
-            }
-            
-            .scenario-card {
-                padding: 6px;
-                min-height: 60px;
-            }
-            
-            .instructor-intro-overlay {
-                padding: 4px;
-            }
-            
-            .instructor-intro {
-                padding: 8px;
-                flex-direction: row;
-                text-align: left;
-            }
-            
-            .instructor-avatar {
-                width: 40px;
-                height: 40px;
-                margin-bottom: 0;
-                margin-right: 8px;
-            }
-            
-            #progress-indicator {
-                height: 28px;
-                padding: 0 4px;
-                top: 12px;
-                right: 100px;
-            }
-
-            .stage-dot {
-                width: 14px;
-                height: 14px;
-                font-size: 7px;
-            }
-            
-            .submit-choice {
-                padding: 6px 10px;
-                font-size: 0.75rem;
-            }
-            
-            .score-display {
-                display: none;
-            }
-        }
-
-        /* ============================================
-           UI REWRITE - Device-aware layouts
-           ============================================ */
-        .phone-view-tabs {
-            display: none;
-            flex-shrink: 0;
-        }
-        .phone-tab {
-            flex: 1;
-            padding: 10px 16px;
-            border: none;
-            background: rgba(0,0,0,0.06);
-            color: var(--color-muted);
-            font-weight: 600;
-            font-size: 0.95rem;
-            cursor: pointer;
-            border-bottom: 3px solid transparent;
-            transition: all 0.2s ease;
-        }
-        .phone-tab.active {
-            background: #fff;
-            color: var(--color-secondary);
-            border-bottom-color: var(--color-secondary);
-        }
-
-        /* ----- DESKTOP: fixed viewport, only panels scroll ----- */
-        html.device-desktop body {
-            overflow: hidden;
-            height: 100dvh;
-            max-height: 100dvh;
-        }
-        html.device-desktop body.welcome-mode {
-            overflow-y: auto;
-            height: auto;
-            min-height: 100dvh;
-        }
+        /* ---------- DESKTOP (>= 1024px) ---------- */
         html.device-desktop #game-container {
-            flex: 1;
-            min-height: 0;
-            width: 100%;
-            max-width: 100%;
-            padding: 1rem clamp(1rem, 3vw, 2rem);
+            padding: 12px clamp(1rem, 3vw, 2rem);
+        }
+        html.device-desktop .game-content { gap: 1.25rem; }
+        html.device-desktop #scene-container { max-height: 210px; }
+        html.device-desktop #dialogue-history { font-size: 0.95rem; }
+        html.device-desktop body.game-mode header {
+            text-align: left;
+            padding-left: var(--space-lg);
+            padding-right: 430px; /* clear the fixed progress/back/sound cluster */
+        }
+        html.device-desktop body.game-mode header h1,
+        html.device-tablet body.game-mode header h1 {
+            white-space: nowrap;
             overflow: hidden;
+            text-overflow: ellipsis;
         }
-        html.device-desktop body.game-mode #game-container {
-            display: flex;
-            flex-direction: column;
-            overflow: hidden;
-        }
-        html.device-desktop .game-content {
-            display: grid;
-            grid-template-columns: 8fr 2fr;
-            gap: 1.5rem;
-            flex: 1;
-            min-height: 0;
-            max-height: 100%;
-            overflow: hidden;
-        }
-        html.device-desktop .left-panel {
-            display: flex;
-            flex-direction: column;
-            gap: 0.75rem;
-            min-height: 0;
-            overflow-y: auto;
-            overflow-x: hidden;
-        }
-        html.device-desktop .left-panel > *:not(#choice-container) {
-            flex-shrink: 0;
-        }
-        html.device-desktop .right-panel {
-            display: flex;
-            flex-direction: column;
-            min-height: 0;
-            overflow-y: auto;
-            overflow-x: hidden;
-            -webkit-overflow-scrolling: touch;
-            scrollbar-width: thin;
-            scrollbar-color: rgba(0,0,0,0.15) transparent;
-        }
-        html.device-desktop .right-panel::-webkit-scrollbar { width: 6px; }
-        html.device-desktop .right-panel::-webkit-scrollbar-track { background: transparent; border-radius: 3px; }
-        html.device-desktop .right-panel::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.12); border-radius: 3px; }
-        html.device-desktop .right-panel::-webkit-scrollbar-thumb:hover { background: rgba(0,0,0,0.2); }
-        html.device-desktop .scene-wrapper {
-            min-height: 80px;
-            max-height: 130px;
-            flex-shrink: 0;
-        }
-        html.device-desktop .scene-title { font-size: 1.25rem; }
-        html.device-desktop .scene-description { font-size: 0.95rem; }
-        html.device-desktop .choice-header { font-size: 1.1rem; }
-        html.device-desktop .choice-button { font-size: 1.05rem; padding: 0.65rem 1rem; }
-        html.device-desktop .choice-options { flex: 1 1 auto; min-height: 0; max-height: 100%; overflow-y: auto; }
-        html.device-desktop #dialogue-history { min-height: 0; font-size: 0.95rem; }
-        html.device-desktop header { padding: 1rem 1.5rem; }
-        html.device-desktop header h1 { font-size: 1.5rem; }
-        html.device-desktop header p { font-size: 1rem; }
         html.device-desktop .welcome-hero {
-            padding: 1.25rem 1.5rem;
-            margin-bottom: 1rem;
+            max-width: min(880px, 100%);
+            padding: 1.1rem 1.5rem;
+            margin-bottom: 0.875rem;
         }
-        html.device-desktop .welcome-hero-title { font-size: 1.5rem; }
+        html.device-desktop .welcome-hero-title { font-size: 1.4rem; }
         html.device-desktop .welcome-hero-subtitle { font-size: 0.95rem; line-height: 1.5; }
-        html.device-desktop .scenario-card { min-height: 140px; padding: 1.25rem; }
-        html.device-desktop .scenario-title { font-size: 1.1rem; }
-        html.device-desktop .scenario-description { font-size: 0.9rem; }
+        html.device-desktop .scenario-grid {
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 0.875rem;
+        }
+        html.device-desktop .scenario-card { min-height: 150px; padding: 1.1rem; }
 
-        /* ----- TABLET: balanced, two-col when wide enough ----- */
-        html.device-tablet .game-content {
-            display: grid;
-            grid-template-columns: 8fr 2fr;
-            gap: 1rem;
-            min-height: 0;
+        /* ---------- TABLET (600 - 1023px) ---------- */
+        html.device-tablet .scenario-grid { grid-template-columns: repeat(2, 1fr); gap: 0.75rem; }
+        html.device-tablet body.game-mode header {
+            text-align: left;
+            padding-left: var(--space-md);
+            padding-right: 400px;
         }
-        html.device-tablet .scene-wrapper { min-height: 100px; max-height: 150px; }
-        html.device-tablet .choice-button { font-size: 1rem; }
-        html.device-tablet .welcome-hero { padding: 1rem 1.25rem; margin-bottom: 0.75rem; }
-        html.device-tablet .welcome-hero-title { font-size: 1.25rem; }
-        html.device-tablet .welcome-hero-subtitle { font-size: 0.875rem; }
+        html.device-tablet.orientation-landscape .game-content {
+            grid-template-columns: minmax(0, 1.1fr) minmax(260px, 0.9fr);
+            gap: 0.75rem;
+        }
 
-        /* Tablet portrait: single column, still show both panels stacked */
-        html.device-tablet.orientation-portrait .game-content {
-            grid-template-columns: 1fr;
-        }
-        html.device-tablet.orientation-portrait .panel-toggle { display: none; }
-        html.device-tablet.orientation-portrait .right-panel { min-height: 220px; }
-        html.device-tablet.orientation-portrait #dialogue-history { min-height: 200px; }
-
-        /* ----- PHONE PORTRAIT: tabs Choices / Dialogue, full-height panels ----- */
-        html.device-phone.orientation-portrait body {
-            height: 100dvh;
-            overflow: hidden;
-        }
-        html.device-phone.orientation-portrait #game-container {
-            flex: 1;
-            min-height: 0;
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-        }
-        html.device-phone.orientation-portrait body.welcome-mode #game-container {
-            overflow-y: auto;
-        }
-        html.device-phone.orientation-portrait .phone-view-tabs {
-            display: flex;
-            flex-shrink: 0;
-            border-bottom: 1px solid rgba(0,0,0,0.08);
-            background: #fff;
-        }
-        html.device-phone.orientation-portrait .panel-toggle { display: none; }
-        html.device-phone.orientation-portrait .game-content {
-            display: flex;
-            flex-direction: column;
-            flex: 1;
-            min-height: 0;
-            overflow: hidden;
-        }
-        /* Phone portrait: 1) tabs+choices (compact) 2) event window 3) dialogue (FILLS screen) */
-        html.device-phone.orientation-portrait .game-content .left-panel {
-            display: flex;
-            flex-direction: column;
-            flex-shrink: 0;
-            order: 1;
-            overflow-y: auto;
-            overflow-x: hidden;
-            min-height: 0;
-            max-height: 38vh;
-        }
-        html.device-phone.orientation-portrait .game-content .right-panel {
-            flex: 1;
-            min-height: 120px;
-            overflow-y: auto;
-            overflow-x: hidden;
-            -webkit-overflow-scrolling: touch;
-            order: 2;
-            display: block !important;
-        }
-        /* Reorder: choices first, then event window (scene), then back+progress */
-        html.device-phone.orientation-portrait .left-panel #choice-container { order: 1; }
-        html.device-phone.orientation-portrait .left-panel .scene-wrapper { order: 2; }
-        html.device-phone.orientation-portrait .left-panel #trainer-feedback { order: 3; }
-        /* Tabs - minimal height */
-        html.device-phone.orientation-portrait .phone-view-tabs {
-            flex-shrink: 0;
-            padding: 2px 0;
-            min-height: 32px;
-        }
-        html.device-phone.orientation-portrait .phone-tab {
-            padding: 4px 10px;
-            font-size: 0.8rem;
-        }
-        /* Choices - much smaller vertically, text clear */
-        html.device-phone.orientation-portrait #choice-container {
-            flex-shrink: 0;
-            display: flex;
-            flex-direction: column;
-            overflow: hidden;
-            padding: 0.25rem 0.4rem;
-            max-height: 18vh;
-        }
-        html.device-phone.orientation-portrait .choice-header { font-size: 0.75rem; padding: 0.15rem 0; }
-        html.device-phone.orientation-portrait .choice-options {
-            flex: 1;
-            min-height: 40px;
-            max-height: 90px;
-            overflow-y: auto;
-        }
-        html.device-phone.orientation-portrait .choice-button {
-            font-size: 0.75rem;
-            padding: 0.28rem 0.4rem;
-            line-height: 1.2;
-        }
-        html.device-phone.orientation-portrait .submit-choice {
-            flex-shrink: 0;
-            padding: 0.28rem 0.4rem;
-            font-size: 0.75rem;
-        }
-        html.device-phone.orientation-portrait .choice-timer {
-            padding: 0.15rem 0;
-            font-size: 0.7rem;
-        }
-        /* Event window - compact, between choices and bottom */
-        html.device-phone.orientation-portrait .scene-wrapper {
-            flex-shrink: 0;
-            min-height: 44px;
-            max-height: 10vh;
-        }
-        html.device-phone.orientation-portrait .scene-content { padding: 0.4rem 0.6rem; }
-        html.device-phone.orientation-portrait .scene-title { font-size: 0.85rem; margin-bottom: 0.2rem; }
-        html.device-phone.orientation-portrait .scene-description { font-size: 0.75rem; }
-        html.device-phone.orientation-portrait .back-to-scenarios-btn { width: 36px; height: 36px; font-size: 1.1rem; }
-        html.device-phone.orientation-portrait #progress-indicator { height: 32px; padding: 0 6px; top: 14px; right: 100px; }
-        html.device-phone.orientation-portrait .stage-dot { width: 18px; height: 18px; font-size: 0.6rem; }
-        /* Bottom window (dialogue) - FILLS the screen */
-        html.device-phone.orientation-portrait #dialogue-history {
-            flex: 1;
-            min-height: 0;
-            overflow-y: auto;
-            font-size: 0.9rem;
-        }
-        html.device-phone.orientation-portrait .welcome-hero {
-            padding: 0.75rem 1rem;
-            margin-bottom: 0.5rem;
-        }
-        html.device-phone.orientation-portrait .welcome-hero-title { font-size: 1.1rem; }
-        html.device-phone.orientation-portrait .welcome-hero-subtitle { font-size: 0.8rem; }
-        html.device-phone.orientation-portrait .welcome-language-section { padding: 0.5rem 0.75rem; }
-        html.device-phone.orientation-portrait .scenario-card { min-height: 90px; padding: 0.75rem; }
-        html.device-phone.orientation-portrait .scenario-title { font-size: 0.95rem; }
-
-        /* ----- PHONE LANDSCAPE: two columns, readable text ----- */
-        html.device-phone.orientation-landscape body {
-            overflow: hidden;
-            height: 100dvh;
-        }
-        html.device-phone.orientation-landscape #game-container { padding: 6px 8px; overflow: hidden; }
-        html.device-phone.orientation-landscape .game-content {
-            display: grid;
-            grid-template-columns: 8fr 2fr;
-            gap: 8px;
-            flex: 1;
-            min-height: 0;
-            overflow: hidden;
-        }
-        html.device-phone.orientation-landscape .phone-view-tabs { display: none; }
-        html.device-phone.orientation-landscape .left-panel,
-        html.device-phone.orientation-landscape .right-panel {
+        /* ---------- PORTRAIT (phone + tablet): single-column flow ----------
+           Scene banner on top (compact, tap to expand), dialogue fills the
+           middle, choices are the LAST section with the sticky submit bar.
+           .left-panel becomes display:contents so its children join the
+           column directly and can be reordered — no tabs needed. */
+        html.device-phone.orientation-portrait body.game-mode .game-content:not(.hidden),
+        html.device-tablet.orientation-portrait body.game-mode .game-content:not(.hidden) {
             display: flex !important;
             flex-direction: column;
-            min-height: 0;
-            overflow: hidden;
+            gap: 8px;
         }
-        html.device-phone.orientation-landscape .scene-wrapper {
-            min-height: 70px;
-            max-height: 28vh;
+        html.device-phone.orientation-portrait body.game-mode .left-panel,
+        html.device-tablet.orientation-portrait body.game-mode .left-panel {
+            display: contents;
+        }
+        html.device-phone.orientation-portrait .scene-wrapper,
+        html.device-tablet.orientation-portrait .scene-wrapper {
+            order: 0;
             flex-shrink: 0;
         }
-        html.device-phone.orientation-landscape .scene-title { font-size: 0.95rem; }
-        html.device-phone.orientation-landscape .scene-description { font-size: 0.8rem; }
-        html.device-phone.orientation-landscape .choice-header { font-size: 0.9rem; }
-        html.device-phone.orientation-landscape .choice-button { font-size: 0.8rem; padding: 0.4rem 0.6rem; line-height: 1.3; }
-        html.device-phone.orientation-landscape .choice-options { flex: 1; min-height: 0; overflow-y: auto; }
-        html.device-phone.orientation-landscape #dialogue-history { flex: 1; min-height: 0; overflow-y: auto; font-size: 0.8rem; }
-        html.device-phone.orientation-landscape .welcome-hero { padding: 0.5rem 0.75rem; margin-bottom: 0.375rem; }
-        html.device-phone.orientation-landscape .welcome-hero-title { font-size: 1rem; }
-        html.device-phone.orientation-landscape .welcome-hero-subtitle { font-size: 0.75rem; }
-        html.device-phone.orientation-landscape #progress-indicator { height: 26px; padding: 0 4px; top: 10px; right: 80px; }
-        html.device-phone.orientation-landscape .stage-dot { width: 14px; height: 14px; font-size: 7px; }
+        html.device-phone.orientation-portrait .right-panel,
+        html.device-tablet.orientation-portrait .right-panel {
+            order: 1;
+            flex: 1 1 0;
+            min-height: 96px;
+        }
+        html.device-phone.orientation-portrait #choice-container,
+        html.device-tablet.orientation-portrait #choice-container {
+            order: 2;
+            flex: 0 1 auto;
+            max-height: 52vh;
+        }
+        html.device-phone.orientation-portrait #trainer-feedback,
+        html.device-tablet.orientation-portrait #trainer-feedback {
+            order: 3;
+            flex: 0 1 auto;
+        }
+        html.device-phone.orientation-portrait #trainer-feedback.scenario-complete,
+        html.device-tablet.orientation-portrait #trainer-feedback.scenario-complete {
+            flex: 1 1 auto;
+            max-height: none;
+        }
+
+        /* Scene banner: collapsed to ~2 lines of description; tap to expand */
+        html.device-phone.orientation-portrait #scene-container,
+        html.device-tablet.orientation-portrait #scene-container {
+            cursor: pointer;
+            max-height: 118px;
+        }
+        html.device-phone.orientation-portrait .scene-wrapper.scene-expanded #scene-container,
+        html.device-tablet.orientation-portrait .scene-wrapper.scene-expanded #scene-container {
+            max-height: 45vh;
+        }
+        html.device-phone.orientation-portrait .scene-wrapper:not(.scene-expanded) .scene-description,
+        html.device-tablet.orientation-portrait .scene-wrapper:not(.scene-expanded) .scene-description {
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        html.device-phone.orientation-portrait body.game-mode .scene-wrapper::after,
+        html.device-tablet.orientation-portrait body.game-mode .scene-wrapper::after {
+            content: '\2304'; /* down chevron */
+            position: absolute;
+            right: 10px;
+            bottom: 4px;
+            font-size: 15px;
+            line-height: 1;
+            color: #94a3b8;
+            pointer-events: none;
+            z-index: 3;
+        }
+        html.device-phone.orientation-portrait body.game-mode .scene-wrapper.scene-expanded::after,
+        html.device-tablet.orientation-portrait body.game-mode .scene-wrapper.scene-expanded::after {
+            content: '\2303'; /* up chevron */
+            bottom: 8px;
+        }
+
+        /* ---------- PHONE (any orientation): chrome & typography ---------- */
+        /* In game mode the header is replaced by the compact fixed strip:
+           progress dots (left) + back + sound (right). */
+        html.device-phone body.game-mode header { display: none; }
+        html.device-phone body.game-mode #game-container { padding-top: 60px; }
+        html.device-phone #game-container { padding-left: 10px; padding-right: 10px; }
+        html.device-phone .sound-toggle {
+            top: 8px;
+            right: 8px;
+            width: 44px;
+            height: 44px;
+            border-radius: var(--radius-md);
+            font-size: 1.2rem;
+        }
+        html.device-phone #back-to-scenarios-container { top: 8px; right: 58px; }
+        html.device-phone .back-to-scenarios-btn {
+            width: 44px;
+            height: 44px;
+            border-radius: var(--radius-md);
+            font-size: 1.2rem;
+        }
+        html.device-phone #progress-indicator {
+            top: 8px;
+            left: 8px;
+            right: auto;
+            height: 44px;
+            max-width: calc(100vw - 124px);
+            padding: 0 6px;
+            overflow: hidden;
+        }
+        html.device-phone .progress-container { height: 40px; padding: 0 4px; }
+        html.device-phone .stage-dot { width: 20px; height: 20px; font-size: 9px; margin: 0 1px; }
+
+        html.device-phone #dialogue-history { padding: var(--space-md); border-radius: var(--radius-md); }
+        html.device-phone .dialogue-message { margin-bottom: var(--space-md); }
+        html.device-phone .message-avatar { width: 36px; height: 36px; font-size: 1.15rem; margin: 0 6px; }
+        html.device-phone .message-content { max-width: 84%; padding: 0.5rem 0.75rem; }
+        html.device-phone .message-text { font-size: 0.9375rem; }   /* 15px */
+        html.device-phone .choice-button { font-size: 0.9375rem; }  /* 15px, 44px+ tall */
+        html.device-phone .choice-header { font-size: 0.9rem; }
+        html.device-phone .submit-choice { min-height: 48px; font-size: 0.9375rem; }
+        html.device-phone .scene-title { font-size: 0.95rem; margin-bottom: 0.25rem; }
+        html.device-phone .scene-description { font-size: 0.875rem; }
+
+        /* Phone menu screen */
+        html.device-phone .welcome-hero { padding: 0.875rem 1rem; }
+        html.device-phone .welcome-hero-title { font-size: 1.15rem; }
+        html.device-phone .welcome-hero-subtitle { font-size: 0.85rem; }
+        html.device-phone .welcome-language-buttons {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+        }
+        html.device-phone .welcome-lang-btn {
+            min-height: 46px;
+            justify-content: flex-start;
+            padding: 8px 12px;
+            font-size: 0.875rem;
+        }
+        html.device-phone .scenario-grid { grid-template-columns: 1fr; gap: 0.625rem; }
+        html.device-phone .scenario-card { min-height: 0; padding: 0.875rem; }
+        html.device-phone .scenario-icon { font-size: 2rem; margin-bottom: var(--space-xs); }
+
+        /* ---------- PHONE LANDSCAPE: compact two-column ---------- */
+        html.device-phone.orientation-landscape body.game-mode #game-container { padding-top: 58px; }
+        html.device-phone.orientation-landscape .game-content {
+            grid-template-columns: minmax(0, 1.05fr) minmax(220px, 0.95fr);
+            gap: 8px;
+        }
+        html.device-phone.orientation-landscape #scene-container { max-height: 96px; }
+        html.device-phone.orientation-landscape .message-text { font-size: 0.875rem; }
+        html.device-phone.orientation-landscape .choice-button { font-size: 0.875rem; min-height: 40px; }
+
+        /* ---------- MODALS on phone: full-screen scrollable sheets ---------- */
+        html.device-phone .review-modal-overlay { padding: 0; }
+        html.device-phone .review-modal {
+            width: 100%;
+            height: 100%;
+            max-height: none;
+            border-radius: 0;
+        }
+        html.device-phone .review-modal-header {
+            text-align: left;
+            padding: calc(var(--space-md) + env(safe-area-inset-top, 0px)) 64px var(--space-md) var(--space-md);
+        }
+        html.device-phone .review-title { font-size: 1.05rem; }
+        html.device-phone .review-modal-close { right: var(--space-md); }
+        html.device-phone .review-modal-content {
+            padding: var(--space-md);
+            padding-bottom: calc(var(--space-lg) + env(safe-area-inset-bottom, 0px));
+        }
+        html.device-phone .review-section { padding: 1rem; margin-bottom: 1.25rem; }
+
+        html.device-phone .instructor-intro-overlay { padding: 0; align-items: stretch; }
+        html.device-phone .instructor-intro {
+            width: 100%;
+            max-width: none;
+            border-radius: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
+            padding: calc(20px + env(safe-area-inset-top, 0px)) 20px 0;
+        }
+        html.device-phone .instructor-avatar { width: 76px; height: 76px; font-size: 2.4rem; margin-bottom: var(--space-md); }
+        html.device-phone .instructor-name { font-size: 1.2rem; }
+        html.device-phone .instructor-message { font-size: 0.9375rem; margin-bottom: var(--space-lg); }
+        /* Begin button pinned to the bottom of the sheet, always visible */
+        html.device-phone .instructor-intro .begin-scenario-button {
+            position: sticky;
+            bottom: 0;
+            margin-top: auto;
+            width: 100%;
+            min-height: 52px;
+            padding: var(--space-md) var(--space-xl);
+            margin-bottom: calc(12px + env(safe-area-inset-bottom, 0px));
+        }
+
+        html.device-phone .badge-earned-animation {
+            width: min(92vw, 400px);
+            padding: var(--space-xl);
+        }
+
+        /* Small-phone tweaks */
+        @media (max-width: 360px) {
+            html.device-phone .welcome-language-buttons { grid-template-columns: 1fr; }
+            html.device-phone .stage-dot { width: 16px; height: 16px; font-size: 8px; }
+        }
 
         /* ============================================
            ACCESSIBILITY
@@ -3106,6 +2540,13 @@
                 transition-duration: 0.01ms !important;
                 scroll-behavior: auto !important;
             }
+
+            /* Nonessential decoration off entirely */
+            .scene-particles,
+            .particle {
+                display: none !important;
+            }
+            .dialogue-message { opacity: 1; }
         }
 
         /* Focus styles */
@@ -3113,7 +2554,8 @@
         a:focus-visible,
         input:focus-visible,
         select:focus-visible,
-        textarea:focus-visible {
+        textarea:focus-visible,
+        .scenario-card:focus-visible {
             outline: 3px solid var(--color-secondary);
             outline-offset: 2px;
         }
@@ -3134,64 +2576,27 @@
             }
         }
     </style>
-    <!-- Device & orientation detection - runs immediately, respects user layout preference -->
+    <!-- Device & orientation detection - runs immediately, purely viewport-based -->
     <script>
     (function() {
-        var STORAGE_KEY = 'deescalation-layout-mode';
-        function getLayoutPreference() {
-            try { return localStorage.getItem(STORAGE_KEY); } catch (e) { return null; }
-        }
         function updateDeviceClasses() {
             var w = window.innerWidth;
             var h = window.innerHeight;
-            var isPortrait = h >= w;
+            var smaller = Math.min(w, h);
             var cls = [];
-            var pref = getLayoutPreference();
-            if (pref === 'pc') {
-                cls.push('device-desktop');
-                cls.push('orientation-landscape');
-            } else if (pref === 'phone') {
-                cls.push('device-phone');
-                cls.push(isPortrait ? 'orientation-portrait' : 'orientation-landscape');
-            } else {
-                if (w >= 1024) cls.push('device-desktop');
-                else if (w >= 600) cls.push('device-tablet');
-                else cls.push('device-phone');
-                cls.push(isPortrait ? 'orientation-portrait' : 'orientation-landscape');
-            }
-            if (document.documentElement) document.documentElement.className = cls.join(' ');
-            if (document.body) {
-                document.body.setAttribute('data-device-width', w);
-                document.body.setAttribute('data-device-height', h);
-            }
+            // Classify by the smaller dimension so a phone rotated to
+            // landscape (e.g. 844x390) is still treated as a phone.
+            if (smaller < 600) cls.push('device-phone');
+            else if (w >= 1024) cls.push('device-desktop');
+            else cls.push('device-tablet');
+            cls.push(h >= w ? 'orientation-portrait' : 'orientation-landscape');
+            document.documentElement.className = cls.join(' ');
         }
-        window.setLayoutMode = function(mode) {
-            if (mode !== 'pc' && mode !== 'phone') return;
-            try { localStorage.setItem(STORAGE_KEY, mode); } catch (e) {}
-            var btns = document.querySelectorAll('.welcome-layout-btn');
-            btns.forEach(function(b) {
-                b.classList.toggle('active', b.getAttribute('data-layout') === mode);
-            });
-            updateDeviceClasses();
-        };
-        function initLayoutButtons() {
-            var pref = getLayoutPreference();
-            if (pref) {
-                var btns = document.querySelectorAll('.welcome-layout-btn');
-                btns.forEach(function(b) {
-                    b.classList.toggle('active', b.getAttribute('data-layout') === pref);
-                });
-            }
-        }
-        if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', function() {
-                updateDeviceClasses();
-                initLayoutButtons();
-            });
-        } else {
-            updateDeviceClasses();
-            initLayoutButtons();
-        }
+        // Kept for API compatibility (called from inline onclick handlers in
+        // older/cached markup). The layout is fully responsive now, so the
+        // manual Computer/Phone toggle is a no-op.
+        window.setLayoutMode = function() {};
+        updateDeviceClasses();
         window.addEventListener('resize', updateDeviceClasses);
         window.addEventListener('orientationchange', function() { setTimeout(updateDeviceClasses, 100); });
     })();
@@ -3335,8 +2740,10 @@
                         </div>
                         <span id="timer-value">30s</span>
                     </div>
-                    <button class="submit-choice" onclick="gameController.submitChoice()" data-i18n="game.submitButton" disabled>Submit Response</button>
                     <div class="choice-options" id="choice-options"></div>
+                    <div class="choice-submit-bar">
+                        <button class="submit-choice" onclick="gameController.submitChoice()" data-i18n="game.submitButton" disabled>Submit Response</button>
+                    </div>
                 </div>
 
                 <!-- Trainer Feedback -->
@@ -4080,11 +3487,39 @@ function initPanelToggle() {
     });
 }
 
+// game-controller shows/hides #choice-container via inline display:'block'/'none'.
+// The panel is a flex column (options scroll internally, submit bar pinned below),
+// so translate 'block' -> 'flex' without touching game logic.
+function initChoicePanelDisplayShim() {
+    var cc = document.getElementById('choice-container');
+    if (!cc || typeof MutationObserver === 'undefined') return;
+    var fix = function() {
+        if (cc.style.display === 'block') cc.style.display = 'flex';
+    };
+    new MutationObserver(fix).observe(cc, { attributes: true, attributeFilter: ['style'] });
+    fix();
+}
+
+// Portrait: the compact scene banner expands/collapses on tap.
+// (Listener on the wrapper survives SceneManager's innerHTML swaps.)
+function initSceneToggle() {
+    var sw = document.querySelector('.scene-wrapper');
+    if (!sw) return;
+    sw.addEventListener('click', function() {
+        var h = document.documentElement;
+        if (h.classList.contains('device-desktop') ||
+            !h.classList.contains('orientation-portrait')) return;
+        sw.classList.toggle('scene-expanded');
+    });
+}
+
 // Call on page load and when scenario selection changes
 document.addEventListener('DOMContentLoaded', function() {
     updateLanguageSwitcherVisibility();
     initPhoneViewTabs();
     initPanelToggle();
+    initChoicePanelDisplayShim();
+    initSceneToggle();
     
     // Monitor for changes to scenario selection visibility
     const observer = new MutationObserver(function(mutations) {
