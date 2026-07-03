@@ -174,5 +174,21 @@
     "recommendedTraining": "📚 Instruire recomandată",
     "keyTakeaways": "🎯 Concluzii cheie",
     "choiceFallback": "Alegerea a fost făcută"
+  },
+  "custom": {
+    "ribbon": "Propriu",
+    "edit": "Editează",
+    "export": "Export",
+    "delete": "Șterge",
+    "addTitle": "Scenariu propriu",
+    "addSub": "Creează, încarcă și joacă propriul scenariu",
+    "chooserTitle": "Scenariu propriu",
+    "chooserLead": "Creează-ți propriul scenariu de instruire sau încarcă un fișier gata făcut și joacă-l cu grupul tău.",
+    "create": "Creează în editor",
+    "upload": "Încarcă fișier(e)",
+    "uploadHint": "Încarcă un fișier de scenariu (și opțional un fișier de analiză). Structura este validată înainte de salvare.",
+    "deleteConfirm": "Chiar ștergi scenariul propriu",
+    "exportError": "Exportul a eșuat",
+    "deleteError": "Ștergerea a eșuat"
   }
 }

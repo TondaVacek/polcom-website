@@ -174,5 +174,21 @@
     "recommendedTraining": "📚 Doporučený výcvik",
     "keyTakeaways": "🎯 Klíčová ponaučení",
     "choiceFallback": "Volba byla provedena"
+  },
+  "custom": {
+    "ribbon": "Vlastní",
+    "edit": "Upravit",
+    "export": "Export",
+    "delete": "Smazat",
+    "addTitle": "Vlastní scénář",
+    "addSub": "Vytvořit, nahrát a zahrát vlastní scénář",
+    "chooserTitle": "Vlastní scénář",
+    "chooserLead": "Vytvořte si vlastní výcvikový scénář, nebo nahrajte hotový soubor a zahrajte si ho se svou skupinou.",
+    "create": "Vytvořit v editoru",
+    "upload": "Nahrát soubor(y)",
+    "uploadHint": "Nahrajte soubor scénáře (a volitelně soubor review). Před uložením se ověří struktura.",
+    "deleteConfirm": "Opravdu smazat vlastní scénář",
+    "exportError": "Export se nezdařil",
+    "deleteError": "Smazání se nezdařilo"
   }
 }

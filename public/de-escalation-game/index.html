@@ -1707,6 +1707,114 @@
             min-height: clamp(80px, 12vh, 140px);
         }
 
+        /* Custom (user-created) scenarios */
+        .scenario-card.custom-scenario { border-color: #c7d2fe; }
+        .scenario-custom-badge {
+            position: absolute;
+            top: 0.5rem;
+            left: 0.5rem;
+            background: #4f46e5;
+            color: #fff;
+            font-size: 0.68rem;
+            font-weight: 700;
+            padding: 0.15rem 0.5rem;
+            border-radius: 999px;
+            letter-spacing: 0.02em;
+            z-index: 2;
+        }
+        .scenario-custom-tools {
+            display: flex;
+            gap: 0.4rem;
+            margin-top: 0.6rem;
+            padding-top: 0.5rem;
+            border-top: 1px dashed #e2e8f0;
+        }
+        .scenario-tool {
+            flex: 1;
+            min-height: 40px;
+            border: 1px solid #e2e8f0;
+            background: #f8fafc;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background 0.15s, border-color 0.15s;
+        }
+        .scenario-tool:hover, .scenario-tool:focus-visible { background: #eef2ff; border-color: #c7d2fe; }
+
+        /* "Add custom scenario" entry card */
+        .scenario-add-card {
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            gap: 0.35rem;
+            border: 2px dashed #c7d2fe;
+            background: #f8faff;
+            color: #4f46e5;
+        }
+        .scenario-add-card:hover, .scenario-add-card:focus-visible {
+            background: #eef2ff;
+            border-color: #6366f1;
+        }
+        .scenario-add-icon { font-size: 2rem; line-height: 1; }
+        .scenario-add-title { font-weight: 700; font-size: 1rem; }
+        .scenario-add-sub { font-size: 0.8rem; color: #64748b; }
+
+        /* Custom-scenario chooser modal */
+        .custom-chooser-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(15, 23, 42, 0.55);
+            z-index: 4000;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+        }
+        .custom-chooser-overlay.show { display: flex; }
+        .custom-chooser {
+            background: #fff;
+            border-radius: 16px;
+            padding: 1.5rem;
+            width: min(94vw, 460px);
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+        .custom-chooser h2 { margin: 0 0 0.5rem; color: #1e293b; font-size: 1.25rem; }
+        .custom-chooser-lead { color: #475569; font-size: 0.9rem; margin: 0 0 1.2rem; line-height: 1.5; }
+        .custom-chooser-close {
+            position: absolute; top: 0.75rem; right: 0.75rem;
+            background: none; border: none; font-size: 1.4rem; cursor: pointer; color: #64748b;
+            width: 40px; height: 40px; border-radius: 8px;
+        }
+        .custom-chooser-close:hover { background: #f1f5f9; }
+        .custom-chooser-actions { display: flex; flex-direction: column; gap: 0.6rem; }
+        .custom-chooser-btn {
+            display: flex; align-items: center; gap: 0.7rem;
+            min-height: 52px; padding: 0.6rem 1rem;
+            border: 1px solid #e2e8f0; border-radius: 12px; background: #f8fafc;
+            cursor: pointer; font-size: 1rem; font-weight: 600; color: #1e293b; text-align: left;
+            transition: background 0.15s, border-color 0.15s;
+        }
+        .custom-chooser-btn:hover, .custom-chooser-btn:focus-visible { background: #eef2ff; border-color: #c7d2fe; }
+        .custom-chooser-btn.primary { background: #4f46e5; color: #fff; border-color: #4f46e5; }
+        .custom-chooser-btn.primary:hover { background: #4338ca; }
+        .custom-chooser-btn .cc-emoji { font-size: 1.4rem; }
+        .custom-chooser-hint { font-size: 0.8rem; color: #64748b; margin: 0.9rem 0 0; line-height: 1.4; }
+        .custom-import-result {
+            margin-top: 1rem; padding: 0.8rem; border-radius: 10px;
+            font-size: 0.88rem; line-height: 1.5;
+        }
+        .custom-import-result.ok { background: #ecfdf5; color: #065f46; border: 1px solid #a7f3d0; }
+        .custom-import-result.error { background: #fef2f2; color: #991b1b; border: 1px solid #fecaca; }
+        .custom-import-result ul { margin: 0.4rem 0 0 1.2rem; }
+        .custom-import-result .cir-actions { display: flex; gap: 0.5rem; margin-top: 0.8rem; }
+        .custom-import-result .cir-actions button {
+            flex: 1; min-height: 42px; border-radius: 8px; border: 1px solid currentColor;
+            background: rgba(255,255,255,0.6); cursor: pointer; font-weight: 600;
+        }
+
         .scenario-card::before {
             content: '';
             position: absolute;
@@ -2944,10 +3052,34 @@
     <audio id="good-sound" preload="none"><source src="sounds/good.mp3" type="audio/mpeg"></audio>
 
     <!-- Load JavaScript Files -->
-    <script src="config.js?v=6"></script>
-    <script src="core.js?v=6"></script>
-    <script src="ui-managers.js?v=6"></script>
-    <script src="game-controller.js?v=6"></script>
+    <!-- Custom-scenario chooser (create / upload) -->
+    <div class="custom-chooser-overlay" id="custom-chooser-overlay" role="dialog" aria-modal="true" aria-labelledby="custom-chooser-title">
+        <div class="custom-chooser">
+            <button type="button" class="custom-chooser-close" id="custom-chooser-close" aria-label="Zavřít">✕</button>
+            <h2 id="custom-chooser-title" data-i18n="custom.chooserTitle">Vlastní scénář</h2>
+            <p class="custom-chooser-lead" data-i18n="custom.chooserLead">Vytvořte si vlastní výcvikový scénář, nebo nahrajte hotový soubor a zahrajte si ho se svou skupinou.</p>
+            <div class="custom-chooser-actions">
+                <button type="button" class="custom-chooser-btn primary" id="custom-create-btn">
+                    <span class="cc-emoji">📝</span>
+                    <span class="cc-label" data-i18n="custom.create">Vytvořit v editoru</span>
+                </button>
+                <button type="button" class="custom-chooser-btn" id="custom-upload-btn">
+                    <span class="cc-emoji">📂</span>
+                    <span class="cc-label" data-i18n="custom.upload">Nahrát soubor(y)</span>
+                </button>
+            </div>
+            <p class="custom-chooser-hint" data-i18n="custom.uploadHint">Nahrajte soubor scénáře (a volitelně soubor review). Před uložením se ověří struktura.</p>
+            <input type="file" id="custom-file-input" accept="application/json,.json" multiple hidden>
+            <div class="custom-import-result" id="custom-import-result" hidden></div>
+        </div>
+    </div>
+
+    <script src="config.js?v=7"></script>
+    <script src="custom-store.js?v=7"></script>
+    <script src="custom-validator.js?v=7"></script>
+    <script src="core.js?v=7"></script>
+    <script src="ui-managers.js?v=7"></script>
+    <script src="game-controller.js?v=7"></script>
     
     <!-- Initialize Game -->
     <script>
@@ -3610,8 +3742,107 @@ document.addEventListener('DOMContentLoaded', function() {
         observer.observe(scenarioSelection, { attributes: true, attributeFilter: ['style', 'class'] });
     }
 });
+    </script>
 
+    <!-- Custom scenario: chooser + file import -->
+    <script>
+    (function () {
+        const overlay = document.getElementById('custom-chooser-overlay');
+        const closeBtn = document.getElementById('custom-chooser-close');
+        const createBtn = document.getElementById('custom-create-btn');
+        const uploadBtn = document.getElementById('custom-upload-btn');
+        const fileInput = document.getElementById('custom-file-input');
+        const result = document.getElementById('custom-import-result');
+        if (!overlay) return;
 
+        function closeChooser() {
+            overlay.classList.remove('show');
+            overlay.style.display = 'none';
+            if (result) { result.hidden = true; result.innerHTML = ''; }
+            if (fileInput) fileInput.value = '';
+        }
+        closeBtn && closeBtn.addEventListener('click', closeChooser);
+        overlay.addEventListener('click', (e) => { if (e.target === overlay) closeChooser(); });
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && overlay.classList.contains('show')) closeChooser();
+        });
+
+        createBtn && createBtn.addEventListener('click', () => { window.location.href = 'editor.html?new=1'; });
+        uploadBtn && uploadBtn.addEventListener('click', () => fileInput && fileInput.click());
+
+        function showResult(html, kind) {
+            if (!result) return;
+            result.hidden = false;
+            result.className = 'custom-import-result ' + (kind || '');
+            result.innerHTML = html;
+        }
+
+        function readFile(file) {
+            return new Promise((resolve, reject) => {
+                const r = new FileReader();
+                r.onload = () => resolve(r.result);
+                r.onerror = () => reject(new Error('Soubor se nepodařilo přečíst.'));
+                r.readAsText(file);
+            });
+        }
+
+        // A file is a review if it has stageAnalysis (and no stages); otherwise a scenario.
+        function classify(obj) {
+            if (obj && obj.stageAnalysis && !obj.stages) return 'review';
+            return 'scenario';
+        }
+
+        fileInput && fileInput.addEventListener('change', async () => {
+            const files = Array.from(fileInput.files || []);
+            if (!files.length) return;
+            let scenario = null, review = null;
+            try {
+                for (const f of files) {
+                    const text = await readFile(f);
+                    let obj;
+                    try { obj = JSON.parse(text); }
+                    catch (e) { showResult('❌ Soubor <strong>' + esc(f.name) + '</strong> není platný JSON.', 'error'); return; }
+                    if (classify(obj) === 'review') review = obj; else scenario = obj;
+                }
+            } catch (e) {
+                showResult('❌ ' + esc(e.message), 'error');
+                return;
+            }
+            if (!scenario) {
+                showResult('❌ Chybí soubor scénáře (nahrajte alespoň scenario-*.json).', 'error');
+                return;
+            }
+            const vs = CustomValidator.validateScenario(scenario);
+            if (!vs.ok) {
+                showResult('❌ Scénář má chyby:<ul>' + vs.errors.map(e => '<li>' + esc(e) + '</li>').join('') + '</ul>', 'error');
+                return;
+            }
+            // Review is optional; drop it if invalid but keep the scenario.
+            let keepReview = null, reviewNote = '';
+            if (review) {
+                const vr = CustomValidator.validateReview(review, scenario);
+                if (vr.ok) keepReview = review;
+                else reviewNote = '<p>⚠️ Review má chyby a nebude použito (scénář půjde hrát bez detailního reportu).</p>';
+            }
+            try {
+                const id = CustomStore.newId(scenario.title);
+                if (keepReview) keepReview = Object.assign({}, keepReview, { scenarioId: id });
+                await CustomStore.save(id, scenario, keepReview, CustomValidator.deriveMeta(scenario));
+                const warn = vs.warnings.length
+                    ? '<details><summary>' + vs.warnings.length + ' upozornění</summary><ul>' + vs.warnings.map(w => '<li>' + esc(w) + '</li>').join('') + '</ul></details>'
+                    : '';
+                showResult('✅ Scénář <strong>' + esc(scenario.title) + '</strong> byl nahrán.' + reviewNote + warn +
+                    '<div class="cir-actions"><button type="button" id="cir-play">▶ Zahrát</button><button type="button" id="cir-close">Zavřít</button></div>', 'ok');
+                await UIManager.refreshMenu();
+                const playBtn = document.getElementById('cir-play');
+                const cBtn = document.getElementById('cir-close');
+                playBtn && playBtn.addEventListener('click', () => { closeChooser(); gameController.selectScenario(id); });
+                cBtn && cBtn.addEventListener('click', closeChooser);
+            } catch (e) {
+                showResult('❌ Uložení se nezdařilo: ' + esc(e.message), 'error');
+            }
+        });
+    })();
     </script>
 
 </body>

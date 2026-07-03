@@ -121,7 +121,23 @@ class UIManager {
                 }
             }
 
+            const FLAGS = { cs: '🇨🇿', en: '🇬🇧', lt: '🇱🇹', ro: '🇷🇴' };
+            let customRibbon = '';
+            let customTools = '';
+            if (scenario.isCustom) {
+                card.classList.add('custom-scenario');
+                const flag = FLAGS[scenario.lang] || '🌐';
+                customRibbon = `<div class="scenario-custom-badge">${flag} ${esc(i18n.t('custom.ribbon') || 'Vlastní')}</div>`;
+                customTools = `
+                    <div class="scenario-custom-tools">
+                        <button type="button" class="scenario-tool" data-act="edit" title="${esc(i18n.t('custom.edit') || 'Upravit')}">✏️</button>
+                        <button type="button" class="scenario-tool" data-act="export" title="${esc(i18n.t('custom.export') || 'Export')}">⬇</button>
+                        <button type="button" class="scenario-tool" data-act="delete" title="${esc(i18n.t('custom.delete') || 'Smazat')}">🗑</button>
+                    </div>`;
+            }
+
             card.innerHTML = `
+                ${customRibbon}
                 ${statusIcon ? `<div class="scenario-status">${statusIcon}</div>` : ''}
                 <div class="scenario-icon">${esc(scenario.icon)}</div>
                 <div class="scenario-card-title">${cardTitle}</div>
@@ -131,10 +147,96 @@ class UIManager {
                     <div class="scenario-difficulty">${difficulty}</div>
                     <div class="scenario-duration">${duration} ${esc(i18n.t('scenarios.minutes'))}</div>
                 </div>
+                ${customTools}
             `;
-            
+
+            if (scenario.isCustom) {
+                card.querySelectorAll('.scenario-tool').forEach(btn => {
+                    btn.addEventListener('click', (e) => {
+                        e.stopPropagation();
+                        const act = btn.dataset.act;
+                        if (act === 'edit') UIManager.editCustomScenario(scenario.id);
+                        else if (act === 'export') UIManager.exportCustomScenario(scenario.id);
+                        else if (act === 'delete') UIManager.deleteCustomScenario(scenario.id, scenario.title);
+                    });
+                });
+            }
+
             grid.appendChild(card);
         });
+
+        // Entry card: create / upload a custom scenario
+        const addCard = document.createElement('div');
+        addCard.className = 'scenario-card scenario-add-card';
+        addCard.setAttribute('tabindex', '0');
+        addCard.setAttribute('role', 'button');
+        addCard.innerHTML = `
+            <div class="scenario-add-icon">➕</div>
+            <div class="scenario-add-title">${esc(i18n.t('custom.addTitle') || 'Vlastní scénář')}</div>
+            <div class="scenario-add-sub">${esc(i18n.t('custom.addSub') || 'Vytvořit, nahrát a zahrát vlastní scénář')}</div>
+        `;
+        const openChooser = () => UIManager.openCustomChooser();
+        addCard.addEventListener('click', openChooser);
+        addCard.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openChooser(); }
+        });
+        grid.appendChild(addCard);
+    }
+
+    /** Rebuild the menu data (incl. custom scenarios) and re-render the cards. */
+    static async refreshMenu() {
+        try {
+            await gameController.loadGameData(gameState.currentLanguage || i18n.currentLanguage);
+            UIManager.createScenarioCards();
+        } catch (e) {
+            console.warn('Nepodařilo se obnovit menu:', e);
+        }
+    }
+
+    static editCustomScenario(id) {
+        window.location.href = `editor.html?id=${encodeURIComponent(id)}`;
+    }
+
+    static async exportCustomScenario(id) {
+        try {
+            const rec = await CustomStore.get(id);
+            if (!rec) return;
+            const slug = String(id).replace(/^custom:/, '');
+            UIManager._download(`scenario-${slug}.json`, JSON.stringify(rec.scenario, null, 2));
+            if (rec.review) {
+                UIManager._download(`review-${slug}.json`, JSON.stringify(rec.review, null, 2));
+            }
+        } catch (e) {
+            alert((i18n.t('custom.exportError') || 'Export se nezdařil') + ': ' + e.message);
+        }
+    }
+
+    static async deleteCustomScenario(id, title) {
+        const msg = (i18n.t('custom.deleteConfirm') || 'Opravdu smazat vlastní scénář') + ` „${title}"?`;
+        if (!window.confirm(msg)) return;
+        try {
+            await CustomStore.delete(id);
+            await UIManager.refreshMenu();
+        } catch (e) {
+            alert((i18n.t('custom.deleteError') || 'Smazání se nezdařilo') + ': ' + e.message);
+        }
+    }
+
+    static _download(filename, text) {
+        const blob = new Blob([text], { type: 'application/json' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = filename;
+        document.body.appendChild(a);
+        a.click();
+        a.remove();
+        setTimeout(() => URL.revokeObjectURL(url), 1000);
+    }
+
+    static openCustomChooser() {
+        const overlay = document.getElementById('custom-chooser-overlay');
+        if (overlay) { overlay.classList.add('show'); overlay.style.display = 'flex'; }
     }
 
     static showInstructorIntro() {

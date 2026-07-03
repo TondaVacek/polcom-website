@@ -151,5 +151,21 @@
     "recommendedTraining": "📚 Rekomenduojami mokymai",
     "keyTakeaways": "🎯 Pagrindinės išvados",
     "choiceFallback": "Pasirinkimas buvo padarytas"
+  },
+  "custom": {
+    "ribbon": "Savas",
+    "edit": "Redaguoti",
+    "export": "Eksportuoti",
+    "delete": "Ištrinti",
+    "addTitle": "Savas scenarijus",
+    "addSub": "Sukurkite, įkelkite ir žaiskite savo scenarijų",
+    "chooserTitle": "Savas scenarijus",
+    "chooserLead": "Sukurkite savo mokymo scenarijų arba įkelkite paruoštą failą ir žaiskite jį su savo grupe.",
+    "create": "Kurti redaktoriuje",
+    "upload": "Įkelti failą(-us)",
+    "uploadHint": "Įkelkite scenarijaus failą (ir pasirinktinai apžvalgos failą). Struktūra tikrinama prieš išsaugant.",
+    "deleteConfirm": "Tikrai ištrinti savą scenarijų",
+    "exportError": "Eksportuoti nepavyko",
+    "deleteError": "Ištrinti nepavyko"
   }
 }

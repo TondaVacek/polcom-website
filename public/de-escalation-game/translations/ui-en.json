@@ -151,5 +151,21 @@
     "recommendedTraining": "📚 Recommended Training",
     "keyTakeaways": "🎯 Key Takeaways",
     "choiceFallback": "Choice was made"
+  },
+  "custom": {
+    "ribbon": "Custom",
+    "edit": "Edit",
+    "export": "Export",
+    "delete": "Delete",
+    "addTitle": "Custom scenario",
+    "addSub": "Create, upload and play your own scenario",
+    "chooserTitle": "Custom scenario",
+    "chooserLead": "Create your own training scenario, or upload a ready-made file and play it with your group.",
+    "create": "Create in editor",
+    "upload": "Upload file(s)",
+    "uploadHint": "Upload a scenario file (and optionally a review file). The structure is validated before saving.",
+    "deleteConfirm": "Really delete custom scenario",
+    "exportError": "Export failed",
+    "deleteError": "Delete failed"
   }
 }

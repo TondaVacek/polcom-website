@@ -109,6 +109,7 @@ class GameController {
         gameState.scenarios = indexData.scenarios;
         gameState.badges = indexData.badges;
         gameState.currentLanguage = language;
+        await this.mergeCustomScenarios();
     }
 
     async loadJSON(url) {
@@ -131,6 +132,13 @@ class GameController {
     }
 
     async loadReviewData(scenarioId) {
+        // Custom scenarios carry their review inside the IndexedDB record; it was
+        // stashed by selectScenario. No review => score-only report (supported).
+        if (typeof CustomStore !== 'undefined' && CustomStore.isCustomId(scenarioId)) {
+            this.reviewData = this._customReview || null;
+            if (gameState) gameState.reviewData = this.reviewData;
+            return;
+        }
         const lang = gameState.currentLanguage;
         try {
             const reviewPath = `${CONFIG.BASE_URL}scenarios/reviews/review-${scenarioId}-${lang}.json`;
@@ -140,6 +148,45 @@ class GameController {
         } catch (e) {
             this.reviewData = null;
             if (gameState) gameState.reviewData = null;
+        }
+    }
+
+    // Append user-created scenarios (from IndexedDB) to the menu data and give
+    // their completion badges a name so popups render. Safe if CustomStore or
+    // IndexedDB is unavailable — the built-in menu still loads.
+    async mergeCustomScenarios() {
+        if (typeof CustomStore === 'undefined') return;
+        try {
+            await CustomStore.ready();
+            const customs = await CustomStore.list();
+            customs
+                .sort((a, b) => (b.updatedAt || 0) - (a.updatedAt || 0))
+                .forEach(meta => {
+                    gameState.scenarios.push({
+                        id: meta.id,
+                        title: meta.title,
+                        description: meta.description,
+                        icon: meta.icon || '🎓',
+                        difficulty: meta.difficulty || 3,
+                        duration: meta.duration || '10-15',
+                        isCustom: true,
+                        lang: meta.lang || 'cs',
+                        hasReview: !!meta.hasReview,
+                        badges: {}
+                    });
+                    gameState.badges[`scenario-${meta.id}-complete`] = {
+                        name: `${meta.title} — dokončeno`,
+                        description: 'Dokončení vlastního scénáře',
+                        icon: '✅'
+                    };
+                    gameState.badges[`perfect-scenario-${meta.id}`] = {
+                        name: `${meta.title} — bez chyby`,
+                        description: 'Perfektní průchod vlastním scénářem',
+                        icon: '🌟'
+                    };
+                });
+        } catch (e) {
+            console.warn('Vlastní scénáře nedostupné:', e);
         }
     }
 
@@ -203,26 +250,36 @@ class GameController {
         
         try {
             const lang = gameState.currentLanguage || (typeof i18n !== 'undefined' ? i18n.currentLanguage : null) || CONFIG.DEFAULT_LANGUAGE;
-            const languageScenarios = CONFIG.FILE_PATHS.scenarios[lang];
-            if (!languageScenarios) {
-                throw new Error(`No scenarios available for language: ${lang}`);
+
+            let scenarioData;
+            if (typeof CustomStore !== 'undefined' && CustomStore.isCustomId(scenarioId)) {
+                // User-created scenario: read from IndexedDB, not from the file map.
+                const rec = await CustomStore.get(scenarioId);
+                if (!rec || !rec.scenario) {
+                    throw new Error('Vlastní scénář se nepodařilo načíst.');
+                }
+                scenarioData = rec.scenario;
+                this._customReview = rec.review || null;
+            } else {
+                const languageScenarios = CONFIG.FILE_PATHS.scenarios[lang];
+                if (!languageScenarios) {
+                    throw new Error(`No scenarios available for language: ${lang}`);
+                }
+                const id = scenarioId != null ? String(scenarioId) : scenarioId;
+                let scenarioPath = languageScenarios[scenarioId] || languageScenarios[id];
+                if (!scenarioPath && typeof scenarioId === 'number') {
+                    scenarioPath = languageScenarios[String(scenarioId)];
+                }
+                if (!scenarioPath) {
+                    throw new Error(`Scenario ${scenarioId} not found for language: ${lang}`);
+                }
+                scenarioData = await this.loadJSON(CONFIG.BASE_URL + scenarioPath);
+                if (!scenarioData) {
+                    throw new Error('Failed to load scenario data');
+                }
+                this._customReview = null;
             }
-            
-            const id = scenarioId != null ? String(scenarioId) : scenarioId;
-            let scenarioPath = languageScenarios[scenarioId] || languageScenarios[id];
-            if (!scenarioPath && typeof scenarioId === 'number') {
-                scenarioPath = languageScenarios[String(scenarioId)];
-            }
-            if (!scenarioPath) {
-                throw new Error(`Scenario ${scenarioId} not found for language: ${lang}`);
-            }
-            
-            const scenarioData = await this.loadJSON(CONFIG.BASE_URL + scenarioPath);
-            
-            if (!scenarioData) {
-                throw new Error('Failed to load scenario data');
-            }
-            
+
             // Load review data for comprehensive analysis
             await this.loadReviewData(scenarioId);
             
@@ -777,7 +834,7 @@ class GameController {
             });
         }
         
-        const allComplete = gameState.scenarios.every(s => 
+        const allComplete = gameState.scenarios.filter(s => !s.isCustom).every(s =>
             gameState.earnedBadges.includes(`scenario-${s.id}-complete`)
         );
         if (allComplete) {
