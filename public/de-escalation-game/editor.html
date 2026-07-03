@@ -599,13 +599,21 @@ function renderStages(){
     + '<button class="mini add" data-action="addStage"'+(inter.length>=MAX_STAGES?' disabled':'')+'>➕ Přidat fázi</button>'
     + '<span class="hint" style="margin:0">Doporučeno 7 fází ('+MIN_STAGES+'–'+MAX_STAGES+').</span>'
     + '</div></div>';
+  // Preserve which stage cards are expanded across a re-render — otherwise
+  // clicking an in-stage add/delete button (e.g. "➕ Replika") collapses the
+  // card and looks like nothing happened.
+  var openSet = {};
+  view.querySelectorAll('details.stage[open]').forEach(function(d){ openSet[d.getAttribute('data-si')] = true; });
   view.innerHTML = html;
+  view.querySelectorAll('details.stage').forEach(function(d){
+    if(openSet[d.getAttribute('data-si')]) d.setAttribute('open','');
+  });
 }
 function renderStageCard(st, si){
   var base = 'scenario.stages.'+si;
   var inter = interactiveStages(state.scenario);
   var canDel = inter.length>MIN_STAGES;
-  var h = '<details class="stage"><summary><span class="stage-idx">'+esc(st.id)+'</span>'
+  var h = '<details class="stage" data-si="'+si+'"><summary><span class="stage-idx">'+esc(st.id)+'</span>'
     + '<span style="flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">'+esc(st.title||'Fáze '+st.id)+'</span>'
     + (canDel?'<button class="mini danger" data-action="delStage" data-si="'+si+'">🗑</button>':'')
     + '</summary><div class="stage-body">';
