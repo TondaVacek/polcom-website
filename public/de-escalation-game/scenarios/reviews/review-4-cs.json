@@ -12,7 +12,7 @@
       ],
       "choiceAnalysis": {
         "positive": {
-          "choiceText": "Zastavíte se čtyři až pět metrů od ní a věnujete třicet sekund tichému pozorování — náramek s názvem zařízení a datem, houpání, neagresivní postoj — a klidně vezmete na vědomí lékárníka i kolemjdoucí.",
+          "choiceText": "Zastavíte se čtyři až pět metrů od ní a věnujete třicet sekund tichému pozorování — nemocniční náramek, houpání, neagresivní postoj — a klidně vezmete na vědomí lékárníka i kolemjdoucí.",
           "strengths": [
             "Pozorování před kontaktem odhalí klíčový kontext dřív, než padne jediné slovo",
             "Nemocniční náramek přeznačuje situaci ze ‚zmatené osoby, možná pod vlivem' na zdravotní kontext",
@@ -225,7 +225,7 @@
       ],
       "choiceAnalysis": {
         "positive": {
-          "choiceText": "Validujete zážitek (‚hlasy po změně léků musí být děsivé'), poctivě sdělíte, že jste přes operační přivolal záchranáře ‚ne aby vás odvezl, ale aby se na léky odborně podíval', a nabídnete volbu, jak kontaktovat Sofii.",
+          "choiceText": "Validujete zážitek (‚hlasy po změně léků musí být děsivé'), poctivě sdělíte, že jste přivolal záchranáře ‚ne aby vás odvezl, ale aby se na léky podíval', a nabídnete volbu, jak kontaktovat Sofii.",
           "strengths": [
             "Validace konkrétního zážitku ukazuje, že jí věříte, a přeznačuje útěk na pochopitelnou reakci",
             "Nabídnutá volba u kontaktu na Sofii obnovuje kontrolu, kterou krize odňala",
@@ -429,7 +429,7 @@
       ],
       "choiceAnalysis": {
         "positive": {
-          "choiceText": "Posadíte se vedle ní: ‚Nemusíte se omlouvat — to je odvaha, ne omluva,' předáte kartičku s Linkou první psychické pomoci 116 123 a krizovým kontaktem ‚pro případ, že se nedovoláte doktorce ani Sofii', a poděkujete paní Novákové.",
+          "choiceText": "Posadíte se vedle ní: ‚Nemusíte se omlouvat — to je odvaha, ne omluva,' předáte kartičku s Linkou první psychické pomoci 116 123 ‚pro případ, že se nedovoláte doktorce ani Sofii', a poděkujete paní Novákové.",
           "strengths": [
             "Přeznačení omluvy na odvahu je silný akt obnovení důstojnosti",
             "Písemné krizové kontakty vč. Linky 116 123 zajišťují oporu i po vašem odchodu a mimo stávající síť",

@@ -411,11 +411,21 @@ class GameController {
         
         choiceOptions.innerHTML = '';
         gameState.selectedChoice = null;
-        
-        options.forEach((option, index) => {
+
+        // Render options in a random order so the correct answer has no fixed
+        // position (data files often list it first). data-index keeps the
+        // ORIGINAL index — all game logic (submitChoice, scoring, review)
+        // keeps working on stage.options[originalIndex].
+        const displayOrder = options.map((option, index) => ({ option, index }));
+        for (let i = displayOrder.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [displayOrder[i], displayOrder[j]] = [displayOrder[j], displayOrder[i]];
+        }
+
+        displayOrder.forEach(({ option, index }, pos) => {
             const button = document.createElement('button');
             button.className = 'choice-button';
-            button.innerHTML = `<span style="opacity: 0.6">${index + 1}.</span> ${esc(option.text)}`;
+            button.innerHTML = `<span style="opacity: 0.6">${pos + 1}.</span> ${esc(option.text)}`;
             button.onclick = () => this.selectChoice(index, button);
             button.setAttribute('data-index', index);
             choiceOptions.appendChild(button);
