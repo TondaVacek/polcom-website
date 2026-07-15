@@ -593,16 +593,14 @@
     shuffle(deEscalationDeck);
   }
   
-  // Update startup screen language
-  function updateStartupLanguage() {
+  // EU visibility, disclaimers and the contact form.
+  // Split out of updateStartupLanguage() on purpose: this block is VISIBLE on the
+  // first screen, so it must be filled even before a language is picked — otherwise
+  // a first-time visitor sees an empty disclaimer and an empty contact button
+  // (updateStartupLanguage runs only when a previous choice was restored).
+  // Falls back to the currentLang default (ENG).
+  function updateEuAndContactLanguage() {
     const t = startupTranslations[currentLang];
-    $('startupSubtitle').textContent = t.subtitle;
-    $('langSelectionLabel').textContent = t.selectLang;
-    $('btnReadRulesText').textContent = t.readRules;
-    $('btnStartGameText').textContent = t.startGame;
-    $('btnBackFromRules').textContent = t.backToMenu;
-
-    // EU visibility, disclaimers and the contact form follow the chosen language
     $('euDisclaimer').textContent = t.euDisclaimer;
     $('euLiability').textContent = t.euLiability;
     $('euContactCta').textContent = t.euContactCta;
@@ -617,6 +615,18 @@
     $('contactEmailLabel').textContent = t.contactEmailLabel;
     $('contactSubmit').textContent = t.contactSubmit;
     $('contactNote').textContent = t.contactNote;
+  }
+
+  // Update startup screen language (runs once a language IS chosen — keeps the
+  // multilingual prompt on the untouched first screen intact).
+  function updateStartupLanguage() {
+    const t = startupTranslations[currentLang];
+    $('startupSubtitle').textContent = t.subtitle;
+    $('langSelectionLabel').textContent = t.selectLang;
+    $('btnReadRulesText').textContent = t.readRules;
+    $('btnStartGameText').textContent = t.startGame;
+    $('btnBackFromRules').textContent = t.backToMenu;
+    updateEuAndContactLanguage();
   }
   
   // In-game UI translations (incl. full rules/manual HTML per language)
@@ -1939,6 +1949,11 @@
   setLanguage(currentLang);
   initializeDecks();
   applyScale();
+
+  // The EU block sits on the first screen, so fill it for EVERY visitor — not just
+  // returning ones. Without this a first-time visitor gets an empty disclaimer and
+  // an empty contact button, which is exactly where EU visibility must not be missing.
+  updateEuAndContactLanguage();
 
   // If a language was chosen on a previous visit, restore the whole selection
   // state so the visitor lands one click from starting the game.
