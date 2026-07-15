@@ -242,6 +242,26 @@
     }
     /* scrolling wrapper for zoom overflow */
     .scroller{width:100%;overflow:auto;-webkit-overflow-scrolling:touch;}
+    /* EU visibility, disclaimers, contact */
+    .eu-footer { max-width: 760px; margin: 2.5rem auto 1rem; padding: 1.25rem 1rem; border-top: 1px solid rgba(255,255,255,.25); text-align: center; }
+    .eu-emblem { height: 46px; width: auto; background: #fff; padding: 4px 8px; border-radius: 6px; margin-bottom: .9rem; }
+    .eu-text { color: rgba(255,255,255,.85); font-size: .76rem; line-height: 1.55; margin: 0 0 .6rem; }
+    .eu-project { color: rgba(255,255,255,.6); font-size: .72rem; margin: 0 0 .9rem; }
+    .eu-contact { color: rgba(255,255,255,.9); font-size: .82rem; margin: 0; }
+    .eu-contact-btn { margin-left: .5rem; padding: .35rem .9rem; background: #1976d2; color: #fff; border: 1px solid #1976d2; border-radius: 8px; font: inherit; font-size: .82rem; cursor: pointer; }
+    .eu-contact-btn:hover { background: #1565c0; }
+    .contact-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,.55); z-index: 5000; align-items: center; justify-content: center; padding: 1rem; }
+    .contact-overlay.show { display: flex; }
+    .contact-box { position: relative; background: #fff; border-radius: 12px; padding: 1.5rem; width: min(94vw, 520px); max-height: 90vh; overflow-y: auto; text-align: left; color: #222; }
+    .contact-box h2 { margin: 0 0 1rem; font-size: 1.2rem; }
+    .contact-close { position: absolute; top: .6rem; right: .6rem; background: none; border: none; font-size: 1.4rem; cursor: pointer; color: #666; }
+    .contact-label { display: block; margin: .9rem 0 .4rem; font-size: .85rem; font-weight: 600; }
+    .contact-types { display: flex; flex-direction: column; gap: .4rem; }
+    .contact-type { display: flex; align-items: center; gap: .5rem; font-size: .9rem; font-weight: 400; cursor: pointer; }
+    .contact-box textarea, .contact-box input[type="email"] { width: 100%; padding: .6rem; border: 1px solid #ddd; border-radius: 8px; font: inherit; font-size: .9rem; box-sizing: border-box; }
+    .contact-submit { width: 100%; margin-top: 1.1rem; padding: .7rem; background: #1976d2; color: #fff; border: none; border-radius: 8px; font: inherit; font-size: .95rem; cursor: pointer; }
+    .contact-submit:hover { background: #1565c0; }
+    .contact-note { color: #666; font-size: .78rem; line-height: 1.45; margin: .9rem 0 0; }
   </style>
 </head>
 <body>
@@ -270,6 +290,39 @@
         <span class="choice-icon">🎮</span>
         <span id="btnStartGameText">Start the Game</span>
       </button>
+    </div>
+
+    <!-- EU visibility, disclaimers and contact -->
+    <footer class="eu-footer">
+      <img class="eu-emblem" src="/images/eu-cofunded.png"
+           alt="Co-funded by the European Union" width="220" height="46">
+      <p class="eu-text" id="euDisclaimer"></p>
+      <p class="eu-text" id="euLiability"></p>
+      <p class="eu-project">Erasmus+ POL-COM &middot; 2023-1-CZ01-KA220-VET-000167148</p>
+      <p class="eu-contact">
+        <span id="euContactCta"></span>
+        <button type="button" class="eu-contact-btn" id="btnContact"></button>
+      </p>
+    </footer>
+  </div>
+
+  <!-- ========== CONTACT / BUG REPORT ========== -->
+  <div class="contact-overlay" id="contactOverlay" role="dialog" aria-modal="true" aria-labelledby="contactTitle">
+    <div class="contact-box">
+      <button class="contact-close" id="contactClose" aria-label="Close">&times;</button>
+      <h2 id="contactTitle"></h2>
+      <label class="contact-label" id="contactTypeLabel"></label>
+      <div class="contact-types">
+        <label class="contact-type"><input type="radio" name="hc-contact-type" value="bug" checked><span id="contactTypeBug"></span></label>
+        <label class="contact-type"><input type="radio" name="hc-contact-type" value="accuracy"><span id="contactTypeFact"></span></label>
+        <label class="contact-type"><input type="radio" name="hc-contact-type" value="other"><span id="contactTypeOther"></span></label>
+      </div>
+      <label class="contact-label" for="contactMessage" id="contactMessageLabel"></label>
+      <textarea id="contactMessage" rows="5"></textarea>
+      <label class="contact-label" for="contactEmail" id="contactEmailLabel"></label>
+      <input type="email" id="contactEmail" autocomplete="email">
+      <button type="button" class="contact-submit" id="contactSubmit"></button>
+      <p class="contact-note" id="contactNote"></p>
     </div>
   </div>
 
@@ -425,28 +478,84 @@
       selectLang: "Select Language",
       readRules: "Read the Rules",
       startGame: "Start the Game",
-      backToMenu: "← Back to Menu"
+      backToMenu: "← Back to Menu",
+      euDisclaimer: 'Views and opinions expressed are however those of the author(s) only and do not necessarily reflect those of the European Union or the Czech National Agency (DZS). Neither the European Union nor the granting authority can be held responsible for them.',
+      euLiability: 'This game is training material, not legal advice. The POL-COM consortium gives no warranty as to the factual or legal accuracy of the cards and accepts no liability for how they are used. Verify the content against the law and procedures of your own jurisdiction before using it in training.',
+      euContactCta: 'Found a bug, or something factually or legally wrong? Tell us.',
+      contactOpen: 'Report a bug or contact us',
+      contactTitle: 'Report a bug or contact us',
+      contactTypeLabel: 'What is it about?',
+      contactTypeBug: 'A bug or technical problem',
+      contactTypeFact: 'Something factually or legally wrong',
+      contactTypeOther: 'A question or something else',
+      contactMessageLabel: 'Your message',
+      contactMessagePlaceholder: 'Describe what happened, or what is wrong and where.',
+      contactEmailLabel: 'Your e-mail (optional, so we can reply)',
+      contactSubmit: 'Open in e-mail',
+      contactNote: 'This opens your e-mail app with the message prepared. Nothing is sent from this page and no data is stored here.'
     },
     CZ: {
       subtitle: "Výcviková simulace pro záchranné složky",
       selectLang: "Vyberte jazyk",
       readRules: "Přečíst pravidla",
       startGame: "Spustit hru",
-      backToMenu: "← Zpět do menu"
+      backToMenu: "← Zpět do menu",
+      euDisclaimer: 'Názory a stanoviska vyjádřená v tomto textu jsou však pouze názory a stanoviska autora (autorů) a nemusí nutně odrážet názory a stanoviska Evropské unie nebo České národní agentury (DZS). Za tyto názory a stanoviska nenese odpovědnost ani Evropská unie, ani poskytovatel grantu.',
+      euLiability: 'Tato hra je výukovým materiálem, nikoli právním poradenstvím. Konsorcium POL-COM neposkytuje žádnou záruku ohledně věcné ani právní správnosti karet a nepřijímá žádnou odpovědnost za to, jak jsou využívány. Před použitím ve výcviku si ověřte obsah s ohledem na právní předpisy a postupy platné ve vaší jurisdikci.',
+      euContactCta: 'Našli jste chybu nebo něco věcně či právně nesprávného? Dejte nám vědět.',
+      contactOpen: 'Nahlásit chybu nebo nás kontaktovat',
+      contactTitle: 'Nahlásit chybu nebo nás kontaktovat',
+      contactTypeLabel: 'O co jde?',
+      contactTypeBug: 'Chyba nebo technický problém',
+      contactTypeFact: 'Nesprávnost z hlediska faktů nebo práva',
+      contactTypeOther: 'Dotaz nebo něco jiného',
+      contactMessageLabel: 'Vaše zpráva',
+      contactMessagePlaceholder: 'Popište, co se stalo, nebo co je špatně a kde.',
+      contactEmailLabel: 'Váš e-mail (volitelné, abychom vám mohli odpovědět)',
+      contactSubmit: 'Otevřít v e-mailu',
+      contactNote: 'Tím se otevře vaše e-mailová aplikace s připravenou zprávou. Z této stránky se nic neodesílá a žádná data se zde neukládají.'
     },
     LT: {
       subtitle: "Mokymo simuliacija skubios pagalbos tarnyboms",
       selectLang: "Pasirinkite kalbą",
       readRules: "Skaityti taisykles",
       startGame: "Pradėti žaidimą",
-      backToMenu: "← Grįžti į meniu"
+      backToMenu: "← Grįžti į meniu",
+      euDisclaimer: 'Tačiau čia išreikštos nuomonės ir požiūriai yra tik autorių nuomonės ir nebūtinai atspindi Europos Sąjungos ar Čekijos nacionalinės agentūros (DZS) poziciją. Nei Europos Sąjunga, nei finansavimą skirianti institucija negali būti laikomos atsakingomis už jas.',
+      euLiability: 'Šis žaidimas yra mokymo medžiaga, o ne teisinė konsultacija. „POL-COM“ konsorciumas nesuteikia jokių garantijų dėl kortelių faktinio ar teisinio tikslumo ir neprisiima jokios atsakomybės už jų naudojimo būdą. Prieš naudodami šią medžiagą mokymuose, patikrinkite jos turinį, atsižvelgdami į savo jurisdikcijos teisės aktus ir procedūras.',
+      euContactCta: 'Radote klaidą arba kažką, kas yra faktiniu ar teisiniu požiūriu neteisinga? Praneškite mums.',
+      contactOpen: 'Praneškite apie klaidą',
+      contactTitle: 'Praneškite apie klaidą arba susisiekite su mumis',
+      contactTypeLabel: 'Apie ką kalbama?',
+      contactTypeBug: 'Klaida ar techninė problema',
+      contactTypeFact: 'Faktinė ar teisinė klaida',
+      contactTypeOther: 'Klausimas ar kita',
+      contactMessageLabel: 'Jūsų žinutė',
+      contactMessagePlaceholder: 'Aprašykite, kas įvyko, arba kas yra neteisinga ir kur.',
+      contactEmailLabel: 'Jūsų el. paštas (neprivaloma, kad galėtume atsakyti)',
+      contactSubmit: 'Atidaryti el. pašto programoje',
+      contactNote: 'Tai atidarys jūsų el. pašto programą su parengtu pranešimu. Iš šio puslapio niekas nesiunčiama, o duomenys čia nesaugomi.'
     },
     RO: {
       subtitle: "Simulare de antrenament pentru serviciile de urgență",
       selectLang: "Selectați limba",
       readRules: "Citiți regulile",
       startGame: "Începeți jocul",
-      backToMenu: "← Înapoi la meniu"
+      backToMenu: "← Înapoi la meniu",
+      euDisclaimer: 'Opiniile și punctele de vedere exprimate aparțin exclusiv autorului (autorilor) și nu reflectă neapărat poziția Uniunii Europene sau a Agenției Naționale Cehe (DZS). Nici Uniunea Europeană, nici autoritatea care acordă finanțarea nu pot fi trase la răspundere pentru acestea.',
+      euLiability: 'Acest joc este un material de formare, nu o consultanță juridică. Consorțiul POL-COM nu oferă nicio garanție cu privire la acuratețea factuală sau juridică a cardurilor și nu își asumă nicio răspundere pentru modul în care acestea sunt utilizate. Verificați conținutul în raport cu legislația și procedurile din propria jurisdicție înainte de a-l utiliza în cadrul formării.',
+      euContactCta: 'Ați găsit o eroare sau ceva incorect din punct de vedere factual sau juridic? Spuneți-ne.',
+      contactOpen: 'Raportați o eroare',
+      contactTitle: 'Raportați o eroare sau contactați-ne',
+      contactTypeLabel: 'Despre ce este vorba?',
+      contactTypeBug: 'O eroare sau o problemă tehnică',
+      contactTypeFact: 'O inexactitate factuală sau juridică',
+      contactTypeOther: 'O întrebare sau altceva',
+      contactMessageLabel: 'Mesajul dumneavoastră',
+      contactMessagePlaceholder: 'Descrieți ce s-a întâmplat sau ce este greșit și unde.',
+      contactEmailLabel: 'Adresa dvs. de e-mail (opțional, pentru a vă putea răspunde)',
+      contactSubmit: 'Deschideți în aplicația de e-mail',
+      contactNote: 'Această opțiune deschide aplicația dvs. de e-mail cu mesajul pregătit. Nu se trimite nimic de pe această pagină și nu se stochează date aici.'
     }
   };
   
@@ -492,6 +601,22 @@
     $('btnReadRulesText').textContent = t.readRules;
     $('btnStartGameText').textContent = t.startGame;
     $('btnBackFromRules').textContent = t.backToMenu;
+
+    // EU visibility, disclaimers and the contact form follow the chosen language
+    $('euDisclaimer').textContent = t.euDisclaimer;
+    $('euLiability').textContent = t.euLiability;
+    $('euContactCta').textContent = t.euContactCta;
+    $('btnContact').textContent = t.contactOpen;
+    $('contactTitle').textContent = t.contactTitle;
+    $('contactTypeLabel').textContent = t.contactTypeLabel;
+    $('contactTypeBug').textContent = t.contactTypeBug;
+    $('contactTypeFact').textContent = t.contactTypeFact;
+    $('contactTypeOther').textContent = t.contactTypeOther;
+    $('contactMessageLabel').textContent = t.contactMessageLabel;
+    $('contactMessage').placeholder = t.contactMessagePlaceholder;
+    $('contactEmailLabel').textContent = t.contactEmailLabel;
+    $('contactSubmit').textContent = t.contactSubmit;
+    $('contactNote').textContent = t.contactNote;
   }
   
   // In-game UI translations (incl. full rules/manual HTML per language)
@@ -689,6 +814,18 @@
           <p style="text-align:center;margin-top:2rem;color:#666;">
             <em>Every silence, confusion or mistake is part of learning. The HOT CALL game isn't about performance – it's about building courage to respond, even when we don't know exactly how.</em>
           </p>
+        
+
+          <hr style="margin:2rem 0 1rem;border:none;border-top:1px solid #ddd;">
+          <div style="text-align:center;">
+            <img src="/images/eu-cofunded.png" alt="Co-funded by the European Union"
+                 style="height:44px;width:auto;margin-bottom:0.8rem;">
+            <h4 style="margin:0 0 0.6rem;">Funding and disclaimer</h4>
+            <p style="font-size:0.85rem;color:#555;line-height:1.5;margin:0 0 0.6rem;">Views and opinions expressed are however those of the author(s) only and do not necessarily reflect those of the European Union or the Czech National Agency (DZS). Neither the European Union nor the granting authority can be held responsible for them.</p>
+            <p style="font-size:0.85rem;color:#555;line-height:1.5;margin:0 0 0.6rem;">HOT CALL is training material, not legal advice. The POL-COM consortium gives no warranty as to the factual or legal accuracy of the cards and accepts no liability for how they are used. Check the content against the law and procedures of your own country before using it in training.</p>
+            <p style="font-size:0.8rem;color:#777;margin:0 0 0.4rem;">Erasmus+ POL-COM &middot; 2023-1-CZ01-KA220-VET-000167148</p>
+            <p style="font-size:0.85rem;margin:0;">Found a mistake? Write to <a href="mailto:polcom@misehero.cz">polcom@misehero.cz</a></p>
+          </div>
         `,
         language: "Language:",
         clickDrawSituation: "Click on Draw Situation",
@@ -930,6 +1067,18 @@
           <p style="text-align:center;margin-top:2rem;color:#666;">
             <em>Každé ticho, zmatek nebo chyba je součást učení. Hra HOT CALL není o výkonu – je o získání odvahy reagovat, i když nevíme přesně jak.</em>
           </p>
+        
+
+          <hr style="margin:2rem 0 1rem;border:none;border-top:1px solid #ddd;">
+          <div style="text-align:center;">
+            <img src="/images/eu-cofunded.png" alt="Co-funded by the European Union"
+                 style="height:44px;width:auto;margin-bottom:0.8rem;">
+            <h4 style="margin:0 0 0.6rem;">Financování a právní doložka</h4>
+            <p style="font-size:0.85rem;color:#555;line-height:1.5;margin:0 0 0.6rem;">Názory a stanoviska vyjádřená v tomto textu jsou však pouze názory a stanoviska autora (autorů) a nemusí nutně odrážet názory a stanoviska Evropské unie nebo České národní agentury (DZS). Za tyto názory a stanoviska nenese odpovědnost ani Evropská unie, ani poskytovatel grantu.</p>
+            <p style="font-size:0.85rem;color:#555;line-height:1.5;margin:0 0 0.6rem;">HOT CALL je výukový materiál, nikoli právní poradenství. Konsorcium POL-COM neposkytuje žádnou záruku ohledně věcné ani právní správnosti karet a nepřijímá odpovědnost za to, jak jsou využívány. Před použitím ve výcviku si obsah ověřte podle právních předpisů a postupů své země.</p>
+            <p style="font-size:0.8rem;color:#777;margin:0 0 0.4rem;">Erasmus+ POL-COM &middot; 2023-1-CZ01-KA220-VET-000167148</p>
+            <p style="font-size:0.85rem;margin:0;">Našli jste chybu? Napište na <a href="mailto:polcom@misehero.cz">polcom@misehero.cz</a></p>
+          </div>
         `,
         language: "Jazyk:",
         clickDrawSituation: "Klikněte na Vylosovat situaci",
@@ -1123,7 +1272,19 @@
           </div>
           <div style="text-align:center;margin:1.5rem 0;">
             <img src="https://pub-b33a41e64ab14f4d92f341fa4bf701bd.r2.dev/hot-call/hotcall-manual-lt-7.png" alt="Valdymo mygtukai" style="max-width:100%;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,0.1);">
-          </div>`,
+          </div>
+
+          <hr style="margin:2rem 0 1rem;border:none;border-top:1px solid #ddd;">
+          <div style="text-align:center;">
+            <img src="/images/eu-cofunded.png" alt="Co-funded by the European Union"
+                 style="height:44px;width:auto;margin-bottom:0.8rem;">
+            <h4 style="margin:0 0 0.6rem;">Finansavimas ir teisinė informacija</h4>
+            <p style="font-size:0.85rem;color:#555;line-height:1.5;margin:0 0 0.6rem;">Tačiau čia išreikštos nuomonės ir požiūriai yra tik autorių nuomonės ir nebūtinai atspindi Europos Sąjungos ar Čekijos nacionalinės agentūros (DZS) poziciją. Nei Europos Sąjunga, nei finansavimą skirianti institucija negali būti laikomos atsakingomis už jas.</p>
+            <p style="font-size:0.85rem;color:#555;line-height:1.5;margin:0 0 0.6rem;">HOT CALL yra mokymo medžiaga, o ne teisinė konsultacija. „POL-COM“ konsorciumas nesuteikia jokių garantijų dėl kortelių faktinio ar teisinio tikslumo ir neprisiima atsakomybės už jų naudojimo būdą. Prieš naudodami mokymuose, patikrinkite turinį pagal savo šalies teisės aktus ir procedūras.</p>
+            <p style="font-size:0.8rem;color:#777;margin:0 0 0.4rem;">Erasmus+ POL-COM &middot; 2023-1-CZ01-KA220-VET-000167148</p>
+            <p style="font-size:0.85rem;margin:0;">Radote klaidą? Rašykite <a href="mailto:polcom@misehero.cz">polcom@misehero.cz</a></p>
+          </div>
+        `,
         language: "Kalba:",
         clickDrawSituation: "Spustelėkite Traukti situaciją",
         situationCard: "Situacijos korta",
@@ -1326,6 +1487,18 @@
           <p style="text-align:center;margin-top:2rem;color:#666;">
             <em>Fiecare tăcere, confuzie sau greșeală face parte din procesul de învățare. Jocul HOT CALL nu are legătură cu performanța, ci cu dezvoltarea curajului de a răspunde, chiar și atunci când nu știm exact cum.</em>
           </p>
+        
+
+          <hr style="margin:2rem 0 1rem;border:none;border-top:1px solid #ddd;">
+          <div style="text-align:center;">
+            <img src="/images/eu-cofunded.png" alt="Co-funded by the European Union"
+                 style="height:44px;width:auto;margin-bottom:0.8rem;">
+            <h4 style="margin:0 0 0.6rem;">Finanțare și mențiuni legale</h4>
+            <p style="font-size:0.85rem;color:#555;line-height:1.5;margin:0 0 0.6rem;">Opiniile și punctele de vedere exprimate aparțin exclusiv autorului (autorilor) și nu reflectă neapărat poziția Uniunii Europene sau a Agenției Naționale Cehe (DZS). Nici Uniunea Europeană, nici autoritatea care acordă finanțarea nu pot fi trase la răspundere pentru acestea.</p>
+            <p style="font-size:0.85rem;color:#555;line-height:1.5;margin:0 0 0.6rem;">HOT CALL este un material de formare, nu o consultanță juridică. Consorțiul POL-COM nu oferă nicio garanție cu privire la acuratețea factuală sau juridică a cardurilor și nu își asumă răspunderea pentru modul în care sunt utilizate. Verificați conținutul conform legislației și procedurilor din țara dvs. înainte de a-l folosi în formare.</p>
+            <p style="font-size:0.8rem;color:#777;margin:0 0 0.4rem;">Erasmus+ POL-COM &middot; 2023-1-CZ01-KA220-VET-000167148</p>
+            <p style="font-size:0.85rem;margin:0;">Ați găsit o eroare? Scrieți la <a href="mailto:polcom@misehero.cz">polcom@misehero.cz</a></p>
+          </div>
         `,
         language: "Limba:",
         clickDrawSituation: "Faceți clic pe Trageți o situație",
@@ -1712,6 +1885,35 @@
     if (pdfUrl) {
       window.open(pdfUrl, '_blank');
     }
+  };
+
+  /* ---------- Contact / bug report ---------- */
+  const CONTACT_ADDRESS = 'polcom@misehero.cz';
+  $('btnContact').onclick = () => { $('contactOverlay').classList.add('show'); $('contactMessage').focus(); };
+  $('contactClose').onclick = () => $('contactOverlay').classList.remove('show');
+  $('contactOverlay').addEventListener('click', (e) => {
+    if (e.target === $('contactOverlay')) $('contactOverlay').classList.remove('show');
+  });
+  $('contactSubmit').onclick = () => {
+    const type = (document.querySelector('input[name="hc-contact-type"]:checked') || {}).value || 'other';
+    const message = $('contactMessage').value.trim();
+    const email = $('contactEmail').value.trim();
+    // Context a report needs anyway, so the reporter does not have to write it out.
+    const body = [
+      message || '(no description given)',
+      '',
+      '---',
+      'Game: Hot Call',
+      'Type: ' + type,
+      'Interface language: ' + currentLang,
+      'Current situation card: ' + (currentSituationNumber || '-'),
+      'Page: ' + location.href,
+      'Browser: ' + navigator.userAgent,
+      email ? 'Reply to: ' + email : ''
+    ].filter(Boolean).join('\n');
+    location.href = 'mailto:' + CONTACT_ADDRESS +
+      '?subject=' + encodeURIComponent('POL-COM Hot Call — ' + type) +
+      '&body=' + encodeURIComponent(body);
   };
 
   /* ---------- Rules Modal ---------- */
