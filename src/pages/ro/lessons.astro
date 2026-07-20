@@ -1,0 +1,213 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const lang = 'ro' as const;
+---
+
+<Layout title="Ce ne-a învățat proiectul-pilot | POLICE-COM" lang={lang}>
+  <section class="page-hero">
+    <div class="container">
+      <span class="section-label">Proiect-pilot și bune practici</span>
+      <h1 class="section-title animate-in">Ce ne-a învățat proiectul-pilot</h1>
+      <p class="section-subtitle animate-in delay-1">
+        Concluzii sincere rezultate din derularea proiectului-pilot POL-COM cu formatori din
+        cadrul poliției, ofițeri de probațiune și profesioniști din domeniul securității – și
+        ce am modificat ca răspuns la acestea.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container narrow">
+      <p class="lead">
+        POL-COM a fost testat în Cehia, Lituania și România cu cadeți de poliție, formatori și
+        profesioniști din domeniul securității. Le-am cerut participanților să fie critici,
+        mai degrabă decât politicoși. Satisfacția medie față de programul de formare pilot a
+        fost de 4,0 din 5, iar gradul de utilizabilitate al platformei de 4,2 din 5 – însă
+        criticile au fost partea utilă. Această pagină rezumă ce am auzit, ce am schimbat, ce
+        nu am reușit să remediem și ce sfaturi am oferi oricui ar dori să elaboreze un program
+        de formare similar.
+      </p>
+
+      <h2 class="block-title">Ce am auzit</h2>
+      <div class="finding">
+        <h3>„Prea mult text.”</h3>
+        <p>Participanții au considerat cursurile prea încărcate de informații și au spus că
+        cursanții de astăzi se așteaptă la formate video și interactive, mai degrabă decât la
+        materiale de citit voluminoase.</p>
+      </div>
+      <div class="finding">
+        <h3>„Fiecare modul arăta diferit.”</h3>
+        <p>Materialele erau prezentate într-un stil diferit în fiecare modul, astfel încât
+        cursanții trebuiau să se reorienteze de fiecare dată.</p>
+      </div>
+      <div class="finding">
+        <h3>„Totul trebuia descărcat.”</h3>
+        <p>Materialele erau oferite sub formă de fișiere descărcabile, în loc să poată fi
+        citite direct pe platformă, ceea ce făcea ca mediul să pară mai greoi decât era
+        necesar.</p>
+      </div>
+      <div class="finding">
+        <h3>„Unde sunt drepturile de utilizare?”</h3>
+        <p>Formatorilor li s-a spus că videoclipurile pot fi reutilizate în alte contexte, dar
+        nu au găsit nicio informație privind licența care să confirme acest lucru.</p>
+      </div>
+      <div class="finding">
+        <h3>„Activitățile se repetau.”</h3>
+        <p>Unele exerciții păreau prea simple pentru profesioniști adulți și urmau tipare
+        similare; câteva definiții erau imprecise.</p>
+      </div>
+
+      <h2 class="block-title">Ce am schimbat</h2>
+      <ul class="did-list">
+        <li><strong>Licențierea este acum explicită.</strong> Fiecare material de formare
+        conține o mențiune CC BY 4.0 și o atribuire a finanțării UE, astfel încât formatorii să
+        știe exact ce pot reutiliza și cum să menționeze sursa.</li>
+        <li><strong>Verificări ale cunoștințelor în cadrul modulelor.</strong> Exercițiile
+        interactive și testele permit cursanților să-și verifice cunoștințele dobândite, așa
+        cum s-a solicitat în timpul fazei pilot.</li>
+      </ul>
+
+      <h2 class="block-title">Ce am rezolvat doar parțial</h2>
+      <p>Două constatări merită un răspuns sincer, mai degrabă decât o declarație de succes.</p>
+      <ul class="did-list">
+        <li><strong>Coerența între module.</strong> Metodologia în sine a fost concepută încă
+        de la început ca un cadru comun – incluzând cele cinci faze de studiu pe care le
+        urmează fiecare modul. În practică, fiecare partener a implementat acest cadru într-un
+        mod oarecum diferit pe platforma de învățare, iar armonizarea retrospectivă a tuturor
+        celor șase module ar fi însemnat reconstruirea acestora. Pe acest site web am ales o
+        altă abordare: materialele pot fi răsfoite și descărcate selectiv, astfel încât
+        formatorii să-și alcătuiască secvența de care au nevoie. Aceasta rezolvă o parte a
+        problemei, nu în întregime.</li>
+        <li><strong>Mai puțin text, mai mult conținut audiovizual.</strong> Aceasta este o
+        limitare reală a versiunii actuale. Materialele conțin încă mai mult text decât și-ar
+        dori participanții, iar aceasta este direcția cea mai clară pentru orice versiune
+        viitoare a programului.</li>
+      </ul>
+
+      <h2 class="block-title">Ce le-am spune celorlalți</h2>
+      <ol class="advice-list">
+        <li><strong>Solicitați în mod explicit critici.</strong> Politețea generează feedback
+        inutil. Cele mai valoroase contribuții au venit de la participanții cărora li s-a spus
+        că scopul exercițiului era tocmai acela de a semnala punctele slabe.</li>
+        <li><strong>Stabiliți licența înainte de a produce conținutul, nu după.</strong>
+        Adăugarea retroactivă a atribuirii la sute de fișiere este costisitoare; o singură
+        decizie luată la început previne acest lucru.</li>
+        <li><strong>Puneți-vă de acord asupra implementării, nu doar asupra metodologiei.</strong>
+        Un cadru comun pe hârtie lasă totuși loc pentru șase interpretări diferite în practică.
+        Conveniți din timp asupra modului în care cadrul va arăta în platformă, nu doar asupra
+        conținutului său.</li>
+        <li><strong>Testați cu publicul real, nu cu colegii.</strong> Practicienii au
+        identificat probleme – ritmul, realismul, repetițiile – pe care evaluarea internă le-a
+        trecut cu vederea.</li>
+        <li><strong>Alocați buget pentru revizuire, nu doar pentru producție.</strong> Un
+        proiect-pilot este util doar dacă rămân timp și bani pentru a pune în practică
+        concluziile acestuia.</li>
+      </ol>
+
+      <div class="cta-row">
+        <a href="https://polcom-training.eu/" class="btn btn-primary" target="_blank" rel="noopener">Explorați platforma de formare</a>
+        <a href="/ro/materials/" class="btn btn-secondary">Răsfoiți materialele</a>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .page-hero {
+    padding: calc(72px + 4rem) 0 3.5rem;
+    background: var(--color-bg-elevated);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    font-weight: 600;
+    border-radius: var(--radius-sm);
+    transition: all 0.25s;
+    text-decoration: none;
+  }
+
+  .btn-primary {
+    background: var(--color-accent);
+    color: #fff;
+  }
+
+  .btn-primary:hover { background: var(--color-accent-light); }
+
+  .btn-secondary {
+    background: transparent;
+    color: var(--color-accent);
+    border: 1px solid var(--color-border);
+  }
+
+  .btn-secondary:hover { border-color: var(--color-accent); }
+
+  .narrow { max-width: 780px; }
+
+  .lead {
+    font-size: 1.0625rem;
+    line-height: 1.75;
+    color: var(--color-text-muted);
+    margin-bottom: 2.5rem;
+  }
+
+  .block-title {
+    font-family: var(--font-body);
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: var(--color-text);
+    margin: 2.5rem 0 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--color-accent);
+  }
+
+  .finding {
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-left: 3px solid var(--color-accent);
+    border-radius: var(--radius);
+    padding: 1rem 1.25rem;
+    margin-bottom: 0.875rem;
+  }
+
+  .finding h3 {
+    font-family: var(--font-body);
+    font-size: 0.9375rem;
+    font-weight: 600;
+    color: var(--color-text);
+    margin-bottom: 0.375rem;
+  }
+
+  .finding p {
+    font-size: 0.875rem;
+    color: var(--color-text-muted);
+    margin: 0;
+  }
+
+  .did-list, .advice-list {
+    padding-left: 1.25rem;
+    margin-bottom: 1rem;
+  }
+
+  .did-list li, .advice-list li {
+    font-size: 0.9375rem;
+    line-height: 1.7;
+    color: var(--color-text-muted);
+    margin-bottom: 0.75rem;
+  }
+
+  .did-list strong, .advice-list strong { color: var(--color-text); }
+
+  .cta-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: 2.5rem;
+  }
+</style>

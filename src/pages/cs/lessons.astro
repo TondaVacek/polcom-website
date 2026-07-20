@@ -1,0 +1,205 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const lang = 'cs' as const;
+---
+
+<Layout title="Co nás naučil pilotní projekt | POLICE-COM" lang={lang}>
+  <section class="page-hero">
+    <div class="container">
+      <span class="section-label">Pilotní projekt a osvědčené postupy</span>
+      <h1 class="section-title animate-in">Co nás naučil pilotní projekt</h1>
+      <p class="section-subtitle animate-in delay-1">
+        Upřímná zjištění z pilotního ověřování POL-COM s policejními lektory, probačními
+        úředníky a bezpečnostními profesionály – a co jsme na jejich základě změnili.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container narrow">
+      <p class="lead">
+        Program POL-COM jsme pilotně ověřili v Česku, Litvě a Rumunsku s policejními kadety,
+        lektory a bezpečnostními profesionály. Účastníky jsme požádali, aby byli spíš kritičtí
+        než zdvořilí. Průměrná spokojenost s pilotním školením dosáhla 4.0 z 5 a použitelnost
+        platformy 4.2 z 5 – ale užitečná byla právě kritika. Tato stránka shrnuje, co jsme
+        zjistili, co jsme na základě toho změnili, co se nám nepodařilo vyřešit a co bychom
+        doporučili každému, kdo připravuje podobné školení.
+      </p>
+
+      <h2 class="block-title">Co jsme slyšeli</h2>
+      <div class="finding">
+        <h3>„Příliš mnoho textu.“</h3>
+        <p>Účastníci hodnotili kurzy jako informačně nabité a uváděli, že dnešní studenti
+        očekávají spíš video a interaktivní formáty než dlouhé texty ke čtení.</p>
+      </div>
+      <div class="finding">
+        <h3>„Každý modul vypadal jinak.“</h3>
+        <p>Materiály byly v každém modulu zpracované jiným stylem, takže se studenti museli
+        pokaždé znovu zorientovat.</p>
+      </div>
+      <div class="finding">
+        <h3>„Všechno se muselo stahovat.“</h3>
+        <p>Materiály byly k dispozici jen ke stažení, ne přímo ke čtení v platformě, což
+        prostředí zbytečně zatěžovalo.</p>
+      </div>
+      <div class="finding">
+        <h3>„Kde jsou informace o právech k užití?“</h3>
+        <p>Lektorům bylo řečeno, že videa mohou znovu použít i jinde, ale nikde nenašli
+        licenční informace, které by to potvrzovaly.</p>
+      </div>
+      <div class="finding">
+        <h3>„Aktivity se opakovaly.“</h3>
+        <p>Některá cvičení působila na dospělé profesionály příliš jednoduše a opakovala
+        podobné vzorce; několik definic bylo nepřesných.</p>
+      </div>
+
+      <h2 class="block-title">Co jsme změnili</h2>
+      <ul class="did-list">
+        <li><strong>Licenční podmínky jsou teď jasně uvedené.</strong> Každý školicí materiál
+        má uvedenou licenci CC BY 4.0 a informaci o financování z EU, takže lektoři přesně
+        vědí, co mohou znovu použít a jak uvést zdroj.</li>
+        <li><strong>Kontrolní otázky v modulech.</strong> Interaktivní cvičení a kvízy
+        umožňují studentům ověřit si, co si zapamatovali – přesně podle toho, co si účastníci
+        pilotního ověřování přáli.</li>
+      </ul>
+
+      <h2 class="block-title">Co jsme vyřešili jen částečně</h2>
+      <p>Dvě zjištění si zaslouží upřímnou odpověď, ne tvrzení o úspěchu.</p>
+      <ul class="did-list">
+        <li><strong>Jednotnost napříč moduly.</strong> Samotná metodika byla od začátku
+        navržená jako jednotný rámec – včetně pěti fází studia, kterými prochází každý modul.
+        V praxi ale každý partner tento rámec na vzdělávací platformě implementoval trochu
+        jinak a dodatečné sjednocení všech šesti modulů by znamenalo je znovu postavit. Na
+        tomto webu jsme proto zvolili jinou cestu: materiály lze procházet a stahovat
+        výběrově, takže si lektoři sestaví posloupnost, kterou potřebují. To řeší jen část
+        problému, ne celý.</li>
+        <li><strong>Méně textu, více audiovizuálního obsahu.</strong> Jde o skutečné omezení
+        současné verze. Materiály zůstávají textově náročnější, než by si účastníci přáli, a
+        je to nejjasnější směr pro jakoukoli budoucí verzi programu.</li>
+      </ul>
+
+      <h2 class="block-title">Co bychom poradili ostatním</h2>
+      <ol class="advice-list">
+        <li><strong>Řekněte si výslovně o kritiku.</strong> Zdvořilost vede k nepoužitelné
+        zpětné vazbě. Nejcennější podněty jsme dostali od účastníků, kterým jsme řekli, že
+        smyslem cvičení je upozornit na slabiny.</li>
+        <li><strong>Licenci vyřešte před produkcí, ne až po ní.</strong> Dodatečné doplňování
+        licenčního označení do stovek souborů je nákladné; jedno rozhodnutí na začátku tomu
+        předejde.</li>
+        <li><strong>Dohodněte se na implementaci, ne jen na metodice.</strong> Sdílený rámec
+        na papíře pořád nechává prostor pro šest různých výkladů v praxi. Dohodněte se včas
+        na tom, jak bude rámec vypadat na platformě, ne jen na tom, co má obsahovat.</li>
+        <li><strong>Pilotujte s reálným publikem, ne s kolegy.</strong> Praktici odhalili
+        problémy – tempo, realističnost, opakování – které interní revize přehlédla.</li>
+        <li><strong>Počítejte s rozpočtem na revizi, ne jen na produkci.</strong> Pilotní
+        ověřování má smysl jen tehdy, když zbyde čas a peníze na to, aby se z jeho zjištění
+        dalo něco udělat.</li>
+      </ol>
+
+      <div class="cta-row">
+        <a href="https://polcom-training.eu/" class="btn btn-primary" target="_blank" rel="noopener">Prozkoumat školicí platformu</a>
+        <a href="/cs/materials/" class="btn btn-secondary">Procházet materiály</a>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .page-hero {
+    padding: calc(72px + 4rem) 0 3.5rem;
+    background: var(--color-bg-elevated);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    font-weight: 600;
+    border-radius: var(--radius-sm);
+    transition: all 0.25s;
+    text-decoration: none;
+  }
+
+  .btn-primary {
+    background: var(--color-accent);
+    color: #fff;
+  }
+
+  .btn-primary:hover { background: var(--color-accent-light); }
+
+  .btn-secondary {
+    background: transparent;
+    color: var(--color-accent);
+    border: 1px solid var(--color-border);
+  }
+
+  .btn-secondary:hover { border-color: var(--color-accent); }
+
+  .narrow { max-width: 780px; }
+
+  .lead {
+    font-size: 1.0625rem;
+    line-height: 1.75;
+    color: var(--color-text-muted);
+    margin-bottom: 2.5rem;
+  }
+
+  .block-title {
+    font-family: var(--font-body);
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: var(--color-text);
+    margin: 2.5rem 0 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--color-accent);
+  }
+
+  .finding {
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-left: 3px solid var(--color-accent);
+    border-radius: var(--radius);
+    padding: 1rem 1.25rem;
+    margin-bottom: 0.875rem;
+  }
+
+  .finding h3 {
+    font-family: var(--font-body);
+    font-size: 0.9375rem;
+    font-weight: 600;
+    color: var(--color-text);
+    margin-bottom: 0.375rem;
+  }
+
+  .finding p {
+    font-size: 0.875rem;
+    color: var(--color-text-muted);
+    margin: 0;
+  }
+
+  .did-list, .advice-list {
+    padding-left: 1.25rem;
+    margin-bottom: 1rem;
+  }
+
+  .did-list li, .advice-list li {
+    font-size: 0.9375rem;
+    line-height: 1.7;
+    color: var(--color-text-muted);
+    margin-bottom: 0.75rem;
+  }
+
+  .did-list strong, .advice-list strong { color: var(--color-text); }
+
+  .cta-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: 2.5rem;
+  }
+</style>

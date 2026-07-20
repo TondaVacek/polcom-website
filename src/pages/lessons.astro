@@ -1,0 +1,203 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { defaultLang } from '../i18n/translations';
+
+const lang = defaultLang;
+---
+
+<Layout title="What the pilot taught us | POLICE-COM" lang={lang}>
+  <section class="page-hero">
+    <div class="container">
+      <span class="section-label">Pilot &amp; best practice</span>
+      <h1 class="section-title animate-in">What the pilot taught us</h1>
+      <p class="section-subtitle animate-in delay-1">
+        Honest findings from piloting POL-COM with police trainers, probation officers and
+        security professionals — and what we changed in response.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container narrow">
+      <p class="lead">
+        POL-COM was piloted in Czechia, Lithuania and Romania with police cadets, trainers and
+        security professionals. We asked participants to be critical rather than polite.
+        Average satisfaction with the pilot training was 4.0 out of 5 and platform usability
+        4.2 out of 5 — but the criticism was the useful part. This page summarises what we
+        heard, what we changed, what we did not manage to fix, and what we would advise anyone
+        building similar training.
+      </p>
+
+      <h2 class="block-title">What we heard</h2>
+      <div class="finding">
+        <h3>“Too much text.”</h3>
+        <p>Participants found the courses information-dense and said today's learners expect
+        video and interactive formats rather than long reading materials.</p>
+      </div>
+      <div class="finding">
+        <h3>“Every module looked different.”</h3>
+        <p>Materials were presented in a different style in each module, so learners had to
+        reorient themselves each time.</p>
+      </div>
+      <div class="finding">
+        <h3>“Everything had to be downloaded.”</h3>
+        <p>Materials were offered as downloads rather than readable directly in the platform,
+        which made the environment feel heavier than necessary.</p>
+      </div>
+      <div class="finding">
+        <h3>“Where are the usage rights?”</h3>
+        <p>Trainers were told the videos could be reused elsewhere, but could not find any
+        licensing information saying so.</p>
+      </div>
+      <div class="finding">
+        <h3>“Activities repeated themselves.”</h3>
+        <p>Some exercises felt too simple for adult professionals and cycled through similar
+        patterns; a few definitions were imprecise.</p>
+      </div>
+
+      <h2 class="block-title">What we changed</h2>
+      <ul class="did-list">
+        <li><strong>Licensing is now explicit.</strong> Every training material carries a
+        CC BY 4.0 notice and EU funding attribution, so trainers know exactly what they may
+        reuse and how to credit it.</li>
+        <li><strong>Knowledge checks in the modules.</strong> Interactive exercises and
+        quizzes let learners test what they retained, as requested during the pilot.</li>
+      </ul>
+
+      <h2 class="block-title">What we only partly solved</h2>
+      <p>Two findings deserve an honest answer rather than a claim of success.</p>
+      <ul class="did-list">
+        <li><strong>Consistency across modules.</strong> The methodology itself was designed
+        as one shared framework — including the five study phases every module follows — from
+        the very beginning. In practice each partner implemented that framework somewhat
+        differently on the learning platform, and harmonising all six modules retrospectively
+        would have meant rebuilding them. On this website we took a different route: materials
+        can be browsed and downloaded selectively, so trainers assemble the sequence they
+        need. That addresses part of the problem, not all of it.</li>
+        <li><strong>Less text, more audiovisual content.</strong> This is a real limitation of
+        the current version. The materials remain more text-heavy than participants would
+        like, and it is the clearest direction for any future iteration of the programme.</li>
+      </ul>
+
+      <h2 class="block-title">What we would tell others</h2>
+      <ol class="advice-list">
+        <li><strong>Ask for criticism explicitly.</strong> Politeness produces useless
+        feedback. Our most valuable input came from participants who were told that pointing
+        out weaknesses was the point of the exercise.</li>
+        <li><strong>Decide the licence before you produce, not after.</strong> Retro-fitting
+        attribution to hundreds of files is expensive; one decision at the start prevents it.</li>
+        <li><strong>Agree the implementation, not only the methodology.</strong> A shared
+        framework on paper still leaves room for six different interpretations in practice.
+        Agree early how the framework will look in the platform, not just what it contains.</li>
+        <li><strong>Pilot with the real audience, not with colleagues.</strong> Practitioners
+        spotted issues — pace, realism, repetition — that internal review had passed over.</li>
+        <li><strong>Budget for revision, not just production.</strong> A pilot is only useful
+        if time and money remain to act on what it finds.</li>
+      </ol>
+
+      <div class="cta-row">
+        <a href="https://polcom-training.eu/" class="btn btn-primary" target="_blank" rel="noopener">Explore the training platform</a>
+        <a href="/materials/" class="btn btn-secondary">Browse the materials</a>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .page-hero {
+    padding: calc(72px + 4rem) 0 3.5rem;
+    background: var(--color-bg-elevated);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    font-weight: 600;
+    border-radius: var(--radius-sm);
+    transition: all 0.25s;
+    text-decoration: none;
+  }
+
+  .btn-primary {
+    background: var(--color-accent);
+    color: #fff;
+  }
+
+  .btn-primary:hover { background: var(--color-accent-light); }
+
+  .btn-secondary {
+    background: transparent;
+    color: var(--color-accent);
+    border: 1px solid var(--color-border);
+  }
+
+  .btn-secondary:hover { border-color: var(--color-accent); }
+
+  .narrow { max-width: 780px; }
+
+  .lead {
+    font-size: 1.0625rem;
+    line-height: 1.75;
+    color: var(--color-text-muted);
+    margin-bottom: 2.5rem;
+  }
+
+  .block-title {
+    font-family: var(--font-body);
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: var(--color-text);
+    margin: 2.5rem 0 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--color-accent);
+  }
+
+  .finding {
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-left: 3px solid var(--color-accent);
+    border-radius: var(--radius);
+    padding: 1rem 1.25rem;
+    margin-bottom: 0.875rem;
+  }
+
+  .finding h3 {
+    font-family: var(--font-body);
+    font-size: 0.9375rem;
+    font-weight: 600;
+    color: var(--color-text);
+    margin-bottom: 0.375rem;
+  }
+
+  .finding p {
+    font-size: 0.875rem;
+    color: var(--color-text-muted);
+    margin: 0;
+  }
+
+  .did-list, .advice-list {
+    padding-left: 1.25rem;
+    margin-bottom: 1rem;
+  }
+
+  .did-list li, .advice-list li {
+    font-size: 0.9375rem;
+    line-height: 1.7;
+    color: var(--color-text-muted);
+    margin-bottom: 0.75rem;
+  }
+
+  .did-list strong, .advice-list strong { color: var(--color-text); }
+
+  .cta-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: 2.5rem;
+  }
+</style>
